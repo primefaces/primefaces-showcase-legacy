@@ -1,0 +1,727 @@
+<!DOCTYPE html [
+    <!ENTITY nbsp "&#160;">
+    <!ENTITY bull "&#161;">
+    <!ENTITY rsaquo "&#162;">
+    <!ENTITY copy "&#163;">
+]>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <f:facet name="first">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+    </f:facet>
+
+    <title>PrimeFaces ShowCase</title>
+    <h:outputStylesheet name="main/css/showcase.css" />
+    <h:outputStylesheet name="main/css/perfect-scrollbar.css" />
+    <h:outputStylesheet name="main/css/sh.css" />
+    <h:outputScript name="main/js/perfect-scrollbar.js" />
+    <h:outputScript name="main/js/showcase.js" />
+</h:head>
+
+<body>
+
+    <!-- PC CONTENT STARTS HERE-->
+    <div class="PC">
+    
+    <div id="LOGOTEXTSIDE">
+    	<span class="dispBlock logoDarkText fontSize30">PrimeFaces</span> <span class="dispBlock logoBlueText fontSize30 mediumFont">SHOWCASE</span>
+    </div>
+    
+	<div id="MENUSIDE">
+    	<div id="MENUSIDEindent">
+            <span id="LOGO" class="bordersOfMenuSide"><h:graphicImage name="main/images/logo.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/logoBlue.svg" /></span>
+            <span class="emptyBox"></span>
+            <div class="MenuSideMainLink bordersOfMenuSide mustClose"><input type="text" value="Search Menu" class="mediumFont fontSize14"/></div>
+            <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/ajaxCore.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/ajaxCoreBlue.svg" /><span class="MainLinkText">Ajax Core</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/basic.jsf">&bull; Basic</a>
+                <span class="SubMenuLink" onclick="openSubSubMenu(this);">&bull; Selectors
+                	<div class="subsubMenuLinks">
+                    	<a href="#">&rsaquo; Simple Accordion Panel</a>
+                        <a href="#">&rsaquo; Multiple Selection</a>
+                        <a href="#">&rsaquo; Dynamic Content</a>
+                        <a href="#">&rsaquo; Events</a>
+                        <a href="#">&rsaquo; Disabled</a>
+                        <a href="#">&rsaquo; Data Model</a>
+                        <a href="#">&rsaquo; RTL</a>
+                    </div>
+                </span>
+                <span class="SubMenuLink" onclick="openSubSubMenu(this);">&bull; Events
+                	<div class="subsubMenuLinks">
+                    	<a href="#">&rsaquo; Simple Accordion Panel</a>
+                        <a href="#">&rsaquo; Multiple Selection</a>
+                        <a href="#">&rsaquo; Dynamic Content</a>
+                        <a href="#">&rsaquo; Events</a>
+                        <a href="#">&rsaquo; Disabled</a>
+                        <a href="#">&rsaquo; Data Model</a>
+                        <a href="#">&rsaquo; RTL</a>
+                    </div>
+                </span>
+                <span class="SubMenuLink" onclick="openSubSubMenu(this);">&bull; Partial Processing
+                	<div class="subsubMenuLinks">
+                    	<a href="#">&rsaquo; Simple Accordion Panel</a>
+                        <a href="#">&rsaquo; Multiple Selection</a>
+                        <a href="#">&rsaquo; Dynamic Content</a>
+                        <a href="#">&rsaquo; Events</a>
+                        <a href="#">&rsaquo; Disabled</a>
+                        <a href="#">&rsaquo; Data Model</a>
+                        <a href="#">&rsaquo; RTL</a>
+                    </div>
+                </span>
+                <span class="SubMenuLink" onclick="openSubSubMenu(this);">&bull; Polling
+                	<div class="subsubMenuLinks">
+                    	<a href="#">&rsaquo; Simple Accordion Panel</a>
+                        <a href="#">&rsaquo; Multiple Selection</a>
+                        <a href="#">&rsaquo; Dynamic Content</a>
+                        <a href="#">&rsaquo; Events</a>
+                        <a href="#">&rsaquo; Disabled</a>
+                        <a href="#">&rsaquo; Data Model</a>
+                        <a href="#">&rsaquo; RTL</a>
+                    </div>
+                </span>
+                <a class="SubMenuLink">&bull; Selects</a>
+                <a class="SubMenuLink">&bull; Partial Submit</a>
+                <a class="SubMenuLink">&bull; Remote Command</a>
+                <a class="SubMenuLink">&bull; Listeners</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Validations</a>
+                <a class="SubMenuLink">&bull; Counter</a>
+                <a class="SubMenuLink">&bull; Fragment</a>
+                <a class="SubMenuLink">&bull; Search Expressions</a>
+            </div>
+            
+            <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/input.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/inputBlue.svg" /><span class="MainLinkText">Input</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink">&bull; Basics</a>
+                <a class="SubMenuLink">&bull; Selectors</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Partial Processing</a>
+                <a class="SubMenuLink">&bull; Polling</a>
+                <a class="SubMenuLink">&bull; Selects</a>
+                <a class="SubMenuLink">&bull; Partial Submit</a>
+                <a class="SubMenuLink">&bull; Remote Command</a>
+                <a class="SubMenuLink">&bull; Listeners</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Validations</a>
+                <a class="SubMenuLink">&bull; Counter</a>
+                <a class="SubMenuLink">&bull; Fragment</a>
+                <a class="SubMenuLink">&bull; Search Expressions</a>
+            </div>
+            <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/button.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/buttonBlue.svg" /><span class="MainLinkText">Button</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink">&bull; Basics</a>
+                <a class="SubMenuLink">&bull; Selectors</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Partial Processing</a>
+                <a class="SubMenuLink">&bull; Polling</a>
+                <a class="SubMenuLink">&bull; Selects</a>
+                <a class="SubMenuLink">&bull; Partial Submit</a>
+                <a class="SubMenuLink">&bull; Remote Command</a>
+                <a class="SubMenuLink">&bull; Listeners</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Validations</a>
+                <a class="SubMenuLink">&bull; Counter</a>
+                <a class="SubMenuLink">&bull; Fragment</a>
+                <a class="SubMenuLink">&bull; Search Expressions</a>
+            </div>
+            <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/data.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/dataBlue.svg" /><span class="MainLinkText">Data</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink">&bull; Basics</a>
+                <a class="SubMenuLink">&bull; Selectors</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Partial Processing</a>
+                <a class="SubMenuLink">&bull; Polling</a>
+                <a class="SubMenuLink">&bull; Selects</a>
+                <a class="SubMenuLink">&bull; Partial Submit</a>
+                <a class="SubMenuLink">&bull; Remote Command</a>
+                <a class="SubMenuLink">&bull; Listeners</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Validations</a>
+                <a class="SubMenuLink">&bull; Counter</a>
+                <a class="SubMenuLink">&bull; Fragment</a>
+                <a class="SubMenuLink">&bull; Search Expressions</a>
+            </div>
+            <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/panel.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/panelBlue.svg" /><span class="MainLinkText">Panel</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink">&bull; Basics</a>
+                <a class="SubMenuLink">&bull; Selectors</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Partial Processing</a>
+                <a class="SubMenuLink">&bull; Polling</a>
+                <a class="SubMenuLink">&bull; Selects</a>
+                <a class="SubMenuLink">&bull; Partial Submit</a>
+                <a class="SubMenuLink">&bull; Remote Command</a>
+                <a class="SubMenuLink">&bull; Listeners</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Validations</a>
+                <a class="SubMenuLink">&bull; Counter</a>
+                <a class="SubMenuLink">&bull; Fragment</a>
+                <a class="SubMenuLink">&bull; Search Expressions</a>
+            </div>
+            <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/overlay.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/overlayBlue.svg" /><span class="MainLinkText">Overlay</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink">&bull; Basics</a>
+                <a class="SubMenuLink">&bull; Selectors</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Partial Processing</a>
+                <a class="SubMenuLink">&bull; Polling</a>
+                <a class="SubMenuLink">&bull; Selects</a>
+                <a class="SubMenuLink">&bull; Partial Submit</a>
+                <a class="SubMenuLink">&bull; Remote Command</a>
+                <a class="SubMenuLink">&bull; Listeners</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Validations</a>
+                <a class="SubMenuLink">&bull; Counter</a>
+                <a class="SubMenuLink">&bull; Fragment</a>
+                <a class="SubMenuLink">&bull; Search Expressions</a>
+            </div>
+            <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/menu.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/menuBlue.svg" /><span class="MainLinkText">Menu</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink">&bull; Basics</a>
+                <a class="SubMenuLink">&bull; Selectors</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Partial Processing</a>
+                <a class="SubMenuLink">&bull; Polling</a>
+                <a class="SubMenuLink">&bull; Selects</a>
+                <a class="SubMenuLink">&bull; Partial Submit</a>
+                <a class="SubMenuLink">&bull; Remote Command</a>
+                <a class="SubMenuLink">&bull; Listeners</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Validations</a>
+                <a class="SubMenuLink">&bull; Counter</a>
+                <a class="SubMenuLink">&bull; Fragment</a>
+                <a class="SubMenuLink">&bull; Search Expressions</a>
+            </div>
+            <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/charts.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/chartsBlue.svg" /><span class="MainLinkText">Charts</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink">&bull; Basics</a>
+                <a class="SubMenuLink">&bull; Selectors</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Partial Processing</a>
+                <a class="SubMenuLink">&bull; Polling</a>
+                <a class="SubMenuLink">&bull; Selects</a>
+                <a class="SubMenuLink">&bull; Partial Submit</a>
+                <a class="SubMenuLink">&bull; Remote Command</a>
+                <a class="SubMenuLink">&bull; Listeners</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Validations</a>
+                <a class="SubMenuLink">&bull; Counter</a>
+                <a class="SubMenuLink">&bull; Fragment</a>
+                <a class="SubMenuLink">&bull; Search Expressions</a>
+            </div>
+            <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/message.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/messageBlue.svg" /><span class="MainLinkText">Messages</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink">&bull; Basics</a>
+                <a class="SubMenuLink">&bull; Selectors</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Partial Processing</a>
+                <a class="SubMenuLink">&bull; Polling</a>
+                <a class="SubMenuLink">&bull; Selects</a>
+                <a class="SubMenuLink">&bull; Partial Submit</a>
+                <a class="SubMenuLink">&bull; Remote Command</a>
+                <a class="SubMenuLink">&bull; Listeners</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Validations</a>
+                <a class="SubMenuLink">&bull; Counter</a>
+                <a class="SubMenuLink">&bull; Fragment</a>
+                <a class="SubMenuLink">&bull; Search Expressions</a>
+            </div>
+            <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/multimedia.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/multimediaBlue.svg" /><span class="MainLinkText">Multimedia</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink">&bull; Basics</a>
+                <a class="SubMenuLink">&bull; Selectors</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Partial Processing</a>
+                <a class="SubMenuLink">&bull; Polling</a>
+                <a class="SubMenuLink">&bull; Selects</a>
+                <a class="SubMenuLink">&bull; Partial Submit</a>
+                <a class="SubMenuLink">&bull; Remote Command</a>
+                <a class="SubMenuLink">&bull; Listeners</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Validations</a>
+                <a class="SubMenuLink">&bull; Counter</a>
+                <a class="SubMenuLink">&bull; Fragment</a>
+                <a class="SubMenuLink">&bull; Search Expressions</a>
+            </div>
+            <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/file.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/fileBlue.svg" /><span class="MainLinkText">File</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink">&bull; Basics</a>
+                <a class="SubMenuLink">&bull; Selectors</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Partial Processing</a>
+                <a class="SubMenuLink">&bull; Polling</a>
+                <a class="SubMenuLink">&bull; Selects</a>
+                <a class="SubMenuLink">&bull; Partial Submit</a>
+                <a class="SubMenuLink">&bull; Remote Command</a>
+                <a class="SubMenuLink">&bull; Listeners</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Validations</a>
+                <a class="SubMenuLink">&bull; Counter</a>
+                <a class="SubMenuLink">&bull; Fragment</a>
+                <a class="SubMenuLink">&bull; Search Expressions</a>
+            </div>
+            <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/dragdrop.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/dragdropBlue.svg" /><span class="MainLinkText">DragDrop</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink">&bull; Basics</a>
+                <a class="SubMenuLink">&bull; Selectors</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Partial Processing</a>
+                <a class="SubMenuLink">&bull; Polling</a>
+                <a class="SubMenuLink">&bull; Selects</a>
+                <a class="SubMenuLink">&bull; Partial Submit</a>
+                <a class="SubMenuLink">&bull; Remote Command</a>
+                <a class="SubMenuLink">&bull; Listeners</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Validations</a>
+                <a class="SubMenuLink">&bull; Counter</a>
+                <a class="SubMenuLink">&bull; Fragment</a>
+                <a class="SubMenuLink">&bull; Search Expressions</a>
+            </div>
+            <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/clientSideValidation.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/clientSideValidationBlue.svg" /><span class="MainLinkText">Client Side Validation</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink">&bull; Basics</a>
+                <a class="SubMenuLink">&bull; Selectors</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Partial Processing</a>
+                <a class="SubMenuLink">&bull; Polling</a>
+                <a class="SubMenuLink">&bull; Selects</a>
+                <a class="SubMenuLink">&bull; Partial Submit</a>
+                <a class="SubMenuLink">&bull; Remote Command</a>
+                <a class="SubMenuLink">&bull; Listeners</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Validations</a>
+                <a class="SubMenuLink">&bull; Counter</a>
+                <a class="SubMenuLink">&bull; Fragment</a>
+                <a class="SubMenuLink">&bull; Search Expressions</a>
+            </div>
+            <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/dialogFramework.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/dialogFrameworkBlue.svg" /><span class="MainLinkText">Dialog Framework</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink">&bull; Basics</a>
+                <a class="SubMenuLink">&bull; Selectors</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Partial Processing</a>
+                <a class="SubMenuLink">&bull; Polling</a>
+                <a class="SubMenuLink">&bull; Selects</a>
+                <a class="SubMenuLink">&bull; Partial Submit</a>
+                <a class="SubMenuLink">&bull; Remote Command</a>
+                <a class="SubMenuLink">&bull; Listeners</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Validations</a>
+                <a class="SubMenuLink">&bull; Counter</a>
+                <a class="SubMenuLink">&bull; Fragment</a>
+                <a class="SubMenuLink">&bull; Search Expressions</a>
+            </div>
+            <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Misc</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink">&bull; Basics</a>
+                <a class="SubMenuLink">&bull; Selectors</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Partial Processing</a>
+                <a class="SubMenuLink">&bull; Polling</a>
+                <a class="SubMenuLink">&bull; Selects</a>
+                <a class="SubMenuLink">&bull; Partial Submit</a>
+                <a class="SubMenuLink">&bull; Remote Command</a>
+                <a class="SubMenuLink">&bull; Listeners</a>
+                <a class="SubMenuLink">&bull; Events</a>
+                <a class="SubMenuLink">&bull; Validations</a>
+                <a class="SubMenuLink">&bull; Counter</a>
+                <a class="SubMenuLink">&bull; Fragment</a>
+                <a class="SubMenuLink">&bull; Search Expressions</a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="CONTENTSIDE">
+    	<div id="CONTENTSIDEindent">
+            
+        	<!-- header bar start-->
+			<div class="ContentSideSections" id="PFTopLinksCover" style="height:60px;">
+                <a href="#" class="PFTopLinks floatRight boldFont marginRight20"><h:graphicImage name="main/images/pfMockosx.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">MockOSX</span></a>
+                <a href="#" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfExtensions.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Extensions</span></a>
+                <a href="#" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfPush.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Push</span></a>
+                <a href="#" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfMobile.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Mobile</span></a>
+            </div>
+            <!-- header bar end-->
+            
+            <div class="emptyBox"></div>
+            
+            <ui:insert name="content">
+
+                <div class="ContentSideSections">
+                    <div class="Content100 floatLeft overHidden TextShadow">
+                        <span class="fontSize30 TextShadow gray mediumFont marginBottom20 dispBlock"><ui:insert name="title" /></span>
+                        <span class="defaultText dispTable"><ui:insert name="description" />
+                        </span>
+                    </div>
+                </div>
+
+                <div class="ContentSideSections" style="background-color:#dfe4e6;">
+                    <ui:insert name="implementation" />
+                </div>
+
+                <div class="ContentSideSections">
+                    <h3>Source</h3>
+                    <div class="Content100 floatLeft overHidden TextShadow">
+                        <span class="defaultText dispTable">
+                            <span class="fontSize18 logoBlueText">
+                                <ui:insert name="source" />
+                            </span>
+                        </span>
+                    </div>
+                </div>
+           
+            </ui:insert>
+            
+            <!-- footer start-->
+            <div class="ContentSideSections">
+                <span class="floatLeft fontSize14 gray"><a href="http://www.primetek.com.tr">PrimeTek</a>, Copyright &copy; 2014<br />All rights reserved.</span>
+            </div>
+            <!-- footer end-->
+            
+        </div>
+    </div>
+    
+    </div>
+    <!-- PC CONTENT END-->
+    
+    
+    <!-- MOBILE CONTENT STARTS HERE-->
+	<div class="MOBILE">
+    
+    	<!-- header bar start-->
+        <div class="ContentSideSections MOBILEHEADER animated" id="PFTopLinksCover">
+        	<h:graphicImage name="main/images/logoBlue.svg" style="height:40px;" styleClass="floatLeft marginRight10"/>
+            <span class="dispBlock logoDarkText fontSize16 floatLeft">PrimeFaces <span class="dispBlock logoBlueText fontSize18 mediumFont">SHOWCASE</span></span> 
+            <select class="selectmenu mediumFont">
+            	<option value="0">MENU</option>
+                
+            	<optgroup label="Ajax Core" class="LEVEL1">
+                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
+                    	<option value="">Simple Accordion Panel</option>
+                        <option value="">Dynamic Content</option>
+                        <option value="">Disabled</option>
+                        <option value="">RTL</option>
+                        <option value="">Multiple Selection</option>
+                        <option value="">Events</option>
+                        <option value="">Data Model</option>
+                    </optgroup>
+                </optgroup>
+
+                <optgroup label="Input" class="LEVEL1">
+                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
+                    	<option value="">Simple Accordion Panel</option>
+                        <option value="">Dynamic Content</option>
+                        <option value="">Disabled</option>
+                        <option value="">RTL</option>
+                        <option value="">Multiple Selection</option>
+                        <option value="">Events</option>
+                        <option value="">Data Model</option>
+                    </optgroup>
+                </optgroup>
+                
+                <optgroup label="Button" class="LEVEL1">
+                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
+                    	<option value="">Simple Accordion Panel</option>
+                        <option value="">Dynamic Content</option>
+                        <option value="">Disabled</option>
+                        <option value="">RTL</option>
+                        <option value="">Multiple Selection</option>
+                        <option value="">Events</option>
+                        <option value="">Data Model</option>
+                    </optgroup>
+                </optgroup>
+                
+                <optgroup label="Data" class="LEVEL1">
+                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
+                    	<option value="">Simple Accordion Panel</option>
+                        <option value="">Dynamic Content</option>
+                        <option value="">Disabled</option>
+                        <option value="">RTL</option>
+                        <option value="">Multiple Selection</option>
+                        <option value="">Events</option>
+                        <option value="">Data Model</option>
+                    </optgroup>
+                </optgroup>
+                
+                <optgroup label="Panel" class="LEVEL1">
+                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
+                    	<option value="">Simple Accordion Panel</option>
+                        <option value="">Dynamic Content</option>
+                        <option value="">Disabled</option>
+                        <option value="">RTL</option>
+                        <option value="">Multiple Selection</option>
+                        <option value="">Events</option>
+                        <option value="">Data Model</option>
+                    </optgroup>
+                </optgroup>
+                
+                <optgroup label="Overlay" class="LEVEL1">
+                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
+                    	<option value="">Simple Accordion Panel</option>
+                        <option value="">Dynamic Content</option>
+                        <option value="">Disabled</option>
+                        <option value="">RTL</option>
+                        <option value="">Multiple Selection</option>
+                        <option value="">Events</option>
+                        <option value="">Data Model</option>
+                    </optgroup>
+                </optgroup>
+                
+                <optgroup label="Menu" class="LEVEL1">
+                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
+                    	<option value="">Simple Accordion Panel</option>
+                        <option value="">Dynamic Content</option>
+                        <option value="">Disabled</option>
+                        <option value="">RTL</option>
+                        <option value="">Multiple Selection</option>
+                        <option value="">Events</option>
+                        <option value="">Data Model</option>
+                    </optgroup>
+                </optgroup>
+                
+                <optgroup label="Charts" class="LEVEL1">
+                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
+                    	<option value="">Simple Accordion Panel</option>
+                        <option value="">Dynamic Content</option>
+                        <option value="">Disabled</option>
+                        <option value="">RTL</option>
+                        <option value="">Multiple Selection</option>
+                        <option value="">Events</option>
+                        <option value="">Data Model</option>
+                    </optgroup>
+                </optgroup>
+                
+                <optgroup label="Messages" class="LEVEL1">
+                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
+                    	<option value="">Simple Accordion Panel</option>
+                        <option value="">Dynamic Content</option>
+                        <option value="">Disabled</option>
+                        <option value="">RTL</option>
+                        <option value="">Multiple Selection</option>
+                        <option value="">Events</option>
+                        <option value="">Data Model</option>
+                    </optgroup>
+                </optgroup>
+                
+                <optgroup label="Multimedia" class="LEVEL1">
+                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
+                    	<option value="">Simple Accordion Panel</option>
+                        <option value="">Dynamic Content</option>
+                        <option value="">Disabled</option>
+                        <option value="">RTL</option>
+                        <option value="">Multiple Selection</option>
+                        <option value="">Events</option>
+                        <option value="">Data Model</option>
+                    </optgroup>
+                </optgroup>
+                
+                <optgroup label="File" class="LEVEL1">
+                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
+                    	<option value="">Simple Accordion Panel</option>
+                        <option value="">Dynamic Content</option>
+                        <option value="">Disabled</option>
+                        <option value="">RTL</option>
+                        <option value="">Multiple Selection</option>
+                        <option value="">Events</option>
+                        <option value="">Data Model</option>
+                    </optgroup>
+                </optgroup>
+                
+                <optgroup label="DragDrop" class="LEVEL1">
+                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
+                    	<option value="">Simple Accordion Panel</option>
+                        <option value="">Dynamic Content</option>
+                        <option value="">Disabled</option>
+                        <option value="">RTL</option>
+                        <option value="">Multiple Selection</option>
+                        <option value="">Events</option>
+                        <option value="">Data Model</option>
+                    </optgroup>
+                </optgroup>
+                
+                <optgroup label="Client Side Validation" class="LEVEL1">
+                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
+                    	<option value="">Simple Accordion Panel</option>
+                        <option value="">Dynamic Content</option>
+                        <option value="">Disabled</option>
+                        <option value="">RTL</option>
+                        <option value="">Multiple Selection</option>
+                        <option value="">Events</option>
+                        <option value="">Data Model</option>
+                    </optgroup>
+                </optgroup>
+                
+                <optgroup label="Dialog Framework" class="LEVEL1">
+                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
+                    	<option value="">Simple Accordion Panel</option>
+                        <option value="">Dynamic Content</option>
+                        <option value="">Disabled</option>
+                        <option value="">RTL</option>
+                        <option value="">Multiple Selection</option>
+                        <option value="">Events</option>
+                        <option value="">Data Model</option>
+                    </optgroup>
+                </optgroup>
+                
+                <optgroup label="Misc" class="LEVEL1">
+                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
+                    	<option value="">Simple Accordion Panel</option>
+                        <option value="">Dynamic Content</option>
+                        <option value="">Disabled</option>
+                        <option value="">RTL</option>
+                        <option value="">Multiple Selection</option>
+                        <option value="">Events</option>
+                        <option value="">Data Model</option>
+                    </optgroup>
+                </optgroup>
+                
+            </select>
+        </div>
+        <!-- header bar end-->
+    	
+        <!-- header links start-->
+        <div class="ContentSideSections texAliCenter" id="PFTopLinksCover">
+            <a href="#" class="PFTopLinksMobile boldFont"><h:graphicImage name="main/images/pfMockosx.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">MockOSX</span></a>
+            <a href="#" class="PFTopLinksMobile boldFont"><h:graphicImage name="main/images/pfExtensions.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Extensions</span></a>
+            <a href="#" class="PFTopLinksMobile boldFont"><h:graphicImage name="main/images/pfPush.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Push</span></a>
+            <a href="#" class="PFTopLinksMobile boldFont"><h:graphicImage name="main/images/pfMobile.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Mobile</span></a>
+        </div>
+        <!-- header links end-->
+        
+        <!-- preface start-->
+        <div class="ContentSideSections texAliCenter" id="PFTopLinksCover">
+            <div class="Content100 overHidden TextShadow texAliCenter">
+                <span class="dispBlock fontSize14 gray marginBottom20">Prime Faces is a complete kit of over 40 UI widgets with everything from interactive menus to rich charts. If you know jQuery, you know Prime Faces. Complete with documentation and professional support, every widget is hand-crafted and includes premium themes.</span>
+                <span class="mediumFont dispBlock pink fontSize34 marginBottom20">Everything You Need to Build a Better Web</span>
+                <div class="BigButton TextShadowNone YellowBtn marLefRigAuto"> <span class="floatLeft">Download PrimeFaces 4.0</span> <h:graphicImage name="main/images/btnArrow.svg" styleClass="floatRight"/></div>
+                <div class="BigButton TextShadowNone OrangeBtn marLefRigAuto"> <span class="floatLeft">Learn PrimeFaces</span> <h:graphicImage name="main/images/btnDocumenticon.svg" styleClass="floatRight"/></div>
+            </div>
+        </div>
+        <!-- preface end-->
+        
+        <!-- highlight area start-->
+        <div class="ContentSideSections texAliCenter" id="PFTopLinksCover">
+        	<div class="Content100 floatRight overHidden">
+                <a href="#" class="PropertyBox TextShadow">
+                    <h:graphicImage name="main/images/ajaxFramework.svg" />
+                    <span class="PropertyTopic boldFont">AJAX FRAMEWORK</span>
+                    <span class="PropertyText mediumFont">Based on JSF APIs<br />Declarative Updates<br />Extensions</span>
+                </a>
+                <a href="#" class="PropertyBox TextShadow">
+                    <h:graphicImage name="main/images/components.svg" />
+                    <span class="PropertyTopic boldFont">COMPONENTS</span>
+                    <span class="PropertyText mediumFont">Over 100 JSF Components<br />Flexible and Easy to Use<br />Built-in Ajax<br />Theme Aware<br />HTML5 Support</span>
+                </a>
+                <a href="#" class="PropertyBox TextShadow">
+                    <h:graphicImage name="main/images/productivity.svg" />
+                    <span class="PropertyTopic boldFont">PRODUCTIVITY</span>
+                    <span class="PropertyText mediumFont">Simple<br />Effective<br />Powerful</span>
+                </a>
+                <a href="#" class="PropertyBox TextShadow">
+                    <h:graphicImage name="main/images/mobile.svg" />
+                    <span class="PropertyTopic boldFont">MOBILE</span>
+                    <span class="PropertyText mediumFont">Mobile Optimized RenderKit<br />Mobile Components<br />Wide Range of Platform Support</span>
+                </a>
+                <a href="#" class="PropertyBox TextShadow">
+                    <h:graphicImage name="main/images/push.svg" />
+                    <span class="PropertyTopic boldFont">PUSH</span>
+                    <span class="PropertyText mediumFont">Powered by Atmosphere<br />Websockets<br />Fallback Transports<br />Portable<br />Scalable</span>
+                </a>
+                <a href="#" class="PropertyBox TextShadow">
+                    <h:graphicImage name="main/images/themeMarket.svg" />
+                    <span class="PropertyTopic boldFont">THEME MARKET</span>
+                    <span class="PropertyText mediumFont">100+ Available Boutique Themes<br />Easy To Customize<br />Perfect Color Harmony<br />Made With Love</span>
+                </a>
+            </div>    
+        </div>
+        <!-- highlight area end-->
+        
+        <!-- popular widgets start-->
+        <div class="ContentSideSections texAliCenter" id="PFTopLinksCover">
+            <div class="Content100 overHidden TextShadow texAliCenter">
+                <span class="fontSize30 TextShadow gray mediumFont marginBottom20 dispBlock">Popular<span class="orange">Widgets</span></span>
+                <span class="dispBlock fontSize14 gray marginBottom20">Prime Faces is a complete kit of over 40 UI widgets with everything from interactive menus to rich charts. If you know jQuery, you know Prime Faces. Complete with documentation and professional support, every widget is hand-crafted and includes premium themes.</span>
+            </div>
+            
+            <div class="Content100 overHidden texAliCenter">
+                    <span class="Content33 dispBlock floatRight marginBottom20"><a href="#" class="widgetsLink floatRight"><h:graphicImage name="main/images/color/multimedia.svg" /><span class="boldFont dispBlock pink TextShadow">Multimedia</span></a></span>
+                    <span class="Content33 dispBlock floatRight marginBottom20"><a href="#" class="widgetsLink floatRight"><h:graphicImage name="main/images/color/charts.svg" /><span class="boldFont dispBlock pink TextShadow">Charts</span></a></span>
+                    <span class="Content33 dispBlock floatRight marginBottom20"><a href="#" class="widgetsLink floatRight"><h:graphicImage name="main/images/color/dialogFramework.svg" /><span class="boldFont dispBlock pink TextShadow">Dialog<br />Framework</span></a></span>
+                    <span class="Content33 dispBlock floatRight marginBottom20"><a href="#" class="widgetsLink floatRight"><h:graphicImage name="main/images/color/ajaxCore.svg" /><span class="boldFont dispBlock pink TextShadow">Ajax Core</span></a></span>
+                    <span class="Content33 dispBlock floatRight marginBottom20"><a href="#" class="widgetsLink floatRight"><h:graphicImage name="main/images/color/message.svg" /><span class="boldFont dispBlock pink TextShadow">Message</span></a></span>
+                    <span class="Content33 dispBlock floatRight marginBottom20"><a href="#" class="widgetsLink floatRight"><h:graphicImage name="main/images/color/file.svg" /><span class="boldFont dispBlock pink TextShadow">File</span></a></span>
+                </div>
+        </div>
+        <!-- popular widgets end-->
+        
+         <!-- bottom boxes area start-->
+            <div class="ContentSideSections texAliCenter" id="PFTopLinksCover">
+            	<div class="Content100 overHidden">
+                	<div class="BoxesIndent">
+                    	<h:graphicImage name="main/images/optimushear.svg" styleClass="overHidden" style="height:60px;"/>
+                        <span class="PFGrayText fontSize14 mediumFont overHidden dispBlock">Do You Hear ?<br /><span class="green fontSize24">NEWS FROM US</span></span>
+                        <div class="dispBlock overHidden Content100 logoBlueText boldFont fontSize18" style=" padding-top:20px;">PrimeFaces ELITE 3.5.23 and 4.0.7 Released
+                        	<span class="gray dispBlock regularFont fontSize14">This Elite release cycle brings defect fixes and the DataScroller component to 4.0.x line. DataScroller is a new addition in 5.0 and due to high demand from ELITE and PRO users, we have ported it to 4.0.7 as well. Common...</span><br />
+                            <a href="#" class="pink boldItalicFont underline fontSize14">See All News</a>
+                        </div>
+                    </div>
+                </div>
+             </div>
+             <div class="ContentSideSections texAliCenter" id="PFTopLinksCover">
+                <div class="Content100 overHidden">
+                	<div class="BoxesIndent">
+                    	<h:graphicImage name="main/images/testimonials.svg"  styleClass="overHidden" style="height:60px;"/>
+                        <span class="PFGrayText fontSize14 mediumFont overHidden dispBlock">Thanks guys !<br /><span class="green fontSize24">TESTIMONIALS</span></span>
+                        <div class=" dispBlock overHidden Content100 logoBlueText boldFont fontSize18" style=" padding-top:20px;">Gregory Cooper
+                        	<span class="gray dispBlock regularFont fontSize14">"PrimeFaces is great. It’s the first set of JSF components that I have actually liked. Before PrimeFaces, JSF was a technology that I would “have” to use at work. PrimeFaces is one of the few Java oriented technologies I would consider using ‘outside the day job’ for a web project..."</span><br />
+                            <a href="#" class="pink boldItalicFont underline fontSize14">See All Testimonials</a>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="ContentSideSections texAliCenter" id="PFTopLinksCover">
+                <div class="Content100 overHidden">
+                	<div class="BoxesIndent">
+                    	<h:graphicImage name="main/images/loveClients.svg" styleClass="overHidden" style="height:60px;"/>
+                        <span class="PFGrayText fontSize14 mediumFont overHidden dispBlock">We Love You<br /><span class="green fontSize24">OUR CLIENTS</span></span>
+                        <div class=" dispBlock overHidden Content100 logoBlueText boldFont fontSize14" style=" padding-top:20px;">
+                        	<div class="dispBlock overHidden">
+                                <span class="brandLogo"></span>
+                                <span class="brandLogo"></span>
+                                <span class="brandLogo"></span>
+                                <span class="brandLogo"></span>
+                                <span class="brandLogo"></span>
+                                <span class="brandLogo"></span>
+                                <span class="brandLogo"></span>
+                                <span class="brandLogo"></span>
+                            </div>
+                            <a href="#" class="pink boldItalicFont underline fontSize14">See All Brands</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- bottom boxes area end-->
+            
+            <!-- footer start-->
+            <div class="ContentSideSections texAliCenter" id="PFTopLinksCover">
+            	<span class="fontSize14 gray">PrimeFaces CO, Copyright &copy; 2014<br />All rights reserved.</span>
+            </div>
+            <!-- footer end-->
+            <p:commandButton type="button" style="display:none" />
+    </div>
+    <!-- MOBILE CONTENT END HERE-->
+    
+    <ui:insert name="highlight">
+        <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
+        <script language="javascript">
+            SyntaxHighlighter.all();
+        </script>
+    </ui:insert>
+</body>
+</html>
