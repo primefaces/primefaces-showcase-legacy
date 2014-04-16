@@ -12,10 +12,10 @@ $(document).ready(function() {
 		wheelSpeed: 40,
 		suppressScrollX:true
 	});
-	$("#CONTENTSIDE").perfectScrollbar({
-		wheelSpeed: 40,
-		suppressScrollX:true
-	});
+	/*$("#CONTENTSIDE").perfectScrollbar({
+        wheelSpeed: 40,
+        suppressScrollX: true
+    });*/
 	
 	$(".SubMenuLinkContainer").slideUp(1).css({'visibility':'visible'});
 	$(".mustClose").slideUp(1).css({'visibility':'visible'});
@@ -23,9 +23,9 @@ $(document).ready(function() {
 	// menu mouseenter & mouseleave actions start ----------------------------------
 	$("#MENUSIDE").bind("mouseenter",function(){
 		$(this).clearQueue();
-		$(this).animate({'width':450},700,"easeInOutQuint",function(){$(".MainLinkText").animate({'opacity':1,'margin-left':50},300);});
+		$(this).animate({'width':450},500,"easeInOutQuint",function(){$(".MainLinkText").animate({'opacity':1,'margin-left':50},100);});
 		$("#LOGO").animate({'width':440},700,"easeInOutQuint");
-		$("#LOGOTEXTSIDE").animate({'margin-left':80},600,"easeInOutQuint");
+		//$("#LOGOTEXTSIDE").animate({'margin-left':80},600,"easeInOutQuint");
 		$("#CONTENTSIDE").animate({'opacity':0.6});
 		$(".hiddenIcons").animate({'opacity':1},1000);
 		
@@ -35,11 +35,11 @@ $(document).ready(function() {
 	});
 	$("#MENUSIDE").bind("mouseleave",function(){
 		$(".MainLinkText").clearQueue();
-		$(".MainLinkText").animate({'opacity':0,'margin-left':60},300);
+		$(".MainLinkText").animate({'opacity':0,'margin-left':60},100);
 		$(this).clearQueue();
-		$(this).animate({'width':85},700,"easeInOutQuint");
+		$(this).animate({'width':85},500,"easeInOutQuint");
 		$("#LOGO").animate({'width':75},700,"easeInOutQuint");
-		$("#LOGOTEXTSIDE").animate({'margin-left':120},600,"easeInOutQuint");
+		//$("#LOGOTEXTSIDE").animate({'margin-left':120},600,"easeInOutQuint");
 		$("#CONTENTSIDE").animate({'opacity':1});
 		$(".hiddenIcons").animate({'opacity':0},1000);
 		
@@ -81,7 +81,7 @@ function windowSizeChanged(){
 	$("#MENUSIDE").height(winH);
 	$("#PFTopLinksCover").width(winW-120);
 	$(".MOBILE #PFTopLinksCover").width(winW-48);
-	$("#CONTENTSIDE").height(winH);
+	//$("#CONTENTSIDE").height(winH);
 	$("#CONTENTSIDE").width(winW-86);
 	$("#SUBSUBMENU").height($("#CONTENTSIDEindent").scrollHeight);
 	

@@ -225,13 +225,13 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 .BeVisible{ visibility:visible !important; display:inline-block !important;}
 
 
-	#LOGOTEXTSIDE{width:290px; height:74px; position:absolute; z-index:999; background-image:url(#{resource['main/images/logoCircuitLines.svg']}); background-repeat:no-repeat; background-position:center right;
-				  margin:10px 0px 0px 120px; padding-top:25px; line-height:30px;}
+	#LOGOTEXTSIDE{width:290px; float:left; height:74px; z-index:999; background-image:url(#{resource['main/images/logoCircuitLines.svg']}); background-repeat:no-repeat; background-position:center right;
+				  margin:-20px 0px 0px 0px; padding-top:25px; line-height:30px;}
 		.logoDarkText{color:#5c666a;}
 		.logoBlueText{color:#25aae1;}
 
 	/* menu side style*/
-	#MENUSIDE{width:85px; float:left; background-color:#313b3f; border-right:solid 1px #151d21; position:absolute; z-index:3; overflow:hidden;}
+	#MENUSIDE{width:85px; float:left; background-color:#313b3f; border-right:solid 1px #151d21; position:fixed; z-index:3; overflow:hidden;}
 		#MENUSIDEindent{width:100%; height:auto;}
 			#LOGO{width:75px; height:87px; display:block; padding:33px 0px 0px 10px; position:fixed; z-index:997; background-color:#313b3f;}
 				#LOGO img{width:62px; height:auto; position:fixed; z-index:999;}
@@ -244,12 +244,10 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 				.MainLinkText{color:#9ba5ac; font-size:20px; margin:2px 0px 0px 60px; display:block; opacity:0; filter:alpha(opacity=0);}
 				
 			.SubMenuLinkContainer{width:auto; padding:20px; overflow:hidden; background-color:#20282b; visibility:hidden;}
-				.SubMenuLink{display:inline-block; float:left; padding:6px 15px; cursor:pointer; border-radius:4px; -webkit-border-radius:4px; color:#659eb3; font-size:16px;
-				-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
-				.SubMenuLink:hover{background-color:#101517; color:#8dc5d9; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease;
-				transition: all 0.5s ease;}
-				.openSubMenuLink{width:380px; height:auto; visibility:visible; display:block; 
-				-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
+				.SubMenuLink{width:170px; display:inline-block; float:left; padding:6px 15px; cursor:pointer; border-radius:4px; -webkit-border-radius:4px; color:#659eb3; font-size:16px;
+				}
+				.SubMenuLink:hover{background-color:#101517; color:#8dc5d9;}
+				.openSubMenuLink{width:380px; height:auto; visibility:visible; display:block;}
 					.subsubMenuLinks{visibility:hidden; display:none; padding:10px 0px;}
 					.openSubMenuLink .subsubMenuLinks{ visibility:visible; display:block; padding-left:5px;}
 					
@@ -270,7 +268,7 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 		#CONTENTSIDEindent{width:100%; height:auto;}
 			.ContentSideSections{display:block; border-bottom:solid 1px #bcc7cf; padding:30px; overflow:hidden;}
 			.MOBILE .ContentSideSections{padding:14px 24px;}
-			#PFTopLinksCover{ position:fixed; background-color:#eff3f6;}
+			#PFTopLinksCover{background-color:#eff3f6;}
 			.MOBILE #PFTopLinksCover{ position:inherit;}
 				.PFTopLinks{width:80px; display:inline-block; text-align:center; padding:10px; border-radius:5px;  font-size:12px; -webkit-border-radius:5px; margin-top:-15px; -webkit-transition: all 0.5s ease; 
 							-moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease; overflow:hidden;}
