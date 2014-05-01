@@ -1,6 +1,6 @@
 <!DOCTYPE html [
     <!ENTITY nbsp "&#160;">
-    <!ENTITY bull "&#161;">
+    <!ENTITY bull "&#8226;">
     <!ENTITY rsaquo "&#162;">
     <!ENTITY copy "&#163;">
 ]>
@@ -40,59 +40,19 @@
             <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/ajaxCore.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/ajaxCoreBlue.svg" /><span class="MainLinkText">Ajax Core</span></span>
             <div class="SubMenuLinkContainer">
             	<a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/basic.jsf">&bull; Basic</a>
-                <span class="SubMenuLink" onclick="openSubSubMenu(this);">&bull; Selectors
-                	<div class="subsubMenuLinks">
-                    	<a href="#">&rsaquo; Simple Accordion Panel</a>
-                        <a href="#">&rsaquo; Multiple Selection</a>
-                        <a href="#">&rsaquo; Dynamic Content</a>
-                        <a href="#">&rsaquo; Events</a>
-                        <a href="#">&rsaquo; Disabled</a>
-                        <a href="#">&rsaquo; Data Model</a>
-                        <a href="#">&rsaquo; RTL</a>
-                    </div>
-                </span>
-                <span class="SubMenuLink" onclick="openSubSubMenu(this);">&bull; Events
-                	<div class="subsubMenuLinks">
-                    	<a href="#">&rsaquo; Simple Accordion Panel</a>
-                        <a href="#">&rsaquo; Multiple Selection</a>
-                        <a href="#">&rsaquo; Dynamic Content</a>
-                        <a href="#">&rsaquo; Events</a>
-                        <a href="#">&rsaquo; Disabled</a>
-                        <a href="#">&rsaquo; Data Model</a>
-                        <a href="#">&rsaquo; RTL</a>
-                    </div>
-                </span>
-                <span class="SubMenuLink" onclick="openSubSubMenu(this);">&bull; Partial Processing
-                	<div class="subsubMenuLinks">
-                    	<a href="#">&rsaquo; Simple Accordion Panel</a>
-                        <a href="#">&rsaquo; Multiple Selection</a>
-                        <a href="#">&rsaquo; Dynamic Content</a>
-                        <a href="#">&rsaquo; Events</a>
-                        <a href="#">&rsaquo; Disabled</a>
-                        <a href="#">&rsaquo; Data Model</a>
-                        <a href="#">&rsaquo; RTL</a>
-                    </div>
-                </span>
-                <span class="SubMenuLink" onclick="openSubSubMenu(this);">&bull; Polling
-                	<div class="subsubMenuLinks">
-                    	<a href="#">&rsaquo; Simple Accordion Panel</a>
-                        <a href="#">&rsaquo; Multiple Selection</a>
-                        <a href="#">&rsaquo; Dynamic Content</a>
-                        <a href="#">&rsaquo; Events</a>
-                        <a href="#">&rsaquo; Disabled</a>
-                        <a href="#">&rsaquo; Data Model</a>
-                        <a href="#">&rsaquo; RTL</a>
-                    </div>
-                </span>
-                <a class="SubMenuLink">&bull; Selects</a>
-                <a class="SubMenuLink">&bull; Partial Submit</a>
-                <a class="SubMenuLink">&bull; Remote Command</a>
-                <a class="SubMenuLink">&bull; Listeners</a>
-                <a class="SubMenuLink">&bull; Events</a>
-                <a class="SubMenuLink">&bull; Validations</a>
-                <a class="SubMenuLink">&bull; Counter</a>
-                <a class="SubMenuLink">&bull; Fragment</a>
-                <a class="SubMenuLink">&bull; Search Expressions</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/event.jsf">&bull; Event</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/listener.jsf">&bull; Listener</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/counter.jsf">&bull; Counter</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/process.jsf">&bull; Process</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/validation.jsf">&bull; Validation</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/select.jsf">&bull; Select</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/partial.jsf">&bull; Partial</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/pfs.jsf">&bull; Selector</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/search.jsf">&bull; Search</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/poll.jsf">&bull; Poll</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/fragment.jsf">&bull; Fragment</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/status.jsf">&bull; Status</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/command.jsf">&bull; Command</a>                
             </div>
             
             <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/input.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/inputBlue.svg" /><span class="MainLinkText">Input</span></span>
