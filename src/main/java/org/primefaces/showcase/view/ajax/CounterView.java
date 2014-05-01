@@ -15,12 +15,13 @@
  */
 package org.primefaces.showcase.view.ajax;
 
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 @ManagedBean
 @ViewScoped
-public class CounterView {
+public class CounterView implements Serializable {
     
     private int number;
 
