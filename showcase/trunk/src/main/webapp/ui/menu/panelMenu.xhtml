@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Menu - <span class="orange">PanelMenu</span>
+    </ui:define>
+
+    <ui:define name="description">
+        PanelMenu is a hybrid of accordion-tree components.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <p:growl autoUpdate="true"/>
+                                
+            <p:panelMenu style="width:300px">
+                <p:submenu label="Ajax Menuitems">
+                    <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" />
+                    <p:menuitem value="Update" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
+                </p:submenu>
+                <p:submenu label="Non-Ajax Menuitem">
+                    <p:menuitem value="Delete" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
+                </p:submenu>
+                <p:separator />
+                <p:submenu label="Navigations" >
+                    <p:submenu label="Links" icon="ui-icon-extlink">
+                        <p:submenu label="PrimeFaces" icon="ui-icon-heart">
+                            <p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" />
+                            <p:menuitem value="Docs" url="http://www.primefaces.org/documentation" icon="ui-icon-document" />
+                            <p:menuitem value="Download" url="http://www.primefaces.org/downloads" icon="ui-icon-arrowthick-1-s" />
+                            <p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
+                        </p:submenu>
+                    </p:submenu>
+                    <p:menuitem value="Mobile" outcome="/mobile/index" icon="ui-icon-signal" />
+                </p:submenu>
+            </p:panelMenu>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="panelMenu.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:growl autoUpdate="true"/&gt;
+
+    &lt;p:panelMenu style="width:300px"&gt;
+        &lt;p:submenu label="Ajax Menuitems"&gt;
+            &lt;p:menuitem value="Save" actionListener="\#{menuView.save}" icon="ui-icon-disk" /&gt;
+            &lt;p:menuitem value="Update" actionListener="\#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" /&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Non-Ajax Menuitem"&gt;
+            &lt;p:menuitem value="Delete" actionListener="\#{menuView.delete}"  ajax="false" icon="ui-icon-close"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:separator /&gt;
+        &lt;p:submenu label="Navigations" &gt;
+            &lt;p:submenu label="Links" icon="ui-icon-extlink"&gt;
+                &lt;p:submenu label="PrimeFaces" icon="ui-icon-heart"&gt;
+                    &lt;p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" /&gt;
+                    &lt;p:menuitem value="Docs" url="http://www.primefaces.org/documentation" icon="ui-icon-document" /&gt;
+                    &lt;p:menuitem value="Download" url="http://www.primefaces.org/downloads" icon="ui-icon-arrowthick-1-s" /&gt;
+                    &lt;p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" /&gt;
+                &lt;/p:submenu&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:menuitem value="Mobile" outcome="/mobile/index" icon="ui-icon-signal" /&gt;
+        &lt;/p:submenu&gt;
+    &lt;/p:panelMenu&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="MenuView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.menu;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+@ManagedBean
+public class MenuView {
+    
+    public void save() {
+		addMessage("Success", "Data saved");
+	}
+	
+	public void update() {
+		addMessage("Success", "Data updated");
+	}
+	
+	public void delete() {
+		addMessage("Success", "Data deleted");
+	}
+	
+	public void addMessage(String summary, String detail) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
