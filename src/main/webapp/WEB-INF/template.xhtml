@@ -133,7 +133,16 @@
             <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/menu.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/menuBlue.svg" /><span class="MainLinkText">Menu</span></span>
             <div class="SubMenuLinkContainer">
                 <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/breadcrumb.jsf">&bull; Breadcrumb</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/contextMenu.jsf">&bull; ContextMenu</a>
+                <span class="SubMenuLink" onclick="openSubSubMenu(this);">&bull; ContextMenu
+                	<div class="subsubMenuLinks">
+                    	<a href="#{request.contextPath}/ui/menu/contextmenu/basic.jsf">&bull; Basic</a>
+                        <a href="#{request.contextPath}/ui/menu/contextmenu/tiered.jsf">&bull; Tiered</a>
+                        <a href="#{request.contextPath}/ui/menu/contextmenu/target.jsf">&bull; Target</a>
+                        <a href="#">&bull; DataTable</a>
+                        <a href="#">&bull; Tree</a>
+                        <a href="#">&bull; TreeTable</a>
+                    </div>
+                </span>
                 <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/dock.jsf">&bull; Dock</a>
                 <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/megaMenu.jsf">&bull; MegaMenu</a>
                 <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/menu.jsf">&bull; Menu</a>
