@@ -1,0 +1,148 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Menu - <span class="orange">TieredMenu</span>
+    </ui:define>
+
+    <ui:define name="description">
+        TieredMenu displays submenus in nested overlays.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+			
+            <p:growl id="messages" showDetail="true"/>
+
+            <p:tieredMenu style="width:200px">
+                <p:submenu label="Ajax Menuitems" icon="ui-icon-refresh">
+                    <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk" />
+                    <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" />
+                </p:submenu>
+                <p:submenu label="Non-Ajax Menuitem" icon="ui-icon-newwin">
+                    <p:menuitem value="Delete" actionListener="#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
+                </p:submenu>
+                <p:separator />
+                <p:submenu label="Navigations" icon="ui-icon-extlink">
+                    <p:submenu label="Prime Links">
+                        <p:menuitem value="Prime" url="http://www.prime.com.tr" title="xxx"/>
+                        <p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />
+                    </p:submenu>
+                    <p:menuitem value="Mobile" outcome="/mobile/index" />
+                </p:submenu>
+            </p:tieredMenu>
+
+            <p:separator />
+
+            <p:commandButton id="dynaButton" value="Show" type="button" icon="ui-icon-extlink"/>
+            <p:tieredMenu overlay="true" trigger="dynaButton" my="left top" at="left bottom" style="width:200px">
+                <p:submenu label="Ajax Menuitems">
+                    <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk"/>
+                    <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+                </p:submenu>
+                <p:submenu label="Non-Ajax Menuitem">
+                    <p:menuitem value="Delete" actionListener="#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
+                </p:submenu>
+                <p:submenu label="Navigations" icon="ui-icon-extlink">
+                    <p:submenu label="Prime Links">
+                        <p:menuitem value="Prime" url="http://www.prime.com.tr" />
+                        <p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />
+                    </p:submenu>
+                    <p:menuitem value="Mobile" outcome="/mobile/index" />
+                </p:submenu>
+            </p:tieredMenu>
+
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="tieredMenu.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+			
+    &lt;p:growl id="messages" showDetail="true"/&gt;
+
+    &lt;p:tieredMenu style="width:200px"&gt;
+        &lt;p:submenu label="Ajax Menuitems" icon="ui-icon-refresh"&gt;
+            &lt;p:menuitem value="Save" actionListener="\#{menuView.save}" update="messages" icon="ui-icon-disk" /&gt;
+            &lt;p:menuitem value="Update" actionListener="\#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" /&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Non-Ajax Menuitem" icon="ui-icon-newwin"&gt;
+            &lt;p:menuitem value="Delete" actionListener="\#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:separator /&gt;
+        &lt;p:submenu label="Navigations" icon="ui-icon-extlink"&gt;
+            &lt;p:submenu label="Prime Links"&gt;
+                &lt;p:menuitem value="Prime" url="http://www.prime.com.tr" title="xxx"/&gt;
+                &lt;p:menuitem value="PrimeFaces" url="http://www.primefaces.org" /&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:menuitem value="Mobile" outcome="/mobile/index" /&gt;
+        &lt;/p:submenu&gt;
+    &lt;/p:tieredMenu&gt;
+
+    &lt;p:separator /&gt;
+
+    &lt;p:commandButton id="dynaButton" value="Show" type="button" icon="ui-icon-extlink"/&gt;
+    &lt;p:tieredMenu overlay="true" trigger="dynaButton" my="left top" at="left bottom" style="width:200px"&gt;
+        &lt;p:submenu label="Ajax Menuitems"&gt;
+            &lt;p:menuitem value="Save" actionListener="\#{menuView.save}" update="messages" icon="ui-icon-disk"/&gt;
+            &lt;p:menuitem value="Update" actionListener="\#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Non-Ajax Menuitem"&gt;
+            &lt;p:menuitem value="Delete" actionListener="\#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Navigations" icon="ui-icon-extlink"&gt;
+            &lt;p:submenu label="Prime Links"&gt;
+                &lt;p:menuitem value="Prime" url="http://www.prime.com.tr" /&gt;
+                &lt;p:menuitem value="PrimeFaces" url="http://www.primefaces.org" /&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:menuitem value="Mobile" outcome="/mobile/index" /&gt;
+        &lt;/p:submenu&gt;
+    &lt;/p:tieredMenu&gt;
+
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="MenuView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.menu;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+@ManagedBean
+public class MenuView {
+    
+    public void save() {
+		addMessage("Success", "Data saved");
+	}
+	
+	public void update() {
+		addMessage("Success", "Data updated");
+	}
+	
+	public void delete() {
+		addMessage("Success", "Data deleted");
+	}
+	
+	public void addMessage(String summary, String detail) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
