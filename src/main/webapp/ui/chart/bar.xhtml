@@ -33,6 +33,7 @@
                 <pre name="code" class="brush:java">
 package org.primefaces.examples.view;
 
+import javax.annotation.PostConstruct;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 
@@ -43,12 +44,13 @@ import org.primefaces.model.chart.HorizontalBarChartModel;
 import org.primefaces.model.chart.ChartSeries;
 
 @ManagedBean
-public class ChartBean implements Serializable {
+public class ChartView implements Serializable {
 
     private BarChartModel barModel;
     private HorizontalBarChartModel horizontalBarModel;
 
-	public ChartBean() {
+    @PostConstruct
+	public void init() {
         createBarModels();
 	}
 

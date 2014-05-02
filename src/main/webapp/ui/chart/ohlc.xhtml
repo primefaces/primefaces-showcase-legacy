@@ -33,6 +33,7 @@
                 <pre name="code" class="brush:java">
 package org.primefaces.examples;
 
+import javax.annotation.PostConstruct;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import org.primefaces.model.chart.AxisType;
@@ -40,12 +41,13 @@ import org.primefaces.model.chart.OhlcChartModel;
 import org.primefaces.model.chart.OhlcChartSeries;
 
 @ManagedBean
-public class ChartBean implements Serializable {
+public class ChartView implements Serializable {
 
     private OhlcChartModel ohlcModel;
     private OhlcChartModel ohlcModel2;
 
-	public ChartBean() {
+    @PostConstruct
+	public void init() {
         createOhlcModels();
 	}
     
