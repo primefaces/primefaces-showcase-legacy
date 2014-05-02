@@ -63,6 +63,7 @@
                 <pre name="code" class="brush:java">
 package org.primefaces.examples;
 
+import javax.annotation.PostConstruct;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -77,12 +78,13 @@ import org.primefaces.model.chart.PieChartModel;
 
 
 @ManagedBean
-public class ChartBean implements Serializable {
+public class ChartView implements Serializable {
 
     private BarChartModel barModel;
     private PieChartModel pieModel1;
 
-	public ChartBean() {
+    @PostConstruct
+	public void init() {
         createBarModels();
         createPieModels();
 	}

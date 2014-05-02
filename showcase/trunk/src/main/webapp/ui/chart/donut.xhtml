@@ -33,6 +33,7 @@
                 <pre name="code" class="brush:java">
 package org.primefaces.examples;
 
+import javax.annotation.PostConstruct;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -41,12 +42,13 @@ import javax.faces.bean.ManagedBean;
 import org.primefaces.model.chart.DonutChartModel;
 
 @ManagedBean
-public class ChartBean implements Serializable {
+public class ChartView implements Serializable {
 
     private DonutChartModel donutModel1;
     private DonutChartModel donutModel2;
 
-	public ChartBean() {
+    @PostConstruct
+	public void init() {
         createDonutModels();
 	}
 

@@ -67,6 +67,7 @@ function exportChart() {
                 <pre name="code" class="brush:java">
 package org.primefaces.examples;
 
+import javax.annotation.PostConstruct;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import org.primefaces.model.chart.Axis;
@@ -75,11 +76,12 @@ import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 
 @ManagedBean
-public class ChartBean implements Serializable {
+public class ChartView implements Serializable {
 
     private LineChartModel lineModel1;
     
-	public ChartBean() {
+    @PostConstruct
+	public void init() {
         createLineModels();
 	}
 
