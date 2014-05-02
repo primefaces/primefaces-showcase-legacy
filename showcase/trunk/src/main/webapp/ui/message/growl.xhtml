@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Message - <span class="orange">Growl</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Growl brings the Mac's growl widget to JSF with the ability of displaying FacesMessages. Growl simply replaces h:messages component.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>  
+            <p:growl id="growl" showDetail="true" sticky="true" />  
+      
+            <p:panel header="Growl">  
+                <h:panelGrid columns="2">  
+                    <h:outputText value="Your Message: *" />   
+                    <p:inputText value="#{growlView.message}" required="true" label="Message"/>  
+                </h:panelGrid>  
+  
+                <p:commandButton value="Save" actionListener="#{growlView.saveMessage}" update="growl"/>  
+            </p:panel>  
+        </h:form> 
+           
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="growl.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;  
+&lt;p:growl id="growl" showDetail="true" sticky="true" /&gt;  
+      
+&lt;p:panel header="Growl"&gt;  
+&lt;h:panelGrid columns="2"&gt;  
+&lt;h:outputText value="Your Message: *" /&gt;   
+&lt;p:inputText value="\#{growlView.message}" required="true" label="Message"/&gt;  
+&lt;/h:panelGrid&gt;  
+  
+&lt;p:commandButton value="Save" actionListener="\#{growlView.save}" update="growl"/&gt;  
+&lt;/p:panel&gt;  
+&lt;/h:form&gt; 
+                </pre>
+            </p:tab>
+
+            <p:tab title="GrowlView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.message;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+@ManagedBean
+public class GrowlView {
+    
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+    
+    public void saveMessage(ActionEvent actionEvent) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        
+        context.addMessage(null, new FacesMessage("Successful",  "Your message : "+message) );
+        context.addMessage(null, new FacesMessage("Second Message", "Additional Message Here..."));
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
