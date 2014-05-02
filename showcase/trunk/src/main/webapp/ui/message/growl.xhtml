@@ -35,16 +35,16 @@
             <p:tab title="growl.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;  
-&lt;p:growl id="growl" showDetail="true" sticky="true" /&gt;  
+    &lt;p:growl id="growl" showDetail="true" sticky="true" /&gt;  
       
-&lt;p:panel header="Growl"&gt;  
-&lt;h:panelGrid columns="2"&gt;  
-&lt;h:outputText value="Your Message: *" /&gt;   
-&lt;p:inputText value="\#{growlView.message}" required="true" label="Message"/&gt;  
-&lt;/h:panelGrid&gt;  
+    &lt;p:panel header="Growl"&gt;  
+        &lt;h:panelGrid columns="2"&gt;  
+            &lt;h:outputText value="Your Message: *" /&gt;   
+            &lt;p:inputText value="\#{growlView.message}" required="true" label="Message"/&gt;  
+        &lt;/h:panelGrid&gt;  
   
-&lt;p:commandButton value="Save" actionListener="\#{growlView.save}" update="growl"/&gt;  
-&lt;/p:panel&gt;  
+        &lt;p:commandButton value="Save" actionListener="\#{growlView.save}" update="growl"/&gt;  
+    &lt;/p:panel&gt;  
 &lt;/h:form&gt; 
                 </pre>
             </p:tab>

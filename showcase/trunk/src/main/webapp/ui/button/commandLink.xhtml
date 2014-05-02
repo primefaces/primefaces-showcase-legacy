@@ -35,6 +35,7 @@
                 <pre name="code" class="brush:xml">
 &lt;h:form id="form"&gt;
     &lt;p:growl id="growl" life="2000" /&gt;
+
     &lt;p:commandLink id="ajax" update="growl" actionListener="\#{buttonView.buttonAction}"&gt;
         &lt;h:outputText value="Ajax Submit" /&gt;
     &lt;/p:commandLink&gt;
@@ -46,7 +47,7 @@
                 </pre>
             </p:tab>
 
-            <p:tab title="BookView.java">
+            <p:tab title="ButtonView.java">
                 <pre name="code" class="brush:java">
 package org.primefaces.showcase.view.button;
 

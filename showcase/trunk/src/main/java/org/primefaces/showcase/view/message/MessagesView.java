@@ -21,10 +21,10 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 @ManagedBean
-public class MessagesController {
+public class MessagesView {
     
     public void addInfo(ActionEvent actionEvent) {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Infomation ", "This is a closable info message"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Information ", "This is a closable info message"));
     }
     
     public void addWarn(ActionEvent actionEvent) {

@@ -19,10 +19,10 @@
         <h:form id="form1">
             <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 				
-            <p:commandButton id="infoButton" value="Info" actionListener="#{messagesController.addInfo}"/>
-            <p:commandButton id="warnButton" value="Warn" actionListener="#{messagesController.addWarn}"/>
-            <p:commandButton id="errorButton" value="Error" actionListener="#{messagesController.addError}"/>
-            <p:commandButton id="fatalButton" value="Fatal" actionListener="#{messagesController.addFatal}"/>
+            <p:commandButton id="infoButton" value="Info" actionListener="#{messagesView.addInfo}"/>
+            <p:commandButton id="warnButton" value="Warn" actionListener="#{messagesView.addWarn}"/>
+            <p:commandButton id="errorButton" value="Error" actionListener="#{messagesView.addError}"/>
+            <p:commandButton id="fatalButton" value="Fatal" actionListener="#{messagesView.addFatal}"/>
         </h:form>
 			
         <h3>Message</h3>
@@ -40,7 +40,7 @@
                 <p:inputText id="icon" required="true" />
                 <p:message for="icon" display="icon" />
                     
-                <h:outputText value="Tooltip:" />
+                <h:outputText value="Tooltip: *" />
                 <p:inputText id="tt" required="true" />
                 <p:message for="tt" display="tooltip" />
             </h:panelGrid>
@@ -57,10 +57,10 @@
 &lt;h:form id="form1"&gt;
     &lt;p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" /&gt;
 				
-    &lt;p:commandButton id="infoButton" value="Info" actionListener="\#{messagesController.addInfo}"/&gt;
-    &lt;p:commandButton id="warnButton" value="Warn" actionListener="\#{messagesController.addWarn}"/&gt;
-    &lt;p:commandButton id="errorButton" value="Error" actionListener="\#{messagesController.addError}"/&gt;
-    &lt;p:commandButton id="fatalButton" value="Fatal" actionListener="\#{messagesController.addFatal}"/&gt;
+    &lt;p:commandButton id="infoButton" value="Info" actionListener="\#{messagesView.addInfo}"/&gt;
+    &lt;p:commandButton id="warnButton" value="Warn" actionListener="\#{messagesView.addWarn}"/&gt;
+    &lt;p:commandButton id="errorButton" value="Error" actionListener="\#{messagesView.addError}"/&gt;
+    &lt;p:commandButton id="fatalButton" value="Fatal" actionListener="\#{messagesView.addFatal}"/&gt;
 &lt;/h:form&gt;
 			
 &lt;h3&gt;Message&lt;/h3&gt;
@@ -88,18 +88,20 @@
                 </pre>
             </p:tab>
 
-            <p:tab title="MessagesController.java">
+            <p:tab title="MessagesView.java">
                 <pre name="code" class="brush:java">
 package org.primefaces.showcase.view.message;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-public class MessagesController {
+@ManagedBean
+public class MessagesView {
     
     public void addInfo(ActionEvent actionEvent) {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Infomation ", "This is a closable info message"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Information ", "This is a closable info message"));
     }
     
     public void addWarn(ActionEvent actionEvent) {
