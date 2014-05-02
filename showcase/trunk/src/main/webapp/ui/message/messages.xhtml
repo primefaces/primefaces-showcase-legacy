@@ -6,41 +6,40 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Message - <span class="orange">Messages</span>
+        Messages
     </ui:define>
 
     <ui:define name="description">
-        Messages and Message components are highly customizable and pre-skinned versions of standard message components.
+        Messages components are used to display FacesMessages.
     </ui:define>
 
     <ui:define name="implementation">
         <p:tooltip />
         
-        <h:form id="form1">
+        <h:form>
             <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 				
-            <p:commandButton id="infoButton" value="Info" actionListener="#{messagesView.addInfo}"/>
-            <p:commandButton id="warnButton" value="Warn" actionListener="#{messagesView.addWarn}"/>
-            <p:commandButton id="errorButton" value="Error" actionListener="#{messagesView.addError}"/>
-            <p:commandButton id="fatalButton" value="Fatal" actionListener="#{messagesView.addFatal}"/>
-        </h:form>
-			
-        <h3>Message</h3>
-        <h:form id="form2">
-            <h:panelGrid id="grid" columns="3" cellpadding="4">
-                <h:outputText value="Default: *" />
+            <p:commandButton value="Info" actionListener="#{messagesView.info}"/>
+            <p:commandButton value="Warn" actionListener="#{messagesView.warn}"/>
+            <p:commandButton value="Error" actionListener="#{messagesView.error}"/>
+            <p:commandButton value="Fatal" actionListener="#{messagesView.fatal}"/>
+        
+            <p:separator />
+        
+            <h:panelGrid id="grid" columns="3" cellpadding="5">
+                <p:outputLabel for="default" value="Default:" />
                 <p:inputText id="default" required="true" />
                 <p:message for="default" />
 
-                <h:outputText value="Text: *" />
+                <p:outputLabel for="txt" value="Text:" />
                 <p:inputText id="txt" required="true" />
                 <p:message for="txt" display="text" />
 
-                <h:outputText value="Icon: *" />
+                <p:outputLabel for="icon" value="Icon:" />
                 <p:inputText id="icon" required="true" />
                 <p:message for="icon" display="icon" />
                     
-                <h:outputText value="Tooltip: *" />
+                <p:outputLabel for="tt" value="Tooltip:" />
                 <p:inputText id="tt" required="true" />
                 <p:message for="tt" display="tooltip" />
             </h:panelGrid>
@@ -54,35 +53,36 @@
         <p:tabView>
             <p:tab title="messages.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:form id="form1"&gt;
+&lt;p:tooltip /&gt;
+        
+&lt;h:form&gt;
     &lt;p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" /&gt;
-				
-    &lt;p:commandButton id="infoButton" value="Info" actionListener="\#{messagesView.addInfo}"/&gt;
-    &lt;p:commandButton id="warnButton" value="Warn" actionListener="\#{messagesView.addWarn}"/&gt;
-    &lt;p:commandButton id="errorButton" value="Error" actionListener="\#{messagesView.addError}"/&gt;
-    &lt;p:commandButton id="fatalButton" value="Fatal" actionListener="\#{messagesView.addFatal}"/&gt;
-&lt;/h:form&gt;
-			
-&lt;h3&gt;Message&lt;/h3&gt;
-&lt;h:form id="form2"&gt;
-    &lt;h:panelGrid id="grid" columns="3" cellpadding="4"&gt;
-        &lt;h:outputText value="Default: *" /&gt;
+
+    &lt;p:commandButton value="Info" actionListener="\#{messagesView.info}"/&gt;
+    &lt;p:commandButton value="Warn" actionListener="\#{messagesView.warn}"/&gt;
+    &lt;p:commandButton value="Error" actionListener="\#{messagesView.error}"/&gt;
+    &lt;p:commandButton value="Fatal" actionListener="\#{messagesView.fatal}"/&gt;
+
+    &lt;p:separator /&gt;
+
+    &lt;h:panelGrid id="grid" columns="3" cellpadding="5"&gt;
+        &lt;p:outputLabel for="default" value="Default:" /&gt;
         &lt;p:inputText id="default" required="true" /&gt;
         &lt;p:message for="default" /&gt;
 
-        &lt;h:outputText value="Text: *" /&gt;
+        &lt;p:outputLabel for="txt" value="Text:" /&gt;
         &lt;p:inputText id="txt" required="true" /&gt;
         &lt;p:message for="txt" display="text" /&gt;
 
-        &lt;h:outputText value="Icon: *" /&gt;
+        &lt;p:outputLabel for="icon" value="Icon:" /&gt;
         &lt;p:inputText id="icon" required="true" /&gt;
         &lt;p:message for="icon" display="icon" /&gt;
-                    
-        &lt;h:outputText value="Tooltip: *" /&gt;
+
+        &lt;p:outputLabel for="tt" value="Tooltip:" /&gt;
         &lt;p:inputText id="tt" required="true" /&gt;
         &lt;p:message for="tt" display="tooltip" /&gt;
     &lt;/h:panelGrid&gt;
-				
+
     &lt;p:commandButton id="submitButton" value="Submit" update="grid"/&gt;
 &lt;/h:form&gt;
                 </pre>
@@ -95,25 +95,24 @@ package org.primefaces.showcase.view.message;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 @ManagedBean
 public class MessagesView {
     
-    public void addInfo(ActionEvent actionEvent) {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Information ", "This is a closable info message"));
+    public void info() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "PrimeFaces Rocks."));
     }
     
-    public void addWarn(ActionEvent actionEvent) {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Warn! ","This is a closable warn message"));
+    public void warn() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Watch out for PrimeFaces."));
     }
     
-    public void addError(ActionEvent actionEvent) {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error! ","This is a closable error message"));
+    public void error() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Contact admin."));
     }
     
-    public void addFatal(ActionEvent actionEvent) {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Fatal! ","This is a closable fatal message"));
+    public void fatal() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Fatal!", "System Error"));
     }
 }
                 </pre>
