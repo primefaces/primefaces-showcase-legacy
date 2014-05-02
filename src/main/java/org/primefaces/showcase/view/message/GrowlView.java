@@ -36,7 +36,7 @@ public class GrowlView {
     public void saveMessage(ActionEvent actionEvent) {
         FacesContext context = FacesContext.getCurrentInstance();
         
-        context.addMessage(null, new FacesMessage("Successful",  "Your message : " + message) );
-        context.addMessage(null, new FacesMessage("Second Message", "Additional Message Here..."));
+        context.addMessage(null, new FacesMessage("Successful",  "Your message: " + message) );
+        context.addMessage(null, new FacesMessage("Second Message", "Additional Message Detail"));
     }
 }

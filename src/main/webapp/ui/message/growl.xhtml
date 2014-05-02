@@ -6,11 +6,11 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Message - <span class="orange">Growl</span>
+        Messages - <span class="orange">Growl</span>
     </ui:define>
 
     <ui:define name="description">
-        Growl brings the Mac's growl widget to JSF with the ability of displaying FacesMessages. Growl simply replaces h:messages component.
+        Growl displays messages in an overlay.
     </ui:define>
 
     <ui:define name="implementation">
@@ -19,9 +19,9 @@
             <p:growl id="growl" showDetail="true" sticky="true" />  
       
             <p:panel header="Growl">  
-                <h:panelGrid columns="2">  
-                    <h:outputText value="Your Message: *" />   
-                    <p:inputText value="#{growlView.message}" required="true" label="Message"/>  
+                <h:panelGrid columns="2" cellpadding="5">  
+                    <p:outputLabel for="msg" value="Message:" />   
+                    <p:inputText id="msg" value="#{growlView.message}" required="true" />  
                 </h:panelGrid>  
   
                 <p:commandButton value="Save" actionListener="#{growlView.saveMessage}" update="growl"/>  
@@ -36,16 +36,16 @@
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;  
     &lt;p:growl id="growl" showDetail="true" sticky="true" /&gt;  
-      
+
     &lt;p:panel header="Growl"&gt;  
-        &lt;h:panelGrid columns="2"&gt;  
-            &lt;h:outputText value="Your Message: *" /&gt;   
-            &lt;p:inputText value="\#{growlView.message}" required="true" label="Message"/&gt;  
+        &lt;h:panelGrid columns="2" cellpadding="5"&gt;  
+            &lt;p:outputLabel for="msg" value="Message:" /&gt;   
+            &lt;p:inputText id="msg" value="\#{growlView.message}" required="true" /&gt;  
         &lt;/h:panelGrid&gt;  
-  
-        &lt;p:commandButton value="Save" actionListener="\#{growlView.save}" update="growl"/&gt;  
+
+        &lt;p:commandButton value="Save" actionListener="\#{growlView.saveMessage}" update="growl"/&gt;  
     &lt;/p:panel&gt;  
-&lt;/h:form&gt; 
+&lt;/h:form&gt;  
                 </pre>
             </p:tab>
 
@@ -74,8 +74,8 @@ public class GrowlView {
     public void saveMessage(ActionEvent actionEvent) {
         FacesContext context = FacesContext.getCurrentInstance();
         
-        context.addMessage(null, new FacesMessage("Successful",  "Your message : "+message) );
-        context.addMessage(null, new FacesMessage("Second Message", "Additional Message Here..."));
+        context.addMessage(null, new FacesMessage("Successful",  "Your message: " + message) );
+        context.addMessage(null, new FacesMessage("Second Message", "Additional Message Detail"));
     }
 }
                 </pre>
