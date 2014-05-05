@@ -52,7 +52,7 @@ public class CarsView implements Serializable {
 		brands[2] = "Volvo";
 		brands[3] = "Audi";
 		brands[4] = "Renault";
-		brands[5] = "Cadillac";
+		brands[5] = "Fiat";
 		brands[6] = "Volkswagen";
 		brands[7] = "Honda";
 		brands[8] = "Jaguar";

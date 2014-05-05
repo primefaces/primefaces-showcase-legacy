@@ -398,3 +398,7 @@ padding:20px; border-radius:5px; border-right:solid 60px #404c51;}
 .ui-widget {
     font-size: 90%;
 }
+
+.Implementation h3 {
+    margin-top: 40px;
+}
