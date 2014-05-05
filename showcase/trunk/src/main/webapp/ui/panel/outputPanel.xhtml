@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        OutputPanel
+    </ui:define>
+
+    <ui:define name="description">
+        Output panel is a container element with several use cases such as autoUpdate and deferred loading. This example demonstrates the deferred loading feature with two modes
+            where the content of the panel is loaded after the page itself is loaded to speed up initial page load time. There are two deferred modes, "load" (after page load) and "visible"
+            (after page load and visible after page scroll). A progress indicator is also provided while loading the content.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <p:outputPanel deferred="true">
+                <h3>Loaded after page load.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </p:outputPanel>
+
+            <div style="height:600px"></div>
+
+            <p:outputPanel deferred="true" deferredMode="visible">
+                <h3>Loaded after the panel becomes visible on page scroll.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </p:outputPanel>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="outputPanel.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:outputPanel deferred="true"&gt;
+        &lt;h3&gt;Loaded after page load.&lt;/h3&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
+    &lt;/p:outputPanel&gt;
+
+    &lt;div style="height:600px"&gt;&lt;/div&gt;
+
+    &lt;p:outputPanel deferred="true" deferredMode="visible"&gt;
+        &lt;h3&gt;Loaded after the panel becomes visible on page scroll.&lt;/h3&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
+    &lt;/p:outputPanel&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
