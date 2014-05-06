@@ -16,6 +16,7 @@
     <ui:define name="implementation">
 
         <h:form>
+            
             <p:growl id="growl" sticky="true" showDetail="true" />
             
             <h:outputLink id="openDialogLink" value="javascript:void(0)" onclick="PF('dlg').show();">Show the Picture of the Day</h:outputLink>
@@ -23,8 +24,9 @@
             <p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" resizable="false" showEffect="clip" hideEffect="clip">
                 <p:ajax event="close" update="growl" listener="#{dialogView.handleClose}" />
                 
-                <p:graphicImage value="../../../resources/demo/images/nature/nature4.jpg" />
+                <p:graphicImage name="/demo/images/nature/nature4.jpg" />
             </p:dialog>
+            
         </h:form>
  
     </ui:define>
@@ -34,15 +36,17 @@
             <p:tab title="close.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;p:growl id="growl" sticky="true" showDetail="true" /&gt;
-
-    &lt;h:outputLabel id="openDialogLink" value="javascript:void(0)" onclick="PF('dlg').show();"&gt;Show the Picture of the Day&lt;/h:outputLabel&gt;
-
-    &lt;p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" resizable="false" showEffect="clip" hideEffect="clip"&gt;
-        &lt;p:ajax event="close" update="growl" listener="\#{dialogView.handleClose}" /&gt;
-
-        &lt;p:graphicImage value="../../../resources/demo/images/nature/nature4.jpg" /&gt;
-    &lt;/p:dialog&gt;
+            
+            &lt;p:growl id="growl" sticky="true" showDetail="true" /&gt;
+            
+            &lt;h:outputLink id="openDialogLink" value="javascript:void(0)" onclick="PF('dlg').show();"&gt;Show the Picture of the Day&lt;/h:outputLink&gt;
+            
+            &lt;p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" resizable="false" showEffect="clip" hideEffect="clip"&gt;
+                &lt;p:ajax event="close" update="growl" listener="\#{dialogView.handleClose}" /&gt;
+                
+                &lt;p:graphicImage name="/demo/images/nature/nature4.jpg" /&gt;
+            &lt;/p:dialog&gt;
+            
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
@@ -52,22 +56,22 @@
 package org.primefaces.showcase.view.overlay;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 import org.primefaces.event.CloseEvent;
 
+@ManagedBean
 public class DialogView {
     
     public void handleClose(CloseEvent event) {
         addMessage(event.getComponent().getId() + " closed", "So you don't like nature?");
     }
-
+    
     public void addMessage(String summary, String detail) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
- 
 }
 
                 </pre>

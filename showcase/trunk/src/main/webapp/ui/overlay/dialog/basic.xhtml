@@ -16,18 +16,18 @@
     <ui:define name="implementation">
         
         <h:panelGrid columns="1" cellpadding="5">
-            <p:commandButton id="basic" value="Basic" type="button" onclick="PF('dlg1').show();" />
+            <p:commandButton value="Basic" type="button" onclick="PF('dlg1').show();" />
             
-            <p:commandButton id="model" value="Model" type="button" onclick="PF('dlg2').show();" />
+            <p:commandButton value="Model" type="button" onclick="PF('dlg2').show();" />
             
-            <p:commandButton id="effects" value="Effects" type="button" onclick="PF('dlg3').show();" /> 
+            <p:commandButton value="Effects" type="button" onclick="PF('dlg3').show();" /> 
         </h:panelGrid>
        
-        <p:dialog id="basicDialog" header="Basic Dialog" widgetVar="dlg1" minHeight="40">
+        <p:dialog header="Basic Dialog" widgetVar="dlg1" minHeight="40">
             <h:outputText value="Resistance to PrimeFaces is futile!" />
         </p:dialog>
         
-        <p:dialog id="modalDialog" header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+        <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
             <h:outputText value="This is a Modal Dialog." />
         </p:dialog>	
 
@@ -42,18 +42,18 @@
             <p:tab title="basic.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:panelGrid columns="1" cellpadding="5"&gt;
-    &lt;p:commandButton id="basic" value="Basic" type="button" onclick="PF('dlg1').show();" /&gt;
+    &lt;p:commandButton value="Basic" type="button" onclick="PF('dlg1').show();" /&gt;
 
-    &lt;p:commandButton id="model" value="Model" type="button" onclick="PF('dlg2').show();" /&gt;
+    &lt;p:commandButton value="Model" type="button" onclick="PF('dlg2').show();" /&gt;
 
-    &lt;p:commandButton id="effects" value="Effects" type="button" onclick="PF('dlg3').show();" /&gt; 
+    &lt;p:commandButton value="Effects" type="button" onclick="PF('dlg3').show();" /&gt; 
 &lt;/h:panelGrid&gt;
 
-&lt;p:dialog id="basicDialog" header="Basic Dialog" widgetVar="dlg1" minHeight="40"&gt;
+&lt;p:dialog header="Basic Dialog" widgetVar="dlg1" minHeight="40"&gt;
     &lt;h:outputText value="Resistance to PrimeFaces is futile!" /&gt;
 &lt;/p:dialog&gt;
 
-&lt;p:dialog id="modalDialog" header="Modal Dialog" widgetVar="dlg2" modal="true" height="100"&gt;
+&lt;p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100"&gt;
     &lt;h:outputText value="This is a Modal Dialog." /&gt;
 &lt;/p:dialog&gt;	
 

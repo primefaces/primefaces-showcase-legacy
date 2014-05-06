@@ -18,18 +18,20 @@
         <p:commandButton value="Show" type="button" onclick="PF('dlg').show();" />
         
         <p:dialog header="Enter Username" widgetVar="dlg" resizable="false">
-            <h:form id="form">
+            <h:form>
+                
                 <h:panelGrid columns="2" style="margin-bottom: 10px">
                     <h:outputLabel for="username" value="Username:" />
                     <p:inputText id="username" value="#{userLoginView.username}" />
                 </h:panelGrid>
                 
-                <p:commandButton id="submitButton" value="Submit" update=":display" oncomplete="PF('dlg').hide();" style="float:right" />
+                <p:commandButton value="Submit" update=":display" oncomplete="PF('dlg').hide();" style="float:right" />
+                
             </h:form>
         </p:dialog>
         
         <p:outputPanel id="display" style="display:block; margin-top:10px;">
-            <h:outputText id="username" value="Hello #{userLoginView.username}" rendered="#{not empty userLoginView.username}" />
+            <h:outputText value="Hello #{userLoginView.username}" rendered="#{not empty userLoginView.username}" />
         </p:outputPanel>
         
     </ui:define>
@@ -39,20 +41,22 @@
             <p:tab title="ajaxForm.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;p:commandButton value="Show" type="button" onclick="PF('dlg').show();" /&gt;
-        
+
 &lt;p:dialog header="Enter Username" widgetVar="dlg" resizable="false"&gt;
     &lt;h:form&gt;
+
         &lt;h:panelGrid columns="2" style="margin-bottom: 10px"&gt;
             &lt;h:outputLabel for="username" value="Username:" /&gt;
             &lt;p:inputText id="username" value="\#{userLoginView.username}" /&gt;
         &lt;/h:panelGrid&gt;
 
-        &lt;p:commandButton id="submitButton" value="Submit" update=":display" oncomplete="PF('dlg').hide();" style="float:right" /&gt;
+        &lt;p:commandButton value="Submit" update=":display" oncomplete="PF('dlg').hide();" style="float:right" /&gt;
+
     &lt;/h:form&gt;
 &lt;/p:dialog&gt;
 
 &lt;p:outputPanel id="display" style="display:block; margin-top:10px;"&gt;
-    &lt;h:outputText id="username" value="Hello \#{userLoginView.username}" rendered="\#{not empty userLoginView.username}" /&gt;
+    &lt;h:outputText value="Hello \#{userLoginView.username}" rendered="\#{not empty userLoginView.username}" /&gt;
 &lt;/p:outputPanel&gt;
                 </pre>
             </p:tab>
@@ -61,12 +65,14 @@
                 <pre name="code" class="brush:java">
 package org.primefaces.showcase.view.overlay;
 
-import javax.faces.application.FacesMessage;
+iimport javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import org.primefaces.context.RequestContext;
 
+@ManagedBean
 public class UserLoginView {
     
     private String username;

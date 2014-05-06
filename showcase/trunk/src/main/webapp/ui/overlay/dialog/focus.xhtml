@@ -16,9 +16,10 @@
     <ui:define name="implementation">
 
         <h:form>
-            <p:commandButton id="dynamicDialogButton" value="Dyanmic Focus" onclick="PF('dlg').show();" type="button" icon="ui-icon-extlink" />
             
-            <p:dialog id="dialog" header="Dynamic Focus" widgetVar="dlg" focus="age">
+            <p:commandButton value="Dyanmic Focus" onclick="PF('dlg').show();" type="button" icon="ui-icon-extlink" />
+            
+            <p:dialog header="Dynamic Focus" widgetVar="dlg" focus="age">
                 <h:panelGrid columns="2" cellpadding="5">
                     <h:outputLabel for="name" value="Name:" />
                     <p:inputText id="name" label="name" />
@@ -30,6 +31,7 @@
                     <p:inputText id="age" label="age" />
                 </h:panelGrid>
             </p:dialog>
+            
         </h:form>
         
     </ui:define>
@@ -39,9 +41,10 @@
             <p:tab title="focus.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;p:commandButton id="dynamicDialogButton" value="Dyanmic Focus" onclick="PF('dlg').show();" type="button" icon="ui-icon-extlink" /&gt;
+            
+    &lt;p:commandButton value="Dyanmic Focus" onclick="PF('dlg').show();" type="button" icon="ui-icon-extlink" /&gt;
 
-    &lt;p:dialog id="dialog" header="Dynamic Focus" widgetVar="dlg" focus="age"&gt;
+    &lt;p:dialog header="Dynamic Focus" widgetVar="dlg" focus="age"&gt;
         &lt;h:panelGrid columns="2" cellpadding="5"&gt;
             &lt;h:outputLabel for="name" value="Name:" /&gt;
             &lt;p:inputText id="name" label="name" /&gt;
@@ -53,6 +56,7 @@
             &lt;p:inputText id="age" label="age" /&gt;
         &lt;/h:panelGrid&gt;
     &lt;/p:dialog&gt;
+
 &lt;/h:form&gt;
                 </pre>
             </p:tab>

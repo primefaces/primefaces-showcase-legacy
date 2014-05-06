@@ -14,18 +14,24 @@
     </ui:define>
 
     <ui:define name="implementation">
+        
         <p:tooltip />
         
         <h:form>
+            
             <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 				
-            <p:commandButton value="Info" actionListener="#{messagesView.info}"/>
-            <p:commandButton value="Warn" actionListener="#{messagesView.warn}"/>
-            <p:commandButton value="Error" actionListener="#{messagesView.error}"/>
-            <p:commandButton value="Fatal" actionListener="#{messagesView.fatal}"/>
+            <p:commandButton value="Info" actionListener="#{messagesView.info}" />
+            <p:commandButton value="Warn" actionListener="#{messagesView.warn}" />
+            <p:commandButton value="Error" actionListener="#{messagesView.error}" />
+            <p:commandButton value="Fatal" actionListener="#{messagesView.fatal}" />
+            
+        </h:form>
         
-            <p:separator />
+        <p:separator />
         
+        <h:form>
+            
             <h:panelGrid id="grid" columns="3" cellpadding="5">
                 <p:outputLabel for="default" value="Default:" />
                 <p:inputText id="default" required="true" />
@@ -44,7 +50,8 @@
                 <p:message for="tt" display="tooltip" />
             </h:panelGrid>
 				
-            <p:commandButton id="submitButton" value="Submit" update="grid"/>
+            <p:commandButton id="submitButton" value="Submit" update="grid" />
+            
         </h:form>
                
     </ui:define>
@@ -56,14 +63,19 @@
 &lt;p:tooltip /&gt;
         
 &lt;h:form&gt;
+
     &lt;p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" /&gt;
 
-    &lt;p:commandButton value="Info" actionListener="\#{messagesView.info}"/&gt;
-    &lt;p:commandButton value="Warn" actionListener="\#{messagesView.warn}"/&gt;
-    &lt;p:commandButton value="Error" actionListener="\#{messagesView.error}"/&gt;
-    &lt;p:commandButton value="Fatal" actionListener="\#{messagesView.fatal}"/&gt;
+    &lt;p:commandButton value="Info" actionListener="\#{messagesView.info}" /&gt;
+    &lt;p:commandButton value="Warn" actionListener="\#{messagesView.warn}" /&gt;
+    &lt;p:commandButton value="Error" actionListener="\#{messagesView.error}" /&gt;
+    &lt;p:commandButton value="Fatal" actionListener="\#{messagesView.fatal}" /&gt;
 
-    &lt;p:separator /&gt;
+&lt;/h:form&gt;
+
+&lt;p:separator /&gt;
+
+&lt;h:form&gt;
 
     &lt;h:panelGrid id="grid" columns="3" cellpadding="5"&gt;
         &lt;p:outputLabel for="default" value="Default:" /&gt;
@@ -83,7 +95,8 @@
         &lt;p:message for="tt" display="tooltip" /&gt;
     &lt;/h:panelGrid&gt;
 
-    &lt;p:commandButton id="submitButton" value="Submit" update="grid"/&gt;
+    &lt;p:commandButton id="submitButton" value="Submit" update="grid" /&gt;
+
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
@@ -112,7 +125,7 @@ public class MessagesView {
     }
     
     public void fatal() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Fatal!", "System Error"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Fatal!", "System Error"));
     }
 }
                 </pre>

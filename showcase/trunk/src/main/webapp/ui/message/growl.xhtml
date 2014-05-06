@@ -15,7 +15,8 @@
 
     <ui:define name="implementation">
         
-        <h:form>  
+        <h:form>
+            
             <p:growl id="growl" showDetail="true" sticky="true" />  
       
             <p:panel header="Growl">  
@@ -24,8 +25,9 @@
                     <p:inputText id="msg" value="#{growlView.message}" required="true" />  
                 </h:panelGrid>  
   
-                <p:commandButton value="Save" actionListener="#{growlView.saveMessage}" update="growl"/>  
-            </p:panel>  
+                <p:commandButton value="Save" actionListener="#{growlView.saveMessage}" update="growl" />  
+            </p:panel>
+            
         </h:form> 
            
     </ui:define>
@@ -34,7 +36,8 @@
         <p:tabView>
             <p:tab title="growl.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:form&gt;  
+&lt;h:form&gt;
+  
     &lt;p:growl id="growl" showDetail="true" sticky="true" /&gt;  
 
     &lt;p:panel header="Growl"&gt;  
@@ -43,8 +46,9 @@
             &lt;p:inputText id="msg" value="\#{growlView.message}" required="true" /&gt;  
         &lt;/h:panelGrid&gt;  
 
-        &lt;p:commandButton value="Save" actionListener="\#{growlView.saveMessage}" update="growl"/&gt;  
-    &lt;/p:panel&gt;  
+        &lt;p:commandButton value="Save" actionListener="\#{growlView.saveMessage}" update="growl" /&gt;  
+    &lt;/p:panel&gt;
+  
 &lt;/h:form&gt;  
                 </pre>
             </p:tab>
@@ -56,7 +60,6 @@ package org.primefaces.showcase.view.message;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 @ManagedBean
 public class GrowlView {
@@ -71,7 +74,7 @@ public class GrowlView {
         this.message = message;
     }
     
-    public void saveMessage(ActionEvent actionEvent) {
+    public void saveMessage() {
         FacesContext context = FacesContext.getCurrentInstance();
         
         context.addMessage(null, new FacesMessage("Successful",  "Your message: " + message) );

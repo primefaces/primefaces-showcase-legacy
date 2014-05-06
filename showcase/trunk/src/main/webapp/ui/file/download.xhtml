@@ -30,13 +30,15 @@ function stop() {
     <ui:define name="implementation">
         
         <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
-            <p:graphicImage value="/resources/demo/images/ajaxloadingbar.gif" />
+            <p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
         </p:dialog>
        
         <h:form>
-            <p:commandButton id="downloadLink" value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+            
+            <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
                 <p:fileDownload value="#{fileDownloadView.file}" />
             </p:commandButton>
+            
         </h:form>
         
     </ui:define>
@@ -46,13 +48,15 @@ function stop() {
             <p:tab title="download.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false"&gt;
-    &lt;p:graphicImage value="/resources/demo/images/ajaxloadingbar.gif" /&gt;
+    &lt;p:graphicImage name="/demo/images/ajaxloadingbar.gif" /&gt;
 &lt;/p:dialog&gt;
 
 &lt;h:form&gt;
-    &lt;p:commandButton id="downloadLink" value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s"&gt;
+
+    &lt;p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s"&gt;
         &lt;p:fileDownload value="\#{fileDownloadView.file}" /&gt;
     &lt;/p:commandButton&gt;
+
 &lt;/h:form&gt;
 
 &lt;script type="text/javascript"&gt;

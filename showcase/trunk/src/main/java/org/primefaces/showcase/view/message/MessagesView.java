@@ -18,6 +18,7 @@ package org.primefaces.showcase.view.message;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 @ManagedBean
 public class MessagesView {
@@ -35,7 +36,7 @@ public class MessagesView {
     }
     
     public void fatal() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Fatal!", "System Error"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Fatal!", "System Error"));
     }
 }
 

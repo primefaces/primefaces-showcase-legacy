@@ -15,7 +15,7 @@
 
     <ui:define name="implementation">
 
-        <h:panelGrid columns="3" cellpadding="10">
+        <h:panelGrid columns="3" cellpadding="5">
             <h:outputText value="Focus/Blur: " />
             <p:inputText id="focus" title="This tooltip is displayed when input gets the focus" />
             <p:tooltip id="toolTipFocus" for="focus" showEvent="focus" hideEvent="blur" />
@@ -44,7 +44,7 @@
                 <h:outputText value="Primefaces" />
             </h:outputLink>
             <p:tooltip id="toolTipContent" for="content">
-                <p:graphicImage id="primeLogo" value="../../../resources/demo/images/prime_logo.png" />
+                <p:graphicImage name="/demo/images/prime_logo.png" />
             </p:tooltip>
         </h:panelGrid>
         
@@ -54,7 +54,7 @@
         <p:tabView>
             <p:tab title="tooltipOptions.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:panelGrid columns="3" cellpadding="10"&gt;
+&lt;h:panelGrid columns="3" cellpadding="5"&gt;
     &lt;h:outputText value="Focus/Blur: " /&gt;
     &lt;p:inputText id="focus" title="This tooltip is displayed when input gets the focus" /&gt;
     &lt;p:tooltip id="toolTipFocus" for="focus" showEvent="focus" hideEvent="blur" /&gt;
@@ -83,7 +83,7 @@
         &lt;h:outputText value="Primefaces" /&gt;
     &lt;/h:outputLink&gt;
     &lt;p:tooltip id="toolTipContent" for="content"&gt;
-        &lt;p:graphicImage id="primeLogo" value="../../../resources/demo/images/prime_logo.png" /&gt;
+        &lt;p:graphicImage name="/demo/images/prime_logo.png" /&gt;
     &lt;/p:tooltip&gt;
 &lt;/h:panelGrid&gt;
                 </pre>

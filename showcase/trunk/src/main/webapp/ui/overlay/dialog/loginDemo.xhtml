@@ -29,14 +29,15 @@
 
     <ui:define name="implementation">
 
-        <h:form id="form">
-            <h:outputLink id="loginLink" value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
-                <p:graphicImage value="/resources/demo/images/login.png" />
+        <h:form>
+            
+            <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
+                <p:graphicImage name="/demo/images/login.png" />
             </h:outputLink>
             
             <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
             
-            <p:dialog id="dialog" header="Login" widgetVar="dlg" resizable="false">
+            <p:dialog header="Login" widgetVar="dlg" resizable="false">
                 <h:panelGrid columns="2" cellpadding="5">
                     <h:outputLabel for="username" value="Username:" />
                     <p:inputText id="username" value="#{userLoginView.username}" required="true" label="username" />
@@ -45,11 +46,12 @@
                     <p:password id="password" value="#{userLoginView.password}" required="true" label="password" />
                     
                     <f:facet name="footer">
-                        <p:commandButton id="loginButton" value="Login" update="growl" actionListener="#{userLoginView.login}" 
+                        <p:commandButton value="Login" update="growl" actionListener="#{userLoginView.login}" 
                                          oncomplete="handleLoginRequest(xhr, status, args)" />
                     </f:facet>  
                 </h:panelGrid>
             </p:dialog>
+            
         </h:form>
         
     </ui:define>
@@ -58,14 +60,15 @@
         <p:tabView>
             <p:tab title="loginDemo.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:form id="form"&gt;
-    &lt;h:outputLink id="loginLink" value="javascript:void(0)" onclick="PF('dlg').show();" title="login"&gt;
-        &lt;p:graphicImage value="/resources/demo/images/login.png" /&gt;
+&lt;h:form&gt;
+            
+    &lt;h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login"&gt;
+        &lt;p:graphicImage name="/demo/images/login.png" /&gt;
     &lt;/h:outputLink&gt;
 
     &lt;p:growl id="growl" sticky="true" showDetail="true" life="3000" /&gt;
 
-    &lt;p:dialog id="dialog" header="Login" widgetVar="dlg" resizable="false"&gt;
+    &lt;p:dialog header="Login" widgetVar="dlg" resizable="false"&gt;
         &lt;h:panelGrid columns="2" cellpadding="5"&gt;
             &lt;h:outputLabel for="username" value="Username:" /&gt;
             &lt;p:inputText id="username" value="\#{userLoginView.username}" required="true" label="username" /&gt;
@@ -74,11 +77,12 @@
             &lt;p:password id="password" value="\#{userLoginView.password}" required="true" label="password" /&gt;
 
             &lt;f:facet name="footer"&gt;
-                &lt;p:commandButton id="loginButton" value="Login" update="growl" actionListener="\#{userLoginView.login}" 
-                                    oncomplete="handleLoginRequest(xhr, status, args)" /&gt;
+                &lt;p:commandButton value="Login" update="growl" actionListener="\#{userLoginView.login}" 
+                                 oncomplete="handleLoginRequest(xhr, status, args)" /&gt;
             &lt;/f:facet&gt;  
         &lt;/h:panelGrid&gt;
     &lt;/p:dialog&gt;
+
 &lt;/h:form&gt;
 
 &lt;script type="text/javascript"&gt;
@@ -100,11 +104,13 @@
 package org.primefaces.showcase.view.overlay;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import org.primefaces.context.RequestContext;
 
+@ManagedBean
 public class UserLoginView {
     
     private String username;

@@ -17,17 +17,18 @@
 
     <ui:define name="implementation">
 
-       <h:form id="form">  
+       <h:form>
+           
             <p:commandButton id="imageBtn" value="Basic" type="button" />
             <p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade">
-                <p:graphicImage value="../../resources/demo/images/nature/nature1.jpg" width="300"/>
+                <p:graphicImage name="/demo/images/nature/nature1.jpg" width="300" />
             </p:overlayPanel>
 
             <br /><br />
 
             <p:commandButton id="movieBtn" value="Dynamic" type="button" />
             <p:overlayPanel id="moviePanel" for="movieBtn" hideEffect="fade" dynamic="true" style="width:600px">
-                <p:dataTable id="table" var="movies" value="#{movieView.movieList}" rows="3" paginator="true">
+                <p:dataTable var="movies" value="#{movieView.movieList}" rows="5" paginator="true">
                     <p:column headerText="Movie">
                         <h:outputText value="#{movies.movie}" />
                     </p:column>
@@ -48,15 +49,16 @@
 
             <br /><br />
 
-            <p:graphicImage id="img" value="../../resources/demo/images/images.png" style="cursor:pointer" title="Custom Options"/>
+            <p:graphicImage id="img" name="/demo/images/images.png" style="cursor:pointer" title="Custom Options" />
             <p:overlayPanel id="imgPanel" for="img" showEffect="blind" hideEffect="explode" showEvent="mouseover" hideEvent="mousedown"
                             dismissable="false" showCloseIcon="true">
-                <p:imageSwitch id="imgSwitch" effect="fade" style="width:300px;height:188px;">
+                <p:imageSwitch effect="fade" style="width:300px;height:188px;">
                     <ui:repeat value="#{imageSwitchView.images}" var="image">
-                        <p:graphicImage value="../../resources/demo/images/nature/#{image}" width="300"/>
+                        <p:graphicImage name="/demo/images/nature/#{image}" width="300" />
                     </ui:repeat>
                 </p:imageSwitch>
             </p:overlayPanel>
+            
         </h:form>
         
     </ui:define>
@@ -65,15 +67,16 @@
         <p:tabView>
             <p:tab title="overlayPanel.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:form&gt;  
+&lt;h:form&gt;
+           
     &lt;p:commandButton id="imageBtn" value="Basic" type="button" /&gt;
     &lt;p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade"&gt;
-        &lt;p:graphicImage value="../../resources/demo/images/nature/nature1.jpg" width="300"/&gt;
+        &lt;p:graphicImage name="/demo/images/nature/nature1.jpg" width="300" /&gt;
     &lt;/p:overlayPanel&gt;
 
     &lt;p:commandButton id="movieBtn" value="Dynamic" type="button" /&gt;
     &lt;p:overlayPanel id="moviePanel" for="movieBtn" hideEffect="fade" dynamic="true" style="width:600px"&gt;
-        &lt;p:dataTable id="table" var="movies" value="\#{movieView.movieList}" rows="3" paginator="true"&gt;
+        &lt;p:dataTable var="movies" value="\#{movieView.movieList}" rows="5" paginator="true"&gt;
             &lt;p:column headerText="Movie"&gt;
                 &lt;h:outputText value="\#{movies.movie}" /&gt;
             &lt;/p:column&gt;
@@ -92,15 +95,16 @@
         &lt;/p:dataTable&gt;
     &lt;/p:overlayPanel&gt;
 
-    &lt;p:graphicImage id="img" value="../../resources/demo/images/images.png" style="cursor:pointer" title="Custom Options"/&gt;
+    &lt;p:graphicImage id="img" name="/demo/images/images.png" style="cursor:pointer" title="Custom Options" /&gt;
     &lt;p:overlayPanel id="imgPanel" for="img" showEffect="blind" hideEffect="explode" showEvent="mouseover" hideEvent="mousedown"
                     dismissable="false" showCloseIcon="true"&gt;
-        &lt;p:imageSwitch id="imgSwitch" effect="fade" style="width:300px;height:188px;"&gt;
+        &lt;p:imageSwitch effect="fade" style="width:300px;height:188px;"&gt;
             &lt;ui:repeat value="\#{imageSwitchView.images}" var="image"&gt;
-                &lt;p:graphicImage value="../../resources/demo/images/nature/\#{image}" width="300"/&gt;
+                &lt;p:graphicImage name="/demo/images/nature/\#{image}" width="300" /&gt;
             &lt;/ui:repeat&gt;
         &lt;/p:imageSwitch&gt;
     &lt;/p:overlayPanel&gt;
+
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
@@ -112,9 +116,11 @@ package org.primefaces.showcase.view.overlay;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 
 import org.primefaces.showcase.domain.Movie;
 
+@ManagedBean
 public class MovieView {
     
     private List&lt;Movie&gt; movieList;

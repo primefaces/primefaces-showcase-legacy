@@ -55,20 +55,7 @@
             
             <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/input.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/inputBlue.svg" /><span class="MainLinkText">Input</span></span>
             <div class="SubMenuLinkContainer">
-            	<a class="SubMenuLink">&bull; Basics</a>
-                <a class="SubMenuLink">&bull; Selectors</a>
-                <a class="SubMenuLink">&bull; Events</a>
-                <a class="SubMenuLink">&bull; Partial Processing</a>
-                <a class="SubMenuLink">&bull; Polling</a>
-                <a class="SubMenuLink">&bull; Selects</a>
-                <a class="SubMenuLink">&bull; Partial Submit</a>
-                <a class="SubMenuLink">&bull; Remote Command</a>
-                <a class="SubMenuLink">&bull; Listeners</a>
-                <a class="SubMenuLink">&bull; Events</a>
-                <a class="SubMenuLink">&bull; Validations</a>
-                <a class="SubMenuLink">&bull; Counter</a>
-                <a class="SubMenuLink">&bull; Fragment</a>
-                <a class="SubMenuLink">&bull; Search Expressions</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/booleanButton.jsf">&bull; BooleanButton</a>
             </div>
             <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/button.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/buttonBlue.svg" /><span class="MainLinkText">Button</span></span>
             <div class="SubMenuLinkContainer">
@@ -210,11 +197,15 @@
             </div>
             <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/file.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/fileBlue.svg" /><span class="MainLinkText">File</span></span>
             <div class="SubMenuLinkContainer">
-            	<a class="SubMenuLink" href="#{request.contextPath}/ui/file/fileUpload/basic.jsf">&bull; Basic</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/file/fileUpload/auto.jsf">&bull; Auto</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/file/fileUpload/single.jsf">&bull; Single</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/file/fileUpload/multiple.jsf">&bull; Multiple</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/file/fileUpload/dragAndDrop.jsf">&bull; DragDrop</a>
+                <span class="SubMenuLink" onclick="openSubSubMenu(this);">&bull; Upload
+                    <div class="subsubMenuLinks">
+                        <a class="SubMenuLink" href="#{request.contextPath}/ui/file/upload/basic.jsf">&bull; Basic</a>
+                        <a class="SubMenuLink" href="#{request.contextPath}/ui/file/upload/auto.jsf">&bull; Auto</a>
+                        <a class="SubMenuLink" href="#{request.contextPath}/ui/file/upload/single.jsf">&bull; Single</a>
+                        <a class="SubMenuLink" href="#{request.contextPath}/ui/file/upload/multiple.jsf">&bull; Multiple</a>
+                        <a class="SubMenuLink" href="#{request.contextPath}/ui/file/upload/dnd.jsf">&bull; DragDrop</a>
+                    </div>
+                </span>
                 <a class="SubMenuLink" href="#{request.contextPath}/ui/file/download.jsf">&bull; Download</a>
             </div>
             <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/dragdrop.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/dragdropBlue.svg" /><span class="MainLinkText">DragDrop</span></span>

@@ -15,7 +15,7 @@
 
     <ui:define name="implementation">
 
-       <p:commandButton id="basic" value="Show Dialog" onclick="PF('dlg').show();" type="button" />
+       <p:commandButton value="Show Dialog" onclick="PF('dlg').show();" type="button" />
        
        <p:dialog header="Dialog" widgetVar="dlg" dynamic="true">
            <h:outputText value="This content is loaded lazy." />
@@ -27,7 +27,7 @@
         <p:tabView>
             <p:tab title="dynamic.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;p:commandButton id="basic" value="Show Dialog" onclick="PF('dlg').show();" type="button" /&gt;
+&lt;p:commandButton value="Show Dialog" onclick="PF('dlg').show();" type="button" /&gt;
        
 &lt;p:dialog header="Dialog" widgetVar="dlg" dynamic="true"&gt;
    &lt;h:outputText value="This content is loaded lazy." /&gt;
