@@ -18,7 +18,6 @@ package org.primefaces.showcase.view.overlay;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 import org.primefaces.event.CloseEvent;
 
@@ -29,7 +28,7 @@ public class DialogView {
         addMessage(event.getComponent().getId() + " closed", "So you don't like nature?");
     }
     
-    public void destroyWorld(ActionEvent actionEvent) {
+    public void destroyWorld() {
         addMessage("System Error", "Please try again later.");
     }
     

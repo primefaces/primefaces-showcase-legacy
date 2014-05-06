@@ -6,33 +6,37 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        FileUpload - <span class="orange">Multiple</span>
+        FileUpload - <span class="orange">Auto</span>
     </ui:define>
 
     <ui:define name="description">
-        Multiple mode allows multiple files to be selected from the native file dialog. Note that legacy browsers do not support multiple selection.
+        Upload process begins once the file is selected in auto mode.
     </ui:define>
 
     <ui:define name="implementation">
-
-        <h:form>
-            <p:fileUpload fileUploadListener="#{fileUploadView.handleFileUpload}" mode="advanced" dragDropSupport="false" 
-                          multiple="true" update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-
-            <p:growl id="messages" showDetail="true" />
-        </h:form>
         
+        <h:form>
+            
+            <p:fileUpload fileUploadListener="#{fileUploadView.handleFileUpload}" mode="advanced" 
+                          update="messages" auto="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                
+            <p:growl id="messages" showDetail="true" />
+            
+        </h:form>
+       
     </ui:define>
 
     <ui:define name="source">
         <p:tabView>
-            <p:tab title="multiple.xhtml">
+            <p:tab title="auto.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;p:fileUpload fileUploadListener="\#{fileUploadView.handleFileUpload}" mode="advanced" dragDropSupport="false" 
-                  multiple="true" update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" /&gt;
+
+    &lt;p:fileUpload fileUploadListener="\#{fileUploadView.handleFileUpload}" mode="advanced" 
+                     update="messages" auto="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" /&gt;
 
     &lt;p:growl id="messages" showDetail="true" /&gt;
+
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
@@ -42,13 +46,15 @@
 package org.primefaces.showcase.view.file;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
+@ManagedBean
 public class FileUploadView {
-
+    
     public void handleFileUpload(FileUploadEvent event) {
         FacesMessage message = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
         FacesContext.getCurrentInstance().addMessage(null, message);

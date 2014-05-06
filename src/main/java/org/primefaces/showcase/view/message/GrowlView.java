@@ -18,7 +18,6 @@ package org.primefaces.showcase.view.message;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 @ManagedBean
 public class GrowlView {
@@ -33,7 +32,7 @@ public class GrowlView {
         this.message = message;
     }
     
-    public void saveMessage(ActionEvent actionEvent) {
+    public void saveMessage() {
         FacesContext context = FacesContext.getCurrentInstance();
         
         context.addMessage(null, new FacesMessage("Successful",  "Your message: " + message) );
