@@ -1,0 +1,80 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        FileUpload - <span class="orange">Basic</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Simple uploader uses native browser file upload. Simple uploader is disabled at online demo.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form enctype="multipart/form-data">
+            <p:growl id="messages" showDetail="true" />
+            
+            <p:fileUpload value="#{fileUploadView.file}" mode="simple" disabled="true" />
+            
+            <br /> <br />
+            
+            <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}" disabled="true" />
+        </h:form>
+       
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="basic.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form enctype="multipart/form-data"&gt;
+    &lt;p:growl id="messages" showDetail="true" /&gt;
+
+    &lt;p:fileUpload value="\#{fileUploadView.file}" mode="simple" disabled="true" /&gt;
+
+    &lt;p:commandButton value="Submit" ajax="false" actionListener="\#{fileUploadView.upload}" disabled="true" /&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="FileUploadView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.file;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
+
+public class FileUploadView {
+    
+    private UploadedFile file;
+
+    public UploadedFile getFile() {
+        return file;
+    }
+
+    public void setFile(UploadedFile file) {
+        this.file = file;
+    }
+    
+    public void upload() {
+        if(file != null) {
+            FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+    }
+}
+
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

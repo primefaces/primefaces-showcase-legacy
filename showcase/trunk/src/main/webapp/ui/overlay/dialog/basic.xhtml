@@ -1,0 +1,69 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Dialog - <span class="orange">Basic</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Dialog visibility is managed by using show() and hide() methods of the client side api.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:panelGrid columns="1" cellpadding="5">
+            <p:commandButton id="basic" value="Basic" type="button" onclick="PF('dlg1').show();" />
+            
+            <p:commandButton id="model" value="Model" type="button" onclick="PF('dlg2').show();" />
+            
+            <p:commandButton id="effects" value="Effects" type="button" onclick="PF('dlg3').show();" /> 
+        </h:panelGrid>
+       
+        <p:dialog id="basicDialog" header="Basic Dialog" widgetVar="dlg1" minHeight="40">
+            <h:outputText value="Resistance to PrimeFaces is futile!" />
+        </p:dialog>
+        
+        <p:dialog id="modalDialog" header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+            <h:outputText value="This is a Modal Dialog." />
+        </p:dialog>	
+
+        <p:dialog header="Effects" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="100">
+            <h:outputText value="This dialog has nice effects." />
+        </p:dialog>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="basic.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:panelGrid columns="1" cellpadding="5"&gt;
+    &lt;p:commandButton id="basic" value="Basic" type="button" onclick="PF('dlg1').show();" /&gt;
+
+    &lt;p:commandButton id="model" value="Model" type="button" onclick="PF('dlg2').show();" /&gt;
+
+    &lt;p:commandButton id="effects" value="Effects" type="button" onclick="PF('dlg3').show();" /&gt; 
+&lt;/h:panelGrid&gt;
+
+&lt;p:dialog id="basicDialog" header="Basic Dialog" widgetVar="dlg1" minHeight="40"&gt;
+    &lt;h:outputText value="Resistance to PrimeFaces is futile!" /&gt;
+&lt;/p:dialog&gt;
+
+&lt;p:dialog id="modalDialog" header="Modal Dialog" widgetVar="dlg2" modal="true" height="100"&gt;
+    &lt;h:outputText value="This is a Modal Dialog." /&gt;
+&lt;/p:dialog&gt;	
+
+&lt;p:dialog header="Effects" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="100"&gt;
+    &lt;h:outputText value="This dialog has nice effects." /&gt;
+&lt;/p:dialog&gt;
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
