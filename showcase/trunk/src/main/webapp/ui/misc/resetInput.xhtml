@@ -1,0 +1,163 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        ResetInput
+    </ui:define>
+
+    <ui:define name="description">
+        Input components keep their local values at state when validation fails. ResetInput is used to clear the cached
+        values from state so that components retrieve their values from the backing bean model instead.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form id="form">
+            <p:panel id="panel" header="Form" style="margin-bottom:10px;">
+                <p:messages id="messages" />
+                <h:panelGrid columns="3" cellpadding="5">
+                    <p:outputLabel for="text1" value="Text 1:" />
+                    <p:inputText id="text1" value="#{resetInputView.text1}" required="true" label="Firstname">
+                        <f:validateLength minimum="2" />
+                    </p:inputText>
+                    <p:message for="text1" />
+
+                    <p:outputLabel for="text2" value="Text 2:" />
+                    <p:inputText id="text2" value="#{resetInputView.text2}" required="true" label="Surname"/>
+                    <p:message for="text2" />
+                </h:panelGrid>
+            </p:panel>
+
+            <p:toolbar>
+                <f:facet name="left">
+                    <p:commandButton value="Submit" update="panel" actionListener="#{resetInputView.save}" style="margin-right:20px;" />
+                </f:facet>
+                
+                <f:facet name="right">
+                    <p:commandButton value="Reset Fail" update="panel" process="@this" actionListener="#{resetInputView.resetFail}" style="margin-right:20px;" />
+
+                    <p:commandButton value="Reset Tag" update="panel" process="@this" style="margin-right:20px;" >
+                        <p:resetInput target="panel" />
+                    </p:commandButton>
+
+                    <p:commandButton value="Reset Code" update="panel" process="@this" actionListener="#{resetInputView.reset}"  style="margin-right:20px;" />
+
+                    <p:commandButton value="Reset Non-Ajax" actionListener="#{resetInputView.reset}" immediate="true" ajax="false" style="margin-right:20px;">
+                        <p:resetInput target="panel" />
+                    </p:commandButton>
+
+                    <h:commandButton value="Reset p:ajax" style="margin-right:20px;" >
+                        <p:ajax update="panel" resetValues="true" />
+                    </h:commandButton>
+                </f:facet>
+            </p:toolbar>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="resetInput.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form id="form"&gt;
+    &lt;p:panel id="panel" header="Form" style="margin-bottom:10px;"&gt;
+        &lt;p:messages id="messages" /&gt;
+        &lt;h:panelGrid columns="3" cellpadding="5"&gt;
+            &lt;p:outputLabel for="text1" value="Text 1:" /&gt;
+            &lt;p:inputText id="text1" value="\#{resetInputView.text1}" required="true" label="Firstname"&gt;
+                &lt;f:validateLength minimum="2" /&gt;
+            &lt;/p:inputText&gt;
+            &lt;p:message for="text1" /&gt;
+
+            &lt;p:outputLabel for="text2" value="Text 2:" /&gt;
+            &lt;p:inputText id="text2" value="\#{resetInputView.text2}" required="true" label="Surname"/&gt;
+            &lt;p:message for="text2" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:toolbar&gt;
+        &lt;f:facet name="left"&gt;
+            &lt;p:commandButton value="Submit" update="panel" actionListener="\#{resetInputView.save}" style="margin-right:20px;" /&gt;
+        &lt;/f:facet&gt;
+
+        &lt;f:facet name="right"&gt;
+            &lt;p:commandButton value="Reset Fail" update="panel" process="@this" actionListener="\#{resetInputView.resetFail}" style="margin-right:20px;" /&gt;
+
+            &lt;p:commandButton value="Reset Tag" update="panel" process="@this" style="margin-right:20px;" &gt;
+                &lt;p:resetInput target="panel" /&gt;
+            &lt;/p:commandButton&gt;
+
+            &lt;p:commandButton value="Reset Code" update="panel" process="@this" actionListener="\#{resetInputView.reset}"  style="margin-right:20px;" /&gt;
+
+            &lt;p:commandButton value="Reset Non-Ajax" actionListener="\#{resetInputView.reset}" immediate="true" ajax="false" style="margin-right:20px;"&gt;
+                &lt;p:resetInput target="panel" /&gt;
+            &lt;/p:commandButton&gt;
+
+            &lt;h:commandButton value="Reset p:ajax" style="margin-right:20px;" &gt;
+                &lt;p:ajax update="panel" resetValues="true" /&gt;
+            &lt;/h:commandButton&gt;
+        &lt;/f:facet&gt;
+    &lt;/p:toolbar&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ResetInput.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.misc;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
+
+@ManagedBean
+public class ResetInputView {
+    
+    private String text1;
+    
+    private String text2;
+
+    public String getText1() {
+        return text1;
+    }
+
+    public void setText1(String text1) {
+        this.text1 = text1;
+    }
+
+    public String getText2() {
+        return text2;
+    }
+
+    public void setText2(String text2) {
+        this.text2 = text2;
+    }
+    
+    public void save() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Data Saved"));
+    }
+    
+    public void reset() {
+        RequestContext.getCurrentInstance().reset("form:panel");
+    }
+    
+    public void resetFail() {
+        this.text1 = null;
+        this.text2 = null;
+        
+        FacesMessage msg = new FacesMessage("Model reset, but it won't work properly.");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
