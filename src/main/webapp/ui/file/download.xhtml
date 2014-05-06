@@ -19,7 +19,7 @@ function stop() {
     </ui:define>
 
     <ui:define name="title">
-        FileDownload - <span class="orange">Basic</span>
+        FileDownload
     </ui:define>
 
     <ui:define name="description">
@@ -29,7 +29,7 @@ function stop() {
 
     <ui:define name="implementation">
         
-        <p:dialog model="true" widgetVar="statusDialog" header="Status" draggable="false" closeable="false" resizeable="false">
+        <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
             <p:graphicImage value="/resources/demo/images/ajaxloadingbar.gif" />
         </p:dialog>
        
@@ -43,9 +43,9 @@ function stop() {
 
     <ui:define name="source">
         <p:tabView>
-            <p:tab title="fileDownload.xhtml">
+            <p:tab title="download.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;p:dialog model="true" widgetVar="statusDialog" header="Status" draggable="false" closeable="false" resizeable="false"&gt;
+&lt;p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false"&gt;
     &lt;p:graphicImage value="/resources/demo/images/ajaxloadingbar.gif" /&gt;
 &lt;/p:dialog&gt;
 
@@ -55,7 +55,7 @@ function stop() {
     &lt;/p:commandButton&gt;
 &lt;/h:form&gt;
 
-        &lt;script type="text/javascript"&gt;
+&lt;script type="text/javascript"&gt;
 function start() {
     PF('statusDialog').show();
 }
@@ -63,21 +63,23 @@ function start() {
 function stop() {
     PF('statusDialog').hide();
 }
-        &lt;/script&gt;
+&lt;/script&gt;
                 </pre>
             </p:tab>
 
-            <p:tab title="fileDownloadView.java">
+            <p:tab title="FileDownloadView.java">
                 <pre name="code" class="brush:java">
 package org.primefaces.showcase.view.file;
 
 import java.io.InputStream;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
+@ManagedBean
 public class FileDownloadView {
     
     private StreamedContent file;
@@ -91,7 +93,6 @@ public class FileDownloadView {
         return file;
     }
 }
-
                 </pre>
             </p:tab>
         </p:tabView>
