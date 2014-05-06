@@ -99,7 +99,16 @@
             	<a class="SubMenuLink" href="#{request.contextPath}/ui/panel/accordionPanel.jsf">&bull; Accordion</a>
                 <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/dashboard.jsf">&bull; Dashboard</a>
                 <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/fieldset.jsf">&bull; Fieldset</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/layout.jsf">&bull; Layout</a>
+                <span class="SubMenuLink" onclick="openSubSubMenu(this);">&bull; Layout
+                    <div class="subsubMenuLinks">
+                        <a href="#{request.contextPath}/ui/panel/layout/full.jsf">&bull; Full</a>
+                        <a href="#{request.contextPath}/ui/panel/layout/element.jsf">&bull; Element</a>
+                        <a href="#{request.contextPath}/ui/panel/layout/nested.jsf">&bull; Nested</a>
+                        <a href="#{request.contextPath}/ui/panel/layout/events.jsf">&bull; Events</a>
+                        <a href="#{request.contextPath}/ui/panel/layout/complex.jsf">&bull; Complex</a>
+                        <a href="#{request.contextPath}/ui/panel/layout/mailbox.jsf">&bull; Mailbox</a>
+                    </div>
+                </span>
                 <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/notificationBar.jsf">&bull; NotificationBar</a>
                 <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/outputPanel.jsf">&bull; OutputPanel</a>
                 <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/panel.jsf">&bull; Panel</a>
