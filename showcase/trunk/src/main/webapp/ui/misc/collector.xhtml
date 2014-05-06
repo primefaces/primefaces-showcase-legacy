@@ -1,0 +1,239 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Collector
+    </ui:define>
+
+    <ui:define name="description">
+        Collector is an utility to manage collections easily.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form id="form">
+            <p:growl id="msgs" />
+
+            <p:panel header="Create a new book" style="margin-bottom:20px">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel value="Title : *" for="txt_title"></h:outputLabel>
+                    <p:inputText id="txt_title" value="#{collectorView.book.title}" required="true"/>
+
+                    <h:outputLabel value="Author : *" for="txt_author"></h:outputLabel>
+                    <p:inputText id="txt_author" value="#{collectorView.book.author}" required="true"/>
+
+                    <p:commandButton id="btn_reset" value="Reset" type="reset"/>
+                    <p:commandButton id="btn_add" value="Add" update="books msgs @parent" action="#{collectorView.reinit}" >
+                        <p:collector value="#{collectorView.book}" addTo="#{collectorView.books}" unique="true"/>
+                    </p:commandButton>
+                </h:panelGrid>
+            </p:panel>
+
+            <p:outputPanel id="books">
+                <p:dataTable value="#{collectorView.books}" var="book" id="booksTable">
+
+                    <p:column headerText="Title">
+                        <h:outputText value="#{book.title}" />
+                    </p:column>
+
+                    <p:column headerText="Author">
+                        <f:facet name="header">
+                            <h:outputText value="Author" />
+                        </f:facet>
+                        <h:outputText value="#{book.author}" />
+                    </p:column>
+
+                    <p:column headerText="Action">
+                        <p:commandLink value="Remove" update=":form:books" process=":form:books">
+                            <p:collector value="#{book}" removeFrom="#{collectorView.books}" unique="true"/>
+                        </p:commandLink>
+                    </p:column>
+
+                </p:dataTable>
+            </p:outputPanel>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="collector.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form id="form"&gt;
+    &lt;p:growl id="msgs" /&gt;
+
+    &lt;p:panel header="Create a new book" style="margin-bottom:20px"&gt;
+        &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+            &lt;h:outputLabel value="Title : *" for="txt_title"&gt;&lt;/h:outputLabel&gt;
+            &lt;p:inputText id="txt_title" value="\#{collectorView.book.title}" required="true"/&gt;
+
+            &lt;h:outputLabel value="Author : *" for="txt_author"&gt;&lt;/h:outputLabel&gt;
+            &lt;p:inputText id="txt_author" value="\#{collectorView.book.author}" required="true"/&gt;
+
+            &lt;p:commandButton id="btn_reset" value="Reset" type="reset"/&gt;
+            &lt;p:commandButton id="btn_add" value="Add" update="books msgs @parent" action="\#{collectorView.reinit}" &gt;
+                &lt;p:collector value="\#{collectorView.book}" addTo="\#{collectorView.books}" unique="true"/&gt;
+            &lt;/p:commandButton&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:outputPanel id="books"&gt;
+        &lt;p:dataTable value="\#{collectorView.books}" var="book" id="booksTable"&gt;
+
+            &lt;p:column headerText="Title"&gt;
+                &lt;h:outputText value="\#{book.title}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column headerText="Author"&gt;
+                &lt;f:facet name="header"&gt;
+                    &lt;h:outputText value="Author" /&gt;
+                &lt;/f:facet&gt;
+                &lt;h:outputText value="\#{book.author}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column headerText="Action"&gt;
+                &lt;p:commandLink value="Remove" update=":form:books" process=":form:books"&gt;
+                    &lt;p:collector value="\#{book}" removeFrom="\#{collectorView.books}" unique="true"/&gt;
+                &lt;/p:commandLink&gt;
+            &lt;/p:column&gt;
+
+        &lt;/p:dataTable&gt;
+    &lt;/p:outputPanel&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="CollectorView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.misc;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import org.primefaces.showcase.domain.Book;
+
+@ManagedBean
+@ViewScoped
+public class CollectorView implements Serializable {
+    
+    private Book book;
+	
+	private List&lt;Book&gt; books;
+    
+    @PostConstruct
+    public void init() {
+        book = new Book();
+        books = new ArrayList&lt;Book&gt;();
+        
+    }
+	
+	public void createNew() {
+		if(books.contains(book)) {
+			FacesMessage msg = new FacesMessage("Dublicated", "This book has already been added");
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+		} 
+        else {
+            books.add(book);
+            book = new Book();
+        }
+	}
+	
+	public String reinit() {
+		book = new Book();
+		
+		return null;
+	}
+
+	public Book getBook() {
+		return book;
+	}
+
+	public List&lt;Book&gt; getBooks() {
+		return books;
+	}
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Book.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.domain;
+
+import java.io.Serializable;
+
+public class Book implements Serializable {
+    
+    private String title;
+	private String author;
+	private String publisher;
+	private Integer pages;
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public Integer getPages() {
+		return pages;
+	}
+
+	public void setPages(Integer pages) {
+		this.pages = pages;
+	}
+
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Book))
+			return false;
+		
+		Book book = (Book) obj;
+		
+		return (book.getTitle() != null &amp;&amp; book.getTitle().equals(title)) &amp;&amp; (book.getAuthor() != null &amp;&amp; book.getAuthor().equals(author));
+	}
+
+	public int hashCode() {
+		int hash = 1;
+		if(title != null)
+			hash = hash * 31 + title.hashCode();
+		
+		if(author != null)
+			hash = hash * 29 + author.hashCode();
+
+		return hash;
+	}
+}
+ 
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
