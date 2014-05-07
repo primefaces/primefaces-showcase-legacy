@@ -1,48 +1,18 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:p="http://primefaces.org/ui"
-                template="/WEB-INF/template.xhtml">
-
-    <ui:define name="title">
-        GraphicImage
-    </ui:define>
-
-    <ui:define name="description">
-        GraphicImage is capable of presenting images that are created programatically at runtime or images stored in a database.
-    </ui:define>
-
-    <ui:define name="implementation">
-        
-        <h3 style="margin-top:0">JFreeChart</h3>
-        <p:graphicImage value="#{graphicImageView.chart}" />
-
-        <h3>Barcode</h3>
-        <p:graphicImage value="#{graphicImageView.barcode}" />
-
-        <h3>GraphicText</h3>
-        <p:graphicImage value="#{graphicImageView.graphicText}" />
-            
-    </ui:define>
-
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="graphicImage.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;h3 style="margin-top:0"&gt;JFreeChart&lt;/h3&gt;
-&lt;p:graphicImage value="\#{graphicImageView.chart}" /&gt;
-
-&lt;h3&gt;Barcode&lt;/h3&gt;
-&lt;p:graphicImage value="#{graphicImageView.barcode}" /&gt;
-
-&lt;h3&gt;GraphicText&lt;/h3&gt;
-&lt;p:graphicImage value="#{graphicImageView.graphicText}" /&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="GraphicImageView.java">
-                <pre name="code" class="brush:java">
+/*
+ * Copyright 2009-2014 PrimeTek.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.primefaces.showcase.view.multimedia;
 
 import java.awt.Graphics2D;
@@ -124,12 +94,3 @@ public class GraphicImageView {
 		return dataset;
 	}
 }
-
-
-                </pre>
-            </p:tab>
-        </p:tabView>
-
-    </ui:define>
-
-</ui:composition>
