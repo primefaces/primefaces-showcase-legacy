@@ -1,0 +1,187 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+	</ui:define>
+
+
+    <ui:define name="title">
+        ThemeSwitcher
+    </ui:define>
+
+    <ui:define name="description">
+        ThemeSwitcher applies new themes on-the-fly without full page refresh.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:panelGrid columns="2" cellpadding="10">
+            <p:outputLabel for="basic" value="Basic:" /> 
+            <p:themeSwitcher id="basic" style="width:165px">
+                <f:selectItem itemLabel="Choose Theme" itemValue="" />
+                <f:selectItems value="#{themeSwitcherView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme.name}"/>
+            </p:themeSwitcher>
+            
+            <p:outputLabel for="advanced" value="Advanced:" /> 
+            <p:themeSwitcher id="advanced" style="width:165px" effect="fade" var="t">
+                <f:selectItem itemLabel="Choose Theme" itemValue="" />
+                <f:selectItems value="#{themeSwitcherView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" />
+                
+                <p:column>
+                    <h:outputText styleClass="ui-theme ui-theme-#{t.name}" style="display-block" />
+                </p:column>
+                
+                <p:column>
+                    #{t.displayName}
+                </p:column>
+            </p:themeSwitcher>
+        </h:panelGrid>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="themeSwitcher.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:panelGrid columns="2" cellpadding="10"&gt;
+    &lt;p:outputLabel for="basic" value="Basic:" /&gt; 
+    &lt;p:themeSwitcher id="basic" style="width:165px"&gt;
+        &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
+        &lt;f:selectItems value="\#{themeSwitcherView.themes}" var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme.name}"/&gt;
+    &lt;/p:themeSwitcher&gt;
+
+    &lt;p:outputLabel for="advanced" value="Advanced:" /&gt; 
+    &lt;p:themeSwitcher id="advanced" style="width:165px" effect="fade" var="t"&gt;
+        &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
+        &lt;f:selectItems value="\#{themeSwitcherView.themes}" var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" /&gt;
+
+        &lt;p:column&gt;
+            &lt;h:outputText styleClass="ui-theme ui-theme-\#{t.name}" style="display-block" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            \#{t.displayName}
+        &lt;/p:column&gt;
+    &lt;/p:themeSwitcher&gt;
+&lt;/h:panelGrid&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ThemeSwitcherView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.misc;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.showcase.domain.Theme;
+
+@ManagedBean
+public class ThemeSwitcherView {
+
+    private List&lt;Theme&gt; themes;
+
+    @PostConstruct
+    public void init() {
+        themes = new ArrayList&lt;Theme&gt;();
+        themes.add(new Theme("Afterdark", "afterdark"));
+        themes.add(new Theme("Afternoon", "afternoon"));
+        themes.add(new Theme("Afterwork", "afterwork"));
+        themes.add(new Theme("Aristo", "aristo"));
+        themes.add(new Theme("Black-Tie", "black-tie"));
+        themes.add(new Theme("Blitzer", "blitzer"));
+        themes.add(new Theme("Bluesky", "bluesky"));
+        themes.add(new Theme("Bootstrap", "bootstrap"));
+        themes.add(new Theme("Casablanca", "casablanca"));
+        themes.add(new Theme("Cupertino", "cupertino"));
+        themes.add(new Theme("Cruze", "cruze"));
+        themes.add(new Theme("Dark-Hive", "dark-hive"));
+        themes.add(new Theme("Delta", "delta"));
+        themes.add(new Theme("Dot-Luv", "dot-luv"));
+        themes.add(new Theme("Eggplant", "eggplant"));
+        themes.add(new Theme("Excite-Bike", "excite-bike"));
+        themes.add(new Theme("Flick", "flick"));
+        themes.add(new Theme("Glass-X", "glass-x"));
+        themes.add(new Theme("Home", "home"));
+        themes.add(new Theme("Hot-Sneaks", "hot-sneaks"));
+        themes.add(new Theme("Humanity", "humanity"));
+        themes.add(new Theme("Le-Frog", "le-frog"));
+        themes.add(new Theme("Midnight", "midnight"));
+        themes.add(new Theme("Mint-Choc", "mint-choc"));
+        themes.add(new Theme("Overcast", "overcast"));
+        themes.add(new Theme("Pepper-Grinder", "pepper-grinder"));
+        themes.add(new Theme("Redmond", "redmond"));
+        themes.add(new Theme("Rocket", "rocket"));
+        themes.add(new Theme("Sam", "sam"));
+        themes.add(new Theme("Smoothness", "smoothness"));
+        themes.add(new Theme("South-Street", "south-street"));
+        themes.add(new Theme("Start", "start"));
+        themes.add(new Theme("Sunny", "sunny"));
+        themes.add(new Theme("Swanky-Purse", "swanky-purse"));
+        themes.add(new Theme("Trontastic", "trontastic"));
+        themes.add(new Theme("UI-Darkness", "ui-darkness"));
+        themes.add(new Theme("UI-Lightness", "ui-lightness"));
+        themes.add(new Theme("Vader", "vader"));
+    }
+    
+    public List&lt;Theme&gt; getThemes() {
+        return themes;
+    } 
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Theme.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.domain;
+
+public class Theme {
+
+    private String displayName;
+    
+    private String name;
+    
+    public Theme() {}
+
+    public Theme(String displayName, String name) {
+        this.displayName = displayName;
+        this.name = name;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    @Override
+    public String toString() {
+        return name;
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

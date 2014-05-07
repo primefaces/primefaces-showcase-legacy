@@ -51,8 +51,23 @@
             <artifactId>rome</artifactId>
             <version>1.0</version>
         </dependency>
+        
+        <!-- Themes -->
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>all-themes</artifactId>
+            <version>1.0.10</version>
+        </dependency>
     </dependencies>
-
+    
+    <repositories>
+        <repository>
+            <id>prime-repo</id>
+            <name>PrimeFaces Maven Repository</name>
+            <url>http://repository.primefaces.org</url>
+        </repository>
+    </repositories>
+    
     <build>
         <plugins>
             <plugin>
@@ -87,13 +102,13 @@
             </activation>
             <properties>
                 <jsfVersion>Mojarra-2.2.6</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.0-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.1-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>5.0-SNAPSHOT</version>
+                    <version>5.1-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
