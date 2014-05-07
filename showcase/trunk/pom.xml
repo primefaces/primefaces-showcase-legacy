@@ -58,6 +58,18 @@
             <artifactId>all-themes</artifactId>
             <version>1.0.10</version>
         </dependency>
+        
+        <!-- GraphicImage -->
+        <dependency>
+            <groupId>net.sourceforge.barbecue</groupId>
+            <artifactId>barbecue</artifactId>
+            <version>1.5-beta1</version>
+        </dependency>
+        <dependency>
+            <groupId>jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
     
     <repositories>
