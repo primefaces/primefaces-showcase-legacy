@@ -32,9 +32,15 @@
         
 	<div id="MENUSIDE">
     	<div id="MENUSIDEindent">
-            <span id="LOGO" class="bordersOfMenuSide"><h:graphicImage name="main/images/logo.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/logoBlue.svg" /></span>
+            <span id="LOGO" class="bordersOfMenuSide">
+                <h:graphicImage name="main/images/logo.svg" />
+                <h:graphicImage styleClass="hiddenIcons" name="main/images/logoBlue.svg" />
+                 <div id="" class="hiddenLogoText">
+                    <span class="dispBlock logoDarkText fontSize30">PrimeFaces</span> <span class="dispBlock logoBlueText fontSize30 mediumFont">SHOWCASE</span>
+                </div>
+            </span>
             <span class="emptyBox"></span>
-            <div class="MenuSideMainLink bordersOfMenuSide mustClose"><input type="text" value="Search Menu" class="mediumFont fontSize14"/></div>
+            <div class="MenuSideMainLink bordersOfMenuSide"><img src="main/images/mono/zoom.svg" class="zoomIcon"/><input type="text" value="Search Menu" class="mediumFont fontSize14 mustClose"/></div>
             <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/ajaxCore.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/ajaxCoreBlue.svg" /><span class="MainLinkText">Ajax Core</span></span>
             <div class="SubMenuLinkContainer">
             	<a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/basic.jsf">&bull; Basic</a>
@@ -267,6 +273,15 @@
                 <a href="#" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfExtensions.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Extensions</span></a>
                 <a href="#" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfPush.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Push</span></a>
                 <a href="#" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfMobile.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Mobile</span></a>
+                <span class="PFTopLinks floatRight boldFont cursorPointer" id="themeSwitcher">
+                	<img src="main/images/themeswitcher.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Themes</span>
+                    <div class="themeSwitchList">
+                        <ui:repeat value="#{themeSwitcherView.themes}" var="theme">
+                            <a href="#"><span class="ui-theme ui-theme-#{theme}"></span><span class="ui-theme-text">#{theme.displayName}</span></a>
+                        </ui:repeat>
+
+                    </div>
+                </span>
             </div>
             <!-- header bar end-->
 
