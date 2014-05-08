@@ -14,7 +14,7 @@
     
     <h:body>
         <h:form>
-            <p:dataTable var="car" value="#{carsView.carsSmall}">
+            <p:dataTable var="car" value="#{dfCarsView.cars}">
                 <p:column headerText="Id">
                     <h:outputText value="#{car.id}" />
                 </p:column>
@@ -32,7 +32,7 @@
                 </p:column>
 
                 <p:column headerText="Select Car">
-                    <p:commandButton icon="ui-icon-search" actionListener="#{carsView.selectCarFromDialog(car)}" />
+                    <p:commandButton icon="ui-icon-search" actionListener="#{dfCarsView.selectCarFromDialog(car)}" />
                 </p:column>
             </p:dataTable>
         </h:form>

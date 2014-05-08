@@ -27,8 +27,8 @@
             <p:tab title="basic.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;p:commandButton value="View" icon="ui-icon-extlink" actionListener="#{dfView.viewCars}" /&gt;
-    &lt;p:commandButton value="Options" icon="ui-icon-extlink" actionListener="#{dfView.viewCarsCustomized}" /&gt;
+    &lt;p:commandButton value="View" icon="ui-icon-extlink" actionListener="\#{dfView.viewCars}" /&gt;
+    &lt;p:commandButton value="Options" icon="ui-icon-extlink" actionListener="\#{dfView.viewCarsCustomized}" /&gt;
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
@@ -62,8 +62,8 @@ public class DFView {
                 </pre>
             </p:tab>
             
-            <p:tab title="DFView.java">
-                <pre name="code" class="brush:java">
+            <p:tab title="viewCars.xhtml">
+                <pre name="code" class="brush:xml">
 &lt;!DOCTYPE html&gt;
 &lt;html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -71,10 +71,15 @@ public class DFView {
     
     &lt;h:head&gt;
         &lt;title&gt;Cars&lt;/title&gt;
+        &lt;style type="text/css"&gt;
+            .ui-widget {
+                font-size: 90%;
+            }
+        &lt;/style&gt;
     &lt;/h:head&gt;
     
     &lt;h:body&gt;
-        &lt;p:dataTable var="car" value="\#{carsView.carsSmall}"&gt;
+        &lt;p:dataTable var="car" value="\#{dfCarsView.cars}"&gt;
             &lt;p:column headerText="Id"&gt;
                 &lt;h:outputText value="\#{car.id}" /&gt;
             &lt;/p:column&gt;
@@ -93,7 +98,47 @@ public class DFView {
         &lt;/p:dataTable&gt;
     &lt;/h:body&gt;
     
-&lt;/html&gt; 
+&lt;/html&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="DFCarsView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.df;
+
+import java.io.Serializable;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
+import org.primefaces.context.RequestContext;
+import org.primefaces.showcase.domain.Car;
+import org.primefaces.showcase.service.CarService;
+
+@ManagedBean(name = "dfCarsView")
+@ViewScoped
+public class DFCarsView implements Serializable {
+    
+    private List&lt;Car&gt; cars;
+
+    @ManagedProperty("\#{carService}")
+    private CarService service;
+    
+    @PostConstruct
+    public void init() {
+        cars = service.createCars(9);
+    }
+    
+    public List&lt;Car&gt; getCars() {
+        return cars;
+    }
+
+    public void setService(CarService service) {
+        this.service = service;
+    }
+}
+ 
                 </pre>
             </p:tab>
         </p:tabView>
