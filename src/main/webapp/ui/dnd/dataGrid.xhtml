@@ -102,6 +102,14 @@
         <p:tabView>
             <p:tab title="datagrid.xhtml">
                 <pre name="code" class="brush:xml">
+&lt;script type="text/javascript"&gt;
+    function handleDrop(event, ui) {
+        var droppedCar = ui.draggable;
+
+        droppedCar.fadeOut('fast');
+    }
+&lt;/script&gt;
+
 &lt;h:form id="carForm"&gt;
     &lt;p:fieldset id="availableCarsField" legend="AvailableCars"&gt;
         &lt;p:dataGrid id="availableCars" var="car" value="\#{dndCarsView.cars}" columns="3"&gt;
