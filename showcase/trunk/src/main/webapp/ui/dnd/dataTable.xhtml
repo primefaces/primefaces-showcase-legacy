@@ -113,6 +113,14 @@
         <p:tabView>
             <p:tab title="dataTable.xhtml">
                 <pre name="code" class="brush:xml">
+&lt;script type="text/javascript"&gt;
+    function handleDrop(event, ui) {
+        var droppedCar = ui.draggable;
+
+        droppedCar.fadeOut('fast');
+    }
+&lt;/script&gt;
+
 &lt;h:form id="carForm"&gt;
     &lt;p:fieldset id="availableCarsField" legend="Available Cars"&gt;
         &lt;p:dataTable id="availableCars" var="car" value="\#{dndCarsView.cars}"&gt;
