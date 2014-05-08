@@ -18,7 +18,7 @@
         <h:form>
             
             <p:panel header="Colors">
-                <h:panelGrid columns="2" cellPadding="5" style="margin-left: 20px">
+                <h:panelGrid columns="2" cellpadding="5" style="margin-left: 20px">
                     <h:outputText value="Inline: " />
                     <p:colorPicker value="#{colorView.colorInline}" mode="inline" />
                     
@@ -31,7 +31,7 @@
                 <p:commandButton value="Submit" oncomplete="PF('dlg').show();" update="grid" style="margin-left: 20px" />
             </p:panel>
             
-            <p:dialog model="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors" resizable="false">
+            <p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors" resizable="false">
                 <h:panelGrid id="grid" columns="2" cellpadding="5">
                     <h:outputText value="Inline color: " />
                     <h:outputText value="#{colorView.colorInline}" style="background-color: \##{colorView.colorInline}" />
@@ -53,7 +53,7 @@
 &lt;h:form&gt;
             
     &lt;p:panel header="Colors"&gt;
-        &lt;h:panelGrid columns="2" cellPadding="5" style="margin-left: 20px"&gt;
+        &lt;h:panelGrid columns="2" cellpadding="5" style="margin-left: 20px"&gt;
             &lt;h:outputText value="Inline: " /&gt;
             &lt;p:colorPicker value="\#{colorView.colorInline}" mode="inline" /&gt;
 
@@ -66,7 +66,7 @@
         &lt;p:commandButton value="Submit" oncomplete="PF('dlg').show();" update="grid" style="margin-left: 20px" /&gt;
     &lt;/p:panel&gt;
 
-    &lt;p:dialog model="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors" resizable="false"&gt;
+    &lt;p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors" resizable="false"&gt;
         &lt;h:panelGrid id="grid" columns="2" cellpadding="5"&gt;
             &lt;h:outputText value="Inline color: " /&gt;
             &lt;h:outputText value="\#{colorView.colorInline}" style="background-color: \\#\#{colorView.colorInline}" /&gt;
