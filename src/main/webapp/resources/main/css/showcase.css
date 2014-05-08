@@ -266,7 +266,7 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 	/* content side style*/
 	#CONTENTSIDE{width:auto; float:left; overflow:hidden; z-index:1; margin-left:86px; background-color:#eff3f6;}
 		#CONTENTSIDEindent{width:100%; height:auto;}
-			.ContentSideSections{display:block; border-bottom:solid 1px #bcc7cf; padding:30px; overflow:hidden;}
+			.ContentSideSections{display:block; border-bottom:solid 1px #bcc7cf; padding:30px; overflow: hidden}
 			.MOBILE .ContentSideSections{padding:14px 24px;}
 			#PFTopLinksCover{background-color:#eff3f6;}
 			.MOBILE #PFTopLinksCover{ position:inherit;}
@@ -309,7 +309,16 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 				
 			.MOBILE .BoxesIndent{width:85%; float:none; margin:0px auto; padding-top:30px;}
 	
-	
+/** ThemeSwitcher **/
+.themeSwitchList{width:200px; max-height:400px; overflow:scroll; background-color:#eff3f6; border:solid 1px #bcc7cf; z-index:99999999999; position: absolute; 
+				border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2); -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2); 
+				box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2); margin-left:-60px; display: none;}
+					.themeSwitchList a{display:block; padding:10px; border-bottom:solid 1px #bcc7cf; text-align:left; color:#87939B; overflow:hidden;}
+					.themeSwitchList a:hover{ color:#fdd106;}
+						.themeSwitchList a span.ui-theme{width:30px; height:27px; float:left; border:solid 1px #D7DCE0; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;}
+						.themeSwitchList a span.ui-theme-text{ display:inline-block; margin-top:7px; margin-left:10px; font-size: 14px;}
+/* cursor */
+.cursorPointer{cursor:pointer;}
 	
 /* OTHERS */
 a{ text-decoration:none; outline:none;}
@@ -337,8 +346,10 @@ a{ text-decoration:none; outline:none;}
 							
 .wid50{width:50px;}
 							
-.texAliCenter{text-align:center;}	
+.texAliCenter{text-align:center;}
 
+.hiddenLogoText{opacity:0; filter:alpha(opacity=0); margin-left:70px; width:290px; height:74px; z-index:999; background-image:url(#{resource['main/images/logoCircuitLines.svg']}); background-repeat:no-repeat; background-position:center right;
+				 padding-top:25px; line-height:30px; margin-top: -20px;}
 
 /* margins */
 .marginRight10{margin-right:10px;}
