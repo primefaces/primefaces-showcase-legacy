@@ -17,15 +17,26 @@ package org.primefaces.showcase.domain;
 
 public class Theme {
 
+    private int id;
+    
     private String displayName;
     
     private String name;
     
     public Theme() {}
 
-    public Theme(String displayName, String name) {
+    public Theme(int id, String displayName, String name) {
+        this.id = id;
         this.displayName = displayName;
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDisplayName() {
