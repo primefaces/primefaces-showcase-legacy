@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        SelectOneButton
+    </ui:define>
+
+    <ui:define name="description">
+        SelectOneButton is used to choose a single item from a list using buttons.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                <h:outputText value="Platform:" />
+                <p:selectOneButton value="#{selectOneView.option}">
+                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                </p:selectOneButton>
+                
+                <p:commandButton value="Submit" update="display" icon="ui-icon-check"/>
+                <p:spacer />
+                
+                <h:outputText value="Selected:" />
+                <h:outputText id="display" value="#{selectOneView.option}" style="font-weight: bold"/>
+            </h:panelGrid>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="oneButton.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
+        &lt;h:outputText value="Platform:" /&gt;
+        &lt;p:selectOneButton value="\#{selectOneView.option}"&gt;
+            &lt;f:selectItem itemLabel="Xbox One" itemValue="Xbox One" /&gt;
+            &lt;f:selectItem itemLabel="PS4" itemValue="PS4" /&gt;
+            &lt;f:selectItem itemLabel="Wii U" itemValue="Wii U" /&gt;
+        &lt;/p:selectOneButton&gt;
+
+        &lt;p:commandButton value="Submit" update="display" icon="ui-icon-check"/&gt;
+        &lt;p:spacer /&gt;
+
+        &lt;h:outputText value="Selected:" /&gt;
+        &lt;h:outputText id="display" value="\#{selectOneView.option}" style="font-weight: bold"/&gt;
+    &lt;/h:panelGrid&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="SelectOneView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class SelectOneView {
+    
+    private String option;
+    
+    public String getOption() {
+        return option;
+    }
+
+    public void setOption(String option) {
+        this.option = option;
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
