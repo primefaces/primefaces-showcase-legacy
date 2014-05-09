@@ -1,0 +1,151 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-datalist ul {
+                padding: 0px 10px 0 20px;
+                margin: 5px 0;
+            }
+        </style>
+	</ui:define>
+    
+    <ui:define name="title">
+        SelectManyCheckbox
+    </ui:define>
+
+    <ui:define name="description">
+        SelectManyCheckbox is used to choose multiple items from a collection.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                <p:outputLabel for="basic" value="Basic:" />
+                <p:selectManyCheckbox id="basic" value="#{checkboxView.selectedConsoles}">
+                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                    <f:selectItem itemLabel="PS4" itemValue="PS+" />
+                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                </p:selectManyCheckbox>
+
+                <h:outputText value="Grid:" />
+                <p:selectManyCheckbox id="grid" value="#{checkboxView.selectedCities}" layout="grid" columns="3">
+                    <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}"/>
+                </p:selectManyCheckbox>
+            </h:panelGrid>
+
+            <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check"/>
+
+            <p:dialog header="Values" modal="true" showEffect="clip" widgetVar="dlg" resizable="false">
+                <p:outputPanel id="display">
+                    <p:dataList value="#{checkboxView.selectedConsoles}" var="console">
+                        #{console}
+                    </p:dataList>
+                    <p:dataList value="#{checkboxView.selectedCities}" var="city">
+                        #{city}
+                    </p:dataList>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="manyCheckbox.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
+        &lt;p:outputLabel for="basic" value="Basic:" /&gt;
+        &lt;p:selectManyCheckbox id="basic" value="\#{checkboxView.selectedConsoles}"&gt;
+            &lt;f:selectItem itemLabel="Xbox One" itemValue="Xbox One" /&gt;
+            &lt;f:selectItem itemLabel="PS4" itemValue="PS+" /&gt;
+            &lt;f:selectItem itemLabel="Wii U" itemValue="Wii U" /&gt;
+        &lt;/p:selectManyCheckbox&gt;
+
+        &lt;h:outputText value="Grid:" /&gt;
+        &lt;p:selectManyCheckbox id="grid" value="\#{checkboxView.selectedCities}" layout="grid" columns="3"&gt;
+            &lt;f:selectItems value="\#{checkboxView.cities}" var="city" itemLabel="\#{city}" itemValue="\#{city}"/&gt;
+        &lt;/p:selectManyCheckbox&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check"/&gt;
+
+    &lt;p:dialog header="Values" modal="true" showEffect="clip" widgetVar="dlg" resizable="false"&gt;
+        &lt;p:outputPanel id="display"&gt;
+            &lt;p:dataList value="\#{checkboxView.selectedConsoles}" var="console"&gt;
+                \#{console}
+            &lt;/p:dataList&gt;
+            &lt;p:dataList value="\#{checkboxView.selectedCities}" var="city"&gt;
+                \#{city}
+            &lt;/p:dataList&gt;
+        &lt;/p:outputPanel&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="CheckboxView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class CheckboxView {
+    
+    private String[] selectedConsoles;
+    
+    private String[] selectedCities;
+    
+    private List&lt;String&gt; cities;
+    
+    @PostConstruct
+    public void init() {
+        cities = new ArrayList&lt;String&gt;();
+        cities.add("San Francisco");
+        cities.add("London");
+        cities.add("Paris");
+        cities.add("Istanbul");
+        cities.add("Berlin");
+        cities.add("Barcelona");
+        cities.add("Rome");
+        cities.add("Sao Paulo");
+        cities.add("Amsterdam");
+    }
+
+    public String[] getSelectedConsoles() {
+        return selectedConsoles;
+    }
+
+    public void setSelectedConsoles(String[] selectedConsoles) {
+        this.selectedConsoles = selectedConsoles;
+    }
+
+    public String[] getSelectedCities() {
+        return selectedCities;
+    }
+
+    public void setSelectedCities(String[] selectedCities) {
+        this.selectedCities = selectedCities;
+    }
+
+    public List&lt;String&gt; getCities() {
+        return cities;
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
