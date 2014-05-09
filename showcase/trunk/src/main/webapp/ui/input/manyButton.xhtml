@@ -1,0 +1,89 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        SelectManyButton
+    </ui:define>
+
+    <ui:define name="description">
+        SelectManyButton is used to choose multiple items from a list using buttons.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                <h:outputText value="Font:" />
+                <p:selectManyButton value="#{selectManyView.selectedOptions}">
+                    <f:selectItem itemLabel="b" itemValue="b" />
+                    <f:selectItem itemLabel="u" itemValue="u" />
+                    <f:selectItem itemLabel="i" itemValue="i" />
+                </p:selectManyButton>
+                
+                <p:commandButton value="Submit" update="display" icon="ui-icon-check"/>
+                <p:spacer />
+                
+                <h:outputText value="Selected:" />
+                <p:dataList id="display" value="#{selectManyView.selectedOptions}" var="font" emptyMessage="No fonts selected">
+                    <h:outputText value="#{font}" style="font-weight: bold" />
+                </p:dataList>
+            </h:panelGrid>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="manyButton.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
+        &lt;h:outputText value="Font:" /&gt;
+        &lt;p:selectManyButton value="\#{selectManyView.selectedOptions}"&gt;
+            &lt;f:selectItem itemLabel="b" itemValue="b" /&gt;
+            &lt;f:selectItem itemLabel="u" itemValue="u" /&gt;
+            &lt;f:selectItem itemLabel="i" itemValue="i" /&gt;
+        &lt;/p:selectManyButton&gt;
+
+        &lt;p:commandButton value="Submit" update="display" icon="ui-icon-check"/&gt;
+        &lt;p:spacer /&gt;
+
+        &lt;h:outputText value="Selected:" /&gt;
+        &lt;p:dataList id="display" value="\#{selectManyView.selectedOptions}" var="font" emptyMessage="No fonts selected"&gt;
+            &lt;h:outputText value="\#{font}" style="font-weight: bold" /&gt;
+        &lt;/p:dataList&gt;
+    &lt;/h:panelGrid&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="SelectManyView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import java.util.List;
+
+@ManagedBean
+public class SelectManyView {
+    
+    private List&lt;String&gt; selectedOptions;
+    
+    public List&lt;String&gt; getSelectedOptions() {
+        return selectedOptions;
+    }
+
+    public void setSelectedOptions(List&lt;String&gt; selectedOptions) {
+        this.selectedOptions = selectedOptions;
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
