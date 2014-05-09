@@ -1,0 +1,109 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        SelectCheckboxMenu
+    </ui:define>
+
+    <ui:define name="description">
+        SelectManyCheckbox is used to choose multiple items displayed in an overlay.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <h:panelGrid columns="3" cellpadding="5">
+                <h:outputLabel for="menu" value="Location:" />
+                <p:selectCheckboxMenu id="menu" value="#{checkboxView.selectedCities}" label="Cities" 
+                                      filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                    <f:selectItems value="#{checkboxView.cities}" />
+                </p:selectCheckboxMenu>
+                <p:commandLink value="Submit" update="display"/>
+            </h:panelGrid>
+            
+            <p:outputPanel id="display" style="width:250px;padding-left:5px;margin-top:10px">
+                <p:dataList value="#{checkboxView.selectedCities}" var="city" emptyMessage="No cities selected">
+                    #{city}
+                </p:dataList>
+            </p:outputPanel>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="checkboxMenu.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;h:panelGrid columns="3" cellpadding="5"&gt;
+        &lt;h:outputLabel for="menu" value="Location:" /&gt;
+        &lt;p:selectCheckboxMenu id="menu" value="\#{checkboxView.selectedCities}" label="Cities" 
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px"&gt;
+            &lt;f:selectItems value="\#{checkboxView.cities}" /&gt;
+        &lt;/p:selectCheckboxMenu&gt;
+        &lt;p:commandLink value="Submit" update="display"/&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:outputPanel id="display" style="width:250px;padding-left:5px;margin-top:10px"&gt;
+        &lt;p:dataList value="\#{checkboxView.selectedCities}" var="city" emptyMessage="No cities selected"&gt;
+            \#{city}
+        &lt;/p:dataList&gt;
+    &lt;/p:outputPanel&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="CheckboxView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class CheckboxView {
+        
+    private String[] selectedCities;
+    
+    private List&lt;String&gt; cities;
+    
+    @PostConstruct
+    public void init() {
+        cities = new ArrayList&lt;String&gt;();
+        cities.add("San Francisco");
+        cities.add("London");
+        cities.add("Paris");
+        cities.add("Istanbul");
+        cities.add("Berlin");
+        cities.add("Barcelona");
+        cities.add("Rome");
+        cities.add("Sao Paulo");
+        cities.add("Amsterdam");
+    }
+
+    public String[] getSelectedCities() {
+        return selectedCities;
+    }
+
+    public void setSelectedCities(String[] selectedCities) {
+        this.selectedCities = selectedCities;
+    }
+
+    public List&lt;String&gt; getCities() {
+        return cities;
+    }
+}
+
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
