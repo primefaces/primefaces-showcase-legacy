@@ -405,6 +405,10 @@ padding:20px; border-radius:5px; border-right:solid 60px #404c51;}
 .fixedTop{position:fixed !important; margin-top:0 !important;}
 .animated{-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
 
+input.searchInput {
+    padding-left: 30px
+}
+
 /* override */
 .ui-widget {
     font-size: 90%;
