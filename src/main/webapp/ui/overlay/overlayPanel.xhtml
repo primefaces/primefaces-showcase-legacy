@@ -6,7 +6,7 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Overlay - <span class="orange">Overlay Panel</span>
+        Overlay Panel
     </ui:define>
 
     <ui:define name="description">
@@ -17,8 +17,7 @@
 
     <ui:define name="implementation">
 
-       <h:form>
-           
+       <h:form>      
             <p:commandButton id="imageBtn" value="Basic" type="button" />
             <p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade">
                 <p:graphicImage name="/demo/images/nature/nature1.jpg" width="300" />
@@ -57,8 +56,7 @@
                         <p:graphicImage name="/demo/images/nature/#{image}" width="300" />
                     </ui:repeat>
                 </p:imageSwitch>
-            </p:overlayPanel>
-            
+            </p:overlayPanel>      
         </h:form>
         
     </ui:define>
@@ -67,8 +65,7 @@
         <p:tabView>
             <p:tab title="overlayPanel.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:form&gt;
-           
+&lt;h:form&gt;          
     &lt;p:commandButton id="imageBtn" value="Basic" type="button" /&gt;
     &lt;p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade"&gt;
         &lt;p:graphicImage name="/demo/images/nature/nature1.jpg" width="300" /&gt;
@@ -104,7 +101,6 @@
             &lt;/ui:repeat&gt;
         &lt;/p:imageSwitch&gt;
     &lt;/p:overlayPanel&gt;
-
 &lt;/h:form&gt;
                 </pre>
             </p:tab>

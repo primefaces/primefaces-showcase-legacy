@@ -18,15 +18,13 @@
         <p:commandButton value="Show" type="button" onclick="PF('dlg').show();" />
         
         <p:dialog header="Enter Username" widgetVar="dlg" resizable="false">
-            <h:form>
-                
+            <h:form>   
                 <h:panelGrid columns="2" style="margin-bottom: 10px">
                     <h:outputLabel for="username" value="Username:" />
                     <p:inputText id="username" value="#{userLoginView.username}" />
                 </h:panelGrid>
                 
-                <p:commandButton value="Submit" update=":display" oncomplete="PF('dlg').hide();" style="float:right" />
-                
+                <p:commandButton value="Submit" update=":display" oncomplete="PF('dlg').hide();" style="float:right" />    
             </h:form>
         </p:dialog>
         
@@ -44,14 +42,12 @@
 
 &lt;p:dialog header="Enter Username" widgetVar="dlg" resizable="false"&gt;
     &lt;h:form&gt;
-
         &lt;h:panelGrid columns="2" style="margin-bottom: 10px"&gt;
             &lt;h:outputLabel for="username" value="Username:" /&gt;
             &lt;p:inputText id="username" value="\#{userLoginView.username}" /&gt;
         &lt;/h:panelGrid&gt;
 
         &lt;p:commandButton value="Submit" update=":display" oncomplete="PF('dlg').hide();" style="float:right" /&gt;
-
     &lt;/h:form&gt;
 &lt;/p:dialog&gt;
 

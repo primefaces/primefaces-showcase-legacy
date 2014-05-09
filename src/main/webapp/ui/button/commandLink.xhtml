@@ -6,7 +6,7 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Button - <span class="orange">CommandLink</span>
+        CommandLink
     </ui:define>
 
     <ui:define name="description">
@@ -15,7 +15,7 @@
 
     <ui:define name="implementation">
         
-        <h:form id="form">
+        <h:form>   
             <p:growl id="growl" life="2000" />
             
             <p:commandLink id="ajax" update="growl" actionListener="#{buttonView.buttonAction}" style="margin-right:20px;">
@@ -24,7 +24,7 @@
 
             <p:commandLink id="nonAjax" actionListener="#{buttonView.buttonAction}" style="margin-right:20px;" ajax="false">
                 <h:outputText value="Non-Ajax Submit" />
-            </p:commandLink>
+            </p:commandLink>      
         </h:form>
         
     </ui:define>
@@ -33,7 +33,7 @@
         <p:tabView>
             <p:tab title="commandLink.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:form id="form"&gt;
+&lt;h:form&gt;
     &lt;p:growl id="growl" life="2000" /&gt;
 
     &lt;p:commandLink id="ajax" update="growl" actionListener="\#{buttonView.buttonAction}"&gt;

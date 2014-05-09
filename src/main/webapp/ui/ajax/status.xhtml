@@ -29,14 +29,14 @@
             </f:facet>
         </p:ajaxStatus>
         
-        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
 			
         <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
             <p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
         </p:dialog>
         
         <h:form>
-            <p:commandButton value="Send" icon="ui-icon-refresh"/>
+            <p:commandButton value="Send" icon="ui-icon-refresh" />
         </h:form>
     </ui:define>
 
@@ -58,14 +58,14 @@
     &lt;/f:facet&gt;
 &lt;/p:ajaxStatus&gt;
 
-&lt;p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/&gt;
+&lt;p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" /&gt;
 
 &lt;p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false"&gt;
     &lt;p:graphicImage name="/demo/images/ajaxloadingbar.gif" /&gt;
 &lt;/p:dialog&gt;
 
 &lt;h:form&gt;
-    &lt;p:commandButton value="Send" icon="ui-icon-refresh"/&gt;
+    &lt;p:commandButton value="Send" icon="ui-icon-refresh" /&gt;
 &lt;/h:form&gt;
                 </pre>
             </p:tab>

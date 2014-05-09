@@ -18,25 +18,25 @@
         <h:form>
             <p:panel id="panel" header="New User">
 
-                <p:messages id="msgs"/>
+                <p:messages id="msgs" />
 
                 <h:panelGrid columns="3" cellpadding="5">
                     <p:outputLabel for="firstname" value="Firstname:" />
                     <p:inputText id="firstname" value="#{userView.firstname}" required="true" label="Firstname">
                         <f:validateLength minimum="2" />
                     </p:inputText>
-                    <p:message for="firstname" display="icon"/>
+                    <p:message for="firstname" display="icon" />
 
                     <p:outputLabel for="lastname" value="Lastname:" />
                     <p:inputText id="lastname" value="#{userView.lastname}" label="Lastname" required="true">
                         <f:validateLength minimum="2" />
                         <p:ajax update="msgLastname" event="keyup" />
                     </p:inputText>
-                    <p:message for="lastname" id="msgLastname" display="icon"/>
+                    <p:message for="lastname" id="msgLastname" display="icon" />
 
                 </h:panelGrid>
 
-                <p:commandButton value="Save" update="panel" actionListener="#{userView.save}" icon="ui-icon-check"/>
+                <p:commandButton value="Save" update="panel" actionListener="#{userView.save}" icon="ui-icon-check" />
             </p:panel>
         </h:form>
         
@@ -49,25 +49,25 @@
 &lt;h:form&gt;
     &lt;p:panel id="panel" header="New User"&gt;
 
-        &lt;p:messages id="msgs"/&gt;
+        &lt;p:messages id="msgs" /&gt;
 
         &lt;h:panelGrid columns="3" cellpadding="5"&gt;
             &lt;p:outputLabel for="firstname" value="Firstname:" /&gt;
             &lt;p:inputText id="firstname" value="\#{userView.firstname}" required="true" label="Firstname"&gt;
                 &lt;f:validateLength minimum="2" /&gt;
             &lt;/p:inputText&gt;
-            &lt;p:message for="firstname" display="icon"/&gt;
+            &lt;p:message for="firstname" display="icon" /&gt;
 
             &lt;p:outputLabel for="lastname" value="Lastname:" /&gt;
             &lt;p:inputText id="lastname" value="\#{userView.lastname}" label="Lastname" required="true"&gt;
                 &lt;f:validateLength minimum="2" /&gt;
                 &lt;p:ajax update="msgLastname" event="keyup" /&gt;
             &lt;/p:inputText&gt;
-            &lt;p:message for="lastname" id="msgLastname" display="icon"/&gt;
+            &lt;p:message for="lastname" id="msgLastname" display="icon" /&gt;
 
         &lt;/h:panelGrid&gt;
 
-        &lt;p:commandButton value="Save" update="panel" actionListener="\#{userView.save}" icon="ui-icon-check"/&gt;
+        &lt;p:commandButton value="Save" update="panel" actionListener="\#{userView.save}" icon="ui-icon-check" /&gt;
     &lt;/p:panel&gt;
 &lt;/h:form&gt;
                 </pre>

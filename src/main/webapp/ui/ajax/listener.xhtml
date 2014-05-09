@@ -19,7 +19,7 @@
             <h:panelGrid columns="3">
                 <h:outputText value="Keyup: " />
                 <p:inputText id="counter" value="#{listenerView.text}">
-                    <p:ajax event="keyup" update="out" listener="#{listenerView.handleKeyEvent}"/>
+                    <p:ajax event="keyup" update="out" listener="#{listenerView.handleKeyEvent}" />
                 </p:inputText>
                 <h:outputText id="out" value="#{listenerView.text}" />
             </h:panelGrid>
@@ -35,7 +35,7 @@
     &lt;h:panelGrid columns="3"&gt;
         &lt;h:outputText value="Keyup: " /&gt;
         &lt;p:inputText id="counter" value="\#{listenerView.text}"&gt;
-            &lt;p:ajax event="keyup" update="out" listener="\#{listenerView.handleKeyEvent}"/&gt;
+            &lt;p:ajax event="keyup" update="out" listener="\#{listenerView.handleKeyEvent}" /&gt;
         &lt;/p:inputText&gt;
         &lt;h:outputText id="out" value="\#{listenerView.text}" /&gt;
     &lt;/h:panelGrid&gt;

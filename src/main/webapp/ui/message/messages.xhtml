@@ -17,21 +17,18 @@
         
         <p:tooltip />
         
-        <h:form>
-            
+        <h:form>   
             <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 				
             <p:commandButton value="Info" actionListener="#{messagesView.info}" />
             <p:commandButton value="Warn" actionListener="#{messagesView.warn}" />
             <p:commandButton value="Error" actionListener="#{messagesView.error}" />
-            <p:commandButton value="Fatal" actionListener="#{messagesView.fatal}" />
-            
+            <p:commandButton value="Fatal" actionListener="#{messagesView.fatal}" />   
         </h:form>
         
         <p:separator />
         
-        <h:form>
-            
+        <h:form> 
             <h:panelGrid id="grid" columns="3" cellpadding="5">
                 <p:outputLabel for="default" value="Default:" />
                 <p:inputText id="default" required="true" />
@@ -50,8 +47,7 @@
                 <p:message for="tt" display="tooltip" />
             </h:panelGrid>
 				
-            <p:commandButton id="submitButton" value="Submit" update="grid" />
-            
+            <p:commandButton id="submitButton" value="Submit" update="grid" />    
         </h:form>
                
     </ui:define>
@@ -63,20 +59,17 @@
 &lt;p:tooltip /&gt;
         
 &lt;h:form&gt;
-
     &lt;p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" /&gt;
 
     &lt;p:commandButton value="Info" actionListener="\#{messagesView.info}" /&gt;
     &lt;p:commandButton value="Warn" actionListener="\#{messagesView.warn}" /&gt;
     &lt;p:commandButton value="Error" actionListener="\#{messagesView.error}" /&gt;
     &lt;p:commandButton value="Fatal" actionListener="\#{messagesView.fatal}" /&gt;
-
 &lt;/h:form&gt;
 
 &lt;p:separator /&gt;
 
 &lt;h:form&gt;
-
     &lt;h:panelGrid id="grid" columns="3" cellpadding="5"&gt;
         &lt;p:outputLabel for="default" value="Default:" /&gt;
         &lt;p:inputText id="default" required="true" /&gt;
@@ -96,7 +89,6 @@
     &lt;/h:panelGrid&gt;
 
     &lt;p:commandButton id="submitButton" value="Submit" update="grid" /&gt;
-
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
