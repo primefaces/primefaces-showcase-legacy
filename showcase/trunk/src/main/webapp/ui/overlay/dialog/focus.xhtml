@@ -15,8 +15,7 @@
 
     <ui:define name="implementation">
 
-        <h:form>
-            
+        <h:form>         
             <p:commandButton value="Dyanmic Focus" onclick="PF('dlg').show();" type="button" icon="ui-icon-extlink" />
             
             <p:dialog header="Dynamic Focus" widgetVar="dlg" focus="age">
@@ -30,8 +29,7 @@
                     <h:outputLabel for="age" value="Age:" />
                     <p:inputText id="age" label="age" />
                 </h:panelGrid>
-            </p:dialog>
-            
+            </p:dialog>       
         </h:form>
         
     </ui:define>

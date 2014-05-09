@@ -41,22 +41,22 @@
                 <p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" />
 
                 <p:outputLabel value="Min Length (3):" for="acMinLength" />
-                <p:autoComplete id="acMinLength" minQueryLength="3" value="#{autoCompleteView.txt2}" completeMethod="#{autoCompleteView.completeText}" effect="fade"/>
+                <p:autoComplete id="acMinLength" minQueryLength="3" value="#{autoCompleteView.txt2}" completeMethod="#{autoCompleteView.completeText}" effect="fade" />
 
                 <p:outputLabel value="Delay(1000):" for="acDelay" />
-                <p:autoComplete id="acDelay" queryDelay="1000" value="#{autoCompleteView.txt3}" completeMethod="#{autoCompleteView.completeText}" effect="blind"/>
+                <p:autoComplete id="acDelay" queryDelay="1000" value="#{autoCompleteView.txt3}" completeMethod="#{autoCompleteView.completeText}" effect="blind" />
 
                 <p:outputLabel value="Max Results(5):" for="acMaxResults" />
                 <p:autoComplete id="acMaxResults" maxResults="5" value="#{autoCompleteView.txt4}" completeMethod="#{autoCompleteView.completeText}" />
 
                 <p:outputLabel value="Force Selection:" for="acForce" />
-                <p:autoComplete id="acForce" forceSelection="true" value="#{autoCompleteView.txt5}" completeMethod="#{autoCompleteView.completeText}"/>
+                <p:autoComplete id="acForce" forceSelection="true" value="#{autoCompleteView.txt5}" completeMethod="#{autoCompleteView.completeText}" />
 
                 <p:outputLabel value="DropDown:" for="dd" />
-                <p:autoComplete id="dd" dropdown="true" value="#{autoCompleteView.txt6}" completeMethod="#{autoCompleteView.completeText}"/>
+                <p:autoComplete id="dd" dropdown="true" value="#{autoCompleteView.txt6}" completeMethod="#{autoCompleteView.completeText}" />
 
                 <p:outputLabel value="Cache:" for="cache" />
-                <p:autoComplete id="cache" cache="true" cacheTimeout="30000" value="#{autoCompleteView.txt7}" completeMethod="#{autoCompleteView.completeText}"/>
+                <p:autoComplete id="cache" cache="true" cacheTimeout="30000" value="#{autoCompleteView.txt7}" completeMethod="#{autoCompleteView.completeText}" />
                 
                 <p:outputLabel value="Select Event:" for="event" />
                 <p:autoComplete id="event" value="#{autoCompleteView.txt8}" completeMethod="#{autoCompleteView.completeText}">
@@ -65,7 +65,7 @@
                 
                 <p:outputLabel value="Pojo:" for="themePojo" />
                 <p:autoComplete id="themePojo" value="#{autoCompleteView.theme1}" completeMethod="#{autoCompleteView.completeTheme}"
-                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter" forceSelection="true"/>
+                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter" forceSelection="true" />
                 
                 <p:outputLabel value="Custom Content:" for="themeCustom" />
                 <p:autoComplete id="themeCustom" value="#{autoCompleteView.theme2}" completeMethod="#{autoCompleteView.completeTheme}"
@@ -97,7 +97,7 @@
                     <f:facet name="itemtip">
                         <h:panelGrid columns="2" cellpadding="5">
                             <f:facet name="header">
-                                <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" style="margin-left:50px"/>
+                                <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" style="margin-left:50px" />
                             </f:facet>
                             
                             <h:outputText value="Display:" />
@@ -110,7 +110,7 @@
                 </p:autoComplete>
             </h:panelGrid>
             
-            <p:commandButton value="Submit" icon="ui-icon-check" update="output" oncomplete="PF('dlg').show()"/>
+            <p:commandButton value="Submit" icon="ui-icon-check" update="output" oncomplete="PF('dlg').show()" />
             
             <p:dialog header="Values" resizable="false" showEffect="fade" widgetVar="dlg">
                 <p:panelGrid id="output" columns="2" columnClasses="label, value">
@@ -169,22 +169,22 @@
         &lt;p:autoComplete id="acSimple" value="\#{autoCompleteView.txt1}" completeMethod="\#{autoCompleteView.completeText}" /&gt;
 
         &lt;p:outputLabel value="Min Length (3):" for="acMinLength" /&gt;
-        &lt;p:autoComplete id="acMinLength" minQueryLength="3" value="\#{autoCompleteView.txt2}" completeMethod="\#{autoCompleteView.completeText}" effect="fade"/&gt;
+        &lt;p:autoComplete id="acMinLength" minQueryLength="3" value="\#{autoCompleteView.txt2}" completeMethod="\#{autoCompleteView.completeText}" effect="fade" /&gt;
 
         &lt;p:outputLabel value="Delay(1000):" for="acDelay" /&gt;
-        &lt;p:autoComplete id="acDelay" queryDelay="1000" value="\#{autoCompleteView.txt3}" completeMethod="\#{autoCompleteView.completeText}" effect="blind"/&gt;
+        &lt;p:autoComplete id="acDelay" queryDelay="1000" value="\#{autoCompleteView.txt3}" completeMethod="\#{autoCompleteView.completeText}" effect="blind" /&gt;
 
         &lt;p:outputLabel value="Max Results(5):" for="acMaxResults" /&gt;
         &lt;p:autoComplete id="acMaxResults" maxResults="5" value="\#{autoCompleteView.txt4}" completeMethod="\#{autoCompleteView.completeText}" /&gt;
 
         &lt;p:outputLabel value="Force Selection:" for="acForce" /&gt;
-        &lt;p:autoComplete id="acForce" forceSelection="true" value="\#{autoCompleteView.txt5}" completeMethod="\#{autoCompleteView.completeText}"/&gt;
+        &lt;p:autoComplete id="acForce" forceSelection="true" value="\#{autoCompleteView.txt5}" completeMethod="\#{autoCompleteView.completeText}" /&gt;
 
         &lt;p:outputLabel value="DropDown:" for="dd" /&gt;
-        &lt;p:autoComplete id="dd" dropdown="true" value="\#{autoCompleteView.txt6}" completeMethod="\#{autoCompleteView.completeText}"/&gt;
+        &lt;p:autoComplete id="dd" dropdown="true" value="\#{autoCompleteView.txt6}" completeMethod="\#{autoCompleteView.completeText}" /&gt;
 
         &lt;p:outputLabel value="Cache:" for="cache" /&gt;
-        &lt;p:autoComplete id="cache" cache="true" cacheTimeout="30000" value="\#{autoCompleteView.txt7}" completeMethod="\#{autoCompleteView.completeText}"/&gt;
+        &lt;p:autoComplete id="cache" cache="true" cacheTimeout="30000" value="\#{autoCompleteView.txt7}" completeMethod="\#{autoCompleteView.completeText}" /&gt;
 
         &lt;p:outputLabel value="Select Event:" for="event" /&gt;
         &lt;p:autoComplete id="event" value="\#{autoCompleteView.txt8}" completeMethod="\#{autoCompleteView.completeText}"&gt;
@@ -193,7 +193,7 @@
 
         &lt;p:outputLabel value="Pojo:" for="themePojo" /&gt;
         &lt;p:autoComplete id="themePojo" value="\#{autoCompleteView.theme1}" completeMethod="\#{autoCompleteView.completeTheme}"
-                        var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" converter="themeConverter" forceSelection="true"/&gt;
+                        var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" converter="themeConverter" forceSelection="true" /&gt;
 
         &lt;p:outputLabel value="Custom Content:" for="themeCustom" /&gt;
         &lt;p:autoComplete id="themeCustom" value="\#{autoCompleteView.theme2}" completeMethod="\#{autoCompleteView.completeTheme}"
@@ -225,7 +225,7 @@
             &lt;f:facet name="itemtip"&gt;
                 &lt;h:panelGrid columns="2" cellpadding="5"&gt;
                     &lt;f:facet name="header"&gt;
-                        &lt;h:outputText styleClass="ui-theme ui-theme-\#{theme.name}" style="margin-left:50px"/&gt;
+                        &lt;h:outputText styleClass="ui-theme ui-theme-\#{theme.name}" style="margin-left:50px" /&gt;
                     &lt;/f:facet&gt;
 
                     &lt;h:outputText value="Display:" /&gt;
@@ -238,7 +238,7 @@
         &lt;/p:autoComplete&gt;
     &lt;/h:panelGrid&gt;
 
-    &lt;p:commandButton value="Submit" icon="ui-icon-check" update="output" oncomplete="PF('dlg').show()"/&gt;
+    &lt;p:commandButton value="Submit" icon="ui-icon-check" update="output" oncomplete="PF('dlg').show()" /&gt;
 
     &lt;p:dialog header="Values" resizable="false" showEffect="fade" widgetVar="dlg"&gt;
         &lt;p:panelGrid id="output" columns="2" columnClasses="label, value"&gt;

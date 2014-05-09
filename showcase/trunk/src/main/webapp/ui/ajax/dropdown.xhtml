@@ -22,21 +22,21 @@
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel for="country" value="Country: " />
                     <p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px">
-                        <p:ajax listener="#{dropdownView.onCountryChange}" update="city"/>
-                        <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true"/>
+                        <p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
+                        <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{dropdownView.countries}" />
                     </p:selectOneMenu>
 
                     <p:outputLabel for="city" value="City: " />
                     <p:selectOneMenu id="city" value="#{dropdownView.city}" style="width:150px">
-                        <f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true"/>
+                        <f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{dropdownView.cities}" />
                     </p:selectOneMenu>
                 </h:panelGrid>
 
                 <p:separator />
 
-                <p:commandButton value="Submit" update="msgs" actionListener="#{dropdownView.displayLocation}" icon="ui-icon-check"/>
+                <p:commandButton value="Submit" update="msgs" actionListener="#{dropdownView.displayLocation}" icon="ui-icon-check" />
             </p:panel>
         </h:form>
         
@@ -53,21 +53,21 @@
         &lt;h:panelGrid columns="2" cellpadding="5"&gt;
             &lt;p:outputLabel for="country" value="Country: " /&gt;
             &lt;p:selectOneMenu id="country" value="\#{dropdownView.country}" style="width:150px"&gt;
-                &lt;p:ajax listener="\#{dropdownView.onCountryChange}" update="city"/&gt;
-                &lt;f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true"/&gt;
+                &lt;p:ajax listener="\#{dropdownView.onCountryChange}" update="city" /&gt;
+                &lt;f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" /&gt;
                 &lt;f:selectItems value="\#{dropdownView.countries}" /&gt;
             &lt;/p:selectOneMenu&gt;
 
             &lt;p:outputLabel for="city" value="City: " /&gt;
             &lt;p:selectOneMenu id="city" value="\#{dropdownView.city}" style="width:150px"&gt;
-                &lt;f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true"/&gt;
+                &lt;f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" /&gt;
                 &lt;f:selectItems value="\#{dropdownView.cities}" /&gt;
             &lt;/p:selectOneMenu&gt;
         &lt;/h:panelGrid&gt;
 
         &lt;p:separator /&gt;
 
-        &lt;p:commandButton value="Submit" update="msgs" actionListener="\#{dropdownView.displayLocation}" icon="ui-icon-check"/&gt;
+        &lt;p:commandButton value="Submit" update="msgs" actionListener="\#{dropdownView.displayLocation}" icon="ui-icon-check" /&gt;
     &lt;/p:panel&gt;
 &lt;/h:form&gt;
                 </pre>

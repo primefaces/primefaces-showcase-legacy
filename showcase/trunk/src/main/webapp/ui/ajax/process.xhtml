@@ -14,8 +14,8 @@
     </ui:define>
 
     <ui:define name="implementation">
-        <h:form>
-				
+        
+        <h:form>		
             <p:panel header="New User" style="margin-bottom:10px">
                 <h:panelGrid id="grid" cellpadding="5" columns="2">
                     <f:facet name="header">
@@ -26,20 +26,20 @@
                     <p:inputText id="firstname" value="#{userView.firstname}" />
 
                     <p:outputLabel for="surname" value="Surname:" />
-                    <p:inputText id="surname" value="#{userView.lastname}" required="true" requiredMessage="Surname is required."/>
+                    <p:inputText id="surname" value="#{userView.lastname}" required="true" requiredMessage="Surname is required." />
                 </h:panelGrid>
             </p:panel>
 
             <h:panelGrid columns="6" cellpadding="5">
-                <p:commandButton value="All" id="btnAll" process="@all" update="grid" actionListener="#{userView.save}"/>
-                <p:commandButton value="Form" id="btnForm" process="@form" update="grid" actionListener="#{userView.save}"/>
-                <p:commandButton value="This" id="btnThis" process="@this" update="grid" actionListener="#{userView.save}"/>
-                <p:commandButton value="None" id="btnNone" process="@none" update="grid" actionListener="#{userView.save}"/>
-                <p:commandButton value="Parent" id="btnParent" process="@parent" update="grid" actionListener="#{userView.save}"/>
-                <p:commandButton value="This Surname" id="btnSurname" process="@this,surname" update="grid" actionListener="#{userView.save}"/>
+                <p:commandButton value="All" id="btnAll" process="@all" update="grid" actionListener="#{userView.save}" />
+                <p:commandButton value="Form" id="btnForm" process="@form" update="grid" actionListener="#{userView.save}" />
+                <p:commandButton value="This" id="btnThis" process="@this" update="grid" actionListener="#{userView.save}" />
+                <p:commandButton value="None" id="btnNone" process="@none" update="grid" actionListener="#{userView.save}" />
+                <p:commandButton value="Parent" id="btnParent" process="@parent" update="grid" actionListener="#{userView.save}" />
+                <p:commandButton value="This Surname" id="btnSurname" process="@this,surname" update="grid" actionListener="#{userView.save}" />
             </h:panelGrid>
-
         </h:form>
+        
     </ui:define>
 
     <ui:define name="source">
@@ -47,7 +47,6 @@
             <p:tab title="process.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-
     &lt;p:panel header="New User" style="margin-bottom:10px"&gt;
         &lt;h:panelGrid id="grid" cellpadding="5" columns="2"&gt;
             &lt;f:facet name="header"&gt;
@@ -58,19 +57,18 @@
             &lt;p:inputText id="firstname" value="\#{userView.firstname}" /&gt;
 
             &lt;p:outputLabel for="surname" value="Surname:" /&gt;
-            &lt;p:inputText id="surname" value="\#{userView.lastname}" required="true" requiredMessage="Surname is required."/&gt;
+            &lt;p:inputText id="surname" value="\#{userView.lastname}" required="true" requiredMessage="Surname is required." /&gt;
         &lt;/h:panelGrid&gt;
     &lt;/p:panel&gt;
 
     &lt;h:panelGrid columns="6" cellpadding="5"&gt;
-        &lt;p:commandButton value="All" id="btnAll" process="@all" update="grid" actionListener="\#{userView.save}"/&gt;
-        &lt;p:commandButton value="Form" id="btnForm" process="@form" update="grid" actionListener="\#{userView.save}"/&gt;
-        &lt;p:commandButton value="This" id="btnThis" process="@this" update="grid" actionListener="\#{userView.save}"/&gt;
-        &lt;p:commandButton value="None" id="btnNone" process="@none" update="grid" actionListener="\#{userView.save}"/&gt;
-        &lt;p:commandButton value="Parent" id="btnParent" process="@parent" update="grid" actionListener="\#{userView.save}"/&gt;
-        &lt;p:commandButton value="This Surname" id="btnSurname" process="@this,surname" update="grid" actionListener="\#{userView.save}"/&gt;
+        &lt;p:commandButton value="All" id="btnAll" process="@all" update="grid" actionListener="\#{userView.save}" /&gt;
+        &lt;p:commandButton value="Form" id="btnForm" process="@form" update="grid" actionListener="\#{userView.save}" /&gt;
+        &lt;p:commandButton value="This" id="btnThis" process="@this" update="grid" actionListener="\#{userView.save}" /&gt;
+        &lt;p:commandButton value="None" id="btnNone" process="@none" update="grid" actionListener="\#{userView.save}" /&gt;
+        &lt;p:commandButton value="Parent" id="btnParent" process="@parent" update="grid" actionListener="\#{userView.save}" /&gt;
+        &lt;p:commandButton value="This Surname" id="btnSurname" process="@this,surname" update="grid" actionListener="\#{userView.save}" /&gt;
     &lt;/h:panelGrid&gt;
-
 &lt;/h:form&gt;
                 </pre>
             </p:tab>

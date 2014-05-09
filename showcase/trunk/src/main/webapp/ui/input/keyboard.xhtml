@@ -1,0 +1,260 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Keyboard
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>    
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputText value="Default Layout: " />
+                <p:keyboard id="default" value="#{keyboardView.value1}" />
+
+                <h:outputText value="Basic QWERTY: " />
+                <p:keyboard id="qwerty" value="#{keyboardView.value2}" layout="qwertyBasic" />
+
+                <h:outputText value="Alphabetic Layout: " />
+                <p:keyboard id="alphabetic" value="#{keyboardView.value3}" layout="alphabetic" />
+
+                <h:outputText value="Custom Layout 1: " />
+                <p:keyboard id="custom1" value="#{keyboardView.value4}" layout="custom" layoutTemplate="prime-back,faces-clear,rocks-close" />
+
+                <h:outputText value="Custom Layout 2: " />
+                <p:keyboard id="custom2" value="#{keyboardView.value5}" layout="custom" layoutTemplate="create-space-your-close,owntemplate-shift,easily-space-spacebar" />
+
+                <h:outputText value="Default Keypad: " />
+                <p:keyboard id="keypad" value="#{keyboardView.value6}" keypadOnly="true" />
+
+                <h:outputText value="Button Mode: " />
+                <p:keyboard id="buttonmode" value="#{keyboardView.value7}" showMode="button"  keypadOnly="true" />
+
+                <h:outputText value="Image Mode: " />
+                <p:keyboard id="image" value="#{keyboardView.value8}" showMode="button" buttonImageOnly="true"
+                                buttonImage="../../resources/demo/images/keyboardpencil.png" keypadOnly="true" />
+
+                <h:outputText value="Password Mode: " />
+                <p:keyboard id="password" value="#{keyboardView.value9}" password="true" keypadOnly="true" />
+            </h:panelGrid>
+
+            <br />
+
+            <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" />
+
+            <p:dialog widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Values">
+                <h:panelGrid id="display" columns="2" cellpadding="5">
+                    <h:outputText value="Value1: " />
+                    <h:outputText value="#{keyboardView.value1}" />
+
+                    <h:outputText value="Value2:" />
+                    <h:outputText value="#{keyboardView.value2}" />
+
+                    <h:outputText value="Value3:" />
+                    <h:outputText value="#{keyboardView.value3}" />
+
+                    <h:outputText value="Value4:" />
+                    <h:outputText value="#{keyboardView.value4}" />
+
+                    <h:outputText value="Value5:" />
+                    <h:outputText value="#{keyboardView.value5}" />
+
+                    <h:outputText value="Value6:" />
+                    <h:outputText value="#{keyboardView.value6}" />
+
+                    <h:outputText value="Value7:" />
+                    <h:outputText value="#{keyboardView.value7}" />
+
+                    <h:outputText value="Value8:" />
+                    <h:outputText value="#{keyboardView.value8}" />
+
+                    <h:outputText value="Value9:" />
+                    <h:outputText value="#{keyboardView.value9}" />
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="keyboard.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;          
+    &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+        &lt;h:outputText value="Default Layout: " /&gt;
+        &lt;p:keyboard id="default" value="\#{keyboardView.value1}" /&gt;
+
+        &lt;h:outputText value="Basic QWERTY: " /&gt;
+        &lt;p:keyboard id="qwerty" value="\#{keyboardView.value2}" layout="qwertyBasic" /&gt;
+
+        &lt;h:outputText value="Alphabetic Layout: " /&gt;
+        &lt;p:keyboard id="alphabetic" value="\#{keyboardView.value3}" layout="alphabetic" /&gt;
+
+        &lt;h:outputText value="Custom Layout 1: " /&gt;
+        &lt;p:keyboard id="custom1" value="\#{keyboardView.value4}" layout="custom" layoutTemplate="prime-back,faces-clear,rocks-close" /&gt;
+
+        &lt;h:outputText value="Custom Layout 2: " /&gt;
+        &lt;p:keyboard id="custom2" value="\#{keyboardView.value5}" layout="custom" layoutTemplate="create-space-your-close,owntemplate-shift,easily-space-spacebar" /&gt;
+
+        &lt;h:outputText value="Default Keypad: " /&gt;
+        &lt;p:keyboard id="keypad" value="\#{keyboardView.value6}" keypadOnly="true" /&gt;
+
+        &lt;h:outputText value="Button Mode: " /&gt;
+        &lt;p:keyboard id="buttonmode" value="\#{keyboardView.value7}" showMode="button"  keypadOnly="true" /&gt;
+
+        &lt;h:outputText value="Image Mode: " /&gt;
+        &lt;p:keyboard id="image" value="\#{keyboardView.value8}" showMode="button" buttonImageOnly="true"
+                        buttonImage="../../resources/demo/images/keyboardpencil.png" keypadOnly="true" /&gt;
+
+        &lt;h:outputText value="Password Mode: " /&gt;
+        &lt;p:keyboard id="password" value="\#{keyboardView.value9}" password="true" keypadOnly="true" /&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" /&gt;
+
+    &lt;p:dialog widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Values"&gt;
+        &lt;h:panelGrid id="display" columns="2" cellpadding="5"&gt;
+            &lt;h:outputText value="Value1: " /&gt;
+            &lt;h:outputText value="\#{keyboardView.value1}" /&gt;
+
+            &lt;h:outputText value="Value2:" /&gt;
+            &lt;h:outputText value="\#{keyboardView.value2}" /&gt;
+
+            &lt;h:outputText value="Value3:" /&gt;
+            &lt;h:outputText value="\#{keyboardView.value3}" /&gt;
+
+            &lt;h:outputText value="Value4:" /&gt;
+            &lt;h:outputText value="\#{keyboardView.value4}" /&gt;
+
+            &lt;h:outputText value="Value5:" /&gt;
+            &lt;h:outputText value="\#{keyboardView.value5}" /&gt;
+
+            &lt;h:outputText value="Value6:" /&gt;
+            &lt;h:outputText value="\#{keyboardView.value6}" /&gt;
+
+            &lt;h:outputText value="Value7:" /&gt;
+            &lt;h:outputText value="\#{keyboardView.value7}" /&gt;
+
+            &lt;h:outputText value="Value8:" /&gt;
+            &lt;h:outputText value="\#{keyboardView.value8}" /&gt;
+
+            &lt;h:outputText value="Value9:" /&gt;
+            &lt;h:outputText value="\#{keyboardView.value9}" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="KeyboardView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class KeyboardView {
+    
+    private String value1;
+	
+	private String value2;
+	
+	private String value3;
+	
+	private String value4;
+	
+	private String value5;
+
+    private String value6;
+
+    private String value7;
+
+    private String value8;
+
+    private String value9;
+
+    public String getValue1() {
+        return value1;
+    }
+
+    public void setValue1(String value1) {
+        this.value1 = value1;
+    }
+
+    public String getValue2() {
+        return value2;
+    }
+
+    public void setValue2(String value2) {
+        this.value2 = value2;
+    }
+
+    public String getValue3() {
+        return value3;
+    }
+
+    public void setValue3(String value3) {
+        this.value3 = value3;
+    }
+
+    public String getValue4() {
+        return value4;
+    }
+
+    public void setValue4(String value4) {
+        this.value4 = value4;
+    }
+
+    public String getValue5() {
+        return value5;
+    }
+
+    public void setValue5(String value5) {
+        this.value5 = value5;
+    }
+
+    public String getValue6() {
+        return value6;
+    }
+
+    public void setValue6(String value6) {
+        this.value6 = value6;
+    }
+
+    public String getValue7() {
+        return value7;
+    }
+
+    public void setValue7(String value7) {
+        this.value7 = value7;
+    }
+
+    public String getValue8() {
+        return value8;
+    }
+
+    public void setValue8(String value8) {
+        this.value8 = value8;
+    }
+
+    public String getValue9() {
+        return value9;
+    }
+
+    public void setValue9(String value9) {
+        this.value9 = value9;
+    }
+    
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

@@ -6,7 +6,7 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Input - <span class="orange">Editor</span>
+        Editor
     </ui:define>
 
     <ui:define name="description">
@@ -15,8 +15,7 @@
 
     <ui:define name="implementation">
 
-        <h:form>
-            
+        <h:form>    
             <p:editor id="editor" widgetVar="editorWidget" value="#{editorView.text}" width="600" />
             
             <h:panelGrid columns="2" style="margin-top: 10px">
@@ -27,8 +26,7 @@
             
             <p:dialog header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade">
                 <h:outputText id="display" value="#{editorView.text}" escape="false" />
-            </p:dialog>
-            
+            </p:dialog>     
         </h:form>
         
     </ui:define>
@@ -37,8 +35,7 @@
         <p:tabView>
             <p:tab title="editor.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:form&gt;
-            
+&lt;h:form&gt;           
     &lt;p:editor id="editor" widgetVar="editorWidget" value="\#{editorView.text}" width="600" /&gt;
 
     &lt;h:panelGrid columns="2" style="margin-top: 10px"&gt;
@@ -50,8 +47,7 @@
     &lt;p:dialog header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade"&gt;
         &lt;h:outputText id="display" value="\#{editorView.text}" escape="false" /&gt;
     &lt;/p:dialog&gt;
-
-&lt;/h:form&gt;
+&lt;/h:form&gt; 
                 </pre>
             </p:tab>
 

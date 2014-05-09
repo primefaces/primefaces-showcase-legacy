@@ -15,13 +15,11 @@
 
     <ui:define name="implementation">
         
-        <h:form>
-            
+        <h:form>          
             <p:fileUpload fileUploadListener="#{fileUploadView.handleFileUpload}" mode="advanced" 
                           update="messages" auto="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
                 
-            <p:growl id="messages" showDetail="true" />
-            
+            <p:growl id="messages" showDetail="true" />        
         </h:form>
        
     </ui:define>
@@ -31,12 +29,10 @@
             <p:tab title="auto.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-
     &lt;p:fileUpload fileUploadListener="\#{fileUploadView.handleFileUpload}" mode="advanced" 
                      update="messages" auto="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" /&gt;
 
     &lt;p:growl id="messages" showDetail="true" /&gt;
-
 &lt;/h:form&gt;
                 </pre>
             </p:tab>

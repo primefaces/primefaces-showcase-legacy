@@ -27,14 +27,13 @@
     <ui:define name="implementation">
         
         <h:form id="form">
-
             <p:log />
 
             <h:panelGrid columns="5" cellpadding="5">
-                <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
+                <h:outputLabel for="name" value="Name:" style="font-weight:bold" />
                 <p:inputText id="name" />
-                <p:commandButton value="False" partialSubmit="false" process="name"/>
-                <p:commandButton value="True" partialSubmit="true" process="name"/>
+                <p:commandButton value="False" partialSubmit="false" process="name" />
+                <p:commandButton value="True" partialSubmit="true" process="name" />
             </h:panelGrid>
 
             <p:inputText />
@@ -138,14 +137,13 @@
             <p:tab title="partialSubmit.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form id="form"&gt;
-
     &lt;p:log /&gt;
 
     &lt;h:panelGrid columns="5" cellpadding="5"&gt;
-        &lt;h:outputLabel for="name" value="Name:" style="font-weight:bold"/&gt;
+        &lt;h:outputLabel for="name" value="Name:" style="font-weight:bold" /&gt;
         &lt;p:inputText id="name" /&gt;
-        &lt;p:commandButton value="False" partialSubmit="false" process="name"/&gt;
-        &lt;p:commandButton value="True" partialSubmit="true" process="name"/&gt;
+        &lt;p:commandButton value="False" partialSubmit="false" process="name" /&gt;
+        &lt;p:commandButton value="True" partialSubmit="true" process="name" /&gt;
     &lt;/h:panelGrid&gt;
 
     &lt;p:inputText /&gt;

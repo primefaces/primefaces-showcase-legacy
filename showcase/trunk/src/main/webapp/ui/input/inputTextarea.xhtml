@@ -1,0 +1,89 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        InputTextarea
+    </ui:define>
+
+    <ui:define name="description">
+        InputTextarea extends standard InputTextarea with autoComplete, autoResize, remaining characters counter and theming features.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>            
+            <h3 style="margin-top: 0">AutoComplete</h3>
+            <p>Following inputTextarea send a query for each word that has at least 4 characters to the complete method. Try typing "PrimeFaces".</p>
+            <p:inputTextarea rows="10" cols="50" completeMethod="#{inputTextareaView.completeArea}" queryDelay="750" minQueryLength="4" />
+
+            <h3>AutoResize</h3>
+            <p:inputTextarea rows="6" cols="33" />
+
+            <h3>Remaining Chars</h3>
+            <p:inputTextarea rows="5" cols="30" counter="display" maxlength="10" counterTemplate="{0} characters remaining." autoResize="false" />
+            <br />
+            <h:outputText id="display" />
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="inputTextarea.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;               
+    &lt;h3 style="margin-top: 0"&gt;AutoComplete&lt;/h3&gt;
+    &lt;p&gt;Following inputTextarea send a query for each word that has at least 4 characters to the complete method. Try typing "PrimeFaces".&lt;/p&gt;
+    &lt;p:inputTextarea rows="10" cols="50" completeMethod="\#{inputTextareaView.completeArea}" queryDelay="750" minQueryLength="4" /&gt;
+
+    &lt;h3&gt;AutoResize&lt;/h3&gt;
+    &lt;p:inputTextarea rows="6" cols="33" /&gt;
+
+    &lt;h3&gt;Remaining Chars&lt;/h3&gt;
+    &lt;p:inputTextarea rows="5" cols="30" counter="display" maxlength="10" counterTemplate="{0} characters remaining." autoResize="false" /&gt;
+    &lt;h:outputText id="display" /&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="InputTextareaView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class InputTextareaView {
+    
+    public List&lt;String&gt; completeArea(String query) {
+        List&lt;String&gt; results = new ArrayList&lt;String&gt;();
+        
+        if(query.equals("PrimeFaces")) {
+            results.add("PrimeFaces Rocks!!!");
+            results.add("PrimeFaces has 100+ components.");
+            results.add("PrimeFaces is lightweight.");
+            results.add("PrimeFaces is easy to use.");
+            results.add("PrimeFaces is developed with passion!");
+        }
+        else {
+            for(int i = 0; i &lt; 10; i++) {
+                results.add(query + i);
+            }
+        }
+        
+        return results;
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

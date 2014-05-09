@@ -6,7 +6,7 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Overlay - <span class="orange">Confirm Dialog</span>
+        Confirm Dialog
     </ui:define>
 
     <ui:define name="description">
@@ -15,8 +15,7 @@
 
     <ui:define name="implementation">
     
-        <h:form>
-            
+        <h:form>     
             <p:growl id="message" showDetail="true" />
             
             <p:commandButton value="Destroy the World" actionListener="#{dialogView.destroyWorld}" update="message">
@@ -26,8 +25,7 @@
             <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
                 <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                 <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-            </p:confirmDialog>
-            
+            </p:confirmDialog>      
         </h:form>
         
     </ui:define>
@@ -36,8 +34,7 @@
         <p:tabView>
             <p:tab title="confirmDialog.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:form&gt;
-            
+&lt;h:form&gt;           
     &lt;p:growl id="message" showDetail="true" /&gt;
 
     &lt;p:commandButton value="Destroy the World" actionListener="\#{dialogView.destroyWorld}" update="message"&gt;
@@ -48,7 +45,6 @@
         &lt;p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" /&gt;
         &lt;p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" /&gt;
     &lt;/p:confirmDialog&gt;
-
 &lt;/h:form&gt;
                 </pre>
             </p:tab>

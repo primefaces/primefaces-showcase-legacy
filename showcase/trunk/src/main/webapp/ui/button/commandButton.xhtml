@@ -6,7 +6,7 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Button - <span class="orange">CommandButton</span>
+        CommandButton
     </ui:define>
 
     <ui:define name="description">
@@ -15,18 +15,18 @@
 
     <ui:define name="implementation">
         
-        <h:form id="form">
-            <p:growl id="growl" life="2000"/>
+        <h:form> 
+            <p:growl id="growl" life="2000" />
             
-            <p:commandButton value="Ajax Submit" id="ajax" update="growl" actionListener="#{buttonView.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary"/>
+            <p:commandButton value="Ajax Submit" id="ajax" update="growl" actionListener="#{buttonView.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary" />
 
             <p:commandButton value="Non-Ajax Submit" id="nonAjax" actionListener="#{buttonView.buttonAction}" style="margin-right:20px;" ajax="false" />
 
             <p:commandButton value="With Icon" id="withIcon" actionListener="#{buttonView.buttonAction}" update="growl" style="margin-right:20px;" icon="ui-icon-disk" />
 
-            <p:commandButton actionListener="#{buttonView.buttonAction}" id="iconOnly" update="growl" style="margin-right:20px;" icon="ui-icon-disk" title="Icon Only"/>
+            <p:commandButton actionListener="#{buttonView.buttonAction}" id="iconOnly" update="growl" style="margin-right:20px;" icon="ui-icon-disk" title="Icon Only" />
 
-            <p:commandButton value="Disabled" id="disabled" style="margin-right:20px;" disabled="true" />
+            <p:commandButton value="Disabled" id="disabled" style="margin-right:20px;" disabled="true" />   
         </h:form>
 
     </ui:define>
@@ -35,16 +35,16 @@
         <p:tabView>
             <p:tab title="commandButton.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:form id="form"&gt;
+&lt;h:form&gt;
     &lt;p:growl id="growl" life="2000" /&gt;
     
-    &lt;p:commandButton value="Ajax Submit" id="ajax" update="growl" actionListener="\#{buttonView.buttonAction}" styleClass="ui-priority-primary"/&gt;
+    &lt;p:commandButton value="Ajax Submit" id="ajax" update="growl" actionListener="\#{buttonView.buttonAction}" styleClass="ui-priority-primary" /&gt;
 
     &lt;p:commandButton value="Non-Ajax Submit" id="nonAjax" actionListener="\#{buttonView.buttonAction}" ajax="false" /&gt;
 
     &lt;p:commandButton value="With Icon" id="withIcon" actionListener="\#{buttonView.buttonAction}" update="growl" icon="ui-icon-disk" /&gt;
 
-    &lt;p:commandButton actionListener="\#{buttonView.buttonAction}" id="iconOnly" update="growl" icon="ui-icon-disk" title="Icon Only"/&gt;
+    &lt;p:commandButton actionListener="\#{buttonView.buttonAction}" id="iconOnly" update="growl" icon="ui-icon-disk" title="Icon Only" /&gt;
 
     &lt;p:commandButton value="Disabled" id="disabled" disabled="true" /&gt;
 &lt;/h:form&gt;

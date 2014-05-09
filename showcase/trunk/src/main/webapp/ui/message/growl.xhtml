@@ -6,7 +6,7 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Messages - <span class="orange">Growl</span>
+        Growl
     </ui:define>
 
     <ui:define name="description">
@@ -15,8 +15,7 @@
 
     <ui:define name="implementation">
         
-        <h:form>
-            
+        <h:form>           
             <p:growl id="growl" showDetail="true" sticky="true" />  
       
             <p:panel header="Growl">  
@@ -26,8 +25,7 @@
                 </h:panelGrid>  
   
                 <p:commandButton value="Save" actionListener="#{growlView.saveMessage}" update="growl" />  
-            </p:panel>
-            
+            </p:panel>     
         </h:form> 
            
     </ui:define>
@@ -36,8 +34,7 @@
         <p:tabView>
             <p:tab title="growl.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:form&gt;
-  
+&lt;h:form&gt; 
     &lt;p:growl id="growl" showDetail="true" sticky="true" /&gt;  
 
     &lt;p:panel header="Growl"&gt;  
@@ -47,8 +44,7 @@
         &lt;/h:panelGrid&gt;  
 
         &lt;p:commandButton value="Save" actionListener="\#{growlView.saveMessage}" update="growl" /&gt;  
-    &lt;/p:panel&gt;
-  
+    &lt;/p:panel&gt; 
 &lt;/h:form&gt;  
                 </pre>
             </p:tab>
