@@ -24,22 +24,28 @@ import javax.faces.bean.ViewScoped;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 
-@ManagedBean(name="dtBasicView")
+@ManagedBean(name="dtSortView")
 @ViewScoped
-public class BasicView implements Serializable {
+public class SortView implements Serializable {
     
-    private List<Car> cars;
+    private List<Car> cars1;
+    private List<Car> cars2;
     
     @ManagedProperty("#{carService}")
     private CarService service;
 
     @PostConstruct
     public void init() {
-        cars = service.createCars(10);
+        cars1 = service.createCars(10);
+        cars2 = service.createCars(50);
     }
-    
-    public List<Car> getCars() {
-        return cars;
+
+    public List<Car> getCars1() {
+        return cars1;
+    }
+
+    public List<Car> getCars2() {
+        return cars2;
     }
 
     public void setService(CarService service) {
