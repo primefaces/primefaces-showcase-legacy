@@ -253,6 +253,14 @@ public class CarService {
     public boolean getRandomSoldState() {
 		return (Math.random() &gt; 0.5) ? true: false;
 	}
+
+    public List&lt;String&gt; getColors() {
+        return Arrays.asList(colors);
+    }
+    
+    public List&lt;String&gt; getBrands() {
+        return Arrays.asList(brands);
+    }
 }
                 </pre>
             </p:tab>
