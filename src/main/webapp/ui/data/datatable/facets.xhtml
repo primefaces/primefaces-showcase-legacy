@@ -44,7 +44,7 @@
 
     <ui:define name="source">
         <p:tabView>
-            <p:tab title="basic.xhtml">
+            <p:tab title="facets.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;p:dataTable var="car" value="\#{dtBasicView.cars}"&gt;
     &lt;f:facet name="header"&gt;
@@ -90,7 +90,7 @@ public class BasicView {
     
     private List&lt;Car&gt; cars;
     
-    @ManagedProperty("#{carService}")
+    @ManagedProperty("\#{carService}")
     private CarService service;
 
     @PostConstruct

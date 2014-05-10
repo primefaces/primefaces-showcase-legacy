@@ -10,11 +10,14 @@
     </ui:define>
 
     <ui:define name="description">
-        DataTable displays data in tabular format.
+        DataTable provides a highly customizable ajax paginator.
     </ui:define>
 
     <ui:define name="implementation">
-        <p:dataTable var="car" value="#{dtBasicView.cars}">
+        <p:dataTable var="car" value="#{dtPaginatorView.cars}" rows="10" 
+                     paginator="true"
+                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     rowsPerPageTemplate="5,10,15">
             <p:column headerText="Id">
                 <h:outputText value="#{car.id}" />
             </p:column>
@@ -35,9 +38,12 @@
 
     <ui:define name="source">
         <p:tabView>
-            <p:tab title="basic.xhtml">
+            <p:tab title="paginator.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;p:dataTable var="car" value="\#{dtBasicView.cars}"&gt;
+&lt;p:dataTable var="car" value="\#{dtPaginatorView.cars}" rows="10"
+                     paginator="true"
+                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     rowsPerPageTemplate="5,10,15"&gt;
     &lt;p:column headerText="Id"&gt;
         &lt;h:outputText value="\#{car.id}" /&gt;
     &lt;/p:column&gt;
@@ -57,7 +63,7 @@
                 </pre>
             </p:tab>
 
-            <p:tab title="BasicView.java">
+            <p:tab title="PaginatorView.java">
                 <pre name="code" class="brush:java">
 package org.primefaces.showcase.view.data.datatable;
 
@@ -68,8 +74,8 @@ import javax.faces.bean.ManagedProperty;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 
-@ManagedBean(name="dtBasicView")
-public class BasicView {
+@ManagedBean(name="dtPaginatorView")
+public class PaginatorView {
     
     private List&lt;Car&gt; cars;
     
@@ -78,7 +84,7 @@ public class BasicView {
 
     @PostConstruct
     public void init() {
-        cars = service.createCars(10);
+        cars = service.createCars(50);
     }
     
     public List&lt;Car&gt; getCars() {
