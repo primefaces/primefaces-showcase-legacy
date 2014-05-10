@@ -16,6 +16,7 @@
 package org.primefaces.showcase.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import javax.faces.bean.ApplicationScoped;
@@ -81,11 +82,19 @@ public class CarService {
 		return brands[(int) (Math.random() * 10)];
 	}
     
-    public int getRandomPrice() {
+    private int getRandomPrice() {
 		return (int) (Math.random() * 100000);
 	}
     
-    public boolean getRandomSoldState() {
+    private boolean getRandomSoldState() {
 		return (Math.random() > 0.5) ? true: false;
 	}
+    
+    public List<String> getColors() {
+        return Arrays.asList(colors);
+    }
+    
+    public List<String> getBrands() {
+        return Arrays.asList(brands);
+    }
 }
