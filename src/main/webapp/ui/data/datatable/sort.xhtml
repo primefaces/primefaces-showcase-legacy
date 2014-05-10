@@ -6,33 +6,54 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        DataTable - <span class="orange">Basic</span>
+        DataTable - <span class="orange">Sort</span>
     </ui:define>
 
     <ui:define name="description">
-        DataTable provides a highly customizable ajax paginator.
+        Sorting is enabled with sortBy expressions. Both single and multiple column sorting are supported.
     </ui:define>
 
     <ui:define name="implementation">
         
         <h:form>
-            <p:dataTable var="car" value="#{dtPaginatorView.cars}" rows="10" 
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15">
-                <p:column headerText="Id">
+            <p:dataTable var="car" value="#{dtSortView.cars1}" style="margin-bottom:40px">
+                <f:facet name="header">
+                    Single Column Sort
+                </f:facet>
+                <p:column headerText="Id" sortBy="#{car.id}">
                     <h:outputText value="#{car.id}" />
                 </p:column>
 
-                <p:column headerText="Year">
+                <p:column headerText="Year" sortBy="#{car.year}">
                     <h:outputText value="#{car.year}" />
                 </p:column>
 
-                <p:column headerText="Brand">
+                <p:column headerText="Brand" sortBy="#{car.brand}">
                     <h:outputText value="#{car.brand}" />
                 </p:column>
 
-                <p:column headerText="Color">
+                <p:column headerText="Color" sortBy="#{car.color}">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+            </p:dataTable>
+            
+            <p:dataTable var="car" value="#{dtSortView.cars2}" sortMode="multiple">
+                <f:facet name="header">
+                    Multiple Column Sort with Metakey
+                </f:facet>
+                <p:column headerText="Id" sortBy="#{car.id}">
+                    <h:outputText value="#{car.id}" />
+                </p:column>
+
+                <p:column headerText="Year" sortBy="#{car.year}">
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+
+                <p:column headerText="Brand" sortBy="#{car.brand}">
+                    <h:outputText value="#{car.brand}" />
+                </p:column>
+
+                <p:column headerText="Color" sortBy="#{car.color}">
                     <h:outputText value="#{car.color}" />
                 </p:column>
             </p:dataTable>
@@ -42,26 +63,47 @@
 
     <ui:define name="source">
         <p:tabView>
-            <p:tab title="paginator.xhtml">
+            <p:tab title="sort.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;p:dataTable var="car" value="\#{dtPaginatorView.cars}" rows="10"
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15"&gt;
-        &lt;p:column headerText="Id"&gt;
+    &lt;p:dataTable var="car" value="\#{dtSortView.cars1}" style="margin-bottom:40px"&gt;
+        &lt;f:facet name="header"&gt;
+            Single Column Sort
+        &lt;/f:facet&gt;
+        &lt;p:column headerText="Id" sortBy="\#{car.id}"&gt;
             &lt;h:outputText value="\#{car.id}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Year"&gt;
+        &lt;p:column headerText="Year" sortBy="\#{car.year}"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Brand"&gt;
+        &lt;p:column headerText="Brand" sortBy="\#{car.brand}"&gt;
             &lt;h:outputText value="\#{car.brand}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column headerText="Color"&gt;
+        &lt;p:column headerText="Color" sortBy="\#{car.color}"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:dataTable&gt;
+
+    &lt;p:dataTable var="car" value="\#{dtSortView.cars2}" sortMode="multiple"&gt;
+        &lt;f:facet name="header"&gt;
+            Multiple Column Sort with Metakey
+        &lt;/f:facet&gt;
+        &lt;p:column headerText="Id" sortBy="\#{car.id}"&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Year" sortBy="\#{car.year}"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Brand" sortBy="\#{car.brand}"&gt;
+            &lt;h:outputText value="\#{car.brand}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color" sortBy="\#{car.color}"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
@@ -69,7 +111,7 @@
                 </pre>
             </p:tab>
 
-            <p:tab title="PaginatorView.java">
+            <p:tab title="SortView.java">
                 <pre name="code" class="brush:java">
 package org.primefaces.showcase.view.data.datatable;
 
@@ -82,22 +124,28 @@ import javax.faces.bean.ViewScoped;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 
-@ManagedBean(name="dtBasicView")
+@ManagedBean(name="dtSortView")
 @ViewScoped
-public class BasicView implements Serializable {
+public class SortView implements Serializable {
     
-    private List&lt;Car&gt; cars;
+    private List&lt;Car&gt; cars1;
+    private List&lt;Car&gt; cars2;
     
     @ManagedProperty("\#{carService}")
     private CarService service;
 
     @PostConstruct
     public void init() {
-        cars = service.createCars(10);
+        cars1 = service.createCars(10);
+        cars2 = service.createCars(50);
     }
-    
-    public List&lt;Car&gt; getCars() {
-        return cars;
+
+    public List&lt;Car&gt; getCars1() {
+        return cars1;
+    }
+
+    public List&lt;Car&gt; getCars2() {
+        return cars2;
     }
 
     public void setService(CarService service) {
