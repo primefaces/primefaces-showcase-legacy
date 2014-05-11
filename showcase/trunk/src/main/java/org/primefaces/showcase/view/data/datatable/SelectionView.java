@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.primefaces.showcase.view.data;
+package org.primefaces.showcase.view.data.datatable;
 
 import java.io.Serializable;
 import java.util.List;
@@ -108,3 +108,4 @@ public class SelectionView implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }
+
