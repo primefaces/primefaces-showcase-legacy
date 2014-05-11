@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	</ui:define>
+    
+    <ui:define name="title">
+        GMap - <span class="subitem">Markers</span>
+    </ui:define>
+
+    <ui:define name="description">
+        MapModel API is used to add markers to the map. Marker class has various configuration options like custom icons, dragging, title text and more.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+       <p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px" model="#{markersView.simpleModel}" />
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="markers.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px" model="\#{markersView.simpleModel}" /&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="MarkersView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data.gMap;
+
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
+
+@ManagedBean
+public class MarkersView implements Serializable {
+   
+    private MapModel simpleModel;
+ 
+    public MarkersView() {
+        simpleModel = new DefaultMapModel();
+         
+        //Shared coordinates
+        LatLng coord1 = new LatLng(36.879466, 30.667648);
+        LatLng coord2 = new LatLng(36.883707, 30.689216);
+        LatLng coord3 = new LatLng(36.879703, 30.706707);
+        LatLng coord4 = new LatLng(36.885233, 30.702323);
+         
+        //Basic marker
+        simpleModel.addOverlay(new Marker(coord1, "Konyaalti"));
+        simpleModel.addOverlay(new Marker(coord2, "Ataturk Parki"));
+        simpleModel.addOverlay(new Marker(coord3, "Karaalioglu Parki"));
+        simpleModel.addOverlay(new Marker(coord4, "Kaleici"));
+    }
+ 
+    public MapModel getSimpleModel() {
+        return simpleModel;
+    }
+}
+
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
