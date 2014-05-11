@@ -1,0 +1,155 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/WEB-INF/mobile.xhtml">
+    
+      <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+
+        <script type="text/javascript">
+//<![CDATA[
+
+//]]>
+		</script>
+
+	</ui:define>
+
+    
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>Events</h1>
+            <p>Mobile events are integrated with components as behaviors.</p>
+            
+            <h:form id="form">
+                <p:growl id="msgs" showDetail="true" />
+                
+                <h2 class="first">Swipe and Taphold</h2>
+                <p>Swipe an item left or right to remove it and taphold to view model information.</p>
+                <p:dataList value="#{tableBean.carsSmall}" var="car" pt:data-inset="true">
+                    <p:ajax event="swipeleft" listener="#{tableBean.swipeCar}" update="@form:msgs @this"/>
+                    <p:ajax event="swiperight" listener="#{tableBean.swipeCar}" update="@form:msgs @this"/>
+                    <p:ajax event="taphold" listener="#{tableBean.onRowSelect}" update="@form:msgs"/>
+                    <h:outputText value="#{car.manufacturer} - #{car.color}" />
+                </p:dataList>
+            </h:form>
+            
+            <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1">
+                <p:tab title="events.xhtml">
+                    <pre class="brush:xml">
+&lt;h:form id="form"&gt;
+    &lt;p:growl id="msgs" showDetail="true" /&gt;
+
+    &lt;h2 class="first"&gt;Swipe and Taphold&lt;/h2&gt;
+    &lt;p&gt;Swipe an item left or right to remove it and taphold to view model information.&lt;/p&gt;
+    &lt;p:dataList value="\#{tableBean.carsSmall}" var="car" pt:data-inset="true"&gt;
+        &lt;p:ajax event="swipeleft" listener="\#{tableBean.swipeCar}" update="@form:msgs @this"/&gt;
+        &lt;p:ajax event="swiperight" listener="\#{tableBean.swipeCar}" update="@form:msgs @this"/&gt;
+        &lt;p:ajax event="taphold" listener="\#{tableBean.onRowSelect}" update="@form:msgs"/&gt;
+        &lt;h:outputText value="\#{car.manufacturer} - \#{car.color}" /&gt;
+    &lt;/p:dataList&gt;
+&lt;/h:form&gt;
+                    </pre>   
+                </p:tab>
+                <p:tab title="TableBean.java">
+                    <pre class="brush:java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.primefaces.examples.domain.Car;
+
+public class TableBean implements Serializable {
+	
+	static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+		
+		manufacturers = new String[10];
+		manufacturers[0] = "Mercedes";
+		manufacturers[1] = "BMW";
+		manufacturers[2] = "Volvo";
+		manufacturers[3] = "Audi";
+		manufacturers[4] = "Renault";
+		manufacturers[5] = "Opel";
+		manufacturers[6] = "Volkswagen";
+		manufacturers[7] = "Chrysler";
+		manufacturers[8] = "Ferrari";
+		manufacturers[9] = "Ford";
+	}
+
+    private final static String[] colors;
+
+	private final static String[] manufacturers;
+	
+	private List&lt;Car&gt; carsSmall;
+	
+	public TableBean() {
+		carsSmall = new ArrayList&lt;Car&gt;();
+		
+		populateRandomCars(carsSmall, 9);
+	}
+	
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++) {
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+        }
+	}
+	
+	public List&lt;Car&gt; getCarsSmall() {
+		return carsSmall;
+	}
+
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+	
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+	
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+	
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+
+    public void swipeCar(SwipeEvent event) {
+        Car car = (Car) event.getData();
+        carsSmall.remove(car);
+
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Car Swiped", "Removed: " + car.getModel()));
+    }
+
+    public void onRowSelect(SelectEvent event) {
+        FacesMessage msg = new FacesMessage("Car Selected", ((Car) event.getObject()).getModel());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+}
+                    </pre>
+                </p:tab>
+            </p:accordionPanel>
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>

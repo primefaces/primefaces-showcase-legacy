@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/WEB-INF/mobile.xhtml">
+
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>Growl</h1>
+            <p style="margin-bottom:1em">Growl displays facesmessages in an overlay.</p>
+            
+            <h:form>
+                
+                <p:growl id="growl" showDetail="true" />
+                
+                <pm:field>
+                    <p:outputLabel for="name" value="Name:" /> 
+                    <p:inputText id="name" value="#{growlBean.text}" required="true" label="Name" />
+                </pm:field>
+                
+                <p:commandButton id="btn" value="Save" actionListener="#{growlBean.save}" update="growl" icon="check"/>
+                
+            </h:form>
+            
+            <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1" multiple="true">
+                <p:tab title="growl.xhtml">
+                    <pre class="brush:xml">
+&lt;h:form&gt;
+                
+    &lt;p:growl id="growl" showDetail="true" /&gt;
+
+    &lt;pm:field&gt;
+        &lt;p:outputLabel for="name" value="Name:" /&gt; 
+        &lt;p:inputText id="name" value="\#{growlBean.text}" required="true" label="Name" /&gt;
+    &lt;/pm:field&gt;
+
+    &lt;p:commandButton id="btn" value="Save" actionListener="\#{growlBean.save}" update="growl" icon="check"/&gt;
+
+&lt;/h:form&gt;
+                    </pre>   
+                </p:tab>
+                <p:tab title="GrowlBean.java">
+                    <pre class="brush:java">
+package org.primefaces.examples.view;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+public class GrowlBean {
+
+    private String text;
+
+    public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public void save() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		context.addMessage(null, new FacesMessage("Successful", "Hello " + text));
+		context.addMessage(null, new FacesMessage("Second Message", "Additional Info Here..."));
+	}
+}
+                    </pre>
+                </p:tab>
+            </p:accordionPanel>
+            
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>

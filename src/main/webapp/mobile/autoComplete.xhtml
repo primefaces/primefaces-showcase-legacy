@@ -1,0 +1,254 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/WEB-INF/mobile.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css"> 
+.ui-players h2 {
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0.45em 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ui-players img {
+    left: 0;
+    max-height: 5em;
+    max-width: 5em;
+    position: absolute;
+    top: 0;
+}
+
+.ui-players p {
+    display: block;
+    font-size: 0.75em;
+    font-weight: normal;
+    margin: 0.6em 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ui-players a.ui-btn {
+    text-align: left;
+    min-height: 3.625em;
+    padding-left: 6.25em;
+}
+
+.ui-players .ui-player-number {
+    margin: 0;
+    position: absolute;
+    right: 3.333em;
+    text-align: right;
+    top: 1em;
+}
+        </style>		
+	</ui:define>
+        
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>AutoComplete</h1>
+            <p>AutoComplete is an input component with suggestion feature.</p>
+            
+            <h:form>
+                <p:growl id="msg" />
+                
+                <h2 class="first">Basic</h2>
+                <p>Simple strings with default options.</p>
+                <p:autoComplete id="basic" value="#{autoCompleteBean.txt1}" completeMethod="#{autoCompleteBean.complete}" />
+                
+                <h2>Advanced</h2>
+                <p>Pojo support, query delay, custom content and ajax itemSelect event callback. Hint: Press "a".</p>
+                <p:autoComplete id="advanced" queryDelay="1000" value="#{autoCompleteBean.selectedPlayer1}" completeMethod="#{autoCompleteBean.completePlayer}"
+                                var="p" itemLabel="#{p.name}" itemValue="#{p}" converter="player" panelStyleClass="ui-players">
+                    <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="msg" />
+                    
+                    <p:graphicImage value="/images/barca/#{p.photo}" width="59" height="80"/>
+                    <h2>#{p.name}</h2>
+                    <p>#{p.position}</p>
+                    <p class="ui-player-number"><strong>#{p.number}</strong></p>
+                </p:autoComplete>
+                
+            </h:form>
+                
+            <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1" multiple="true">
+                <p:tab title="autocomplete.xhtml">
+                    <pre class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:growl id="msg" /&gt;
+
+    &lt;h2 class="first"&gt;Basic&lt;/h2&gt;
+    &lt;p&gt;Simple strings with default options.&lt;/p&gt;
+    &lt;p:autoComplete id="basic" value="\#{autoCompleteBean.txt1}" completeMethod="\#{autoCompleteBean.complete}" /&gt;
+
+    &lt;h2&gt;Advanced&lt;/h2&gt;
+    &lt;p&gt;Pojo support, minimum 3 character query length, 1 second query delay and ajax itemSelect event callback. Hint: Press "a".&lt;/p&gt;
+    &lt;p:autoComplete id="advanced" minQueryLength="3" queryDelay="1000" value="\#{autoCompleteBean.selectedPlayer1}" completeMethod="\#{autoCompleteBean.completePlayer}"
+                    var="p" itemLabel="\#{p.name}" itemValue="\#{p}" converter="player" panelStyleClass="ui-players"&gt;
+        &lt;p:ajax event="itemSelect" listener="\#{autoCompleteBean.handleSelect}" update="msg" /&gt;
+
+        &lt;p:graphicImage value="/images/barca/#{p.photo}" width="59" height="80"/&gt;
+        &lt;h2&gt;\#{p.name}&lt;/h2&gt;
+        &lt;p&gt;\#{p.position}&lt;/p&gt;
+        &lt;p class="ui-player-number"&gt;&lt;strong&gt;\#{p.number}&lt;/strong&gt;&lt;/p&gt;
+    &lt;/p:autoComplete&gt;
+
+&lt;/h:form&gt;
+                    </pre>   
+                </p:tab>
+                <p:tab title="AutoCompleteBean.java">
+                    <pre class="brush:java">
+package org.primefaces.examples.view;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
+import org.primefaces.examples.domain.Player;
+
+public class AutoCompleteBean {
+
+	private String txt1;
+	
+	private Player selectedPlayer1;
+    
+	public AutoCompleteBean() {
+		players = PlayerConverter.playerDB;
+	}
+
+    public Player getSelectedPlayer1() {
+        return selectedPlayer1;
+    }
+    public void setSelectedPlayer1(Player selectedPlayer1) {
+        this.selectedPlayer1 = selectedPlayer1;
+    }
+
+	public List&lt;String&gt; complete(String query) {
+		List&lt;String&gt; results = new ArrayList&lt;String&gt;();
+		
+		for(int i = 0; i &lt; 10; i++) {
+			results.add(query + i);
+		}
+		
+		return results;
+	}
+	
+	public List&lt;Player&gt; completePlayer(String query) {
+        String q = query.toLowerCase();
+		List&lt;Player&gt; suggestions = new ArrayList&lt;Player&gt;();
+		
+		for(Player p : players) {
+			if(p.getName().toLowerCase().startsWith(q))
+				suggestions.add(p);
+		}
+		
+		return suggestions;
+	}
+   
+	public void handleSelect(SelectEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected:" + event.getObject().toString(), null);
+		
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+    
+    public List&lt;Player&gt; getPlayers() {
+        return players;
+    }
+
+	public String getTxt1() {
+		return txt1;
+	}
+
+	public void setTxt1(String txt1) {
+		this.txt1 = txt1;
+	}
+}
+                    </pre>
+                </p:tab>
+                <p:tab title="PlayerConverter.java">
+                    <pre class="brush:java">
+package org.primefaces.examples.view;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.application.FacesMessage;
+
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.ConverterException;
+
+import org.primefaces.examples.domain.Player;
+
+public class PlayerConverter implements Converter {
+
+    public static List&lt;Player&gt; playerDB;
+
+    static {
+        playerDB = new ArrayList&lt;Player&gt;();
+
+        playerDB.add(new Player("Messi", 10, "messi.jpg", "CF"));
+        playerDB.add(new Player("Bojan", 9, "bojan.jpg", "CF"));
+        playerDB.add(new Player("Iniesta", 8, "iniesta.jpg", "CM"));
+        playerDB.add(new Player("Villa", 7, "villa.jpg", "CF"));
+        playerDB.add(new Player("Xavi", 6, "xavi.jpg", "CM"));
+        playerDB.add(new Player("Puyol", 5, "puyol.jpg", "CB"));
+        playerDB.add(new Player("Afellay", 20, "afellay.jpg", "AMC"));
+        playerDB.add(new Player("Abidal", 22, "abidal.jpg", "LB"));
+        playerDB.add(new Player("Alves", 2, "alves.jpg", "RB"));
+        playerDB.add(new Player("Pique", 3, "pique.jpg", "CB"));
+        playerDB.add(new Player("Keita", 15, "keita.jpg", "DM"));
+        playerDB.add(new Player("Adriano", 21, "adriano.jpg", "LB"));
+        playerDB.add(new Player("Valdes", 1, "valdes.jpg", "GK"));
+    }
+
+    public Object getAsObject(FacesContext facesContext, UIComponent component, String submittedValue) {
+        if (submittedValue.trim().equals("")) {
+            return null;
+        } else {
+            try {
+                int number = Integer.parseInt(submittedValue);
+
+                for (Player p : playerDB) {
+                    if (p.getNumber() == number) {
+                        return p;
+                    }
+                }
+                
+            } catch(NumberFormatException exception) {
+                throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid player"));
+            }
+        }
+
+        return null;
+    }
+
+    public String getAsString(FacesContext facesContext, UIComponent component, Object value) {
+        if (value == null || value.equals("")) {
+            return "";
+        } else {
+            return String.valueOf(((Player) value).getNumber());
+        }
+    }
+}
+                    </pre>
+                </p:tab>
+            </p:accordionPanel>	
+            
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>

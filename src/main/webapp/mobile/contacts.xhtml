@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile">
+    
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
+    
+    <h:head>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
+    </h:head>
+    
+    <h:body>
+        
+        <pm:page id="list">
+            <pm:header title="Contacts" swatch="b">
+                <p:commandButton styleClass="ui-btn-right ui-btn-inline" value="New" icon="ui-icon-plus" update=":edit:editForm:editFormPanel" action="#{contactsView.prepareNewContact}"/>
+            </pm:header>
+            
+            <pm:content>
+                <h:form id="listForm">
+                    <p:dataList id="contactsList" value="#{contactsView.contacts}" var="contact" pt:data-inset="true">
+                        <p:commandLink value="#{contact.firstname} #{contact.surname}" update=":edit:editForm:editFormPanel" action="pm:edit?transition=flip">
+                            <f:setPropertyActionListener value="#{contact}" target="#{contactsView.contact}" />
+                        </p:commandLink> 
+                    </p:dataList>
+                </h:form>
+                
+                <h2>Source</h2>
+                <p:accordionPanel activeIndex="-1">
+                    <p:tab title="contacts.xhtml">
+                        <pre class="brush:xml">
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"&gt;
+    
+    &lt;f:view renderKitId="PRIMEFACES_MOBILE" /&gt;
+    
+    &lt;h:head&gt;
+        &lt;link type="text/css" rel="stylesheet" href="\#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" /&gt;
+    &lt;/h:head&gt;
+    
+    &lt;h:body&gt;
+        
+        &lt;pm:page id="list"&gt;
+            &lt;pm:header title="Contacts" swatch="b"&gt;
+                &lt;p:commandButton styleClass="ui-btn-right ui-btn-inline" value="New" icon="ui-icon-plus" update=":editForm:editFormPanel" action="\#{contactsView.prepareNewContact}"/&gt;
+            &lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                &lt;h:form id="listForm"&gt;
+                    &lt;p:dataList id="contactsList" value="\#{contactsView.contacts}" var="contact" pt:data-inset="true"&gt;
+                        &lt;p:commandLink value="\#{contact.firstname} \#{contact.surname}" update=":editForm:editFormPanel" action="pm:edit?transition=flip"&gt;
+                            &lt;f:setPropertyActionListener value="\#{contact}" target="\#{contactsView.contact}" /&gt;
+                        &lt;/p:commandLink&gt; 
+                    &lt;/p:dataList&gt;
+                &lt;/h:form&gt;
+            &lt;/pm:content&gt;
+        &lt;/pm:page&gt;
+        
+        &lt;pm:page id="edit"&gt;
+            &lt;pm:header title="Contacts" swatch="b"&gt;
+                &lt;p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:list?transition=flip"/&gt;
+            &lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                &lt;h:form id="editForm"&gt;
+                    &lt;p:outputPanel id="editFormPanel"&gt;
+                        &lt;pm:field&gt;
+                            &lt;p:outputLabel for="firstname" value="Firstname" /&gt;
+                            &lt;p:inputText id="firstname" value="\#{contactsView.contact.firstname}" /&gt;
+                        &lt;/pm:field&gt;
+
+                        &lt;pm:field&gt;
+                            &lt;p:outputLabel for="surname" value="Surname" /&gt;
+                            &lt;p:inputText id="surname" value="\#{contactsView.contact.surname}" /&gt;
+                        &lt;/pm:field&gt;
+
+                        &lt;pm:field&gt;
+                            &lt;p:outputLabel for="phone" value="Phone" /&gt;
+                            &lt;p:inputText id="phone" value="\#{contactsView.contact.phone}" type="tel"/&gt;
+                        &lt;/pm:field&gt;
+
+                        &lt;pm:field&gt;
+                            &lt;p:outputLabel for="email" value="Email" /&gt;
+                            &lt;p:inputText id="email" value="\#{contactsView.contact.email}" type="email"/&gt;
+                        &lt;/pm:field&gt;
+
+                        &lt;pm:field&gt;
+                            &lt;p:outputLabel for="address" value="Address" /&gt;
+                            &lt;p:inputTextarea id="address" value="\#{contactsView.contact.address}" /&gt;
+                        &lt;/pm:field&gt;
+
+                        &lt;pm:field&gt;
+                            &lt;p:outputLabel for="gender" value="Gender" /&gt;
+                            &lt;p:selectOneButton id="gender" value="\#{contactsView.contact.gender}"&gt;
+                                &lt;f:selectItem itemLabel="Male" itemValue="Male" /&gt;
+                                &lt;f:selectItem itemLabel="Female" itemValue="Female" /&gt;
+                            &lt;/p:selectOneButton&gt;
+                        &lt;/pm:field&gt;
+                    &lt;/p:outputPanel&gt;
+                    
+                    &lt;p:commandButton value="Save" action="\#{contactsView.saveContact}" update=":listForm:contactsList" icon="ui-icon-check"/&gt;
+                &lt;/h:form&gt;
+                
+            &lt;/pm:content&gt;
+        &lt;/pm:page&gt;
+        
+        &lt;script language="javascript" src="\#{request.contextPath}/syntaxhighlighter/scripts/sh.js"&gt;&lt;/script&gt;
+        &lt;script language="javascript"&gt;
+            SyntaxHighlighter.all();
+        &lt;/script&gt;
+    &lt;/h:body&gt;
+    
+&lt;/html&gt;
+                        </pre>
+                    </p:tab>
+                    <p:tab title="ContactsView.java">
+                        <pre class="brush:java">
+
+                        </pre>
+                    </p:tab>
+                    <p:tab title="Contact.java">
+                        <pre class="brush:java">
+
+                        </pre>
+                    </p:tab>
+                </p:accordionPanel>
+            </pm:content>
+        </pm:page>
+        
+        <pm:page id="edit">
+            <pm:header title="Contacts" swatch="b">
+                <p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:list?transition=flip"/>
+            </pm:header>
+            
+            <pm:content>
+                <h:form id="editForm">
+                    <p:outputPanel id="editFormPanel">
+                        <pm:field>
+                            <p:outputLabel for="firstname" value="Firstname" />
+                            <p:inputText id="firstname" value="#{contactsView.contact.firstname}" />
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel for="surname" value="Surname" />
+                            <p:inputText id="surname" value="#{contactsView.contact.surname}" />
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel for="phone" value="Phone" />
+                            <p:inputText id="phone" value="#{contactsView.contact.phone}" type="tel"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel for="email" value="Email" />
+                            <p:inputText id="email" value="#{contactsView.contact.email}" type="email"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel for="address" value="Address" />
+                            <p:inputTextarea id="address" value="#{contactsView.contact.address}" />
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel for="gender" value="Gender" />
+                            <p:selectOneButton id="gender" value="#{contactsView.contact.gender}">
+                                <f:selectItem itemLabel="Male" itemValue="Male" />
+                                <f:selectItem itemLabel="Female" itemValue="Female" />
+                            </p:selectOneButton>
+                        </pm:field>
+                    </p:outputPanel>
+                    
+                    <p:commandButton value="Save" action="#{contactsView.saveContact}" update=":list:listForm:contactsList" icon="ui-icon-check"/>
+                </h:form>
+                
+            </pm:content>
+        </pm:page>
+        
+        <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/sh.js"></script>
+        <script language="javascript">
+            SyntaxHighlighter.all();
+        </script>
+    </h:body>
+    
+</html>

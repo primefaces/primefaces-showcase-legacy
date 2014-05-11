@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/WEB-INF/mobile.xhtml">
+    
+    <ui:define name="content">
+        
+        <pm:content styleClass="jqm-content">
+            <h1>OverlayPanel</h1>
+            <p>OverlayPanel is a container component to display content. Notable options are customizable effects, right or left positioning, callbacks
+            and lazy content loading.</p>
+            
+            <p:panelGrid columns="2">
+                <p:commandButton id="btn-basic" value="Basic" type="button"/>
+                <p:commandButton id="btn-dynamic" value="Dynamic" type="button"/>
+            </p:panelGrid>
+            
+            <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1">
+                <p:tab title="overlayPanel.xhtml">
+                    <pre class="brush:xml">
+&lt;pm:content styleClass="jqm-content"&gt;
+    
+    &lt;p:panelGrid columns="2"&gt;
+        &lt;p:commandButton id="btn-basic" value="Basic" type="button"/&gt;
+        &lt;p:commandButton id="btn-dynamic" value="Dynamic" type="button"/&gt;
+    &lt;/p:panelGrid&gt;
+
+&lt;/pm:content&gt;
+
+&lt;p:overlayPanel for="btn-basic" widgetVar="pnl-basic" at="right" showEffect="overlay"&gt;
+     &lt;h2&gt;Panel Content&lt;/h2&gt;
+     &lt;p:menu&gt;
+         &lt;p:menuitem value="Link 1" url="#" /&gt;
+         &lt;p:menuitem value="Link 2" url="#" /&gt;
+         &lt;p:menuitem value="Link 3" url="#" /&gt;
+     &lt;/p:menu&gt;
+ &lt;/p:overlayPanel&gt;
+
+ &lt;p:overlayPanel for="btn-dynamic" widgetVar="pnl-dynamic" at="right" showEffect="overlay" dynamic="true"&gt;
+     &lt;h2&gt;Dynamic Content&lt;/h2&gt;
+     &lt;p&gt;This content is loaded on demand to speed up initial page load time.&lt;/p&gt;
+ &lt;/p:overlayPanel&gt;
+                    </pre>   
+                </p:tab>
+            </p:accordionPanel>
+            
+        </pm:content>
+        
+        <p:overlayPanel for="btn-basic" widgetVar="pnl-basic" at="right" showEffect="overlay">
+            <h2>Panel Content</h2>
+            <p:menu>
+                <p:menuitem value="Link 1" url="#" />
+                <p:menuitem value="Link 2" url="#" />
+                <p:menuitem value="Link 3" url="#" />
+            </p:menu>
+        </p:overlayPanel>
+        
+        <p:overlayPanel for="btn-dynamic" widgetVar="pnl-dynamic" at="right" showEffect="overlay" dynamic="true">
+            <h2>Dynamic Content</h2>
+            <p>This content is loaded on demand to speed up initial page load time.</p>
+        </p:overlayPanel>
+        
+    </ui:define>
+    
+</ui:composition>
