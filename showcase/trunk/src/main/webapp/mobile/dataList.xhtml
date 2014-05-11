@@ -1,0 +1,111 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/WEB-INF/mobile.xhtml">
+    
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>DataList</h1>
+            <p>DataList presents a collection of data in list layout.</p>
+            
+            <h2 class="first">Basic</h2>
+            <p></p>
+            <p:dataList value="#{tableBean.carsSmall}" var="car">
+				<h:outputText value="#{car.manufacturer}, #{car.year}, #{car.color}" />
+			</p:dataList>
+            
+            <h2>Ordered</h2>
+            <p></p>
+            <p:dataList value="#{tableBean.carsSmall}" var="car" type="ordered">
+				<h:outputText value="#{car.manufacturer}, #{car.year}, #{car.color}" />
+			</p:dataList>
+            
+            <h2>Advanced</h2>
+            <p>Images, Links, Inset layout, formatting, header and footer.</p>
+            <p:dataList value="#{ringBean.players}" var="player" pt:data-inset="true">
+                <f:facet name="header">
+                    List of Players
+                </f:facet>
+                <h:outputLink value="#">
+                    <p:graphicImage value="/images/barca/#{player.photo}" />
+                    <h2>#{player.name}</h2>
+                    <p>#{player.position}</p>
+                    <p class="ui-li-aside"><strong>#{player.number}</strong></p>
+                </h:outputLink>
+                <f:facet name="footer">
+                    F.C. Barcelona
+                </f:facet>
+			</p:dataList>
+            
+            <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1" multiple="true">
+                <p:tab title="dataList.xhtml">
+                    <pre class="brush:xml">
+&lt;h2 class="first"&gt;Basic&lt;/h2&gt;
+&lt;p:dataList value="\#{tableBean.carsSmall}" var="car"&gt;
+    &lt;h:outputText value="\#{car.manufacturer}, \#{car.year}, \#{car.color}" /&gt;
+&lt;/p:dataList&gt;
+
+&lt;h2&gt;Ordered&lt;/h2&gt;
+&lt;p:dataList value="\#{tableBean.carsSmall}" var="car" type="ordered"&gt;
+    &lt;h:outputText value="\#{car.manufacturer}, \#{car.year}, \#{car.color}" /&gt;
+&lt;/p:dataList&gt;
+
+&lt;h2&gt;Advanced&lt;/h2&gt;
+&lt;p&gt;Images, Links, Inset layout, formatting, header and footer.&lt;/p&gt;
+&lt;p:dataList value="\#{ringBean.players}" var="player" pt:data-inset="true"&gt;
+    &lt;f:facet name="header"&gt;
+        List of Players
+    &lt;/f:facet&gt;
+    &lt;h:outputLink value="\#"&gt;
+        &lt;p:graphicImage value="/images/barca/\#{player.photo}" /&gt;
+        &lt;h2&gt;\#{player.name}&lt;/h2&gt;
+        &lt;p&gt;\#{player.position}&lt;/p&gt;
+        &lt;p class="ui-li-aside"&gt;&lt;strong&gt;\#{player.number}&lt;/strong&gt;&lt;/p&gt;
+    &lt;/h:outputLink&gt;
+    &lt;f:facet name="footer"&gt;
+        F.C. Barcelona
+    &lt;/f:facet&gt;
+&lt;/p:dataList&gt;              
+                    </pre>
+                </p:tab>
+                <p:tab title="RingBean.java">
+                    <pre class="brush:java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import org.primefaces.examples.domain.Player;
+
+public class RingBean implements Serializable {
+
+    private List&lt;Player&gt; players;
+
+    private Player selectedPlayer;
+
+    public RingBean() {
+        players = new ArrayList&lt;Player&gt;();
+        
+        players.add(new Player("Messi", 10, "messi.jpg", "CF"));
+        players.add(new Player("Iniesta", 8, "iniesta.jpg", "CM"));
+        players.add(new Player("Villa", 7, "villa.jpg", "CF"));
+        players.add(new Player("Xavi", 6, "xavi.jpg", "CM"));
+        players.add(new Player("Puyol", 5, "puyol.jpg", "CB"));
+    }
+
+    public List&lt;Player&gt; getPlayers() {
+        return players;
+    }
+}                        
+                    </pre>
+                </p:tab>
+            </p:accordionPanel>
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>

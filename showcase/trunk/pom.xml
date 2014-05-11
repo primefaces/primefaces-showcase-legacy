@@ -78,6 +78,13 @@
             <version>1.0</version>
         </dependency>
         
+        <!-- Twitter API -->
+        <dependency>
+            <groupId>org.twitter4j</groupId>
+            <artifactId>twitter4j-core</artifactId>
+            <version>3.0.5</version>
+        </dependency>   
+        
         <!-- Themes -->
         <dependency>
             <groupId>org.primefaces.themes</groupId>
@@ -146,7 +153,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>5.1-SNAPSHOT</version>
+                    <version>5.0</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
