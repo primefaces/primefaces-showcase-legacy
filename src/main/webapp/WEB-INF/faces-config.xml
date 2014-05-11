@@ -15,7 +15,12 @@
         
         <el-resolver>org.primefaces.application.exceptionhandler.PrimeExceptionHandlerELResolver</el-resolver>
     </application>
-
+    
+    <converter>
+        <converter-id>theme</converter-id>
+        <converter-class>org.primefaces.showcase.convert.ThemeConverter</converter-class>
+    </converter>
+    
     <factory>
         <exception-handler-factory>org.primefaces.application.exceptionhandler.PrimeExceptionHandlerFactory</exception-handler-factory>
     </factory>
