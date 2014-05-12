@@ -28,6 +28,13 @@ public class Car implements Serializable {
 
     public Car() {}
     
+    public Car(String id, String brand, int year, String color) {
+        this.id = id;
+        this.brand = brand;
+        this.year = year;
+        this.color = color;
+    }
+    
     public Car(String id, String brand, int year, String color, int price, boolean sold) {
         this.id = id;
         this.brand = brand;
