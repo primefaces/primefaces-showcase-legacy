@@ -6,17 +6,17 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Tree - <span class="subitem">Icon</span>
+        Tree - <span class="subitem">RTL</span>
     </ui:define>
 
     <ui:define name="description">
-        Each node type can have different icons.
+        Tree has built-in support for RTL languages.
     </ui:define>
 
     <ui:define name="implementation">
 
         <h:form>
-            <p:tree value="#{treeIconView.root}" var="doc">
+            <p:tree value="#{treeIconView.root}" var="doc" dir="rtl">
                 <p:treeNode expandedIcon="ui-icon-folder-open" collapsedIcon="ui-icon-folder-collapsed">
                     <h:outputText value="#{doc.name}"/>
                 </p:treeNode>
@@ -39,9 +39,9 @@
 
     <ui:define name="source">
         <p:tabView>
-            <p:tab title="icon.xhtml">
+            <p:tab title="rtl.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;p:tree value="\#{treeIconView.root}" var="doc"&gt;
+&lt;p:tree value="\#{treeIconView.root}" var="doc" dir="rtl"&gt;
     &lt;p:treeNode expandedIcon="ui-icon-folder-open" collapsedIcon="ui-icon-folder-collapsed"&gt;
         &lt;h:outputText value="\#{doc.name}"/&gt;
     &lt;/p:treeNode&gt;
