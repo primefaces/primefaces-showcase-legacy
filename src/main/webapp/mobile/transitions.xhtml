@@ -8,7 +8,7 @@
     <f:view renderKitId="PRIMEFACES_MOBILE" />
     
     <h:head>
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
+        <h:outputStylesheet name="main/css/sh.css" />
         <style type="text/css">
             .ui-grid-a div {
                 padding: 0em 0.5em;
@@ -52,7 +52,6 @@
     &lt;f:view renderKitId="PRIMEFACES_MOBILE" /&gt;
     
     &lt;h:head&gt;
-        &lt;link type="text/css" rel="stylesheet" href="\#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" /&gt;
         &lt;style type="text/css"&gt;
             .ui-grid-a div {
                 padding: 0em 0.5em;
@@ -114,7 +113,7 @@
             </pm:content>
         </pm:page>
         
-        <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/sh.js"></script>
+        <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
         <script language="javascript">
             SyntaxHighlighter.all();
         </script>
