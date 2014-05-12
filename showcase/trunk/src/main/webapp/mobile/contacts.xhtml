@@ -9,7 +9,7 @@
     <f:view renderKitId="PRIMEFACES_MOBILE" />
     
     <h:head>
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
+        <h:outputStylesheet name="main/css/sh.css" />
     </h:head>
     
     <h:body>
@@ -123,11 +123,136 @@
                     </p:tab>
                     <p:tab title="ContactsView.java">
                         <pre class="brush:java">
+package org.primefaces.showcase.mobile;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import org.primefaces.showcase.domain.Contact;
+
+@ManagedBean
+@ViewScoped
+public class ContactsView implements Serializable {
+    
+    private Contact contact;
+    
+    private List&lt;Contact&gt; contacts;
+    
+    @PostConstruct
+    public void init() {
+        contact = new Contact();
+        contacts = new ArrayList&lt;Contact&gt;();
+    }
+        
+    public Contact getContact() {
+        return contact;
+    }
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
+    
+    public List&lt;Contact&gt; getContacts() {
+        return contacts;
+    }
+    
+    public String saveContact(){
+        if(!contacts.contains(contact)) {
+            contacts.add(contact);
+        }
+        
+        return "pm:list?transition=flip";
+    }
+    
+    public void deleteContact(){
+        if(contacts.contains(contact)) {
+            contacts.remove(contact);
+        }                
+    }    
+    
+    public String prepareNewContact() {
+        contact = new Contact();
+        
+        return "pm:edit?transition=flip";
+    }
+
+}
                         </pre>
                     </p:tab>
                     <p:tab title="Contact.java">
                         <pre class="brush:java">
+package org.primefaces.showcase.domain;
+
+import java.io.Serializable;
+
+public class Contact implements Serializable{
+
+    private String firstname;
+    private String surname;
+    private String phone;
+    private String address;
+    private String email;
+    private Integer age;
+    private String gender;
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    
+    public String getAddress() {
+        return address;
+    }
+    
+    public void setAddress(String address) {
+        this.address = address;
+    }
+}
 
                         </pre>
                     </p:tab>
@@ -183,10 +308,11 @@
             </pm:content>
         </pm:page>
         
-        <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/sh.js"></script>
+        <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
         <script language="javascript">
             SyntaxHighlighter.all();
         </script>
+        
     </h:body>
     
 </html>

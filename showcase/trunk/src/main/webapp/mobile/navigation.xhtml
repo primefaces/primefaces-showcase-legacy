@@ -8,7 +8,7 @@
     <f:view renderKitId="PRIMEFACES_MOBILE" />
     
     <h:head>
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
+        <h:outputStylesheet name="main/css/sh.css" />
     </h:head>
     
     <h:body>
@@ -78,7 +78,7 @@
                         </pre>
                     </p:tab>
                     <p:tab title="NavigationView.java">
-                        <pre class="brush:xml">
+                        <pre class="brush:java">
 package org.primefaces.showcase.mobile;
 
 import javax.faces.bean.ManagedBean;
@@ -106,7 +106,7 @@ public class NavigationView {
             </pm:content>
         </pm:page>
         
-        <script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/sh.js"></script>
+        <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
         <script language="javascript">
             SyntaxHighlighter.all();
         </script>
