@@ -9,7 +9,7 @@
     
     <ui:define name="head">
         <style type="text/css"> 
-.ui-players h2 {
+.ui-themes h2 {
     display: block;
     font-size: 1em;
     font-weight: bold;
@@ -19,36 +19,18 @@
     white-space: nowrap;
 }
 
-.ui-players img {
-    left: 0;
+.ui-themes .ui-theme {
+    left: 20px;
     max-height: 5em;
     max-width: 5em;
     position: absolute;
-    top: 0;
+    top: 20px;
 }
 
-.ui-players p {
-    display: block;
-    font-size: 0.75em;
-    font-weight: normal;
-    margin: 0.6em 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.ui-players a.ui-btn {
+.ui-themes a.ui-btn {
     text-align: left;
     min-height: 3.625em;
     padding-left: 6.25em;
-}
-
-.ui-players .ui-player-number {
-    margin: 0;
-    position: absolute;
-    right: 3.333em;
-    text-align: right;
-    top: 1em;
 }
         </style>		
 	</ui:define>
@@ -59,24 +41,21 @@
             <p>AutoComplete is an input component with suggestion feature.</p>
             
             <h:form>
-                <p:growl id="msg" />
+                <p:growl id="msg" showDetail="true"/>
                 
                 <h2 class="first">Basic</h2>
                 <p>Simple strings with default options.</p>
-                <p:autoComplete id="basic" value="#{autoCompleteBean.txt1}" completeMethod="#{autoCompleteBean.complete}" />
+                <p:autoComplete id="basic" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" />
                 
                 <h2>Advanced</h2>
-                <p>Pojo support, query delay, custom content and ajax itemSelect event callback. Hint: Press "a".</p>
-                <p:autoComplete id="advanced" queryDelay="1000" value="#{autoCompleteBean.selectedPlayer1}" completeMethod="#{autoCompleteBean.completePlayer}"
-                                var="p" itemLabel="#{p.name}" itemValue="#{p}" converter="player" panelStyleClass="ui-players">
-                    <p:ajax event="itemSelect" listener="#{autoCompleteBean.handleSelect}" update="msg" />
+                <p>Pojo support, query delay, custom content and ajax itemSelect event callback.</p>
+                <p:autoComplete id="advanced" queryDelay="1000" value="#{autoCompleteView.theme1}" completeMethod="#{autoCompleteView.completeTheme}"
+                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter" panelStyleClass="ui-themes">
+                    <p:ajax event="itemSelect" listener="#{autoCompleteView.onItemSelect}" update="msg" />
                     
-                    <p:graphicImage value="/images/barca/#{p.photo}" width="59" height="80"/>
-                    <h2>#{p.name}</h2>
-                    <p>#{p.position}</p>
-                    <p class="ui-player-number"><strong>#{p.number}</strong></p>
+                    <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
+                    <h2>#{theme.displayName}</h2>
                 </p:autoComplete>
-                
             </h:form>
                 
             <h2>Source</h2>
@@ -84,168 +63,255 @@
                 <p:tab title="autocomplete.xhtml">
                     <pre class="brush:xml">
 &lt;h:form&gt;
-    &lt;p:growl id="msg" /&gt;
+    &lt;p:growl id="msg" showDetail="true"/&gt;
 
     &lt;h2 class="first"&gt;Basic&lt;/h2&gt;
     &lt;p&gt;Simple strings with default options.&lt;/p&gt;
-    &lt;p:autoComplete id="basic" value="\#{autoCompleteBean.txt1}" completeMethod="\#{autoCompleteBean.complete}" /&gt;
+    &lt;p:autoComplete id="basic" value="\#{autoCompleteView.txt1}" completeMethod="\#{autoCompleteView.completeText}" /&gt;
 
     &lt;h2&gt;Advanced&lt;/h2&gt;
-    &lt;p&gt;Pojo support, minimum 3 character query length, 1 second query delay and ajax itemSelect event callback. Hint: Press "a".&lt;/p&gt;
-    &lt;p:autoComplete id="advanced" minQueryLength="3" queryDelay="1000" value="\#{autoCompleteBean.selectedPlayer1}" completeMethod="\#{autoCompleteBean.completePlayer}"
-                    var="p" itemLabel="\#{p.name}" itemValue="\#{p}" converter="player" panelStyleClass="ui-players"&gt;
-        &lt;p:ajax event="itemSelect" listener="\#{autoCompleteBean.handleSelect}" update="msg" /&gt;
+    &lt;p&gt;Pojo support, query delay, custom content and ajax itemSelect event callback.&lt;/p&gt;
+    &lt;p:autoComplete id="advanced" queryDelay="1000" value="\#{autoCompleteView.theme1}" completeMethod="\#{autoCompleteView.completeTheme}"
+                    var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" converter="themeConverter" panelStyleClass="ui-themes"&gt;
+        &lt;p:ajax event="itemSelect" listener="\#{autoCompleteView.onItemSelect}" update="msg" /&gt;
 
-        &lt;p:graphicImage value="/images/barca/#{p.photo}" width="59" height="80"/&gt;
-        &lt;h2&gt;\#{p.name}&lt;/h2&gt;
-        &lt;p&gt;\#{p.position}&lt;/p&gt;
-        &lt;p class="ui-player-number"&gt;&lt;strong&gt;\#{p.number}&lt;/strong&gt;&lt;/p&gt;
+        &lt;h:outputText styleClass="ui-theme ui-theme-\#{theme.name}" /&gt;
+        &lt;h2&gt;\#{theme.displayName}&lt;/h2&gt;
     &lt;/p:autoComplete&gt;
-
 &lt;/h:form&gt;
                     </pre>   
                 </p:tab>
-                <p:tab title="AutoCompleteBean.java">
-                    <pre class="brush:java">
-package org.primefaces.examples.view;
+                <p:tab title="AutoCompleteView.java">
+                    <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
-
 import org.primefaces.event.SelectEvent;
-import org.primefaces.event.UnselectEvent;
-import org.primefaces.examples.domain.Player;
+import org.primefaces.showcase.domain.Theme;
+import org.primefaces.showcase.service.ThemeService;
 
-public class AutoCompleteBean {
-
-	private String txt1;
-	
-	private Player selectedPlayer1;
+@ManagedBean
+public class AutoCompleteView {
     
-	public AutoCompleteBean() {
-		players = PlayerConverter.playerDB;
-	}
-
-    public Player getSelectedPlayer1() {
-        return selectedPlayer1;
-    }
-    public void setSelectedPlayer1(Player selectedPlayer1) {
-        this.selectedPlayer1 = selectedPlayer1;
-    }
-
-	public List&lt;String&gt; complete(String query) {
+    private String txt1;
+    private Theme theme1;
+    
+    @ManagedProperty("\#{themeService}")
+    private ThemeService service;
+    
+    public List&lt;String&gt; completeText(String query) {
 		List&lt;String&gt; results = new ArrayList&lt;String&gt;();
-		
 		for(int i = 0; i &lt; 10; i++) {
 			results.add(query + i);
 		}
 		
 		return results;
 	}
-	
-	public List&lt;Player&gt; completePlayer(String query) {
-        String q = query.toLowerCase();
-		List&lt;Player&gt; suggestions = new ArrayList&lt;Player&gt;();
-		
-		for(Player p : players) {
-			if(p.getName().toLowerCase().startsWith(q))
-				suggestions.add(p);
-		}
-		
-		return suggestions;
-	}
-   
-	public void handleSelect(SelectEvent event) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected:" + event.getObject().toString(), null);
-		
-		FacesContext.getCurrentInstance().addMessage(null, message);
+    
+    public List&lt;Theme&gt; completeTheme(String query) {
+        List&lt;Theme&gt; allThemes = service.getThemes();
+		List&lt;Theme&gt; filteredThemes = new ArrayList&lt;Theme&gt;();
+        
+        for (int i = 0; i &lt; allThemes.size(); i++) {
+            Theme skin = allThemes.get(i);
+            if(skin.getName().toLowerCase().startsWith(query)) {
+                filteredThemes.add(skin);
+            }
+        }
+        
+        return filteredThemes;
 	}
     
-    public List&lt;Player&gt; getPlayers() {
-        return players;
+    public void onItemSelect(SelectEvent event) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item Selected", event.getObject().toString()));
     }
 
-	public String getTxt1() {
-		return txt1;
-	}
+    public String getTxt1() {
+        return txt1;
+    }
 
-	public void setTxt1(String txt1) {
-		this.txt1 = txt1;
-	}
+    public void setTxt1(String txt1) {
+        this.txt1 = txt1;
+    }
+
+    public Theme getTheme1() {
+        return theme1;
+    }
+
+    public void setTheme1(Theme theme1) {
+        this.theme1 = theme1;
+    }
+
+    public void setService(ThemeService service) {
+        this.service = service;
+    }
 }
                     </pre>
                 </p:tab>
-                <p:tab title="PlayerConverter.java">
-                    <pre class="brush:java">
-package org.primefaces.examples.view;
+
+                <p:tab title="Theme.java">
+                    <pre name="code" class="brush:java">
+package org.primefaces.showcase.domain;
+
+public class Theme {
+
+    private int id;
+    
+    private String displayName;
+    
+    private String name;
+    
+    public Theme() {}
+
+    public Theme(int id, String displayName, String name) {
+        this.id = id;
+        this.displayName = displayName;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    @Override
+    public String toString() {
+        return name;
+    }
+}
+
+                </pre>
+            </p:tab>
+
+            <p:tab title="ThemeService.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.application.FacesMessage;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.showcase.domain.Theme;
+
+@ManagedBean(name="themeService", eager = true)
+@ApplicationScoped
+public class ThemeService {
+    
+    private List&lt;Theme&gt; themes;
+    
+    @PostConstruct
+    public void init() {
+        themes = new ArrayList&lt;Theme&gt;();
+        themes.add(new Theme(0, "Afterdark", "afterdark"));
+        themes.add(new Theme(1, "Afternoon", "afternoon"));
+        themes.add(new Theme(2, "Afterwork", "afterwork"));
+        themes.add(new Theme(3, "Aristo", "aristo"));
+        themes.add(new Theme(4, "Black-Tie", "black-tie"));
+        themes.add(new Theme(5, "Blitzer", "blitzer"));
+        themes.add(new Theme(6, "Bluesky", "bluesky"));
+        themes.add(new Theme(7, "Bootstrap", "bootstrap"));
+        themes.add(new Theme(8, "Casablanca", "casablanca"));
+        themes.add(new Theme(9, "Cupertino", "cupertino"));
+        themes.add(new Theme(10, "Cruze", "cruze"));
+        themes.add(new Theme(11, "Dark-Hive", "dark-hive"));
+        themes.add(new Theme(12, "Delta", "delta"));
+        themes.add(new Theme(13, "Dot-Luv", "dot-luv"));
+        themes.add(new Theme(14, "Eggplant", "eggplant"));
+        themes.add(new Theme(15, "Excite-Bike", "excite-bike"));
+        themes.add(new Theme(16, "Flick", "flick"));
+        themes.add(new Theme(17, "Glass-X", "glass-x"));
+        themes.add(new Theme(18, "Home", "home"));
+        themes.add(new Theme(19, "Hot-Sneaks", "hot-sneaks"));
+        themes.add(new Theme(20, "Humanity", "humanity"));
+        themes.add(new Theme(21, "Le-Frog", "le-frog"));
+        themes.add(new Theme(22, "Midnight", "midnight"));
+        themes.add(new Theme(23, "Mint-Choc", "mint-choc"));
+        themes.add(new Theme(24, "Overcast", "overcast"));
+        themes.add(new Theme(25, "Pepper-Grinder", "pepper-grinder"));
+        themes.add(new Theme(26, "Redmond", "redmond"));
+        themes.add(new Theme(27, "Rocket", "rocket"));
+        themes.add(new Theme(28, "Sam", "sam"));
+        themes.add(new Theme(29, "Smoothness", "smoothness"));
+        themes.add(new Theme(30, "South-Street", "south-street"));
+        themes.add(new Theme(31, "Start", "start"));
+        themes.add(new Theme(32, "Sunny", "sunny"));
+        themes.add(new Theme(33, "Swanky-Purse", "swanky-purse"));
+        themes.add(new Theme(34, "Trontastic", "trontastic"));
+        themes.add(new Theme(35, "UI-Darkness", "ui-darkness"));
+        themes.add(new Theme(36, "UI-Lightness", "ui-lightness"));
+        themes.add(new Theme(37, "Vader", "vader"));
+    }
+    
+    public List&lt;Theme&gt; getThemes() {
+        return themes;
+    } 
+}
+
+                </pre>
+            </p:tab>
+
+            <p:tab title="ThemeConverter.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.convert;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.convert.ConverterException;
+import javax.faces.convert.FacesConverter;
+import org.primefaces.showcase.domain.Theme;
+import org.primefaces.showcase.service.ThemeService;
 
-import org.primefaces.examples.domain.Player;
+@FacesConverter("themeConverter")
+public class ThemeConverter implements Converter {
 
-public class PlayerConverter implements Converter {
-
-    public static List&lt;Player&gt; playerDB;
-
-    static {
-        playerDB = new ArrayList&lt;Player&gt;();
-
-        playerDB.add(new Player("Messi", 10, "messi.jpg", "CF"));
-        playerDB.add(new Player("Bojan", 9, "bojan.jpg", "CF"));
-        playerDB.add(new Player("Iniesta", 8, "iniesta.jpg", "CM"));
-        playerDB.add(new Player("Villa", 7, "villa.jpg", "CF"));
-        playerDB.add(new Player("Xavi", 6, "xavi.jpg", "CM"));
-        playerDB.add(new Player("Puyol", 5, "puyol.jpg", "CB"));
-        playerDB.add(new Player("Afellay", 20, "afellay.jpg", "AMC"));
-        playerDB.add(new Player("Abidal", 22, "abidal.jpg", "LB"));
-        playerDB.add(new Player("Alves", 2, "alves.jpg", "RB"));
-        playerDB.add(new Player("Pique", 3, "pique.jpg", "CB"));
-        playerDB.add(new Player("Keita", 15, "keita.jpg", "DM"));
-        playerDB.add(new Player("Adriano", 21, "adriano.jpg", "LB"));
-        playerDB.add(new Player("Valdes", 1, "valdes.jpg", "GK"));
-    }
-
-    public Object getAsObject(FacesContext facesContext, UIComponent component, String submittedValue) {
-        if (submittedValue.trim().equals("")) {
+    public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
+        if(value != null &amp;&amp; value.trim().length() &gt; 0) {
+            ThemeService service = (ThemeService) fc.getExternalContext().getApplicationMap().get("themeService");
+            return service.getThemes().get(Integer.parseInt(value));
+        }
+        else {
             return null;
-        } else {
-            try {
-                int number = Integer.parseInt(submittedValue);
-
-                for (Player p : playerDB) {
-                    if (p.getNumber() == number) {
-                        return p;
-                    }
-                }
-                
-            } catch(NumberFormatException exception) {
-                throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid player"));
-            }
-        }
-
-        return null;
-    }
-
-    public String getAsString(FacesContext facesContext, UIComponent component, Object value) {
-        if (value == null || value.equals("")) {
-            return "";
-        } else {
-            return String.valueOf(((Player) value).getNumber());
         }
     }
+
+    public String getAsString(FacesContext fc, UIComponent uic, Object object) {
+        if(object != null) {
+            return String.valueOf(((Theme) object).getId());
+        }
+        else {
+            return null;
+        }
+    }
+    
 }
-                    </pre>
-                </p:tab>
+                       
+                </pre>
+            </p:tab>
             </p:accordionPanel>	
             
         </pm:content>

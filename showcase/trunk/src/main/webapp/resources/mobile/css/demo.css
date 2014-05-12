@@ -558,3 +558,44 @@
 	font-size: 1.2em;
 	line-height: 1.5;
 }
+
+/* Themes */
+.ui-theme {background: url("#{resource['demo/images/themes.png']}") no-repeat top left;display: block;}
+.ui-theme.ui-theme-afterdark{ background-position: 0 0; width: 30px; height: 25px; } 
+.ui-theme.ui-theme-afternoon{ background-position: 0 -75px; width: 30px; height: 25px; } 
+.ui-theme.ui-theme-afterwork{ background-position: 0 -150px; width: 30px; height: 25px; } 
+.ui-theme.ui-theme-aristo{ background-position: 0 -225px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-black-tie{ background-position: 0 -302px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-blitzer{ background-position: 0 -379px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-bluesky{ background-position: 0 -456px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-bootstrap{ background-position: 0 -533px; width: 30px; height: 26px; } 
+.ui-theme.ui-theme-casablanca{ background-position: 0 -609px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-cruze{ background-position: 0 -686px; width: 30px; height: 25px; } 
+.ui-theme.ui-theme-cupertino{ background-position: 0 -761px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-dark-hive{ background-position: 0 -838px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-delta{ background-position: 0 -915px; width: 30px; height: 30px; } 
+.ui-theme.ui-theme-dot-luv{ background-position: 0 -995px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-eggplant{ background-position: 0 -1072px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-excite-bike{ background-position: 0 -1149px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-flick{ background-position: 0 -1226px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-glass-x{ background-position: 0 -1303px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-home{ background-position: 0 -1380px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-hot-sneaks{ background-position: 0 -1457px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-humanity{ background-position: 0 -1534px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-le-frog{ background-position: 0 -1611px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-midnight{ background-position: 0 -1688px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-mint-choc{ background-position: 0 -1765px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-overcast{ background-position: 0 -1842px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-pepper-grinder{ background-position: 0 -1919px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-redmond{ background-position: -80px 0; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-rocket{ background-position: -80px -77px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-sam{ background-position: -80px -154px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-smoothness{ background-position: -80px -231px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-south-street{ background-position: -80px -308px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-start{ background-position: -80px -385px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-sunny{ background-position: -80px -462px; width: 30px; height: 25px; } 
+.ui-theme.ui-theme-swanky-purse{ background-position: -80px -537px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-trontastic{ background-position: -80px -614px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-ui-darkness{ background-position: -80px -691px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-ui-lightness{ background-position: -80px -768px; width: 30px; height: 27px; } 
+.ui-theme.ui-theme-vader{ background-position: -80px -845px; width: 30px; height: 27px; } 
