@@ -147,6 +147,37 @@ public class MovieView {
 }
                 </pre>
             </p:tab>
+            <p:tab title="ImageSwitchView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.overlay;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class ImageSwitchView {
+    
+    private List&lt;String&gt; images;
+
+    @PostConstruct
+    public void init() {
+        images = new ArrayList&lt;String&gt;();
+        
+        images.add("nature1.jpg");
+        images.add("nature2.jpg");
+        images.add("nature3.jpg");
+        images.add("nature4.jpg");
+    }
+
+    public List&lt;String&gt; getImages() {
+        return images;
+    }
+}
+                </pre>
+            </p:tab>
         </p:tabView>
 
     </ui:define>

@@ -16,6 +16,7 @@
 package org.primefaces.showcase.view.data.gmap;
 
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -35,7 +36,8 @@ public class MarkerSelectionView implements Serializable {
  
     private Marker marker;
  
-    public MarkerSelectionView() {
+    @PostConstruct
+    public void init() {
         simpleModel = new DefaultMapModel();
          
         //Shared coordinates
