@@ -93,6 +93,31 @@
             </div>
             <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/data.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/dataBlue.svg" /><span class="MainLinkText">Data</span></span>
             <div class="SubMenuLinkContainer">
+                <span class="SubMenuLink" onclick="openSubSubMenu(this);">&bull; DataTable
+                    <div class="subsubMenuLinks">
+                        <a href="#{request.contextPath}/ui/data/datatable/basic.jsf">&bull; Basic</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/facets.jsf">&bull; Facets</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/paginator.jsf">&bull; Paginator</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/sort.jsf">&bull; Sort</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/filter.jsf">&bull; Filter</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/selection.jsf">&bull; Selection</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/group.jsf">&bull; Group</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/subTable.jsf">&bull; SubTable</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/summaryRow.jsf">&bull; SummaryRow</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/expansion.jsf">&bull; Expansion</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/columns.jsf">&bull; Columns</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/edit.jsf">&bull; Edit</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/scroll.jsf">&bull; Scroll</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/rowColor.jsf">&bull; RowColor</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/lazy.jsf">&bull; Lazy</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/columnResize.jsf">&bull; Resize</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/reorder.jsf">&bull; Reorder</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/columnToggler.jsf">&bull; ColumnToggler</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/contextMenu.jsf">&bull; ContextMenu</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/sticky.jsf">&bull; Sticky</a>
+                        <a href="#{request.contextPath}/ui/data/datatable/rtl.jsf">&bull; RTL</a>
+                    </div>
+                </span>
             	<a class="SubMenuLink" href="#{request.contextPath}/ui/data/pickList.jsf">&bull; PickList</a>
                 <a class="SubMenuLink" href="#{request.contextPath}/ui/data/orderList.jsf">&bull; OrderList</a>
                 <span class="SubMenuLink" onclick="openSubSubMenu(this);">&bull; GMap
@@ -307,7 +332,7 @@
                 </div>
                 
                 <a href="#" class="PFTopLinks floatRight boldFont marginRight20"><h:graphicImage name="main/images/pfMockosx.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">MockOSX</span></a>
-                <a href="#" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfExtensions.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Extensions</span></a>
+                <a href="http://www.primefaces.org/showcase-ext" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfExtensions.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Extensions</span></a>
                 <a href="#" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfPush.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Push</span></a>
                 <a href="#{request.contextPath}/mobile/index.xhtml" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfMobile.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Mobile</span></a>
                 <span class="PFTopLinks floatRight boldFont cursorPointer" id="themeSwitcher">
