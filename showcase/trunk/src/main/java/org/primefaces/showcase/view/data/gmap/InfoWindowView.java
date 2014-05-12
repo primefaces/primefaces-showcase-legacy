@@ -16,6 +16,7 @@
 package org.primefaces.showcase.view.data.gmap;
 
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
  
@@ -33,7 +34,8 @@ public class InfoWindowView implements Serializable {
  
     private Marker marker;
  
-    public InfoWindowView() {
+    @PostConstruct
+    public void init() {
         advancedModel = new DefaultMapModel();
          
         //Shared coordinates

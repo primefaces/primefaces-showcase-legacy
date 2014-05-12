@@ -16,6 +16,7 @@
 package org.primefaces.showcase.view.data.gmap;
 
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
  
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -36,7 +37,8 @@ public class DraggableMarkersView implements Serializable {
     
     private Marker marker;
     
-    public DraggableMarkersView() {
+    @PostConstruct
+    public void init() {
         draggableModel = new DefaultMapModel();
          
         //Shared coordinates

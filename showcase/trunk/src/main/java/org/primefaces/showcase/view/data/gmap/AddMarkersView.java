@@ -16,6 +16,7 @@
 package org.primefaces.showcase.view.data.gmap;
 
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
  
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -37,7 +38,8 @@ public class AddMarkersView implements Serializable {
      
     private double lng;
  
-    public AddMarkersView() {
+    @PostConstruct
+    public void init() {
         emptyModel = new DefaultMapModel();
     }
      

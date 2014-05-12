@@ -16,6 +16,7 @@
 package org.primefaces.showcase.view.data.gmap;
     
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
  
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -32,7 +33,8 @@ public class PolygonsView implements Serializable {
  
     private MapModel polygonModel;
      
-    public PolygonsView() {
+    @PostConstruct
+    public void init() {
         polygonModel = new DefaultMapModel();
          
         //Shared coordinates
