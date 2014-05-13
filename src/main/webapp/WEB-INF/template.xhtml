@@ -367,13 +367,15 @@
                 <a href="#{request.contextPath}/push/index.xhtml" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfPush.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Push</span></a>
                 <a href="#{request.contextPath}/mobile/index.xhtml" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfMobile.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Mobile</span></a>
                 <span class="PFTopLinks floatRight boldFont cursorPointer" id="themeSwitcher">
-                	<h:graphicImage name="main/images/themeswitcher.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Themes</span>
-                    <div class="themeSwitchList">
-                        <ui:repeat value="#{themeSwitcherView.themes}" var="theme">
-                            <a href="#"><span class="ui-theme ui-theme-#{theme}"></span><span class="ui-theme-text">#{theme.displayName}</span></a>
-                        </ui:repeat>
-
-                    </div>
+                    <h:form>
+                        <h:graphicImage name="main/images/themeswitcher.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Themes</span>
+                        <div id="GlobalThemeSwitcher" class="themeSwitchList">
+                            <ui:repeat value="#{themeSwitcherView.themes}" var="theme">
+                                <a href="#" data-theme="#{theme.name}"><span class="ui-theme ui-theme-#{theme}"></span><span class="ui-theme-text">#{theme.displayName}</span></a>
+                            </ui:repeat>
+                        </div>
+                        <p:remoteCommand name="changeTheme" actionListener="#{guestPreferences.changeTheme}" />
+                    </h:form>
                 </span>
             </div>
             <!-- header bar end-->
