@@ -78,6 +78,26 @@ $(document).ready(function() {
         PrimeFaces.changeTheme(theme);
         e.preventDefault();
     });
+    
+    var sourceTabview = $('#sourceTabview'),
+    lastTabHeader = sourceTabview.find('> ul > li:last');
+
+    if(lastTabHeader.hasClass('tab-doc')) {
+        lastTabHeader.one('click.load', function() {
+            var classes = lastTabHeader.attr('class').split(' '),
+            slide = 0;
+
+            for(var i = 0; i < classes.length; i++) {
+                if(classes[i].indexOf('docslide-') === 0) {
+                    slide = classes[i].split('-')[1];
+                }
+            }
+            var content = sourceTabview.find('> .ui-tabs-panels > div:last ');
+            content.html('<iframe frameborder="0" class="speakerdeck-iframe" style="border: 0px none; background: none repeat scroll 0% 0% transparent; margin: 0px; padding: 0px; width: 100%; height: 1440px;" src="http://speakerdeck.com/player/9d21c4d0bcc50131faee127b1bf32aaa?slide=' + slide +'"  allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>');
+
+        });
+
+    }
 });
 
 // Open Submenu
