@@ -60,12 +60,30 @@
     </listener>
     
     <filter>
+        <filter-name>Character Encoding Filter</filter-name>
+        <filter-class>org.primefaces.showcase.filter.CharacterEncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Character Encoding Filter</filter-name>
+        <servlet-name>Faces Servlet</servlet-name>
+    </filter-mapping>
+    
+    <filter>
         <filter-name>PrimeFaces FileUpload Filter</filter-name>
         <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>PrimeFaces FileUpload Filter</filter-name>
         <servlet-name>Faces Servlet</servlet-name>
+    </filter-mapping>
+    
+    <filter>
+        <filter-name>Browser Stats Filter</filter-name>
+        <filter-class>org.primefaces.showcase.filter.UserAgentListener</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Browser Stats Filter</filter-name>
+        <url-pattern>/push/chart.jsf</url-pattern>
     </filter-mapping>
     
     <servlet>
@@ -79,6 +97,18 @@
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Push Servlet</servlet-name>
+        <servlet-class>org.primefaces.push.PushServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+        <async-supported>true</async-supported>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Push Servlet</servlet-name>
+        <url-pattern>/primepush/*</url-pattern>
     </servlet-mapping>
     
     <error-page>
