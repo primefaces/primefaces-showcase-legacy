@@ -65,14 +65,20 @@ $(document).ready(function() {
 	});
     
     // open theme switcher combo
-    $("#themeSwitcher").bind("mouseenter",function(){
+    $("#themeSwitcher").on("click",function(){
 		$(".themeSwitchList").slideDown(500);
-	});
-	$("#themeSwitcher").bind("mouseleave",function(){
+	})
+    .on("mouseleave",function(){
 		$(".themeSwitchList").slideUp(1);
 	});
+    
+    $("#GlobalThemeSwitcher > a").on("click", function(e) {
+        var theme = $(this).data("theme");
+        changeTheme([{name:'globaltheme', value:theme}]);
+        PrimeFaces.changeTheme(theme);
+        e.preventDefault();
+    });
 });
-
 
 // Open Submenu
 function openSubMenu(whichBtn){	
