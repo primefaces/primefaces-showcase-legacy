@@ -161,7 +161,7 @@
     </ui:define>
 
     <ui:define name="source">
-        <p:tabView>
+        <p:tabView dynamic="true">
             <p:tab title="accordionPanel.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form id="form"&gt;
@@ -330,6 +330,10 @@ public class TabbedView {
 }
 
                 </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc">
+                <iframe src="http://www.slideshare.net/slideshow/embed_code/34449566?rel=0&amp;startSlide=14" width="672" height="716" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen="yes"></iframe>
             </p:tab>
         </p:tabView>
 

@@ -411,6 +411,10 @@ input.searchInput {
     padding-left: 30px
 }
 
+.ui-tabs .ui-tabs-nav li.tab-doc {
+    float: right
+}
+
 /* override */
 .ui-widget {
     font-size: 90%;
