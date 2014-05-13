@@ -111,11 +111,11 @@
                 </h:panelGroup>
 
                 <h:panelGroup rendered="#{not chatView.loggedIn}" >
-                    Username: <p:inputText value="#{chatView.username}"  />
+                    Username: <p:inputText value="#{chatView.username}" disabled="true" />
 
                     <p:spacer width="5" />
                     <p:commandButton value="Login" actionListener="#{chatView.login}" update="container" 
-                                     icon="ui-icon-person"  />
+                                     icon="ui-icon-person" disabled="true" />
                 </h:panelGroup>
 
             </p:fieldset>
