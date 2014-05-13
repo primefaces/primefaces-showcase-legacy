@@ -161,7 +161,7 @@
     </ui:define>
 
     <ui:define name="source">
-        <p:tabView dynamic="true">
+        <p:tabView>
             <p:tab title="accordionPanel.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form id="form"&gt;
@@ -332,9 +332,7 @@ public class TabbedView {
                 </pre>
             </p:tab>
             
-            <ui:include src="/WEB-INF/include/doc.xhtml">
-                <ui:param name="slideno" value="14" />
-            </ui:include>
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-14" />
         </p:tabView>
 
     </ui:define>
