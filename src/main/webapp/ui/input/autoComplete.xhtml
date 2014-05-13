@@ -158,7 +158,7 @@
     </ui:define>
 
     <ui:define name="source">
-        <p:tabView>
+        <p:tabView dynamic="true">
             <p:tab title="autoComplete.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
@@ -606,6 +606,10 @@ public class ThemeConverter implements Converter {
                        
                 </pre>
             </p:tab>
+            
+            <ui:include src="/WEB-INF/include/doc.xhtml">
+                <ui:param name="slideno" value="24" />
+            </ui:include>
         </p:tabView>
 
     </ui:define>
