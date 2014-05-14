@@ -2,9 +2,8 @@
 
 /* Header */
 .jqm-demos .jqm-header {
-	background: #fff;
-	border-top: 4px solid #424548;
-	border-bottom-color: #eee;
+	background: #EFF3F6;
+	border-bottom-color: #BCC7CF;
 }
 .jqm-demos .jqm-header h2 {
 	padding: .4em 0 .1em;
@@ -72,6 +71,7 @@
 /* Content */
 .jqm-demos .jqm-content {
 	padding-top: 3em;
+    background-color: #EFF3F6;
 }
 .jqm-demos .jqm-content > h1,
 .jqm-demos .jqm-content > h2,
@@ -248,6 +248,33 @@
 .jqm-demos .jqm-navmenu-panel.jqm-panel-page-nav ul li:first-child a{
 	border-top: none;
 }
+
+.jqm-demos .jqm-navmenu-panel {
+    background: #313B3F;
+}
+
+.jqm-demos .jqm-navmenu-panel .ui-link {
+    background-color: #313B3F !important;
+    border-top: 1px solid #404A4E !important;
+}
+
+.jqm-demos .jqm-navmenu-panel .ui-listview a.ui-link {
+    color: #9BA5AC;
+    text-shadow: none;
+}
+
+.jqm-demos .jqm-navmenu-panel .ui-listview li.ui-li-divider.ui-bar-inherit {
+    background-color: #20282B !important;
+    text-shadow: none;
+    color: #9BA5AC;
+    font-size: 18px;
+    border-top: 1px solid #404A4E;
+}
+
+.jqm-demos .jqm-navmenu-panel .ui-listview li.ui-last-child a {
+    border-bottom: 1px solid #404A4E;
+}
+        
 /* Search */
 .jqm-search-panel .ui-panel-inner {
 	padding-top: 0;
@@ -356,7 +383,6 @@
 		left: 0;
 		float: left;
 		width: 25%;
-		background: none;
 		-webkit-transition: none !important;
 		-moz-transition: none !important;
 		transition: none !important;
@@ -400,7 +426,7 @@
 	.jqm-navmenu-panel .ui-collapsible-content,
 	.jqm-navmenu-panel .ui-btn {
 		background: none !important;
-		border-color: #ddd !important;
+		border-top: 1px solid #404A4E !important;
 	}
 	.jqm-navmenu-panel .ui-btn.ui-btn-active {
 		color: #3388cc !important;
