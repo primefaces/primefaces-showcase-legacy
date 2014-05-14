@@ -35,11 +35,11 @@
 
                 <h:outputText value="Grid:" />
                 <p:selectManyCheckbox id="grid" value="#{checkboxView.selectedCities}" layout="grid" columns="3">
-                    <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}"/>
+                    <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}" />
                 </p:selectManyCheckbox>
             </h:panelGrid>
 
-            <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check"/>
+            <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
 
             <p:dialog header="Values" modal="true" showEffect="clip" widgetVar="dlg" resizable="false">
                 <p:outputPanel id="display">
@@ -70,11 +70,11 @@
 
         &lt;h:outputText value="Grid:" /&gt;
         &lt;p:selectManyCheckbox id="grid" value="\#{checkboxView.selectedCities}" layout="grid" columns="3"&gt;
-            &lt;f:selectItems value="\#{checkboxView.cities}" var="city" itemLabel="\#{city}" itemValue="\#{city}"/&gt;
+            &lt;f:selectItems value="\#{checkboxView.cities}" var="city" itemLabel="\#{city}" itemValue="\#{city}" /&gt;
         &lt;/p:selectManyCheckbox&gt;
     &lt;/h:panelGrid&gt;
 
-    &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check"/&gt;
+    &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" /&gt;
 
     &lt;p:dialog header="Values" modal="true" showEffect="clip" widgetVar="dlg" resizable="false"&gt;
         &lt;p:outputPanel id="display"&gt;
@@ -96,16 +96,15 @@ package org.primefaces.showcase.view.input;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 public class CheckboxView {
     
-    private String[] selectedConsoles;
-    
-    private String[] selectedCities;
-    
+    private String[] selectedConsoles; 
+    private String[] selectedCities;  
     private List&lt;String&gt; cities;
     
     @PostConstruct

@@ -17,9 +17,11 @@ package org.primefaces.showcase.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+
 import org.primefaces.showcase.domain.Theme;
 
 @ManagedBean(name="themeService", eager = true)

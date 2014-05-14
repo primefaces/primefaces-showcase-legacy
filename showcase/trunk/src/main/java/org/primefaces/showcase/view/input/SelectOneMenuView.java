@@ -19,29 +19,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.model.SelectItem;
 import javax.faces.model.SelectItemGroup;
+
 import org.primefaces.showcase.domain.Theme;
 import org.primefaces.showcase.service.ThemeService;
 
 @ManagedBean
 public class SelectOneMenuView {
     
-    private String console;
+    private String console; 
     
-    private String car;
-    
+    private String car;  
     private List<SelectItem> cars;
     
-    private String city;
-    
+    private String city;  
     private Map<String,String> cities = new HashMap<String, String>();
     
-    private Theme theme;
-    
+    private Theme theme;   
     private List<Theme> themes;
     
     @ManagedProperty("#{themeService}")
@@ -119,6 +118,5 @@ public class SelectOneMenuView {
     
     public void setService(ThemeService service) {
         this.service = service;
-    }
-    
+    }    
 }

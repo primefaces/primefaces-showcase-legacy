@@ -20,9 +20,9 @@
                 <f:selectItems value="#{multiSelectView.categories}" />
             </p:multiSelectListbox>
 
-            <p:commandButton value="Save" icon="ui-icon-check" update="out" style="display:block;margin:10px 0"/>
+            <p:commandButton value="Save" icon="ui-icon-check" update="out" style="display:block;margin:10px 0" />
 
-            <h:outputText id="out" value="Value: #{multiSelectView.selection}" style="display:block"/>
+            <h:outputText id="out" value="Value: #{multiSelectView.selection}" style="display:block" />
         </h:form>
         
     </ui:define>
@@ -36,19 +36,20 @@
         &lt;f:selectItems value="\#{multiSelectView.categories}" /&gt;
     &lt;/p:multiSelectListbox&gt;
 
-    &lt;p:commandButton value="Save" icon="ui-icon-check" update="out" style="display:block;margin:10px 0"/&gt;
+    &lt;p:commandButton value="Save" icon="ui-icon-check" update="out" style="display:block;margin:10px 0" /&gt;
 
-    &lt;h:outputText id="out" value="Value: \#{multiSelectView.selection}" style="display:block"/&gt;
+    &lt;h:outputText id="out" value="Value: \#{multiSelectView.selection}" style="display:block" /&gt;
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
 
-            <p:tab title="MultiSelectView">
+            <p:tab title="MultiSelectView.java">
                 <pre name="code" class="brush:java">
 package org.primefaces.showcase.view.input;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.model.SelectItem;
@@ -57,8 +58,7 @@ import javax.faces.model.SelectItemGroup;
 @ManagedBean
 public class MultiSelectView {
     
-    private List&lt;SelectItem&gt; categories;
-    
+    private List&lt;SelectItem&gt; categories;    
     private String selection;
 
     @PostConstruct

@@ -24,12 +24,9 @@ import org.primefaces.event.RateEvent;
 @ManagedBean
 public class RatingView {
     
-    private Integer rating1;
-    
-    private Integer rating2;
-    
-    private Integer rating3;
-    
+    private Integer rating1;   
+    private Integer rating2;   
+    private Integer rating3;   
     private Integer rating4 = 3;
     
     public void onrate(RateEvent rateEvent) {
@@ -73,5 +70,4 @@ public class RatingView {
     public void setRating4(Integer rating4) {
         this.rating4 = rating4;
     }
-
 }

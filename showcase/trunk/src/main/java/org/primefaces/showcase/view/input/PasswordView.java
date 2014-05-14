@@ -20,14 +20,10 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class PasswordView {
     
-    private String password1;
-    
-    private String password2;
-    
-    private String password3;
-    
-    private String password4;
-    
+    private String password1;   
+    private String password2;  
+    private String password3;  
+    private String password4;  
     private String password5;
 
     public String getPassword1() {
@@ -68,6 +64,6 @@ public class PasswordView {
 
     public void setPassword5(String password5) {
         this.password5 = password5;
-    }
-   
+    } 
 }
+

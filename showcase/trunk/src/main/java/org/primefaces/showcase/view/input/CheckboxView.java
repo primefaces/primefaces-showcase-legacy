@@ -17,16 +17,15 @@ package org.primefaces.showcase.view.input;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 public class CheckboxView {
     
-    private String[] selectedConsoles;
-    
-    private String[] selectedCities;
-    
+    private String[] selectedConsoles;  
+    private String[] selectedCities; 
     private List<String> cities;
     
     @PostConstruct

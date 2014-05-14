@@ -16,7 +16,7 @@
     <ui:define name="implementation">
         
         <h:form>
-            <p:growl id="msgs" showDetail="true"/>
+            <p:growl id="msgs" showDetail="true" />
 
             <p:panel id="basic" header="Basic" footer="Movie Details" style="margin-bottom:20px">
                 <h:panelGrid columns="2" cellpadding="10">
@@ -44,8 +44,8 @@
                 <f:facet name="options">
                     <p:menu>
                         <p:submenu label="Settings">
-                            <p:menuitem value="Toggle" url="#" icon="ui-icon-newwin" onclick="PF('panel').toggle()"/>
-                            <p:menuitem value="Remove" url="#" icon="ui-icon-close" onclick="PF('panel').close()"/>
+                            <p:menuitem value="Toggle" url="#" icon="ui-icon-newwin" onclick="PF('panel').toggle()" />
+                            <p:menuitem value="Remove" url="#" icon="ui-icon-close" onclick="PF('panel').close()" />
                         </p:submenu>
                     </p:menu>
                 </f:facet>
@@ -83,7 +83,7 @@
             <p:tab title="panel.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;p:growl id="msgs" showDetail="true"/&gt;
+    &lt;p:growl id="msgs" showDetail="true" /&gt;
 
     &lt;p:panel id="basic" header="Basic" footer="Movie Details" style="margin-bottom:20px"&gt;
         &lt;h:panelGrid columns="2" cellpadding="10"&gt;
@@ -106,8 +106,8 @@
         &lt;f:facet name="options"&gt;
             &lt;p:menu&gt;
                 &lt;p:submenu label="Settings"&gt;
-                    &lt;p:menuitem value="Toggle" url="\#" icon="ui-icon-newwin" onclick="PF('panel').toggle()"/&gt;
-                    &lt;p:menuitem value="Remove" url="\#" icon="ui-icon-close" onclick="PF('panel').close()"/&gt;
+                    &lt;p:menuitem value="Toggle" url="\#" icon="ui-icon-newwin" onclick="PF('panel').toggle()" /&gt;
+                    &lt;p:menuitem value="Remove" url="\#" icon="ui-icon-close" onclick="PF('panel').close()" /&gt;
                 &lt;/p:submenu&gt;
             &lt;/p:menu&gt;
         &lt;/f:facet&gt;
@@ -143,6 +143,7 @@ package org.primefaces.showcase.view.panel;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+
 import org.primefaces.event.CloseEvent;
 import org.primefaces.event.ToggleEvent;
 

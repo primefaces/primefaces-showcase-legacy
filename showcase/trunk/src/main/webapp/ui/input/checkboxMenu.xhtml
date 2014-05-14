@@ -22,7 +22,7 @@
                                       filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
                     <f:selectItems value="#{checkboxView.cities}" />
                 </p:selectCheckboxMenu>
-                <p:commandLink value="Submit" update="display"/>
+                <p:commandLink value="Submit" update="display" />
             </h:panelGrid>
             
             <p:outputPanel id="display" style="width:250px;padding-left:5px;margin-top:10px">
@@ -45,7 +45,7 @@
                               filter="true" filterMatchMode="startsWith" panelStyle="width:250px"&gt;
             &lt;f:selectItems value="\#{checkboxView.cities}" /&gt;
         &lt;/p:selectCheckboxMenu&gt;
-        &lt;p:commandLink value="Submit" update="display"/&gt;
+        &lt;p:commandLink value="Submit" update="display" /&gt;
     &lt;/h:panelGrid&gt;
 
     &lt;p:outputPanel id="display" style="width:250px;padding-left:5px;margin-top:10px"&gt;
@@ -63,14 +63,14 @@ package org.primefaces.showcase.view.input;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 public class CheckboxView {
         
-    private String[] selectedCities;
-    
+    private String[] selectedCities;   
     private List&lt;String&gt; cities;
     
     @PostConstruct

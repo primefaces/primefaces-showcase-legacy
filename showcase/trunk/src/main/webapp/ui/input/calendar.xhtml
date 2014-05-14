@@ -71,7 +71,7 @@
                 </p:calendar>
                 
                 <p:outputLabel for="german" value="German:" />
-                <p:calendar id="german" value="#{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd"/>
+                <p:calendar id="german" value="#{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
                 
                 <p:outputLabel for="restricted" value="Restricted:" />
                 <p:calendar id="restricted" value="#{calendarView.date6}" mindate="4/1/14" maxdate="7/1/14" />
@@ -80,16 +80,16 @@
                 <p:calendar id="multi" value="#{calendarView.date7}" pages="3" />
                 
                 <p:outputLabel for="effect" value="Effect:" />
-                <p:calendar id="effect" value="#{calendarView.date8}" effect="fold"/>
+                <p:calendar id="effect" value="#{calendarView.date8}" effect="fold" />
                 
                 <p:outputLabel for="mask" value="Mask:" />
-                <p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true"/>
+                <p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
                 
                 <p:outputLabel for="datetime" value="Datetime:" />
-                <p:calendar id="datetime" value="#{calendarView.date9}" pattern="MM/dd/yyyy HH:mm:ss"/>
+                <p:calendar id="datetime" value="#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
                 
                 <p:outputLabel for="time" value="Time:" />
-                <p:calendar id="time" value="#{calendarView.date10}" pattern="HH:mm a" timeOnly="true"  />
+                <p:calendar id="time" value="#{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  />
             </h:panelGrid>
             
             <p:commandButton value="Submit" update="msgs" actionListener="#{calendarView.click}" icon="ui-icon-check" />
@@ -147,7 +147,7 @@
                     </h:outputText>
                     
                     <h:outputText value="Time:" />
-                    <h:outputText value="#{calendarView.date1}">
+                    <h:outputText value="#{calendarView.date11}">
                         <f:convertDateTime pattern="HH:mm a" />
                     </h:outputText>
                 </p:panelGrid>
@@ -179,7 +179,7 @@
         &lt;/p:calendar&gt;
 
         &lt;p:outputLabel for="german" value="German:" /&gt;
-        &lt;p:calendar id="german" value="\#{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd"/&gt;
+        &lt;p:calendar id="german" value="\#{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" /&gt;
 
         &lt;p:outputLabel for="restricted" value="Restricted:" /&gt;
         &lt;p:calendar id="restricted" value="\#{calendarView.date6}" mindate="4/1/14" maxdate="7/1/14" /&gt;
@@ -188,16 +188,16 @@
         &lt;p:calendar id="multi" value="\#{calendarView.date7}" pages="3" /&gt;
 
         &lt;p:outputLabel for="effect" value="Effect:" /&gt;
-        &lt;p:calendar id="effect" value="\#{calendarView.date8}" effect="fold"/&gt;
+        &lt;p:calendar id="effect" value="\#{calendarView.date8}" effect="fold" /&gt;
 
         &lt;p:outputLabel for="mask" value="Mask:" /&gt;
-        &lt;p:calendar id="mask" value="\#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true"/&gt;
+        &lt;p:calendar id="mask" value="\#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" /&gt;
 
         &lt;p:outputLabel for="datetime" value="Datetime:" /&gt;
-        &lt;p:calendar id="datetime" value="\#{calendarView.date9}" pattern="MM/dd/yyyy HH:mm:ss"/&gt;
+        &lt;p:calendar id="datetime" value="\#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" /&gt;
 
         &lt;p:outputLabel for="time" value="Time:" /&gt;
-        &lt;p:calendar id="time" value="\#{calendarView.date10}" pattern="HH:mm a" timeOnly="true"  /&gt;
+        &lt;p:calendar id="time" value="\#{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  /&gt;
     &lt;/h:panelGrid&gt;
 
     &lt;p:commandButton value="Submit" update="msgs" actionListener="\#{calendarView.click}" icon="ui-icon-check" /&gt;
@@ -255,7 +255,7 @@
             &lt;/h:outputText&gt;
 
             &lt;h:outputText value="Time:" /&gt;
-            &lt;h:outputText value="\#{calendarView.date1}"&gt;
+            &lt;h:outputText value="\#{calendarView.date11}"&gt;
                 &lt;f:convertDateTime pattern="HH:mm a" /&gt;
             &lt;/h:outputText&gt;
         &lt;/p:panelGrid&gt;
@@ -270,9 +270,11 @@ package org.primefaces.showcase.view.input;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
@@ -289,6 +291,7 @@ public class CalendarView {
     private Date date8;
     private Date date9;
     private Date date10;
+    private Date date11;
     
     public void onDateSelect(SelectEvent event) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -382,7 +385,16 @@ public class CalendarView {
     public void setDate10(Date date10) {
         this.date10 = date10;
     }
+
+    public Date getDate11() {
+        return date11;
+    }
+
+    public void setDate11(Date date11) {
+        this.date11 = date11;
+    }
 }
+
                 </pre>
             </p:tab>
             

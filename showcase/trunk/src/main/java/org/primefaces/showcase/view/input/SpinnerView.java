@@ -20,14 +20,10 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class SpinnerView {
     
-    private int number1;
-    
-    private double number2;
-    
+    private int number1; 
+    private double number2; 
     private int number3;
-    
-    private int number4;
-    
+    private int number4;  
     private int number5;
 
     public int getNumber1() {
