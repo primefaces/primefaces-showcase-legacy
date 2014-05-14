@@ -1,4 +1,7 @@
 /* JQM Demos custom CSS */
+.jqm-demos.ui-page {
+    background-color: #EFF3F6;
+}
 
 /* Header */
 .jqm-demos .jqm-header {
@@ -50,9 +53,10 @@
 	position: absolute;
 	bottom: 0;
 	padding-bottom: 0;
+    background-color: #EFF3F6;
 }
 .jqm-demos .jqm-footer {
-	border-top: 1px solid #DDDDDD;
+	border-top: 1px solid #BCC7CF;
 }
 .jqm-demos .jqm-footer p {
 	font-size: .8em;
@@ -400,7 +404,6 @@
 		display: block;
 	}
 	.jqm-demos .jqm-navmenu-panel .ui-panel-inner {
-		margin-top: 3em;
 		margin-bottom: 3em;
 	}
 	.jqm-demos .jqm-content {
