@@ -16,19 +16,19 @@
 package org.primefaces.showcase.view.input;
 
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+
 import org.primefaces.showcase.domain.Theme;
 import org.primefaces.showcase.service.ThemeService;
 
 @ManagedBean
 public class SelectOneView {
     
-    private String option;
-    
-    private Theme theme;
-    
+    private String option;   
+    private Theme theme; 
     private List<Theme> themes;
     
     @ManagedProperty("#{themeService}")

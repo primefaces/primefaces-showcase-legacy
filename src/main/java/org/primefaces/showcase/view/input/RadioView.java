@@ -17,18 +17,16 @@ package org.primefaces.showcase.view.input;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 public class RadioView {
     
-    private String console;
-    
-    private String city;
-    
-    private List<String> cities;
-    
+    private String console;    
+    private String city;  
+    private List<String> cities;  
     private String color;
     
     @PostConstruct

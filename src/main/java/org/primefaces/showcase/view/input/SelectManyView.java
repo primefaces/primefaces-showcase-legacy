@@ -16,9 +16,11 @@
 package org.primefaces.showcase.view.input;
 
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+
 import org.primefaces.showcase.domain.Theme;
 import org.primefaces.showcase.service.ThemeService;
 
@@ -26,9 +28,7 @@ import org.primefaces.showcase.service.ThemeService;
 public class SelectManyView {
     
     private List<String> selectedOptions;
-    
     private List<Theme> selectedThemes;
-    
     private List<Theme> themes;
     
     @ManagedProperty("#{themeService}")

@@ -17,9 +17,11 @@ package org.primefaces.showcase.view.input;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
@@ -36,6 +38,7 @@ public class CalendarView {
     private Date date8;
     private Date date9;
     private Date date10;
+    private Date date11;
     
     public void onDateSelect(SelectEvent event) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -128,5 +131,13 @@ public class CalendarView {
 
     public void setDate10(Date date10) {
         this.date10 = date10;
+    }
+
+    public Date getDate11() {
+        return date11;
+    }
+
+    public void setDate11(Date date11) {
+        this.date11 = date11;
     }
 }

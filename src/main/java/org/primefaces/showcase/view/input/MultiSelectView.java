@@ -17,6 +17,7 @@ package org.primefaces.showcase.view.input;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.model.SelectItem;
@@ -25,8 +26,7 @@ import javax.faces.model.SelectItemGroup;
 @ManagedBean
 public class MultiSelectView {
     
-    private List<SelectItem> categories;
-    
+    private List<SelectItem> categories;    
     private String selection;
 
     @PostConstruct

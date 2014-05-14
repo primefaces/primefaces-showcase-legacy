@@ -15,8 +15,7 @@
 
     <ui:define name="implementation">
         
-        <h:form id="form">
-            
+        <h:form id="form">  
             <p:growl id="msgs" showDetail="true" />
         
             <h3 style="margin-top:0">Basic</h3>
@@ -108,8 +107,8 @@
 
             <h3>Change Event</h3>
             <p:accordionPanel>
-                <p:ajax event="tabChange" listener="#{tabbedView.onTabChange}" update=":form:msgs"/>
-                <p:ajax event="tabClose" listener="#{tabbedView.onTabClose}" update=":form:msgs"/>
+                <p:ajax event="tabChange" listener="#{tabbedView.onTabChange}" update=":form:msgs" />
+                <p:ajax event="tabClose" listener="#{tabbedView.onTabClose}" update=":form:msgs" />
                 
                 <p:tab title="Godfather Part I">
                     <h:panelGrid columns="2" cellpadding="10">
@@ -145,13 +144,13 @@
                         <f:facet name="header">
                             <p:graphicImage name="demo/images/car/#{car.brand}-big.gif" />
                         </f:facet>                    
-                        <h:outputText value="Brand:" style="font-weight: bold"/>
+                        <h:outputText value="Brand:" style="font-weight: bold" />
                         <h:outputText value="#{car.brand}" />
 
-                        <h:outputText value="Year:" style="font-weight: bold"/>
+                        <h:outputText value="Year:" style="font-weight: bold" />
                         <h:outputText value="#{car.year}" />
 
-                        <h:outputText value="Color:" style="font-weight: bold"/>
+                        <h:outputText value="Color:" style="font-weight: bold" />
                         <h:outputText value="#{car.color}" />
                     </h:panelGrid>
                 </p:tab>
@@ -164,8 +163,7 @@
         <p:tabView>
             <p:tab title="accordionPanel.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:form id="form"&gt;
-            
+&lt;h:form id="form"&gt;           
     &lt;p:growl id="msgs" showDetail="true" /&gt;
 
     &lt;h3 style="margin-top:0"&gt;Basic&lt;/h3&gt;
@@ -239,8 +237,8 @@
 
     &lt;h3&gt;Change Event&lt;/h3&gt;
     &lt;p:accordionPanel&gt;
-        &lt;p:ajax event="tabChange" listener="\#{tabbedView.onTabChange}" update=":form:msgs"/&gt;
-        &lt;p:ajax event="tabClose" listener="\#{tabbedView.onTabClose}" update=":form:msgs"/&gt;
+        &lt;p:ajax event="tabChange" listener="\#{tabbedView.onTabChange}" update=":form:msgs" /&gt;
+        &lt;p:ajax event="tabClose" listener="\#{tabbedView.onTabClose}" update=":form:msgs" /&gt;
 
         &lt;p:tab title="Godfather Part I"&gt;
             &lt;h:panelGrid columns="2" cellpadding="10"&gt;
@@ -270,13 +268,13 @@
                 &lt;f:facet name="header"&gt;
                     &lt;p:graphicImage name="demo/images/car/\#{car.brand}-big.gif" /&gt;
                 &lt;/f:facet&gt;                    
-                &lt;h:outputText value="Brand:" style="font-weight: bold"/&gt;
+                &lt;h:outputText value="Brand:" style="font-weight: bold" /&gt;
                 &lt;h:outputText value="\#{car.brand}" /&gt;
 
-                &lt;h:outputText value="Year:" style="font-weight: bold"/&gt;
+                &lt;h:outputText value="Year:" style="font-weight: bold" /&gt;
                 &lt;h:outputText value="\#{car.year}" /&gt;
 
-                &lt;h:outputText value="Color:" style="font-weight: bold"/&gt;
+                &lt;h:outputText value="Color:" style="font-weight: bold" /&gt;
                 &lt;h:outputText value="\#{car.color}" /&gt;
             &lt;/h:panelGrid&gt;
         &lt;/p:tab&gt;
@@ -291,10 +289,12 @@ package org.primefaces.showcase.view.panel;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+
 import org.primefaces.event.TabChangeEvent;
 import org.primefaces.event.TabCloseEvent;
 import org.primefaces.showcase.domain.Car;

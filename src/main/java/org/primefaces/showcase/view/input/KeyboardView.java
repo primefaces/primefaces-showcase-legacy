@@ -20,22 +20,14 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class KeyboardView {
     
-    private String value1;
-	
-	private String value2;
-	
-	private String value3;
-	
+    private String value1;	
+	private String value2;	
+	private String value3;	
 	private String value4;
-	
 	private String value5;
-
     private String value6;
-
     private String value7;
-
     private String value8;
-
     private String value9;
 
     public String getValue1() {

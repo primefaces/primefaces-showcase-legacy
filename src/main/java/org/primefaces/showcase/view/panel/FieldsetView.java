@@ -18,6 +18,7 @@ package org.primefaces.showcase.view.panel;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+
 import org.primefaces.event.ToggleEvent;
 
 @ManagedBean

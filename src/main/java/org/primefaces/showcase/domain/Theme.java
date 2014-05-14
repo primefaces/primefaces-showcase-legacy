@@ -17,10 +17,8 @@ package org.primefaces.showcase.domain;
 
 public class Theme {
 
-    private int id;
-    
-    private String displayName;
-    
+    private int id;    
+    private String displayName; 
     private String name;
     
     public Theme() {}

@@ -22,8 +22,7 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 public class SelectBooleanView {
 
-    private boolean value1;
-    
+    private boolean value1;  
     private boolean value2;
 
     public boolean isValue1() {

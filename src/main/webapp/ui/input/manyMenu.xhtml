@@ -135,9 +135,11 @@
 package org.primefaces.showcase.view.input;
 
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+
 import org.primefaces.showcase.domain.Theme;
 import org.primefaces.showcase.service.ThemeService;
 
@@ -145,12 +147,10 @@ import org.primefaces.showcase.service.ThemeService;
 public class SelectManyView {
     
     private List&lt;String&gt; selectedOptions;
-    
     private List&lt;Theme&gt; selectedThemes;
-    
     private List&lt;Theme&gt; themes;
     
-    @ManagedProperty("#{themeService}")
+    @ManagedProperty("\#{themeService}")
     private ThemeService service;
     
     @PostConstruct
@@ -192,10 +192,8 @@ package org.primefaces.showcase.domain;
 
 public class Theme {
 
-    private int id;
-    
-    private String displayName;
-    
+    private int id;    
+    private String displayName; 
     private String name;
     
     public Theme() {}
@@ -245,9 +243,11 @@ package org.primefaces.showcase.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+
 import org.primefaces.showcase.domain.Theme;
 
 @ManagedBean(name="themeService", eager = true)
@@ -304,6 +304,7 @@ public class ThemeService {
     } 
 }
 
+
                 </pre>
             </p:tab>
 
@@ -315,6 +316,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+
 import org.primefaces.showcase.domain.Theme;
 import org.primefaces.showcase.service.ThemeService;
 
@@ -338,9 +340,8 @@ public class ThemeConverter implements Converter {
         else {
             return null;
         }
-    }
-    
-}        
+    }   
+} 
                 </pre>
             </p:tab>
             

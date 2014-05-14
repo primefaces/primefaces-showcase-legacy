@@ -24,7 +24,7 @@
     <ui:define name="implementation">
         
         <h:form>
-            <p:messages autoUpdate="true"/>
+            <p:messages autoUpdate="true" />
 
             <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                 <p:outputLabel for="console" value="Basic:" />
@@ -50,7 +50,7 @@
                 <h:outputText value="Advanced:" />
                 <p:selectOneMenu value="#{selectOneMenuView.theme}" converter="themeConverter" panelStyle="width:180px"
                                  effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith">
-                    <f:selectItems value="#{selectOneMenuView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}"/>
+                    <f:selectItems value="#{selectOneMenuView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" />
 
                     <p:column style="width:10%">
                         <h:outputText styleClass="ui-theme ui-theme-#{t.name}" />
@@ -88,7 +88,7 @@
             <p:tab title="oneMenu.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;p:messages autoUpdate="true"/&gt;
+    &lt;p:messages autoUpdate="true" /&gt;
 
     &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
         &lt;p:outputLabel for="console" value="Basic:" /&gt;
@@ -114,7 +114,7 @@
         &lt;h:outputText value="Advanced:" /&gt;
         &lt;p:selectOneMenu value="\#{selectOneMenuView.theme}" converter="themeConverter" panelStyle="width:180px"
                          effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith"&gt;
-            &lt;f:selectItems value="\#{selectOneMenuView.themes}" var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}"/&gt;
+            &lt;f:selectItems value="\#{selectOneMenuView.themes}" var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" /&gt;
 
             &lt;p:column style="width:10%"&gt;
                 &lt;h:outputText styleClass="ui-theme ui-theme-\#{t.name}" /&gt;
@@ -155,11 +155,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.model.SelectItem;
 import javax.faces.model.SelectItemGroup;
+
 import org.primefaces.showcase.domain.Theme;
 import org.primefaces.showcase.service.ThemeService;
 
@@ -167,20 +169,17 @@ import org.primefaces.showcase.service.ThemeService;
 public class SelectOneMenuView {
     
     private String console;
-    
-    private String car;
-    
+  
+    private String car;  
     private List&lt;SelectItem&gt; cars;
-    
-    private String city;
-    
+
+    private String city;  
     private Map&lt;String,String&gt; cities = new HashMap&lt;String, String&gt;();
-    
-    private Theme theme;
-    
+ 
+    private Theme theme;   
     private List&lt;Theme&gt; themes;
     
-    @ManagedProperty("#{themeService}")
+    @ManagedProperty("\#{themeService}")
     private ThemeService service;
     
     @PostConstruct
@@ -255,9 +254,9 @@ public class SelectOneMenuView {
     
     public void setService(ThemeService service) {
         this.service = service;
-    }
-    
+    }    
 }
+
                 </pre>
             </p:tab>
             
@@ -267,10 +266,8 @@ package org.primefaces.showcase.domain;
 
 public class Theme {
 
-    private int id;
-    
-    private String displayName;
-    
+    private int id;    
+    private String displayName; 
     private String name;
     
     public Theme() {}
@@ -320,9 +317,11 @@ package org.primefaces.showcase.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+
 import org.primefaces.showcase.domain.Theme;
 
 @ManagedBean(name="themeService", eager = true)
@@ -379,6 +378,7 @@ public class ThemeService {
     } 
 }
 
+
                 </pre>
             </p:tab>
 
@@ -390,6 +390,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+
 import org.primefaces.showcase.domain.Theme;
 import org.primefaces.showcase.service.ThemeService;
 
@@ -413,10 +414,9 @@ public class ThemeConverter implements Converter {
         else {
             return null;
         }
-    }
-    
-}
-                       
+    }   
+}         
+           
                 </pre>
             </p:tab>
 

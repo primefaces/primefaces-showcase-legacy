@@ -80,6 +80,7 @@ package org.primefaces.showcase.view.ajax;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -91,13 +92,9 @@ import javax.faces.context.FacesContext;
 public class DropdownView implements Serializable {
     
 	private Map&lt;String,Map&lt;String,String&gt;&gt; data = new HashMap&lt;String, Map&lt;String,String&gt;&gt;();
-    
-    private String country;
-    
-    private String city;
-    
+    private String country; 
+    private String city;  
     private Map&lt;String,String&gt; countries;
-	
 	private Map&lt;String,String&gt; cities;
     
     @PostConstruct
