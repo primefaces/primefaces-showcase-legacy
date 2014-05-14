@@ -364,14 +364,24 @@
                 
                 <a href="#{request.contextPath}/ui/misc/mockosx.xhtml" class="PFTopLinks floatRight boldFont marginRight20"><h:graphicImage name="main/images/pfMockosx.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">MockOSX</span></a>
                 <a href="http://www.primefaces.org/showcase-ext" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfExtensions.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Extensions</span></a>
-                <a href="#{request.contextPath}/push/index.xhtml" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfPush.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Push</span></a>
+                <span class="PFTopLinks floatRight boldFont cursorPointer" id="pushNav">
+                    <h:graphicImage name="main/images/pfPush.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Push</span>
+                    <div id="PushDemos" class="navOverlay">
+                        <a href="#{request.contextPath}/push/counter.xhtml"><span class="ui-text">Counter</span></a>
+                        <a href="#{request.contextPath}/push/chat.xhtml"><span class="ui-text">Chat</span></a>
+                        <a href="#{request.contextPath}/push/notify.xhtml"><span class="ui-text">Notify</span></a>
+                        <a href="#{request.contextPath}/mobile/checkin.xhtml"><span class="ui-text">Checkin</span></a>
+                        <a href="#{request.contextPath}/push/viewparam.xhtml"><span class="ui-text">ViewParam</span></a>
+                        <a href="#{request.contextPath}/push/chart.xhtml"><span class="ui-text">Chart</span></a>
+                    </div>
+                </span>
                 <a href="#{request.contextPath}/mobile/index.xhtml" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfMobile.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Mobile</span></a>
                 <span class="PFTopLinks floatRight boldFont cursorPointer" id="themeSwitcher">
                     <h:form>
                         <h:graphicImage name="main/images/themeswitcher.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Themes</span>
-                        <div id="GlobalThemeSwitcher" class="themeSwitchList">
+                        <div id="GlobalThemeSwitcher" class="navOverlay">
                             <ui:repeat value="#{themeSwitcherView.themes}" var="theme">
-                                <a href="#" data-theme="#{theme.name}"><span class="ui-theme ui-theme-#{theme}"></span><span class="ui-theme-text">#{theme.displayName}</span></a>
+                                <a href="#" data-theme="#{theme.name}"><span class="ui-theme ui-theme-#{theme}"></span><span class="ui-text">#{theme.displayName}</span></a>
                             </ui:repeat>
                         </div>
                         <p:remoteCommand name="changeTheme" actionListener="#{guestPreferences.changeTheme}" />
