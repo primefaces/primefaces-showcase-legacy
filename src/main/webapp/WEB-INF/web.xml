@@ -4,6 +4,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" >
 	
+    <welcome-file-list>
+        <welcome-file>/index.xhtml</welcome-file>
+    </welcome-file-list>
     <context-param>
         <param-name>com.sun.faces.numberOfViewsInSession</param-name>
         <param-value>5</param-value>
