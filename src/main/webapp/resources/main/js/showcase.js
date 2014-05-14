@@ -66,10 +66,10 @@ $(document).ready(function() {
     
     // open theme switcher combo
     $("#themeSwitcher").on("click",function(){
-		$(".themeSwitchList").slideDown(500);
+		$("#GlobalThemeSwitcher").slideDown(500);
 	})
     .on("mouseleave",function(){
-		$(".themeSwitchList").slideUp(1);
+		$("#GlobalThemeSwitcher").slideUp(1);
 	});
     
     $("#GlobalThemeSwitcher > a").on("click", function(e) {
@@ -78,6 +78,14 @@ $(document).ready(function() {
         PrimeFaces.changeTheme(theme);
         e.preventDefault();
     });
+    
+    // open theme switcher combo
+    $("#pushNav").on("click",function(){
+		$("#PushDemos").slideDown(500);
+	})
+    .on("mouseleave",function(){
+		$("#PushDemos").slideUp(1);
+	});
     
     var sourceTabview = $('#SourceContentSide > div > span > span > div.ui-tabs'),
     lastTabHeader = sourceTabview.find('> ul > li:last');
