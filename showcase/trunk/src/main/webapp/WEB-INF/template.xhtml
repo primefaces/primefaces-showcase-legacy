@@ -20,6 +20,8 @@
     <h:outputStylesheet name="main/css/showcase.css" />
     <h:outputStylesheet name="main/css/perfect-scrollbar.css" />
     <h:outputStylesheet name="main/css/sh.css" />
+    <h:outputScript name="jquery/jquery.js" library="primefaces" />
+    <h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
     <h:outputScript name="main/js/perfect-scrollbar.js" />
     <h:outputScript name="main/js/showcase.js" />
     <ui:insert name="head" />
@@ -440,190 +442,6 @@
         <div class="ContentSideSections MOBILEHEADER animated" id="PFTopLinksCover">
         	<h:graphicImage name="main/images/logoBlue.svg" style="height:40px;" styleClass="floatLeft marginRight10"/>
             <span class="dispBlock logoDarkText fontSize16 floatLeft">PrimeFaces <span class="dispBlock logoBlueText fontSize18 mediumFont">SHOWCASE</span></span> 
-            <select class="selectmenu mediumFont">
-            	<option value="0">MENU</option>
-                
-            	<optgroup label="Ajax Core" class="LEVEL1">
-                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
-                    	<option value="">Simple Accordion Panel</option>
-                        <option value="">Dynamic Content</option>
-                        <option value="">Disabled</option>
-                        <option value="">RTL</option>
-                        <option value="">Multiple Selection</option>
-                        <option value="">Events</option>
-                        <option value="">Data Model</option>
-                    </optgroup>
-                </optgroup>
-
-                <optgroup label="Input" class="LEVEL1">
-                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
-                    	<option value="">Simple Accordion Panel</option>
-                        <option value="">Dynamic Content</option>
-                        <option value="">Disabled</option>
-                        <option value="">RTL</option>
-                        <option value="">Multiple Selection</option>
-                        <option value="">Events</option>
-                        <option value="">Data Model</option>
-                    </optgroup>
-                </optgroup>
-                
-                <optgroup label="Button" class="LEVEL1">
-                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
-                    	<option value="">Simple Accordion Panel</option>
-                        <option value="">Dynamic Content</option>
-                        <option value="">Disabled</option>
-                        <option value="">RTL</option>
-                        <option value="">Multiple Selection</option>
-                        <option value="">Events</option>
-                        <option value="">Data Model</option>
-                    </optgroup>
-                </optgroup>
-                
-                <optgroup label="Data" class="LEVEL1">
-                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
-                    	<option value="">Simple Accordion Panel</option>
-                        <option value="">Dynamic Content</option>
-                        <option value="">Disabled</option>
-                        <option value="">RTL</option>
-                        <option value="">Multiple Selection</option>
-                        <option value="">Events</option>
-                        <option value="">Data Model</option>
-                    </optgroup>
-                </optgroup>
-                
-                <optgroup label="Panel" class="LEVEL1">
-                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
-                    	<option value="">Simple Accordion Panel</option>
-                        <option value="">Dynamic Content</option>
-                        <option value="">Disabled</option>
-                        <option value="">RTL</option>
-                        <option value="">Multiple Selection</option>
-                        <option value="">Events</option>
-                        <option value="">Data Model</option>
-                    </optgroup>
-                </optgroup>
-                
-                <optgroup label="Overlay" class="LEVEL1">
-                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
-                    	<option value="">Simple Accordion Panel</option>
-                        <option value="">Dynamic Content</option>
-                        <option value="">Disabled</option>
-                        <option value="">RTL</option>
-                        <option value="">Multiple Selection</option>
-                        <option value="">Events</option>
-                        <option value="">Data Model</option>
-                    </optgroup>
-                </optgroup>
-                
-                <optgroup label="Menu" class="LEVEL1">
-                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
-                    	<option value="">Simple Accordion Panel</option>
-                        <option value="">Dynamic Content</option>
-                        <option value="">Disabled</option>
-                        <option value="">RTL</option>
-                        <option value="">Multiple Selection</option>
-                        <option value="">Events</option>
-                        <option value="">Data Model</option>
-                    </optgroup>
-                </optgroup>
-                
-                <optgroup label="Charts" class="LEVEL1">
-                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
-                    	<option value="">Simple Accordion Panel</option>
-                        <option value="">Dynamic Content</option>
-                        <option value="">Disabled</option>
-                        <option value="">RTL</option>
-                        <option value="">Multiple Selection</option>
-                        <option value="">Events</option>
-                        <option value="">Data Model</option>
-                    </optgroup>
-                </optgroup>
-                
-                <optgroup label="Messages" class="LEVEL1">
-                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
-                    	<option value="">Simple Accordion Panel</option>
-                        <option value="">Dynamic Content</option>
-                        <option value="">Disabled</option>
-                        <option value="">RTL</option>
-                        <option value="">Multiple Selection</option>
-                        <option value="">Events</option>
-                        <option value="">Data Model</option>
-                    </optgroup>
-                </optgroup>
-                
-                <optgroup label="Multimedia" class="LEVEL1">
-                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
-                    	<option value="">Simple Accordion Panel</option>
-                        <option value="">Dynamic Content</option>
-                        <option value="">Disabled</option>
-                        <option value="">RTL</option>
-                        <option value="">Multiple Selection</option>
-                        <option value="">Events</option>
-                        <option value="">Data Model</option>
-                    </optgroup>
-                </optgroup>
-                
-                <optgroup label="File" class="LEVEL1">
-                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
-                    	<option value="">Simple Accordion Panel</option>
-                        <option value="">Dynamic Content</option>
-                        <option value="">Disabled</option>
-                        <option value="">RTL</option>
-                        <option value="">Multiple Selection</option>
-                        <option value="">Events</option>
-                        <option value="">Data Model</option>
-                    </optgroup>
-                </optgroup>
-                
-                <optgroup label="DragDrop" class="LEVEL1">
-                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
-                    	<option value="">Simple Accordion Panel</option>
-                        <option value="">Dynamic Content</option>
-                        <option value="">Disabled</option>
-                        <option value="">RTL</option>
-                        <option value="">Multiple Selection</option>
-                        <option value="">Events</option>
-                        <option value="">Data Model</option>
-                    </optgroup>
-                </optgroup>
-                
-                <optgroup label="Client Side Validation" class="LEVEL1">
-                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
-                    	<option value="">Simple Accordion Panel</option>
-                        <option value="">Dynamic Content</option>
-                        <option value="">Disabled</option>
-                        <option value="">RTL</option>
-                        <option value="">Multiple Selection</option>
-                        <option value="">Events</option>
-                        <option value="">Data Model</option>
-                    </optgroup>
-                </optgroup>
-                
-                <optgroup label="Dialog Framework" class="LEVEL1">
-                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
-                    	<option value="">Simple Accordion Panel</option>
-                        <option value="">Dynamic Content</option>
-                        <option value="">Disabled</option>
-                        <option value="">RTL</option>
-                        <option value="">Multiple Selection</option>
-                        <option value="">Events</option>
-                        <option value="">Data Model</option>
-                    </optgroup>
-                </optgroup>
-                
-                <optgroup label="Misc" class="LEVEL1">
-                	<optgroup label="&nbsp;&nbsp;Basics" class="LEVEL2">
-                    	<option value="">Simple Accordion Panel</option>
-                        <option value="">Dynamic Content</option>
-                        <option value="">Disabled</option>
-                        <option value="">RTL</option>
-                        <option value="">Multiple Selection</option>
-                        <option value="">Events</option>
-                        <option value="">Data Model</option>
-                    </optgroup>
-                </optgroup>
-                
-            </select>
         </div>
         <!-- header bar end-->
     	
@@ -636,126 +454,19 @@
         </div>
         <!-- header links end-->
         
-        <!-- preface start-->
-        <div class="ContentSideSections texAliCenter" id="PFTopLinksCover">
-            <div class="Content100 overHidden TextShadow texAliCenter">
-                <span class="dispBlock fontSize14 gray marginBottom20">Prime Faces is a complete kit of over 40 UI widgets with everything from interactive menus to rich charts. If you know jQuery, you know Prime Faces. Complete with documentation and professional support, every widget is hand-crafted and includes premium themes.</span>
-                <span class="mediumFont dispBlock pink fontSize34 marginBottom20">Everything You Need to Build a Better Web</span>
-                <div class="BigButton TextShadowNone YellowBtn marLefRigAuto"> <span class="floatLeft">Download PrimeFaces 4.0</span> <h:graphicImage name="main/images/btnArrow.svg" styleClass="floatRight"/></div>
-                <div class="BigButton TextShadowNone OrangeBtn marLefRigAuto"> <span class="floatLeft">Learn PrimeFaces</span> <h:graphicImage name="main/images/btnDocumenticon.svg" styleClass="floatRight"/></div>
-            </div>
-        </div>
-        <!-- preface end-->
-        
-        <!-- highlight area start-->
-        <div class="ContentSideSections texAliCenter" id="PFTopLinksCover">
-        	<div class="Content100 floatRight overHidden">
-                <a href="#" class="PropertyBox TextShadow">
-                    <h:graphicImage name="main/images/ajaxFramework.svg" />
-                    <span class="PropertyTopic boldFont">AJAX FRAMEWORK</span>
-                    <span class="PropertyText mediumFont">Based on JSF APIs<br />Declarative Updates<br />Extensions</span>
-                </a>
-                <a href="#" class="PropertyBox TextShadow">
-                    <h:graphicImage name="main/images/components.svg" />
-                    <span class="PropertyTopic boldFont">COMPONENTS</span>
-                    <span class="PropertyText mediumFont">Over 100 JSF Components<br />Flexible and Easy to Use<br />Built-in Ajax<br />Theme Aware<br />HTML5 Support</span>
-                </a>
-                <a href="#" class="PropertyBox TextShadow">
-                    <h:graphicImage name="main/images/productivity.svg" />
-                    <span class="PropertyTopic boldFont">PRODUCTIVITY</span>
-                    <span class="PropertyText mediumFont">Simple<br />Effective<br />Powerful</span>
-                </a>
-                <a href="#" class="PropertyBox TextShadow">
-                    <h:graphicImage name="main/images/mobile.svg" />
-                    <span class="PropertyTopic boldFont">MOBILE</span>
-                    <span class="PropertyText mediumFont">Mobile Optimized RenderKit<br />Mobile Components<br />Wide Range of Platform Support</span>
-                </a>
-                <a href="#" class="PropertyBox TextShadow">
-                    <h:graphicImage name="main/images/push.svg" />
-                    <span class="PropertyTopic boldFont">PUSH</span>
-                    <span class="PropertyText mediumFont">Powered by Atmosphere<br />Websockets<br />Fallback Transports<br />Portable<br />Scalable</span>
-                </a>
-                <a href="#" class="PropertyBox TextShadow">
-                    <h:graphicImage name="main/images/themeMarket.svg" />
-                    <span class="PropertyTopic boldFont">THEME MARKET</span>
-                    <span class="PropertyText mediumFont">100+ Available Boutique Themes<br />Easy To Customize<br />Perfect Color Harmony<br />Made With Love</span>
-                </a>
-            </div>    
-        </div>
-        <!-- highlight area end-->
-        
-        <!-- popular widgets start-->
-        <div class="ContentSideSections texAliCenter" id="PFTopLinksCover">
-            <div class="Content100 overHidden TextShadow texAliCenter">
-                <span class="fontSize30 TextShadow gray mediumFont marginBottom20 dispBlock">Popular<span class="orange">Widgets</span></span>
-                <span class="dispBlock fontSize14 gray marginBottom20">Prime Faces is a complete kit of over 40 UI widgets with everything from interactive menus to rich charts. If you know jQuery, you know Prime Faces. Complete with documentation and professional support, every widget is hand-crafted and includes premium themes.</span>
-            </div>
-            
-            <div class="Content100 overHidden texAliCenter">
-                    <span class="Content33 dispBlock floatRight marginBottom20"><a href="#" class="widgetsLink floatRight"><h:graphicImage name="main/images/color/multimedia.svg" /><span class="boldFont dispBlock pink TextShadow">Multimedia</span></a></span>
-                    <span class="Content33 dispBlock floatRight marginBottom20"><a href="#" class="widgetsLink floatRight"><h:graphicImage name="main/images/color/charts.svg" /><span class="boldFont dispBlock pink TextShadow">Charts</span></a></span>
-                    <span class="Content33 dispBlock floatRight marginBottom20"><a href="#" class="widgetsLink floatRight"><h:graphicImage name="main/images/color/dialogFramework.svg" /><span class="boldFont dispBlock pink TextShadow">Dialog<br />Framework</span></a></span>
-                    <span class="Content33 dispBlock floatRight marginBottom20"><a href="#" class="widgetsLink floatRight"><h:graphicImage name="main/images/color/ajaxCore.svg" /><span class="boldFont dispBlock pink TextShadow">Ajax Core</span></a></span>
-                    <span class="Content33 dispBlock floatRight marginBottom20"><a href="#" class="widgetsLink floatRight"><h:graphicImage name="main/images/color/message.svg" /><span class="boldFont dispBlock pink TextShadow">Message</span></a></span>
-                    <span class="Content33 dispBlock floatRight marginBottom20"><a href="#" class="widgetsLink floatRight"><h:graphicImage name="main/images/color/file.svg" /><span class="boldFont dispBlock pink TextShadow">File</span></a></span>
-                </div>
-        </div>
-        <!-- popular widgets end-->
-        
-         <!-- bottom boxes area start-->
+        <ui:insert name="mobile">
             <div class="ContentSideSections texAliCenter" id="PFTopLinksCover">
-            	<div class="Content100 overHidden">
-                	<div class="BoxesIndent">
-                    	<h:graphicImage name="main/images/optimushear.svg" styleClass="overHidden" style="height:60px;"/>
-                        <span class="PFGrayText fontSize14 mediumFont overHidden dispBlock">Do You Hear ?<br /><span class="green fontSize24">NEWS FROM US</span></span>
-                        <div class="dispBlock overHidden Content100 logoBlueText boldFont fontSize18" style=" padding-top:20px;">PrimeFaces ELITE 3.5.23 and 4.0.7 Released
-                        	<span class="gray dispBlock regularFont fontSize14">This Elite release cycle brings defect fixes and the DataScroller component to 4.0.x line. DataScroller is a new addition in 5.0 and due to high demand from ELITE and PRO users, we have ported it to 4.0.7 as well. Common...</span><br />
-                            <a href="#" class="pink boldItalicFont underline fontSize14">See All News</a>
-                        </div>
-                    </div>
+                <div class="Content100 overHidden TextShadow texAliCenter">
+                    <span class="dispBlock fontSize14 gray marginBottom20">Responsive Demos are coming soon, please check the current page in a wider screen until then.</span>
                 </div>
-             </div>
-             <div class="ContentSideSections texAliCenter" id="PFTopLinksCover">
-                <div class="Content100 overHidden">
-                	<div class="BoxesIndent">
-                    	<h:graphicImage name="main/images/testimonials.svg"  styleClass="overHidden" style="height:60px;"/>
-                        <span class="PFGrayText fontSize14 mediumFont overHidden dispBlock">Thanks guys !<br /><span class="green fontSize24">TESTIMONIALS</span></span>
-                        <div class=" dispBlock overHidden Content100 logoBlueText boldFont fontSize18" style=" padding-top:20px;">Gregory Cooper
-                        	<span class="gray dispBlock regularFont fontSize14">"PrimeFaces is great. It’s the first set of JSF components that I have actually liked. Before PrimeFaces, JSF was a technology that I would “have” to use at work. PrimeFaces is one of the few Java oriented technologies I would consider using ‘outside the day job’ for a web project..."</span><br />
-                            <a href="#" class="pink boldItalicFont underline fontSize14">See All Testimonials</a>
-                        </div>
-                    </div>
-                </div>
-              </div>
-              <div class="ContentSideSections texAliCenter" id="PFTopLinksCover">
-                <div class="Content100 overHidden">
-                	<div class="BoxesIndent">
-                    	<h:graphicImage name="main/images/loveClients.svg" styleClass="overHidden" style="height:60px;"/>
-                        <span class="PFGrayText fontSize14 mediumFont overHidden dispBlock">We Love You<br /><span class="green fontSize24">OUR CLIENTS</span></span>
-                        <div class=" dispBlock overHidden Content100 logoBlueText boldFont fontSize14" style=" padding-top:20px;">
-                        	<div class="dispBlock overHidden">
-                                <span class="brandLogo"></span>
-                                <span class="brandLogo"></span>
-                                <span class="brandLogo"></span>
-                                <span class="brandLogo"></span>
-                                <span class="brandLogo"></span>
-                                <span class="brandLogo"></span>
-                                <span class="brandLogo"></span>
-                                <span class="brandLogo"></span>
-                            </div>
-                            <a href="#" class="pink boldItalicFont underline fontSize14">See All Brands</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- bottom boxes area end-->
+            </div>            
+        </ui:insert>
             
             <!-- footer start-->
             <div class="ContentSideSections texAliCenter" id="PFTopLinksCover">
-            	<span class="fontSize14 gray">PrimeFaces CO, Copyright &copy; 2014<br />All rights reserved.</span>
+                <span class="fontSize14 gray"><a href="http://www.primetek.com.tr">PrimeTek</a>, Copyright &copy; 2014<br />All rights reserved.</span>
             </div>
             <!-- footer end-->
-            <p:commandButton type="button" style="display:none" />
     </div>
     <!-- MOBILE CONTENT END HERE-->
     
