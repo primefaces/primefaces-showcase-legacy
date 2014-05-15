@@ -13,10 +13,6 @@ $(document).ready(function() {
 		wheelSpeed: 40,
 		suppressScrollX:true
 	});
-	/*$("#CONTENTSIDE").perfectScrollbar({
-        wheelSpeed: 40,
-        suppressScrollX: true
-    });*/
 	
 	$(".SubMenuLinkContainer").slideUp(1).css({'visibility':'visible'});
 	$(".mustClose").slideUp(1).css({'visibility':'visible'});
@@ -25,15 +21,12 @@ $(document).ready(function() {
 	$("#MENUSIDE").bind("mouseenter",function(){
 		$(this).clearQueue();
         $(".MainLinkText").clearQueue();
-		$(this).animate({'width':450},500,"easeInOutQuint",function(){$(".MainLinkText").animate({'opacity':1,'margin-left':50},100);});
+		$(this).animate({'width':450},500,"easeInOutQuint",function(){$(".MainLinkText").animate({'opacity':1,'margin-left':50},100);$("#hiddenLogoTextEl").fadeIn(100);});
 		$("#LOGO").animate({'width':440},700,"easeInOutQuint");
-        $(".hiddenLogoText").animate({'opacity':1},600);
-		//$("#LOGOTEXTSIDE").animate({'margin-left':80},600,"easeInOutQuint");
 		$("#CONTENTSIDE").animate({'opacity':0.6});
 		$(".hiddenIcons").animate({'opacity':1},1000);
 		
 		$("#MENUSIDE").perfectScrollbar('update');
-		$("#CONTENTSIDE").perfectScrollbar('update');
 		$(".mustClose").slideDown(200);
 	});
 	$("#MENUSIDE").bind("mouseleave",function(){
@@ -42,13 +35,10 @@ $(document).ready(function() {
 		$(this).clearQueue();
 		$(this).animate({'width':85},700,"easeInOutQuint",function(){$(".MainLinkText").animate({'opacity':0,'margin-left':60},300);});
 		$("#LOGO").animate({'width':75},700,"easeInOutQuint");
-        $(".hiddenLogoText").animate({'opacity':0},600);
-		//$("#LOGOTEXTSIDE").animate({'margin-left':120},600,"easeInOutQuint");
 		$("#CONTENTSIDE").animate({'opacity':1});
 		$(".hiddenIcons").animate({'opacity':0},1000);
-		
+		$("#hiddenLogoTextEl").fadeOut(100);
 		$("#MENUSIDE").perfectScrollbar('update');
-		$("#CONTENTSIDE").perfectScrollbar('update');
 		
 		$(".SubMenuLinkContainer").slideUp(700,"easeInOutQuint");
 		$(".mustClose").slideUp(200);

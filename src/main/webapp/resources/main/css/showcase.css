@@ -348,8 +348,8 @@ a{ text-decoration:none; outline:none;}
 							
 .texAliCenter{text-align:center;}
 
-.hiddenLogoText{opacity:0; filter:alpha(opacity=0); margin-left:70px; width:290px; height:74px; z-index:999; background-image:url(#{resource['main/images/logoCircuitLines.svg']}); background-repeat:no-repeat; background-position:center right;
-				 padding-top:25px; line-height:30px; margin-top: -20px;}
+.hiddenLogoText{margin-left:70px; width:290px; height:74px; background-image:url(#{resource['main/images/logoCircuitLines.svg']}); background-repeat:no-repeat; background-position:center right;
+				 padding-top:25px; line-height:30px; margin-top: -20px; display: none;}
 
 /* margins */
 .marginRight10{margin-right:10px;}
