@@ -52,11 +52,6 @@
 
 body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-color:#20272a; font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;}
 
-.PC{visibility:hidden; display:none;}
-.MOBILE{visibility:hidden; display:none;}
-.BeVisible{ visibility:visible !important; display:inline-block !important;}
-
-
 	#LOGOTEXTSIDE{width:290px; float:left; height:74px; z-index:999; background-image:url(#{resource['main/images/logoCircuitLines.svg']}); background-repeat:no-repeat; background-position:center right;
 				  margin:-20px 0px 0px 0px; padding-top:25px; line-height:30px;}
 		.logoDarkText{color:#5c666a;}

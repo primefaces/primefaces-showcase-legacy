@@ -27,9 +27,7 @@ $(document).ready(function() {
         topLinksCover: $('#PFTopLinksCover'),
         
         contentSideIndent: $('#CONTENTSIDEindent'),
-        
-        mobileTopLinksCover: $('#PFMobileTopLinksCover'),
-        
+                
         desktopContainer: $(document.body).children('.PC'),
         
         mobileContainer: $(document.body).children('.MOBILE'),
@@ -75,17 +73,7 @@ $(document).ready(function() {
 
             this.menu.height(winH);
             this.topLinksCover.width(winW-120);
-            this.mobileTopLinksCover.width(winW-48);
             this.content.width(winW-86);
-
-            if(winW < 850){
-                this.mobileContainer.addClass("BeVisible");
-                this.desktopContainer.removeClass("BeVisible");
-            }
-            else{
-                this.mobileContainer.removeClass("BeVisible");
-                this.desktopContainer.addClass("BeVisible");
-            }
         }
     };
 	
@@ -115,16 +103,6 @@ $(document).ready(function() {
                 Showcase.hideMenu();
             };
         }, 250);
-	});
-	// -------------------------------------------------------------
-	
-	$(window).bind('scroll', function () {
-		num=90;
-		if ($(window).scrollTop() > num) {
-			$('.MOBILEHEADER').addClass('fixedTop');
-		} else {
-			$('.MOBILEHEADER').removeClass('fixedTop');
-		}
 	});
     
     // open theme switcher combo
