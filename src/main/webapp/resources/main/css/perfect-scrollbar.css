@@ -91,7 +91,7 @@
     position: absolute; /* please don't change 'position' */
     right: 0; /* there must be 'right' for ps-scrollbar-y */
     width: 3px;
-    background-color: #13181a;
+    background-color: #25AAE1;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
