@@ -252,6 +252,10 @@ input.searchInput {
     margin-top: 40px;
 }
 
+.Source h3 {
+    margin-top: 0px;
+}
+
 /* Themes */
 .ui-theme {background: url("#{resource['demo/images/themes.png']}") no-repeat top left;display: block;}
 .ui-theme.ui-theme-afterdark{ background-position: 0 0; width: 30px; height: 25px; } 
