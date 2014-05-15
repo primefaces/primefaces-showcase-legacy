@@ -42,7 +42,7 @@
                 </div>
             </span>
             <span class="emptyBox"></span>
-            <div class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/><input type="text" value="Search Menu" class="mediumFont fontSize14 mustClose searchInput"/></div>
+            <div class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/><input id="menuSearch" type="text" value="Search Menu" class="mediumFont fontSize14 mustClose searchInput"/></div>
             <span class="MenuSideMainLink bordersOfMenuSide" onclick="openSubMenu(this);"><h:graphicImage name="main/images/mono/ajaxCore.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/ajaxCoreBlue.svg" /><span class="MainLinkText">Ajax Core</span></span>
             <div class="SubMenuLinkContainer">
             	<a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/basic.xhtml">&bull; Basic</a>
@@ -439,7 +439,7 @@
 	<div class="MOBILE">
     
     	<!-- header bar start-->
-        <div class="ContentSideSections MOBILEHEADER animated" id="PFTopLinksCover">
+        <div class="ContentSideSections MOBILEHEADER animated" id="PFMobileTopLinksCover">
         	<h:graphicImage name="main/images/logoBlue.svg" style="height:40px;" styleClass="floatLeft marginRight10"/>
             <span class="dispBlock logoDarkText fontSize16 floatLeft">PrimeFaces <span class="dispBlock logoBlueText fontSize18 mediumFont">SHOWCASE</span></span> 
         </div>

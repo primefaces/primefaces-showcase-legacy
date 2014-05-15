@@ -243,7 +243,7 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 				.MenuSideMainLink img{width:30px; height:auto; position:absolute; float:left;}
 				.MainLinkText{color:#9ba5ac; font-size:20px; margin:2px 0px 0px 60px; display:block; opacity:0; filter:alpha(opacity=0);}
 				
-			.SubMenuLinkContainer{width:auto; padding:20px; overflow:hidden; background-color:#20282b; visibility:hidden;}
+			.SubMenuLinkContainer{width:auto; padding:20px; overflow:hidden; background-color:#20282b; display: none;}
 				.SubMenuLink{width:170px; display:inline-block; float:left; padding:6px 15px; cursor:pointer; border-radius:4px; -webkit-border-radius:4px; color:#659eb3; font-size:16px;
 				}
 				.SubMenuLink:hover{background-color:#101517; color:#8dc5d9;}
@@ -269,7 +269,7 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 			.ContentSideSections{display:block; border-bottom:solid 1px #bcc7cf; padding:30px; overflow: hidden}
 			.MOBILE .ContentSideSections{padding:14px 24px;}
 			#PFTopLinksCover{background-color:#eff3f6;}
-			.MOBILE #PFTopLinksCover{ position:inherit;}
+			#PFMobileTopLinksCover{ position:inherit;}
 				.PFTopLinks{width:80px; display:inline-block; text-align:center; padding:10px; border-radius:5px;  font-size:12px; -webkit-border-radius:5px; margin-top:-15px; -webkit-transition: all 0.5s ease; 
 							-moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease; overflow:hidden;}
 				.PFTopLinks:hover, .PFTopLinksMobile:hover{background-color:#e0e5e9;
@@ -408,7 +408,8 @@ padding:20px; border-radius:5px; border-right:solid 60px #404c51;}
 .animated{-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
 
 input.searchInput {
-    padding-left: 30px
+    padding-left: 30px;
+    display: none
 }
 
 .ui-tabs .ui-tabs-nav li.tab-doc {
