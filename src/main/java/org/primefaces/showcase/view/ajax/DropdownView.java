@@ -18,7 +18,6 @@ package org.primefaces.showcase.view.ajax;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;

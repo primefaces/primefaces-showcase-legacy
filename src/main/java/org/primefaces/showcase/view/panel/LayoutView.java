@@ -19,7 +19,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import org.primefaces.component.layout.LayoutUnit;
-
 import org.primefaces.event.CloseEvent;
 import org.primefaces.event.ResizeEvent;
 import org.primefaces.event.ToggleEvent;

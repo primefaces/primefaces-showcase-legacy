@@ -16,7 +16,6 @@
 package org.primefaces.showcase.view.input;
 
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
