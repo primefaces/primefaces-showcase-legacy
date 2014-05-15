@@ -386,7 +386,7 @@
 		position: relative;
 		left: 0;
 		float: left;
-		width: 25%;
+		width: 20%;
 		-webkit-transition: none !important;
 		-moz-transition: none !important;
 		transition: none !important;
@@ -407,7 +407,7 @@
 		margin-bottom: 3em;
 	}
 	.jqm-demos .jqm-content {
-		width: 67%;
+		width: 72%;
 		padding-top: 2em;
 		padding-left: 5%;
 		padding-right: 3%;
