@@ -393,11 +393,9 @@
             </div>
             <!-- header bar end-->
 
-            
             <ui:insert name="content">
-
                 <div class="ContentSideSections">
-                    <div class="Content100 floatLeft overHidden TextShadow">
+                    <div class="Content100 overHidden TextShadow">
                         <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock"><ui:insert name="title" /></span>
                         <span class="defaultText dispTable"><ui:insert name="description" />
                         </span>
@@ -410,7 +408,7 @@
 
                 <div id="SourceContentSide" class="ContentSideSections Source">
                     <h3>Source</h3>
-                    <div class="Content100 floatLeft overHidden TextShadow">
+                    <div class="Content100 overHidden TextShadow">
                         <span class="defaultText">
                             <span class="fontSize18 logoBlueText">
                                 <ui:insert name="source" />
@@ -425,6 +423,7 @@
             <div class="ContentSideSections">
                 <span class="floatLeft fontSize14 gray"><a href="http://www.primetek.com.tr">PrimeTek</a>, Copyright &copy; 2014<br />All rights reserved.</span>
                 <span class="floatRight fontSize14 gray">Running #{build.primefacesVersion} on #{build.jsfVersion}.</span>
+                <div style="clear:both" />
             </div>
             <!-- footer end-->
             
