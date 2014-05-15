@@ -93,7 +93,7 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 	/* content side style*/
 	#CONTENTSIDE{width:auto; float:left; overflow:hidden; z-index:1; margin-left:86px; background-color:#eff3f6;}
 		#CONTENTSIDEindent{width:100%; height:auto;}
-			.ContentSideSections{display:block; border-bottom:solid 1px #bcc7cf; padding:30px; overflow: hidden}
+			.ContentSideSections{display:block; border-bottom:solid 1px #bcc7cf; padding:30px;}
 			.MOBILE .ContentSideSections{padding:14px 24px;}
 			#PFTopLinksCover{background-color:#eff3f6;}
 			#PFMobileTopLinksCover{ position:inherit;}
