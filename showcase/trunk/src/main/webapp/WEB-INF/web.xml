@@ -116,11 +116,15 @@
     
     <error-page>
         <exception-type>java.lang.Throwable</exception-type>
-        <location>/error/error.jsf</location>
+        <location>/error/error.xhtml</location>
     </error-page>
     <error-page>
         <exception-type>javax.faces.application.ViewExpiredException</exception-type>
-        <location>/error/viewExpired.jsf</location>
+        <location>/error/viewExpired.xhtml</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/404.xhtml</location>
     </error-page>
 
 </web-app>
