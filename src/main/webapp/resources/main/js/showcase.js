@@ -202,64 +202,69 @@ $(document).ready(function() {
     }
     
     // Search ---------------------------------------
-    Showcase.searchInput.on('keyup',function(e) {
+    Showcase.searchInput.on('keyup', function(e) {
         Showcase.hideSubMenus();
         
         if (e.keyCode === 32) {
             $(this).val($(this).val()+" ");
         }
         var searchValue = $(this).val().toLowerCase(),
-        flagSub = 0,
-        flagSubSub = 0, 
-        flagMenuSide = 0;
+        matchSub = false,
+        matchSubSub = false, 
+        matchMenuSide = false;
 
-        $('.SubMenuLinkContainer').each(function(){
+        $('.SubMenuLinkContainer').each(function() {
             var MenuSideValue = $(this).prev().children('span').text().trim().toLowerCase(),
             itemValue;
             
-            if(MenuSideValue.search(searchValue) < 0 || searchValue.length === 0){  
+            if(MenuSideValue.search(searchValue) < 0 || searchValue.length === 0) {  
                 var Sub = $(this).children(':not(span)'),
-                    SubSub = $(this).children('span');
+                SubSub = $(this).children('span');
 
                 for(var i = 0; i < Sub.length; i++) {     //for SubMenu
                     itemValue = Sub.eq(i).text().trim().toLowerCase();
                     if(itemValue.search(searchValue) >= 0) {
                         Sub.eq(i).show();
-                        flagSub++;
+                        matchSub = true;
                     }
                     else{
                         Sub.eq(i).hide();
                     }
                 }
-                for(var j = 0; j < SubSub.length; j++){  //for SubsubMenu
+                
+                for(var j = 0; j < SubSub.length; j++) {  //for SubsubMenu
                     var SubSuba = SubSub.eq(j).find('a');
-                    for(var m = 0; m < SubSuba.length; m++){
+                    for(var m = 0; m < SubSuba.length; m++) {
                         itemValue = SubSuba.eq(m).text().toLowerCase();
-
                         if(itemValue.search(searchValue) >= 0) {
                             SubSuba.eq(m).show();
-                            flagSubSub++; flagMenuSide++;
+                            matchSubSub = true; 
+                            matchMenuSide = true;
                         }
-                        else
+                        else {
                             SubSuba.eq(m).hide();
+                        }
                     }
-                    if(flagSubSub > 0){
+                    
+                    if(matchSubSub) {
                         SubSub.eq(j).show();
-                        flagSubSub = 0;
+                        matchSubSub = false;
                     }
-                    else
+                    else {
                         SubSub.eq(j).hide();
-                }                               
-                if(flagSub > 0 || flagMenuSide > 0) {
-                    $(this).prev().show();
-                    flagSub = 0;
-                    flagMenuSide = 0;
+                    }
                 }
-                else{
+                
+                if(matchSub || matchMenuSide ) {
+                    $(this).prev().show();
+                    matchSub = false;
+                    matchMenuSide = false;
+                }
+                else {
                     $(this).prev().hide();
                 }
             }
-            else{
+            else {
                 $(this).children().show();
                 $(this).prev().show();
             }
