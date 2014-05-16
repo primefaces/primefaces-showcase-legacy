@@ -256,6 +256,64 @@ input.searchInput {
     margin-top: 0px;
 }
 
+/** Responsive **/
+@media (min-width: 929px) {
+	.PFTopLinks {
+		display: block
+	}
+    
+    .selectmenu {
+        display: none;
+    }
+
+    .mobileLogoCover {
+        display: none
+    }
+}
+
+@media (max-width: 930px) {
+	.PFTopLinks {
+		display: none
+	}
+    
+    #PFTopLinksCover {
+        padding: 30px 15px 15px 15px;
+    }
+    
+    .selectmenu {
+        display: block;
+    }
+    
+    .mobileLogoCover {
+        display: block
+    }
+    
+    #MENUSIDE {
+        display: none
+    }
+    
+    #CONTENTSIDE {
+        margin-left:0
+    }
+        
+    #LOGOTEXTSIDE {
+        display: none
+    }
+    
+    .ContentSideSections{
+        padding:14px 24px;
+    }
+    
+    .Content33 {
+        width: 100%;
+    }
+    
+    .Content66 {
+        width: 100%;
+    }
+    
+}
+
 /* Themes */
 .ui-theme {background: url("#{resource['demo/images/themes.png']}") no-repeat top left;display: block;}
 .ui-theme.ui-theme-afterdark{ background-position: 0 0; width: 30px; height: 25px; } 
