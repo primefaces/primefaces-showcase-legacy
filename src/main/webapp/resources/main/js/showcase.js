@@ -65,8 +65,17 @@ $(document).ready(function() {
             $this.categoryLinks.animate({'opacity':0,'margin-left':60},100);
             this.content.animate({'opacity':1});
             this.hiddenCategoryIcons.animate({'opacity':0},1000);
-            this.submenus.slideUp(700,"easeInOutQuint");
             this.searchInput.slideUp(200);
+            
+            if(this.activeMenu) {
+                $(this.activeMenu).removeClass('MenuSideMainLinkDark').next().slideUp(700,"easeInOutQuint");
+                this.activeMenu = null;
+            }
+            
+            if(this.activeSubSubMenu) {
+                $(this.activeSubSubMenu).removeClass('openSubMenuLink');
+                this.activeSubSubMenu = null;
+            }
         },
         
         onWinResize: function() {
