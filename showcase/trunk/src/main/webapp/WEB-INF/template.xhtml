@@ -25,6 +25,51 @@
     <h:outputScript name="main/js/perfect-scrollbar.js" />
     <h:outputScript name="main/js/showcase.js" />
     <ui:insert name="head" />
+        <style type="text/css">
+@media (min-width: 929px) {
+	.PFTopLinks {
+		display: block
+	}
+    
+    .selectmenu {
+        display: none;
+    }
+
+    .mobileLogoCover {
+        display: none
+    }
+}
+
+@media (max-width: 930px) {
+	.PFTopLinks {
+		display: none
+	}
+    
+    #PFTopLinksCover {
+        padding: 30px 15px 15px 15px;
+    }
+    
+    .selectmenu {
+        display: block;
+    }
+    
+    .mobileLogoCover {
+        display: block
+    }
+    
+    #MENUSIDE {
+        display: none
+    }
+    
+    #CONTENTSIDE {
+        margin-left:0
+    }
+        
+    #LOGOTEXTSIDE {
+        display: none
+    }
+}
+        </style>
 </h:head>
 
 <h:body>
@@ -42,7 +87,7 @@
                 </div>
             </span>
             <span class="emptyBox"></span>
-            <div class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/><input id="menuSearch" type="text" value="Search Menu" class="mediumFont fontSize14 mustClose searchInput"/></div>
+            <div class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/><input id="menuSearch" type="text" placeholder="Search Menu" class="mediumFont fontSize14 mustClose searchInput"/></div>
             <span class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/ajaxCore.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/ajaxCoreBlue.svg" /><span class="MainLinkText">Ajax Core</span></span>
             <div class="SubMenuLinkContainer">
             	<a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/basic.xhtml">&bull; Basic</a>
@@ -390,6 +435,37 @@
                         <p:remoteCommand name="changeTheme" actionListener="#{guestPreferences.changeTheme}" />
                     </h:form>
                 </span>
+                
+                <div class="mobileLogoCover">
+                    <h:graphicImage name="main/images/logoBlue.svg" style="height:40px;" styleClass="floatLeft marginRight10"/>
+                    <span class="dispBlock logoDarkText fontSize16 floatLeft">PrimeFaces <span class="dispBlock logoBlueText fontSize18 mediumFont">SHOWCASE</span></span> 
+                </div>
+                <select class="selectmenu mediumFont">
+                    <option value="0">Menu</option>
+                    <optgroup label="Ajax Framework" class="LEVEL1">
+                        <option value="">Basic</option>
+                        <option value="">Events</option>
+                        <option value="">PartialSubmit</option>
+                        <option value="">Status</option>
+                    </optgroup>
+                    <optgroup label="Input" class="LEVEL1">
+                        <option value="">AutoComplete</option>
+                        <option value="">Spinner</option>
+                        <option value="">Slider</option>
+                        <option value="">SelectOneMenu</option>
+                    </optgroup>
+                    <optgroup label="Data" class="LEVEL1">
+                        <option value="">Tree</option>
+                        <option value="">TreeTable</option>
+                        <option value="">Ring</option>
+                        <optgroup label="DataTable" class="LEVEL2" style="padding-left:10px">
+                            <option value="">Basic</option>
+                            <option value="">Resize</option>
+                            <option value="">Sort</option>
+                            <option value="">Filter</option>
+                        </optgroup>
+                    </optgroup>
+                </select>
             </div>
             <!-- header bar end-->
 

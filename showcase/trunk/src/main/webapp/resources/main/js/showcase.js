@@ -66,16 +66,7 @@ $(document).ready(function() {
             this.content.animate({'opacity':1});
             this.hiddenCategoryIcons.animate({'opacity':0},1000);
             this.searchInput.slideUp(200);
-            
-            if(this.activeMenu) {
-                $(this.activeMenu).removeClass('MenuSideMainLinkDark').next().slideUp(700,"easeInOutQuint");
-                this.activeMenu = null;
-            }
-            
-            if(this.activeSubSubMenu) {
-                $(this.activeSubSubMenu).removeClass('openSubMenuLink');
-                this.activeSubSubMenu = null;
-            }
+            this.hideSubMenus();
         },
         
         onWinResize: function() {
@@ -84,8 +75,20 @@ $(document).ready(function() {
             winH = win.height();
 
             this.menu.height(winH);
-            this.topLinksCover.width(winW-120);
-            this.content.width(winW-86);
+            //this.topLinksCover.width(winW-120);
+            //this.content.width(winW-86);
+        },
+        
+        hideSubMenus: function() {
+            if(this.activeMenu) {
+                $(this.activeMenu).removeClass('MenuSideMainLinkDark').next().hide();
+                this.activeMenu = null;
+            }
+            
+            if(this.activeSubSubMenu) {
+                $(this.activeSubSubMenu).removeClass('openSubMenuLink');
+                this.activeSubSubMenu = null;
+            }
         },
         
         openSubMenu: function(header) {
@@ -199,7 +202,9 @@ $(document).ready(function() {
     }
     
     // Search ---------------------------------------
-    Showcase.searchInput.on('keyup',function(e){
+    Showcase.searchInput.on('keyup',function(e) {
+        Showcase.hideSubMenus();
+        
         if (e.keyCode === 32) {
             $(this).val($(this).val()+" ");
         }
