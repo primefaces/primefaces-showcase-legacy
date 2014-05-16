@@ -1,6 +1,5 @@
 var winW=$(window).width();
 var winH=$(window).height();
-var whichMenuOpen="";
 
 $(document).ready(function() {
     
@@ -31,6 +30,10 @@ $(document).ready(function() {
         desktopContainer: $(document.body).children('.PC'),
         
         mobileContainer: $(document.body).children('.MOBILE'),
+        
+        activeMenu: null,
+        
+        activeSubSubMenu: null,
 
         openMenu: function() {
             var $this = this;
@@ -74,6 +77,45 @@ $(document).ready(function() {
             this.menu.height(winH);
             this.topLinksCover.width(winW-120);
             this.content.width(winW-86);
+        },
+        
+        openSubMenu: function(header) {
+            var headerJQ = $(header);
+            
+            if(this.activeSubSubMenu) {
+                $(this.activeSubSubMenu).removeClass("openSubMenuLink");
+                this.activeSubSubMenu = null;
+            }
+            
+            if(this.activeMenu) {
+                if(this.activeMenu === header) {
+                    headerJQ.removeClass('MenuSideMainLinkDark').next().slideUp(700,"easeInOutQuint");
+                    this.activeMenu = null;
+                }
+                else {
+                    $(this.activeMenu).removeClass('MenuSideMainLinkDark').next().slideUp(700,"easeInOutQuint");
+                    headerJQ.addClass("MenuSideMainLinkDark").next().slideDown(700,"easeInOutQuint");
+                    this.activeMenu = header;
+                }
+            }
+            else {
+                headerJQ.addClass("MenuSideMainLinkDark").next().slideDown(700,"easeInOutQuint");
+                this.activeMenu = header;
+            }
+        },
+        
+        openSubSubMenu: function(submenuLink){
+            if(this.activeSubSubMenu) {
+                if(this.activeSubSubMenu !== submenuLink) {
+                    $(this.activeSubSubMenu).removeClass("openSubMenuLink");
+                    $(submenuLink).addClass("openSubMenuLink");
+                    this.activeSubSubMenu = submenuLink;
+                }
+            }
+            else {
+                $(submenuLink).addClass("openSubMenuLink");
+                this.activeSubSubMenu = submenuLink;
+            }
         }
     };
 	
@@ -86,7 +128,7 @@ $(document).ready(function() {
 		wheelSpeed: 40,
 		suppressScrollX:true
 	});
-	
+    	
 	// menu mouseenter & mouseleave actions start ----------------------------------
 	Showcase.menu.on("mouseenter", function() {
         clearTimeout(Showcase.menuHideTimeout);
@@ -209,27 +251,6 @@ $(document).ready(function() {
             }
         });
    });
+   
+   window.Showcase = Showcase;
 });
-
-// Open Submenu
-function openSubMenu(whichBtn){	
-    $(".MenuSideMainLink").removeClass("MenuSideMainLinkDark");
-    $(whichBtn).addClass("MenuSideMainLinkDark");
-
-    if(whichMenuOpen==whichBtn){
-        $(".SubMenuLinkContainer").slideUp(700,"easeInOutQuint");
-        $(whichBtn).next().slideUp(700,"easeInOutQuint");
-        whichMenuOpen="";
-    }else{
-        $(".SubMenuLinkContainer").slideUp(700,"easeInOutQuint");
-        $(whichBtn).next().slideDown(700,"easeInOutQuint");
-        whichMenuOpen=whichBtn;
-    }
-}
-
-// open sub sub menu
-
-function openSubSubMenu(whichSubMenu){
-	$(".SubMenuLink").removeClass("openSubMenuLink");
-	$(whichSubMenu).addClass("openSubMenuLink");
-}
