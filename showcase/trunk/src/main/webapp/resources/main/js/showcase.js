@@ -146,6 +146,69 @@ $(document).ready(function() {
         });
 
     }
+    
+    // Search ---------------------------------------
+    Showcase.searchInput.on('keyup',function(e){
+        if (e.keyCode === 32) {
+            $(this).val($(this).val()+" ");
+        }
+        var searchValue = $(this).val().toLowerCase(),
+        flagSub = 0,
+        flagSubSub = 0, 
+        flagMenuSide = 0;
+
+        $('.SubMenuLinkContainer').each(function(){
+            var MenuSideValue = $(this).prev().children('span').text().trim().toLowerCase(),
+            itemValue;
+            
+            if(MenuSideValue.search(searchValue) < 0 || searchValue.length === 0){  
+                var Sub = $(this).children(':not(span)'),
+                    SubSub = $(this).children('span');
+
+                for(var i = 0; i < Sub.length; i++) {     //for SubMenu
+                    itemValue = Sub.eq(i).text().trim().toLowerCase();
+                    if(itemValue.search(searchValue) >= 0) {
+                        Sub.eq(i).show();
+                        flagSub++;
+                    }
+                    else{
+                        Sub.eq(i).hide();
+                    }
+                }
+                for(var j = 0; j < SubSub.length; j++){  //for SubsubMenu
+                    var SubSuba = SubSub.eq(j).find('a');
+                    for(var m = 0; m < SubSuba.length; m++){
+                        itemValue = SubSuba.eq(m).text().toLowerCase();
+
+                        if(itemValue.search(searchValue) >= 0) {
+                            SubSuba.eq(m).show();
+                            flagSubSub++; flagMenuSide++;
+                        }
+                        else
+                            SubSuba.eq(m).hide();
+                    }
+                    if(flagSubSub > 0){
+                        SubSub.eq(j).show();
+                        flagSubSub = 0;
+                    }
+                    else
+                        SubSub.eq(j).hide();
+                }                               
+                if(flagSub > 0 || flagMenuSide > 0) {
+                    $(this).prev().show();
+                    flagSub = 0;
+                    flagMenuSide = 0;
+                }
+                else{
+                    $(this).prev().hide();
+                }
+            }
+            else{
+                $(this).children().show();
+                $(this).prev().show();
+            }
+        });
+   });
 });
 
 // Open Submenu
