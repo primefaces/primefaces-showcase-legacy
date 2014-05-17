@@ -110,7 +110,7 @@
             </p:tabView>
             
             <h3>DataModel</h3>
-            <p:tabView value="#{tabbedView.cars}" var="car" dir="rtl">
+            <p:tabView value="#{tabbedView.cars}" var="car">
                 <p:tab title="Car - #{car.id}">
                     <h:panelGrid columns="2" cellpadding="5">
                         <f:facet name="header">
@@ -317,7 +317,7 @@
         &lt;p:tab title="Tab 25"&gt;Tab 25 Content&lt;/p:tab&gt;                
     &lt;/p:tabView&gt;
 
-    &lt;h3"&gt;Basic&lt;/h3&gt;
+    &lt;h3"&gt;Orientation - Top|Bottom|Left|Right&lt;/h3&gt;
     &lt;p:tabView orientation="left"&gt;
         &lt;p:tab title="Godfather Part I"&gt;
             &lt;h:panelGrid columns="2" cellpadding="10"&gt;
