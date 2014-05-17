@@ -256,6 +256,48 @@ input.searchInput {
     margin-top: 0px;
 }
 
+/* Tabs Source */
+.Source .ui-tabs {
+    background: none;
+    border: 0 none;
+}
+
+.Source .ui-tabs .ui-tabs-nav {
+    background: none;
+    margin-bottom: -1px;
+    padding: 0 !important;
+}
+
+.Source .ui-tabs .ui-tabs-nav li {
+    background: #DFE4E6;
+    border-color: #BCC7CF;
+    box-shadow: none !important;
+}
+
+.Source .ui-tabs .ui-tabs-nav li.ui-state-hover.ui-state-default a {
+    color: #5C666A;
+}
+
+.Source .ui-tabs .ui-tabs-nav li.ui-state-default a {
+    color: #84939F;
+}
+
+.Source .ui-tabs .ui-tabs-nav li.ui-state-active a {
+    color: #5C666A;
+}
+
+.Source .ui-tabs .ui-tabs-nav li.ui-state-hover {
+    box-shadow: none; 
+}
+
+.Source .ui-tabs .ui-tabs-nav li.ui-tabs-selected {
+    background: #EFF3F6;
+}
+
+.Source .ui-tabs .ui-tabs-panels {
+    border-top: 1px solid #BCC7CF;
+}
+
 /** Responsive **/
 @media (min-width: 929px) {
 	.PFTopLinks {
@@ -309,6 +351,14 @@ input.searchInput {
     }
     
     .Content66 {
+        width: 100%;
+    }
+    
+    .ui-tabs .ui-tabs-nav li.tab-doc {
+        float: left
+    }
+    
+    .ui-tabs.ui-tabs-top > .ui-tabs-nav li {
         width: 100%;
     }
     
