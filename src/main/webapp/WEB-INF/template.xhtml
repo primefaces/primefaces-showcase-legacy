@@ -361,9 +361,10 @@
             
         	<!-- header bar start-->
 			<div class="ContentSideSections" id="PFTopLinksCover" style="height:60px;">
-                <div id="LOGOTEXTSIDE">
-                    <span class="dispBlock logoDarkText fontSize30">PrimeFaces</span> <span class="dispBlock logoBlueText fontSize30 mediumFont">SHOWCASE</span>
-                </div>
+                <a id="LOGOTEXTSIDE" href="#{request.contextPath}/index.xhtml">
+                    <span class="dispBlock logoDarkText fontSize30">PrimeFaces</span>
+                    <span class="dispBlock logoBlueText fontSize30 mediumFont">SHOWCASE</span>
+                </a>
                 
                 <a href="#{request.contextPath}/ui/misc/mockosx.xhtml" class="PFTopLinks floatRight boldFont marginRight20"><h:graphicImage name="main/images/pfMockosx.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">MockOSX</span></a>
                 <a href="http://www.primefaces.org/showcase-ext" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfExtensions.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Extensions</span></a>
@@ -397,6 +398,7 @@
                 </div>
                 <select id="mobilemenu" class="selectmenu mediumFont">
                     <option value="">Menu</option>
+                    <option value="#{request.contextPath}/index.xhtml" class="LEVEL1">Home</option>
                     <optgroup label="Ajax Framework" class="LEVEL1">
                         <option value="#{request.contextPath}/ui/ajax/basic.xhtml">Basic</option>
                         <option value="#{request.contextPath}/ui/ajax/event.xhtml">Event</option>
