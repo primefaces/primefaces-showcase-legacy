@@ -182,6 +182,14 @@ $(document).ready(function() {
 		$("#PushDemos").slideUp(1);
 	});
     
+    //mobile menu
+    $('#mobilemenu').on('change', function(e) {
+        var url = $(this).val();
+        if(url.length > 0) {
+            window.location = url;
+        }
+    });
+    
     var sourceTabview = $('#SourceContentSide > div > span > span > div.ui-tabs'),
     lastTabHeader = sourceTabview.find('> ul > li:last');
     if(lastTabHeader.hasClass('tab-doc')) {

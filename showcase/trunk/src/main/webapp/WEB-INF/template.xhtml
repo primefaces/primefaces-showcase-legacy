@@ -395,31 +395,272 @@
                     <h:graphicImage name="main/images/logoBlue.svg" style="height:40px;" styleClass="floatLeft marginRight10"/>
                     <span class="dispBlock logoDarkText fontSize16 floatLeft">PrimeFaces <span class="dispBlock logoBlueText fontSize18 mediumFont">SHOWCASE</span></span> 
                 </div>
-                <select class="selectmenu mediumFont">
-                    <option value="0">Menu</option>
+                <select id="mobilemenu" class="selectmenu mediumFont">
+                    <option value="">Menu</option>
                     <optgroup label="Ajax Framework" class="LEVEL1">
-                        <option value="">Basic</option>
-                        <option value="">Events</option>
-                        <option value="">PartialSubmit</option>
-                        <option value="">Status</option>
+                        <option value="#{request.contextPath}/ui/ajax/basic.xhtml">Basic</option>
+                        <option value="#{request.contextPath}/ui/ajax/event.xhtml">Event</option>
+                        <option value="#{request.contextPath}/ui/ajax/listener.xhtml">Listener</option>
+                        <option value="#{request.contextPath}/ui/ajax/counter.xhtml">Counter</option>
+                        <option value="#{request.contextPath}/ui/ajax/process.xhtml">Process</option>
+                        <option value="#{request.contextPath}/ui/ajax/validation.xhtml">Validation</option>
+                        <option value="#{request.contextPath}/ui/ajax/dropdown.xhtml">Dropdown</option>
+                        <option value="#{request.contextPath}/ui/ajax/partialSubmit.xhtml">PartialSubmit</option>
+                        <option value="#{request.contextPath}/ui/ajax/selector.xhtml">Selector</option>
+                        <option value="#{request.contextPath}/ui/ajax/search.xhtml">Search</option>
+                        <option value="#{request.contextPath}/ui/ajax/poll.xhtml">Poll</option>
+                        <option value="#{request.contextPath}/ui/ajax/fragment.xhtml">Fragment</option>
+                        <option value="#{request.contextPath}/ui/ajax/status.xhtml">Status</option>
+                        <option value="#{request.contextPath}/ui/ajax/remoteCommand.xhtml">RemoteCommand</option>      
                     </optgroup>
                     <optgroup label="Input" class="LEVEL1">
-                        <option value="">AutoComplete</option>
-                        <option value="">Spinner</option>
-                        <option value="">Slider</option>
-                        <option value="">SelectOneMenu</option>
+                        <option value="#{request.contextPath}/ui/input/autoComplete.xhtml">AutoComplete</option>
+                        <option value="#{request.contextPath}/ui/input/inputTextarea.xhtml">InputTextarea</option>
+                        <option value="#{request.contextPath}/ui/input/booleanButton.xhtml">BooleanButton</option>
+                        <option value="#{request.contextPath}/ui/input/booleanCheckbox.xhtml">BooleanCheckbox</option>
+                        <option value="#{request.contextPath}/ui/input/calendar.xhtml">Calendar</option>
+                        <option value="#{request.contextPath}/ui/input/checkboxMenu.xhtml">CheckboxMenu</option>
+                        <option value="#{request.contextPath}/ui/input/oneMenu.xhtml">Dropdown</option>
+                        <option value="#{request.contextPath}/ui/input/editor.xhtml">Editor</option> 
+                        <option value="#{request.contextPath}/ui/input/inputText.xhtml">InputText</option>
+                        <option value="#{request.contextPath}/ui/input/listbox.xhtml">Listbox</option>
+                        <option value="#{request.contextPath}/ui/input/manyButton.xhtml">ManyButton</option>
+                        <option value="#{request.contextPath}/ui/input/manyMenu.xhtml">ManyMenu</option> 
+                        <option value="#{request.contextPath}/ui/input/manyCheckbox.xhtml">ManyCheckbox</option> 
+                        <option value="#{request.contextPath}/ui/input/multiSelectListbox.xhtml">MultiSelectListbox</option>
+                        <option value="#{request.contextPath}/ui/input/oneButton.xhtml">OneButton</option> 
+                        <option value="#{request.contextPath}/ui/input/oneRadio.xhtml">OneRadio</option> 
+                        <option value="#{request.contextPath}/ui/input/spinner.xhtml">Spinner</option>
+                        <option value="#{request.contextPath}/ui/input/slider.xhtml">Slider</option>
+                        <option value="#{request.contextPath}/ui/input/password.xhtml">Password</option>
+                        <option value="#{request.contextPath}/ui/input/keyboard.xhtml">Keyboard</option>
+                        <option value="#{request.contextPath}/ui/input/rating.xhtml">Rating</option>
+                        <option value="#{request.contextPath}/ui/input/colorPicker.xhtml">ColorPicker</option>
+                    </optgroup>
+                    <optgroup label="Button" class="LEVEL1">
+                        <option value="#{request.contextPath}/ui/button/button.xhtml">Button</option>
+                        <option value="#{request.contextPath}/ui/button/commandButton.xhtml">CommandButton</option>
+                        <option value="#{request.contextPath}/ui/button/commandLink.xhtml">CommandLink</option>
+                        <option value="#{request.contextPath}/ui/button/splitButton.xhtml">SplitButton</option>
                     </optgroup>
                     <optgroup label="Data" class="LEVEL1">
-                        <option value="">Tree</option>
-                        <option value="">TreeTable</option>
-                        <option value="">Ring</option>
-                        <optgroup label="DataTable" class="LEVEL2" style="padding-left:10px">
-                            <option value="">Basic</option>
-                            <option value="">Resize</option>
-                            <option value="">Sort</option>
-                            <option value="">Filter</option>
-                        </optgroup>
+                        <option value="#{request.contextPath}/ui/data/carousel.xhtml">Carousel</option>
+                        <option value="#{request.contextPath}/ui/data/dataexporter/basic.xhtml">DataExporter - Basic</option>
+                        <option value="#{request.contextPath}/ui/data/dataexporter/excludeColumns.xhtml">DataExporter - Exclude Columns</option>
+                        <option value="#{request.contextPath}/ui/data/dataexporter/customizedDocuments.xhtml">DataExporter - Customized Documents</option>
+                        <option value="#{request.contextPath}/ui/data/dataGrid.xhtml">DataGrid</option>
+                        <option value="#{request.contextPath}/ui/data/dataList.xhtml">DataList</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/basic.xhtml">DataTable - Basic</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/facets.xhtml">DataTable - Facets</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/paginator.xhtml">DataTable - Paginator</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/sort.xhtml">DataTable - Sort</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/filter.xhtml">DataTable - Filter</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/selection.xhtml">DataTable - Selection</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/group.xhtml">DataTable - Group</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/subTable.xhtml">DataTable - SubTable</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/summaryRow.xhtml">DataTable - SummaryRow</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/expansion.xhtml">DataTable - Expansion</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/columns.xhtml">DataTable - Columns</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/edit.xhtml">DataTable - Edit</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/scroll.xhtml">DataTable - Scroll</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/rowColor.xhtml">DataTable - RowColor</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/lazy.xhtml">DataTable - Lazy</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/columnResize.xhtml">DataTable - Resize</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/reorder.xhtml">DataTable - Reorder</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/columnToggler.xhtml">DataTable - ColumnToggler</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/contextMenu.xhtml">DataTable - ContextMenu</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/sticky.xhtml">DataTable - Sticky</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/rtl.xhtml">DataTable - RTL</option>
+                        <option value="#{request.contextPath}/ui/data/pickList.xhtml">PickList</option>
+                        <option value="#{request.contextPath}/ui/data/mingmap.xhtml">Mindmap</option>
+                        <option value="#{request.contextPath}/ui/data/orderList.xhtml">OrderList</option>
+                        <option value="#{request.contextPath}/ui/data/gmap/basic.xhtml">GMap - Basic</option>
+                        <option value="#{request.contextPath}/ui/data/gmap/event.xhtml">GMap - Event</option>
+                        <option value="#{request.contextPath}/ui/data/gmap/markers.xhtml">GMap - Markers</option>
+                        <option value="#{request.contextPath}/ui/data/gmap/markerSelection.xhtml">GMap - Marker Selection</option>
+                        <option value="#{request.contextPath}/ui/data/gmap/addMarkers.xhtml">GMap - Adding Markers</option>
+                        <option value="#{request.contextPath}/ui/data/gmap/draggableMarkers.xhtml">GMap - Draggable Markers</option>
+                        <option value="#{request.contextPath}/ui/data/gmap/infoWindow.xhtml">GMap - Info Window</option>
+                        <option value="#{request.contextPath}/ui/data/gmap/polylines.xhtml">GMap - Polylines</option>
+                        <option value="#{request.contextPath}/ui/data/gmap/polygons.xhtml">GMap - Polygons</option>
+                        <option value="#{request.contextPath}/ui/data/gmap/circles.xhtml">GMap - Circles</option>
+                        <option value="#{request.contextPath}/ui/data/gmap/rectangles.xhtml">GMap - Rectangles</option>
+                        <option value="#{request.contextPath}/ui/data/gmap/street.xhtml">GMap - Street View</option>
+                        <option value="#{request.contextPath}/ui/data/gmap/controls.xhtml">GMap - Controls</option>
+                        <option value="#{request.contextPath}/ui/data/gmap/mapDialog.xhtml">GMap - Map in Dialog</option>
+                        <option value="#{request.contextPath}/ui/data/ring.xhtml">Ring</option>
+                        <option value="#{request.contextPath}/ui/data/schedule.xhtml">Schedule</option>
+                        <option value="#{request.contextPath}/ui/data/tagCloud.xhtml">TagCloud</option>
+                        <option value="#{request.contextPath}/ui/data/tree/basic.xhtml">Tree - Basic</option>
+                        <option value="#{request.contextPath}/ui/data/tree/icon.xhtml">Tree - Icon</option>
+                        <option value="#{request.contextPath}/ui/data/tree/selection.xhtml">Tree - Selection</option>
+                        <option value="#{request.contextPath}/ui/data/tree/events.xhtml">Tree - Events</option>
+                        <option value="#{request.contextPath}/ui/data/tree/dragdrop.xhtml">Tree - DragDrop</option>
+                        <option value="#{request.contextPath}/ui/data/tree/contextMenu.xhtml">Tree - ContextMenu</option>
+                        <option value="#{request.contextPath}/ui/data/tree/animate.xhtml">Tree - Animate</option>
+                        <option value="#{request.contextPath}/ui/data/tree/rtl.xhtml">Tree - RTL</option>
+                        <option value="#{request.contextPath}/ui/data/htree/basic.xhtml">Tree Horizontal - Basic</option>
+                        <option value="#{request.contextPath}/ui/data/htree/icon.xhtml">Tree Horizontal - Icon</option>
+                        <option value="#{request.contextPath}/ui/data/htree/selection.xhtml">Tree Horizontal - Selection</option>
+                        <option value="#{request.contextPath}/ui/data/htree/events.xhtml">Tree Horizontal - Events</option>
+                        <option value="#{request.contextPath}/ui/data/htree/contextMenu.xhtml">Tree Horizontal - ContextMenu</option>
+                        <option value="#{request.contextPath}/ui/data/treetable/basic.xhtml">TreeTable - Basic</option>
+                        <option value="#{request.contextPath}/ui/data/treetable/selection.xhtml">TreeTable - Selection</option>
+                        <option value="#{request.contextPath}/ui/data/treetable/events.xhtml">TreeTable - Events</option>
+                        <option value="#{request.contextPath}/ui/data/treetable/contextMenu.xhtml">TreeTable - ContextMenu</option>
+                        <option value="#{request.contextPath}/ui/data/treetable/scroll.xhtml">TreeTable - Scroll</option>
+                        <option value="#{request.contextPath}/ui/data/treetable/resize.xhtml">TreeTable - Resize</option>
+                        <option value="#{request.contextPath}/ui/data/treetable/sort.xhtml">TreeTable - Sort</option>
                     </optgroup>
+                    <optgroup label="Panel" class="LEVEL1">
+                        <option value="#{request.contextPath}/ui/panel/accordionPanel.xhtml">Accordion</option>
+                        <option value="#{request.contextPath}/ui/panel/dashboard.xhtml">Dashboard</option>
+                        <option value="#{request.contextPath}/ui/panel/fieldset.xhtml">Fieldset</option>
+                        <option value="#{request.contextPath}/ui/panel/layout/full.xhtml">Layout - Full</option>
+                        <option value="#{request.contextPath}/ui/panel/layout/element.xhtml">Layout - Element</option>
+                        <option value="#{request.contextPath}/ui/panel/layout/nested.xhtml">Layout - Nested</option>
+                        <option value="#{request.contextPath}/ui/panel/layout/events.xhtml">Layout - Events</option>
+                        <option value="#{request.contextPath}/ui/panel/layout/complex.xhtml">Layout - Complex</option>
+                        <option value="#{request.contextPath}/ui/panel/layout/mailbox.xhtml">Layout - Mailbox</option>
+                        <option value="#{request.contextPath}/ui/panel/notificationBar.xhtml">NotificationBar</option>
+                        <option value="#{request.contextPath}/ui/panel/outputPanel.xhtml">OutputPanel</option>
+                        <option value="#{request.contextPath}/ui/panel/panel.xhtml">Panel</option>
+                        <option value="#{request.contextPath}/ui/panel/panelGrid.xhtml">PanelGrid</option>
+                        <option value="#{request.contextPath}/ui/panel/scrollPanel.xhtml">ScrollPanel</option>
+                        <option value="#{request.contextPath}/ui/panel/tabView.xhtml">TabView</option>
+                        <option value="#{request.contextPath}/ui/panel/toolbar.xhtml">Toolbar</option>
+                        <option value="#{request.contextPath}/ui/panel/wizard.xhtml">Wizard</option>
+                    </optgroup>
+                    <optgroup label="Overlay" class="LEVEL1">
+                        <option value="#{request.contextPath}/ui/overlay/confirmDialog.xhtml">ConfirmDialog</option>
+                        <option value="#{request.contextPath}/ui/overlay/dialog/basic.xhtml">Dialog - Basic</option>
+                        <option value="#{request.contextPath}/ui/overlay/dialog/ajaxForm.xhtml">Dialog - Ajax Integration</option>
+                        <option value="#{request.contextPath}/ui/overlay/dialog/minMax.xhtml">Dialog - Minimize/Maximize</option>
+                        <option value="#{request.contextPath}/ui/overlay/dialog/dynamic.xhtml">Dialog - Dynamic Content</option>
+                        <option value="#{request.contextPath}/ui/overlay/dialog/focus.xhtml">Dialog - Dynamic Focus</option>
+                        <option value="#{request.contextPath}/ui/overlay/dialog/close.xhtml">Dialog - Close Listener</option>
+                        <option value="#{request.contextPath}/ui/overlay/dialog/loginDemo.xhtml">Dialog - Login Demo</option>
+                        <option value="#{request.contextPath}/ui/overlay/dialog/rtl.xhtml">Dialog - RTL</option>
+                        <option value="#{request.contextPath}/ui/overlay/lightBox.xhtml">LightBox</option>
+                        <option value="#{request.contextPath}/ui/overlay/overlayPanel.xhtml">OverlayPanel</option>
+                        <option value="#{request.contextPath}/ui/overlay/tooltip/tooltipOptions.xhtml">Tooltip - Options</option>
+                        <option value="#{request.contextPath}/ui/overlay/tooltip/tooltipGlobal.xhtml">Tooltip - Global</option>
+                    </optgroup>
+                    <optgroup label="Menu" class="LEVEL1">
+                        <option value="#{request.contextPath}/ui/menu/breadcrumb.xhtml">Breadcrumb</option>
+                        <option value="#{request.contextPath}/ui/menu/contextmenu/basic.xhtml">ContextMenu - Basic</option>
+                        <option value="#{request.contextPath}/ui/menu/contextmenu/tiered.xhtml">ContextMenu - Tiered</option>
+                        <option value="#{request.contextPath}/ui/menu/contextmenu/target.xhtml">ContextMenu - Target</option>
+                        <option value="#{request.contextPath}/ui/data/datatable/contextMenu.xhtml">ContextMenu - DataTable</option>
+                        <option value="#{request.contextPath}/ui/data/tree/contextMenu.xhtml">ContextMenu - Tree</option>
+                        <option value="#{request.contextPath}/ui/data/treetable/contextMenu.xhtml">ContextMenu - TreeTable</option>
+                        <option value="#{request.contextPath}/ui/menu/dock.xhtml">Dock</option>
+                        <option value="#{request.contextPath}/ui/menu/megaMenu.xhtml">MegaMenu</option>
+                        <option value="#{request.contextPath}/ui/menu/menu.xhtml">Menu</option>
+                        <option value="#{request.contextPath}/ui/menu/menubar.xhtml">Menubar</option>
+                        <option value="#{request.contextPath}/ui/menu/menuButton.xhtml">MenuButton</option>
+                        <option value="#{request.contextPath}/ui/menu/panelMenu.xhtml">PanelMenu</option>
+                        <option value="#{request.contextPath}/ui/menu/slideMenu.xhtml">SlideMenu</option>
+                        <option value="#{request.contextPath}/ui/menu/stack.xhtml">Stack</option>
+                        <option value="#{request.contextPath}/ui/menu/tabMenu.xhtml">TabMenu</option>
+                        <option value="#{request.contextPath}/ui/menu/tieredMenu.xhtml">TieredMenu</option>
+                    </optgroup>
+                    <optgroup label="Charts" class="LEVEL1">
+                        <option value="#{request.contextPath}/ui/chart/area.xhtml">Area</option>
+                        <option value="#{request.contextPath}/ui/chart/bar.xhtml">Bar</option>
+                        <option value="#{request.contextPath}/ui/chart/bubble.xhtml">Bubble</option>
+                        <option value="#{request.contextPath}/ui/chart/donut.xhtml">Donut</option>
+                        <option value="#{request.contextPath}/ui/chart/line.xhtml">Line</option>
+                        <option value="#{request.contextPath}/ui/chart/pie.xhtml">Pie</option>
+                        <option value="#{request.contextPath}/ui/chart/metergauge.xhtml">MeterGauge</option>
+                        <option value="#{request.contextPath}/ui/chart/ohlc.xhtml">OHLC</option>
+                        <option value="#{request.contextPath}/ui/chart/animate.xhtml">Animate</option>
+                        <option value="#{request.contextPath}/ui/chart/export.xhtml">Export</option>
+                        <option value="#{request.contextPath}/ui/chart/interactive.xhtml">Interactive</option>
+                        <option value="#{request.contextPath}/ui/chart/live.xhtml">Live</option>
+                        <option value="#{request.contextPath}/ui/chart/static.xhtml">Static</option>
+                        <option value="#{request.contextPath}/ui/chart/zoom.xhtml">Zoom</option>
+                        <option value="#{request.contextPath}/ui/chart/combined.xhtml">Combined</option>
+                        <option value="#{request.contextPath}/ui/chart/multiaxis.xhtml">MultiAxis</option>
+                        <option value="#{request.contextPath}/ui/chart/date.xhtml">Date</option>
+                    </optgroup>
+                    <optgroup label="Messages" class="LEVEL1">
+                        <option value="#{request.contextPath}/ui/message/growl.xhtml">Growl</option>
+                        <option value="#{request.contextPath}/ui/message/messages.xhtml">Messages</option>
+                    </optgroup>
+                    <optgroup label="Multimedia" class="LEVEL1">
+                        <option value="#{request.contextPath}/ui/multimedia/compare.xhtml">Compare</option>
+                        <option value="#{request.contextPath}/ui/multimedia/contentFlow.xhtml">ContentFlow</option>
+                        <option value="#{request.contextPath}/ui/multimedia/cropper.xhtml">Cropper</option>
+                        <option value="#{request.contextPath}/ui/multimedia/galleria.xhtml">Galleria</option>
+                        <option value="#{request.contextPath}/ui/multimedia/graphicImage.xhtml">GraphicImage</option>
+                        <option value="#{request.contextPath}/ui/multimedia/media.xhtml">Media</option>
+                        <option value="#{request.contextPath}/ui/multimedia/photoCam.xhtml">PhotoCam</option>
+                        <option value="#{request.contextPath}/ui/multimedia/switch.xhtml">Switch</option>
+                    </optgroup>
+                    <optgroup label="File" class="LEVEL1">
+                        <option value="#{request.contextPath}/ui/file/upload/basic.xhtml">Upload - Basic</option>
+                        <option value="#{request.contextPath}/ui/file/upload/auto.xhtml">Upload - Auto</option>
+                        <option value="#{request.contextPath}/ui/file/upload/single.xhtml">Upload - Single</option>
+                        <option value="#{request.contextPath}/ui/file/upload/multiple.xhtml">Upload - Multiple</option>
+                        <option value="#{request.contextPath}/ui/file/upload/dnd.xhtml">Upload - DragDrop</option>
+                        <option value="#{request.contextPath}/ui/file/download.xhtml">Download</option>
+                    </optgroup>
+                    <optgroup label="DragDrop" class="LEVEL1">
+                        <option value="#{request.contextPath}/ui/dnd/draggable.xhtml">Draggable</option>
+                        <option value="#{request.contextPath}/ui/dnd/dataGrid.xhtml">DataGrid</option>
+                        <option value="#{request.contextPath}/ui/dnd/dataTable.xhtml">DataTable</option>
+                        <option value="#{request.contextPath}/ui/dnd/custom.xhtml">Custom</option>
+                    </optgroup>
+                    <optgroup label="Client Side Validation" class="LEVEL1">
+                        <option value="#{request.contextPath}/ui/csv/basic.xhtml">Basic</option>
+                        <option value="#{request.contextPath}/ui/csv/bean.xhtml">Bean</option>
+                        <option value="#{request.contextPath}/ui/csv/custom.xhtml">Custom</option>
+                        <option value="#{request.contextPath}/ui/csv/event.xhtml">Event</option>
+                    </optgroup>
+                    <optgroup label="Dialog Framework" class="LEVEL1">
+                        <option value="#{request.contextPath}/ui/df/basic.xhtml">Basic</option>
+                        <option value="#{request.contextPath}/ui/df/data.xhtml">Data</option>
+                        <option value="#{request.contextPath}/ui/df/message.xhtml">Message</option>
+                    </optgroup>
+                    <optgroup label="Misc" class="LEVEL1">
+                        <option value="#{request.contextPath}/ui/misc/blockUI.xhtml">BlockUI</option>
+                        <option value="#{request.contextPath}/ui/misc/cache.xhtml">Cache</option>
+                        <option value="#{request.contextPath}/ui/misc/captcha.xhtml">Captcha</option>
+                        <option value="#{request.contextPath}/ui/misc/clock.xhtml">Clock</option>
+                        <option value="#{request.contextPath}/ui/misc/collector.xhtml">Collector</option>
+                        <option value="#{request.contextPath}/ui/misc/defaultCommand.xhtml">DefaultCommand</option>
+                        <option value="#{request.contextPath}/ui/misc/effect.xhtml">Effect</option>
+                        <option value="#{request.contextPath}/ui/misc/exceptionHandler.xhtml">ExceptionHandler</option>
+                        <option value="#{request.contextPath}/ui/misc/feedReader.xhtml">FeedReader</option>
+                        <option value="#{request.contextPath}/ui/misc/focus.xhtml">Focus</option>
+                        <option value="#{request.contextPath}/ui/misc/hotkey.xhtml">Hotkey</option>
+                        <option value="#{request.contextPath}/ui/misc/idleMonitor.xhtml">IdleMonitor</option>
+                        <option value="#{request.contextPath}/ui/misc/log.xhtml">Log</option>
+                        <option value="#{request.contextPath}/ui/misc/outputLabel.xhtml">OutputLabel</option>
+                        <option value="#{request.contextPath}/ui/misc/printer.xhtml">Printer</option>
+                        <option value="#{request.contextPath}/ui/misc/progressBar.xhtml">ProgressBar</option>
+                        <option value="#{request.contextPath}/ui/misc/requestContext.xhtml">RequestContext</option>
+                        <option value="#{request.contextPath}/ui/misc/resetInput.xhtml">ResetInput</option>
+                        <option value="#{request.contextPath}/ui/misc/resizable.xhtml">Resizable</option>
+                        <option value="#{request.contextPath}/ui/misc/separator.xhtml">Separator</option>
+                        <option value="#{request.contextPath}/ui/misc/spacer.xhtml">Spacer</option>
+                        <option value="#{request.contextPath}/ui/misc/spotlight.xhtml">Spotlight</option>
+                        <option value="#{request.contextPath}/ui/misc/sticky.xhtml">Sticky</option>
+                        <option value="#{request.contextPath}/ui/misc/terminal.xhtml">Terminal</option>
+                        <option value="#{request.contextPath}/ui/misc/themeSwitcher.xhtml">ThemeSwitcher</option>
+                        <option value="#{request.contextPath}/ui/misc/watermark.xhtml">Watermark</option>
+                    </optgroup>
+                    <option value="#{request.contextPath}/mobile/index.xhtml" class="LEVEL1">PFMobile</option>
+                    <optgroup label="PFPush" class="LEVEL1">
+                        <option value="#{request.contextPath}/push/counter.xhtml">Counter</option>
+                        <option value="#{request.contextPath}/push/chat.xhtml">Chat</option>
+                        <option value="#{request.contextPath}/push/notify.xhtml">Notify</option>
+                        <option value="#{request.contextPath}/mobile/checkin.xhtml">Checkin</option>
+                        <option value="#{request.contextPath}/push/viewparam.xhtml">ViewParam</option>
+                        <option value="#{request.contextPath}/push/chart.xhtml">Chart</option>
+                    </optgroup>
+                    <option value="#{request.contextPath}/ui/misc/mockosx.xhtml" class="LEVEL1">PFMockOSX</option>
                 </select>
             </div>
             <!-- header bar end-->
