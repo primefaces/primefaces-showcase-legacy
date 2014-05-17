@@ -309,7 +309,11 @@ input.searchInput {
     }
 
     .mobileLogoCover {
-        display: none
+        display: none;
+    }
+    
+    .PFNextGen iframe {
+        margin-left: 100px;
     }
 }
 
@@ -362,6 +366,13 @@ input.searchInput {
         width: 100%;
     }
     
+    .BigButton {
+        width: 100%;
+    }
+    
+    .PFNextGen iframe {
+        margin-left: 0;
+    }
 }
 
 /* Themes */
