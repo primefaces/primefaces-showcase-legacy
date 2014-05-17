@@ -52,7 +52,7 @@
 
 body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-color:#20272a; font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;}
 
-	#LOGOTEXTSIDE{width:290px; float:left; height:74px; z-index:999; background-image:url(#{resource['main/images/logoCircuitLines.svg']}); background-repeat:no-repeat; background-position:center right;
+	#LOGOTEXTSIDE{display:block;width:290px; float:left; height:74px; z-index:999; background-image:url(#{resource['main/images/logoCircuitLines.svg']}); background-repeat:no-repeat; background-position:center right;
 				  margin:-20px 0px 0px 0px; padding-top:25px; line-height:30px;}
 		.logoDarkText{color:#5c666a;}
 		.logoBlueText{color:#25aae1;}
@@ -84,7 +84,7 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 						-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
 						
 	.selectmenu{width:auto; max-width:120px; float:right; padding:5px; outline:none; font-size:16px; display:block; overflow:hidden;}
-		.LEVEL1{font-size:16px; color:#25aae1; padding-left:10px;}
+		.LEVEL1{color:#25aae1; padding-left:10px;}
 			.LEVEL2{font-size:12px; color:#25aae1; padding-left:10px;}
 				.selectmenu option{ font-size:12px;}
 				
