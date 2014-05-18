@@ -280,6 +280,8 @@ input.searchInput {
 
 .Source .ui-tabs .ui-tabs-nav li.ui-state-default a {
     color: #84939F;
+    font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;
+    text-shadow: none;
 }
 
 .Source .ui-tabs .ui-tabs-nav li.ui-state-active a {
