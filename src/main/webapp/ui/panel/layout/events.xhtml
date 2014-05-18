@@ -9,6 +9,11 @@
     <h:head>
         <h:outputStylesheet name="main/css/showcase.css" />
         <h:outputStylesheet name="main/css/sh.css" />
+        <style type="text/css">
+            body {
+                background-color: #FFFFFF;
+            }
+        </style>
 	</h:head>
 
         <h:body>
@@ -37,83 +42,8 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    Layout responds to toggle, close and resize events.
-                    
                     <h:form>
-                        <p:tabView style="margin-top:10px">
-                            <p:tab title="layoutElement.xhtml">
-                                <pre name="code" class="brush:xml">
-    &lt;p:growl id="msgs" showDetail="true"/&gt;
-
-    &lt;p:layout fullPage="true"&gt;
-
-        &lt;p:ajax event="toggle" listener="\#{layoutView.handleToggle}" update="msgs" /&gt;
-        &lt;p:ajax event="close" listener="\#{layoutView.handleClose}" update="msgs" /&gt;
-
-        &lt;p:layoutUnit position="north" size="100" header="Top" resizable="true" closable="true" collapsible="true"&gt;
-            &lt;h:outputText value="North unit content." /&gt;
-        &lt;/p:layoutUnit&gt;
-
-        &lt;p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true"&gt;
-            &lt;h:outputText value="South unit content." /&gt;
-        &lt;/p:layoutUnit&gt;
-
-        &lt;p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true"&gt;
-            &lt;h:outputText value="West unit content." /&gt;
-        &lt;/p:layoutUnit&gt;
-
-        &lt;p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true"&gt;
-            &lt;h:outputText value="Right unit content." /&gt;
-        &lt;/p:layoutUnit&gt;
-
-        &lt;p:layoutUnit position="center"&gt;
-            //content
-        &lt;/p:layoutUnit&gt;
-
-    &lt;/p:layout&gt;
-                                </pre>
-                            </p:tab>
-
-                            <p:tab title="LayoutView.java">
-                                <pre name="code" class="brush:java">
-    package org.primefaces.showcase.view.panel;
-
-    import javax.faces.application.FacesMessage;
-    import javax.faces.bean.ManagedBean;
-    import javax.faces.context.FacesContext;
-    import org.primefaces.component.layout.LayoutUnit;
-    import org.primefaces.event.CloseEvent;
-    import org.primefaces.event.ResizeEvent;
-    import org.primefaces.event.ToggleEvent;
-
-    @ManagedBean
-    public class LayoutView {
-
-        public void handleClose(CloseEvent event) {
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Unit Closed", "Position:'" + ((LayoutUnit)event.getComponent()).getPosition() + "'");
-
-            addMessage(message);
-        }
-
-        public void handleToggle(ToggleEvent event) {
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, ((LayoutUnit)event.getComponent()).getPosition() + " toggled", "Status:" + event.getVisibility().name());
-
-            addMessage(message);
-        }
-
-        public void handleResize(ResizeEvent event) {
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, ((LayoutUnit)event.getComponent()).getPosition() + " resized", "Width:" + event.getWidth() + ", Height:" + event.getHeight());
-
-            addMessage(message);
-        }
-
-        private void addMessage(FacesMessage message) {
-            FacesContext.getCurrentInstance().addMessage(null, message);
-        }
-    }
-                                </pre>
-                            </p:tab>
-                        </p:tabView>
+                        Layout responds to toggle, close and resize events.
                     </h:form>
                 </p:layoutUnit>
 
