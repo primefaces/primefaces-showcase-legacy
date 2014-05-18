@@ -95,6 +95,16 @@
             </div>
             <span class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/data.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/dataBlue.svg" /><span class="MainLinkText">Data</span></span>
             <div class="SubMenuLinkContainer">
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/carousel.xhtml">&bull; Carousel</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/dataGrid.xhtml">&bull; DataGrid</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/dataList.xhtml">&bull; DataList</a>
+                <span class="SubMenuLink" onclick="Showcase.openSubSubMenu(this);">&bull; DataScroller
+                    <div class="subsubMenuLinks">
+                        <a href="#{request.contextPath}/ui/data/datascroller/basic.xhtml">&bull; Basic</a>
+                        <a href="#{request.contextPath}/ui/data/datascroller/inline.xhtml">&bull; Inline</a>
+                        <a href="#{request.contextPath}/ui/data/datascroller/loader.xhtml">&bull; Loader</a>
+                    </div>
+                </span>
                 <span class="SubMenuLink" onclick="Showcase.openSubSubMenu(this);">&bull; DataTable
                     <div class="subsubMenuLinks">
                         <a href="#{request.contextPath}/ui/data/datatable/basic.xhtml">&bull; Basic</a>
@@ -150,6 +160,7 @@
                 <a class="SubMenuLink" href="#{request.contextPath}/ui/data/mindmap.xhtml">&bull; Mindmap</a>
                 <a class="SubMenuLink" href="#{request.contextPath}/ui/data/ring.xhtml">&bull; Ring</a>
                 <a class="SubMenuLink" href="#{request.contextPath}/ui/data/schedule.xhtml">&bull; Schedule</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/tagCloud.xhtml">&bull; TagCloud</a>
                 <span class="SubMenuLink" onclick="Showcase.openSubSubMenu(this);">&bull; Tree
                     <div class="subsubMenuLinks">
                         <a href="#{request.contextPath}/ui/data/tree/basic.xhtml">&bull; Basic</a>
