@@ -38,8 +38,8 @@ $(document).ready(function() {
         openMenu: function() {
             var $this = this;
             this.menuVisible = true;
-            this.menu.clearQueue();
-            this.categoryLinks.clearQueue();
+            this.clearMenuAnimQueue();
+    
             this.menu.animate({'width':450},500,"easeInOutQuint", function(){
                 $this.menu.perfectScrollbar('update');
                 $this.categoryLinks.animate({'opacity':1,'margin-left':50},100);
@@ -47,36 +47,39 @@ $(document).ready(function() {
                 $this.searchInput.slideDown(200);
             });
             this.logo.animate({'width':440},700,"easeInOutQuint");
-            this.content.animate({'opacity':0.6});
             this.hiddenCategoryIcons.animate({'opacity':1},1000);
+            this.content.animate({'opacity':0.6});
         },
 
         hideMenu: function() {
             var $this = this;
             this.menuVisible = false;
-            this.menu.clearQueue();
-            this.categoryLinks.clearQueue();
-            this.menu.clearQueue();
+            this.clearMenuAnimQueue();
+            
             this.menu.animate({'width':85},700,"easeInOutQuint", function(){
                 $this.menu.perfectScrollbar('update');
             });
             this.logo.animate({'width':75},700,"easeInOutQuint");
-            $this.hiddenLogo.fadeOut(100);
-            $this.categoryLinks.animate({'opacity':0,'margin-left':60},100);
-            this.content.animate({'opacity':1});
+            this.hiddenLogo.fadeOut(100);
+            this.categoryLinks.animate({'opacity':0,'margin-left':60},100);
             this.hiddenCategoryIcons.animate({'opacity':0},1000);
             this.searchInput.slideUp(200);
+            this.content.animate({'opacity':1});
             this.hideSubMenus();
         },
         
+        clearMenuAnimQueue: function() {
+            this.menu.clearQueue();
+            this.categoryLinks.clearQueue();
+            this.logo.clearQueue();
+            this.hiddenLogo.clearQueue();
+            this.hiddenCategoryIcons.clearQueue();
+            this.content.clearQueue();
+            this.searchInput.clearQueue();
+        },
+        
         onWinResize: function() {
-            var win = $(window),
-            winW = win.width(),
-            winH = win.height();
-
-            this.menu.height(winH);
-            //this.topLinksCover.width(winW-120);
-            //this.content.width(winW-86);
+            this.menu.height($(window).height());
         },
         
         hideSubMenus: function() {
