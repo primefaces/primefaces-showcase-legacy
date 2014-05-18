@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile">
+    
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
+    
+    <h:head>
+        <h:outputStylesheet name="main/css/sh.css" />
+        <style type="text/css">
+            .ui-grid-a div {
+                padding: 0em 0.5em;
+            }
+        </style>
+    </h:head>
+    
+    <h:body>
+        
+        <pm:page id="first">
+            <pm:header title="Transition" swatch="b"></pm:header>
+            
+            <pm:content>
+                <p>Various transition animations are supported during navigation between pages. Please note that some transitions may not be supported
+                in some platforms and fade is used as a fallback.</p>
+                
+                <p:panelGrid columns="2">
+                    <p:button outcome="pm:second?transition=fade" value="Fade" />
+                    <p:button outcome="pm:second?transition=pop" value="Pop" />
+                    <p:button outcome="pm:second?transition=flip" value="Flip" />
+                    <p:button outcome="pm:second?transition=turn" value="Turn" />
+                    <p:button outcome="pm:second?transition=flow" value="Flow" />
+                    <p:button outcome="pm:second?transition=slidefade" value="SlideFade" />
+                    <p:button outcome="pm:second?transition=slide" value="Slide" />
+                    <p:button outcome="pm:second?transition=slideup" value="Slideup" />
+                    <p:button outcome="pm:second?transition=slidedown" value="Slidedown" />
+                    <p:button outcome="pm:second?transition=none" value="None" />
+                </p:panelGrid>
+                
+                <h2>Source</h2>
+                <p:accordionPanel activeIndex="-1">
+                    <p:tab title="transitions.xhtml">
+                        <pre class="brush:xml">
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"&gt;
+    
+    &lt;f:view renderKitId="PRIMEFACES_MOBILE" /&gt;
+    
+    &lt;h:head&gt;
+        &lt;style type="text/css"&gt;
+            .ui-grid-a div {
+                padding: 0em 0.5em;
+            }
+        &lt;/style&gt;
+    &lt;/h:head&gt;
+    
+    &lt;h:body&gt;
+        
+        &lt;pm:page id="first"&gt;
+            &lt;pm:header title="Transition" swatch="b"&gt;&lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                &lt;p&gt;Various transition animations are supported during navigation between pages. Please note that some transitions may not be supported
+                in some platforms and fade is used as a fallback.&lt;/p&gt;
+                
+                &lt;p:panelGrid columns="2"&gt;
+                    &lt;p:button outcome="pm:second?transition=fade" value="Fade" /&gt;
+                    &lt;p:button outcome="pm:second?transition=pop" value="Pop" /&gt;
+                    &lt;p:button outcome="pm:second?transition=flip" value="Flip" /&gt;
+                    &lt;p:button outcome="pm:second?transition=turn" value="Turn" /&gt;
+                    &lt;p:button outcome="pm:second?transition=flow" value="Flow" /&gt;
+                    &lt;p:button outcome="pm:second?transition=slidefade" value="SlideFade" /&gt;
+                    &lt;p:button outcome="pm:second?transition=slide" value="Slide" /&gt;
+                    &lt;p:button outcome="pm:second?transition=slideup" value="Slideup" /&gt;
+                    &lt;p:button outcome="pm:second?transition=slidedown" value="Slidedown" /&gt;
+                    &lt;p:button outcome="pm:second?transition=none" value="None" /&gt;
+                &lt;/p:panelGrid&gt;
+                                
+            &lt;/pm:content&gt;
+        &lt;/pm:page&gt;
+        
+        &lt;pm:page id="second"&gt;
+            &lt;pm:header title="Transition" swatch="b"&gt;
+                &lt;p:button outcome="pm:first" value="Back" icon="ui-icon-arrow-l" styleClass="ui-btn-left ui-btn-inline"/&gt;
+            &lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                &lt;h1&gt;Target Page&lt;/h1&gt;
+            &lt;/pm:content&gt;
+        &lt;/pm:page&gt;
+    &lt;/h:body&gt;
+    
+&lt;/html&gt;
+                        </pre>   
+                    </p:tab>
+                </p:accordionPanel>
+                
+            </pm:content>
+        </pm:page>
+        
+        <pm:page id="second">
+            <pm:header title="Transition" swatch="b">
+                <p:button outcome="pm:first" value="Back" icon="ui-icon-arrow-l" styleClass="ui-btn-left ui-btn-inline"/>
+            </pm:header>
+            
+            <pm:content>
+                <h1>Target Page</h1>
+            </pm:content>
+        </pm:page>
+        
+        <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
+        <script language="javascript">
+            SyntaxHighlighter.all();
+        </script>
+    </h:body>
+    
+</html>

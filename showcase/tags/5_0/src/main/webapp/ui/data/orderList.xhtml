@@ -1,0 +1,166 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        OrderList
+    </ui:define>
+
+    <ui:define name="description">
+        OrderList is used to sort a collection via Drag and Drop based reordering, transition effects, pojo support, theme support and more.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <h3 style="margin-top: 0">Basic OrderList</h3>
+            <p:orderList value="#{orderListView.cities}" var="city" controlsLocation="none" itemLabel="#{city}" itemValue="#{city}" />
+            <p:commandButton value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" />
+            
+            <h3>Pojo Support with Clip Effect, Captions, Custom Content and Reorder Controls</h3>
+            <p:orderList value="#{orderListView.themes}" var="theme" itemValue="#{theme}" converter="theme" controlsLocation="left">
+                <f:facet name="caption">Available</f:facet>
+
+                <p:column style="width:25%">
+                    <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
+                </p:column>
+
+                 <p:column style="width:75%;">
+                    <h:outputText value="#{theme.displayName}" />
+                </p:column>
+            </p:orderList>
+            <p:commandButton value="Submit" update="displayThemes" oncomplete="PF('themesDialog').show()" style="margin-top:5px" />
+
+            <p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog" header="Cities" width="200">
+                <p:dataList id="displayCities" value="#{orderListView.cities}" var="city">
+                    <h:outputText value="#{city}" />
+                </p:dataList>
+            </p:dialog>
+
+            <p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="themesDialog" header="Themes" width="200" id="dlgThemes">
+                <h:panelGrid id="displayThemes" columns="2">
+                    <ui:repeat value="#{orderListView.themes}" var="theme">
+                        <h:outputText value="#{theme.displayName}" style="margin-right:5px" />
+                        <br />
+                    </ui:repeat>
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="orderList.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;h3 style="margin-top: 0"&gt;Basic OrderList&lt;/h3&gt;
+    &lt;p:orderList value="\#{orderListView.cities}" var="city" controlsLocation="none" itemLabel="\#{city}" itemValue="\#{city}" /&gt;
+    &lt;p:commandButton value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" /&gt;
+
+    &lt;h3&gt;Pojo Support with Clip Effect, Captions, Custom Content and Reorder Controls&lt;/h3&gt;
+    &lt;p:orderList value="\#{orderListView.themes}" var="theme" itemValue="\#{theme}" converter="theme" controlsLocation="left"&gt;
+        &lt;f:facet name="caption"&gt;Available&lt;/f:facet&gt;
+
+        &lt;p:column style="width:25%"&gt;
+            &lt;h:outputText styleClass="ui-theme ui-theme-\#{theme.name}" /&gt;
+        &lt;/p:column&gt;
+
+         &lt;p:column style="width:75%;"&gt;
+            &lt;h:outputText value="\#{theme.displayName}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:orderList&gt;
+    &lt;p:commandButton value="Submit" update="displayThemes" oncomplete="PF('themesDialog').show()" style="margin-top:5px" /&gt;
+
+    &lt;p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog" header="Cities" width="200"&gt;
+        &lt;p:dataList id="displayCities" value="\#{orderListView.cities}" var="city"&gt;
+            &lt;h:outputText value="\#{city}" /&gt;
+        &lt;/p:dataList&gt;
+    &lt;/p:dialog&gt;
+
+    &lt;p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="themesDialog" header="Themes" width="200" id="dlgThemes"&gt;
+        &lt;h:panelGrid id="displayThemes" columns="2"&gt;
+            &lt;ui:repeat value="\#{orderListView.themes}" var="theme"&gt;
+                &lt;h:outputText value="\#{theme.displayName}" style="margin-right:5px" /&gt;
+            &lt;/ui:repeat&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="OrderListView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+
+import org.primefaces.showcase.service.ThemeService;
+import org.primefaces.showcase.domain.Theme;
+
+@ManagedBean
+public class OrderListView {
+    
+    @ManagedProperty("\#{themeService}")
+    private ThemeService service;
+    
+    private List&lt;String&gt; cities;
+    private List&lt;Theme&gt; themes;
+    
+    @PostConstruct
+    public void init() {
+        //Cities
+        cities = new ArrayList&lt;String&gt;();
+        cities.add("San Francisco");
+        cities.add("London");
+        cities.add("Paris");
+        cities.add("Istanbul");
+        cities.add("Berlin");
+        cities.add("Barcelona");
+        cities.add("Rome");
+             
+        //Themes
+        themes = service.getThemes().subList(0, 6);    
+    }
+
+    public ThemeService getService() {
+        return service;
+    }
+
+    public void setService(ThemeService service) {
+        this.service = service;
+    }
+
+    public List&lt;String&gt; getCities() {
+        return cities;
+    }
+
+    public void setCities(List&lt;String&gt; cities) {
+        this.cities = cities;
+    }
+
+    public List&lt;Theme&gt; getThemes() {
+        return themes;
+    }
+
+    public void setThemes(List&lt;Theme&gt; themes) {
+        this.themes = themes;
+    }    
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-317" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

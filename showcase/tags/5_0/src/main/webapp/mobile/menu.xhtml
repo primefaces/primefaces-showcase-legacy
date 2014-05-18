@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/WEB-INF/mobile.xhtml">
+    
+    <ui:define name="resources">
+        <style type="text/css">
+            .ui-content .ui-listview-inset, .ui-panel-inner > .ui-listview-inset {
+                margin-top: 0;
+            }
+        </style>
+    </ui:define>
+    
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>Menu</h1>
+            <p>Menu is navigation component consisting of submenus and menuitems.</p>
+            
+            <h2 class="first">Basic</h2>
+            <p></p>
+            <p:menu>
+                <p:menuitem value="Link 1" url="#" />
+                <p:menuitem value="Link 2" url="#" />
+                <p:menuitem value="Link 3" url="#" />
+            </p:menu>
+                                    
+            <h2>Grouping</h2>
+            <p></p>
+            <p:menu>
+                <p:submenu label="Sports">
+                    <p:menuitem value="ESPN" url="http://www.espn.com" />
+                    <p:menuitem value="NBA" url="http://www.nba.com" />
+                </p:submenu>
+                <p:submenu label="Search">
+                    <p:menuitem value="Google" url="http://www.google.com" />
+                    <p:menuitem value="Bing" url="http://www.bing.com" />
+                </p:submenu>
+            </p:menu>
+            
+            <h2>Customized</h2>
+            <p>Inset layout, icons and theming.</p>
+            <p:menu styleClass="ui-listview-inset ui-corner-all ui-group-theme-b">
+                <p:submenu label="Sports">
+                    <p:menuitem value="ESPN" url="http://www.espn.com" icon="ui-icon-gear"/>
+                    <p:menuitem value="NBA" url="http://www.nba.com" icon="ui-icon-delete"/>
+                </p:submenu>
+                <p:submenu label="Search">
+                    <p:menuitem value="Google" url="http://www.google.com" icon="ui-icon-info"/>
+                    <p:menuitem value="Bing" url="http://www.bing.com" icon="ui-icon-action"/>
+                </p:submenu>
+            </p:menu>
+            
+            <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1">
+                <p:tab title="menu.xhtml">
+                    <pre class="brush:xml">
+&lt;h2 class="first"&gt;Basic&lt;/h2&gt;
+&lt;p:menu&gt;
+    &lt;p:menuitem value="Link 1" url="\#" /&gt;
+    &lt;p:menuitem value="Link 2" url="\#" /&gt;
+    &lt;p:menuitem value="Link 3" url="\#" /&gt;
+&lt;/p:menu&gt;
+
+&lt;h2&gt;Grouping&lt;/h2&gt;
+&lt;p:menu&gt;
+    &lt;p:submenu label="Sports"&gt;
+        &lt;p:menuitem value="ESPN" url="http://www.espn.com" /&gt;
+        &lt;p:menuitem value="NBA" url="http://www.nba.com" /&gt;
+    &lt;/p:submenu&gt;
+    &lt;p:submenu label="Search"&gt;
+        &lt;p:menuitem value="Google" url="http://www.google.com" /&gt;
+        &lt;p:menuitem value="Bing" url="http://www.bing.com" /&gt;
+    &lt;/p:submenu&gt;
+&lt;/p:menu&gt;
+
+&lt;h2&gt;Customized&lt;/h2&gt;
+&lt;p&gt;Inset layout, icons and theming.&lt;/p&gt;
+&lt;p:menu styleClass="ui-listview-inset ui-corner-all ui-group-theme-b"&gt;
+    &lt;p:submenu label="Sports"&gt;
+        &lt;p:menuitem value="ESPN" url="http://www.espn.com" icon="ui-icon-gear"/&gt;
+        &lt;p:menuitem value="NBA" url="http://www.nba.com" icon="ui-icon-delete"/&gt;
+    &lt;/p:submenu&gt;
+    &lt;p:submenu label="Search"&gt;
+        &lt;p:menuitem value="Google" url="http://www.google.com" icon="ui-icon-info"/&gt;
+        &lt;p:menuitem value="Bing" url="http://www.bing.com" icon="ui-icon-action"/&gt;
+    &lt;/p:submenu&gt;
+&lt;/p:menu&gt;
+                    </pre>
+                </p:tab>
+            </p:accordionPanel>
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>

@@ -1,0 +1,110 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	</ui:define>
+
+    <ui:define name="title">
+        Gmap - <span class="subitem">Draggable Markers</span>
+    </ui:define>
+
+    <ui:define name="description">
+        When a draggable marker is dragged and dropped, a server side markerDragListener can be invoked passing a MarkerDragEvent that contains a reference to the dragged marker whose positon is updated already.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+       <h:form prependId="false">		
+            <p:growl id="growl" showDetail="true" />
+
+            <p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID"  model="#{draggableMarkersView.draggableModel}" style="width:600px;height:400px">
+                <p:ajax event="markerDrag" listener="#{draggableMarkersView.onMarkerDrag}" update="growl" />
+            </p:gmap>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="draggableMarkers.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;		
+    &lt;p:growl id="growl" showDetail="true" /&gt;
+
+    &lt;p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID"  model="\#{draggableMarkersView.draggableModel}" style="width:600px;height:400px"&gt;
+        &lt;p:ajax event="markerDrag" listener="\#{draggableMarkersView.onMarkerDrag}" update="growl" /&gt;
+    &lt;/p:gmap&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="DraggableMarkersView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data.gmap;
+
+import java.io.Serializable;
+import javax.annotation.PostConstruct; 
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+ 
+import org.primefaces.event.map.MarkerDragEvent;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
+ 
+@ManagedBean
+@ViewScoped
+public class DraggableMarkersView implements Serializable {
+ 
+    private MapModel draggableModel;
+    
+    private Marker marker;
+    
+    @PostConstruct
+    public void init() {
+        draggableModel = new DefaultMapModel();
+         
+        //Shared coordinates
+        LatLng coord1 = new LatLng(36.879466, 30.667648);
+        LatLng coord2 = new LatLng(36.883707, 30.689216);
+        LatLng coord3 = new LatLng(36.879703, 30.706707);
+        LatLng coord4 = new LatLng(36.885233, 30.702323);
+         
+        //Draggable
+        draggableModel.addOverlay(new Marker(coord1, "Konyaalti"));
+        draggableModel.addOverlay(new Marker(coord2, "Ataturk Parki"));
+        draggableModel.addOverlay(new Marker(coord3, "Karaalioglu Parki"));
+        draggableModel.addOverlay(new Marker(coord4, "Kaleici"));
+         
+        for(Marker premarker : draggableModel.getMarkers()) {
+            premarker.setDraggable(true);
+        }
+    }
+     
+    public MapModel getDraggableModel() {
+        return draggableModel;
+    }
+     
+    public void onMarkerDrag(MarkerDragEvent event) {
+        marker = event.getMarker();
+         
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Marker Dragged", "Lat:" + marker.getLatlng().getLat() + ", Lng:" + marker.getLatlng().getLng()));
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-215" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

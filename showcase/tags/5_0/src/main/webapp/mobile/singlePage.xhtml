@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile">
+    
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
+    
+    <h:head>
+        <h:outputStylesheet name="main/css/sh.css" />
+    </h:head>
+    
+    <h:body>
+        
+        <pm:page>
+            <pm:header title="Single Page"></pm:header>
+            
+            <pm:content>
+                <p>A mobile page consists of 3 sections, header, content and footer. Either PrimeFaces mobile components
+                or native jQuery Mobile approach can be used to define a page. Please note lazy loading feature is only supported
+                by component approach.</p>
+                
+                <h2>Source</h2>
+                <p:accordionPanel activeIndex="-1" multiple="true">
+                    <p:tab title="singlePage.xhtml">
+                        <pre class="brush:xml">
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"&gt;
+    
+    &lt;f:view renderKitId="PRIMEFACES_MOBILE" /&gt;
+    
+    &lt;h:head&gt;
+
+    &lt;/h:head&gt;
+    
+    &lt;h:body&gt;
+        
+        &lt;pm:page&gt;
+            &lt;pm:header title="Title"&gt;&lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                //...
+            &lt;/pm:content&gt;
+
+            &lt;pm:footer title="Footer"&gt;&lt;/pm:footer&gt;
+        &lt;/pm:page&gt;
+    &lt;/h:body&gt;
+    
+&lt;/html&gt;
+                        </pre>
+                    </p:tab>
+                    <p:tab title="singlePage.xhtml (Alternative)">
+                        <pre class="brush:xml">
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"&gt;
+    
+    &lt;f:view renderKitId="PRIMEFACES_MOBILE" /&gt;
+    
+    &lt;h:head&gt;
+
+    &lt;/h:head&gt;
+    
+    &lt;h:body&gt;
+        
+        &lt;div data-role="page"&gt;
+            &lt;div data-role="header"&gt;...&lt;/div&gt;
+            &lt;div role="main" class="ui-content"&gt;
+                ...
+            &lt;/div&gt;
+            &lt;div data-role="footer"&gt;...&lt;/div&gt;
+        &lt;/div&gt;
+
+    &lt;/h:body&gt;
+    
+&lt;/html&gt;
+                        </pre>
+                    </p:tab>
+                </p:accordionPanel>
+            </pm:content>
+        </pm:page>
+        
+        <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
+        <script language="javascript">
+            SyntaxHighlighter.all();
+        </script>
+        
+    </h:body>
+    
+</html>

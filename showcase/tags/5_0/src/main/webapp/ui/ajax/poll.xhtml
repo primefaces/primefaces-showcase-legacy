@@ -1,0 +1,64 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Ajax Framework - <span class="subitem">Poll</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Poll component makes ajax calls periodically.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <h:outputText id="txt_count" value="#{counterView.number}" />
+            <p:poll interval="3" listener="#{counterView.increment}" update="txt_count" />
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="poll.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;h:outputText id="txt_count" value="\#{counterView.number}" /&gt;
+    &lt;p:poll interval="3" listener="\#{counterView.increment}" update="txt_count" /&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="CounterView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.ajax;
+
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+@ManagedBean
+@ViewScoped
+public class CounterView implements Serializable {
+    
+    private int number;
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void increment() {
+        number++;
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,165 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    
+      <ui:define name="head">
+        <style type="text/css">
+            .Implementation .ui-panel {
+                margin-bottom: 20px;
+            }
+        </style>
+	</ui:define>
+
+    <ui:define name="title">
+        Resizable
+    </ui:define>
+
+    <ui:define name="description">
+        Resizable adds resize handlers to the target component.
+    </ui:define>
+
+    <ui:define name="implementation">
+        <p:panel id="basic" header="Basic Resizable">
+            Resize Me!
+        </p:panel>
+        <p:resizable for="basic" />
+
+        <p:panel id="aspectRatio" header="Aspect Ratio">
+            Keep the aspect ratio.
+        </p:panel>
+        <p:resizable for="aspectRatio" aspectRatio="true"/>
+
+        <p:panel id="ghost" header="Ghost">
+            A ghost is displayed, don't be scared.
+        </p:panel>
+        <p:resizable for="ghost" ghost="true"/>
+
+        <p:panel id="animation" header="Animated">
+            Resize can be animated as well.
+        </p:panel>
+        <p:resizable for="animation" animate="true" effect="swing" effectDuration="normal"/>
+
+        <p:panel id="boundaries" header="Boundaries" style="width:300px;height:150px;">
+            I have min/max boundaries.
+        </p:panel>
+        <p:resizable for="boundaries" minWidth="200" maxWidth="400" minHeight="100" maxHeight="200" />
+
+        <p:panel id="grid" header="Grid">
+            Resize offset is 20 pixels.
+        </p:panel>
+        <p:resizable for="grid" grid="20"/>
+
+        <p:panel id="handles" header="Handles">
+            I can be resized to any direction.
+        </p:panel>
+        <p:resizable for="handles" handles="e,w,n,se,sw,ne,nw"/>
+
+        <p:outputPanel id="containmentPanel" layout="block" style="width:400px;height:200px;border:2px solid black;">
+            <p:panel id="containment" header="Containment" style="margin:0">
+                I'm restricted to my parent's boundaries.
+            </p:panel>
+            <p:resizable for="containment" containment="true"/>
+        </p:outputPanel>
+        
+        <h3>Ajax Callback</h3>
+        <h:form>
+            <p:growl id="growl" showDetail="true" />
+
+            <p:graphicImage id="nature" name="demo/images/nature/nature5.jpg" />
+
+            <p:resizable for="nature" animate="true" ghost="true">
+                <p:ajax listener="#{resizableView.onResize}" update="growl" />
+            </p:resizable>
+        </h:form>
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="resizable.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:panel id="basic" header="Basic Resizable"&gt;
+    Resize Me!
+&lt;/p:panel&gt;
+&lt;p:resizable for="basic" /&gt;
+
+&lt;p:panel id="aspectRatio" header="Aspect Ratio"&gt;
+    Keep the aspect ratio.
+&lt;/p:panel&gt;
+&lt;p:resizable for="aspectRatio" aspectRatio="true"/&gt;
+
+&lt;p:panel id="ghost" header="Ghost"&gt;
+    A ghost is displayed, don't be scared.
+&lt;/p:panel&gt;
+&lt;p:resizable for="ghost" ghost="true"/&gt;
+
+&lt;p:panel id="animation" header="Animated"&gt;
+    Resize can be animated as well.
+&lt;/p:panel&gt;
+&lt;p:resizable for="animation" animate="true" effect="swing" effectDuration="normal"/&gt;
+
+&lt;p:panel id="boundaries" header="Boundaries" style="width:300px;height:150px;"&gt;
+    I have min/max boundaries.
+&lt;/p:panel&gt;
+&lt;p:resizable for="boundaries" minWidth="200" maxWidth="400" minHeight="100" maxHeight="200" /&gt;
+
+&lt;p:panel id="grid" header="Grid"&gt;
+    Resize offset is 20 pixels.
+&lt;/p:panel&gt;
+&lt;p:resizable for="grid" grid="20"/&gt;
+
+&lt;p:panel id="handles" header="Handles"&gt;
+    I can be resized to any direction.
+&lt;/p:panel&gt;
+&lt;p:resizable for="handles" handles="e,w,n,se,sw,ne,nw"/&gt;
+
+&lt;p:outputPanel id="containmentPanel" layout="block" style="width:400px;height:200px;border:2px solid black;"&gt;
+    &lt;p:panel id="containment" header="Containment" style="margin:0"&gt;
+        I'm restricted to my parent's boundaries.
+    &lt;/p:panel&gt;
+    &lt;p:resizable for="containment" containment="true"/&gt;
+&lt;/p:outputPanel&gt;
+
+&lt;h3&gt;Ajax Callback&lt;/h3&gt;
+&lt;h:form&gt;
+    &lt;p:growl id="growl" showDetail="true" /&gt;
+
+    &lt;p:graphicImage id="nature" name="demo/images/nature/nature5.jpg" /&gt;
+
+    &lt;p:resizable for="nature" animate="true" ghost="true"&gt;
+        &lt;p:ajax listener="\#{resizableView.onResize}" update="growl" /&gt;
+    &lt;/p:resizable&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ResizableView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.misc;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.ResizeEvent;
+
+@ManagedBean
+public class ResizableView {
+    
+    public void onResize(ResizeEvent event) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, 
+                        "Image resized", "Width:" + event.getWidth() + ",Height:" + event.getHeight());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-367" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

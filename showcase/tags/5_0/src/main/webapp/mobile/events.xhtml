@@ -1,0 +1,206 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/WEB-INF/mobile.xhtml">
+    
+      <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+
+        <script type="text/javascript">
+//<![CDATA[
+
+//]]>
+		</script>
+
+	</ui:define>
+
+    
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>Events</h1>
+            <p>Mobile events are integrated with components as behaviors.</p>
+            
+            <h:form id="form">
+                <p:growl id="msgs" showDetail="true" />
+                
+                <h2 class="first">Swipe and Taphold</h2>
+                <p>Swipe an item left or right to remove it and taphold to view model information.</p>
+                <p:dataList value="#{eventsView.cars}" var="car" pt:data-inset="true">
+                    <p:ajax event="swipeleft" listener="#{eventsView.swipeCar}" update="@form:msgs @this"/>
+                    <p:ajax event="swiperight" listener="#{eventsView.swipeCar}" update="@form:msgs @this"/>
+                    <p:ajax event="taphold" listener="#{eventsView.tapCar}" update="@form:msgs"/>
+                    <h:outputText value="#{car.brand} - #{car.color}" />
+                </p:dataList>
+            </h:form>
+            
+            <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1">
+                <p:tab title="events.xhtml">
+                    <pre class="brush:xml">
+&lt;h:form id="form"&gt;
+    &lt;p:growl id="msgs" showDetail="true" /&gt;
+
+    &lt;h2 class="first"&gt;Swipe and Taphold&lt;/h2&gt;
+    &lt;p&gt;Swipe an item left or right to remove it and taphold to view model information.&lt;/p&gt;
+    &lt;p:dataList value="\#{eventsView.cars}" var="car" pt:data-inset="true"&gt;
+        &lt;p:ajax event="swipeleft" listener="\#{eventsView.swipeCar}" update="@form:msgs @this"/&gt;
+        &lt;p:ajax event="swiperight" listener="\#{eventsView.swipeCar}" update="@form:msgs @this"/&gt;
+        &lt;p:ajax event="taphold" listener="\#{eventsView.tapCar}" update="@form:msgs"/&gt;
+        &lt;h:outputText value="\#{car.brand} - \#{car.color}" /&gt;
+    &lt;/p:dataList&gt;
+&lt;/h:form&gt;
+                    </pre>   
+                </p:tab>
+                <p:tab title="EventsView.java">
+                    <pre class="brush:java">
+package org.primefaces.showcase.mobile;
+
+import java.io.Serializable;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.mobile.event.SwipeEvent;
+import org.primefaces.showcase.domain.Car;
+import org.primefaces.showcase.service.CarService;
+
+@ManagedBean(name="eventsView")
+@ViewScoped
+public class EventsView implements Serializable {
+    
+    private List&lt;Car&gt; cars;
+    
+    @ManagedProperty("\#{carService}")
+    private CarService service;
+
+    @PostConstruct
+    public void init() {
+        cars = service.createCars(10);
+    }
+    
+    public List&lt;Car&gt; getCars() {
+        return cars;
+    }
+
+    public void setService(CarService service) {
+        this.service = service;
+    }
+    
+    public void swipeCar(SwipeEvent event) {
+        Car car = (Car) event.getData();
+        cars.remove(car);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Car Swiped", "Removed: " + car.getId()));
+    }
+    
+    public void tapCar(SelectEvent event) {
+        FacesMessage msg = new FacesMessage("Car Selected", ((Car) event.getObject()).getId());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+}
+
+                    </pre>
+                </p:tab>
+                
+                <p:tab title="CarService.java">
+                    <pre name="code" class="brush:java">
+package org.primefaces.showcase.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.showcase.domain.Car;
+
+@ManagedBean(name = "carService")
+@ApplicationScoped
+public class CarService {
+    
+    private final static String[] colors;
+	
+	private final static String[] brands;
+    
+    static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+		
+		brands = new String[10];
+		brands[0] = "BMW";
+		brands[1] = "Mercedes";
+		brands[2] = "Volvo";
+		brands[3] = "Audi";
+		brands[4] = "Renault";
+		brands[5] = "Fiat";
+		brands[6] = "Volkswagen";
+		brands[7] = "Honda";
+		brands[8] = "Jaguar";
+		brands[9] = "Ford";
+	}
+    
+    public List&lt;Car&gt; createCars(int size) {
+        List&lt;Car&gt; list = new ArrayList&lt;Car&gt;();
+		for(int i = 0 ; i &lt; size ; i++) {
+			list.add(new Car(getRandomId(), getRandomBrand(), getRandomYear(), getRandomColor(), getRandomPrice(), getRandomSoldState()));
+        }
+        
+        return list;
+    }
+    
+    private String getRandomId() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+    
+    private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+	
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+	
+	private String getRandomBrand() {
+		return brands[(int) (Math.random() * 10)];
+	}
+    
+    public int getRandomPrice() {
+		return (int) (Math.random() * 100000);
+	}
+    
+    public boolean getRandomSoldState() {
+		return (Math.random() &gt; 0.5) ? true: false;
+	}
+
+    public List&lt;String&gt; getColors() {
+        return Arrays.asList(colors);
+    }
+    
+    public List&lt;String&gt; getBrands() {
+        return Arrays.asList(brands);
+    }
+}
+                    </pre>
+                </p:tab>
+            </p:accordionPanel>
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>

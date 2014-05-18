@@ -1,0 +1,120 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        ImageCropper
+    </ui:define>
+
+    <ui:define name="description">
+        ImageCropper is used to extract a certain part of an image to create a new image.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <p:growl id="msgs" showDetail="true"/>
+            
+            <h:panelGrid columns="2">
+                <p:imageCropper value="#{cropperView.croppedImage}" image="/resources/demo/images/nature/nature6.jpg" initialCoords="225,75,300,125"/>
+                <p:graphicImage id="cropped" name="demo/images/crop/#{cropperView.newImageName}.jpg" />
+            </h:panelGrid>
+
+            <p:commandButton value="Crop" action="#{cropperView.crop}" update="cropped msgs" icon="ui-icon-scissors"/>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="cropper.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:growl id="msgs" showDetail="true"/&gt;
+
+    &lt;h:panelGrid columns="2"&gt;
+        &lt;p:imageCropper value="\#{cropperView.croppedImage}" image="/resources/demo/images/nature/nature6.jpg" initialCoords="225,75,300,125"/&gt;
+        &lt;p:graphicImage id="cropped" name="demo/images/crop/\#{cropperView.newImageName}.jpg" /&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:commandButton value="Crop" action="\#{cropperView.crop}" update="cropped msgs" icon="ui-icon-scissors"/&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="CropperView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.multimedia;
+
+import java.io.File;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.imageio.stream.FileImageOutputStream;
+import javax.servlet.ServletContext;
+import org.primefaces.model.CroppedImage;
+
+@ManagedBean
+public class CropperView {
+    
+    private CroppedImage croppedImage;
+	
+	private String newImageName;
+
+	public CroppedImage getCroppedImage() {
+		return croppedImage;
+	}
+
+	public void setCroppedImage(CroppedImage croppedImage) {
+		this.croppedImage = croppedImage;
+	}
+
+	public void crop() {
+		if(croppedImage == null) {
+			return;
+        }
+		
+		setNewImageName(getRandomImageName());
+		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+		String newFileName = servletContext.getRealPath("") + File.separator + "resources" + File.separator + "demo" + 
+                    File.separator + "images" + File.separator + "crop" + File.separator + getNewImageName() + ".jpg";
+		
+		FileImageOutputStream imageOutput;
+		try {
+			imageOutput = new FileImageOutputStream(new File(newFileName));
+			imageOutput.write(croppedImage.getBytes(), 0, croppedImage.getBytes().length);
+			imageOutput.close();
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Cropping failed."));
+		}
+        
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Success", "Cropping finished."));
+	}
+	
+	private String getRandomImageName() {
+		int i = (int) (Math.random() * 100000);
+		
+		return String.valueOf(i);
+	}
+	
+	public String getNewImageName() {
+		return newImageName;
+	}
+
+	public void setNewImageName(String newImageName) {
+		this.newImageName = newImageName;
+	}
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-242" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

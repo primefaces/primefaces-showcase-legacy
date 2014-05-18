@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        AjaxFramework - <span class="subitem">Status</span>
+    </ui:define>
+
+    <ui:define name="description">
+        AjaxStatus is a global indicator to provide feedback about the ongoing ajax request. This page has two AjaxStatus components, one with facet driven declarative
+        approach and the other one using callbacks.
+    </ui:define>
+
+    <ui:define name="implementation">
+        <p:ajaxStatus style="display:block;margin-bottom:2em;height:24px;">
+            <f:facet name="default">
+                <h:outputText value="Status: StandBy" />
+            </f:facet>
+            
+            <f:facet name="start">
+                <p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
+            </f:facet>
+
+            <f:facet name="complete">
+                <h:outputText value="Status: Completed" />
+            </f:facet>
+        </p:ajaxStatus>
+        
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+			
+        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+            <p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
+        </p:dialog>
+        
+        <h:form>
+            <p:commandButton value="Send" icon="ui-icon-refresh" />
+        </h:form>
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="status.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:ajaxStatus style="display:block;margin-bottom:2em;height:24px;"&gt;
+    &lt;f:facet name="default"&gt;
+        &lt;h:outputText value="Status: StandBy" /&gt;
+    &lt;/f:facet&gt;
+
+    &lt;f:facet name="start"&gt;
+        &lt;p:graphicImage name="/demo/images/ajaxloadingbar.gif" /&gt;
+    &lt;/f:facet&gt;
+
+    &lt;f:facet name="complete"&gt;
+        &lt;h:outputText value="Status: Completed" /&gt;
+    &lt;/f:facet&gt;
+&lt;/p:ajaxStatus&gt;
+
+&lt;p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" /&gt;
+
+&lt;p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false"&gt;
+    &lt;p:graphicImage name="/demo/images/ajaxloadingbar.gif" /&gt;
+&lt;/p:dialog&gt;
+
+&lt;h:form&gt;
+    &lt;p:commandButton value="Send" icon="ui-icon-refresh" /&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+    
+    <ui:define name="status"></ui:define>
+
+</ui:composition>

@@ -1,0 +1,316 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    
+    <ui:define name="title">
+        ThemeSwitcher
+    </ui:define>
+
+    <ui:define name="description">
+        ThemeSwitcher applies new themes on-the-fly without full page refresh.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+        
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:outputLabel for="basic" value="Basic:" /> 
+                <p:themeSwitcher id="basic" style="width:165px">
+                    <f:selectItem itemLabel="Choose Theme" itemValue="" />
+                    <f:selectItems value="#{themeSwitcherView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme.name}"/>
+                </p:themeSwitcher>
+
+                <p:outputLabel for="advanced" value="Advanced:" /> 
+                <p:themeSwitcher id="advanced" style="width:165px" effect="fade" var="t">
+                    <f:selectItem itemLabel="Choose Theme" itemValue="" />
+                    <f:selectItems value="#{themeSwitcherView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" />
+
+                    <p:column>
+                        <h:outputText styleClass="ui-theme ui-theme-#{t.name}" style="display-block" />
+                    </p:column>
+
+                    <p:column>
+                        #{t.displayName}
+                    </p:column>
+                </p:themeSwitcher>
+            </h:panelGrid>
+            
+            <p:separator />
+
+            <p:dialog header="Dialog" widgetVar="dlg" minHeight="40" modal="true">
+                <h:outputText value="Resistance to PrimeFaces is futile!" />
+            </p:dialog>	
+
+            <p:commandButton value="Dialog" onclick="PF('dlg').show()" type="button" style="display:block;"/>
+
+            <p:panel header="Panel" style="margin:20px 0px">
+                Panel Content
+            </p:panel>
+            
+            <p:spinner />
+            
+            <p:toolbar style="margin:20px 0px">
+                <f:facet name="left">
+                    <p:commandButton type="button" value="New" icon="ui-icon-document" />
+                    <p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/>
+                    <p:commandButton type="button" title="Save" icon="ui-icon-disk"/>
+                    <p:commandButton type="button" title="Delete" icon="ui-icon-trash"/>
+                    <p:commandButton type="button" title="Print" icon="ui-icon-print"/>
+                </f:facet>
+
+                <f:facet name="right">
+                    <p:menuButton value="Navigate">
+                        <p:menuitem value="Home" url="http://www.primefaces.org" />
+                        <p:menuitem value="ShowCase" url="http://www.primefaces.org/showcase" />
+                        <p:menuitem value="TouchFaces" url="http://www.primefaces.org/showcase/touch" />
+                    </p:menuButton>
+                </f:facet>
+            </p:toolbar>
+            
+            <p:accordionPanel>
+                <p:tab title="Tab1">Tab1 Content</p:tab>
+                <p:tab title="Tab2">Tab2 Content</p:tab>
+                <p:tab title="Tab3">Tab3 Content</p:tab>
+            </p:accordionPanel>
+        
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="themeSwitcher.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+        
+    &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+        &lt;p:outputLabel for="basic" value="Basic:" /&gt; 
+        &lt;p:themeSwitcher id="basic" style="width:165px"&gt;
+            &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
+            &lt;f:selectItems value="#{themeSwitcherView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme.name}"/&gt;
+        &lt;/p:themeSwitcher&gt;
+
+        &lt;p:outputLabel for="advanced" value="Advanced:" /&gt; 
+        &lt;p:themeSwitcher id="advanced" style="width:165px" effect="fade" var="t"&gt;
+            &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
+            &lt;f:selectItems value="#{themeSwitcherView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" /&gt;
+
+            &lt;p:column&gt;
+                &lt;h:outputText styleClass="ui-theme ui-theme-#{t.name}" style="display-block" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column&gt;
+                #{t.displayName}
+            &lt;/p:column&gt;
+        &lt;/p:themeSwitcher&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:separator /&gt;
+
+    &lt;p:dialog header="Dialog" widgetVar="dlg" minHeight="40" modal="true"&gt;
+        &lt;h:outputText value="Resistance to PrimeFaces is futile!" /&gt;
+    &lt;/p:dialog&gt;	
+
+    &lt;p:commandButton value="Dialog" onclick="PF('dlg').show()" type="button" style="display:block;"/&gt;
+
+    &lt;p:panel header="Panel" style="margin:20px 0px"&gt;
+        Panel Content
+    &lt;/p:panel&gt;
+
+    &lt;p:spinner /&gt;
+
+    &lt;p:toolbar style="margin:20px 0px"&gt;
+        &lt;f:facet name="left"&gt;
+            &lt;p:commandButton type="button" value="New" icon="ui-icon-document" /&gt;
+            &lt;p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/&gt;
+            &lt;p:commandButton type="button" title="Save" icon="ui-icon-disk"/&gt;
+            &lt;p:commandButton type="button" title="Delete" icon="ui-icon-trash"/&gt;
+            &lt;p:commandButton type="button" title="Print" icon="ui-icon-print"/&gt;
+        &lt;/f:facet&gt;
+
+        &lt;f:facet name="right"&gt;
+            &lt;p:menuButton value="Navigate"&gt;
+                &lt;p:menuitem value="Home" url="http://www.primefaces.org" /&gt;
+                &lt;p:menuitem value="ShowCase" url="http://www.primefaces.org/showcase" /&gt;
+                &lt;p:menuitem value="TouchFaces" url="http://www.primefaces.org/showcase/touch" /&gt;
+            &lt;/p:menuButton&gt;
+        &lt;/f:facet&gt;
+    &lt;/p:toolbar&gt;
+
+    &lt;p:accordionPanel&gt;
+        &lt;p:tab title="Tab1"&gt;Tab1 Content&lt;/p:tab&gt;
+        &lt;p:tab title="Tab2"&gt;Tab2 Content&lt;/p:tab&gt;
+        &lt;p:tab title="Tab3"&gt;Tab3 Content&lt;/p:tab&gt;
+    &lt;/p:accordionPanel&gt;
+
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ThemeSwitcherView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.misc;
+
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import org.primefaces.showcase.domain.Theme;
+import org.primefaces.showcase.service.ThemeService;
+
+@ManagedBean
+public class ThemeSwitcherView {
+
+    private List&lt;Theme&gt; themes;
+    
+    @ManagedProperty("\#{themeService}")
+    private ThemeService service;
+
+    @PostConstruct
+    public void init() {
+        themes = service.getThemes();
+    }
+    
+    public List&lt;Theme&gt; getThemes() {
+        return themes;
+    } 
+
+    public void setService(ThemeService service) {
+        this.service = service;
+    }
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Theme.java">
+                    <pre name="code" class="brush:java">
+package org.primefaces.showcase.domain;
+
+public class Theme {
+
+    private int id;
+    
+    private String displayName;
+    
+    private String name;
+    
+    public Theme() {}
+
+    public Theme(int id, String displayName, String name) {
+        this.id = id;
+        this.displayName = displayName;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    @Override
+    public String toString() {
+        return name;
+    }
+}
+
+                </pre>
+            </p:tab>
+
+            <p:tab title="ThemeService.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.showcase.domain.Theme;
+
+@ManagedBean(name="themeService", eager = true)
+@ApplicationScoped
+public class ThemeService {
+    
+    private List&lt;Theme&gt; themes;
+    
+    @PostConstruct
+    public void init() {
+        themes = new ArrayList&lt;Theme&gt;();
+        themes.add(new Theme(0, "Afterdark", "afterdark"));
+        themes.add(new Theme(1, "Afternoon", "afternoon"));
+        themes.add(new Theme(2, "Afterwork", "afterwork"));
+        themes.add(new Theme(3, "Aristo", "aristo"));
+        themes.add(new Theme(4, "Black-Tie", "black-tie"));
+        themes.add(new Theme(5, "Blitzer", "blitzer"));
+        themes.add(new Theme(6, "Bluesky", "bluesky"));
+        themes.add(new Theme(7, "Bootstrap", "bootstrap"));
+        themes.add(new Theme(8, "Casablanca", "casablanca"));
+        themes.add(new Theme(9, "Cupertino", "cupertino"));
+        themes.add(new Theme(10, "Cruze", "cruze"));
+        themes.add(new Theme(11, "Dark-Hive", "dark-hive"));
+        themes.add(new Theme(12, "Delta", "delta"));
+        themes.add(new Theme(13, "Dot-Luv", "dot-luv"));
+        themes.add(new Theme(14, "Eggplant", "eggplant"));
+        themes.add(new Theme(15, "Excite-Bike", "excite-bike"));
+        themes.add(new Theme(16, "Flick", "flick"));
+        themes.add(new Theme(17, "Glass-X", "glass-x"));
+        themes.add(new Theme(18, "Home", "home"));
+        themes.add(new Theme(19, "Hot-Sneaks", "hot-sneaks"));
+        themes.add(new Theme(20, "Humanity", "humanity"));
+        themes.add(new Theme(21, "Le-Frog", "le-frog"));
+        themes.add(new Theme(22, "Midnight", "midnight"));
+        themes.add(new Theme(23, "Mint-Choc", "mint-choc"));
+        themes.add(new Theme(24, "Overcast", "overcast"));
+        themes.add(new Theme(25, "Pepper-Grinder", "pepper-grinder"));
+        themes.add(new Theme(26, "Redmond", "redmond"));
+        themes.add(new Theme(27, "Rocket", "rocket"));
+        themes.add(new Theme(28, "Sam", "sam"));
+        themes.add(new Theme(29, "Smoothness", "smoothness"));
+        themes.add(new Theme(30, "South-Street", "south-street"));
+        themes.add(new Theme(31, "Start", "start"));
+        themes.add(new Theme(32, "Sunny", "sunny"));
+        themes.add(new Theme(33, "Swanky-Purse", "swanky-purse"));
+        themes.add(new Theme(34, "Trontastic", "trontastic"));
+        themes.add(new Theme(35, "UI-Darkness", "ui-darkness"));
+        themes.add(new Theme(36, "UI-Lightness", "ui-lightness"));
+        themes.add(new Theme(37, "Vader", "vader"));
+    }
+    
+    public List&lt;Theme&gt; getThemes() {
+        return themes;
+    } 
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-462" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

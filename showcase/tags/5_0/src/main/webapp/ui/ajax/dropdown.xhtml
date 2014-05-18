@@ -1,0 +1,176 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Ajax Framework - <span class="subitem">Dropdown</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Dependent dropdowns implemented with p:ajax behavior.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <p:growl id="msgs" showDetail="true" />
+
+            <p:panel header="Select a Location" style="margin-bottom:10px;">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="country" value="Country: " />
+                    <p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px">
+                        <p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
+                        <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{dropdownView.countries}" />
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="city" value="City: " />
+                    <p:selectOneMenu id="city" value="#{dropdownView.city}" style="width:150px">
+                        <f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{dropdownView.cities}" />
+                    </p:selectOneMenu>
+                </h:panelGrid>
+
+                <p:separator />
+
+                <p:commandButton value="Submit" update="msgs" actionListener="#{dropdownView.displayLocation}" icon="ui-icon-check" />
+            </p:panel>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="dropdown.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:growl id="msgs" showDetail="true" /&gt;
+
+    &lt;p:panel header="Select a Location" style="margin-bottom:10px;"&gt;
+        &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+            &lt;p:outputLabel for="country" value="Country: " /&gt;
+            &lt;p:selectOneMenu id="country" value="\#{dropdownView.country}" style="width:150px"&gt;
+                &lt;p:ajax listener="\#{dropdownView.onCountryChange}" update="city" /&gt;
+                &lt;f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" /&gt;
+                &lt;f:selectItems value="\#{dropdownView.countries}" /&gt;
+            &lt;/p:selectOneMenu&gt;
+
+            &lt;p:outputLabel for="city" value="City: " /&gt;
+            &lt;p:selectOneMenu id="city" value="\#{dropdownView.city}" style="width:150px"&gt;
+                &lt;f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" /&gt;
+                &lt;f:selectItems value="\#{dropdownView.cities}" /&gt;
+            &lt;/p:selectOneMenu&gt;
+        &lt;/h:panelGrid&gt;
+
+        &lt;p:separator /&gt;
+
+        &lt;p:commandButton value="Submit" update="msgs" actionListener="\#{dropdownView.displayLocation}" icon="ui-icon-check" /&gt;
+    &lt;/p:panel&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="DropdownView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.ajax;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+
+@ManagedBean
+@ViewScoped
+public class DropdownView implements Serializable {
+    
+	private Map&lt;String,Map&lt;String,String&gt;&gt; data = new HashMap&lt;String, Map&lt;String,String&gt;&gt;();
+    private String country; 
+    private String city;  
+    private Map&lt;String,String&gt; countries;
+	private Map&lt;String,String&gt; cities;
+    
+    @PostConstruct
+    public void init() {
+        countries  = new HashMap&lt;String, String&gt;();
+        countries.put("USA", "USA");
+        countries.put("Germany", "Germany");
+        countries.put("Brazil", "Brazil");
+        
+        Map&lt;String,String&gt; map = new HashMap&lt;String, String&gt;();
+		map.put("New York", "New York");
+		map.put("San Francisco", "San Francisco");
+		map.put("Denver", "Denver");
+        data.put("USA", map);
+        
+        map = new HashMap&lt;String, String&gt;();
+		map.put("Berlin", "Berlin");
+		map.put("Munich", "Munich");
+		map.put("Frankfurt", "Frankfurt");
+        data.put("Germany", map);
+        
+        map = new HashMap&lt;String, String&gt;();
+        map.put("Sao Paolo", "Sao Paolo");
+        map.put("Rio de Janerio", "Rio de Janerio");
+        map.put("Salvador", "Salvador");
+        data.put("Brazil", map);
+    }
+
+    public Map&lt;String, Map&lt;String, String&gt;&gt; getData() {
+        return data;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Map&lt;String, String&gt; getCountries() {
+        return countries;
+    }
+
+    public Map&lt;String, String&gt; getCities() {
+        return cities;
+    }
+
+    public void onCountryChange() {
+		if(country !=null &amp;&amp; !country.equals(""))
+			cities = data.get(country);
+		else
+			cities = new HashMap&lt;String, String&gt;();
+	}
+    
+    public void displayLocation() {
+        FacesMessage msg;
+        if(city != null &amp;&amp; country != null)
+            msg = new FacesMessage("Selected", city + " of " + country);
+        else
+            msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid", "City is not selected."); 
+            
+        FacesContext.getCurrentInstance().addMessage(null, msg);  
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

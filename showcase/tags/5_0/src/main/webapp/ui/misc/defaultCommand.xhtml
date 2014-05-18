@@ -1,0 +1,154 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        DefaultCommand
+    </ui:define>
+
+    <ui:define name="description">
+        DefaultCommand controls which command to initiate form submit with when enter key is pressed. Example
+        below demonstrates 3 types of buttons; non-ajax, ajax and standard. Multiple defaultCommand in same form
+        is supported with scope option.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form id="form"> 
+            <p:growl autoUpdate="true"/>
+
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel for="btnSelect" value="Default Button:" />
+                <p:selectOneMenu id="btnSelect" value="#{defaultCommandView.btn}" onchange="$('#form').submit()">
+                    <f:selectItems value="#{defaultCommandView.buttons}" />
+                </p:selectOneMenu>
+            </h:panelGrid>
+
+            <p:separator />
+
+            <h:panelGrid columns="3" cellpadding="5">
+                <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
+                <p:inputText id="name" value="#{defaultCommandView.text}" />
+                <h:outputText value="#{defaultCommandView.text}" id="display" />
+            </h:panelGrid>
+
+            <p:commandButton value="Button1" id="btn1" actionListener="#{defaultCommandView.btn1Submit}" ajax="false"/>
+            <p:commandButton value="Button2" id="btn2" actionListener="#{defaultCommandView.btn2Submit}" />
+            <h:commandButton value="Button3" id="btn3" actionListener="#{defaultCommandView.btn3Submit}" />
+
+            <p:defaultCommand target="#{defaultCommandView.btn}" />
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="defaultCommand.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form id="form"&gt; 
+    &lt;p:growl autoUpdate="true"/&gt;
+
+    &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+        &lt;h:outputLabel for="btnSelect" value="Default Button:" /&gt;
+        &lt;p:selectOneMenu id="btnSelect" value="\#{defaultCommandView.btn}" onchange="$('\#form').submit()"&gt;
+            &lt;f:selectItems value="\#{defaultCommandView.buttons}" /&gt;
+        &lt;/p:selectOneMenu&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:separator /&gt;
+
+    &lt;h:panelGrid columns="3" cellpadding="5"&gt;
+        &lt;h:outputLabel for="name" value="Name:" style="font-weight:bold"/&gt;
+        &lt;p:inputText id="name" value="\#{defaultCommandView.text}" /&gt;
+        &lt;h:outputText value="\#{defaultCommandView.text}" id="display" /&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:commandButton value="Button1" id="btn1" actionListener="\#{defaultCommandView.btn1Submit}" ajax="false"/&gt;
+    &lt;p:commandButton value="Button2" id="btn2" actionListener="\#{defaultCommandView.btn2Submit}" /&gt;
+    &lt;h:commandButton value="Button3" id="btn3" actionListener="\#{defaultCommandView.btn3Submit}" /&gt;
+
+    &lt;p:defaultCommand target="\#{defaultCommandView.btn}" /&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="DefaultCommandView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.misc;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+@ManagedBean
+public class DefaultCommandView {
+    
+    private String text;
+    
+    private String btn = "btn1";
+    
+    private List&lt;String&gt; buttons;
+    
+    @PostConstruct
+    public void init() {
+        buttons = new ArrayList&lt;String&gt;();
+        buttons.add("btn1");
+        buttons.add("btn2");
+        buttons.add("btn3");
+    }
+
+    public String getBtn() {
+        return btn;
+    }
+
+    public void setBtn(String btn) {
+        this.btn = btn;
+    }
+
+    public List&lt;String&gt; getButtons() {
+        return buttons;
+    }
+
+    public void setButtons(List&lt;String&gt; buttons) {
+        this.buttons = buttons;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+    
+    public void addMessage(String btn) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Submitted with " + btn));
+    }
+    
+    public void btn1Submit() {
+        addMessage("btn1");
+    }
+    
+    public void btn2Submit() {
+        addMessage("btn2");
+    }
+    
+    public void btn3Submit() {
+        addMessage("btn3");
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-170" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

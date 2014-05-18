@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Ajax Framework - <span class="subitem">RemoteCommand</span>
+    </ui:define>
+
+    <ui:define name="description">
+        RemoteCommand provides a simple way to execute backing bean methods with javascript.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <p:remoteCommand name="rc" update="msgs" actionListener="#{remoteCommandView.execute}" />
+            
+            <p:growl id="msgs" showDetail="true" />
+            <p:commandButton type="button" onclick="rc()" value="Execute" icon="ui-icon-refresh" />
+        </h:form>
+    
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="remoteCommand.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:remoteCommand name="rc" update="msgs" actionListener="\#{remoteCommandView.execute}" /&gt;
+
+    &lt;p:growl id="msgs" showDetail="true" /&gt;
+    &lt;p:commandButton type="button" onclick="rc()" value="Execute" icon="ui-icon-refresh" /&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="RemoteCommandView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.ajax;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+@ManagedBean
+public class RemoteCommandView {
+
+    public void execute() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Executed", "Using RemoteCommand."));
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

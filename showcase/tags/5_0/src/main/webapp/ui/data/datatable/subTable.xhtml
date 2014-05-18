@@ -1,0 +1,232 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        DataTable - <span class="subitem">SubTable</span>
+    </ui:define>
+
+    <ui:define name="description">
+        SubTable is a helper component for grouping.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <p:dataTable var="team" value="#{dtSubTableView.teams}">
+                <f:facet name="header">
+                    NBA Teams
+                </f:facet>
+
+                <p:columnGroup type="header">
+                    <p:row>
+                        <p:column rowspan="2" headerText="Team" />
+                        <p:column colspan="2" headerText="Stats" />
+                    </p:row>
+                    <p:row>
+                        <p:column headerText="Wins" />
+                        <p:column headerText="Losses" />
+                    </p:row>
+                </p:columnGroup>
+
+                <p:subTable var="stats" value="#{team.stats}">
+                    <f:facet name="header">
+                        <h:outputText value="#{team.name}" />
+                    </f:facet>
+                    <p:column>
+                        <h:outputText value="#{stats.season}" />
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{stats.win}" />
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{stats.loss}" />
+                    </p:column>
+                    <p:columnGroup type="footer">
+                        <p:row>
+                            <p:column footerText="Totals: " style="text-align:right"/>
+                            <p:column footerText="#{team.allWins}" />
+                            <p:column footerText="#{team.allLosses}" />
+                        </p:row>
+                    </p:columnGroup>
+                </p:subTable>
+            </p:dataTable>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="subTable.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:dataTable var="team" value="\#{dtSubTableView.teams}"&gt;
+        &lt;f:facet name="header"&gt;
+            NBA Teams
+        &lt;/f:facet&gt;
+
+        &lt;p:columnGroup type="header"&gt;
+            &lt;p:row&gt;
+                &lt;p:column rowspan="2" headerText="Team" /&gt;
+                &lt;p:column colspan="2" headerText="Stats" /&gt;
+            &lt;/p:row&gt;
+            &lt;p:row&gt;
+                &lt;p:column headerText="Wins" /&gt;
+                &lt;p:column headerText="Losses" /&gt;
+            &lt;/p:row&gt;
+        &lt;/p:columnGroup&gt;
+
+        &lt;p:subTable var="stats" value="\#{team.stats}"&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="\#{team.name}" /&gt;
+            &lt;/f:facet&gt;
+            &lt;p:column&gt;
+                &lt;h:outputText value="\#{stats.season}" /&gt;
+            &lt;/p:column&gt;
+            &lt;p:column&gt;
+                &lt;h:outputText value="\#{stats.win}" /&gt;
+            &lt;/p:column&gt;
+            &lt;p:column&gt;
+                &lt;h:outputText value="\#{stats.loss}" /&gt;
+            &lt;/p:column&gt;
+            &lt;p:columnGroup type="footer"&gt;
+                &lt;p:row&gt;
+                    &lt;p:column footerText="Totals: " style="text-align:right"/&gt;
+                    &lt;p:column footerText="\#{team.allWins}" /&gt;
+                    &lt;p:column footerText="\#{team.allLosses}" /&gt;
+                &lt;/p:row&gt;
+            &lt;/p:columnGroup&gt;
+        &lt;/p:subTable&gt;
+    &lt;/p:dataTable&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="SubTableView.java">
+                <pre name="code" class="brush:java">
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Team.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.domain;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Team implements Serializable {
+
+    private String name;
+    
+    private List&lt;Stats&gt; stats;
+    
+    public Team() {
+        stats = new ArrayList&lt;Stats&gt;();
+    }
+    
+    public Team(String name) {
+        this.name = name;
+        stats = new ArrayList&lt;Stats&gt;();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List&lt;Stats&gt; getStats() {
+        return stats;
+    }
+
+    public void setStats(List&lt;Stats&gt; stats) {
+        this.stats = stats;
+    }
+    
+    public int getAllWins() {
+        int sum = 0;
+        
+        for(Stats s : stats) {
+            sum += s.getWin();
+        }
+        
+        return sum;
+    }
+    
+    public int getAllLosses() {
+        int sum = 0;
+        
+        for(Stats s : stats) {
+            sum += s.getLoss();
+        }
+        
+        return sum;
+    }
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Stats.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.domain;
+
+import java.io.Serializable;
+
+public class Stats implements Serializable {
+    
+    private String season;
+    
+    private int win;
+    
+    private int loss;
+
+    public Stats() {}
+
+    public Stats(String season, int win, int loss) {
+        this.season = season;
+        this.win = win;
+        this.loss = loss;
+    }
+
+    public int getWin() {
+        return win;
+    }
+
+    public void setWin(int win) {
+        this.win = win;
+    }
+
+    public int getLoss() {
+        return loss;
+    }
+
+    public void setLoss(int loss) {
+        this.loss = loss;
+    }
+
+    public String getSeason() {
+        return season;
+    }
+
+    public void setSeason(String season) {
+        this.season = season;
+    }
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-145" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

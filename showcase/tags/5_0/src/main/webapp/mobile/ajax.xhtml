@@ -1,0 +1,108 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/WEB-INF/mobile.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-grid-a div {
+                padding: 0em 0.5em;
+            }
+        </style>
+        <script type="text/javascript" src="#{request.contextPath}/javax.faces.resource/jsf.js.jsf?ln=javax.faces"></script>
+    </ui:define>
+    
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>Ajax Support</h1>
+            
+            <h2 class="first">Ajax Updates</h2>
+            <p>jQuery Mobile initializes mobile widgets at page load time automatically for once and widgets have to be refreshed manually if their state changes with ajax e.g. adding 
+                new items to datalist otherwise UI doesn't get enhanced for mobile. This makes jQuery Mobile almost impossible to use in ajax enabled JSF applications.</p>
+            
+            <p>PrimeFaces Mobile provides ajax update support for all widgets in the  mobile renderkit under the hood.</p>
+            
+            <p>Consider the following case with a standard JSF commandButton with ajax and the PrimeFaces mobile counterpart.</p>
+            
+            <h:form>
+                <p:panelGrid columns="2">
+                    <h:commandButton value="Standard">
+                        <f:ajax render="panel1" />
+                    </h:commandButton>
+                    
+                    <p:commandButton value="PFM" update="panel2" icon="ui-icon-refresh"/>
+                    
+                    <h:panelGroup id="panel1">
+                        <ul data-role="listview" data-inset="true">
+                            <li><a href="#">Item 1</a></li>
+                            <li><a href="#">Item 2</a></li>
+                            <li><a href="#">Item 3</a></li>
+                        </ul>
+                        
+                        <h:inputText />
+                    </h:panelGroup>
+                    
+                    <p:outputPanel id="panel2">
+                        <p:menu styleClass="ui-listview-inset ui-corner-all">
+                            <p:menuitem value="Item1" url="#" />
+                            <p:menuitem value="Item2" url="#" />
+                            <p:menuitem value="Item3" url="#" />
+                        </p:menu>
+                        
+                        <p:inputText />
+                    </p:outputPanel>
+                </p:panelGrid>
+                
+                <h2>Ajax Status</h2>
+                <p>PrimeFaces Mobile provides an ajax status out of the box. For all ajax requests a loader icon is displayed at the center of the page. PFM button above
+                demonstrates the ajax status loader. Look and feel can be customized globaly as well.</p>
+
+            </h:form>
+
+            <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1">
+                <p:tab title="ajax.xhtml">
+                    <pre class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:panelGrid columns="2"&gt;
+        &lt;h:commandButton value="Standard"&gt;
+            &lt;f:ajax render="panel1" /&gt;
+        &lt;/h:commandButton&gt;
+
+        &lt;p:commandButton value="PFM" update="panel2" icon="ui-icon-refresh"/&gt;
+
+        &lt;h:panelGroup id="panel1"&gt;
+            &lt;ul data-role="listview" data-inset="true"&gt;
+                &lt;li&gt;&lt;a href="\#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="\#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="\#"&gt;Item 3&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+
+            &lt;h:inputText /&gt;
+        &lt;/h:panelGroup&gt;
+
+        &lt;p:outputPanel id="panel2"&gt;
+            &lt;p:menu styleClass="ui-listview-inset ui-corner-all"&gt;
+                &lt;p:menuitem value="Item1" url="\#" /&gt;
+                &lt;p:menuitem value="Item2" url="\#" /&gt;
+                &lt;p:menuitem value="Item3" url="\#" /&gt;
+            &lt;/p:menu&gt;
+
+            &lt;p:inputText /&gt;
+        &lt;/p:outputPanel&gt;
+    &lt;/p:panelGrid&gt;
+
+&lt;/h:form&gt;
+                    </pre>
+                </p:tab>
+            </p:accordionPanel>
+            
+            
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>
