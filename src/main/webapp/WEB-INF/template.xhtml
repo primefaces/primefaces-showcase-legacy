@@ -717,6 +717,18 @@
     </div>
     <!-- PC CONTENT END-->
     
+     <ui:insert name="status">
+        <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
+            <f:facet name="start">
+                <p:graphicImage name="main/images/loader.gif" />
+            </f:facet>
+
+            <f:facet name="complete">
+                <h:outputText value="" />
+            </f:facet>
+        </p:ajaxStatus>
+    </ui:insert>
+    
     <ui:insert name="highlight">
         <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
         <script language="javascript">
