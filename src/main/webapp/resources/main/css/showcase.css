@@ -58,7 +58,7 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 		.logoBlueText{color:#25aae1;}
 
 	/* menu side style*/
-	#MENUSIDE{width:85px; float:left; background-color:#313b3f; border-right:solid 1px #151d21; position:fixed; z-index:3; overflow:hidden;}
+	#MENUSIDE{width:85px; float:left; background-color:#313b3f; border-right:solid 1px #151d21; position:fixed; z-index:10000; overflow:hidden;}
 		#MENUSIDEindent{width:100%; height:auto;}
 			#LOGO{width:75px; height:87px; display:block; padding:33px 0px 0px 10px; position:fixed; z-index:997; background-color:#313b3f;}
 				#LOGO img{width:62px; height:auto; position:fixed; z-index:999;}
