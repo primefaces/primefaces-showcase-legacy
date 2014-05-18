@@ -212,7 +212,7 @@ $(document).ready(function() {
 
     }
     
-    // Search ---------------------------------------
+     // Search ---------------------------------------
     Showcase.searchInput.on('keyup', function(e) {
         Showcase.hideSubMenus();
         
@@ -244,25 +244,33 @@ $(document).ready(function() {
                 }
                 
                 for(var j = 0; j < SubSub.length; j++) {  //for SubsubMenu
-                    var SubSuba = SubSub.eq(j).find('a');
-                    for(var m = 0; m < SubSuba.length; m++) {
-                        itemValue = SubSuba.eq(m).text().toLowerCase();
-                        if(itemValue.search(searchValue) >= 0) {
-                            SubSuba.eq(m).show();
-                            matchSubSub = true; 
-                            matchMenuSide = true;
+                    var SubSuba = SubSub.eq(j).find('a'),
+                    SubSubText = SubSub.eq(j).text().toLowerCase().split(" ")[1]; // text of <span> SubMenuLink
+                    if(SubSubText.search(searchValue) >= 0) {
+                        SubSub.eq(j).show();
+                        SubSuba.show();
+                        matchMenuSide = true;
+                    }
+                    else { 
+                        for(var m = 0; m < SubSuba.length; m++) {
+                            itemValue = SubSuba.eq(m).text().toLowerCase();
+                            if(itemValue.search(searchValue) >= 0) {
+                                SubSuba.eq(m).show();
+                                matchSubSub = true; 
+                                matchMenuSide = true;
+                            }
+                            else {
+                                SubSuba.eq(m).hide();
+                            }
+                        }
+
+                        if(matchSubSub) {
+                            SubSub.eq(j).show();
+                            matchSubSub = false;
                         }
                         else {
-                            SubSuba.eq(m).hide();
+                            SubSub.eq(j).hide();
                         }
-                    }
-                    
-                    if(matchSubSub) {
-                        SubSub.eq(j).show();
-                        matchSubSub = false;
-                    }
-                    else {
-                        SubSub.eq(j).hide();
                     }
                 }
                 
