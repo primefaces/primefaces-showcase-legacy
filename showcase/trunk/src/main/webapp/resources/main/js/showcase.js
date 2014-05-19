@@ -12,13 +12,13 @@ $(document).ready(function() {
         categoryLinks: $(".MainLinkText"),
         
         menuVisible: false,
-        
-        hiddenLogo: $("#hiddenLogoTextEl"),
-        
+                
         logo: $('#LOGO'),
         
-        hiddenCategoryIcons: $('.hiddenIcons'),
+        hiddenMenuIcons: $('.hiddenIcons'),
         
+        hiddenLogo: $('#BlueLogo'),
+                
         submenus: $('.SubMenuLinkContainer'),
         
         searchInput: $('#menuSearch'),
@@ -35,47 +35,20 @@ $(document).ready(function() {
         
         activeSubSubMenu: null,
 
-        openMenu: function() {
-            var $this = this;
-            this.menuVisible = true;
+        highlightMenu: function() {
             this.clearMenuAnimQueue();
-    
-            this.menu.animate({'width':450},500,"easeInOutQuint", function(){
-                $this.menu.perfectScrollbar('update');
-                $this.categoryLinks.animate({'opacity':1,'margin-left':50},100);
-                $this.hiddenLogo.fadeIn(100);
-                $this.searchInput.slideDown(200);
-            });
-            this.logo.animate({'width':440},700,"easeInOutQuint");
-            this.hiddenCategoryIcons.animate({'opacity':1},1000);
-            this.content.animate({'opacity':0.6});
+            this.hiddenMenuIcons.animate({opacity:1}, 250);
+            this.hiddenLogo.animate({opacity:1}, 250);
         },
 
-        hideMenu: function() {
-            var $this = this;
-            this.menuVisible = false;
+        unhighlightMenu: function() {
             this.clearMenuAnimQueue();
-            
-            this.menu.animate({'width':85},700,"easeInOutQuint", function(){
-                $this.menu.perfectScrollbar('update');
-            });
-            this.logo.animate({'width':75},700,"easeInOutQuint");
-            this.hiddenLogo.fadeOut(100);
-            this.categoryLinks.animate({'opacity':0,'margin-left':60},100);
-            this.hiddenCategoryIcons.animate({'opacity':0},1000);
-            this.searchInput.slideUp(200);
-            this.content.animate({'opacity':1});
-            this.hideSubMenus();
+            this.hiddenMenuIcons.animate({opacity:0}, 250);
+            this.hiddenLogo.animate({opacity:0}, 250);
         },
         
         clearMenuAnimQueue: function() {
-            this.menu.clearQueue();
-            this.categoryLinks.clearQueue();
-            this.logo.clearQueue();
-            this.hiddenLogo.clearQueue();
-            this.hiddenCategoryIcons.clearQueue();
-            this.content.clearQueue();
-            this.searchInput.clearQueue();
+            
         },
         
         onWinResize: function() {
@@ -146,20 +119,10 @@ $(document).ready(function() {
     	
 	// menu mouseenter & mouseleave actions start ----------------------------------
 	Showcase.menu.on("mouseenter", function() {
-        clearTimeout(Showcase.menuHideTimeout);
-        Showcase.menuShowTimeout = setTimeout(function() {
-            if(!Showcase.menuVisible) {
-                Showcase.openMenu();
-            }
-        }, 250);
+        Showcase.highlightMenu();
 	})
 	.on("mouseleave", function() {
-        clearTimeout(Showcase.menuShowTimeout);
-        Showcase.menuHideTimeout = setTimeout(function() {
-            if(Showcase.menuVisible) {
-                Showcase.hideMenu();
-            };
-        }, 250);
+        Showcase.unhighlightMenu();
 	});
     
     // open theme switcher combo
