@@ -55,7 +55,7 @@ public class PhotoCamView {
 			imageOutput.close();
 		}
         catch(Exception e) {
-			throw new FacesException("Error in writing captured image.");
+			throw new FacesException("Error in writing captured image.", e);
 		}
     }
 }
