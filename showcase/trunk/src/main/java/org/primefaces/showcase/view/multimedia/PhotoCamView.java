@@ -16,6 +16,7 @@
 package org.primefaces.showcase.view.multimedia;
 
 import java.io.File;
+import java.io.IOException;
 import javax.faces.FacesException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -54,7 +55,7 @@ public class PhotoCamView {
 			imageOutput.write(data, 0, data.length);
 			imageOutput.close();
 		}
-        catch(Exception e) {
+        catch(IOException e) {
 			throw new FacesException("Error in writing captured image.", e);
 		}
     }
