@@ -1,0 +1,145 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+		<style type="text/css">
+			.column {
+				font-weight: bold;
+			}
+		</style>
+	</ui:define>
+    
+    <ui:define name="title">
+        Inplace
+    </ui:define>
+
+    <ui:define name="description">
+        Inplace provides easy inplace editing and inline content display. For inplace editing, "save" and "cancel" ajax
+        behavior events are provided for customizing the use-case.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form prependId="false">
+
+            <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+                <h:outputText value="Basic Input: " />
+                <p:inplace id="basic">
+                    <p:inputText value="Edit Me" />
+                </p:inplace>
+
+                <h:outputText value="Ajax Inplace Editor: " />
+                <p:inplace id="ajaxInplace" editor="true">
+                    <p:inputText value="#{inplaceView.text}" required="true" label="text" />
+                </p:inplace>
+
+                <h:outputText value="Select One (Dlbclick): "/>
+                <p:inplace id="selectableInplace" label="Cities" effectSpeed="fast" event="dblclick">
+                    <h:selectOneMenu>
+                        <f:selectItem itemLabel="Izmir" itemValue="Izmir" />
+                        <f:selectItem itemLabel="Ankara" itemValue="Ankara" />
+                        <f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
+                    </h:selectOneMenu>
+                </p:inplace>
+
+                <h:outputText value="Checkbox: " />
+                <p:inplace id="checkboxInplace" effect="none">
+                    <f:facet name="output">
+                        Yes or No
+                    </f:facet>
+                    <f:facet name="input">
+                        <h:selectBooleanCheckbox />
+                    </f:facet>
+                </p:inplace>
+
+                <h:outputText value="Sliding Image: " />
+                <p:inplace id="slidingInplace" label="Show" effect="slide">
+                    <p:graphicImage name="/demo/images/nature/nature3.jpg" />
+                </p:inplace>
+            </h:panelGrid>
+
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="inplace.xhtml">
+                <pre name="code" class="brush:xml">
+ &lt;h:form&gt;
+
+    &lt;h:panelGrid columns="2" columnClasses="column" cellpadding="5"&gt;
+        &lt;h:outputText value="Basic Input: " /&gt;
+        &lt;p:inplace id="basic"&gt;
+            &lt;p:inputText value="Edit Me" /&gt;
+        &lt;/p:inplace&gt;
+
+        &lt;h:outputText value="Ajax Inplace Editor: " /&gt;
+        &lt;p:inplace id="ajaxInplace" editor="true"&gt;
+            &lt;p:inputText value="\#{inplaceView.text}" required="true" label="text" /&gt;
+        &lt;/p:inplace&gt;
+
+        &lt;h:outputText value="Select One (Dlbclick): "/&gt;
+        &lt;p:inplace id="selectableInplace" label="Cities" effectSpeed="fast" event="dblclick"&gt;
+            &lt;h:selectOneMenu&gt;
+                &lt;f:selectItem itemLabel="Izmir" itemValue="Izmir" /&gt;
+                &lt;f:selectItem itemLabel="Ankara" itemValue="Ankara" /&gt;
+                &lt;f:selectItem itemLabel="Istanbul" itemValue="Istanbul" /&gt;
+            &lt;/h:selectOneMenu&gt;
+        &lt;/p:inplace&gt;
+
+        &lt;h:outputText value="Checkbox: " /&gt;
+        &lt;p:inplace id="checkboxInplace" effect="none"&gt;
+            &lt;f:facet name="output"&gt;
+                Yes or No
+            &lt;/f:facet&gt;
+            &lt;f:facet name="input"&gt;
+                &lt;h:selectBooleanCheckbox /&gt;
+            &lt;/f:facet&gt;
+        &lt;/p:inplace&gt;
+
+        &lt;h:outputText value="Sliding Image: " /&gt;
+        &lt;p:inplace id="slidingInplace" label="Show" effect="slide"&gt;
+            &lt;p:graphicImage name="/demo/images/nature/nature3.jpg" /&gt;
+        &lt;/p:inplace&gt;
+    &lt;/h:panelGrid&gt;
+
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="InplaceView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+@ManagedBean
+@ViewScoped
+public class InplaceView implements Serializable {
+    
+    private String text = "PrimeFaces";
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-249" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
