@@ -17,10 +17,8 @@ package org.primefaces.showcase.view.input;
 
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
 @ManagedBean
-@ViewScoped
 public class InplaceView implements Serializable {
     
     private String text = "PrimeFaces";
