@@ -271,6 +271,10 @@ input.searchInput {
     box-shadow: none !important;
 }
 
+.Source .ui-tabs .ui-tabs-nav li.tab-doc {
+    margin-right: 0;
+}
+
 .Source .ui-tabs .ui-tabs-nav li.ui-state-hover.ui-state-default a {
     color: #5C666A;
 }
