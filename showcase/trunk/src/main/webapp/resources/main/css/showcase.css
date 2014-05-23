@@ -320,6 +320,22 @@ input.searchInput {
     }
 }
 
+@media (max-width: 1120px) {
+    #LOGOTEXTSIDE {
+        width: auto;
+        background: none;
+    }
+    
+    #LOGOTEXTSIDE span {
+        font-size: 24px;
+    }
+    
+    #PFTopLinksCover .PFTopLinks {
+        padding-left:0;
+        padding-right:0;
+    }
+}
+
 @media (max-width: 930px) {
 	.PFTopLinks {
 		display: none
