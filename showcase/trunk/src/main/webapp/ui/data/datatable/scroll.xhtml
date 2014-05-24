@@ -3,7 +3,7 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
-                template="/WEB-INF/template.xhtml">
+                template="./template.xhtml">
     
     <ui:define name="head">
       <style type="text/css">   
@@ -65,17 +65,65 @@
             </p:dataTable>
 
             <h3>Horizontal and Vertical</h3>
-            <p:dataTable var="car" value="#{dtScrollView.cars3}" scrollable="true" scrollWidth="400" scrollHeight="150">
-                <p:column headerText="Id" footerText="Id">
+            <p:dataTable var="car" value="#{dtScrollView.cars3}" scrollable="true" scrollWidth="50%" scrollHeight="150">
+                <p:column headerText="Id" footerText="Id" width="200">
                     <h:outputText value="#{car.id}" />
                 </p:column>
-                <p:column headerText="Year" footerText="Year">
+                <p:column headerText="Year" footerText="Year" width="200">
                     <h:outputText value="#{car.year}" />
                 </p:column>
-                <p:column headerText="Brand" footerText="Brand">
+                <p:column headerText="Brand" footerText="Brand" width="200">
                     <h:outputText value="#{car.brand}" />
                 </p:column>
-                <p:column headerText="Color" footerText="Color">
+                <p:column headerText="Color" footerText="Color" width="200">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+                <p:column headerText="Id" footerText="Id" width="200">
+                    <h:outputText value="#{car.id}" />
+                </p:column>
+                <p:column headerText="Year" footerText="Year" width="200">
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+                <p:column headerText="Brand" footerText="Brand" width="200">
+                    <h:outputText value="#{car.brand}" />
+                </p:column>
+                <p:column headerText="Color" footerText="Color" width="200">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+                <p:column headerText="Id" footerText="Id" width="200">
+                    <h:outputText value="#{car.id}" />
+                </p:column>
+                <p:column headerText="Year" footerText="Year" width="200">
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+                <p:column headerText="Brand" footerText="Brand" width="200">
+                    <h:outputText value="#{car.brand}" />
+                </p:column>
+                <p:column headerText="Color" footerText="Color" width="200">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+                <p:column headerText="Id" footerText="Id" width="200">
+                    <h:outputText value="#{car.id}" />
+                </p:column>
+                <p:column headerText="Year" footerText="Year" width="200">
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+                <p:column headerText="Brand" footerText="Brand" width="200">
+                    <h:outputText value="#{car.brand}" />
+                </p:column>
+                <p:column headerText="Color" footerText="Color" width="200">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+                <p:column headerText="Id" footerText="Id" width="200">
+                    <h:outputText value="#{car.id}" />
+                </p:column>
+                <p:column headerText="Year" footerText="Year" width="200">
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+                <p:column headerText="Brand" footerText="Brand" width="200">
+                    <h:outputText value="#{car.brand}" />
+                </p:column>
+                <p:column headerText="Color" footerText="Color" width="200">
                     <h:outputText value="#{car.color}" />
                 </p:column>
             </p:dataTable>
@@ -169,17 +217,65 @@
     &lt;/p:dataTable&gt;
 
     &lt;h3&gt;Horizontal and Vertical&lt;/h3&gt;
-    &lt;p:dataTable var="car" value="\#{dtScrollView.cars3}" scrollable="true" scrollWidth="400" scrollHeight="150"&gt;
-        &lt;p:column headerText="Id" footerText="Id"&gt;
+    &lt;p:dataTable var="car" value="\#{dtScrollView.cars3}" scrollable="true" scrollWidth="50%" scrollHeight="150"&gt;
+        &lt;p:column headerText="Id" footerText="Id" width="200"&gt;
             &lt;h:outputText value="\#{car.id}" /&gt;
         &lt;/p:column&gt;
-        &lt;p:column headerText="Year" footerText="Year"&gt;
+        &lt;p:column headerText="Year" footerText="Year" width="200"&gt;
             &lt;h:outputText value="\#{car.year}" /&gt;
         &lt;/p:column&gt;
-        &lt;p:column headerText="Brand" footerText="Brand"&gt;
+        &lt;p:column headerText="Brand" footerText="Brand" width="200"&gt;
             &lt;h:outputText value="\#{car.brand}" /&gt;
         &lt;/p:column&gt;
-        &lt;p:column headerText="Color" footerText="Color"&gt;
+        &lt;p:column headerText="Color" footerText="Color" width="200"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Id" footerText="Id" width="200"&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Year" footerText="Year" width="200"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Brand" footerText="Brand" width="200"&gt;
+            &lt;h:outputText value="\#{car.brand}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Color" footerText="Color" width="200"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Id" footerText="Id" width="200"&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Year" footerText="Year" width="200"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Brand" footerText="Brand" width="200"&gt;
+            &lt;h:outputText value="\#{car.brand}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Color" footerText="Color" width="200"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Id" footerText="Id" width="200"&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Year" footerText="Year" width="200"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Brand" footerText="Brand" width="200"&gt;
+            &lt;h:outputText value="\#{car.brand}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Color" footerText="Color" width="200"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Id" footerText="Id" width="200"&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Year" footerText="Year" width="200"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Brand" footerText="Brand" width="200"&gt;
+            &lt;h:outputText value="\#{car.brand}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Color" footerText="Color" width="200"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
