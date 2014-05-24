@@ -233,5 +233,24 @@
                 </dependency>
             </dependencies>
         </profile>
+        <profile>
+            <id>elite</id>
+            <properties>
+                <jsfVersion>Mojarra-2.2.6</jsfVersion>
+                <primefacesVersion>PrimeFaces-5.0.1</primefacesVersion>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.primefaces</groupId>
+                    <artifactId>primefaces</artifactId>
+                    <version>5.0.1</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish</groupId>
+                    <artifactId>javax.faces</artifactId>
+                    <version>2.2.6</version>
+                </dependency>
+            </dependencies>
+        </profile>
     </profiles>
 </project>
