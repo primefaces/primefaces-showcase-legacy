@@ -74,14 +74,6 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 				.SubMenuLink{width:50%; display:inline-block; float:left; padding:6px 0px; cursor:pointer; border-radius:4px; -webkit-border-radius:4px; color:#659eb3; font-size:14px;
 				}
 				.SubMenuLink:hover{background-color:#101517; color:#8dc5d9;}
-				.openSubMenuLink{width:100%; height:auto; visibility:visible; display:block;}
-					.subsubMenuLinks{visibility:hidden; display:none; padding:10px 0px;}
-					.openSubMenuLink .subsubMenuLinks{ visibility:visible; display:block; padding-left:5px;}
-					
-						.subsubMenuLinks a{display:block; width:50%; float:left; box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box; padding:8px 0; font-size:12px; color:#fdd106;
-						-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
-						.subsubMenuLinks a:hover{ background-color:#303b3f; border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px;
-						-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
 						
 	.selectmenu{width:auto; max-width:120px; float:right; padding:5px; outline:none; font-size:16px; display:block; overflow:hidden;}
 		.LEVEL1{color:#25aae1; padding-left:10px;}
@@ -240,13 +232,38 @@ input.searchInput {
     float: right
 }
 
+/** ClearFix **/
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+/* required comment for clearfix to work in Opera \*/
+* html .clearfix { height:1%; }
+.clearfix { display:block; }
+
 /* override */
 .ui-widget {
     font-size: 90%;
 }
 
+.Implementation {
+    background-color:#dfe4e6;
+}
+
 .Implementation h3 {
     margin-top: 40px;
+}
+
+.SubSubMenu {
+    padding: 15px 30px;
+}
+.SubSubMenu ul {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.SubSubMenu ul li {
+    list-style: none;
+    width: 15%;
+    float: left;
 }
 
 .Source h3 {
@@ -391,6 +408,10 @@ input.searchInput {
     
     .PFNextGen iframe {
         margin-left: 0;
+    }
+    
+    .SubSubMenu {
+        display: none;
     }
 }
 
