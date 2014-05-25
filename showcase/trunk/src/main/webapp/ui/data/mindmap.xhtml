@@ -96,12 +96,12 @@ public class MindmapView implements Serializable {
 
             if(label.equals("NS(s)")) {
                 for(int i = 0; i &lt; 25; i++) {
-                    node.addNode(new DefaultMindmapNode("ns" + i + ".google.com", "Namespace " + i + " of Google", "82c542"));
+                    node.addNode(new DefaultMindmapNode("ns" + i + ".google.com", "Namespace " + i + " of Google", "82c542", false));
                 }
             }
             else if(label.equals("IPs")) {
                 for(int i = 0; i &lt; 18; i++) {
-                    node.addNode(new DefaultMindmapNode("1.1.1."  + i, "IP Number: 1.1.1." + i, "fce24f"));
+                    node.addNode(new DefaultMindmapNode("1.1.1."  + i, "IP Number: 1.1.1." + i, "fce24f", false));
                 } 
             }
             else if(label.equals("Malware")) {
