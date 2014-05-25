@@ -16,21 +16,19 @@
     <ui:define name="implementation">
         
         <h:form>
-            <p:panel header="Key Events">
-                <h:panelGrid columns="3" cellpadding="5">
-                    <h:outputText value="KeyUp: " />
-                    <p:inputText id="firstname" value="#{userView.firstname}">
-                        <p:ajax event="keyup" update="out1" />
-                    </p:inputText>
-                    <h:outputText id="out1" value="#{userView.firstname}" />
+            <h:panelGrid columns="3" cellpadding="5">
+                <h:outputText value="KeyUp: " />
+                <p:inputText id="firstname" value="#{userView.firstname}">
+                    <p:ajax event="keyup" update="out1" />
+                </p:inputText>
+                <h:outputText id="out1" value="#{userView.firstname}" />
 
-                    <h:outputText value="Blur: " />
-                    <p:inputText id="surname" value="#{userView.lastname}">
-                        <p:ajax event="blur" update="out2" />
-                    </p:inputText>
-                    <h:outputText id="out2" value="#{userView.lastname}" />
-                </h:panelGrid>
-            </p:panel>
+                <h:outputText value="Blur: " />
+                <p:inputText id="surname" value="#{userView.lastname}">
+                    <p:ajax event="blur" update="out2" />
+                </p:inputText>
+                <h:outputText id="out2" value="#{userView.lastname}" />
+            </h:panelGrid>
         </h:form>
         
     </ui:define>
@@ -40,21 +38,19 @@
             <p:tab title="event.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;p:panel header="Key Events"&gt;
-        &lt;h:panelGrid columns="3" cellpadding="5"&gt;
-            &lt;h:outputText value="KeyUp: " /&gt;
-            &lt;p:inputText id="firstname" value="\#{userView.firstname}"&gt;
-                &lt;p:ajax event="keyup" update="out1" /&gt;
-            &lt;/p:inputText&gt;
-            &lt;h:outputText id="out1" value="\#{userView.firstname}" /&gt;
+    &lt;h:panelGrid columns="3" cellpadding="5"&gt;
+        &lt;h:outputText value="KeyUp: " /&gt;
+        &lt;p:inputText id="firstname" value="\#{userView.firstname}"&gt;
+            &lt;p:ajax event="keyup" update="out1" /&gt;
+        &lt;/p:inputText&gt;
+        &lt;h:outputText id="out1" value="\#{userView.firstname}" /&gt;
 
-            &lt;h:outputText value="Blur: " /&gt;
-            &lt;p:inputText id="surname" value="\#{userView.lastname}"&gt;
-                &lt;p:ajax event="blur" update="out2" /&gt;
-            &lt;/p:inputText&gt;
-            &lt;h:outputText id="out2" value="\#{userView.lastname}" /&gt;
-        &lt;/h:panelGrid&gt;
-    &lt;/p:panel&gt;
+        &lt;h:outputText value="Blur: " /&gt;
+        &lt;p:inputText id="surname" value="\#{userView.lastname}"&gt;
+            &lt;p:ajax event="blur" update="out2" /&gt;
+        &lt;/p:inputText&gt;
+        &lt;h:outputText id="out2" value="\#{userView.lastname}" /&gt;
+    &lt;/h:panelGrid&gt;
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
