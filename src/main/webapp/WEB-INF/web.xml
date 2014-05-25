@@ -62,6 +62,10 @@
         <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
     </listener>
     
+    <listener>
+        <listener-class>org.apache.commons.fileupload.servlet.FileCleanerCleanup</listener-class>
+    </listener>
+    
     <filter>
         <filter-name>Character Encoding Filter</filter-name>
         <filter-class>org.primefaces.showcase.filter.CharacterEncodingFilter</filter-class>
