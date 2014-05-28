@@ -47,8 +47,8 @@
                     <f:selectItems value="#{selectOneMenuView.cities}" />
                 </p:selectOneMenu>
 
-                <h:outputText value="Advanced:" />
-                <p:selectOneMenu value="#{selectOneMenuView.theme}" converter="themeConverter" panelStyle="width:180px"
+                <p:outputLabel for="advanced" value="Advanced:" />
+                <p:selectOneMenu id="advanced" value="#{selectOneMenuView.theme}" converter="themeConverter" panelStyle="width:180px"
                                  effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith">
                     <f:selectItems value="#{selectOneMenuView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" />
 
@@ -111,8 +111,8 @@
             &lt;f:selectItems value="\#{selectOneMenuView.cities}" /&gt;
         &lt;/p:selectOneMenu&gt;
 
-        &lt;h:outputText value="Advanced:" /&gt;
-        &lt;p:selectOneMenu value="\#{selectOneMenuView.theme}" converter="themeConverter" panelStyle="width:180px"
+        &lt;p:outputLabel for="advanced" value="Advanced:"  /&gt;
+        &lt;p:selectOneMenu id="advanced" value="\#{selectOneMenuView.theme}" converter="themeConverter" panelStyle="width:180px"
                          effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith"&gt;
             &lt;f:selectItems value="\#{selectOneMenuView.themes}" var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" /&gt;
 
