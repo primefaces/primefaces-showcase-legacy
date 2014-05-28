@@ -5,6 +5,16 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="./template.xhtml">
 
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-paginator a {
+                float: right;
+                margin-right: 5px;
+            }
+        </style>
+	</ui:define>
+
+    
     <ui:define name="title">
         DataExporter - <span class="subitem">Basic</span>
     </ui:define>
@@ -13,7 +23,31 @@
 
         <h:form>
             <p:dataTable id="tbl" var="car" value="#{dataExporterView.cars}" 
-                         paginator="true" rows="10">
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                         paginator="true" rows="10" style="margin-bottom:20px">
+                
+                <f:facet name="{Exporters}">
+                    <h:commandLink>
+                        <p:graphicImage name="/demo/images/excel.png" width="24"/>
+                        <p:dataExporter type="xls" target="tbl" fileName="cars" />
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <p:graphicImage name="/demo/images/pdf.png" width="24"/>
+                        <p:dataExporter type="pdf" target="tbl" fileName="cars"/>
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <p:graphicImage name="/demo/images/csv.png" width="24"/>
+                        <p:dataExporter type="csv" target="tbl" fileName="cars" />
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <p:graphicImage name="/demo/images/xml.png" width="24"/>
+                        <p:dataExporter type="xml" target="tbl" fileName="cars" />
+                    </h:commandLink>
+                </f:facet>
+                
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value="Id" />
@@ -41,56 +75,28 @@
                     </f:facet>
                     <h:outputText value="#{car.color}" />
                 </p:column>
-
             </p:dataTable>
 
-            <br />
+            <h3>Export Page Data Only</h3>
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/excel.png" />
+                <p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/>
+            </h:commandLink>
 
-            <h:panelGrid columns="2">
-                <p:panel header="Export All Data">
-                    <h:commandLink id="excel">
-                        <p:graphicImage name="/demo/images/excel.png" />
-                        <p:dataExporter type="xls" target="tbl" fileName="cars" />
-                    </h:commandLink>
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/pdf.png" />
+                <p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true" />
+            </h:commandLink>
 
-                    <h:commandLink id="pdf">
-                        <p:graphicImage name="/demo/images/pdf.png" />
-                        <p:dataExporter type="pdf" target="tbl" fileName="cars"/>
-                    </h:commandLink>
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/csv.png" />
+                <p:dataExporter type="csv" target="tbl" fileName="cars" pageOnly="true" />
+            </h:commandLink>
 
-                    <h:commandLink id="csv">
-                        <p:graphicImage name="/demo/images/csv.png" />
-                        <p:dataExporter type="csv" target="tbl" fileName="cars" />
-                    </h:commandLink>
-
-                    <h:commandLink id="xml">
-                        <p:graphicImage name="/demo/images/xml.png" />
-                        <p:dataExporter type="xml" target="tbl" fileName="cars" />
-                    </h:commandLink>
-                </p:panel>
-
-                <p:panel header="Export Page Data">
-                    <h:commandLink>
-                        <p:graphicImage name="/demo/images/excel.png" />
-                        <p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/>
-                    </h:commandLink>
-
-                    <h:commandLink>
-                        <p:graphicImage name="/demo/images/pdf.png" />
-                        <p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true" />
-                    </h:commandLink>
-
-                    <h:commandLink>
-                        <p:graphicImage name="/demo/images/csv.png" />
-                        <p:dataExporter type="csv" target="tbl" fileName="cars" pageOnly="true" />
-                    </h:commandLink>
-
-                    <h:commandLink>
-                        <p:graphicImage name="/demo/images/xml.png" />
-                        <p:dataExporter type="xml" target="tbl" fileName="cars" pageOnly="true" />
-                    </h:commandLink>
-                </p:panel>
-            </h:panelGrid>
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/xml.png" />
+                <p:dataExporter type="xml" target="tbl" fileName="cars" pageOnly="true" />
+            </h:commandLink>
         </h:form>
         
     </ui:define>
@@ -101,7 +107,31 @@
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
     &lt;p:dataTable id="tbl" var="car" value="\#{dataExporterView.cars}" 
-                 paginator="true" rows="10"&gt;
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                 paginator="true" rows="10" style="margin-bottom:20px"&gt;
+
+        &lt;f:facet name="{Exporters}"&gt;
+            &lt;h:commandLink&gt;
+                &lt;p:graphicImage name="/demo/images/excel.png" width="24"/&gt;
+                &lt;p:dataExporter type="xls" target="tbl" fileName="cars" /&gt;
+            &lt;/h:commandLink&gt;
+
+            &lt;h:commandLink&gt;
+                &lt;p:graphicImage name="/demo/images/pdf.png" width="24"/&gt;
+                &lt;p:dataExporter type="pdf" target="tbl" fileName="cars"/&gt;
+            &lt;/h:commandLink&gt;
+
+            &lt;h:commandLink&gt;
+                &lt;p:graphicImage name="/demo/images/csv.png" width="24"/&gt;
+                &lt;p:dataExporter type="csv" target="tbl" fileName="cars" /&gt;
+            &lt;/h:commandLink&gt;
+
+            &lt;h:commandLink&gt;
+                &lt;p:graphicImage name="/demo/images/xml.png" width="24"/&gt;
+                &lt;p:dataExporter type="xml" target="tbl" fileName="cars" /&gt;
+            &lt;/h:commandLink&gt;
+        &lt;/f:facet&gt;
+
         &lt;p:column&gt;
             &lt;f:facet name="header"&gt;
                 &lt;h:outputText value="Id" /&gt;
@@ -129,54 +159,28 @@
             &lt;/f:facet&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
-
     &lt;/p:dataTable&gt;
 
-    &lt;h:panelGrid columns="2"&gt;
-        &lt;p:panel header="Export All Data"&gt;
-            &lt;h:commandLink id="excel"&gt;
-                &lt;p:graphicImage name="/demo/images/excel.png" /&gt;
-                &lt;p:dataExporter type="xls" target="tbl" fileName="cars" /&gt;
-            &lt;/h:commandLink&gt;
+    &lt;h3&gt;Export Page Data Only&lt;/h3&gt;
+    &lt;h:commandLink&gt;
+        &lt;p:graphicImage name="/demo/images/excel.png" /&gt;
+        &lt;p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/&gt;
+    &lt;/h:commandLink&gt;
 
-            &lt;h:commandLink id="pdf"&gt;
-                &lt;p:graphicImage name="/demo/images/pdf.png" /&gt;
-                &lt;p:dataExporter type="pdf" target="tbl" fileName="cars"/&gt;
-            &lt;/h:commandLink&gt;
+    &lt;h:commandLink&gt;
+        &lt;p:graphicImage name="/demo/images/pdf.png" /&gt;
+        &lt;p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true" /&gt;
+    &lt;/h:commandLink&gt;
 
-            &lt;h:commandLink id="csv"&gt;
-                &lt;p:graphicImage name="/demo/images/csv.png" /&gt;
-                &lt;p:dataExporter type="csv" target="tbl" fileName="cars" /&gt;
-            &lt;/h:commandLink&gt;
+    &lt;h:commandLink&gt;
+        &lt;p:graphicImage name="/demo/images/csv.png" /&gt;
+        &lt;p:dataExporter type="csv" target="tbl" fileName="cars" pageOnly="true" /&gt;
+    &lt;/h:commandLink&gt;
 
-            &lt;h:commandLink id="xml"&gt;
-                &lt;p:graphicImage name="/demo/images/xml.png" /&gt;
-                &lt;p:dataExporter type="xml" target="tbl" fileName="cars" /&gt;
-            &lt;/h:commandLink&gt;
-        &lt;/p:panel&gt;
-
-        &lt;p:panel header="Export Page Data"&gt;
-            &lt;h:commandLink&gt;
-                &lt;p:graphicImage name="/demo/images/excel.png" /&gt;
-                &lt;p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/&gt;
-            &lt;/h:commandLink&gt;
-
-            &lt;h:commandLink&gt;
-                &lt;p:graphicImage name="/demo/images/pdf.png" /&gt;
-                &lt;p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true" /&gt;
-            &lt;/h:commandLink&gt;
-
-            &lt;h:commandLink&gt;
-                &lt;p:graphicImage name="/demo/images/csv.png" /&gt;
-                &lt;p:dataExporter type="csv" target="tbl" fileName="cars" pageOnly="true" /&gt;
-            &lt;/h:commandLink&gt;
-
-            &lt;h:commandLink&gt;
-                &lt;p:graphicImage name="/demo/images/xml.png" /&gt;
-                &lt;p:dataExporter type="xml" target="tbl" fileName="cars" pageOnly="true" /&gt;
-            &lt;/h:commandLink&gt;
-        &lt;/p:panel&gt;
-    &lt;/h:panelGrid&gt;
+    &lt;h:commandLink&gt;
+        &lt;p:graphicImage name="/demo/images/xml.png" /&gt;
+        &lt;p:dataExporter type="xml" target="tbl" fileName="cars" pageOnly="true" /&gt;
+    &lt;/h:commandLink&gt;
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
