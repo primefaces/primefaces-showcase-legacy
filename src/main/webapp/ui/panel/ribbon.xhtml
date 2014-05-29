@@ -32,6 +32,14 @@
             .ui-icon.ui-ribbonicon-print {
                 background-image: url("#{resource['demo/images/icon/print.png']}");
             }
+            
+            .ui-icon.ui-ribbonicon-zoomin {
+                background-image: url("#{resource['demo/images/icon/zoomin.png']}");
+            }
+            
+            .ui-icon.ui-ribbonicon-zoomout {
+                background-image: url("#{resource['demo/images/icon/zoomout.png']}");
+            }
         </style>
 	</ui:define>
 
@@ -45,62 +53,59 @@
 
     <ui:define name="implementation">
         
-        <h:form>
-            <p:ribbon>
-                <p:tab title="File">
-                    <p:ribbonGroup label="Options">
-                        <p:ribbonGroup label="Group 2">
-                            <p:commandButton value="New" icon="ui-ribbonicon-new" styleClass="ui-ribbon-bigbutton" />
-                            <p:commandButton value="Save" icon="ui-ribbonicon-save" styleClass="ui-ribbon-bigbutton"/>
-                        </p:ribbonGroup>
+        <p:ribbon>
+            <p:tab title="File">
+                <p:ribbonGroup label="Options">
+                    <p:ribbonGroup label="Group 2">
+                        <p:commandButton value="New" icon="ui-ribbonicon-new" styleClass="ui-ribbon-bigbutton" type="button"/>
+                        <p:commandButton value="Save" icon="ui-ribbonicon-save" styleClass="ui-ribbon-bigbutton" type="button"/>
                     </p:ribbonGroup>
-                        
-                    <p:ribbonGroup label="Clipboard" style="width:120px">
-                        <p:selectManyButton>
-                            <p:commandButton value="Paste" icon="ui-ribbonicon-paste" styleClass="ui-ribbon-bigbutton"/>
-                            <p:commandButton value="Cut" icon="ui-ribbonicon-cut" style="width:64px"/>
-                            <p:commandButton value="Print" icon="ui-ribbonicon-print" style="width:64px"/>
-                        </p:selectManyButton>
-                    </p:ribbonGroup>
-                    
-                    <p:ribbonGroup label="Fonts" style="width:220px">
-                        <p:selectOneMenu>
-                            <f:selectItem itemLabel="Arial" itemValue="0" />
-                            <f:selectItem itemLabel="Comis Sans" itemValue="1" />
-                            <f:selectItem itemLabel="Helvetica" itemValue="2" />
-                            <f:selectItem itemLabel="Times New Roman" itemValue="3" />
-                            <f:selectItem itemLabel="Verdana" itemValue="4" />
-                        </p:selectOneMenu>
-                        
-                        <p:selectOneMenu>
-                            <f:selectItem itemLabel="10" itemValue="10" />
-                            <f:selectItem itemLabel="12" itemValue="12" />
-                            <f:selectItem itemLabel="14" itemValue="14" />
-                            <f:selectItem itemLabel="18" itemValue="18" />
-                            <f:selectItem itemLabel="24" itemValue="24" />
-                            <f:selectItem itemLabel="36" itemValue="36" />
-                            <f:selectItem itemLabel="72" itemValue="72" />
-                        </p:selectOneMenu>
-                        
-                        <p:selectManyButton>
-                            <f:selectItem itemLabel="b" itemValue="b" />
-                            <f:selectItem itemLabel="u" itemValue="u" />
-                            <f:selectItem itemLabel="i" itemValue="i" />
-                        </p:selectManyButton>
-                        
-                        <p:colorPicker />  
-                    </p:ribbonGroup>
-                </p:tab>
-                
-                <p:tab title="View">
-                    <p:ribbonGroup label="Zoom">
-                        <p:commandButton icon="ui-icon-document" styleClass="ui-ribbon-bigbutton" />
-                        <p:commandButton icon="ui-icon-disk" styleClass="ui-ribbon-bigbutton"/>   
-                    </p:ribbonGroup>
-                </p:tab>
-            </p:ribbon>
-            
-        </h:form>
+                </p:ribbonGroup>
+
+                <p:ribbonGroup label="Clipboard" style="width:120px">
+                    <p:selectManyButton>
+                        <p:commandButton value="Paste" icon="ui-ribbonicon-paste" styleClass="ui-ribbon-bigbutton" type="button"/>
+                        <p:commandButton value="Cut" icon="ui-ribbonicon-cut" style="width:64px" type="button"/>
+                        <p:commandButton value="Print" icon="ui-ribbonicon-print" style="width:64px" type="button"/>
+                    </p:selectManyButton>
+                </p:ribbonGroup>
+
+                <p:ribbonGroup label="Fonts" style="width:220px">
+                    <p:selectOneMenu>
+                        <f:selectItem itemLabel="Arial" itemValue="0" />
+                        <f:selectItem itemLabel="Comis Sans" itemValue="1" />
+                        <f:selectItem itemLabel="Helvetica" itemValue="2" />
+                        <f:selectItem itemLabel="Times New Roman" itemValue="3" />
+                        <f:selectItem itemLabel="Verdana" itemValue="4" />
+                    </p:selectOneMenu>
+
+                    <p:selectOneMenu>
+                        <f:selectItem itemLabel="10" itemValue="10" />
+                        <f:selectItem itemLabel="12" itemValue="12" />
+                        <f:selectItem itemLabel="14" itemValue="14" />
+                        <f:selectItem itemLabel="18" itemValue="18" />
+                        <f:selectItem itemLabel="24" itemValue="24" />
+                        <f:selectItem itemLabel="36" itemValue="36" />
+                        <f:selectItem itemLabel="72" itemValue="72" />
+                    </p:selectOneMenu>
+
+                    <p:selectManyButton>
+                        <f:selectItem itemLabel="b" itemValue="b" />
+                        <f:selectItem itemLabel="u" itemValue="u" />
+                        <f:selectItem itemLabel="i" itemValue="i" />
+                    </p:selectManyButton>
+
+                    <p:colorPicker />  
+                </p:ribbonGroup>
+            </p:tab>
+
+            <p:tab title="View">
+                <p:ribbonGroup label="Zoom">
+                    <p:commandButton value="In" icon="ui-ribbonicon-zoomin" styleClass="ui-ribbon-bigbutton" type="button" />
+                    <p:commandButton value="Out" icon="ui-ribbonicon-zoomout" styleClass="ui-ribbon-bigbutton" type="button"/>   
+                </p:ribbonGroup>
+            </p:tab>
+        </p:ribbon>
         
     </ui:define>
 
@@ -108,7 +113,59 @@
         <p:tabView>
             <p:tab title="ribbon.xhtml">
                 <pre name="code" class="brush:xml">
+&lt;p:ribbon&gt;
+    &lt;p:tab title="File"&gt;
+        &lt;p:ribbonGroup label="Options"&gt;
+            &lt;p:ribbonGroup label="Group 2"&gt;
+                &lt;p:commandButton value="New" icon="ui-ribbonicon-new" styleClass="ui-ribbon-bigbutton" type="button"/&gt;
+                &lt;p:commandButton value="Save" icon="ui-ribbonicon-save" styleClass="ui-ribbon-bigbutton" type="button"/&gt;
+            &lt;/p:ribbonGroup&gt;
+        &lt;/p:ribbonGroup&gt;
 
+        &lt;p:ribbonGroup label="Clipboard" style="width:120px"&gt;
+            &lt;p:selectManyButton&gt;
+                &lt;p:commandButton value="Paste" icon="ui-ribbonicon-paste" styleClass="ui-ribbon-bigbutton" type="button"/&gt;
+                &lt;p:commandButton value="Cut" icon="ui-ribbonicon-cut" style="width:64px" type="button"/&gt;
+                &lt;p:commandButton value="Print" icon="ui-ribbonicon-print" style="width:64px" type="button"/&gt;
+            &lt;/p:selectManyButton&gt;
+        &lt;/p:ribbonGroup&gt;
+
+        &lt;p:ribbonGroup label="Fonts" style="width:220px"&gt;
+            &lt;p:selectOneMenu&gt;
+                &lt;f:selectItem itemLabel="Arial" itemValue="0" /&gt;
+                &lt;f:selectItem itemLabel="Comis Sans" itemValue="1" /&gt;
+                &lt;f:selectItem itemLabel="Helvetica" itemValue="2" /&gt;
+                &lt;f:selectItem itemLabel="Times New Roman" itemValue="3" /&gt;
+                &lt;f:selectItem itemLabel="Verdana" itemValue="4" /&gt;
+            &lt;/p:selectOneMenu&gt;
+
+            &lt;p:selectOneMenu&gt;
+                &lt;f:selectItem itemLabel="10" itemValue="10" /&gt;
+                &lt;f:selectItem itemLabel="12" itemValue="12" /&gt;
+                &lt;f:selectItem itemLabel="14" itemValue="14" /&gt;
+                &lt;f:selectItem itemLabel="18" itemValue="18" /&gt;
+                &lt;f:selectItem itemLabel="24" itemValue="24" /&gt;
+                &lt;f:selectItem itemLabel="36" itemValue="36" /&gt;
+                &lt;f:selectItem itemLabel="72" itemValue="72" /&gt;
+            &lt;/p:selectOneMenu&gt;
+
+            &lt;p:selectManyButton&gt;
+                &lt;f:selectItem itemLabel="b" itemValue="b" /&gt;
+                &lt;f:selectItem itemLabel="u" itemValue="u" /&gt;
+                &lt;f:selectItem itemLabel="i" itemValue="i" /&gt;
+            &lt;/p:selectManyButton&gt;
+
+            &lt;p:colorPicker /&gt;  
+        &lt;/p:ribbonGroup&gt;
+    &lt;/p:tab&gt;
+
+    &lt;p:tab title="View"&gt;
+        &lt;p:ribbonGroup label="Zoom"&gt;
+            &lt;p:commandButton value="In" icon="ui-ribbonicon-zoomin" styleClass="ui-ribbon-bigbutton" type="button" /&gt;
+            &lt;p:commandButton value="Out" icon="ui-ribbonicon-zoomout" styleClass="ui-ribbon-bigbutton" type="button"/&gt;   
+        &lt;/p:ribbonGroup&gt;
+    &lt;/p:tab&gt;
+&lt;/p:ribbon&gt;
                 </pre>
             </p:tab>
         </p:tabView>
