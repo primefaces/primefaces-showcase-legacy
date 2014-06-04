@@ -186,17 +186,14 @@ $(document).ready(function() {
             $(this).val($(this).val()+" ");
         }
         var searchValue = $(this).val().toLowerCase(),
-        matchSub = false,
-        matchSubSub = false, 
-        matchMenuSide = false;
+        matchSub = false;
 
         $('.SubMenuLinkContainer').each(function() {
             var MenuSideValue = $(this).prev().children('span').text().trim().toLowerCase(),
             itemValue;
             
             if(MenuSideValue.search(searchValue) < 0 || searchValue.length === 0) {  
-                var Sub = $(this).children(':not(span)'),
-                SubSub = $(this).children('span');
+                var Sub = $(this).children('a');
 
                 for(var i = 0; i < Sub.length; i++) {     //for SubMenu
                     itemValue = Sub.eq(i).text().trim().toLowerCase();
@@ -209,41 +206,9 @@ $(document).ready(function() {
                     }
                 }
                 
-                for(var j = 0; j < SubSub.length; j++) {  //for SubsubMenu
-                    var SubSuba = SubSub.eq(j).find('a'),
-                    SubSubText = SubSub.eq(j).text().toLowerCase().split(" ")[1]; // text of <span> SubMenuLink
-                    if(SubSubText.search(searchValue) >= 0) {
-                        SubSub.eq(j).show();
-                        SubSuba.show();
-                        matchMenuSide = true;
-                    }
-                    else { 
-                        for(var m = 0; m < SubSuba.length; m++) {
-                            itemValue = SubSuba.eq(m).text().toLowerCase();
-                            if(itemValue.search(searchValue) >= 0) {
-                                SubSuba.eq(m).show();
-                                matchSubSub = true; 
-                                matchMenuSide = true;
-                            }
-                            else {
-                                SubSuba.eq(m).hide();
-                            }
-                        }
-
-                        if(matchSubSub) {
-                            SubSub.eq(j).show();
-                            matchSubSub = false;
-                        }
-                        else {
-                            SubSub.eq(j).hide();
-                        }
-                    }
-                }
-                
-                if(matchSub || matchMenuSide ) {
+                if(matchSub) {
                     $(this).prev().show();
                     matchSub = false;
-                    matchMenuSide = false;
                 }
                 else {
                     $(this).prev().hide();
