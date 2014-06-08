@@ -6,11 +6,11 @@
                 template="./template.xhtml">
 
     <ui:define name="title">
-        Dialog - <span class="subitem">Close</span>
+        Dialog - <span class="subitem">Events</span>
     </ui:define>
 
     <ui:define name="description">
-        Close event can be listened via ajax behavior.
+        Ajax behavior callbacks are available for "close" and "move" events. Move event is available for 5.0.2+.
     </ui:define>
 
     <ui:define name="implementation">
@@ -22,6 +22,7 @@
             
             <p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" resizable="false" showEffect="clip" hideEffect="clip">
                 <p:ajax event="close" update="growl" listener="#{dialogView.handleClose}" />
+                <p:ajax event="move" update="growl" listener="#{dialogView.handleMove}" />
                 
                 <p:graphicImage name="/demo/images/nature/nature4.jpg" />
             </p:dialog>      
@@ -40,6 +41,7 @@
 
     &lt;p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" resizable="false" showEffect="clip" hideEffect="clip"&gt;
         &lt;p:ajax event="close" update="growl" listener="\#{dialogView.handleClose}" /&gt;
+        &lt;p:ajax event="close" update="growl" listener="\#{dialogView.handleMove}" /&gt;
 
         &lt;p:graphicImage name="/demo/images/nature/nature4.jpg" /&gt;
     &lt;/p:dialog&gt;            
@@ -56,12 +58,17 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.CloseEvent;
+import org.primefaces.event.MoveEvent;
 
 @ManagedBean
 public class DialogView {
     
     public void handleClose(CloseEvent event) {
         addMessage(event.getComponent().getId() + " closed", "So you don't like nature?");
+    }
+
+    public void handleMove(MoveEvent event) {
+        addMessage(event.getComponent().getId() + " moved", "Left: " + event.getLeft() + ", Top: " + event.getTop());
     }
     
     public void addMessage(String summary, String detail) {
