@@ -41,7 +41,7 @@
 
     &lt;p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" resizable="false" showEffect="clip" hideEffect="clip"&gt;
         &lt;p:ajax event="close" update="growl" listener="\#{dialogView.handleClose}" /&gt;
-        &lt;p:ajax event="close" update="growl" listener="\#{dialogView.handleMove}" /&gt;
+        &lt;p:ajax event="move" update="growl" listener="\#{dialogView.handleMove}" /&gt;
 
         &lt;p:graphicImage name="/demo/images/nature/nature4.jpg" /&gt;
     &lt;/p:dialog&gt;            
