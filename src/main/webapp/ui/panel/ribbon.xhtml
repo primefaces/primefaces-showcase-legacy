@@ -44,11 +44,11 @@
 	</ui:define>
 
     <ui:define name="title">
-        Panel - <span class="subitem">Ribbon</span>
+        Panel - <span class="subitem">Ribbon (v5.0.3+)</span>
     </ui:define>
 
     <ui:define name="description">
-         Ribbon is container component to group different sets of controls. Special styling is applied to inner components for a unified look.
+         Ribbon is container component to group different sets of controls in a tabbed layout. Special styling is applied to inner components for a unified look.
     </ui:define>
 
     <ui:define name="implementation">
@@ -69,7 +69,7 @@
                 </p:ribbonGroup>
 
                 <p:ribbonGroup label="Fonts" style="width:220px">
-                    <p:selectOneMenu>
+                    <p:selectOneMenu appendTo="@this">
                         <f:selectItem itemLabel="Arial" itemValue="0" />
                         <f:selectItem itemLabel="Comis Sans" itemValue="1" />
                         <f:selectItem itemLabel="Helvetica" itemValue="2" />
@@ -77,7 +77,7 @@
                         <f:selectItem itemLabel="Verdana" itemValue="4" />
                     </p:selectOneMenu>
 
-                    <p:selectOneMenu>
+                    <p:selectOneMenu appendTo="@this">
                         <f:selectItem itemLabel="10" itemValue="10" />
                         <f:selectItem itemLabel="12" itemValue="12" />
                         <f:selectItem itemLabel="14" itemValue="14" />
@@ -127,7 +127,7 @@
         &lt;/p:ribbonGroup&gt;
 
         &lt;p:ribbonGroup label="Fonts" style="width:220px"&gt;
-            &lt;p:selectOneMenu&gt;
+            &lt;p:selectOneMenu appendTo="@this"&gt;
                 &lt;f:selectItem itemLabel="Arial" itemValue="0" /&gt;
                 &lt;f:selectItem itemLabel="Comis Sans" itemValue="1" /&gt;
                 &lt;f:selectItem itemLabel="Helvetica" itemValue="2" /&gt;
@@ -135,7 +135,7 @@
                 &lt;f:selectItem itemLabel="Verdana" itemValue="4" /&gt;
             &lt;/p:selectOneMenu&gt;
 
-            &lt;p:selectOneMenu&gt;
+            &lt;p:selectOneMenu appendTo="@this"&gt;
                 &lt;f:selectItem itemLabel="10" itemValue="10" /&gt;
                 &lt;f:selectItem itemLabel="12" itemValue="12" /&gt;
                 &lt;f:selectItem itemLabel="14" itemValue="14" /&gt;
