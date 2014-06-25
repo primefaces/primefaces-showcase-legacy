@@ -640,10 +640,7 @@
     </ui:insert>
     
     <ui:insert name="highlight">
-        <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
-        <script language="javascript">
-            SyntaxHighlighter.all();
-        </script>
+        <h:outputScript name="main/js/sh.js" target="body"/>
     </ui:insert>
     
     <ui:insert name="body"></ui:insert>
