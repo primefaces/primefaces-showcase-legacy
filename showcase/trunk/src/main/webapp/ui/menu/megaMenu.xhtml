@@ -10,12 +10,22 @@
     </ui:define>
 
     <ui:define name="description">
-        MegaMenu displays submenus of root items together.
+        MegaMenu displays submenus of root items together. Horizontal and Vertical (v5.0.3+) layouts are available.
     </ui:define>
 
     <ui:define name="implementation">
         
-        <p:megaMenu>
+        <h:form id="form">
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel for="orientation" value="Orientation:" />
+                <p:selectOneButton id="orientation" value="#{megaMenuView.orientation}" onchange="$('#form').submit()">
+                    <f:selectItem itemLabel="Horizontal" itemValue="horizontal" />
+                    <f:selectItem itemLabel="Vertical" itemValue="vertical" />
+                </p:selectOneButton>
+            </h:panelGrid>
+        </h:form>
+        
+        <p:megaMenu orientation="#{megaMenuView.orientation}" style="margin-top:20px">
             <p:submenu label="TV" icon="ui-icon-check">
                 <p:column>
                     <p:submenu label="TV.1">
@@ -26,10 +36,6 @@
                         <p:menuitem value="TV.2.1" url="#" />
                         <p:menuitem value="TV.2.2" url="#" />
                         <p:menuitem value="TV.2.3" url="#" />
-                    </p:submenu>
-                    <p:submenu label="TV.3">
-                        <p:menuitem value="TV.3.1" url="#" />
-                        <p:menuitem value="TV.3.2" url="#" />
                     </p:submenu>
                 </p:column>
 
@@ -63,10 +69,6 @@
                         <p:menuitem value="Sports.2.2" url="#" />
                         <p:menuitem value="Sports.2.3" url="#" />
                     </p:submenu>
-                    <p:submenu label="Sports.3">
-                        <p:menuitem value="Sports.3.1" url="#" />
-                        <p:menuitem value="Sports.3.2" url="#" />
-                    </p:submenu>
                 </p:column>
 
                 <p:column>
@@ -85,14 +87,6 @@
                         <p:menuitem value="Sports.7.1" url="#" />
                         <p:menuitem value="Sports.7.2" url="#" />
                     </p:submenu>
-                    <p:submenu label="Sports.8">
-                        <p:menuitem value="Sports.8.1" url="#" />
-                        <p:menuitem value="Sports.8.2" url="#" />
-                        <p:menuitem value="Sports.8.3" url="#" />
-                        <p:menuitem value="Sports.8.4" url="#" />
-                        <p:menuitem value="Sports.8.5" url="#" />
-                        <p:menuitem value="Sports.8.6" url="#" />
-                    </p:submenu>
                 </p:column>
             </p:submenu>
 
@@ -107,10 +101,6 @@
                         <p:menuitem value="Entertainment.2.2" url="#" />
                         <p:menuitem value="Entertainment.2.3" url="#" />
                     </p:submenu>
-                    <p:submenu label="Entertainment.3">
-                        <p:menuitem value="Entertainment.3.1" url="#" />
-                        <p:menuitem value="Entertainment.3.2" url="#" />
-                    </p:submenu>
                 </p:column>
 
                 <p:column>
@@ -122,10 +112,6 @@
                         <p:menuitem value="Entertainment.5.1" url="#" />
                         <p:menuitem value="Entertainment.5.2" url="#" />
                         <p:menuitem value="Entertainment.5.3" url="#" />
-                    </p:submenu>
-                    <p:submenu label="Entertainment.6">
-                        <p:menuitem value="Entertainment.6.1" url="#" />
-                        <p:menuitem value="Entertainment.6.2" url="#" />
                     </p:submenu>
                 </p:column>
             </p:submenu>
@@ -140,10 +126,6 @@
                         <p:menuitem value="Tech.2.1" url="#" />
                         <p:menuitem value="Tech.2.2" url="#" />
                         <p:menuitem value="Tech.2.3" url="#" />
-                    </p:submenu>
-                    <p:submenu label="Tech.3">
-                        <p:menuitem value="Tech.3.1" url="#" />
-                        <p:menuitem value="Tech.3.2" url="#" />
                     </p:submenu>
                 </p:column>
 
@@ -164,7 +146,17 @@
         <p:tabView>
             <p:tab title="megaMenu.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;p:megaMenu&gt;
+&lt;h:form id="form"&gt;
+    &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+        &lt;p:outputLabel for="orientation" value="Orientation:" /&gt;
+        &lt;p:selectOneButton id="orientation" value="\#{megaMenuView.orientation}" onchange="$('#form').submit()"&gt;
+            &lt;f:selectItem itemLabel="Horizontal" itemValue="horizontal" /&gt;
+            &lt;f:selectItem itemLabel="Vertical" itemValue="vertical" /&gt;
+        &lt;/p:selectOneButton&gt;
+    &lt;/h:panelGrid&gt;
+&lt;/h:form&gt;
+
+&lt;p:megaMenu orientation="\#{megaMenuView.orientation}" style="margin-top:20px"&gt;
     &lt;p:submenu label="TV" icon="ui-icon-check"&gt;
         &lt;p:column&gt;
             &lt;p:submenu label="TV.1"&gt;
@@ -175,10 +167,6 @@
                 &lt;p:menuitem value="TV.2.1" url="#" /&gt;
                 &lt;p:menuitem value="TV.2.2" url="#" /&gt;
                 &lt;p:menuitem value="TV.2.3" url="#" /&gt;
-            &lt;/p:submenu&gt;
-            &lt;p:submenu label="TV.3"&gt;
-                &lt;p:menuitem value="TV.3.1" url="#" /&gt;
-                &lt;p:menuitem value="TV.3.2" url="#" /&gt;
             &lt;/p:submenu&gt;
         &lt;/p:column&gt;
 
@@ -212,10 +200,6 @@
                 &lt;p:menuitem value="Sports.2.2" url="#" /&gt;
                 &lt;p:menuitem value="Sports.2.3" url="#" /&gt;
             &lt;/p:submenu&gt;
-            &lt;p:submenu label="Sports.3"&gt;
-                &lt;p:menuitem value="Sports.3.1" url="#" /&gt;
-                &lt;p:menuitem value="Sports.3.2" url="#" /&gt;
-            &lt;/p:submenu&gt;
         &lt;/p:column&gt;
 
         &lt;p:column&gt;
@@ -234,14 +218,6 @@
                 &lt;p:menuitem value="Sports.7.1" url="#" /&gt;
                 &lt;p:menuitem value="Sports.7.2" url="#" /&gt;
             &lt;/p:submenu&gt;
-            &lt;p:submenu label="Sports.8"&gt;
-                &lt;p:menuitem value="Sports.8.1" url="#" /&gt;
-                &lt;p:menuitem value="Sports.8.2" url="#" /&gt;
-                &lt;p:menuitem value="Sports.8.3" url="#" /&gt;
-                &lt;p:menuitem value="Sports.8.4" url="#" /&gt;
-                &lt;p:menuitem value="Sports.8.5" url="#" /&gt;
-                &lt;p:menuitem value="Sports.8.6" url="#" /&gt;
-            &lt;/p:submenu&gt;
         &lt;/p:column&gt;
     &lt;/p:submenu&gt;
 
@@ -256,10 +232,6 @@
                 &lt;p:menuitem value="Entertainment.2.2" url="#" /&gt;
                 &lt;p:menuitem value="Entertainment.2.3" url="#" /&gt;
             &lt;/p:submenu&gt;
-            &lt;p:submenu label="Entertainment.3"&gt;
-                &lt;p:menuitem value="Entertainment.3.1" url="#" /&gt;
-                &lt;p:menuitem value="Entertainment.3.2" url="#" /&gt;
-            &lt;/p:submenu&gt;
         &lt;/p:column&gt;
 
         &lt;p:column&gt;
@@ -271,10 +243,6 @@
                 &lt;p:menuitem value="Entertainment.5.1" url="#" /&gt;
                 &lt;p:menuitem value="Entertainment.5.2" url="#" /&gt;
                 &lt;p:menuitem value="Entertainment.5.3" url="#" /&gt;
-            &lt;/p:submenu&gt;
-            &lt;p:submenu label="Entertainment.6"&gt;
-                &lt;p:menuitem value="Entertainment.6.1" url="#" /&gt;
-                &lt;p:menuitem value="Entertainment.6.2" url="#" /&gt;
             &lt;/p:submenu&gt;
         &lt;/p:column&gt;
     &lt;/p:submenu&gt;
@@ -290,10 +258,6 @@
                 &lt;p:menuitem value="Tech.2.2" url="#" /&gt;
                 &lt;p:menuitem value="Tech.2.3" url="#" /&gt;
             &lt;/p:submenu&gt;
-            &lt;p:submenu label="Tech.3"&gt;
-                &lt;p:menuitem value="Tech.3.1" url="#" /&gt;
-                &lt;p:menuitem value="Tech.3.2" url="#" /&gt;
-            &lt;/p:submenu&gt;
         &lt;/p:column&gt;
 
         &lt;p:column&gt;
@@ -306,6 +270,28 @@
 
     &lt;p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" /&gt;
 &lt;/p:megaMenu&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="MegaMenuView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.menu;
+
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class MegaMenuView {
+ 
+    private String orientation = "horizontal";
+
+    public String getOrientation() {
+        return orientation;
+    }
+
+    public void setOrientation(String orientation) {
+        this.orientation = orientation;
+    }
+}
                 </pre>
             </p:tab>
             
