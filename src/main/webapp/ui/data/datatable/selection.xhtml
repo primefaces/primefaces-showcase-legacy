@@ -60,7 +60,7 @@
                 <p:column headerText="Color">
                     <h:outputText value="#{car.color}" />
                 </p:column>
-                <p:column style="width:4%;text-align: center">
+                <p:column style="width:32px;text-align: center">
                      <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" icon="ui-icon-search" title="View">
                         <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" />
                     </p:commandButton>
@@ -133,7 +133,7 @@
                 <f:facet name="header">
                     RadioButton
                 </f:facet>
-                <p:column selectionMode="single" style="width:2%;text-align:center"/>
+                <p:column selectionMode="single" style="width:16px;text-align:center"/>
                 <p:column headerText="Id">
                     <h:outputText value="#{car.id}" />
                 </p:column>
@@ -155,7 +155,7 @@
                 <f:facet name="header">
                     Checkbox
                 </f:facet>
-                <p:column selectionMode="multiple" style="width:2%;text-align:center"/>
+                <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
                 <p:column headerText="Id">
                     <h:outputText value="#{car.id}" />
                 </p:column>
@@ -229,7 +229,7 @@
         &lt;p:column headerText="Color"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
-        &lt;p:column style="width:4%;text-align: center"&gt;
+        &lt;p:column style="width:32px;text-align: center"&gt;
              &lt;p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" icon="ui-icon-search" title="View"&gt;
                 &lt;f:setPropertyActionListener value="\#{car}" target="\#{dtSelectionView.selectedCar}" /&gt;
             &lt;/p:commandButton&gt;
@@ -302,7 +302,7 @@
         &lt;f:facet name="header"&gt;
             RadioButton
         &lt;/f:facet&gt;
-        &lt;p:column selectionMode="single" style="width:2%;text-align:center"/&gt;
+        &lt;p:column selectionMode="single" style="width:16px;text-align:center"/&gt;
         &lt;p:column headerText="Id"&gt;
             &lt;h:outputText value="\#{car.id}" /&gt;
         &lt;/p:column&gt;
@@ -324,7 +324,7 @@
         &lt;f:facet name="header"&gt;
             Checkbox
         &lt;/f:facet&gt;
-        &lt;p:column selectionMode="multiple" style="width:2%;text-align:center"/&gt;
+        &lt;p:column selectionMode="multiple" style="width:16px;text-align:center"/&gt;
         &lt;p:column headerText="Id"&gt;
             &lt;h:outputText value="\#{car.id}" /&gt;
         &lt;/p:column&gt;
