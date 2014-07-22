@@ -30,7 +30,7 @@
                 <p:dataTable id="availableCars" var="car" value="#{dndCarsView.cars}">
                     <p:column style="width:20px">
                         <h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4" />
-                        <p:draggable for="dragIcon" revert="true"/>
+                        <p:draggable for="dragIcon" revert="true" helper="clone"/>
                     </p:column>
 
                     <p:column headerText="Id">
@@ -126,7 +126,7 @@
         &lt;p:dataTable id="availableCars" var="car" value="\#{dndCarsView.cars}"&gt;
             &lt;p:column style="width:20px"&gt;
                 &lt;h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4" /&gt;
-                &lt;p:draggable for="dragIcon" revert="true" /&gt;
+                &lt;p:draggable for="dragIcon" revert="true" helper="clone"/&gt;
             &lt;/p:column&gt;
 
             &lt;p:column headerText="Id"&gt;
