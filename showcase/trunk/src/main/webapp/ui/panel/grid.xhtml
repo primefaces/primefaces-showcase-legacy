@@ -7,89 +7,6 @@
     
     <ui:define name="head">
 		<style type="text/css">            
-
-            
-            .ui-grid {
-                clear: both;
-                padding: 0px;
-                margin: 0px;
-            }
-                     
-            .ui-grid:before,
-            .ui-grid:after {
-                content:"";
-                display:table;
-            }
-            
-            .ui-grid:after {
-                clear:both;
-            }
-            
-            .ui-grid-col-1,
-            .ui-grid-col-2,
-            .ui-grid-col-3,
-            .ui-grid-col-4,
-            .ui-grid-col-5,
-            .ui-grid-col-6,
-            .ui-grid-col-7,
-            .ui-grid-col-8,
-            .ui-grid-col-9,
-            .ui-grid-col-10,
-            .ui-grid-col-11,
-            .ui-grid-col-12 {
-                float: left;
-                box-sizing: border-box;
-            }
-            
-            .ui-grid-col-1 {
-                width: 8.33333%;
-            }
-            
-            .ui-grid-col-2 {
-                width: 16.66666%;
-            }
-            
-            .ui-grid-col-3 {
-                width: 25%;
-            }
-            
-            .ui-grid-col-4 {
-                width: 33.33333%;
-            }
-            
-            .ui-grid-col-5 {
-                width: 41.66666%;
-            }
-            
-            .ui-grid-col-6 {
-                width: 50%;
-            }
-            
-            .ui-grid-col-7 {
-                width: 58.33333%;
-            }
-            
-            .ui-grid-col-8 {
-                width: 66.66666%;
-            }
-            
-            .ui-grid-col-9 {
-                width: 75%;
-            }
-            
-            .ui-grid-col-10 {
-                width: 83.33333%;
-            }
-            
-            .ui-grid-col-11 {
-                width: 91.66666%;
-            }
-            
-            .ui-grid-col-12 {
-                width: 100%;
-            }
-            
-            /* Demo */
             .ui-grid {
                 margin-bottom: 10px;
             }
@@ -109,12 +26,13 @@
     </ui:define>
 
     <ui:define name="description">
-        Grid CSS is a responsive layout utility optimized for mobile devices, tablets and desktops.
+        Grid CSS is a lightweight (1.4KB) responsive layout utility optimized for mobile devices, tablets and desktops.
     </ui:define>
 
     <ui:define name="implementation">
 
-        <div class="ui-grid">
+        <h3 style="margin-top: 0">Responsive and Fluid</h3>
+        <div class="ui-grid ui-grid-responsive">
             <div class="ui-grid-col-1">1</div>
             <div class="ui-grid-col-1">1</div>
             <div class="ui-grid-col-1">1</div>
@@ -129,7 +47,7 @@
             <div class="ui-grid-col-1">1</div>
         </div>
         
-        <div class="ui-grid">
+        <div class="ui-grid ui-grid-responsive">
             <div class="ui-grid-col-2">2</div>
             <div class="ui-grid-col-2">2</div>
             <div class="ui-grid-col-2">2</div>
@@ -138,59 +56,202 @@
             <div class="ui-grid-col-2">2</div>
         </div>
         
-        <div class="ui-grid">
+        <div class="ui-grid ui-grid-responsive">
             <div class="ui-grid-col-3">3</div>
             <div class="ui-grid-col-3">3</div>
             <div class="ui-grid-col-3">3</div>
             <div class="ui-grid-col-3">3</div>
         </div>
         
-        <div class="ui-grid">
+        <div class="ui-grid ui-grid-responsive">
             <div class="ui-grid-col-4">4</div>
             <div class="ui-grid-col-4">4</div>
             <div class="ui-grid-col-4">4</div>
         </div>
         
-        <div class="ui-grid">
+        <div class="ui-grid ui-grid-responsive">
             <div class="ui-grid-col-6">6</div>
             <div class="ui-grid-col-6">6</div>
         </div>
         
-        <div class="ui-grid">
+        <div class="ui-grid ui-grid-responsive">
             <div class="ui-grid-col-12">12</div>
         </div>
         
-        <div class="ui-grid">
+        <div class="ui-grid ui-grid-responsive">
             <div class="ui-grid-col-4">4</div>
             <div class="ui-grid-col-8">8</div>
         </div>
         
-        <div class="ui-grid">
+        <div class="ui-grid ui-grid-responsive">
             <div class="ui-grid-col-3">3</div>
             <div class="ui-grid-col-9">9</div>
         </div>
         
-        <div class="ui-grid">
-            <div class="ui-grid-col-3">2</div>
+        <div class="ui-grid ui-grid-responsive">
+            <div class="ui-grid-col-3">3</div>
             <div class="ui-grid-col-5">5</div>
-            <div class="ui-grid-col-4">5</div>
+            <div class="ui-grid-col-4">4</div>
         </div>
         
-        <div class="ui-grid">
+        <div class="ui-grid ui-grid-responsive">
             <div class="ui-grid-col-4">4</div>
             <div class="ui-grid-col-2">2</div>
             <div class="ui-grid-col-2">2</div>
             <div class="ui-grid-col-3">3</div>
             <div class="ui-grid-col-1">1</div>
         </div>
+        
+        <h3>Multiline</h3>
+        <div class="ui-grid ui-grid-responsive">
+            <div class="ui-grid-col-4">4</div>
+            <div class="ui-grid-col-4">4</div>
+            <div class="ui-grid-col-4">4</div>
 
+            <div class="ui-grid-col-4">4</div>
+            <div class="ui-grid-col-4">4</div>
+            <div class="ui-grid-col-4">4</div>
+            
+            <div class="ui-grid-col-4">4</div>
+            <div class="ui-grid-col-4">4</div>
+            <div class="ui-grid-col-4">4</div>
+        </div>
+        
+        <h3>Fixed</h3>
+        <div class="ui-grid ui-grid-fixed">
+            <div class="ui-grid-col-1">1</div>
+            <div class="ui-grid-col-1">1</div>
+            <div class="ui-grid-col-1">1</div>
+            <div class="ui-grid-col-1">1</div>
+            <div class="ui-grid-col-1">1</div>
+            <div class="ui-grid-col-1">1</div>
+            <div class="ui-grid-col-1">1</div>
+            <div class="ui-grid-col-1">1</div>
+            <div class="ui-grid-col-1">1</div>
+            <div class="ui-grid-col-1">1</div>
+            <div class="ui-grid-col-1">1</div>
+            <div class="ui-grid-col-1">1</div>
+        </div>
+        
+        <h3>Not Responsive</h3>
+        <div class="ui-grid">
+            <div class="ui-grid-col-6">6</div>
+            <div class="ui-grid-col-6">6</div>
+        </div>
+        
     </ui:define>
 
     <ui:define name="source">
         <p:tabView>
             <p:tab title="grid.xhtml">
                 <pre name="code" class="brush:xml">
+&lt;h3 style="margin-top: 0"&gt;Responsive and Fluid&lt;/h3&gt;
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+&lt;/div&gt;
 
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
+    &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
+    &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
+    &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
+    &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
+    &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-col-3"&gt;3&lt;/div&gt;
+    &lt;div class="ui-grid-col-3"&gt;3&lt;/div&gt;
+    &lt;div class="ui-grid-col-3"&gt;3&lt;/div&gt;
+    &lt;div class="ui-grid-col-3"&gt;3&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
+    &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
+    &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-col-6"&gt;6&lt;/div&gt;
+    &lt;div class="ui-grid-col-6"&gt;6&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-col-12"&gt;12&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
+    &lt;div class="ui-grid-col-8"&gt;8&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-col-3"&gt;3&lt;/div&gt;
+    &lt;div class="ui-grid-col-9"&gt;9&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-col-3"&gt;3&lt;/div&gt;
+    &lt;div class="ui-grid-col-5"&gt;5&lt;/div&gt;
+    &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
+    &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
+    &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
+    &lt;div class="ui-grid-col-3"&gt;3&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Multiline&lt;/h3&gt;
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
+    &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
+    &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
+
+    &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
+    &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
+    &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
+
+    &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
+    &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
+    &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Fixed&lt;/h3&gt;
+&lt;div class="ui-grid ui-grid-fixed"&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Not Responsive&lt;/h3&gt;
+&lt;div class="ui-grid"&gt;
+    &lt;div class="ui-grid-col-6"&gt;6&lt;/div&gt;
+    &lt;div class="ui-grid-col-6"&gt;6&lt;/div&gt;
+&lt;/div&gt;      
                 </pre>
             </p:tab>
         </p:tabView>
