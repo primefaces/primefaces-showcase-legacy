@@ -40,6 +40,7 @@ public class AutoCompleteView {
     private Theme theme1;
     private Theme theme2;
     private Theme theme3;
+    private Theme theme4;
     private List<Theme> selectedThemes;
     
     @ManagedProperty("#{themeService}")
@@ -60,7 +61,7 @@ public class AutoCompleteView {
         
         for (int i = 0; i < allThemes.size(); i++) {
             Theme skin = allThemes.get(i);
-            if(skin.getName().toLowerCase().startsWith(query)) {
+            if(skin.getName().toLowerCase().contains(query)) {
                 filteredThemes.add(skin);
             }
         }
@@ -68,6 +69,20 @@ public class AutoCompleteView {
         return filteredThemes;
 	}
     
+    public List<Theme> completeThemeContains(String query) {
+        List<Theme> allThemes = service.getThemes();
+		List<Theme> filteredThemes = new ArrayList<Theme>();
+        
+        for (int i = 0; i < allThemes.size(); i++) {
+            Theme skin = allThemes.get(i);
+            if(skin.getName().toLowerCase().contains(query)) {
+                filteredThemes.add(skin);
+            }
+        }
+        
+        return filteredThemes;
+	}
+        
     public void onItemSelect(SelectEvent event) {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item Selected", event.getObject().toString()));
     }
@@ -160,6 +175,14 @@ public class AutoCompleteView {
         this.theme3 = theme3;
     }
 
+    public Theme getTheme4() {
+        return theme4;
+    }
+
+    public void setTheme4(Theme theme4) {
+        this.theme4 = theme4;
+    }
+
     public List<Theme> getSelectedThemes() {
         return selectedThemes;
     }
@@ -170,5 +193,9 @@ public class AutoCompleteView {
     
     public void setService(ThemeService service) {
         this.service = service;
+    }
+    
+    public char getThemeGroup(Theme theme) {
+        return theme.getDisplayName().charAt(0);
     }
 }

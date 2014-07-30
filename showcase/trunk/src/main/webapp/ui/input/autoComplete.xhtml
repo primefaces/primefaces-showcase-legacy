@@ -108,6 +108,11 @@
                         </h:panelGrid>
                     </f:facet>
                 </p:autoComplete>
+                
+                <p:outputLabel value="Group: (v5.0.5+)" for="group" />
+                <p:autoComplete id="group" value="#{autoCompleteView.theme4}" completeMethod="#{autoCompleteView.completeThemeContains}" 
+                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter" forceSelection="true" 
+                                groupBy="#{autoCompleteView.getThemeGroup(theme)}" scrollHeight="250"/>
             </h:panelGrid>
             
             <p:commandButton value="Submit" icon="ui-icon-check" update="output" oncomplete="PF('dlg').show()" />
@@ -236,6 +241,11 @@
                 &lt;/h:panelGrid&gt;
             &lt;/f:facet&gt;
         &lt;/p:autoComplete&gt;
+
+        &lt;p:outputLabel value="Group: (v5.0.5+)" for="group" /&gt;
+        &lt;p:autoComplete id="group" value="\#{autoCompleteView.theme4}" completeMethod="\#{autoCompleteView.completeThemeContains}" 
+                var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" converter="themeConverter" forceSelection="true" 
+                groupBy="\#{autoCompleteView.getThemeGroup(theme)}" scrollHeight="250"/&gt;
     &lt;/h:panelGrid&gt;
 
     &lt;p:commandButton value="Submit" icon="ui-icon-check" update="output" oncomplete="PF('dlg').show()" /&gt;
@@ -314,6 +324,7 @@ public class AutoCompleteView {
     private Theme theme1;
     private Theme theme2;
     private Theme theme3;
+    private Theme theme4;
     private List&lt;Theme&gt; selectedThemes;
     
     @ManagedProperty("\#{themeService}")
@@ -335,6 +346,20 @@ public class AutoCompleteView {
         for (int i = 0; i &lt; allThemes.size(); i++) {
             Theme skin = allThemes.get(i);
             if(skin.getName().toLowerCase().startsWith(query)) {
+                filteredThemes.add(skin);
+            }
+        }
+        
+        return filteredThemes;
+	}
+
+    public List&lt;Theme&gt; completeTheme(String query) {
+        List&lt;Theme&gt; allThemes = service.getThemes();
+		List&lt;Theme&gt; filteredThemes = new ArrayList&lt;Theme&gt;();
+        
+        for (int i = 0; i &lt; allThemes.size(); i++) {
+            Theme skin = allThemes.get(i);
+            if(skin.getName().toLowerCase().contains(query)) {
                 filteredThemes.add(skin);
             }
         }
@@ -432,6 +457,14 @@ public class AutoCompleteView {
 
     public void setTheme3(Theme theme3) {
         this.theme3 = theme3;
+    }
+
+    public Theme getTheme4() {
+        return theme3;
+    }
+
+    public void setTheme4(Theme theme4) {
+        this.theme4 = theme4;
     }
 
     public List&lt;Theme&gt; getSelectedThemes() {
