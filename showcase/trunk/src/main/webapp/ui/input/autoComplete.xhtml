@@ -93,7 +93,7 @@
                 
                 <p:outputLabel value="Itemtip:" for="itemTip" />
                 <p:autoComplete id="itemTip" value="#{autoCompleteView.theme3}" completeMethod="#{autoCompleteView.completeTheme}"
-                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter" forceSelection="true">
+                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter">
                     <f:facet name="itemtip">
                         <h:panelGrid columns="2" cellpadding="5">
                             <f:facet name="header">
@@ -244,7 +244,7 @@
 
         &lt;p:outputLabel value="Group: (v5.0.5+)" for="group" /&gt;
         &lt;p:autoComplete id="group" value="\#{autoCompleteView.theme4}" completeMethod="\#{autoCompleteView.completeThemeContains}" 
-                var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" converter="themeConverter" forceSelection="true" 
+                var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" converter="themeConverter"
                 groupBy="\#{autoCompleteView.getThemeGroup(theme)}" scrollHeight="250"/&gt;
     &lt;/h:panelGrid&gt;
 
