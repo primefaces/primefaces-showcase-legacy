@@ -189,14 +189,14 @@ $(document).ready(function() {
         matchSub = false;
 
         $('.SubMenuLinkContainer').each(function() {
-            var MenuSideValue = $(this).prev().children('span').text().trim().toLowerCase(),
+            var MenuSideValue = $.trim($(this).prev().children('span').text()).toLowerCase(),
             itemValue;
             
             if(MenuSideValue.search(searchValue) < 0 || searchValue.length === 0) {  
                 var Sub = $(this).children('a');
 
                 for(var i = 0; i < Sub.length; i++) {     //for SubMenu
-                    itemValue = Sub.eq(i).text().trim().toLowerCase();
+                    itemValue = $.trim(Sub.eq(i).text()).toLowerCase();
                     if(itemValue.search(searchValue) >= 0) {
                         Sub.eq(i).show();
                         matchSub = true;
