@@ -20,11 +20,13 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.model.TreeNode;
 import org.primefaces.showcase.service.DocumentService;
 
 @ManagedBean(name="treeContextMenuView")
+@ViewScoped
 public class ContextMenuView implements Serializable {
     
      private TreeNode root;
@@ -63,7 +65,10 @@ public class ContextMenuView implements Serializable {
 	}
      
     public void deleteNode() { 
-        selectedNode.getParent().getChildren().remove(selectedNode);            
-        selectedNode = null;  
+        selectedNode.getChildren().clear();
+        selectedNode.getParent().getChildren().remove(selectedNode);
+        selectedNode.setParent(null);
+        
+        selectedNode = null; 
     }  
 }
