@@ -40,9 +40,7 @@
                 </p:columnGroup>
 
                 <p:column>
-                    <h:outputText value="#{sale.manufacturer}">
-
-                    </h:outputText>
+                    <h:outputText value="#{sale.manufacturer}" />
                 </p:column>
                 <p:column>
                     <h:outputText value="#{sale.lastYearProfit}%" />
@@ -77,7 +75,7 @@
             
             <p:dataTable var="player" value="#{dtGroupView.players}" style="margin-top:40px">
                 <f:facet name="header">
-                    Dynamic Columns
+                    Dynamic Columns (v5.0.5+)
                 </f:facet>
 
                 <p:columnGroup type="header">
@@ -136,9 +134,7 @@
         &lt;/p:columnGroup&gt;
 
         &lt;p:column&gt;
-            &lt;h:outputText value="\#{sale.manufacturer}"&gt;
-
-            &lt;/h:outputText&gt;
+            &lt;h:outputText value="\#{sale.manufacturer}" /&gt;
         &lt;/p:column&gt;
         &lt;p:column&gt;
             &lt;h:outputText value="\#{sale.lastYearProfit}%" /&gt;
@@ -173,7 +169,7 @@
 
     &lt;p:dataTable var="player" value="\#{dtGroupView.players}" style="margin-top:40px"&gt;
         &lt;f:facet name="header"&gt;
-            Dynamic Columns
+            Dynamic Columns (v5.0.5+)
         &lt;/f:facet&gt;
 
         &lt;p:columnGroup type="header"&gt;
