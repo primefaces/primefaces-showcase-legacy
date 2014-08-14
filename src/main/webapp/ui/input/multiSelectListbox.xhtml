@@ -16,7 +16,7 @@
     <ui:define name="implementation">
 
         <h:form>
-            <p:multiSelectListbox value="#{multiSelectView.selection}" effect="slide">
+            <p:multiSelectListbox value="#{multiSelectView.selection}" effect="slide" header="Categories" showHeaders="true">
                 <f:selectItems value="#{multiSelectView.categories}" />
             </p:multiSelectListbox>
 
@@ -32,7 +32,7 @@
             <p:tab title="multiSelectListbox.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;p:multiSelectListbox value="\#{multiSelectView.selection}" effect="slide"&gt;
+    &lt;p:multiSelectListbox value="\#{multiSelectView.selection}" effect="slide" header="Categories" showHeaders="true"&gt;
         &lt;f:selectItems value="\#{multiSelectView.categories}" /&gt;
     &lt;/p:multiSelectListbox&gt;
 
