@@ -554,9 +554,12 @@ public class ChartView implements Serializable {
         pieModel1.set("Brand 2", 325);
         pieModel1.set("Brand 3", 702);
         pieModel1.set("Brand 4", 421);
+        pieModel1.set("Brand 5", 250);
         
         pieModel1.setTitle("Simple Pie");
         pieModel1.setLegendPosition("w");
+        pieModel1.setLegendCols(3);
+        pieModel1.setLegendRows(2);
     }
     
     private void createPieModel2() {
@@ -571,7 +574,7 @@ public class ChartView implements Serializable {
         pieModel2.setLegendPosition("e");
         pieModel2.setFill(false);
         pieModel2.setShowDataLabels(true);
-        pieModel2.setDiameter(150);
+        pieModel2.setDiameter(250);
     }
     
     private void createDonutModels() {
@@ -648,6 +651,7 @@ public class ChartView implements Serializable {
         meterGaugeModel1 = initMeterGaugeModel();
         meterGaugeModel1.setTitle("MeterGauge Chart");
         meterGaugeModel1.setGaugeLabel("km/h");
+        meterGaugeModel1.setGaugeLabelPosition("bottom");
         
         meterGaugeModel2 = initMeterGaugeModel();
         meterGaugeModel2.setTitle("Custom Options");
@@ -656,7 +660,7 @@ public class ChartView implements Serializable {
         meterGaugeModel2.setGaugeLabelPosition("bottom");
         meterGaugeModel2.setShowTickLabels(false);
         meterGaugeModel2.setLabelHeightAdjust(110);
-        meterGaugeModel2.setIntervalOuterRadius(130);
+        meterGaugeModel2.setIntervalOuterRadius(100);
     }
 
     private void createAnimatedModels() {
