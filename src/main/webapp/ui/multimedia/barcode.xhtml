@@ -15,11 +15,13 @@
 
     <ui:define name="implementation">
         
-        <h:form>
-            <p:barcode value="PrimeFaces" cache="false" type="barcode"/>
+        <p:panelGrid columns="2">
+            <h:outputText value="Interleaved 2 of 5" />
+            <p:barcode value="0123456789" type="int2of5"/>
             
-            <p:barcode value="PrimeFaces" cache="false" type="qr"/>
-        </h:form>
+            <h:outputText value="Code39" />
+            <p:barcode value="0123456789" type="code39"/>
+        </p:panelGrid>
             
     </ui:define>
 
