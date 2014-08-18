@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Barcode
+    </ui:define>
+
+    <ui:define name="description">
+        Barcode generates barcodes in various formats.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <p:barcode value="PrimeFaces" cache="false"/>
+        </h:form>
+            
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="barcode.xhtml">
+                <pre name="code" class="brush:xml">
+
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
