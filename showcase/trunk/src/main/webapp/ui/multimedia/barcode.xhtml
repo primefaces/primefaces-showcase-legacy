@@ -19,8 +19,17 @@
             <h:outputText value="Interleaved 2 of 5" />
             <p:barcode value="0123456789" type="int2of5"/>
             
+            <h:outputText value="Codabar" />
+            <p:barcode value="0123456789" type="codabar"/>
+            
             <h:outputText value="Code39" />
             <p:barcode value="0123456789" type="code39"/>
+            
+            <h:outputText value="Code128" />
+            <p:barcode value="0123456789" type="code128"/>
+            
+            <h:outputText value="QR" />
+            <p:barcode value="0123456789" type="qr"/>
         </p:panelGrid>
             
     </ui:define>
