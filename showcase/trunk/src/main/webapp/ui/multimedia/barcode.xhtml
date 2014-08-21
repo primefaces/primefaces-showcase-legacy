@@ -10,20 +10,20 @@
     </ui:define>
 
     <ui:define name="description">
-        Barcode generates barcodes in various formats.
+        Barcode component generates various types of barcodes in PNG or SVG formats.
     </ui:define>
 
     <ui:define name="implementation">
         
         <p:panelGrid columns="2">
             <h:outputText value="Interleaved 2 of 5" />
-            <p:barcode value="0123456789" type="int2of5"/>
+            <p:barcode value="0123456789" type="int2of5" />
             
             <h:outputText value="Codabar" />
             <p:barcode value="0123456789" type="codabar"/>
             
-            <h:outputText value="Code39" />
-            <p:barcode value="0123456789" type="code39"/>
+            <h:outputText value="Code39 (SVG)" />
+            <p:barcode value="0123456789" type="code39" format="svg"/>
             
             <h:outputText value="Code128" />
             <p:barcode value="0123456789" type="code128"/>
@@ -34,8 +34,8 @@
             <h:outputText value="EAN-13" />
             <p:barcode value="0123456789012" type="ean13"/>
             
-            <h:outputText value="UPC-A" />
-            <p:barcode value="01234567895" type="upca"/>
+            <h:outputText value="UPC-A (SVG)" />
+            <p:barcode value="01234567895" type="upca" format="svg"/>
             
             <h:outputText value="UPC-E" />
             <p:barcode value="01234133" type="upce"/>
@@ -59,7 +59,43 @@
         <p:tabView>
             <p:tab title="barcode.xhtml">
                 <pre name="code" class="brush:xml">
+&lt;p:panelGrid columns="2"&gt;
+    &lt;h:outputText value="Interleaved 2 of 5" /&gt;
+    &lt;p:barcode value="0123456789" type="int2of5" /&gt;
 
+    &lt;h:outputText value="Codabar" /&gt;
+    &lt;p:barcode value="0123456789" type="codabar"/&gt;
+
+    &lt;h:outputText value="Code39 (SVG)" /&gt;
+    &lt;p:barcode value="0123456789" type="code39" format="svg"/&gt;
+
+    &lt;h:outputText value="Code128" /&gt;
+    &lt;p:barcode value="0123456789" type="code128"/&gt;
+
+    &lt;h:outputText value="EAN-8" /&gt;
+    &lt;p:barcode value="20123451" type="ean8"/&gt;
+
+    &lt;h:outputText value="EAN-13" /&gt;
+    &lt;p:barcode value="0123456789012" type="ean13"/&gt;
+
+    &lt;h:outputText value="UPC-A (SVG)" /&gt;
+    &lt;p:barcode value="01234567895" type="upca" format="svg"/&gt;
+
+    &lt;h:outputText value="UPC-E" /&gt;
+    &lt;p:barcode value="01234133" type="upce"/&gt;
+
+    &lt;h:outputText value="PDF417" /&gt;
+    &lt;p:barcode value="0123456789" type="pdf417"/&gt;
+
+    &lt;h:outputText value="DataMatrix" /&gt;
+    &lt;p:barcode value="0123456789" type="datamatrix"/&gt;
+
+    &lt;h:outputText value="Postnet" /&gt;
+    &lt;p:barcode value="0123456789" type="postnet"/&gt;
+
+    &lt;h:outputText value="QR" /&gt;
+    &lt;p:barcode value="0123456789" type="qr"/&gt;
+&lt;/p:panelGrid&gt;
                 </pre>
             </p:tab>
         </p:tabView>
