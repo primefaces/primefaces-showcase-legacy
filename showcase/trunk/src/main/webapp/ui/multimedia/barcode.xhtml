@@ -10,7 +10,7 @@
     </ui:define>
 
     <ui:define name="description">
-        Barcode component generates various types of barcodes in PNG or SVG formats.
+        Barcode component generates various types of barcodes in PNG or SVG formats. Browsers with no SVG support fallsback to PNG automatically.
     </ui:define>
 
     <ui:define name="implementation">
@@ -22,8 +22,8 @@
             <h:outputText value="Codabar" />
             <p:barcode value="0123456789" type="codabar"/>
             
-            <h:outputText value="Code39 (SVG)" />
-            <p:barcode value="0123456789" type="code39" format="svg"/>
+            <h:outputText value="Code39" />
+            <p:barcode value="0123456789" type="code39" />
             
             <h:outputText value="Code128" />
             <p:barcode value="0123456789" type="code128"/>
@@ -34,8 +34,8 @@
             <h:outputText value="EAN-13" />
             <p:barcode value="0123456789012" type="ean13"/>
             
-            <h:outputText value="UPC-A (SVG)" />
-            <p:barcode value="01234567895" type="upca" format="svg"/>
+            <h:outputText value="UPC-A (PNG)" />
+            <p:barcode value="01234567895" type="upca" format="png"/>
             
             <h:outputText value="UPC-E" />
             <p:barcode value="01234133" type="upce"/>
@@ -66,8 +66,8 @@
     &lt;h:outputText value="Codabar" /&gt;
     &lt;p:barcode value="0123456789" type="codabar"/&gt;
 
-    &lt;h:outputText value="Code39 (SVG)" /&gt;
-    &lt;p:barcode value="0123456789" type="code39" format="svg"/&gt;
+    &lt;h:outputText value="Code39" /&gt;
+    &lt;p:barcode value="0123456789" type="code39" /&gt;
 
     &lt;h:outputText value="Code128" /&gt;
     &lt;p:barcode value="0123456789" type="code128"/&gt;
@@ -78,8 +78,8 @@
     &lt;h:outputText value="EAN-13" /&gt;
     &lt;p:barcode value="0123456789012" type="ean13"/&gt;
 
-    &lt;h:outputText value="UPC-A (SVG)" /&gt;
-    &lt;p:barcode value="01234567895" type="upca" format="svg"/&gt;
+    &lt;h:outputText value="UPC-A (PNG)" /&gt;
+    &lt;p:barcode value="01234567895" type="upca" format="png"/&gt;
 
     &lt;h:outputText value="UPC-E" /&gt;
     &lt;p:barcode value="01234133" type="upce"/&gt;
