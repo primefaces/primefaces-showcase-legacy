@@ -28,15 +28,13 @@
         <h:form id="carForm">
             <p:fieldset id="availableCarsField" legend="AvailableCars">
                 <p:dataGrid id="availableCars" var="car" value="#{dndCarsView.cars}" columns="3">
-                    <p:column>
-                        <p:panel id="pnl" header="#{car.id}" style="text-align:center">
-                            <h:panelGrid columns="1" style="width:100%">
-                                <p:graphicImage name="/demo/images/car/#{car.brand}.gif" />
-                            </h:panelGrid>
-                        </p:panel>
+                    <p:panel id="pnl" header="#{car.id}" style="text-align:center">
+                        <h:panelGrid columns="1" style="width:100%">
+                            <p:graphicImage name="/demo/images/car/#{car.brand}.gif" />
+                        </h:panelGrid>
+                    </p:panel>
 
-                        <p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar" stack=".ui-panel"/>
-                    </p:column>
+                    <p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar" stack=".ui-panel"/>
                 </p:dataGrid>
             </p:fieldset>
 
@@ -113,15 +111,13 @@
 &lt;h:form id="carForm"&gt;
     &lt;p:fieldset id="availableCarsField" legend="AvailableCars"&gt;
         &lt;p:dataGrid id="availableCars" var="car" value="\#{dndCarsView.cars}" columns="3"&gt;
-            &lt;p:column&gt;
-                &lt;p:panel id="pnl" header="\#{car.id}" style="text-align:center"&gt;
-                    &lt;h:panelGrid columns="1" style="width:100%"&gt;
-                        &lt;p:graphicImage name="/demo/images/car/\#{car.brand}.gif" /&gt;
-                    &lt;/h:panelGrid&gt;
-                &lt;/p:panel&gt;
+            &lt;p:panel id="pnl" header="\#{car.id}" style="text-align:center"&gt;
+                &lt;h:panelGrid columns="1" style="width:100%"&gt;
+                    &lt;p:graphicImage name="/demo/images/car/\#{car.brand}.gif" /&gt;
+                &lt;/h:panelGrid&gt;
+            &lt;/p:panel&gt;
 
-                &lt;p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar" stack=".ui-panel"/&gt;
-            &lt;/p:column&gt;
+            &lt;p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar" stack=".ui-panel"/&gt;
         &lt;/p:dataGrid&gt;
     &lt;/p:fieldset&gt;
 
