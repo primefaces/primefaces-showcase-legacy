@@ -10,11 +10,21 @@
     </ui:define>
 
     <ui:define name="description">
-        PanelGrid is an extension to the standard panelGrid with theme integration and colspan-rowspan support
+        PanelGrid is an extension to the standard panelGrid with theme integration, grouping and responsive features.
     </ui:define>
+    
+      <ui:define name="head">
+        <style type="text/css">
+            .ui-panelgrid .ui-grid-responsive .ui-panelgrid-cell {
+                text-align: center;
+            }
+        </style>
+	</ui:define>
 
+    
     <ui:define name="implementation">
         
+        <h3 style="margin-top:0">Basic</h3>
         <p:panelGrid columns="2">
             <f:facet name="header">
                 <p:graphicImage name="demo/images/misc/kobe.png" />
@@ -32,7 +42,23 @@
             <h:outputText value="Number:" />
             <h:outputText value="24" />
         </p:panelGrid>
+        
+        <h3>Responsive</h3>
+        <p:panelGrid columns="3" layout="grid">            
+            <h:outputText value="Content" /> 
+            <h:outputText value="Content" /> 
+            <h:outputText value="Content" /> 
+            
+            <h:outputText value="Content" /> 
+            <h:outputText value="Content" /> 
+            <h:outputText value="Content" /> 
+            
+            <h:outputText value="Content" /> 
+            <h:outputText value="Content" /> 
+            <h:outputText value="Content" /> 
+        </p:panelGrid>
 
+        <h3>Grouping</h3>
         <p:panelGrid style="margin-top:20px">
             <f:facet name="header">
                 <p:row>
@@ -155,6 +181,7 @@
         <p:tabView>
             <p:tab title="panelGrid.xhtml">
                 <pre name="code" class="brush:xml">
+&lt;h3&gt;Basic&lt;/h3&gt;
 &lt;p:panelGrid columns="2"&gt;
     &lt;f:facet name="header"&gt;
         &lt;p:graphicImage name="demo/images/misc/kobe.png" /&gt;
@@ -173,6 +200,22 @@
     &lt;h:outputText value="24" /&gt;
 &lt;/p:panelGrid&gt;
 
+&lt;h3&gt;Responsive&lt;/h3&gt;
+&lt;p:panelGrid columns="3" layout="grid"&gt;            
+    &lt;h:outputText value="Content" /&gt; 
+    &lt;h:outputText value="Content" /&gt; 
+    &lt;h:outputText value="Content" /&gt; 
+
+    &lt;h:outputText value="Content" /&gt; 
+    &lt;h:outputText value="Content" /&gt; 
+    &lt;h:outputText value="Content" /&gt; 
+
+    &lt;h:outputText value="Content" /&gt; 
+    &lt;h:outputText value="Content" /&gt; 
+    &lt;h:outputText value="Content" /&gt; 
+&lt;/p:panelGrid&gt;
+
+&lt;h3&gt;Grouping&lt;/h3&gt;
 &lt;p:panelGrid style="margin-top:20px"&gt;
     &lt;f:facet name="header"&gt;
         &lt;p:row&gt;
