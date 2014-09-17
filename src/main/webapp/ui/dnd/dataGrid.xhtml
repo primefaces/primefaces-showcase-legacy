@@ -74,23 +74,25 @@
             <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false" draggable="false"
                       showEffect="fade" hideEffect="fade" modal="true">
 
-                <h:panelGrid id="display" columns="2" cellpadding="5">
-                    <f:facet name="header">
-                        <p:graphicImage name="/demo/images/car/#{dndCarsView.selectedCar.brand}.gif"/>
-                    </f:facet>
+                <p:outputPanel id="display">
+                    <h:panelGrid columns="2" cellpadding="5" rendered="#{not empty dndCarsView.selectedCar}">
+                        <f:facet name="header">
+                            <p:graphicImage name="/demo/images/car/#{dndCarsView.selectedCar.brand}.gif"/>
+                        </f:facet>
 
-                    <h:outputText value="Id" />
-                    <h:outputText value="#{dndCarsView.selectedCar.id}" style="font-weight:bold"/>
+                        <h:outputText value="Id" />
+                        <h:outputText value="#{dndCarsView.selectedCar.id}" style="font-weight:bold"/>
 
-                    <h:outputText value="Year:" />
-                    <h:outputText value="#{dndCarsView.selectedCar.year}" style="font-weight:bold"/>
+                        <h:outputText value="Year:" />
+                        <h:outputText value="#{dndCarsView.selectedCar.year}" style="font-weight:bold"/>
 
-                    <h:outputText value="Brand" />
-                    <h:outputText value="#{dndCarsView.selectedCar.brand}" style="font-weight:bold"/>
+                        <h:outputText value="Brand" />
+                        <h:outputText value="#{dndCarsView.selectedCar.brand}" style="font-weight:bold"/>
 
-                    <h:outputText value="Color:" />
-                    <h:outputText value="#{dndCarsView.selectedCar.color}" style="font-weight:bold"/>
-                </h:panelGrid>
+                        <h:outputText value="Color:" />
+                        <h:outputText value="#{dndCarsView.selectedCar.color}" style="font-weight:bold"/>
+                    </h:panelGrid>
+                </p:outputPanel>
             </p:dialog>
         </h:form>
         
@@ -157,23 +159,25 @@
     &lt;p:dialog header="Car Detail" widgetVar="carDialog" resizable="false" draggable="false"
               showEffect="fade" hideEffect="fade" modal="true"&gt;
 
-        &lt;h:panelGrid id="display" columns="2" cellpadding="5"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;p:graphicImage name="/demo/images/car/\#{dndCarsView.selectedCar.brand}.gif"/&gt;
-            &lt;/f:facet&gt;
+        &lt;p:outputPanel id="display"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="5" rendered="\#{not empty dndCarsView.selectedCar}"&gt;
+                &lt;f:facet name="header"&gt;
+                    &lt;p:graphicImage name="/demo/images/car/\#{dndCarsView.selectedCar.brand}.gif"/&gt;
+                &lt;/f:facet&gt;
 
-            &lt;h:outputText value="Id" /&gt;
-            &lt;h:outputText value="\#{dndCarsView.selectedCar.id}" style="font-weight:bold"/&gt;
+                &lt;h:outputText value="Id" /&gt;
+                &lt;h:outputText value="\#{dndCarsView.selectedCar.id}" style="font-weight:bold"/&gt;
 
-            &lt;h:outputText value="Year:" /&gt;
-            &lt;h:outputText value="\#{dndCarsView.selectedCar.year}" style="font-weight:bold"/&gt;
+                &lt;h:outputText value="Year:" /&gt;
+                &lt;h:outputText value="\#{dndCarsView.selectedCar.year}" style="font-weight:bold"/&gt;
 
-            &lt;h:outputText value="Brand" /&gt;
-            &lt;h:outputText value="\#{dndCarsView.selectedCar.brand}" style="font-weight:bold"/&gt;
+                &lt;h:outputText value="Brand" /&gt;
+                &lt;h:outputText value="\#{dndCarsView.selectedCar.brand}" style="font-weight:bold"/&gt;
 
-            &lt;h:outputText value="Color:" /&gt;
-            &lt;h:outputText value="\#{dndCarsView.selectedCar.color}" style="font-weight:bold"/&gt;
-        &lt;/h:panelGrid&gt;
+                &lt;h:outputText value="Color:" /&gt;
+                &lt;h:outputText value="\#{dndCarsView.selectedCar.color}" style="font-weight:bold"/&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:outputPanel&gt;
     &lt;/p:dialog&gt;
 &lt;/h:form&gt;
                 </pre>
