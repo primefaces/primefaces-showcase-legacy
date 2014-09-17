@@ -18,7 +18,7 @@
         <h:form>
             <p:growl id="messages" showDetail="true" />
             
-            <p:tree id="docs" value="#{treeContextMenuView.root}" var="doc" selectionMode="single" selection="#{treeContextMenuView.selectedNode}">                    
+            <p:tree id="docs" value="#{treeContextMenuView.root}" var="doc" selectionMode="single" selection="#{treeContextMenuView.selectedNode}" dynamic="true">                    
                 <p:treeNode expandedIcon="ui-icon-folder-open" collapsedIcon="ui-icon-folder-collapsed">
                     <h:outputText value="#{doc.name}"/>
                 </p:treeNode>
@@ -48,7 +48,7 @@
 &lt;h:form&gt;
     &lt;p:growl id="messages" showDetail="true" /&gt;
 
-    &lt;p:tree id="docs" value="\#{treeContextMenuView.root}" var="doc" selectionMode="single" selection="\#{treeContextMenuView.selectedNode}"&gt;                    
+    &lt;p:tree id="docs" value="\#{treeContextMenuView.root}" var="doc" selectionMode="single" selection="\#{treeContextMenuView.selectedNode}" dynamic="true"&gt;                    
         &lt;p:treeNode expandedIcon="ui-icon-folder-open" collapsedIcon="ui-icon-folder-collapsed"&gt;
             &lt;h:outputText value="\#{doc.name}"/&gt;
         &lt;/p:treeNode&gt;
