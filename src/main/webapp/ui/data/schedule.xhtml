@@ -52,7 +52,7 @@
      
             <h:panelGrid columnClasses="value">
                 <h3 style="margin-top: 0">Editable Schedule</h3>
-                <p:schedule id="schedule" value="#{scheduleView.eventModel}" widgetVar="myschedule">
+                <p:schedule id="schedule" value="#{scheduleView.eventModel}" widgetVar="myschedule" timeZone="GMT+2">
 
                     <p:ajax event="dateSelect" listener="#{scheduleView.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
                     <p:ajax event="eventSelect" listener="#{scheduleView.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
@@ -75,12 +75,12 @@
 
                     <h:outputLabel for="from" value="From:" />
                     <p:inputMask id="from" value="#{scheduleView.event.startDate}" mask="99/99/9999">
-                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+2"/>
                     </p:inputMask>
 
                     <h:outputLabel for="to" value="To:" />
                     <p:inputMask id="to" value="#{scheduleView.event.endDate}" mask="99/99/9999">
-                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+2"/>
                     </p:inputMask>
 
                     <h:outputLabel for="allDay" value="All Day:" />
@@ -103,7 +103,7 @@
 
     &lt;h:panelGrid columnClasses="value"&gt;
         &lt;h3 style="margin-top: 0"&gt;Editable Schedule&lt;/h3&gt;
-        &lt;p:schedule id="schedule" value="\#{scheduleView.eventModel}" widgetVar="myschedule"&gt;
+        &lt;p:schedule id="schedule" value="\#{scheduleView.eventModel}" widgetVar="myschedule" timeZone="GMT+2"&gt;
 
             &lt;p:ajax event="dateSelect" listener="\#{scheduleView.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" /&gt;
             &lt;p:ajax event="eventSelect" listener="\#{scheduleView.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" /&gt;
@@ -126,12 +126,12 @@
 
             &lt;h:outputLabel for="from" value="From:" /&gt;
             &lt;p:inputMask id="from" value="\#{scheduleView.event.startDate}" mask="99/99/9999"&gt;
-                &lt;f:convertDateTime pattern="dd/MM/yyyy" /&gt;
+                &lt;f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+2"/&gt;
             &lt;/p:inputMask&gt;
 
             &lt;h:outputLabel for="to" value="To:" /&gt;
             &lt;p:inputMask id="to" value="\#{scheduleView.event.endDate}" mask="99/99/9999"&gt;
-                &lt;f:convertDateTime pattern="dd/MM/yyyy" /&gt;
+                &lt;f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+2"/&gt;
             &lt;/p:inputMask&gt;
 
             &lt;h:outputLabel for="allDay" value="All Day:" /&gt;
