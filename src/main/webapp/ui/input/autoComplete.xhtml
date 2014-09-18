@@ -115,7 +115,7 @@
                                 groupBy="#{autoCompleteView.getThemeGroup(theme)}" scrollHeight="250"/>
             </h:panelGrid>
             
-            <p:commandButton value="Submit" icon="ui-icon-check" update="output" oncomplete="PF('dlg').show()" />
+            <p:commandButton value="Submit" icon="ui-icon-check" update="output msgs" oncomplete="PF('dlg').show()" />
             
             <p:dialog header="Values" resizable="false" showEffect="fade" widgetVar="dlg">
                 <p:panelGrid id="output" columns="2" columnClasses="label, value">
@@ -248,7 +248,7 @@
                 groupBy="\#{autoCompleteView.getThemeGroup(theme)}" scrollHeight="250"/&gt;
     &lt;/h:panelGrid&gt;
 
-    &lt;p:commandButton value="Submit" icon="ui-icon-check" update="output" oncomplete="PF('dlg').show()" /&gt;
+    &lt;p:commandButton value="Submit" icon="ui-icon-check" update="output msgs" oncomplete="PF('dlg').show()" /&gt;
 
     &lt;p:dialog header="Values" resizable="false" showEffect="fade" widgetVar="dlg"&gt;
         &lt;p:panelGrid id="output" columns="2" columnClasses="label, value"&gt;
@@ -621,8 +621,12 @@ public class ThemeConverter implements Converter {
 
     public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
         if(value != null &amp;&amp; value.trim().length() &gt; 0) {
-            ThemeService service = (ThemeService) fc.getExternalContext().getApplicationMap().get("themeService");
-            return service.getThemes().get(Integer.parseInt(value));
+            try {
+                ThemeService service = (ThemeService) fc.getExternalContext().getApplicationMap().get("themeService");
+                return service.getThemes().get(Integer.parseInt(value));
+            } catch(NumberFormatException e) {
+                throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid theme."));
+            }
         }
         else {
             return null;
