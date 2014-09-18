@@ -43,7 +43,7 @@ public class SelectionView implements Serializable {
     public void init() {
         root1 = service.createDocuments();
         root2 = service.createDocuments();
-        root3 = service.createDocuments();
+        root3 = service.createCheckboxDocuments();
     }
 
     public TreeNode getRoot1() {
