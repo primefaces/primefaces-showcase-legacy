@@ -20,11 +20,11 @@
 
             <h3 style="margin-top:0">Plain Menu</h3>
             <p:menu>
-                <p:submenu label="Ajax Menuitems">
+                <p:submenu label="Ajax">
                     <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk" />
                     <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
                 </p:submenu>
-                <p:submenu label="Non-Ajax Menuitem">
+                <p:submenu label="Non-Ajax">
                     <p:menuitem value="Delete" actionListener="#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
                 </p:submenu>
                 <p:submenu label="Navigations">
@@ -36,11 +36,11 @@
             <h3>Overlay</h3>
             <p:commandButton id="dynaButton" value="Show" type="button" icon="ui-icon-extlink"/>
             <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
-                <p:submenu label="Ajax Menuitems">
+                <p:submenu label="Ajax">
                     <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk"/>
                     <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
                 </p:submenu>
-                <p:submenu label="Non-Ajax Menuitem">
+                <p:submenu label="Non-Ajax">
                     <p:menuitem value="Delete" actionListener="#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
                 </p:submenu>
                 <p:submenu label="Navigations">
@@ -51,6 +51,21 @@
 
             <h3>Programmatic Menu</h3>
             <p:menu model="#{menuView.model}" />
+            
+            <h3>Toggleable</h3>
+            <p:menu toggleable="true">
+                <p:submenu label="Ajax">
+                    <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk" />
+                    <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+                </p:submenu>
+                <p:submenu label="Non-Ajax">
+                    <p:menuitem value="Delete" actionListener="#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
+                </p:submenu>
+                <p:submenu label="Navigations">
+                    <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
+                    <p:menuitem value="Internal" outcome="/mobile/index" icon="ui-icon-star"/>
+                </p:submenu>
+            </p:menu>
         </h:form>
         
     </ui:define>
@@ -64,11 +79,11 @@
 
     &lt;h3 style="margin-top:0"&gt;Plain Menu&lt;/h3&gt;
     &lt;p:menu&gt;
-        &lt;p:submenu label="Ajax Menuitems"&gt;
+        &lt;p:submenu label="Ajax"&gt;
             &lt;p:menuitem value="Save" actionListener="\#{menuView.save}" update="messages" icon="ui-icon-disk" /&gt;
             &lt;p:menuitem value="Update" actionListener="\#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/&gt;
         &lt;/p:submenu&gt;
-        &lt;p:submenu label="Non-Ajax Menuitem"&gt;
+        &lt;p:submenu label="Non-Ajax"&gt;
             &lt;p:menuitem value="Delete" actionListener="\#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/&gt;
         &lt;/p:submenu&gt;
         &lt;p:submenu label="Navigations"&gt;
@@ -80,11 +95,11 @@
     &lt;h3&gt;Overlay&lt;/h3&gt;
     &lt;p:commandButton id="dynaButton" value="Show" type="button" icon="ui-icon-extlink"/&gt;
     &lt;p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom"&gt;
-        &lt;p:submenu label="Ajax Menuitems"&gt;
+        &lt;p:submenu label="Ajax"&gt;
             &lt;p:menuitem value="Save" actionListener="\#{menuView.save}" update="messages" icon="ui-icon-disk"/&gt;
             &lt;p:menuitem value="Update" actionListener="\#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/&gt;
         &lt;/p:submenu&gt;
-        &lt;p:submenu label="Non-Ajax Menuitem"&gt;
+        &lt;p:submenu label="Non-Ajax"&gt;
             &lt;p:menuitem value="Delete" actionListener="\#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/&gt;
         &lt;/p:submenu&gt;
         &lt;p:submenu label="Navigations"&gt;
@@ -95,6 +110,21 @@
 
     &lt;h3&gt;Programmatic Menu&lt;/h3&gt;
     &lt;p:menu model="\#{menuView.model}" /&gt;
+
+    &lt;h3&gt;Toggleable&lt;/h3&gt;
+    &lt;p:menu toggleable="true"&gt;
+        &lt;p:submenu label="Ajax"&gt;
+            &lt;p:menuitem value="Save" actionListener="\#{menuView.save}" update="messages" icon="ui-icon-disk" /&gt;
+            &lt;p:menuitem value="Update" actionListener="\#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Non-Ajax"&gt;
+            &lt;p:menuitem value="Delete" actionListener="\#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/&gt;
+        &lt;/p:submenu&gt;
+        &lt;p:submenu label="Navigations"&gt;
+            &lt;p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/&gt;
+            &lt;p:menuitem value="Internal" outcome="/mobile/index" icon="ui-icon-star"/&gt;
+        &lt;/p:submenu&gt;
+    &lt;/p:menu&gt;
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
