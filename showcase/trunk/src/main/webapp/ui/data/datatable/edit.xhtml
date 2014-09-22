@@ -81,7 +81,7 @@
 
             <p:dataTable id="cars2" var="car" value="#{dtEditView.cars2}" editable="true" editMode="cell" widgetVar="cellCars">
                 <f:facet name="header">
-                    Cell Editing with DoubleClick and RightClick
+                    Cell Editing with Click and RightClick
                 </f:facet>
 
                 <p:ajax event="cellEdit" listener="#{dtEditView.onCellEdit}" update=":form:msgs" />
@@ -189,7 +189,7 @@
 
    &lt;p:dataTable id="cars2" var="car" value="\#{dtEditView.cars2}" editable="true" editMode="cell" widgetVar="cellCars"&gt;
        &lt;f:facet name="header"&gt;
-           Cell Editing with DoubleClick and RightClick
+           Cell Editing with Click and RightClick
        &lt;/f:facet&gt;
 
        &lt;p:ajax event="cellEdit" listener="\#{dtEditView.onCellEdit}" update=":form:msgs" /&gt;

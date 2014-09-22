@@ -109,7 +109,7 @@
                     </f:facet>
                 </p:autoComplete>
                 
-                <p:outputLabel value="Group: (v5.0.5+)" for="group" />
+                <p:outputLabel value="Group:" for="group" />
                 <p:autoComplete id="group" value="#{autoCompleteView.theme4}" completeMethod="#{autoCompleteView.completeThemeContains}" 
                                 var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter" forceSelection="true" 
                                 groupBy="#{autoCompleteView.getThemeGroup(theme)}" scrollHeight="250"/>
@@ -242,7 +242,7 @@
             &lt;/f:facet&gt;
         &lt;/p:autoComplete&gt;
 
-        &lt;p:outputLabel value="Group: (v5.0.5+)" for="group" /&gt;
+        &lt;p:outputLabel value="Group:" for="group" /&gt;
         &lt;p:autoComplete id="group" value="\#{autoCompleteView.theme4}" completeMethod="\#{autoCompleteView.completeThemeContains}" 
                 var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" converter="themeConverter"
                 groupBy="\#{autoCompleteView.getThemeGroup(theme)}" scrollHeight="250"/&gt;
