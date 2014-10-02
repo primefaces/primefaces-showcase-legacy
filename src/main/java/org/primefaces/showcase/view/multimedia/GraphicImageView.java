@@ -25,9 +25,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.imageio.ImageIO;
 
-import net.sourceforge.barbecue.BarcodeFactory;
-import net.sourceforge.barbecue.BarcodeImageHandler;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
@@ -40,9 +37,7 @@ import org.primefaces.model.StreamedContent;
 public class GraphicImageView {
 
 	private StreamedContent graphicText;
-	
-	private StreamedContent barcode;
-	
+		
 	private StreamedContent chart;
 
     @PostConstruct
@@ -61,19 +56,10 @@ public class GraphicImageView {
             File chartFile = new File("dynamichart");
             ChartUtilities.saveChartAsPNG(chartFile, jfreechart, 375, 300);
             chart = new DefaultStreamedContent(new FileInputStream(chartFile), "image/png");
-
-            //Barcode
-			File barcodeFile = new File("dynamicbarcode");
-			BarcodeImageHandler.saveJPEG(BarcodeFactory.createCode128("PRIMEFACES"), barcodeFile);
-			barcode = new DefaultStreamedContent(new FileInputStream(barcodeFile), "image/jpeg");
 		} 
         catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public StreamedContent getBarcode() {
-		return barcode;
 	}
 
     public StreamedContent getGraphicText() {
