@@ -1,0 +1,106 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="head">
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	</ui:define>
+    
+    <ui:define name="title">
+        GMap - <span class="subitem">Polygons</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Any number of polygons can be displayed on map. Polygons can also respond to selection by via overlaySelect behavior.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form prependId="false">	
+            <p:growl id="growl" life="3000" showDetail="true" />
+
+            <p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px" model="#{polygonsView.polygonModel}">
+                <p:ajax event="overlaySelect" listener="#{polygonsView.onPolygonSelect}" update="growl" />
+            </p:gmap>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="polygons.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form prependId="false"&gt;	
+    &lt;p:growl id="growl" life="3000" showDetail="true" /&gt;
+
+    &lt;p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px" model="\#{polygonsView.polygonModel}"&gt;
+        &lt;p:ajax event="overlaySelect" listener="\#{polygonsView.onPolygonSelect}" update="growl" /&gt;
+    &lt;/p:gmap&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="PolygonsView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data.gmap;
+    
+import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+ 
+import org.primefaces.event.map.OverlaySelectEvent;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Polygon;
+ 
+@ManagedBean
+public class PolygonsView implements Serializable {
+ 
+    private MapModel polygonModel;
+     
+    @PostConstruct
+    public void init() {
+        polygonModel = new DefaultMapModel();
+         
+        //Shared coordinates
+        LatLng coord1 = new LatLng(36.879466, 30.667648);
+        LatLng coord2 = new LatLng(36.883707, 30.689216);
+        LatLng coord3 = new LatLng(36.879703, 30.706707);
+ 
+        //Polygon
+        Polygon polygon = new Polygon();
+        polygon.getPaths().add(coord1);
+        polygon.getPaths().add(coord2);
+        polygon.getPaths().add(coord3);
+ 
+        polygon.setStrokeColor("#FF9900");
+        polygon.setFillColor("#FF9900");
+        polygon.setStrokeOpacity(0.7);
+        polygon.setFillOpacity(0.7);
+         
+        polygonModel.addOverlay(polygon);
+    }
+ 
+    public MapModel getPolygonModel() {
+        return polygonModel;
+    }
+ 
+    public void onPolygonSelect(OverlaySelectEvent event) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Polygon Selected", null));
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-215" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

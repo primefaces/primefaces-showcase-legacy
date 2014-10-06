@@ -1,0 +1,145 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        ExceptionHandler
+    </ui:define>
+
+    <ui:define name="description">
+        PrimeFaces provides a powerful ExceptionHandler out of the box featuring support for ajax and non-ajax requests, ability to use error-page
+        configuration in web.xml, an EL extension called #{pfExceptionHandler} to provide information about the exception and the p:ajaxExceptionHandler
+        component to handle ajax exceptions at the same page.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <h3 style="margin-top:0">AJAX</h3>
+            <p:commandButton actionListener="#{exceptionHandlerView.throwViewExpiredException}"
+                             ajax="true"
+                             value="Throw ViewExpiredException!" />
+            <p:commandButton actionListener="#{exceptionHandlerView.throwNullPointerException}"
+                             ajax="true"
+                             value="Throw NullPointerException!" />
+            <p:commandButton actionListener="#{exceptionHandlerView.throwWrappedIllegalStateException}"
+                             ajax="true"
+                             value="Throw IllegalStateException!" />
+
+            <h3>Non-AJAX</h3>
+            <p:commandButton actionListener="#{exceptionHandlerView.throwViewExpiredException}"
+                             ajax="false"
+                             value="Throw ViewExpiredException!" />
+            <p:commandButton actionListener="#{exceptionHandlerView.throwNullPointerException}"
+                             ajax="false"
+                             value="Throw NullPointerException!" />
+
+
+            <p:ajaxExceptionHandler type="javax.faces.application.ViewExpiredException"
+                                    update="exceptionDialog"
+                                    onexception="PF('exceptionDialog').show();" />
+            
+            <p:ajaxExceptionHandler type="java.lang.NullPointerException"
+                                    update="exceptionDialog"
+                                    onexception="PF('exceptionDialog').show();" />
+
+            <p:dialog id="exceptionDialog" header="Exception '#{pfExceptionHandler.type}' occured!" widgetVar="exceptionDialog"
+                      height="500px">
+                Message: #{pfExceptionHandler.message} <br/>
+                StackTrace: <h:outputText value="#{pfExceptionHandler.formattedStackTrace}" escape="false" /> <br />
+
+                <p:button onclick="document.location.href = document.location.href;"
+                          value="Reload!"
+                          rendered="#{pfExceptionHandler.type == 'javax.faces.application.ViewExpiredException'}" />
+            </p:dialog>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="exceptionHandler.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;h3 style="margin-top:0"&gt;AJAX&lt;/h3&gt;
+    &lt;p:commandButton actionListener="\#{exceptionHandlerView.throwViewExpiredException}"
+                     ajax="true"
+                     value="Throw ViewExpiredException!" /&gt;
+    &lt;p:commandButton actionListener="\#{exceptionHandlerView.throwNullPointerException}"
+                     ajax="true"
+                     value="Throw NullPointerException!" /&gt;
+    &lt;p:commandButton actionListener="\#{exceptionHandlerView.throwWrappedIllegalStateException}"
+                     ajax="true"
+                     value="Throw IllegalStateException!" /&gt;
+
+    &lt;h3&gt;Non-AJAX&lt;/h3&gt;
+    &lt;p:commandButton actionListener="\#{exceptionHandlerView.throwViewExpiredException}"
+                     ajax="false"
+                     value="Throw ViewExpiredException!" /&gt;
+    &lt;p:commandButton actionListener="\#{exceptionHandlerView.throwNullPointerException}"
+                     ajax="false"
+                     value="Throw NullPointerException!" /&gt;
+
+
+    &lt;p:ajaxExceptionHandler type="javax.faces.application.ViewExpiredException"
+                            update="exceptionDialog"
+                            onexception="PF('exceptionDialog').show();" /&gt;
+
+    &lt;p:ajaxExceptionHandler type="java.lang.NullPointerException"
+                            update="exceptionDialog"
+                            onexception="PF('exceptionDialog').show();" /&gt;
+
+    &lt;p:dialog id="exceptionDialog" header="Exception '\#{pfExceptionHandler.type}' occured!" widgetVar="exceptionDialog"
+              height="500px"&gt;
+        Message: \#{pfExceptionHandler.message} &lt;br/&gt;
+        StackTrace: &lt;h:outputText value="\#{pfExceptionHandler.formattedStackTrace}" escape="false" /&gt; &lt;br /&gt;
+
+        &lt;p:button onclick="document.location.href = document.location.href;"
+                  value="Reload!"
+                  rendered="\#{pfExceptionHandler.type == 'javax.faces.application.ViewExpiredException'}" /&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ExceptionHandlerView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.misc;
+
+import javax.faces.FacesException;
+import javax.faces.application.ViewExpiredException;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+
+@ManagedBean
+@RequestScoped
+public class ExceptionHandlerView {
+
+    public void throwNullPointerException() {
+        throw new NullPointerException("A NullPointerException!");
+    }
+
+    public void throwWrappedIllegalStateException() {
+        Throwable t = new IllegalStateException("A wrapped IllegalStateException!");
+        throw new FacesException(t);
+    }
+
+    public void throwViewExpiredException() {
+        throw new ViewExpiredException("A ViewExpiredException!",
+                FacesContext.getCurrentInstance().getViewRoot().getViewId());
+    }
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-561" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

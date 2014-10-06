@@ -1,0 +1,140 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="head">
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	</ui:define>
+    
+    <ui:define name="title">
+        GMap - <span class="subitem">Info Window</span>
+    </ui:define>
+
+    <ui:define name="description">
+        When a marker is selected, an info window can be displayed to provide detailed information.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form prependId="false">	
+            <p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" model="#{infoWindowView.advancedModel}" style="width:600px;height:400px">
+
+                <p:ajax event="overlaySelect" listener="#{infoWindowView.onMarkerSelect}" />
+
+                <p:gmapInfoWindow id="infoWindow">
+                    <p:outputPanel style="text-align: center; display: block; margin: auto">
+
+                            <p:graphicImage name="/demo/images/antalya/#{infoWindowView.marker.data}" height="150" />
+                            <br />
+                            <h:outputText value="#{infoWindowView.marker.title}" />
+
+                    </p:outputPanel>
+                </p:gmapInfoWindow>
+            </p:gmap>
+
+            <!-- Preload for demo -->
+            <p:outputPanel style="display:none">
+                <p:graphicImage name="/demo/images/antalya/konyaalti.png" />
+                <p:graphicImage name="/demo/images/antalya/ataturkparki.png" />
+                <p:graphicImage name="/demo/images/antalya/kaleici.png" />
+                <p:graphicImage name="/demo/images/antalya/karaalioglu.png" />
+            </p:outputPanel>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="infoWindow.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;	
+    &lt;p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" model="\#{infoWindowView.advancedModel}" style="width:600px;height:400px"&gt;
+
+        &lt;p:ajax event="overlaySelect" listener="\#{infoWindowView.onMarkerSelect}" /&gt;
+
+        &lt;p:gmapInfoWindow id="infoWindow"&gt;
+            &lt;p:outputPanel style="text-align: center; display: block; margin: auto"&gt;
+
+                    &lt;p:graphicImage name="/demo/images/antalya/\#{infoWindowView.marker.data}" height="150" /&gt;
+                    &lt;br /&gt;
+                    &lt;h:outputText value="\#{infoWindowView.marker.title}" /&gt;
+
+            &lt;/p:outputPanel&gt;
+        &lt;/p:gmapInfoWindow&gt;
+    &lt;/p:gmap&gt;
+
+    &lt;!-- Preload for demo --&gt;
+    &lt;p:outputPanel style="display:none"&gt;
+        &lt;p:graphicImage name="/demo/images/antalya/konyaalti.png" /&gt;
+        &lt;p:graphicImage name="/demo/images/antalya/ataturkparki.png" /&gt;
+        &lt;p:graphicImage name="/demo/images/antalya/kaleici.png" /&gt;
+        &lt;p:graphicImage name="/demo/images/antalya/karaalioglu.png" /&gt;
+    &lt;/p:outputPanel&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="InfoWindowView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data.gmap;
+
+import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+ 
+import org.primefaces.event.map.OverlaySelectEvent;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
+ 
+@ManagedBean
+@ViewScoped
+public class InfoWindowView implements Serializable {
+     
+    private MapModel advancedModel;
+ 
+    private Marker marker;
+ 
+    @PostConstruct
+    public void init() {
+        advancedModel = new DefaultMapModel();
+         
+        //Shared coordinates
+        LatLng coord1 = new LatLng(36.879466, 30.667648);
+        LatLng coord2 = new LatLng(36.883707, 30.689216);
+        LatLng coord3 = new LatLng(36.879703, 30.706707);
+        LatLng coord4 = new LatLng(36.885233, 30.702323);
+         
+        //Icons and Data
+        advancedModel.addOverlay(new Marker(coord1, "Konyaalti", "konyaalti.png", "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"));
+        advancedModel.addOverlay(new Marker(coord2, "Ataturk Parki", "ataturkparki.png"));
+        advancedModel.addOverlay(new Marker(coord4, "Kaleici", "kaleici.png", "http://maps.google.com/mapfiles/ms/micons/pink-dot.png"));
+        advancedModel.addOverlay(new Marker(coord3, "Karaalioglu Parki", "karaalioglu.png", "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png"));
+    }
+ 
+    public MapModel getAdvancedModel() {
+        return advancedModel;
+    }
+     
+    public void onMarkerSelect(OverlaySelectEvent event) {
+        marker = (Marker) event.getOverlay();
+    }
+     
+    public Marker getMarker() {
+        return marker;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-226" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

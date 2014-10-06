@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile">
+    
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
+    
+    <h:head>
+        <h:outputStylesheet name="main/css/sh.css" />
+    </h:head>
+    
+    <h:body>
+        
+        <pm:page id="first">
+            <pm:header title="Page 1"></pm:header>
+            
+            <pm:content>
+                <p>Navigations in same xhtml between multiple pages are handled by a specialized navigation handler. Prepending the id of the page
+                with "pm:" marks the outcome as a multi page navigation.</p>
+                
+                <h:form>
+                    <p:commandButton value="Ajax Action" action="#{navigationView.gotoSecond}"/> 
+                    <p:button outcome="pm:second" value="Go Button" />
+                    <p:link outcome="pm:second" value="Go Link" />
+                    <p:button outcome="/index" value="Same Domain" />
+                    <p:button href="http://www.primefaces.org" value="External Domain" />
+                </h:form>
+                
+                <h2>Source</h2>
+                <p:accordionPanel activeIndex="-1">
+                    <p:tab title="navigation.xhtml">
+                        <pre class="brush:xml">
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"&gt;
+    
+    &lt;f:view renderKitId="PRIMEFACES_MOBILE" /&gt;
+    
+    &lt;h:head&gt;
+
+    &lt;/h:head&gt;
+    
+    &lt;h:body&gt;
+        
+        &lt;pm:page id="first"&gt;
+            &lt;pm:header title="Page 1"&gt;&lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                &lt;h:form&gt;
+                    &lt;p:commandButton value="Ajax Action" action="\#{navigationView.gotoSecond}"/&gt; 
+                    &lt;p:button outcome="pm:second" value="Go Button" /&gt;
+                    &lt;p:link outcome="pm:second" value="Go Link" /&gt;
+                    &lt;p:button outcome="/index" value="Same Domain" /&gt;
+                    &lt;p:button href="http://www.primefaces.org" value="External Domain" /&gt;
+                &lt;/h:form&gt;
+            &lt;/pm:content&gt;
+        &lt;/pm:page&gt;
+
+        &lt;pm:page id="second"&gt;
+            &lt;pm:header title="Page 2"&gt;&lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                &lt;p&gt;Page 2 content.&lt;/p&gt;
+                &lt;p:button outcome="pm:first" value="Go Back" /&gt;
+            &lt;/pm:content&gt;
+        &lt;/pm:page&gt;
+
+        //more pages
+
+    &lt;/h:body&gt;
+    
+&lt;/html&gt;
+                        </pre>
+                    </p:tab>
+                    <p:tab title="NavigationView.java">
+                        <pre class="brush:java">
+package org.primefaces.showcase.mobile;
+
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class NavigationView {
+
+    public String gotoSecond() {
+        return "pm:second";
+    }
+}
+                        </pre>
+                    </p:tab>
+                </p:accordionPanel>
+                
+            </pm:content>
+        </pm:page>
+        
+        <pm:page id="second">
+            <pm:header title="Page 2"></pm:header>
+            
+            <pm:content>
+                <p>Page 2 content.</p>
+                <p:button outcome="pm:first" value="Go Back" />
+            </pm:content>
+        </pm:page>
+        
+        <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
+        <script language="javascript">
+            SyntaxHighlighter.all();
+        </script>
+        
+    </h:body>
+    
+</html>

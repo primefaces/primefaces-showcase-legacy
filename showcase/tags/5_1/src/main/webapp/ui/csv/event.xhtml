@@ -1,0 +1,104 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Client Side Validation - <span class="subitem">Event</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Validations can be triggered instantly without needing a button/link click using p:clientValidator.
+    </ui:define>
+
+    <ui:define name="implementation">
+        <h:form>
+            <p:panel header="Validate">
+                <h:panelGrid columns="4" cellpadding="5">
+                    <h:outputLabel for="text" value="Text: (Change)" />
+                    <p:inputText id="text" value="#{validationView.text}" required="true">
+                        <f:validateLength minimum="2" maximum="5" />
+                        <p:clientValidator />
+                    </p:inputText>
+                    <p:message for="text" display="icon" />
+                    <h:outputText value="#{validationView.text}" />
+
+                    <h:outputLabel for="integer" value="Integer: (Keyup)" />
+                    <p:inputText id="integer" value="#{validationView.integer}">
+                        <p:clientValidator event="keyup"/>
+                    </p:inputText>
+                    <p:message for="integer" display="icon" />
+                    <h:outputText value="#{validationView.integer}" />
+                </h:panelGrid>
+
+                <p:commandButton value="Save" ajax="false" icon="ui-icon-check" validateClient="true" />
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="event.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:panel header="Validate"&gt;
+        &lt;h:panelGrid columns="4" cellpadding="5"&gt;
+            &lt;h:outputLabel for="text" value="Text: (Change)" /&gt;
+            &lt;p:inputText id="text" value="\#{validationView.text}" required="true"&gt;
+                &lt;f:validateLength minimum="2" maximum="5" /&gt;
+                &lt;p:clientValidator /&gt;
+            &lt;/p:inputText&gt;
+            &lt;p:message for="text" display="icon" /&gt;
+            &lt;h:outputText value="\#{validationView.text}" /&gt;
+
+            &lt;h:outputLabel for="integer" value="Integer: (Keyup)" /&gt;
+            &lt;p:inputText id="integer" value="\#{validationView.integer}"&gt;
+                &lt;p:clientValidator event="keyup"/&gt;
+            &lt;/p:inputText&gt;
+            &lt;p:message for="integer" display="icon" /&gt;
+            &lt;h:outputText value="\#{validationView.integer}" /&gt;
+        &lt;/h:panelGrid&gt;
+
+        &lt;p:commandButton value="Save" ajax="false" icon="ui-icon-check" validateClient="true" /&gt;
+    &lt;/p:panel&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ValidationView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.csv;
+
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class ValidationView {
+    
+    private String text;
+    private Integer integer;
+
+    public String getText() {
+        return text;
+    }
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public Integer getInteger() {
+        return integer;
+    }
+    public void setInteger(Integer integer) {
+        this.integer = integer;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-515" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

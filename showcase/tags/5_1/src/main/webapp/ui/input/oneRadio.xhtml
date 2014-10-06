@@ -1,0 +1,218 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">            
+            .value {
+                font-weight: bold;
+            }
+        </style>
+	</ui:define>
+    
+    <ui:define name="title">
+        SelectOneRadio
+    </ui:define>
+
+    <ui:define name="description">
+        SelectOneListbox is used to choose a single item from a collection.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <h3 style="margin-top:0">Basic</h3>
+            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                <p:outputLabel for="console" value="Console:" />
+                <p:selectOneRadio id="console" value="#{radioView.console}">
+                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                    <f:selectItem itemLabel="PS4" itemValue="PS+" />
+                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                </p:selectOneRadio>
+            </h:panelGrid>
+
+            <h3>Grid</h3>
+            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                <p:outputLabel for="city" value="City:" />
+                <p:selectOneRadio id="city" value="#{radioView.city}"  layout="grid" columns="3">
+                    <f:selectItems value="#{radioView.cities}" var="c" itemLabel="#{city}" itemValue="#{city}"/>
+                </p:selectOneRadio>
+            </h:panelGrid>
+
+            <h3>Custom Layout</h3>
+            <p:outputPanel id="customPanel" style="margin-bottom:10px">
+                <p:selectOneRadio id="customRadio" value="#{radioView.color}" layout="custom">
+                    <f:selectItem itemLabel="Red" itemValue="Red" />
+                    <f:selectItem itemLabel="Green" itemValue="Green" />
+                    <f:selectItem itemLabel="Blue" itemValue="Blue" />
+                </p:selectOneRadio>
+
+                <h:panelGrid columns="3" cellpadding="5">
+                    <p:radioButton id="opt1" for="customRadio" itemIndex="0" />
+                    <h:outputLabel for="opt1" value="Red" />
+                    <p:spinner />
+
+                    <p:radioButton id="opt2" for="customRadio" itemIndex="1" />
+                    <h:outputLabel for="opt2" value="Green" />
+                    <p:inputText />
+
+                    <p:radioButton id="opt3" for="customRadio" itemIndex="2" />
+                    <h:outputLabel for="opt3" value="Blue" />
+                    <p:calendar />
+                </h:panelGrid>
+            </p:outputPanel>
+
+            <p:commandButton value="Submit" update="display" icon="ui-icon-check" oncomplete="PF('dlg').show()"/>
+
+            <p:dialog modal="true" resizable="false" widgetVar="dlg" header="Values" showEffect="clip">
+                <p:panelGrid columns="2" id="display" columnClasses="label,value">
+                    <h:outputText value="Console:" />
+                    <h:outputText value="#{radioView.console}" />
+                    
+                    <h:outputText value="City:" />
+                    <h:outputText value="#{radioView.city}" />
+                    
+                    <h:outputText value="Color:" />
+                    <h:outputText value="#{radioView.color}" />
+                </p:panelGrid>
+            </p:dialog>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="oneRadio.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;h3 style="margin-top:0"&gt;Basic&lt;/h3&gt;
+    &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
+        &lt;p:outputLabel for="console" value="Console:" /&gt;
+        &lt;p:selectOneRadio id="console" value="\#{radioView.console}"&gt;
+            &lt;f:selectItem itemLabel="Xbox One" itemValue="Xbox One" /&gt;
+            &lt;f:selectItem itemLabel="PS4" itemValue="PS+" /&gt;
+            &lt;f:selectItem itemLabel="Wii U" itemValue="Wii U" /&gt;
+        &lt;/p:selectOneRadio&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;h3&gt;Grid&lt;/h3&gt;
+    &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
+        &lt;p:outputLabel for="city" value="City:" /&gt;
+        &lt;p:selectOneRadio id="city" value="\#{radioView.city}"  layout="grid" columns="3"&gt;
+            &lt;f:selectItems value="\#{radioView.cities}" var="c" itemLabel="\#{city}" itemValue="\#{city}"/&gt;
+        &lt;/p:selectOneRadio&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;h3&gt;Custom Layout&lt;/h3&gt;
+    &lt;p:outputPanel id="customPanel" style="margin-bottom:10px"&gt;
+        &lt;p:selectOneRadio id="customRadio" value="\#{radioView.color}" layout="custom"&gt;
+            &lt;f:selectItem itemLabel="Red" itemValue="Red" /&gt;
+            &lt;f:selectItem itemLabel="Green" itemValue="Green" /&gt;
+            &lt;f:selectItem itemLabel="Blue" itemValue="Blue" /&gt;
+        &lt;/p:selectOneRadio&gt;
+
+        &lt;h:panelGrid columns="3" cellpadding="5"&gt;
+            &lt;p:radioButton id="opt1" for="customRadio" itemIndex="0" /&gt;
+            &lt;h:outputLabel for="opt1" value="Red" /&gt;
+            &lt;p:spinner /&gt;
+
+            &lt;p:radioButton id="opt2" for="customRadio" itemIndex="1" /&gt;
+            &lt;h:outputLabel for="opt2" value="Green" /&gt;
+            &lt;p:inputText /&gt;
+
+            &lt;p:radioButton id="opt3" for="customRadio" itemIndex="2" /&gt;
+            &lt;h:outputLabel for="opt3" value="Blue" /&gt;
+            &lt;p:calendar /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:outputPanel&gt;
+
+    &lt;p:commandButton value="Submit" update="display" icon="ui-icon-check" oncomplete="PF('dlg').show()"/&gt;
+
+    &lt;p:dialog modal="true" resizable="false" widgetVar="dlg" header="Values" showEffect="clip"&gt;
+        &lt;p:panelGrid columns="2" id="display" columnClasses="label,value"&gt;
+            &lt;h:outputText value="Console:" /&gt;
+            &lt;h:outputText value="\#{radioView.console}" /&gt;
+
+            &lt;h:outputText value="City:" /&gt;
+            &lt;h:outputText value="\#{radioView.city}" /&gt;
+
+            &lt;h:outputText value="Color:" /&gt;
+            &lt;h:outputText value="\#{radioView.color}" /&gt;
+        &lt;/p:panelGrid&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="RadioView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class RadioView {
+    
+    private String console;    
+    private String city;  
+    private List&lt;String&gt; cities;  
+    private String color;
+    
+    @PostConstruct
+    public void init() {
+        cities = new ArrayList&lt;String&gt;();
+        cities.add("San Francisco");
+        cities.add("London");
+        cities.add("Paris");
+        cities.add("Istanbul");
+        cities.add("Berlin");
+        cities.add("Barcelona");
+        cities.add("Rome");
+        cities.add("Sao Paulo");
+        cities.add("Amsterdam");
+    }
+
+    public String getConsole() {
+        return console;
+    }
+
+    public void setConsole(String console) {
+        this.console = console;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public List&lt;String&gt; getCities() {
+        return cities;
+    }
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-416" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

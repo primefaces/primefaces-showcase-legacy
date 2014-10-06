@@ -1,0 +1,548 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .messageInput {
+                width:400px;
+            }
+            
+            .publicColumn {
+               width:80%;
+            }
+            
+            .usersColumn {
+                width:20%;
+            }
+            
+            .vtop {
+                vertical-align: top;
+            }
+            
+            .chatlogs {
+                height:200px;
+                overflow:auto;
+                padding: 0.5em 1em 0.5em 0.5em;
+            }
+            
+            .usersList {
+                height:200px;
+                overflow:auto;
+            }
+            
+            .usersList ul {
+                list-style-type: none;
+                padding-left:10px;
+            }
+            
+            .usersList ul li {
+                margin-bottom: 2px;
+            }
+            
+            .usersList .ui-button-text {
+                padding:0;
+            }
+        </style>
+        
+        <script type="text/javascript">
+            //<![CDATA[
+            function handleMessage(message) {
+                var chatContent = $(PrimeFaces.escapeClientId('form:public')),
+                text = (message.user) ? message.user + ':' + message.text: message.text;
+        
+                chatContent.append(text + '<br />');
+                
+                //keep scroll
+                chatContent.scrollTop(chatContent.height());
+                
+                if(message.updateList) {
+                    updateList();
+                }
+            }
+            //]]>
+        </script>
+    </ui:define>
+    
+    <ui:define name="title">
+        Chat
+    </ui:define>
+
+    <ui:define name="description">
+        Chat sample utilizes advanced features such as custom decoder-encoder, P2P messaging and dependency injection.
+        <strong>Chat sample is disabled in online demo.</strong>
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <p:growl id="growl" showDetail="true" />
+            
+        <h:form id="form">
+            <p:remoteCommand name="updateList" update="users" process="@this" />
+
+            <p:fieldset id="container" legend="PrimeChat" toggleable="true">
+
+                <h:panelGroup rendered="#{chatView.loggedIn}">
+                    <h:panelGrid columns="2" columnClasses="publicColumn,usersColumn" style="width:100%">
+                        <p:outputPanel id="public" layout="block" styleClass="ui-corner-all ui-widget-content chatlogs" />
+
+                        <p:dataList id="users" var="user" value="#{chatUsers.users}" styleClass="usersList">
+                            <f:facet name="header">
+                                Users
+                            </f:facet>
+
+                            <p:commandButton title="Chat" icon="ui-icon-comment" oncomplete="PF('pChat').show()" update=":form:privateChatContainer">
+                                <f:setPropertyActionListener value="#{user}" target="#{chatView.privateUser}" />
+                            </p:commandButton>
+                            #{user}
+                        </p:dataList>
+                    </h:panelGrid>
+
+                    <p:separator />
+
+                    <p:inputText value="#{chatView.globalMessage}" styleClass="messageInput" />
+                    <p:spacer width="5" />
+                    <p:commandButton value="Send" actionListener="#{chatView.sendGlobal}" oncomplete="$('.messageInput').val('').focus()" />
+                    <p:spacer width="5" />
+                    <p:commandButton value="Disconnect" actionListener="#{chatView.disconnect}" global="false" update="container" />
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{not chatView.loggedIn}" >
+                    Username: <p:inputText value="#{chatView.username}" disabled="true" />
+
+                    <p:spacer width="5" />
+                    <p:commandButton value="Login" actionListener="#{chatView.login}" update="container" 
+                                     icon="ui-icon-person" disabled="true" />
+                </h:panelGroup>
+
+            </p:fieldset>
+
+            <p:dialog widgetVar="pChat" header="Private Chat" modal="true" showEffect="fade" hideEffect="fade">
+                <h:panelGrid id="privateChatContainer" columns="2" columnClasses="vtop,vtop">
+                    <p:outputLabel for="pChatInput" value="To: #{chatView.privateUser}" />
+                    <p:inputTextarea id="pChatInput" value="#{chatView.privateMessage}" rows="5" cols="30" />
+
+                    <p:spacer />
+                    <p:commandButton value="Send" actionListener="#{chatView.sendPrivate}" oncomplete="PF('pChat').hide()" />
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+        
+        <p:socket onMessage="handleMessage" channel="/{room}" autoConnect="false" widgetVar='subscriber' />
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="chat.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:growl id="growl" showDetail="true" /&gt;
+            
+&lt;h:form id="form"&gt;
+    &lt;p:remoteCommand name="updateList" update="users" process="@this" /&gt;
+
+    &lt;p:fieldset id="container" legend="PrimeChat" toggleable="true"&gt;
+
+        &lt;h:panelGroup rendered="\#{chatView.loggedIn}"&gt;
+            &lt;h:panelGrid columns="2" columnClasses="publicColumn,usersColumn" style="width:100%"&gt;
+                &lt;p:outputPanel id="public" layout="block" styleClass="ui-corner-all ui-widget-content chatlogs" /&gt;
+
+                &lt;p:dataList id="users" var="user" value="\#{chatUsers.users}" styleClass="usersList"&gt;
+                    &lt;f:facet name="header"&gt;
+                        Users
+                    &lt;/f:facet&gt;
+
+                    &lt;p:commandButton title="Chat" icon="ui-icon-comment" oncomplete="PF('pChat').show()" update=":form:privateChatContainer"&gt;
+                        &lt;f:setPropertyActionListener value="\#{user}" target="\#{chatView.privateUser}" /&gt;
+                    &lt;/p:commandButton&gt;
+                    \#{user}
+                &lt;/p:dataList&gt;
+            &lt;/h:panelGrid&gt;
+
+            &lt;p:separator /&gt;
+
+            &lt;p:inputText value="\#{chatView.globalMessage}" styleClass="messageInput" /&gt;
+            &lt;p:spacer width="5" /&gt;
+            &lt;p:commandButton value="Send" actionListener="\#{chatView.sendGlobal}" oncomplete="$('.messageInput').val('').focus()" /&gt;
+            &lt;p:spacer width="5" /&gt;
+            &lt;p:commandButton value="Disconnect" actionListener="\#{chatView.disconnect}" global="false" update="container" /&gt;
+        &lt;/h:panelGroup&gt;
+
+        &lt;h:panelGroup rendered="\#{not chatView.loggedIn}" &gt;
+            Username: &lt;p:inputText value="\#{chatView.username}" disabled="true" /&gt;
+
+            &lt;p:spacer width="5" /&gt;
+            &lt;p:commandButton value="Login" actionListener="\#{chatView.login}" update="container" 
+                             icon="ui-icon-person" disabled="true" /&gt;
+        &lt;/h:panelGroup&gt;
+
+    &lt;/p:fieldset&gt;
+
+    &lt;p:dialog widgetVar="pChat" header="Private Chat" modal="true" showEffect="fade" hideEffect="fade"&gt;
+        &lt;h:panelGrid id="privateChatContainer" columns="2" columnClasses="vtop,vtop"&gt;
+            &lt;p:outputLabel for="pChatInput" value="To: \#{chatView.privateUser}" /&gt;
+            &lt;p:inputTextarea id="pChatInput" value="\#{chatView.privateMessage}" rows="5" cols="30" /&gt;
+
+            &lt;p:spacer /&gt;
+            &lt;p:commandButton value="Send" actionListener="\#{chatView.sendPrivate}" oncomplete="PF('pChat').hide()" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
+
+&lt;p:socket onMessage="handleMessage" channel="/{room}" autoConnect="false" widgetVar='subscriber' /&gt;
+
+&lt;script type="text/javascript"&gt;
+    function handleMessage(message) {
+        var chatContent = $(PrimeFaces.escapeClientId('form:public')),
+        text = (message.user) ? message.user + ':' + message.text: message.text;
+
+        chatContent.append(text + '&lt;br /&gt;');
+
+        //keep scroll
+        chatContent.scrollTop(chatContent.height());
+
+        if(message.updateList) {
+            updateList();
+        }
+    }
+&lt;/script&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ChatView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.push.chat;
+
+import java.io.Serializable;
+import org.primefaces.context.RequestContext;
+import org.primefaces.push.EventBus;
+import org.primefaces.push.EventBusFactory;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+
+@ManagedBean
+@ViewScoped
+public class ChatView implements Serializable {
+    
+    //private final PushContext pushContext = PushContextFactory.getDefault().getPushContext();
+
+    private final EventBus eventBus = EventBusFactory.getDefault().eventBus();
+
+    @ManagedProperty("\#{chatUsers}")
+    private ChatUsers users;
+
+	private String privateMessage;
+    
+    private String globalMessage;
+	
+	private String username;
+	
+	private boolean loggedIn;
+    
+    private String privateUser;
+    
+    private final static String CHANNEL = "/{room}/";
+
+    public ChatUsers getUsers() {
+        return users;
+    }
+
+    public void setUsers(ChatUsers users) {
+        this.users = users;
+    }
+    
+    public String getPrivateUser() {
+        return privateUser;
+    }
+
+    public void setPrivateUser(String privateUser) {
+        this.privateUser = privateUser;
+    }
+
+    public String getGlobalMessage() {
+        return globalMessage;
+    }
+
+    public void setGlobalMessage(String globalMessage) {
+        this.globalMessage = globalMessage;
+    }
+
+    public String getPrivateMessage() {
+        return privateMessage;
+    }
+
+    public void setPrivateMessage(String privateMessage) {
+        this.privateMessage = privateMessage;
+    }
+    
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;
+	}
+
+	public void sendGlobal() {
+        eventBus.publish(CHANNEL + "*", username + ": " + globalMessage);
+		
+		globalMessage = null;
+	}
+    
+    public void sendPrivate() {
+        eventBus.publish(CHANNEL + privateUser, "[PM] " + username + ": " + privateMessage);
+        
+        privateMessage = null;
+    }
+	
+	public void login() {
+        RequestContext requestContext = RequestContext.getCurrentInstance();
+        
+		if(users.contains(username)) {
+            loggedIn = false;
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username taken", "Try with another username."));
+            requestContext.update("growl");
+        }
+        else {
+            users.add(username);
+            requestContext.execute("PF('subscriber').connect('/" + username + "')");
+            loggedIn = true;
+        }
+	}
+    
+    public void disconnect() {
+        //remove user and update ui
+        users.remove(username);
+        RequestContext.getCurrentInstance().update("form:users");
+        
+        //push leave information
+        eventBus.publish(CHANNEL + "*", username + " left the channel.");
+        
+        //reset state
+        loggedIn = false;
+        username = null;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="ChatUsers.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.push.chat;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+@ApplicationScoped
+public class ChatUsers implements Serializable {
+    
+    private List&lt;String&gt; users;
+    
+    @PostConstruct
+    public void init() {
+        users = new ArrayList&lt;String&gt;();
+    }
+
+    public List&lt;String&gt; getUsers() {
+        return users;
+    }
+    
+    public void remove(String user) {
+        this.users.remove(user);
+    }
+    
+    public void add(String user) {
+        this.users.add(user);
+    }
+        
+    public boolean contains(String user) {
+        return this.users.contains(user);
+    }
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="ChatResource.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.push.chat;
+
+import org.primefaces.push.EventBus;
+import org.primefaces.push.RemoteEndpoint;
+import org.primefaces.push.annotation.OnClose;
+import org.primefaces.push.annotation.OnMessage;
+import org.primefaces.push.annotation.OnOpen;
+import org.primefaces.push.annotation.PathParam;
+import org.primefaces.push.annotation.PushEndpoint;
+import org.primefaces.push.annotation.Singleton;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
+import javax.servlet.ServletContext;
+
+@PushEndpoint("/{room}/{user}")
+@Singleton
+public class ChatResource {
+
+    private final Logger logger = LoggerFactory.getLogger(ChatResource.class);
+
+    @PathParam("room")
+    private String room;
+
+    @PathParam("user")
+    private String username;
+
+    @Inject
+    private ServletContext ctx;
+
+    @OnOpen
+    public void onOpen(RemoteEndpoint r, EventBus eventBus) {
+        logger.info("OnOpen {}", r);
+
+        eventBus.publish(room + "/*", new Message(String.format("%s has entered the room '%s'",  username, room), true));
+    }
+
+    @OnClose
+    public void onClose(RemoteEndpoint r, EventBus eventBus) {
+        ChatUsers users= (ChatUsers) ctx.getAttribute("chatUsers");
+        users.remove(username);
+        
+        eventBus.publish(room + "/*", new Message(String.format("%s has left the room", username), true));
+    }
+
+    @OnMessage(decoders = {MessageDecoder.class}, encoders = {MessageEncoder.class})
+    public Message onMessage(Message message) {
+        return message;
+    }
+
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Message.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.push.chat;
+
+public class Message {
+    
+    private String text;
+    private String user;
+    private boolean updateList;
+
+    public Message() {
+    }
+
+    public Message(String text) {
+        this.text = text;
+    }
+    
+    public Message(String text, boolean updateList) {
+        this.text = text;
+        this.updateList = updateList;
+    }
+
+    public Message(String user, String text, boolean updateList) {
+        this.text = text;
+        this.user = user;
+        this.updateList = updateList;
+    }
+    
+    public String getText() {
+        return text;
+    }
+
+    public Message setText(String text) {
+        this.text = text;
+        return this;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public Message setUser(String user) {
+        this.user = user;
+        return this;
+    }
+
+    public boolean isUpdateList() {
+        return updateList;
+    }
+
+    public void setUpdateList(boolean updateList) {
+        this.updateList = updateList;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="MessageDecoder.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.push.chat;
+
+import org.primefaces.push.Decoder;
+
+/**
+ * A Simple {@link org.primefaces.push.Decoder} that decode a String into a {@link Message} object.
+ */
+public class MessageDecoder implements Decoder&lt;String,Message&gt; {
+
+    //@Override
+    public Message decode(String s) {
+        String[] userAndMessage = s.split(":");
+        if (userAndMessage.length &gt;= 2) {
+            return new Message().setUser(userAndMessage[0]).setText(userAndMessage[1]);
+        } 
+        else {
+            return new Message(s);
+        }
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="MessageEncoder.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.push.chat;
+
+import org.primefaces.json.JSONObject;
+import org.primefaces.push.Encoder;
+
+/**
+ * A Simple {@link org.primefaces.push.Encoder} that decode a {@link Message} into a simple JSON object.
+ */
+public final class MessageEncoder implements Encoder&lt;Message, String&gt; {
+
+    //@Override
+    public String encode(Message message) {
+        return new JSONObject(message).toString();
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-526" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

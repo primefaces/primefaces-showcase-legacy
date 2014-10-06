@@ -1,0 +1,239 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        PickList
+    </ui:define>
+
+    <ui:define name="description">
+        PickList is a dual list input component featuring Drag and Drop based reordering, transition effects, pojo support, theming filtering, captions, checkbox selection, client-server callbacks and more.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <p:growl id="msg" showDetail="true" escape="false" />
+            
+            <h3 style="margin-top: 0">Basic PickList</h3>
+            <p:pickList id="pickList" value="#{pickListView.cities}" var="cities" itemLabel="#{cities}" itemValue="#{cities}" />
+            
+            <p:commandButton id="citySubmit" value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" />
+            
+            <h3>PickList on Steroids: Pojo Support with Effect, Captions, Custom Content, Reordering, Filtering, Checkboxes and Ajax Transfer</h3>
+            <p:pickList id="PojoPickList" value="#{pickListView.themes}" var="theme" effect="bounce"
+                        itemValue="#{theme}" itemLabel="#{theme.displayName}" showSourceControls="true" showTargetControls="true" showCheckbox="true"
+                        showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains" converter="theme">
+               
+                <f:facet name="sourceCaption">Available</f:facet>
+                <f:facet name="targetCaption">Starting</f:facet>
+
+                <p:ajax event="transfer" listener="#{pickListView.onTransfer}" update="msg" />
+                
+                <p:column style="width:25%">
+                    <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
+                </p:column>
+
+                <p:column style="width:75%;">
+                    <h:outputText value="#{theme.displayName}" />
+                </p:column>
+            </p:pickList>
+            
+            <p:commandButton id="pojoSubmit" value="Submit" update="displayThemes" oncomplete="PF('themesDialog').show()" style="margin-top:5px" />
+
+            <p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog">
+                <h:panelGrid id="displayCities" columns="2">
+                    <h:outputText value="Source: " style="font-weight:bold" />
+                     <ui:repeat value="#{pickListView.cities.source}" var="item">
+                        <h:outputText value="#{item}" style="margin-right:5px" />
+                    </ui:repeat>
+
+                    <h:outputText value="Target: " style="font-weight:bold" />
+                    <ui:repeat value="#{pickListView.cities.target}" var="item">
+                        <h:outputText value="#{item}" style="margin-right:5px" />
+                    </ui:repeat>
+                </h:panelGrid>
+            </p:dialog>
+
+            <p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="themesDialog">
+                <h:panelGrid id="displayThemes" columns="2">
+                    <h:outputText value="Source: " style="font-weight:bold" />
+                    <ui:repeat value="#{pickListView.themes.source}" var="theme">
+                        <h:outputText value="#{theme.name}" style="margin-right:5px" />
+                    </ui:repeat>
+
+                    <h:outputText value="Target: " style="font-weight:bold" />
+                    <ui:repeat value="#{pickListView.themes.target}" var="theme">
+                        <h:outputText value="#{theme.name}" style="margin-right:5px" />
+                    </ui:repeat>
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="pickList.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:growl id="msg" showDetail="true" escape="false" /&gt;
+
+    &lt;h3 style="margin-top: 0"&gt;Basic PickList&lt;/h3&gt;
+    &lt;p:pickList id="pickList" value="\#{pickListView.cities}" var="cities" itemLabel="\#{cities}" itemValue="\#{cities}" /&gt;
+
+    &lt;p:commandButton id="citySubmit" value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" /&gt;
+
+    &lt;h3&gt;PickList on Steroids: Pojo Support with Effect, Captions, Custom Content, Reordering, Filtering, Checkboxes and Ajax Transfer&lt;/h3&gt;
+    &lt;p:pickList id="PojoPickList" value="\#{pickListView.themes}" var="theme" effect="bounce"
+                itemValue="\#{theme}" itemLabel="\#{theme.displayName}" showSourceControls="true" showTargetControls="true" showCheckbox="true"
+                showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains" converter="theme"&gt;
+
+        &lt;f:facet name="sourceCaption"&gt;Available&lt;/f:facet&gt;
+        &lt;f:facet name="targetCaption"&gt;Starting&lt;/f:facet&gt;
+
+        &lt;p:ajax event="transfer" listener="\#{pickListView.onTransfer}" update="msg" /&gt;
+
+        &lt;p:column style="width:25%"&gt;
+            &lt;h:outputText styleClass="ui-theme ui-theme-\#{theme.name}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column style="width:75%;"&gt;
+            &lt;h:outputText value="\#{theme.displayName}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:pickList&gt;
+
+    &lt;p:commandButton id="pojoSubmit" value="Submit" update="displayThemes" oncomplete="PF('themesDialog').show()" style="margin-top:5px" /&gt;
+
+    &lt;p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog"&gt;
+        &lt;h:panelGrid id="displayCities" columns="2"&gt;
+            &lt;h:outputText value="Source: " style="font-weight:bold" /&gt;
+             &lt;ui:repeat value="\#{pickListView.cities.source}" var="item"&gt;
+                &lt;h:outputText value="\#{item}" style="margin-right:5px" /&gt;
+            &lt;/ui:repeat&gt;
+
+            &lt;h:outputText value="Target: " style="font-weight:bold" /&gt;
+            &lt;ui:repeat value="\#{pickListView.cities.target}" var="item"&gt;
+                &lt;h:outputText value="\#{item}" style="margin-right:5px" /&gt;
+            &lt;/ui:repeat&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+    &lt;p:dialog modal="true" showEffect="fade" hideEffect="fade" widgetVar="themesDialog"&gt;
+        &lt;h:panelGrid id="displayThemes" columns="2"&gt;
+            &lt;h:outputText value="Source: " style="font-weight:bold" /&gt;
+            &lt;ui:repeat value="\#{pickListView.themes.source}" var="theme"&gt;
+                &lt;h:outputText value="\#{theme.name}" style="margin-right:5px" /&gt;
+            &lt;/ui:repeat&gt;
+
+            &lt;h:outputText value="Target: " style="font-weight:bold" /&gt;
+            &lt;ui:repeat value="\#{pickListView.themes.target}" var="theme"&gt;
+                &lt;h:outputText value="\#{theme.name}" style="margin-right:5px" /&gt;
+            &lt;/ui:repeat&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="PickListView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.TransferEvent;
+import org.primefaces.model.DualListModel;
+import org.primefaces.showcase.domain.Theme;
+import org.primefaces.showcase.service.ThemeService;
+
+@ManagedBean
+public class PickListView {
+    
+    @ManagedProperty("\#{themeService}")
+    private ThemeService service;
+    
+    private DualListModel&lt;String&gt; cities;
+    private DualListModel&lt;Theme&gt; themes;
+    
+    @PostConstruct
+    public void init() {
+        //Cities
+        List&lt;String&gt; citiesSource = new ArrayList&lt;String&gt;();
+        List&lt;String&gt; citiesTarget = new ArrayList&lt;String&gt;();
+        
+        citiesSource.add("San Francisco");
+        citiesSource.add("London");
+        citiesSource.add("Paris");
+        citiesSource.add("Istanbul");
+        citiesSource.add("Berlin");
+        citiesSource.add("Barcelona");
+        citiesSource.add("Rome");
+        
+        cities = new DualListModel&lt;String&gt;(citiesSource, citiesTarget);
+        
+        //Themes
+        List&lt;Theme&gt; themesSource = service.getThemes().subList(0, 6);
+        List&lt;Theme&gt; themesTarget = new ArrayList&lt;Theme&gt;();
+        
+        themes = new DualListModel&lt;Theme&gt;(themesSource, themesTarget);
+        
+    }
+
+    public DualListModel&lt;String&gt; getCities() {
+        return cities;
+    }
+
+    public void setCities(DualListModel&lt;String&gt; cities) {
+        this.cities = cities;
+    }
+
+    public ThemeService getService() {
+        return service;
+    }
+
+    public void setService(ThemeService service) {
+        this.service = service;
+    }
+
+    public DualListModel&lt;Theme&gt; getThemes() {
+        return themes;
+    }
+
+    public void setThemes(DualListModel&lt;Theme&gt; themes) {
+        this.themes = themes;
+    }
+    
+    public void onTransfer(TransferEvent event) {
+        StringBuilder builder = new StringBuilder();
+        for(Object item : event.getItems()) {
+            builder.append(((Theme) item).getName()).append("&lt;br /&gt;");
+        }
+        
+        FacesMessage msg = new FacesMessage();
+        msg.setSeverity(FacesMessage.SEVERITY_INFO);
+        msg.setSummary("Items Transferred");
+        msg.setDetail(builder.toString());
+        
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }  
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-344" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

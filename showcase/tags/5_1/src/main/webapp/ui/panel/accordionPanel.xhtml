@@ -1,0 +1,339 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        AccordionPanel
+    </ui:define>
+
+    <ui:define name="description">
+        AccordionPanel is a container component with vertically stacked panels.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form id="form">  
+            <p:growl id="msgs" showDetail="true" />
+        
+            <h3 style="margin-top:0">Basic</h3>
+            <p:accordionPanel>
+                <p:tab title="Godfather Part I">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
+                        <h:outputText
+                            value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T
+                            hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, 
+                            but given to ruthless violence whenever anything stands against the good of the family." />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Godfather Part II">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather2.jpg" />
+                        <h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. 
+                        In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, 
+                        killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows." />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Godfather Part III">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather3.jpg" />
+                        <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. 
+                            Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />
+                    </h:panelGrid>
+                </p:tab>
+            </p:accordionPanel>
+
+            <h3>Multiple Selection</h3>
+            <p:accordionPanel multiple="true">
+                <p:tab title="Godfather Part I">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
+                        <h:outputText
+                            value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T
+                            hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, 
+                            but given to ruthless violence whenever anything stands against the good of the family." />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Godfather Part II">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather2.jpg" />
+                        <h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. 
+                        In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, 
+                        killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows." />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Godfather Part III">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather3.jpg" />
+                        <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. 
+                            Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />
+                    </h:panelGrid>
+                </p:tab>
+            </p:accordionPanel>
+
+            <h3>On-Demand Loading</h3>
+            <p:accordionPanel dynamic="true" cache="true">
+                <p:tab title="Godfather Part I">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
+                        <h:outputText
+                            value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T
+                            hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, 
+                            but given to ruthless violence whenever anything stands against the good of the family." />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Godfather Part II">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather2.jpg" />
+                        <h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. 
+                        In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, 
+                        killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows." />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Godfather Part III">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather3.jpg" />
+                        <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. 
+                            Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />
+                    </h:panelGrid>
+                </p:tab>
+            </p:accordionPanel>
+
+            <h3>Change Event</h3>
+            <p:accordionPanel>
+                <p:ajax event="tabChange" listener="#{tabbedView.onTabChange}" update=":form:msgs" />
+                <p:ajax event="tabClose" listener="#{tabbedView.onTabClose}" update=":form:msgs" />
+                
+                <p:tab title="Godfather Part I">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
+                        <h:outputText
+                            value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T
+                            hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, 
+                            but given to ruthless violence whenever anything stands against the good of the family." />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Godfather Part II">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather2.jpg" />
+                        <h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. 
+                        In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, 
+                        killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows." />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Godfather Part III">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather3.jpg" />
+                        <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. 
+                            Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />
+                    </h:panelGrid>
+                </p:tab>
+            </p:accordionPanel>
+            
+            <h3>DataModel</h3>
+            <p:accordionPanel value="#{tabbedView.cars}" var="car">
+                <p:tab title="Car - #{car.id}">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <f:facet name="header">
+                            <p:graphicImage name="demo/images/car/#{car.brand}-big.gif" />
+                        </f:facet>                    
+                        <h:outputText value="Brand:" style="font-weight: bold" />
+                        <h:outputText value="#{car.brand}" />
+
+                        <h:outputText value="Year:" style="font-weight: bold" />
+                        <h:outputText value="#{car.year}" />
+
+                        <h:outputText value="Color:" style="font-weight: bold" />
+                        <h:outputText value="#{car.color}" />
+                    </h:panelGrid>
+                </p:tab>
+            </p:accordionPanel>
+        </h:form>
+                
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="accordionPanel.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form id="form"&gt;           
+    &lt;p:growl id="msgs" showDetail="true" /&gt;
+
+    &lt;h3 style="margin-top:0"&gt;Basic&lt;/h3&gt;
+    &lt;p:accordionPanel&gt;
+        &lt;p:tab title="Godfather Part I"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather1.jpg" /&gt;
+                &lt;h:outputText
+                    value="The story begins as Don Vito Corleone..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part II"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather2.jpg" /&gt;
+                &lt;h:outputText value="Francis Ford Coppola's legendary..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part III"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather3.jpg" /&gt;
+                &lt;h:outputText value="After a break of more than 15 years..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+    &lt;/p:accordionPanel&gt;
+
+    &lt;h3&gt;Multiple Selection&lt;/h3&gt;
+    &lt;p:accordionPanel multiple="true"&gt;
+        &lt;p:tab title="Godfather Part I"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather1.jpg" /&gt;
+                &lt;h:outputText
+                    value="The story begins as Don Vito Corleone..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part II"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather2.jpg" /&gt;
+                &lt;h:outputText value="Francis Ford Coppola's legendary..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part III"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather3.jpg" /&gt;
+                &lt;h:outputText value="After a break of more than 15 years...." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+    &lt;/p:accordionPanel&gt;
+
+    &lt;h3&gt;On-Demand Loading&lt;/h3&gt;
+    &lt;p:accordionPanel dynamic="true" cache="true"&gt;
+        &lt;p:tab title="Godfather Part I"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather1.jpg" /&gt;
+                &lt;h:outputText
+                    value="The story begins as Don Vito Corleone..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part II"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather2.jpg" /&gt;
+                &lt;h:outputText value="Francis Ford Coppola's legendary..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part III"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather3.jpg" /&gt;
+                &lt;h:outputText value="After a break of more than 15 years..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+    &lt;/p:accordionPanel&gt;
+
+    &lt;h3&gt;Change Event&lt;/h3&gt;
+    &lt;p:accordionPanel&gt;
+        &lt;p:ajax event="tabChange" listener="\#{tabbedView.onTabChange}" update=":form:msgs" /&gt;
+        &lt;p:ajax event="tabClose" listener="\#{tabbedView.onTabClose}" update=":form:msgs" /&gt;
+
+        &lt;p:tab title="Godfather Part I"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather1.jpg" /&gt;
+                &lt;h:outputText
+                    value="The story begins as Don Vito Corleone..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part II"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather2.jpg" /&gt;
+                &lt;h:outputText value="Francis Ford Coppola's legendary..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part III"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather3.jpg" /&gt;
+                &lt;h:outputText value="After a break of more than 15 years..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+    &lt;/p:accordionPanel&gt;
+
+    &lt;h3&gt;DataModel&lt;/h3&gt;
+    &lt;p:accordionPanel value="\#{tabbedView.cars}" var="car"&gt;
+        &lt;p:tab title="Car - \#{car.id}"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+                &lt;f:facet name="header"&gt;
+                    &lt;p:graphicImage name="demo/images/car/\#{car.brand}-big.gif" /&gt;
+                &lt;/f:facet&gt;                    
+                &lt;h:outputText value="Brand:" style="font-weight: bold" /&gt;
+                &lt;h:outputText value="\#{car.brand}" /&gt;
+
+                &lt;h:outputText value="Year:" style="font-weight: bold" /&gt;
+                &lt;h:outputText value="\#{car.year}" /&gt;
+
+                &lt;h:outputText value="Color:" style="font-weight: bold" /&gt;
+                &lt;h:outputText value="\#{car.color}" /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+    &lt;/p:accordionPanel&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="TabbedView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.panel;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.TabChangeEvent;
+import org.primefaces.event.TabCloseEvent;
+import org.primefaces.showcase.domain.Car;
+
+@ManagedBean
+public class TabbedView {
+    
+    private List&lt;Car&gt; cars;
+
+    @PostConstruct
+    public void init() {
+        cars = new ArrayList&lt;Car&gt;();
+        cars.add(new Car("Y25YIH5", "Fiat", 2014, "Black", 10000, true));
+        cars.add(new Car("JHF261G", "BMW", 2013, "Blue", 50000, true));
+        cars.add(new Car("HSFY23H", "Ford", 2012, "Black", 35000, false));
+        cars.add(new Car("GMDK353", "Volvo", 2014, "White", 40000, true));
+        cars.add(new Car("345GKM5", "Jaguar", 2011, "Gray", 48000, false));
+    }
+    
+    public List&lt;Car&gt; getCars() {
+        return cars;
+    }
+    
+    public void onTabChange(TabChangeEvent event) {
+        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+        
+    public void onTabClose(TabCloseEvent event) {
+        FacesMessage msg = new FacesMessage("Tab Closed", "Closed tab: " + event.getTab().getTitle());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-14" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

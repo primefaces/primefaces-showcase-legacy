@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile">
+    
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
+    
+    <h:head>
+        <h:outputStylesheet name="main/css/sh.css" />
+    </h:head>
+    
+    <h:body>
+        
+        <pm:page id="main">
+            <pm:header title="News" swatch="b"></pm:header>
+            
+            <pm:content>
+                <h:form id="mainForm">
+                    <p:growl id="messages" showDetail="true" />
+                    
+                    <p:dataList var="group" value="#{newsView.groups}">
+                        <p:commandLink value="#{group.title}" action="pm:group?transition=slide" update=":group:groupTitle :group:groupForm:entries">
+                            <f:setPropertyActionListener value="#{group}" target="#{newsView.selectedGroup}" />
+                        </p:commandLink>
+                    </p:dataList>
+                </h:form>
+            </pm:content>
+            
+            <h2>Source</h2>
+                <p:accordionPanel activeIndex="-1">
+                    <p:tab title="news.xhtml">
+                        <pre class="brush:xml">
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"&gt;
+    
+    &lt;f:view renderKitId="PRIMEFACES_MOBILE" /&gt;
+    
+    &lt;h:head&gt;
+        &lt;link type="text/css" rel="stylesheet" href="\#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" /&gt;
+    &lt;/h:head&gt;
+    
+    &lt;h:body&gt;
+        
+        &lt;pm:page id="main"&gt;
+            &lt;pm:header title="News" swatch="b"&gt;&lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                &lt;h:form id="mainForm"&gt;
+                    &lt;p:growl id="messages" showDetail="true" /&gt;
+                    
+                    &lt;p:dataList var="group" value="\#{newsView.groups}"&gt;
+                        &lt;p:commandLink value="\#{group.title}" action="pm:group?transition=slide" update=":group:groupTitle :group:groupForm:entries"&gt;
+                            &lt;f:setPropertyActionListener value="\#{group}" target="\#{newsView.selectedGroup}" /&gt;
+                        &lt;/p:commandLink&gt;
+                    &lt;/p:dataList&gt;
+                &lt;/h:form&gt;
+            &lt;/pm:content&gt;
+
+            &lt;pm:footer title="Feeds from Reuters" /&gt;
+        &lt;/pm:page&gt;
+        
+        &lt;pm:page id="group"&gt;
+            &lt;pm:header swatch="b"&gt;
+                &lt;p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:main?transition=slide&amp;reverse=true" /&gt;
+                &lt;h1&gt;&lt;h:outputText id="groupTitle" value="\#{newsView.selectedGroup.title}" /&gt;&lt;/h1&gt;
+            &lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                &lt;h:form id="groupForm"&gt;
+                    &lt;p:dataList id="entries" var="newsEntry" value="\#{newsView.selectedGroup.entries}"&gt;
+                        &lt;p:commandLink value="\#{newsEntry.title}" action="pm:entry?transition=slide" update=":entry:entryDetail"&gt;
+                            &lt;f:setPropertyActionListener value="\#{newsEntry}" target="\#{newsView.selectedEntry}" /&gt;
+                        &lt;/p:commandLink&gt;
+                    &lt;/p:dataList&gt;
+                &lt;/h:form&gt;
+            &lt;/pm:content&gt;
+        &lt;/pm:page&gt;
+        
+        &lt;pm:page id="entry"&gt;
+            &lt;pm:header title="Detail" swatch="b"&gt;
+                &lt;p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:group?transition=slide&amp;reverse=true" /&gt;
+            &lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                &lt;h:outputText id="entryDetail" value="\#{newsView.selectedEntry.content}" escape="false"/&gt;
+            &lt;/pm:content&gt;
+        &lt;/pm:page&gt;
+        
+        &lt;script language="javascript" src="\#{request.contextPath}/syntaxhighlighter/scripts/sh.js"&gt;&lt;/script&gt;
+        &lt;script language="javascript"&gt;
+            SyntaxHighlighter.all();
+        &lt;/script&gt;
+    &lt;/h:body&gt;
+    
+&lt;/html&gt;
+                        </pre>   
+                    </p:tab>
+                    <p:tab title="NewsView.java">
+                        <pre class="brush:java">
+package org.primefaces.showcase.mobile;
+
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.SyndFeedInput;
+import com.sun.syndication.io.XmlReader;
+import java.io.Serializable;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.showcase.domain.NewsEntry;
+import org.primefaces.showcase.domain.NewsGroup;
+
+@ManagedBean
+@ApplicationScoped
+public class NewsView implements Serializable {
+
+	private List&lt;NewsGroup&gt; groups;
+	private NewsEntry selectedEntry;
+    private NewsGroup selectedGroup;
+    private Map&lt;String,String&gt; feeds;
+
+    @PostConstruct
+	public void init() {
+		feeds = new HashMap&lt;String, String&gt;();
+		feeds.put("Top Stories", "http://feeds.reuters.com/reuters/topNews");
+		feeds.put("World", "http://feeds.reuters.com/Reuters/worldNews");
+		feeds.put("Technology", "http://feeds.reuters.com/reuters/technologyNews");
+		feeds.put("Sports", "http://feeds.reuters.com/reuters/sportsNews");
+		feeds.put("Entertainment", " 	http://feeds.reuters.com/reuters/entertainment");
+		feeds.put("Business", "http://feeds.reuters.com/reuters/businessNews");
+		feeds.put("Politics", "http://feeds.reuters.com/Reuters/PoliticsNews");
+        
+        groups = fetchNews();
+	}
+
+	public List&lt;NewsGroup&gt; getGroups() {
+		return groups;
+	}
+
+    public NewsEntry getSelectedEntry() {
+        return selectedEntry;
+    }
+    public void setSelectedEntry(NewsEntry selectedEntry) {
+        this.selectedEntry = selectedEntry;
+    }
+
+    public NewsGroup getSelectedGroup() {
+        return selectedGroup;
+    }
+    public void setSelectedGroup(NewsGroup selectedGroup) {
+        this.selectedGroup = selectedGroup;
+    }
+    
+    public List&lt;NewsGroup&gt; fetchNews() {
+		List&lt;NewsGroup&gt; news = new ArrayList&lt;NewsGroup&gt;();
+		try {
+			for(String key : feeds.keySet()) {
+				URL feedSource = new URL(feeds.get(key));
+				SyndFeedInput input = new SyndFeedInput();
+				SyndFeed feed = input.build(new XmlReader(feedSource));
+				List&lt;NewsEntry&gt; entries = new ArrayList&lt;NewsEntry&gt;();
+				
+				int i = 0;
+				for(Object f : feed.getEntries()) {
+					SyndEntry entry = (SyndEntry) f;
+                    String title = entry.getTitle();
+                    title = title.length() &lt;= 25 ? title : title.substring(0, 25);
+					entries.add(new NewsEntry(i, title + "...", entry.getDescription().getValue()));
+					i++;
+				}
+				
+				news.add(new NewsGroup(key, entries)); 
+			}
+		
+		} catch(Exception exception) {
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Please try again");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+		}
+		
+		return news;
+	}
+}
+                        </pre>
+                    </p:tab>
+                    <p:tab title="NewsGroup.java">
+                        <pre class="brush:java">
+package org.primefaces.examples.domain;
+
+import java.io.Serializable;
+import java.util.List;
+
+public class NewsGroup implements Serializable {
+
+	private String title;
+	
+	private List&lt;NewsEntry&gt; entries;
+	
+	public NewsGroup() {
+		
+	}
+
+	public NewsGroup(String title, List&lt;NewsEntry&gt; entries) {
+		this.title = title;
+		this.entries = entries;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public List&lt;NewsEntry&gt; getEntries() {
+		return entries;
+	}
+
+	public void setEntries(List&lt;NewsEntry&gt; entries) {
+		this.entries = entries;
+	}
+}
+                        </pre>
+                    </p:tab>
+                    <p:tab title="NewsEntry.java">
+                        <pre class="brush:java">
+package org.primefaces.examples.domain;
+
+import java.io.Serializable;
+
+public class NewsEntry implements Serializable {
+	
+	private String title;
+	private String content;
+	private int index;
+
+	public NewsEntry() {
+		
+	}
+	
+	public NewsEntry(int index, String title, String content) {
+		this.index = index;
+		this.content = content;
+		this.title = title;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+}
+                        </pre>
+                    </p:tab>
+                </p:accordionPanel>
+            
+            <pm:footer title="Feeds from Reuters" />
+        </pm:page>
+        
+        <pm:page id="group">
+            <pm:header swatch="b">
+                <p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:main?transition=slide&amp;reverse=true" />
+                <h1><h:outputText id="groupTitle" value="#{newsView.selectedGroup.title}" /></h1>
+            </pm:header>
+            
+            <pm:content>
+                <h:form id="groupForm">
+                    <p:dataList id="entries" var="newsEntry" value="#{newsView.selectedGroup.entries}">
+                        <p:commandLink value="#{newsEntry.title}" action="pm:entry?transition=slide" update=":entry:entryDetail">
+                            <f:setPropertyActionListener value="#{newsEntry}" target="#{newsView.selectedEntry}" />
+                        </p:commandLink>
+                    </p:dataList>
+                </h:form>
+            </pm:content>
+        </pm:page>
+        
+        <pm:page id="entry">
+            <pm:header title="Detail" swatch="b">
+                <p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:group?transition=slide&amp;reverse=true" />
+            </pm:header>
+            
+            <pm:content>
+                <h:outputText id="entryDetail" value="#{newsView.selectedEntry.content}" escape="false"/>
+            </pm:content>
+        </pm:page>
+        
+        <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
+        <script language="javascript">
+            SyntaxHighlighter.all();
+        </script>
+    </h:body>
+    
+</html>

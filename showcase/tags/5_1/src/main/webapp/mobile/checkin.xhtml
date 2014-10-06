@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile">
+    
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
+    
+    <h:head>
+        <h:outputStylesheet name="main/css/sh.css" />
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script type="text/javascript">
+            //<![CDATA[
+                function handleMessage(data) {
+                    var coords = new google.maps.LatLng(data.lat, data.lng),
+                    map = PF('wmap'),
+                    marker = new google.maps.Marker({
+						position: coords
+                        ,title: data.title
+					});
+									            
+					map.addOverlay(marker);
+                     
+                    map.infowindow = new google.maps.InfoWindow({
+                        content: '<h3>' + data.title + " just checked in!</h3>"
+                    });
+            
+                    map.getMap().setCenter(coords);
+                    map.infowindow.open(map.getMap(), marker);
+                }
+                
+                $(function() {
+                    navigator.geolocation.getCurrentPosition(
+                        function(position) {                            
+                            $(PrimeFaces.escapeClientId('form:lat')).val(position.coords.latitude);
+                            $(PrimeFaces.escapeClientId('form:lng')).val(position.coords.longitude);
+                        },
+                        function(error) {
+                            alert(error.message);
+                        },
+                        {
+                           enableHighAccuracy: true
+                        });
+                });
+            //]]> 
+        </script>
+    </h:head>
+    
+    <h:body>
+        
+        <pm:page id="first">
+            <pm:header title="Checkin" swatch="b"></pm:header>
+            
+            <pm:content>
+                
+                 <p>Checkin is a real-time location sharing sample. Click the checkin button to send your location to 
+                 all subscribers and receive new checkins instantly.</p>
+
+                
+                <h:form id="form">
+                    <p:gmap style="width:100%;height:15em" zoom="15" type="HYBRID" center="41.381542, 2.122893" widgetVar="wmap"/>
+                    <p:inputText value="#{checkinView.checkin.title}" placeholder="Name" />
+                    <p:commandButton value="Checkin" icon="ui-icon-navigation" actionListener="#{checkinView.publish}"/>
+                
+                    <h:inputHidden id="lat" value="#{checkinView.checkin.lat}" />
+                    <h:inputHidden id="lng" value="#{checkinView.checkin.lng}" />
+                </h:form>
+                
+                <p:socket onMessage="handleMessage" channel="/checkin" />
+                
+                <h2>Source</h2>
+                <p:accordionPanel activeIndex="-1">
+                    <p:tab title="checkin.xhtml">
+                        <pre class="brush:xml">
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"&gt;
+    
+    &lt;f:view renderKitId="PRIMEFACES_MOBILE" /&gt;
+    
+    &lt;h:head&gt;
+        &lt;script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript"&gt;
+            function handleMessage(data) {
+                var coords = new google.maps.LatLng(data.lat, data.lng),
+                map = PF('wmap'),
+                marker = new google.maps.Marker({
+                    position: coords
+                    ,title: data.title
+                });
+
+                map.addOverlay(marker);
+
+                map.infowindow = new google.maps.InfoWindow({
+                    content: '&lt;h3&gt;' + data.title + " just checked in!&lt;/h3&gt;"
+                });
+
+                map.getMap().setCenter(coords);
+                map.infowindow.open(map.getMap(), marker);
+            }
+
+            $(function() {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {                            
+                        $(PrimeFaces.escapeClientId('form:lat')).val(position.coords.latitude);
+                        $(PrimeFaces.escapeClientId('form:lng')).val(position.coords.longitude);
+                    },
+                    function(error) {
+                        alert(error.message);
+                    },
+                    {
+                       enableHighAccuracy: true
+                    });
+            });
+        &lt;/script&gt;
+    &lt;/h:head&gt;
+    
+    &lt;h:body&gt;
+        
+        &lt;pm:page id="first"&gt;
+            &lt;pm:header title="Checkin" swatch="b"&gt;&lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                
+                 &lt;p&gt;Checkin is a real-time location sharing sample. Click the checkin button to send your location to 
+                 all subscribers and receive new checkins instantly.&lt;/p&gt;
+
+                
+                &lt;h:form id="form"&gt;
+                    &lt;p:gmap style="width:100%;height:15em" zoom="15" type="HYBRID" center="41.381542, 2.122893" widgetVar="wmap"/&gt;
+                    &lt;p:inputText value="\#{checkinView.checkin.title}" placeholder="Name" /&gt;
+                    &lt;p:commandButton value="Checkin" icon="ui-icon-navigation" actionListener="\#{checkinView.publish}"/&gt;
+                
+                    &lt;h:inputHidden id="lat" value="\#{checkinView.checkin.lat}" /&gt;
+                    &lt;h:inputHidden id="lng" value="\#{checkinView.checkin.lng}" /&gt;
+                &lt;/h:form&gt;
+                
+                &lt;p:socket onMessage="handleMessage" channel="/checkin" /&gt;
+
+            &lt;/pm:content&gt;
+        &lt;/pm:page&gt;
+        
+    &lt;/h:body&gt;
+    
+&lt;/html&gt;
+                        </pre>
+                    </p:tab>
+
+                    <p:tab title="CheckinView.java">
+                        <pre class="brush:java">
+package org.primefaces.examples.push.checkin;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import org.primefaces.push.EventBus;
+import org.primefaces.push.EventBusFactory;
+
+@ManagedBean
+@RequestScoped
+public class CheckinView {
+    
+    private Checkin checkin;
+
+    @PostConstruct
+    public void init() {
+        checkin = new Checkin();
+    }
+    
+    public Checkin getCheckin() {
+        return checkin;
+    }
+    public void setCheckin(Checkin checkin) {
+        this.checkin = checkin;
+    }
+    
+    public void publish() {
+        EventBus eventBus = EventBusFactory.getDefault().eventBus();
+        eventBus.publish("/checkin", checkin);
+    }
+    
+}
+                        </pre>
+                    </p:tab>
+
+                    <p:tab title="CheckinResource.java">
+                        <pre class="brush:java">
+package org.primefaces.examples.push.checkin;
+
+import org.primefaces.push.annotation.OnMessage;
+import org.primefaces.push.annotation.PushEndpoint;
+import org.primefaces.push.impl.JSONEncoder;
+
+@PushEndpoint("/checkin")
+public class CheckinResource {
+    
+    @OnMessage(encoders = {JSONEncoder.class})
+    public Checkin onMessage(Checkin checkin) {
+        return checkin;
+    }
+}
+                        </pre>
+                    </p:tab>
+                </p:accordionPanel>
+
+            </pm:content>
+        </pm:page>
+        
+        <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
+        <script language="javascript">
+            SyntaxHighlighter.all();
+        </script>
+    </h:body>
+    
+</html>

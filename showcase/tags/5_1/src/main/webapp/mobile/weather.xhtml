@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile">
+    
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
+    
+    <h:head>
+        <h:outputStylesheet name="main/css/sh.css" />
+    </h:head>
+    
+    <h:body>
+        
+        <pm:page id="main">
+            <pm:header title="Weather" swatch="b">
+                <p:button styleClass="ui-btn-right ui-btn-inline" value="Settings" icon="ui-icon-gear" outcome="pm:settings" />
+            </pm:header>
+            
+            <pm:content>
+                
+                <h:form id="mainForm">
+                    <pm:field>
+                        <p:outputLabel for="city" value="Select City:" />
+                        <p:selectOneMenu id="city" value="#{weatherView.city}">
+                            <f:selectItems value="#{weatherView.cities}" />
+                        </p:selectOneMenu>
+                    </pm:field>
+
+                    <p:commandButton value="Get Forecast" update="display" actionListener="#{weatherView.retrieveConditions}"/>
+
+                    <p:outputPanel id="display" style="text-align:center">
+                        <h:outputText value="#{weatherView.conditions}" escape="false" />
+                    </p:outputPanel>
+                </h:form>
+                
+                <h2>Source</h2>
+                <p:accordionPanel activeIndex="-1" multiple="true">
+                    <p:tab title="weather.xhtml">
+                        <pre class="brush:xml">
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"&gt;
+    
+    &lt;f:view renderKitId="PRIMEFACES_MOBILE" /&gt;
+    
+    &lt;h:head&gt;
+
+    &lt;/h:head&gt;
+    
+    &lt;h:body&gt;
+        
+        &lt;pm:page id="main"&gt;
+            &lt;pm:header title="Weather" swatch="b"&gt;
+                &lt;p:button styleClass="ui-btn-right ui-btn-inline" value="Settings" icon="ui-icon-gear" outcome="pm:settings" /&gt;
+            &lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                
+                &lt;h:form id="mainForm"&gt;
+                    &lt;pm:field&gt;
+                        &lt;p:outputLabel for="city" value="Select City:" /&gt;
+                        &lt;p:selectOneMenu id="city" value="\#{weatherView.city}"&gt;
+                            &lt;f:selectItems value="\#{weatherView.cities}" /&gt;
+                        &lt;/p:selectOneMenu&gt;
+                    &lt;/pm:field&gt;
+
+                    &lt;p:commandButton value="Get Forecast" update="display" actionListener="\#{weatherView.retrieveConditions}"/&gt;
+
+                    &lt;p:outputPanel id="display" style="text-align:center"&gt;
+                        &lt;h:outputText value="\#{weatherView.conditions}" escape="false" /&gt;
+                    &lt;/p:outputPanel&gt;
+                &lt;/h:form&gt;
+                
+            &lt;/pm:content&gt;
+        &lt;/pm:page&gt;
+        
+        &lt;pm:page id="settings"&gt;
+            &lt;pm:header title="Settings" swatch="b"&gt;
+                &lt;p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:main" /&gt;
+            &lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                
+                &lt;h:form id="settingsForm"&gt;
+                    &lt;pm:field&gt;
+                        &lt;p:outputLabel for="unit" value="Unit:" /&gt;
+                        &lt;p:selectOneMenu id="unit" value="\#{weatherView.unit}"&gt;
+                            &lt;f:selectItem itemLabel="Celcius" itemValue="c" /&gt;
+                            &lt;f:selectItem itemLabel="Fahrenheit" itemValue="f" /&gt;
+                        &lt;/p:selectOneMenu&gt;
+                    &lt;/pm:field&gt;
+
+                    &lt;p:commandButton value="Save" action="\#{weatherView.saveSettings}"/&gt;
+                &lt;/h:form&gt;
+                
+            &lt;/pm:content&gt;
+        &lt;/pm:page&gt;
+    &lt;/h:body&gt;
+    
+&lt;/html&gt;
+                        </pre>
+                    </p:tab>
+                    <p:tab title="WeatherView.java">
+                        <pre class="brush:java">
+package org.primefaces.showcase.mobile;
+
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.SyndFeedInput;
+import com.sun.syndication.io.XmlReader;
+import java.io.Serializable;
+import java.net.URL;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+@ManagedBean
+@ViewScoped
+public class WeatherView implements Serializable {
+
+	private String conditions;
+	private String city;
+	private String unit = "c";
+    private Map&lt;String,String&gt; cities;
+    
+    private static final Logger logger = Logger.getLogger(WeatherView.class.getName());
+
+    @PostConstruct
+    public void init() {
+        cities = new LinkedHashMap&lt;String, String&gt;();
+        cities.put("Istanbul", "TUXX0014");
+        cities.put("Barcelona", "SPXX0015");
+        cities.put("London", "UKXX0085");
+        cities.put("New York", "USNY0996");
+        cities.put("Paris", "FRXX2071");
+        cities.put("Rome", "ITXX0067");
+    }
+
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getConditions() {
+		return conditions;
+	}
+	public void setConditions(String conditions) {
+		this.conditions = conditions;
+	}
+		
+	public String getUnit() {
+		return unit;
+	}
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+    public Map&lt;String, String&gt; getCities() {
+        return cities;
+    }
+
+    public void retrieveConditions() {
+        try {
+			URL feedSource = new URL("http://weather.yahooapis.com/forecastrss?p=" + city + "&amp;u=" + unit);
+			SyndFeedInput input = new SyndFeedInput();
+			SyndFeed feed = input.build(new XmlReader(feedSource));
+			String value = ((SyndEntry) feed.getEntries().get(0)).getDescription().getValue();
+			
+			conditions = value.split("&lt;a href")[0];
+		} catch (Exception e) {
+			logger.severe(e.getMessage());
+            conditions = "Unable to retrieve weather forecast at the moment.";
+		}
+	}
+
+    public String saveSettings() {
+        conditions = null;
+        return "pm:main";
+    }
+}
+                        </pre>
+                    </p:tab>
+                </p:accordionPanel>
+                
+            </pm:content>
+        </pm:page>
+        
+        <pm:page id="settings">
+            <pm:header title="Settings" swatch="b">
+                <p:button styleClass="ui-btn-left ui-btn-inline" value="Back" icon="ui-icon-arrow-l" outcome="pm:main" />
+            </pm:header>
+            
+            <pm:content>
+                
+                <h:form id="settingsForm">
+                    <pm:field>
+                        <p:outputLabel for="unit" value="Unit:" />
+                        <p:selectOneMenu id="unit" value="#{weatherView.unit}">
+                            <f:selectItem itemLabel="Celcius" itemValue="c" />
+                            <f:selectItem itemLabel="Fahrenheit" itemValue="f" />
+                        </p:selectOneMenu>
+                    </pm:field>
+
+                    <p:commandButton value="Save" action="#{weatherView.saveSettings}"/>
+                </h:form>
+                
+            </pm:content>
+        </pm:page>
+        
+        <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
+        <script language="javascript">
+            SyntaxHighlighter.all();
+        </script>
+                
+    </h:body>
+    
+</html>

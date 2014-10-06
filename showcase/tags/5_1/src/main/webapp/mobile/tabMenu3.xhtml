@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/WEB-INF/mobile.xhtml">
+    
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>TabMenu</h1>
+            <p>TabMenu is a navigation component mainly used at header and footer sections.</p>
+            
+            <h2 class="first">Search Page</h2>
+            <p:tabMenu activeIndex="2">
+                <p:menuitem value="Home" icon="ui-icon-home" outcome="tabMenu" iconPos="top"/>
+                <p:menuitem value="Settings" icon="ui-icon-gear" outcome="tabMenu2" iconPos="top"/>
+                <p:menuitem value="Search" icon="ui-icon-search" outcome="tabMenu3" iconPos="top"/>
+            </p:tabMenu>
+            
+            <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1">
+                <p:tab title="tabMenu3.xhtml">
+                    <pre class="brush:xml">
+&lt;p:tabMenu activeIndex="2"&gt;
+    &lt;p:menuitem value="Home" icon="ui-icon-home" outcome="tabMenu" iconPos="top"/&gt;
+    &lt;p:menuitem value="Settings" icon="ui-icon-gear" outcome="tabMenu2" iconPos="top"/&gt;
+    &lt;p:menuitem value="Search" icon="ui-icon-search" outcome="tabMenu3" iconPos="top"/&gt;
+&lt;/p:tabMenu&gt;
+                    </pre>
+                </p:tab>
+            </p:accordionPanel>
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>

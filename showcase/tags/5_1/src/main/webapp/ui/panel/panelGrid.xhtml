@@ -1,0 +1,342 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        PanelGrid
+    </ui:define>
+
+    <ui:define name="description">
+        PanelGrid is an extension to the standard panelGrid with theme integration, grouping and responsive features.
+    </ui:define>
+    
+      <ui:define name="head">
+        <style type="text/css">
+            .ui-panelgrid .ui-grid-responsive .ui-panelgrid-cell {
+                text-align: center;
+            }
+        </style>
+	</ui:define>
+
+    
+    <ui:define name="implementation">
+        
+        <h3 style="margin-top:0">Basic</h3>
+        <p:panelGrid columns="2">
+            <f:facet name="header">
+                <p:graphicImage name="demo/images/misc/kobe.png" />
+            </f:facet>
+            
+            <h:outputText value="Name:" />
+            <h:outputText value="Kobe Bryant" />
+            
+            <h:outputText value="Team:" />
+            <h:outputText value="Los Angeles Lakers" />
+            
+            <h:outputText value="Position:" />
+            <h:outputText value="Shooting Guard" />
+            
+            <h:outputText value="Number:" />
+            <h:outputText value="24" />
+        </p:panelGrid>
+        
+        <h3>Responsive</h3>
+        <p:panelGrid columns="3" layout="grid">            
+            <h:outputText value="Content" /> 
+            <h:outputText value="Content" /> 
+            <h:outputText value="Content" /> 
+            
+            <h:outputText value="Content" /> 
+            <h:outputText value="Content" /> 
+            <h:outputText value="Content" /> 
+            
+            <h:outputText value="Content" /> 
+            <h:outputText value="Content" /> 
+            <h:outputText value="Content" /> 
+        </p:panelGrid>
+
+        <h3>Grouping</h3>
+        <p:panelGrid style="margin-top:20px">
+            <f:facet name="header">
+                <p:row>
+                    <p:column colspan="7">1995-96 NBA Playoffs</p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="2">Conf. Semifinals</p:column>
+                    <p:column colspan="2">Conf. Finals</p:column>
+                    <p:column colspan="2">NBA Finals</p:column>
+                    <p:column>Champion</p:column>
+                </p:row>
+
+            </f:facet>
+
+            <p:row>
+                <p:column style="font-weight: bold;">Seattle</p:column>
+                <p:column style="font-weight: bold;">4</p:column>
+
+                <p:column rowspan="2" style="font-weight: bold;">Seattle</p:column>
+                <p:column rowspan="2" style="font-weight: bold;">4</p:column>
+
+                <p:column rowspan="5">Seattle</p:column>
+                <p:column rowspan="5">2</p:column>
+
+                <p:column rowspan="11" style="font-weight: bold;">Chicago</p:column>
+            </p:row>
+
+            <p:row>
+                <p:column>Houston</p:column>
+                <p:column >0</p:column>
+            </p:row>
+
+            <p:row>
+                <p:column colspan="4" styleClass="ui-widget-header">
+                    <p:spacer height="0"/>
+                </p:column>
+            </p:row>
+
+            <p:row>
+                <p:column style="font-weight: bold;">Utah</p:column>
+                <p:column style="font-weight: bold;">4</p:column>
+
+                <p:column rowspan="2">Utah</p:column>
+                <p:column rowspan="2">3</p:column>
+            </p:row>
+
+            <p:row>
+                <p:column>San Antonio</p:column>
+                <p:column >2</p:column>
+            </p:row>
+
+            <p:row>
+                <p:column colspan="6" styleClass="ui-widget-header">
+                    <p:spacer height="0"/>
+                </p:column>
+            </p:row>
+
+            <p:row>
+                <p:column style="font-weight: bold;">Chicago</p:column>
+                <p:column style="font-weight: bold;">4</p:column>
+
+                <p:column rowspan="2" style="font-weight: bold;">Chicago</p:column>
+                <p:column rowspan="2" style="font-weight: bold;">4</p:column>
+
+                <p:column rowspan="5" style="font-weight: bold;">Chicago</p:column>
+                <p:column rowspan="5" style="font-weight: bold;">4</p:column>
+            </p:row>
+
+            <p:row>
+                <p:column>New York</p:column>
+                <p:column >1</p:column>
+            </p:row>
+
+            <p:row>
+                <p:column colspan="4" styleClass="ui-widget-header">
+                    <p:spacer height="0"/>
+                </p:column>
+            </p:row>
+
+            <p:row>
+                <p:column>Atlanta</p:column>
+                <p:column >1</p:column>
+
+                <p:column rowspan="2">Orlando</p:column>
+                <p:column rowspan="2">0</p:column>
+            </p:row>
+
+            <p:row>
+                <p:column style="font-weight: bold;">Orlando</p:column>
+                <p:column style="font-weight: bold;">4</p:column>
+            </p:row>
+
+
+            <f:facet name="footer">
+                <p:row>
+                    <p:column  colspan="4" style="text-align: right">
+                        Finals MVP
+                    </p:column>
+                    <p:column  colspan="3" rowspan="3">
+                        Michael Jordan (Chicago)
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column  colspan="4" style="text-align: right">
+                        Season MVP
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column  colspan="4" style="text-align: right">
+                        Top Scorer
+                    </p:column>
+                </p:row>
+            </f:facet>
+        </p:panelGrid>
+
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="panelGrid.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h3&gt;Basic&lt;/h3&gt;
+&lt;p:panelGrid columns="2"&gt;
+    &lt;f:facet name="header"&gt;
+        &lt;p:graphicImage name="demo/images/misc/kobe.png" /&gt;
+    &lt;/f:facet&gt;
+
+    &lt;h:outputText value="Name:" /&gt;
+    &lt;h:outputText value="Kobe Bryant" /&gt;
+
+    &lt;h:outputText value="Team:" /&gt;
+    &lt;h:outputText value="Los Angeles Lakers" /&gt;
+
+    &lt;h:outputText value="Position:" /&gt;
+    &lt;h:outputText value="Shooting Guard" /&gt;
+
+    &lt;h:outputText value="Number:" /&gt;
+    &lt;h:outputText value="24" /&gt;
+&lt;/p:panelGrid&gt;
+
+&lt;h3&gt;Responsive&lt;/h3&gt;
+&lt;p:panelGrid columns="3" layout="grid"&gt;            
+    &lt;h:outputText value="Content" /&gt; 
+    &lt;h:outputText value="Content" /&gt; 
+    &lt;h:outputText value="Content" /&gt; 
+
+    &lt;h:outputText value="Content" /&gt; 
+    &lt;h:outputText value="Content" /&gt; 
+    &lt;h:outputText value="Content" /&gt; 
+
+    &lt;h:outputText value="Content" /&gt; 
+    &lt;h:outputText value="Content" /&gt; 
+    &lt;h:outputText value="Content" /&gt; 
+&lt;/p:panelGrid&gt;
+
+&lt;h3&gt;Grouping&lt;/h3&gt;
+&lt;p:panelGrid style="margin-top:20px"&gt;
+    &lt;f:facet name="header"&gt;
+        &lt;p:row&gt;
+            &lt;p:column colspan="7"&gt;1995-96 NBA Playoffs&lt;/p:column&gt;
+        &lt;/p:row&gt;
+        &lt;p:row&gt;
+            &lt;p:column colspan="2"&gt;Conf. Semifinals&lt;/p:column&gt;
+            &lt;p:column colspan="2"&gt;Conf. Finals&lt;/p:column&gt;
+            &lt;p:column colspan="2"&gt;NBA Finals&lt;/p:column&gt;
+            &lt;p:column&gt;Champion&lt;/p:column&gt;
+        &lt;/p:row&gt;
+
+    &lt;/f:facet&gt;
+
+    &lt;p:row&gt;
+        &lt;p:column style="font-weight: bold;"&gt;Seattle&lt;/p:column&gt;
+        &lt;p:column style="font-weight: bold;"&gt;4&lt;/p:column&gt;
+
+        &lt;p:column rowspan="2" style="font-weight: bold;"&gt;Seattle&lt;/p:column&gt;
+        &lt;p:column rowspan="2" style="font-weight: bold;"&gt;4&lt;/p:column&gt;
+
+        &lt;p:column rowspan="5"&gt;Seattle&lt;/p:column&gt;
+        &lt;p:column rowspan="5"&gt;2&lt;/p:column&gt;
+
+        &lt;p:column rowspan="11" style="font-weight: bold;"&gt;Chicago&lt;/p:column&gt;
+    &lt;/p:row&gt;
+
+    &lt;p:row&gt;
+        &lt;p:column&gt;Houston&lt;/p:column&gt;
+        &lt;p:column &gt;0&lt;/p:column&gt;
+    &lt;/p:row&gt;
+
+    &lt;p:row&gt;
+        &lt;p:column colspan="4" styleClass="ui-widget-header"&gt;
+            &lt;p:spacer height="0"/&gt;
+        &lt;/p:column&gt;
+    &lt;/p:row&gt;
+
+    &lt;p:row&gt;
+        &lt;p:column style="font-weight: bold;"&gt;Utah&lt;/p:column&gt;
+        &lt;p:column style="font-weight: bold;"&gt;4&lt;/p:column&gt;
+
+        &lt;p:column rowspan="2"&gt;Utah&lt;/p:column&gt;
+        &lt;p:column rowspan="2"&gt;3&lt;/p:column&gt;
+    &lt;/p:row&gt;
+
+    &lt;p:row&gt;
+        &lt;p:column&gt;San Antonio&lt;/p:column&gt;
+        &lt;p:column &gt;2&lt;/p:column&gt;
+    &lt;/p:row&gt;
+
+    &lt;p:row&gt;
+        &lt;p:column colspan="6" styleClass="ui-widget-header"&gt;
+            &lt;p:spacer height="0"/&gt;
+        &lt;/p:column&gt;
+    &lt;/p:row&gt;
+
+    &lt;p:row&gt;
+        &lt;p:column style="font-weight: bold;"&gt;Chicago&lt;/p:column&gt;
+        &lt;p:column style="font-weight: bold;"&gt;4&lt;/p:column&gt;
+
+        &lt;p:column rowspan="2" style="font-weight: bold;"&gt;Chicago&lt;/p:column&gt;
+        &lt;p:column rowspan="2" style="font-weight: bold;"&gt;4&lt;/p:column&gt;
+
+        &lt;p:column rowspan="5" style="font-weight: bold;"&gt;Chicago&lt;/p:column&gt;
+        &lt;p:column rowspan="5" style="font-weight: bold;"&gt;4&lt;/p:column&gt;
+    &lt;/p:row&gt;
+
+    &lt;p:row&gt;
+        &lt;p:column&gt;New York&lt;/p:column&gt;
+        &lt;p:column &gt;1&lt;/p:column&gt;
+    &lt;/p:row&gt;
+
+    &lt;p:row&gt;
+        &lt;p:column colspan="4" styleClass="ui-widget-header"&gt;
+            &lt;p:spacer height="0"/&gt;
+        &lt;/p:column&gt;
+    &lt;/p:row&gt;
+
+    &lt;p:row&gt;
+        &lt;p:column&gt;Atlanta&lt;/p:column&gt;
+        &lt;p:column &gt;1&lt;/p:column&gt;
+
+        &lt;p:column rowspan="2"&gt;Orlando&lt;/p:column&gt;
+        &lt;p:column rowspan="2"&gt;0&lt;/p:column&gt;
+    &lt;/p:row&gt;
+
+    &lt;p:row&gt;
+        &lt;p:column style="font-weight: bold;"&gt;Orlando&lt;/p:column&gt;
+        &lt;p:column style="font-weight: bold;"&gt;4&lt;/p:column&gt;
+    &lt;/p:row&gt;
+
+
+    &lt;f:facet name="footer"&gt;
+        &lt;p:row&gt;
+            &lt;p:column  colspan="4" style="text-align: right"&gt;
+                Finals MVP
+            &lt;/p:column&gt;
+            &lt;p:column  colspan="3" rowspan="3"&gt;
+                Michael Jordan (Chicago)
+            &lt;/p:column&gt;
+        &lt;/p:row&gt;
+
+        &lt;p:row&gt;
+            &lt;p:column  colspan="4" style="text-align: right"&gt;
+                Season MVP
+            &lt;/p:column&gt;
+        &lt;/p:row&gt;
+        &lt;p:row&gt;
+            &lt;p:column  colspan="4" style="text-align: right"&gt;
+                Top Scorer
+            &lt;/p:column&gt;
+        &lt;/p:row&gt;
+    &lt;/f:facet&gt;
+&lt;/p:panelGrid&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-332" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

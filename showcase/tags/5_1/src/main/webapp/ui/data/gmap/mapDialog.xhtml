@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="head">
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	</ui:define>
+    
+    <ui:define name="title">
+        GMap - <span class="subitem">Map in Dialog</span>
+    </ui:define>
+
+    <ui:define name="description">
+        This sample demonstrates using map inside a dialog.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <p:commandButton id="btn" type="button" icon="ui-icon-pin-s" value="Show Map" onclick="PF('dlg').show();" />
+			
+        <p:dialog id="gmapDialog" widgetVar="dlg" width="625" height="400" modal="true">
+            <p:gmap id="gmap" center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:600px;height:400px" />
+        </p:dialog>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="mapDialog.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:commandButton id="btn" type="button" icon="ui-icon-pin-s" value="Show Map" onclick="PF('dlg').show();" /&gt;
+			
+&lt;p:dialog id="gmapDialog" widgetVar="dlg" width="625" height="400" modal="true"&gt;
+    &lt;p:gmap id="gmap" center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:600px;height:400px" /&gt;
+&lt;/p:dialog&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-215" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

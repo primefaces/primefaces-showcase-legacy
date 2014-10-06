@@ -1,0 +1,66 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Galleria
+    </ui:define>
+
+    <ui:define name="description">
+        Galleria is a content gallery component.
+    </ui:define>
+
+    <ui:define name="implementation">
+        <p:galleria value="#{imagesView.images}" var="image" panelWidth="500" panelHeight="313" showCaption="true">
+            <p:graphicImage name="demo/images/nature/#{image}" alt="Image Description for #{image}" title="#{image}"/>
+        </p:galleria>
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="galleria.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:galleria value="\#{imagesView.images}" var="image" panelWidth="500" panelHeight="313" showCaption="true"&gt;
+    &lt;p:graphicImage name="demo/images/nature/\#{image}" alt="Image Description for \#{image}" title="\#{image}"/&gt;
+&lt;/p:galleria&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ImagesView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.multimedia;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class ImagesView {
+    
+    private List&lt;String&gt; images;
+    
+    @PostConstruct
+    public void init() {
+        images = new ArrayList&lt;String&gt;();
+        for (int i = 1; i &lt;= 12; i++) {
+            images.add("nature" + i + ".jpg");
+        }
+    }
+
+    public List&lt;String&gt; getImages() {
+        return images;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-212" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

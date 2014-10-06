@@ -1,0 +1,94 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Ajax Framework - <span class="subitem">Events</span>
+    </ui:define>
+
+    <ui:define name="description">
+        p:ajax enables ajax features on supported components.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <h:panelGrid columns="3" cellpadding="5">
+                <h:outputText value="KeyUp: " />
+                <p:inputText id="firstname" value="#{userView.firstname}">
+                    <p:ajax event="keyup" update="out1" />
+                </p:inputText>
+                <h:outputText id="out1" value="#{userView.firstname}" />
+
+                <h:outputText value="Blur: " />
+                <p:inputText id="surname" value="#{userView.lastname}">
+                    <p:ajax event="blur" update="out2" />
+                </p:inputText>
+                <h:outputText id="out2" value="#{userView.lastname}" />
+            </h:panelGrid>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="event.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;h:panelGrid columns="3" cellpadding="5"&gt;
+        &lt;h:outputText value="KeyUp: " /&gt;
+        &lt;p:inputText id="firstname" value="\#{userView.firstname}"&gt;
+            &lt;p:ajax event="keyup" update="out1" /&gt;
+        &lt;/p:inputText&gt;
+        &lt;h:outputText id="out1" value="\#{userView.firstname}" /&gt;
+
+        &lt;h:outputText value="Blur: " /&gt;
+        &lt;p:inputText id="surname" value="\#{userView.lastname}"&gt;
+            &lt;p:ajax event="blur" update="out2" /&gt;
+        &lt;/p:inputText&gt;
+        &lt;h:outputText id="out2" value="\#{userView.lastname}" /&gt;
+    &lt;/h:panelGrid&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="UserView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.ajax;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+@ManagedBean
+public class UserView {
+    
+    private String firstname;
+	private String lastname;
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

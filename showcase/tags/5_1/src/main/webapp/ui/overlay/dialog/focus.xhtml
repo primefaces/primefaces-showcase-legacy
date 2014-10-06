@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="title">
+        Dialog - <span class="subitem">Dynamic Focus</span>
+    </ui:define>
+
+    <ui:define name="description">
+        By default, the first input field receives focus automatically. It can be changed by using focus attribute.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>         
+            <p:commandButton value="Dynamic Focus" onclick="PF('dlg').show();" type="button" icon="ui-icon-extlink" />
+            
+            <p:dialog header="Dynamic Focus" widgetVar="dlg" focus="age">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="name" value="Name:" />
+                    <p:inputText id="name" label="name" />
+                    
+                    <h:outputLabel for="surname" value="Surname:" />
+                    <p:inputText id="surname" label="surname" />
+                    
+                    <h:outputLabel for="age" value="Age:" />
+                    <p:inputText id="age" label="age" />
+                </h:panelGrid>
+            </p:dialog>       
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="focus.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+            
+    &lt;p:commandButton value="Dynamic Focus" onclick="PF('dlg').show();" type="button" icon="ui-icon-extlink" /&gt;
+
+    &lt;p:dialog header="Dynamic Focus" widgetVar="dlg" focus="age"&gt;
+        &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+            &lt;h:outputLabel for="name" value="Name:" /&gt;
+            &lt;p:inputText id="name" label="name" /&gt;
+
+            &lt;h:outputLabel for="surname" value="Surname:" /&gt;
+            &lt;p:inputText id="surname" label="surname" /&gt;
+
+            &lt;h:outputLabel for="age" value="Age:" /&gt;
+            &lt;p:inputText id="age" label="age" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-172" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

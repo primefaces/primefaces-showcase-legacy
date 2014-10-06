@@ -1,0 +1,115 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template.xhtml">
+    
+    <ui:define name="content">
+        <h:outputScript name="main/js/index.js" target="head" />
+        
+        <!-- highlight area start-->
+        <div class="ContentSideSections overHidden">
+            <div class="Content33 floatLeft overHidden TextShadow">
+                <span class="defaultTopic mediumFont dispTable">Ready For PrimeTime</span>
+                <span class="defaultText dispTable">PrimeFaces is a popular open source framework for JavaServer Faces featuring over 100 components, touch optimized mobilekit, push framework, client side validation, theme engine and more.</span>
+                <a href="http://www.primefaces.org/downloads" class="BigButton TextShadowNone YellowBtn"> <span class="floatLeft">Download</span> <h:graphicImage name="main/images/btnArrow.svg" styleClass="floatRight"/></a>
+                <a href="http://www.primefaces.org/documentation" class="BigButton TextShadowNone OrangeBtn"> <span class="floatLeft">Documentation</span> <h:graphicImage name="main/images/btnDocumenticon.svg" class="floatRight"/></a>
+            </div>
+            <div class="Content66 floatRight overHidden" style="background-image:url(#{resource['main/images/highlightCircuitLines.svg']})">
+                <div class="PropertyBox TextShadow">
+                    <h:graphicImage name="main/images/ajaxFramework.svg" />
+                    <span class="PropertyTopic boldFont">AJAX FRAMEWORK</span>
+                    <span class="PropertyText mediumFont">Without Javascript<br />Declarative Updates<br />Partial Page Rendering<br />Extensions</span>
+                </div>
+                <div class="PropertyBox TextShadow">
+                    <h:graphicImage name="main/images/components.svg" />
+                    <span class="PropertyTopic boldFont">COMPONENTS</span>
+                    <span class="PropertyText mediumFont">Over 100<br />Flexible and Easy to Use<br />Built-in Ajax<br />HTML5 Support<br />Accessible</span>
+                </div>
+                <div class="PropertyBox TextShadow">
+                    <h:graphicImage name="main/images/productivity.svg" />
+                    <span class="PropertyTopic boldFont">PRODUCTIVITY</span>
+                    <span class="PropertyText mediumFont">Simple<br />Effective<br />Powerful<br />Lightweight</span>
+                </div>
+                <div class="PropertyBox TextShadow">
+                    <h:graphicImage name="main/images/mobile.svg" />
+                    <span class="PropertyTopic boldFont">MOBILE</span>
+                    <span class="PropertyText mediumFont">Mobile Optimized RenderKit<br />Mobile Components<br />Cross Platform<br />Same Backend</span>
+                </div>
+                <div class="PropertyBox TextShadow">
+                    <h:graphicImage name="main/images/push.svg" />
+                    <span class="PropertyTopic boldFont">PUSH</span>
+                    <span class="PropertyText mediumFont">Powered by Atmosphere<br />Websockets<br />Fallback Transports<br />Portable<br />Scalable</span>
+                </div>
+                <div class="PropertyBox TextShadow">
+                    <h:graphicImage name="main/images/themeMarket.svg" />
+                    <span class="PropertyTopic boldFont">THEMES</span>
+                    <span class="PropertyText mediumFont">35+ Available Themes<br />Premium Themes<br />Theme Creator Tool<br /></span>
+                </div>
+            </div>
+        </div>
+        <!-- highlight area end-->
+
+        <!-- pfnextgen start-->
+        <div class="ContentSideSections overHidden PFNextGen">
+            <div class="Content33 floatLeft overHidden TextShadow">
+                <span class="fontSize30 TextShadow gray mediumFont marginBottom20 dispBlock">PF<span class="orange">5.1</span></span>
+                <span class="defaultText dispTable">After months of hard work and dedication, next generation of PrimeFaces is finally available to the Java EE community as a fully featured community release under Apache License.</span>
+                <br />
+                <span class="defaultText dispTable">PF 5.1 brings various new components, grid css, enhancements to existing features, performance improvements and improved quality.</span>
+            </div>
+
+            <div class="Content66 floatLeft overHidden">
+                <iframe src="//player.vimeo.com/video/105023216?byline=0&amp;portrait=0" width="573" height="321" frameborder="0" webkitallowfullscreen="yes" mozallowfullscreen="yes" allowfullscreen="yes"></iframe>
+            </div>
+        </div>
+        <!-- pfnextgen end-->
+
+        <!-- bottom boxes area start-->
+        <div class="ContentSideSections overHidden">
+            <div class="Content33 floatLeft overHidden" style="background-image:url(#{resource['main/images/highlightCircuitLines.svg']}); min-height:200px; background-position:left top; background-repeat:no-repeat;">
+                <div class="BoxesIndent">
+                    <h:graphicImage name="main/images/optimushear.svg" class="floatLeft overHidden" style="height:60px; margin-right:20px;"/>
+                    <span class="floatLeft PFGrayText fontSize18 mediumFont overHidden">Blog<br /><span class="green fontSize24">NEWS</span></span>
+                    <div id="latestNews" class="dispTable overHidden Content100 logoBlueText boldFont fontSize18" style=" padding-top:20px;">
+                        
+                        <span class="gray dispBlock regularFont fontSize14"></span><br />
+                        <a href="http://blog.primefaces.org" class="pink boldItalicFont underline fontSize14">View All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="Content33 floatLeft overHidden" style="background-image:url(#{resource['main/images/highlightCircuitLines.svg']}); min-height:200px; background-position:left top; background-repeat:no-repeat;">
+                <div class="BoxesIndent">
+                    <h:graphicImage name="main/images/testimonials.svg" class="floatLeft overHidden" style="height:60px; margin-right:20px;"/>
+                    <span class="floatLeft PFGrayText fontSize18 mediumFont overHidden">Community<br /><span class="green fontSize24">TESTIMONIALS</span></span>
+                    <div class="dispTable overHidden Content100 logoBlueText boldFont fontSize18" style=" padding-top:20px;">Andy Bailey
+                        <span class="gray dispBlock regularFont fontSize14">"...The PrimeFaces family of components has proved invaluable in greatly reducing time to market for both new applications and the migration of existing JSF applications. There have been quite a few "aha" moments too, when I have been able to use a component to achieve something that with other JSF component libraries simply would be impossible given the time constraints imposed..."</span><br />
+                        <a href="http://www.primefaces.org/testimonials" class="pink boldItalicFont underline fontSize14">View All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="Content33 floatLeft overHidden" style="background-image:url(#{resource['main/images/highlightCircuitLines.svg']}); min-height:200px; background-position:left top; background-repeat:no-repeat;">
+                <div class="BoxesIndent">
+                    <h:graphicImage name="main/images/loveClients.svg" styleClass="floatLeft overHidden" style="height:60px; margin-right:20px;"/>
+                    <span class="floatLeft PFGrayText fontSize18 mediumFont overHidden">Who Uses?<br /><span class="green fontSize24">Brands</span></span>
+                    <div class="dispTable overHidden Content100 logoBlueText boldFont fontSize18" style=" padding-top:20px;">
+                        <div class="dispBlock overHidden">
+                            <h:graphicImage styleClass="brandLogo" name="main/images/brands/lufthansa.png" />
+                            <h:graphicImage styleClass="brandLogo" name="main/images/brands/unicredit.png" />
+                            <h:graphicImage styleClass="brandLogo" name="main/images/brands/ford.jpg" />
+                            <h:graphicImage styleClass="brandLogo" name="main/images/brands/boeing.jpg" />
+                            <h:graphicImage styleClass="brandLogo" name="main/images/brands/nvidia.jpg" />
+                            <h:graphicImage styleClass="brandLogo" name="main/images/brands/vw.jpg" />
+                            <h:graphicImage styleClass="brandLogo" name="main/images/brands/dell.jpg" />
+                            <h:graphicImage styleClass="brandLogo" name="main/images/brands/verizon.jpg" />
+                        </div>
+                        <a href="http://www.primefaces.org/whouses" class="pink boldItalicFont underline fontSize14">View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- bottom boxes area end-->
+    </ui:define>
+        
+</ui:composition>

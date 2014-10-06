@@ -1,0 +1,129 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Mindmap
+    </ui:define>
+
+    <ui:define name="description">
+        Mindmap is an interactive mindmapping tool featuring lazy loading, callbacks, animations and more.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <p:mindmap value="#{mindmapView.root}" style="width: 100%;height: 600px;border: 1px solid black;">
+                <p:ajax event="select" listener="#{mindmapView.onNodeSelect}" />
+                <p:ajax event="dblselect" listener="#{mindmapView.onNodeDblselect}" update="output" oncomplete="PF('details').show();" />
+            </p:mindmap>
+            
+            <p:dialog widgetVar="details" header="Node Details" resizable="false" modal="true" showEffect="fade" hideEffect="fade">
+                <h:outputText id="output" value="#{minmapView.selectedNode.data}" />
+            </p:dialog> 
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="mindmap.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:mindmap value="\#{mindmapView.root}" style="width: 100%;height: 600px;border: 1px solid black;"&gt;
+        &lt;p:ajax event="select" listener="\#{mindmapView.onNodeSelect}" /&gt;
+        &lt;p:ajax event="dblselect" listener="\#{mindmapView.onNodeDblselect}" update="output" oncomplete="PF('details').show();" /&gt;
+    &lt;/p:mindmap&gt;
+
+    &lt;p:dialog widgetVar="details" header="Node Details" resizable="false" modal="true" showEffect="fade" hideEffect="fade"&gt;
+        &lt;h:outputText id="output" value="\#{minmapView.selectedNode.data}" /&gt;
+    &lt;/p:dialog&gt; 
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="MindmapView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data;
+
+import java.io.Serializable;
+import java.util.UUID;
+import javax.faces.bean.ManagedBean;
+
+import org.primefaces.event.SelectEvent;
+import org.primefaces.model.mindmap.DefaultMindmapNode;
+import org.primefaces.model.mindmap.MindmapNode;
+
+@ManagedBean
+public class MindmapView implements Serializable {
+    
+    private MindmapNode root;
+    
+    private MindmapNode selectedNode;
+    
+    public MindmapView() {
+        root = new DefaultMindmapNode("google.com", "Google WebSite", "FFCC00", false);
+        
+        MindmapNode ips = new DefaultMindmapNode("IPs", "IP Numbers", "6e9ebf", true);
+        MindmapNode ns = new DefaultMindmapNode("NS(s)", "Namespaces", "6e9ebf", true);
+        MindmapNode malware = new DefaultMindmapNode("Malware", "Malicious Software", "6e9ebf", true);
+        
+        root.addNode(ips);
+        root.addNode(ns);
+        root.addNode(malware);
+    }
+
+    public MindmapNode getRoot() {
+        return root;
+    }
+
+    public MindmapNode getSelectedNode() {
+        return selectedNode;
+    }
+    public void setSelectedNode(MindmapNode selectedNode) {
+        this.selectedNode = selectedNode;
+    }
+
+    public void onNodeSelect(SelectEvent event) {
+        MindmapNode node = (MindmapNode) event.getObject();
+        
+        //populate if not already loaded
+        if(node.getChildren().isEmpty()) {
+            Object label = node.getLabel();
+
+            if(label.equals("NS(s)")) {
+                for(int i = 0; i &lt; 25; i++) {
+                    node.addNode(new DefaultMindmapNode("ns" + i + ".google.com", "Namespace " + i + " of Google", "82c542", false));
+                }
+            }
+            else if(label.equals("IPs")) {
+                for(int i = 0; i &lt; 18; i++) {
+                    node.addNode(new DefaultMindmapNode("1.1.1."  + i, "IP Number: 1.1.1." + i, "fce24f", false));
+                } 
+            }
+            else if(label.equals("Malware")) {
+                for(int i = 0; i &lt; 18; i++) {
+                    String random = UUID.randomUUID().toString();
+                    node.addNode(new DefaultMindmapNode("Malware-"  + random, "Malicious Software: " + random, "3399ff", false));
+                }
+            }
+        }   
+    }
+    
+    public void onNodeDblselect(SelectEvent event) {
+        this.selectedNode = (MindmapNode) event.getObject();        
+    }
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-309" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

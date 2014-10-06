@@ -1,0 +1,119 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/WEB-INF/mobile.xhtml">
+        
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>Calendar</h1>
+            <p>Calendar is an input component to pick dates.</p>
+
+            <h2 class="first">Popup</h2>
+            <p:calendar value="#{calendarView.date1}" pattern="MM/dd/yyyy"/>
+
+            <h2>Inline</h2>
+            <p:calendar value="#{calendarView.date2}" mode="inline" />
+            
+            <h2>Ajax Select</h2>
+            <h:form>
+                <p:growl id="growl" showDetail="true" />
+                <p:calendar value="#{calendarView.date3}" mode="inline">
+                    <p:ajax event="dateSelect" listener="#{calendarView.onDateSelect}" update="growl" />
+                </p:calendar>
+            </h:form>
+
+            <h2>Options</h2>
+            <p:calendar value="#{calendarView.date4}" mode="inline" navigator="true" pages="2"/>
+            
+            <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1" multiple="true">
+                <p:tab title="calendar.xhtml">
+                    <pre class="brush:xml">
+<h2 class="first">Popup</h2>
+&lt;p:calendar value="\#{calendarView.date1}" pattern="MM/dd/yyyy"/&gt;
+
+&lt;h2&gt;Inline&lt;/h2&gt;
+&lt;p:calendar value="\#{calendarView.date2}" mode="inline" /&gt;
+
+&lt;h2&gt;Ajax Select&lt;/h2&gt;
+&lt;h:form&gt;
+    &lt;p:growl id="growl" showDetail="true" /&gt;
+    &lt;p:calendar value="\#{calendarView.date3}" mode="inline"&gt;
+        &lt;p:ajax event="dateSelect" listener="\#{calendarView.onDateSelect}" update="growl" /&gt;
+    &lt;/p:calendar&gt;
+&lt;/h:form&gt;
+
+&lt;h2&gt;Options&lt;/h2&gt;
+&lt;p:calendar value="\#{calendarView.date4}" mode="inline" navigator="true" pages="2"/&gt;
+                    </pre>   
+                </p:tab>
+                <p:tab title="CalendarView.java">
+                    <pre class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.SelectEvent;
+
+@ManagedBean
+public class CalendarView {
+        
+    private Date date1;
+    private Date date2;
+    private Date date3;
+    private Date date4;
+    
+    public void onDateSelect(SelectEvent event) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
+    }
+    
+    public Date getDate1() {
+        return date1;
+    }
+
+    public void setDate1(Date date1) {
+        this.date1 = date1;
+    }
+
+    public Date getDate2() {
+        return date2;
+    }
+
+    public void setDate2(Date date2) {
+        this.date2 = date2;
+    }
+
+    public Date getDate3() {
+        return date3;
+    }
+
+    public void setDate3(Date date3) {
+        this.date3 = date3;
+    }
+
+    public Date getDate4() {
+        return date4;
+    }
+
+    public void setDate4(Date date4) {
+        this.date4 = date4;
+    }
+}
+
+
+                    </pre>
+                </p:tab>
+            </p:accordionPanel>
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>
