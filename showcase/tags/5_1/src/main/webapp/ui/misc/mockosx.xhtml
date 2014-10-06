@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.org/ui">
+	
+<f:view contentType="text/html">
+    
+<f:metadata>
+    <f:viewAction action="#{mockosxView.init}" />
+</f:metadata>
+    
+<h:head>
+	<f:facet name="first">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+    </f:facet>
+    <title>PrimeFaces ShowCase</title>
+    <h:outputStylesheet name="main/css/sh.css" />
+    <style type="text/css">
+        body {
+            background: url("#{resource['demo/images/mockosx/macback.png']}");
+            margin: 0;
+            padding: 0;
+            font-family: geneva, arial, helvetica, sans-serif;
+            font-size:80%;
+        }
+
+        .ui-menuitem-icon.ui-icon.appleIcon {
+            background: url("#{resource['demo/images/mockosx/apple.png']}");) no-repeat;
+            width:16px;
+            height:16px;
+            border-radius:0px;
+        }
+
+        .ui-dialog .ui-terminal {
+            border:0;
+        }
+
+        .ui-dialog.terminalDialog .ui-dialog-content {
+            padding:0;
+        }
+    </style>
+    <script type="text/javascript">
+		var _gaq = _gaq || [];
+  		_gaq.push(['_setAccount', 'UA-12200033-1']);
+  		_gaq.push(['_trackPageview']);
+
+  		(function() {
+   			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  		})();
+	</script>
+</h:head>
+
+<h:body>
+
+	<p:growl showDetail="true" sticky="true"/>
+
+	<p:menubar>
+		<p:submenu icon="appleIcon">
+			<p:menuitem value="About This Mac" url="#" onclick="PF('info').show();" icon="ui-icon ui-icon-info"></p:menuitem>
+		</p:submenu>
+				
+		<p:submenu label="Finder">
+			<p:menuitem value="About Finder" url="#" styleClass="open" icon="ui-icon ui-icon-info"></p:menuitem>
+		</p:submenu>
+		
+		<p:submenu label="Edit">
+			<p:menuitem value="Undo" url="#" styleClass="undo" icon="ui-icon ui-icon-arrowreturnthick-1-w"></p:menuitem>
+			<p:menuitem value="Redo" url="#" styleClass="redo" icon="ui-icon ui-icon-arrowreturnthick-1-e"></p:menuitem>
+		</p:submenu>
+		
+		<p:submenu label="View">
+			<p:menuitem value="Source" url="#" onclick="PF('source').show();" icon="ui-icon ui-icon-search"></p:menuitem>
+		</p:submenu>
+	</p:menubar>
+		
+	<p:dialog header="About This Mac" draggable="true" widgetVar="info" showEffect="fade" hideEffect="fade">
+		<h:form>
+			<h:panelGrid columns="1" style="width:100%;text-align:center;">
+				<p:graphicImage name="demo/images/mockosx/apple_logo.png" />
+				<h:outputText value="MOCK OS X" style="font-size:16px"/>
+				<h:outputText value="Version 10.5.7" />
+				<p:commandButton value="Software Update" async="true" onclick="return false;"/>
+			</h:panelGrid>
+			
+			<h:panelGrid columns="2">
+				<h:outputText value="Processor" style="font-weight:bold"/>
+				<h:outputText value="2.4 GHz Intel Core 2 Duo" />
+				
+				<h:outputText value="Memory" style="font-weight:bold"/>
+				<h:outputText value="4 GB 667 MHz DDR2 SDRAM" />
+				
+				<h:outputText value="Startup Disk" style="font-weight:bold"/>
+				<h:outputText value="Macintosh HD" />
+			</h:panelGrid>
+			
+		</h:form>
+	</p:dialog>
+	
+	<p:dialog header="PrimeFaces Mock OS X" draggable="true" visible="true" modal="true" showEffect="fade" hideEffect="fade">
+		<h:outputText value="Welcome! Everything here is a PrimeFaces component." />
+	</p:dialog>
+	
+	<p:dialog widgetVar="terminal" width="600" height="400" header="Terminal" resizable="false" showEffect="fade" hideEffect="fade"
+              styleClass="terminalDialog">
+        <h:form>
+            <p:terminal commandHandler="#{terminalView.handleCommand}" style="width:590px"
+                    welcomeMessage="Welcome to PrimeFaces Terminal, how are you today? Try date and greet  commands."/>
+        </h:form>
+    </p:dialog>
+	
+	<p:dialog header="Source" widgetVar="source" height="400" width="600">
+
+			<pre name="code" class="brush:xml">
+			
+&lt;p:growl showDetail="true" sticky="true"/&gt;
+
+&lt;p:menubar&gt;
+    &lt;p:submenu icon="appleIcon"&gt;
+        &lt;p:menuitem value="About This Mac" url="\#" onclick="PF('info').show();" icon="ui-icon ui-icon-info"&gt;&lt;/p:menuitem&gt;
+    &lt;/p:submenu&gt;
+
+    &lt;p:submenu label="Finder"&gt;
+        &lt;p:menuitem value="About Finder" url="\#" styleClass="open" icon="ui-icon ui-icon-info"&gt;&lt;/p:menuitem&gt;
+    &lt;/p:submenu&gt;
+
+    &lt;p:submenu label="Edit"&gt;
+        &lt;p:menuitem value="Undo" url="\#" styleClass="undo" icon="ui-icon ui-icon-arrowreturnthick-1-w"&gt;&lt;/p:menuitem&gt;
+        &lt;p:menuitem value="Redo" url="\#" styleClass="redo" icon="ui-icon ui-icon-arrowreturnthick-1-e"&gt;&lt;/p:menuitem&gt;
+    &lt;/p:submenu&gt;
+
+    &lt;p:submenu label="View"&gt;
+        &lt;p:menuitem value="Source" url="\#" onclick="PF('source').show();" icon="ui-icon ui-icon-search"&gt;&lt;/p:menuitem&gt;
+    &lt;/p:submenu&gt;
+&lt;/p:menubar&gt;
+
+&lt;p:dialog header="About This Mac" draggable="true" widgetVar="info" showEffect="fade" hideEffect="fade"&gt;
+    &lt;h:form&gt;
+        &lt;h:panelGrid columns="1" style="width:100%;text-align:center;"&gt;
+            &lt;p:graphicImage value="/images/macosx/apple_logo.png" /&gt;
+            &lt;h:outputText value="MOCK OS X" style="font-size:16px"/&gt;
+            &lt;h:outputText value="Version 10.5.7" /&gt;
+            &lt;p:commandButton value="Software Update" async="true" onclick="return false;"/&gt;
+        &lt;/h:panelGrid&gt;
+
+        &lt;h:panelGrid columns="2"&gt;
+            &lt;h:outputText value="Processor" style="font-weight:bold"/&gt;
+            &lt;h:outputText value="2.4 GHz Intel Core 2 Duo" /&gt;
+
+            &lt;h:outputText value="Memory" style="font-weight:bold"/&gt;
+            &lt;h:outputText value="4 GB 667 MHz DDR2 SDRAM" /&gt;
+
+            &lt;h:outputText value="Startup Disk" style="font-weight:bold"/&gt;
+            &lt;h:outputText value="Macintosh HD" /&gt;
+        &lt;/h:panelGrid&gt;
+
+    &lt;/h:form&gt;
+&lt;/p:dialog&gt;
+
+&lt;p:dialog header="PrimeFaces Mock OS X" draggable="true" visible="true" modal="true" showEffect="fade" hideEffect="fade"&gt;
+    &lt;h:outputText value="Welcome! Everything here is a PrimeFaces component." /&gt;
+&lt;/p:dialog&gt;
+
+&lt;p:dialog widgetVar="terminal" width="600" height="400" header="Terminal" resizable="false" showEffect="fade" hideEffect="fade"
+          styleClass="terminalDialog"&gt;
+    &lt;h:form&gt;
+        &lt;p:terminal commandHandler="\#{terminalView.handleCommand}" style="width:590px"
+                welcomeMessage="Welcome to PrimeFaces Terminal, how are you today? Try date and greet  commands."/&gt;
+    &lt;/h:form&gt;
+&lt;/p:dialog&gt;
+
+&lt;p:dock&gt;
+    &lt;p:menuitem value="Finder" icon="/resources/demo/images/mockosx/finder.png" url="\#" /&gt;
+    &lt;p:menuitem value="Terminal" icon="/resources/demo/images/mockosx/terminal.png" url="\#" onclick="PF('terminal').show();"/&gt;
+    &lt;p:menuitem value="Safari" icon="/resources/demo/images/mockosx/safari.png" url="\#" /&gt;
+    &lt;p:menuitem value="iTunes" icon="/resources/demo/images/mockosx/itunes.png" url="\#"/&gt;
+    &lt;p:menuitem value="iChat" icon="/resources/demo/images/mockosx/ichat.png" url="\#"/&gt;
+    &lt;p:menuitem value="Trash" icon="/resources/demo/images/mockosx/trash.png" url="\#"/&gt;
+&lt;/p:dock&gt;
+			</pre>
+	</p:dialog>
+	
+	<p:dock>
+		<p:menuitem value="Finder" icon="/resources/demo/images/mockosx/finder.png" url="#" />
+		<p:menuitem value="Terminal" icon="/resources/demo/images/mockosx/terminal.png" url="#" onclick="PF('terminal').show();"/>
+		<p:menuitem value="Safari" icon="/resources/demo/images/mockosx/safari.png" url="#" />
+		<p:menuitem value="iTunes" icon="/resources/demo/images/mockosx/itunes.png" url="#"/>
+		<p:menuitem value="iChat" icon="/resources/demo/images/mockosx/ichat.png" url="#"/>
+		<p:menuitem value="Trash" icon="/resources/demo/images/mockosx/trash.png" url="#"/>
+	</p:dock>
+    
+    <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
+    <script language="javascript">
+        SyntaxHighlighter.all();
+    </script>
+	
+</h:body>
+
+
+</f:view>
+
+</html>
+
+	

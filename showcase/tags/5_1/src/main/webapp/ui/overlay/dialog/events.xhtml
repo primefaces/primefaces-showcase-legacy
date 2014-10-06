@@ -1,0 +1,88 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="title">
+        Dialog - <span class="subitem">Events</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Ajax behavior callbacks are available for "close" and "move" events. Move event is available for 5.0.2+.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>       
+            <p:growl id="growl" sticky="true" showDetail="true" />
+            
+            <h:outputLink id="openDialogLink" value="javascript:void(0)" onclick="PF('dlg').show();">Show the Picture of the Day</h:outputLink>
+            
+            <p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" resizable="false" showEffect="clip" hideEffect="clip">
+                <p:ajax event="close" update="growl" listener="#{dialogView.handleClose}" />
+                <p:ajax event="move" update="growl" listener="#{dialogView.handleMove}" />
+                
+                <p:graphicImage name="/demo/images/nature/nature4.jpg" />
+            </p:dialog>      
+        </h:form>
+ 
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="close.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;          
+    &lt;p:growl id="growl" sticky="true" showDetail="true" /&gt;
+
+    &lt;h:outputLink id="openDialogLink" value="javascript:void(0)" onclick="PF('dlg').show();"&gt;Show the Picture of the Day&lt;/h:outputLink&gt;
+
+    &lt;p:dialog id="picture" widgetVar="dlg" header="Picture of the Day" resizable="false" showEffect="clip" hideEffect="clip"&gt;
+        &lt;p:ajax event="close" update="growl" listener="\#{dialogView.handleClose}" /&gt;
+        &lt;p:ajax event="move" update="growl" listener="\#{dialogView.handleMove}" /&gt;
+
+        &lt;p:graphicImage name="/demo/images/nature/nature4.jpg" /&gt;
+    &lt;/p:dialog&gt;            
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="DialogView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.overlay;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.CloseEvent;
+import org.primefaces.event.MoveEvent;
+
+@ManagedBean
+public class DialogView {
+    
+    public void handleClose(CloseEvent event) {
+        addMessage(event.getComponent().getId() + " closed", "So you don't like nature?");
+    }
+
+    public void handleMove(MoveEvent event) {
+        addMessage(event.getComponent().getId() + " moved", "Left: " + event.getLeft() + ", Top: " + event.getTop());
+    }
+    
+    public void addMessage(String summary, String detail) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-172" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Ajax Framework - <span class="subitem">Basic</span>
+    </ui:define>
+
+    <ui:define name="description">
+        This example demonstrates a simple but common usage of posting the form, updating the backend value and displaying the output with ajax.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <h:panelGrid columns="4" cellpadding="5">
+                <h:outputLabel for="name" value="Name:" style="font-weight:bold" />
+                <p:inputText id="name" value="#{basicView.text}" />
+                <p:commandButton value="Submit" update="display" icon="ui-icon-check" />
+                <h:outputText id="display" value="#{basicView.text}" />
+            </h:panelGrid>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="basic.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;h:panelGrid columns="4" cellpadding="5"&gt;
+        &lt;h:outputLabel for="name" value="Name:" style="font-weight:bold" /&gt;
+        &lt;p:inputText id="name" value="\#{basicView.text}" /&gt;
+        &lt;p:commandButton value="Submit" update="display" icon="ui-icon-check" /&gt;
+        &lt;h:outputText id="display" value="\#{basicView.text}" /&gt;
+    &lt;/h:panelGrid&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="BasicView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.ajax;
+
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class BasicView {
+    
+    private String text;
+
+    public String getText() {
+        return text;
+    }
+    public void setText(String text) {
+        this.text = text;
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

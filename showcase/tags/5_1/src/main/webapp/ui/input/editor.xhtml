@@ -1,0 +1,83 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Editor
+    </ui:define>
+
+    <ui:define name="description">
+        Editor is an input component with rich text editing features. Toolbar can be configured with custom controls.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>    
+            <p:editor id="editor" widgetVar="editorWidget" value="#{editorView.text}" width="600" />
+            
+            <h:panelGrid columns="2" style="margin-top: 10px">
+                <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
+                
+                <p:commandButton value="Clear" type="button" onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
+            </h:panelGrid>
+            
+            <p:dialog header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade">
+                <h:outputText id="display" value="#{editorView.text}" escape="false" />
+            </p:dialog>     
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="editor.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;           
+    &lt;p:editor id="editor" widgetVar="editorWidget" value="\#{editorView.text}" width="600" /&gt;
+
+    &lt;h:panelGrid columns="2" style="margin-top: 10px"&gt;
+        &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-disk" /&gt;
+
+        &lt;p:commandButton value="Clear" type="button" onclick="PF('editorWidget').clear();" icon="ui-icon-close" /&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:dialog header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade"&gt;
+        &lt;h:outputText id="display" value="\#{editorView.text}" escape="false" /&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt; 
+
+
+                </pre>
+            </p:tab>
+
+            <p:tab title="EditorView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class EditorView {
+    
+    private String text;
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-188" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

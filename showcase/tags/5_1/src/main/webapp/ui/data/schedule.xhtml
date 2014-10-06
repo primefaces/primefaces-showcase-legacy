@@ -1,0 +1,381 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <script type="text/javascript">
+            PrimeFaces.locales['tr'] = {
+                closeText: 'kapat',
+                prevText: 'geri',
+                nextText: 'ileri',
+                currentText: 'bugün',
+                monthNames: ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran',
+                    'Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'],
+                monthNamesShort: ['Oca','Şub','Mar','Nis','May','Haz',
+                    'Tem','Ağu','Eyl','Eki','Kas','Ara'],
+                dayNames: ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'],
+                dayNamesShort: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+                dayNamesMin: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+                weekHeader: 'Hf',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                month: 'Ay',
+                week: 'Hafta',
+                day: 'Gün',
+                allDayText : 'Tüm Gün'
+            };
+        </script>
+        <style type="text/css">
+            .value {
+                width: 1000px;
+            }
+        </style>
+    </ui:define>
+    
+    <ui:define name="title">
+        Schedule
+    </ui:define>
+
+    <ui:define name="description">
+        Schedule provides an Outlook, iCal like JSF component to manage events. Schedule is highly customizable featuring various views (month, day, week), built-in I18N, drag-drop, resize, customizable event dialog, ajax listeners for every user interaction and more.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <p:growl id="messages" showDetail="true" />
+     
+            <h:panelGrid columnClasses="value">
+                <h3 style="margin-top: 0">Editable Schedule</h3>
+                <p:schedule id="schedule" value="#{scheduleView.eventModel}" widgetVar="myschedule" timeZone="GMT+2">
+
+                    <p:ajax event="dateSelect" listener="#{scheduleView.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+                    <p:ajax event="eventSelect" listener="#{scheduleView.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+                    <p:ajax event="eventMove" listener="#{scheduleView.onEventMove}" update="messages" />
+                    <p:ajax event="eventResize" listener="#{scheduleView.onEventResize}" update="messages" />
+
+                </p:schedule>
+
+                <h3>Locale Support ( Example: Turkish )</h3>
+                <p:schedule id="scheduleLocale" value="#{scheduleView.eventModel}" locale="tr" />
+                
+                <h3>Lazy Schedule</h3>
+                <p:schedule value="#{scheduleView.lazyEventModel}" />
+            </h:panelGrid>
+            
+            <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
+                <h:panelGrid id="eventDetails" columns="2">
+                    <h:outputLabel for="title" value="Title:" />
+                    <p:inputText id="title" value="#{scheduleView.event.title}" required="true" />
+
+                    <h:outputLabel for="from" value="From:" />
+                    <p:inputMask id="from" value="#{scheduleView.event.startDate}" mask="99/99/9999">
+                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+2"/>
+                    </p:inputMask>
+
+                    <h:outputLabel for="to" value="To:" />
+                    <p:inputMask id="to" value="#{scheduleView.event.endDate}" mask="99/99/9999">
+                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+2"/>
+                    </p:inputMask>
+
+                    <h:outputLabel for="allDay" value="All Day:" />
+                    <h:selectBooleanCheckbox id="allDay" value="#{scheduleView.event.allDay}" />
+
+                    <p:commandButton type="reset" value="Reset" />
+                    <p:commandButton id="addButton" value="Save" actionListener="#{scheduleView.addEvent}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
+                </h:panelGrid>
+            </p:dialog>    
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="shedule.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:growl id="messages" showDetail="true" /&gt;
+
+    &lt;h:panelGrid columnClasses="value"&gt;
+        &lt;h3 style="margin-top: 0"&gt;Editable Schedule&lt;/h3&gt;
+        &lt;p:schedule id="schedule" value="\#{scheduleView.eventModel}" widgetVar="myschedule" timeZone="GMT+2"&gt;
+
+            &lt;p:ajax event="dateSelect" listener="\#{scheduleView.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" /&gt;
+            &lt;p:ajax event="eventSelect" listener="\#{scheduleView.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" /&gt;
+            &lt;p:ajax event="eventMove" listener="\#{scheduleView.onEventMove}" update="messages" /&gt;
+            &lt;p:ajax event="eventResize" listener="\#{scheduleView.onEventResize}" update="messages" /&gt;
+
+        &lt;/p:schedule&gt;
+
+        &lt;h3&gt;Locale Support ( Example: Turkish )&lt;/h3&gt;
+        &lt;p:schedule id="scheduleLocale" value="\#{scheduleView.eventModel}" locale="tr" /&gt;
+
+        &lt;h3&gt;Lazy Schedule&lt;/h3&gt;
+        &lt;p:schedule value="\#{scheduleView.lazyEventModel}" /&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip"&gt;
+        &lt;h:panelGrid id="eventDetails" columns="2"&gt;
+            &lt;h:outputLabel for="title" value="Title:" /&gt;
+            &lt;p:inputText id="title" value="\#{scheduleView.event.title}" required="true" /&gt;
+
+            &lt;h:outputLabel for="from" value="From:" /&gt;
+            &lt;p:inputMask id="from" value="\#{scheduleView.event.startDate}" mask="99/99/9999"&gt;
+                &lt;f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+2"/&gt;
+            &lt;/p:inputMask&gt;
+
+            &lt;h:outputLabel for="to" value="To:" /&gt;
+            &lt;p:inputMask id="to" value="\#{scheduleView.event.endDate}" mask="99/99/9999"&gt;
+                &lt;f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+2"/&gt;
+            &lt;/p:inputMask&gt;
+
+            &lt;h:outputLabel for="allDay" value="All Day:" /&gt;
+            &lt;h:selectBooleanCheckbox id="allDay" value="\#{scheduleView.event.allDay}" /&gt;
+
+            &lt;p:commandButton type="reset" value="Reset" /&gt;
+            &lt;p:commandButton id="addButton" value="Save" actionListener="\#{scheduleView.addEvent}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;    
+&lt;/h:form&gt;
+
+&lt;script type="text/javascript"&gt;
+    PrimeFaces.locales['tr'] = {
+        closeText: 'kapat',
+        prevText: 'geri',
+        nextText: 'ileri',
+        currentText: 'bugün',
+        monthNames: ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran',
+            'Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'],
+        monthNamesShort: ['Oca','Şub','Mar','Nis','May','Haz',
+            'Tem','Ağu','Eyl','Eki','Kas','Ara'],
+        dayNames: ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'],
+        dayNamesShort: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+        dayNamesMin: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+        weekHeader: 'Hf',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        month: 'Ay',
+        week: 'Hafta',
+        day: 'Gün',
+        allDayText : 'Tüm Gün'
+    };
+&lt;/script&gt;
+&lt;style type="text/css"&gt;
+    .value {
+        width: 1000px;
+    }
+&lt;/style&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ScheduleView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data;
+
+import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+import org.primefaces.event.ScheduleEntryMoveEvent;
+import org.primefaces.event.ScheduleEntryResizeEvent;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.model.DefaultScheduleEvent;
+import org.primefaces.model.DefaultScheduleModel;
+import org.primefaces.model.LazyScheduleModel;
+import org.primefaces.model.ScheduleEvent;
+import org.primefaces.model.ScheduleModel;
+
+@ManagedBean
+@ViewScoped
+public class ScheduleView implements Serializable {
+
+	private ScheduleModel eventModel;
+	
+	private ScheduleModel lazyEventModel;
+
+	private ScheduleEvent event = new DefaultScheduleEvent();
+
+    @PostConstruct
+	public void init() {
+		eventModel = new DefaultScheduleModel();
+		eventModel.addEvent(new DefaultScheduleEvent("Champions League Match", previousDay8Pm(), previousDay11Pm()));
+		eventModel.addEvent(new DefaultScheduleEvent("Birthday Party", today1Pm(), today6Pm()));
+		eventModel.addEvent(new DefaultScheduleEvent("Breakfast at Tiffanys", nextDay9Am(), nextDay11Am()));
+		eventModel.addEvent(new DefaultScheduleEvent("Plant the new garden stuff", theDayAfter3Pm(), fourDaysLater3pm()));
+		
+		lazyEventModel = new LazyScheduleModel() {
+			
+			@Override
+			public void loadEvents(Date start, Date end) {
+				Date random = getRandomDate(start);
+				addEvent(new DefaultScheduleEvent("Lazy Event 1", random, random));
+				
+				random = getRandomDate(start);
+				addEvent(new DefaultScheduleEvent("Lazy Event 2", random, random));
+			}	
+		};
+	}
+	
+	public Date getRandomDate(Date base) {
+		Calendar date = Calendar.getInstance();
+		date.setTime(base);
+		date.add(Calendar.DATE, ((int) (Math.random()*30)) + 1);	//set random day of month
+		
+		return date.getTime();
+	}
+	
+	public Date getInitialDate() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(calendar.get(Calendar.YEAR), Calendar.FEBRUARY, calendar.get(Calendar.DATE), 0, 0, 0);
+		
+		return calendar.getTime();
+	}
+	
+	public ScheduleModel getEventModel() {
+		return eventModel;
+	}
+	
+	public ScheduleModel getLazyEventModel() {
+		return lazyEventModel;
+	}
+
+	private Calendar today() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 0, 0, 0);
+
+		return calendar;
+	}
+	
+	private Date previousDay8Pm() {
+		Calendar t = (Calendar) today().clone();
+		t.set(Calendar.AM_PM, Calendar.PM);
+		t.set(Calendar.DATE, t.get(Calendar.DATE) - 1);
+		t.set(Calendar.HOUR, 8);
+		
+		return t.getTime();
+	}
+	
+	private Date previousDay11Pm() {
+		Calendar t = (Calendar) today().clone();
+		t.set(Calendar.AM_PM, Calendar.PM);
+		t.set(Calendar.DATE, t.get(Calendar.DATE) - 1);
+		t.set(Calendar.HOUR, 11);
+		
+		return t.getTime();
+	}
+	
+	private Date today1Pm() {
+		Calendar t = (Calendar) today().clone();
+		t.set(Calendar.AM_PM, Calendar.PM);
+		t.set(Calendar.HOUR, 1);
+		
+		return t.getTime();
+	}
+	
+	private Date theDayAfter3Pm() {
+		Calendar t = (Calendar) today().clone();
+		t.set(Calendar.DATE, t.get(Calendar.DATE) + 2);		
+		t.set(Calendar.AM_PM, Calendar.PM);
+		t.set(Calendar.HOUR, 3);
+		
+		return t.getTime();
+	}
+
+	private Date today6Pm() {
+		Calendar t = (Calendar) today().clone(); 
+		t.set(Calendar.AM_PM, Calendar.PM);
+		t.set(Calendar.HOUR, 6);
+		
+		return t.getTime();
+	}
+	
+	private Date nextDay9Am() {
+		Calendar t = (Calendar) today().clone();
+		t.set(Calendar.AM_PM, Calendar.AM);
+		t.set(Calendar.DATE, t.get(Calendar.DATE) + 1);
+		t.set(Calendar.HOUR, 9);
+		
+		return t.getTime();
+	}
+	
+	private Date nextDay11Am() {
+		Calendar t = (Calendar) today().clone();
+		t.set(Calendar.AM_PM, Calendar.AM);
+		t.set(Calendar.DATE, t.get(Calendar.DATE) + 1);
+		t.set(Calendar.HOUR, 11);
+		
+		return t.getTime();
+	}
+	
+	private Date fourDaysLater3pm() {
+		Calendar t = (Calendar) today().clone(); 
+		t.set(Calendar.AM_PM, Calendar.PM);
+		t.set(Calendar.DATE, t.get(Calendar.DATE) + 4);
+		t.set(Calendar.HOUR, 3);
+		
+		return t.getTime();
+	}
+	
+	public ScheduleEvent getEvent() {
+		return event;
+	}
+
+	public void setEvent(ScheduleEvent event) {
+		this.event = event;
+	}
+	
+	public void addEvent(ActionEvent actionEvent) {
+		if(event.getId() == null)
+			eventModel.addEvent(event);
+		else
+			eventModel.updateEvent(event);
+		
+		event = new DefaultScheduleEvent();
+	}
+	
+	public void onEventSelect(SelectEvent selectEvent) {
+		event = (ScheduleEvent) selectEvent.getObject();
+	}
+	
+	public void onDateSelect(SelectEvent selectEvent) {
+		event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
+	}
+	
+	public void onEventMove(ScheduleEntryMoveEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event moved", "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
+		
+		addMessage(message);
+	}
+	
+	public void onEventResize(ScheduleEntryResizeEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event resized", "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
+		
+		addMessage(message);
+	}
+	
+	private void addMessage(FacesMessage message) {
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-378" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

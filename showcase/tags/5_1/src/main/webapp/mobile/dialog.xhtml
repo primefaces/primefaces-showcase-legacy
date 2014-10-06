@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/WEB-INF/mobile.xhtml">
+    
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>Dialog</h1>
+            <p>Dialog is a overlay container component.</p>
+            
+            <p:commandButton value="Show" onclick="PF('dlg1').show();" type="button" />	
+            
+            <p:dialog header="Header" widgetVar="dlg1" showEffect="pop">
+                <h:outputText value="What we do in life, echoes in eternity!" />
+            </p:dialog>
+            
+            <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1">
+                <p:tab title="dialog.xhtml">
+                    <pre class="brush:xml">
+&lt;p:commandButton value="Show" onclick="PF('dlg1').show();" type="button" /&gt;				
+
+&lt;p:dialog header="Header" widgetVar="dlg1" showEffect="pop"&gt;
+    &lt;h:outputText value="What we do in life, echoes in eternity!" /&gt;
+&lt;/p:dialog&gt;
+                    </pre>   
+                </p:tab>
+            </p:accordionPanel>
+                        
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>

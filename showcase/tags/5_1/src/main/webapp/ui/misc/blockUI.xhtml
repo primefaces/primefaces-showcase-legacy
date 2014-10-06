@@ -1,0 +1,289 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        BlockUI
+    </ui:define>
+
+    <ui:define name="description">
+        BlockUI blocks other components. It can be used with special ajax integration or manually with client side api.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <p:growl id="growl" />
+
+            <h3 style="margin-top:0">Basic</h3>
+            <p:panel id="pnl" header="New User" style="margin-bottom:10px;">
+                <p:messages id="messages" />
+                <h:panelGrid columns="3" cellpadding="5">
+                    <h:outputLabel for="firstname" value="Firstname: *" />
+                    <p:inputText id="firstname" value="#{blockUIView.firstname}" required="true" label="Firstname">
+                        <f:validateLength minimum="2" />
+                    </p:inputText>
+                    <p:message for="firstname" />
+
+                    <h:outputLabel for="lastname" value="Lastname: *" />
+                    <p:inputText id="lastname" value="#{blockUIView.lastname}" required="true" label="Lastname"/>
+                    <p:message for="lastname" />
+                </h:panelGrid>
+
+                <p:commandButton id="saveBtn" value="Save" icon="ui-icon-check" style="margin:0" actionListener="#{blockUIView.save}" update="growl"/>
+            </p:panel>
+
+            <p:blockUI block="pnl" trigger="saveBtn" />
+
+            <h3>Custom Content</h3>
+            <p:dataTable id="dataTable" var="car" value="#{blockUIView.cars}"
+                         paginator="true" rows="5">
+                <f:facet name="header">
+                    Cars
+                </f:facet>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Id" />
+                    </f:facet>
+                    <h:outputText value="#{car.id}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Year" />
+                    </f:facet>
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Brand" />
+                    </f:facet>
+                    <h:outputText value="#{car.brand}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Color" />
+                    </f:facet>
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+            </p:dataTable>
+
+            <p:blockUI block="dataTable" trigger="dataTable">
+                LOADING<br />
+                <p:graphicImage name="demo/images/ajaxloadingbar.gif"/>
+            </p:blockUI>
+            
+            <h3>Client Side API</h3>
+            <p:accordionPanel id="accordion" multiple="true" style="margin-bottom:20px;">
+                <p:tab title="Godfather Part I">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
+                        <h:outputText
+                            value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T
+                            hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, 
+                            but given to ruthless violence whenever anything stands against the good of the family." />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Godfather Part II">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather2.jpg" />
+                        <h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. 
+                        In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, 
+                        killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows." />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Godfather Part III">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather3.jpg" />
+                        <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. 
+                            Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />
+                    </h:panelGrid>
+                </p:tab>
+            </p:accordionPanel>
+            
+            <p:commandButton id="pnlBtn" value="Block Panel" type="button" onclick="PF('bui').show()"/>
+            <p:commandButton id="pnlBtn2" value="Unblock Panel" type="button" onclick="PF('bui').hide()"/>
+
+            <p:blockUI block="accordion" widgetVar="bui"/>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="blockUI.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:growl id="growl" /&gt;
+
+    &lt;h3 style="margin-top:0"&gt;Basic&lt;/h3&gt;
+    &lt;p:panel id="pnl" header="New User" style="margin-bottom:10px;"&gt;
+        &lt;p:messages id="messages" /&gt;
+        &lt;h:panelGrid columns="3" cellpadding="5"&gt;
+            &lt;h:outputLabel for="firstname" value="Firstname: *" /&gt;
+            &lt;p:inputText id="firstname" value="\#{blockUIView.firstname}" required="true" label="Firstname"&gt;
+                &lt;f:validateLength minimum="2" /&gt;
+            &lt;/p:inputText&gt;
+            &lt;p:message for="firstname" /&gt;
+
+            &lt;h:outputLabel for="lastname" value="Lastname: *" /&gt;
+            &lt;p:inputText id="lastname" value="\#{blockUIView.lastname}" required="true" label="Lastname"/&gt;
+            &lt;p:message for="lastname" /&gt;
+        &lt;/h:panelGrid&gt;
+
+        &lt;p:commandButton id="saveBtn" value="Save" icon="ui-icon-check" style="margin:0" actionListener="\#{blockUIView.save}" update="growl"/&gt;
+    &lt;/p:panel&gt;
+
+    &lt;p:blockUI block="pnl" trigger="saveBtn" /&gt;
+
+    &lt;h3&gt;Custom Content&lt;/h3&gt;
+    &lt;p:dataTable id="dataTable" var="car" value="\#{blockUIView.cars}"
+                 paginator="true" rows="5"&gt;
+        &lt;f:facet name="header"&gt;
+            Cars
+        &lt;/f:facet&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Id" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Year" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Brand" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.brand}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Color" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:dataTable&gt;
+
+    &lt;p:blockUI block="dataTable" trigger="dataTable"&gt;
+        LOADING&lt;br /&gt;
+        &lt;p:graphicImage name="demo/images/ajaxloadingbar.gif"/&gt;
+    &lt;/p:blockUI&gt;
+
+    &lt;h3&gt;Client Side API&lt;/h3&gt;
+    &lt;p:accordionPanel id="accordion" multiple="true" style="margin-bottom:20px;"&gt;
+        &lt;p:tab title="Godfather Part I"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather1.jpg" /&gt;
+                &lt;h:outputText
+                    value="The story begins as Don Vito Corleone..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part II"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather2.jpg" /&gt;
+                &lt;h:outputText value="Francis Ford Coppola's legendary continuation..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part III"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather3.jpg" /&gt;
+                &lt;h:outputText value="After a break of more than 15 years..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+    &lt;/p:accordionPanel&gt;
+
+    &lt;p:commandButton id="pnlBtn" value="Block Panel" type="button" onclick="PF('bui').show()"/&gt;
+    &lt;p:commandButton id="pnlBtn2" value="Unblock Panel" type="button" onclick="PF('bui').hide()"/&gt;
+
+    &lt;p:blockUI block="accordion" widgetVar="bui"/&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="BlockUIView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.misc;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import org.primefaces.showcase.domain.Car;
+
+@ManagedBean
+public class BlockUIView {
+    
+    private String firstname;
+    private String lastname;
+    private List&lt;Car&gt; cars;
+    
+    @PostConstruct
+    public void init() {
+        cars = new ArrayList&lt;Car&gt;();
+        cars.add(new Car("Y25YIH5", "Fiat", 2014, "Black", 10000, true));
+        cars.add(new Car("JHF261G", "BMW", 2013, "Blue", 50000, true));
+        cars.add(new Car("HSFY23H", "Ford", 2012, "Black", 35000, false));
+        cars.add(new Car("GMDK353", "Volvo", 2014, "White", 40000, true));
+        cars.add(new Car("345GKM5", "Jaguar", 2011, "Gray", 48000, false));
+        cars.add(new Car("JETER36", "Volkswagen", 2012, "Black", 10000, true));
+        cars.add(new Car("3754HWH", "BMW", 2014, "Blue", 33000, true));
+        cars.add(new Car("YRTJD45", "Mercedes", 2011, "Red", 44000, false));
+        cars.add(new Car("FDGSH34", "Audi", 2010, "Yellow", 20000, false));
+        cars.add(new Car("GD534G", "Honda", 2012, "Black", 17000, false));
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+    
+    public void save() {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("You've registered"));
+	}
+
+    public List&lt;Car&gt; getCars() {
+        return cars;
+    }
+
+    public void setCars(List&lt;Car&gt; cars) {
+        this.cars = cars;
+    }
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-34" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

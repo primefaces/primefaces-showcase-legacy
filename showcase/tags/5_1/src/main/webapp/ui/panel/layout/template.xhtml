@@ -1,0 +1,24 @@
+<!DOCTYPE html [
+    <!ENTITY bull "&#8226;">
+]>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+                    
+    <ui:define name="subsubmenu">
+        <div class="ContentSideSections SubSubMenu clearfix">
+            <ul>  
+                <li><a href="#{request.contextPath}/ui/panel/layout/full.xhtml" target="_blank">&bull; Full</a></li>
+                <li><a href="#{request.contextPath}/ui/panel/layout/element.xhtml">&bull; Element</a></li>
+                <li><a href="#{request.contextPath}/ui/panel/layout/nested.xhtml" target="_blank">&bull; Nested</a></li>
+                <li><a href="#{request.contextPath}/ui/panel/layout/events.xhtml" target="_blank">&bull; Events</a></li>
+                <li><a href="#{request.contextPath}/ui/panel/layout/complex.xhtml" target="_blank">&bull; Complex</a></li>
+                <li><a href="#{request.contextPath}/ui/panel/layout/mailbox.xhtml" target="_blank">&bull; Mailbox</a></li>
+            </ul>
+        </div>
+    </ui:define>
+    
+</ui:composition>

@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Link
+    </ui:define>
+
+    <ui:define name="description">
+        Link is a navigation component integrated with JSF navigation model.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <p:link outcome="productDetail" value="Bookmark">
+            <f:param name="productId" value="10" />
+        </p:link>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="link.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:link outcome="productDetail" value="Bookmark"&gt;
+    &lt;f:param name="productId" value="10" /&gt;
+&lt;/p:link&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-280" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

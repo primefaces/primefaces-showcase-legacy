@@ -1,0 +1,157 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+    
+    <ui:define name="head">
+        <script type="text/javascript">
+            function handleLoginRequest(xhr, status, args) {
+                if(args.validationFailed || !args.loggedIn) {
+                    PF('dlg').jq.effect("shake", {times:5}, 100);
+                }
+                else {
+                    PF('dlg').hide();
+                    $('#loginLink').fadeOut();
+                }
+            }
+        </script>
+    </ui:define>
+
+    <ui:define name="title">
+        Dialog - <span class="subitem">Login Demo</span>
+    </ui:define>
+
+    <ui:define name="description">
+        This example demonstrates how to create a login dialog. Correct combination is (admin-admin)
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>        
+            <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
+                <p:graphicImage name="/demo/images/login.png" />
+            </h:outputLink>
+            
+            <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+            
+            <p:dialog header="Login" widgetVar="dlg" resizable="false">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="username" value="Username:" />
+                    <p:inputText id="username" value="#{userLoginView.username}" required="true" label="username" />
+                    
+                    <h:outputLabel for="password" value="Password:" />
+                    <p:password id="password" value="#{userLoginView.password}" required="true" label="password" />
+                    
+                    <f:facet name="footer">
+                        <p:commandButton value="Login" update="growl" actionListener="#{userLoginView.login}" 
+                                         oncomplete="handleLoginRequest(xhr, status, args)" />
+                    </f:facet>  
+                </h:panelGrid>
+            </p:dialog>    
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="loginDemo.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;            
+    &lt;h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login"&gt;
+        &lt;p:graphicImage name="/demo/images/login.png" /&gt;
+    &lt;/h:outputLink&gt;
+
+    &lt;p:growl id="growl" sticky="true" showDetail="true" life="3000" /&gt;
+
+    &lt;p:dialog header="Login" widgetVar="dlg" resizable="false"&gt;
+        &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+            &lt;h:outputLabel for="username" value="Username:" /&gt;
+            &lt;p:inputText id="username" value="\#{userLoginView.username}" required="true" label="username" /&gt;
+
+            &lt;h:outputLabel for="password" value="Password:" /&gt;
+            &lt;p:password id="password" value="\#{userLoginView.password}" required="true" label="password" /&gt;
+
+            &lt;f:facet name="footer"&gt;
+                &lt;p:commandButton value="Login" update="growl" actionListener="\#{userLoginView.login}" 
+                                 oncomplete="handleLoginRequest(xhr, status, args)" /&gt;
+            &lt;/f:facet&gt;  
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
+
+&lt;script type="text/javascript"&gt;
+    function handleLoginRequest(xhr, status, args) {
+        if(args.validationFailed || !args.loggedIn) {
+            PF('dlg').jq.effect("shake", {times:5}, 100);
+        }
+        else {
+            PF('dlg').hide();
+            $('#loginLink').fadeOut();
+        }
+    }
+&lt;/script&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="UserLoginView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.overlay;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+import org.primefaces.context.RequestContext;
+
+@ManagedBean
+public class UserLoginView {
+    
+    private String username;
+    
+    private String password;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+  
+    public void login(ActionEvent event) {
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesMessage message = null;
+        boolean loggedIn = false;
+        
+        if(username != null &amp;&amp; username.equals("admin") &amp;&amp; password != null &amp;&amp; password.equals("admin")) {
+            loggedIn = true;
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
+        } else {
+            loggedIn = false;
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
+        }
+        
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        context.addCallbackParam("loggedIn", loggedIn);
+    }   
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-172" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

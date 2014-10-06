@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile">
+    
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
+    
+    <h:head>
+        <h:outputStylesheet name="main/css/sh.css" />
+    </h:head>
+    
+    <h:body>
+        
+        <pm:page id="main">
+            <pm:header title="Lazy Load"></pm:header>
+            
+            <pm:content>
+                <p>Pages in a multi-page view can be loaded lazily on demand to improve initial page load time. These lazy pages might not even be
+                accessed by the user so loading them with an on-demand approach has a significant speed boost with many pages in a single view. To mark
+                a page to be lazy loaded, enable lazy option.</p>
+                
+                <p:link outcome="pm:lazy" value="Go to Page 2" />
+                
+                <h2>Source</h2>
+                <p:accordionPanel activeIndex="-1">
+                    <p:tab title="lazyload.xhtml">
+                        <pre class="brush:xml">
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"&gt;
+    
+    &lt;f:view renderKitId="PRIMEFACES_MOBILE" /&gt;
+    
+    &lt;h:head&gt;
+
+    &lt;/h:head&gt;
+    
+    &lt;h:body&gt;
+        
+        &lt;pm:page id="main"&gt;
+            &lt;pm:header title="Lazy Load"&gt;&lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                &lt;p&gt;Pages in a multi-page view can be loaded lazily on demand to improve initial page load time. These lazy pages might not even be
+                accessed by the user so loading them with an on-demand approach has a significant speed boost with many pages in a single view. To mark
+                a page to be lazy loaded, enable lazy option.&lt;/p&gt;
+                
+                &lt;p:link outcome="pm:lazy" value="Go to Page 2" /&gt;
+                                
+            &lt;/pm:content&gt;
+        &lt;/pm:page&gt;
+        
+        &lt;pm:page id="lazy" lazy="true"&gt;
+            &lt;pm:header title="Lazy Page"&gt;&lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                &lt;p&gt;This page has been loaded on demand just before navigation. It is now cached and accessing it again does not trigger a new load.&lt;/p&gt;
+                &lt;p:link outcome="pm:main" value="Go Back" /&gt;
+            &lt;/pm:content&gt;
+        &lt;/pm:page&gt;
+        
+    &lt;/h:body&gt;
+    
+&lt;/html&gt;
+                        </pre>
+                    </p:tab>
+                </p:accordionPanel>
+                
+            </pm:content>
+        </pm:page>
+        
+        <pm:page id="lazy" lazy="true">
+            <pm:header title="Lazy Page"></pm:header>
+            
+            <pm:content>
+                <p>This page has been loaded on demand just before navigation. It is now cached and accessing it again does not trigger a new load.</p>
+                <p:link outcome="pm:main" value="Go Back" />
+            </pm:content>
+        </pm:page>
+        
+        <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
+        <script language="javascript">
+            SyntaxHighlighter.all();
+        </script>
+        
+    </h:body>
+    
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+    <h:head>
+        <h:outputStylesheet name="main/css/showcase.css" />
+        <h:outputStylesheet name="main/css/sh.css" />
+        <style type="text/css">
+            body {
+                background-color: #FFFFFF;
+            }
+        </style>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-12200033-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+	</h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="100">
+                    <h:outputText value="North unit content." />
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100">
+                    <h:outputText value="South unit content." />
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="200">
+                    <h:outputText value="West unit content." />
+                </p:layoutUnit>
+
+                <p:layoutUnit position="east" size="200">
+                    <h:outputText value="Right unit content." />
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <p:layout>
+                        <p:layoutUnit position="north" size="100">
+                            <h:outputText value="Middle top unit content." />
+                        </p:layoutUnit>
+
+                        <p:layoutUnit position="south" size="100">
+                            <h:outputText value="Middle south unit content." />
+                        </p:layoutUnit>
+
+                        <p:layoutUnit position="west" size="200">
+                            <h:outputText value="Middle left unit content." />
+                        </p:layoutUnit>
+
+                        <p:layoutUnit position="east" size="200">
+                            <h:outputText value="Middle right unit content." />
+                        </p:layoutUnit>
+
+                        <p:layoutUnit position="center">
+                            <h:outputText value="Middle center unit content." />
+                        </p:layoutUnit>
+                    </p:layout>
+                </p:layoutUnit>
+            </p:layout>
+            
+            <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
+            <script language="javascript">
+                SyntaxHighlighter.all();
+            </script>
+
+        </h:body>
+
+    </f:view>
+    
+    
+</html>
+

@@ -1,0 +1,74 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Ajax Framework - <span class="subitem">Listener</span>
+    </ui:define>
+
+    <ui:define name="description">
+        A java method can be invoked in an ajax request using listener option of p:ajax.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <h:panelGrid columns="3">
+                <h:outputText value="Keyup: " />
+                <p:inputText id="counter" value="#{listenerView.text}">
+                    <p:ajax event="keyup" update="out" listener="#{listenerView.handleKeyEvent}" />
+                </p:inputText>
+                <h:outputText id="out" value="#{listenerView.text}" />
+            </h:panelGrid>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="listener.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;h:panelGrid columns="3"&gt;
+        &lt;h:outputText value="Keyup: " /&gt;
+        &lt;p:inputText id="counter" value="\#{listenerView.text}"&gt;
+            &lt;p:ajax event="keyup" update="out" listener="\#{listenerView.handleKeyEvent}" /&gt;
+        &lt;/p:inputText&gt;
+        &lt;h:outputText id="out" value="\#{listenerView.text}" /&gt;
+    &lt;/h:panelGrid&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ListenerView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.ajax;
+
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class ListenerView {
+    
+    private String text;
+
+    public String getText() {
+        return text;
+    }
+    public void setText(String text) {
+        this.text = text;
+    }
+    
+    public void handleKeyEvent() {
+        text = text.toUpperCase();
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

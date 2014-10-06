@@ -1,0 +1,20 @@
+<!DOCTYPE html [
+    <!ENTITY bull "&#8226;">
+]>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+                    
+    <ui:define name="subsubmenu">
+        <div class="ContentSideSections SubSubMenu clearfix">
+            <ul>  
+                <li><a href="#{request.contextPath}/ui/overlay/tooltip/tooltipOptions.xhtml">&bull; Tooltip Options</a></li>
+                <li><a href="#{request.contextPath}/ui/overlay/tooltip/tooltipGlobal.xhtml">&bull; Global Tooltip</a></li>
+            </ul>
+        </div>
+    </ui:define>
+    
+</ui:composition>

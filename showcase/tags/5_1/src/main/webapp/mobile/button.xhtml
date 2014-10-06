@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/WEB-INF/mobile.xhtml">
+    
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>Button</h1>
+            <p>Buttons are used for ajax, non-ajax actions and navigations.</p>
+
+            <h:form>
+                <p:commandButton value="Default" type="button"/>
+                <p:commandButton value="With Icon" type="button" icon="ui-icon-check"/>
+                <p:commandButton value="Icon Position" type="button" icon="ui-icon-refresh" iconPos="right"/>                
+                <p:commandButton value="Inline" type="button" icon="ui-icon-delete" styleClass="ui-btn-inline" />
+                <p:commandButton type="button" icon="ui-icon-info" />
+                <p:commandButton value="Ajax" />
+                <p:commandButton value="Non-Ajax" ajax="false"/>
+                <p:commandButton value="Theme" type="button" icon="ui-icon-delete" styleClass="ui-btn-b" />
+                <p:commandButton value="Mini" type="button" styleClass="ui-mini"/>
+                <p:button value="Go Button" outcome="index" icon="ui-icon-info"/>
+            </h:form>
+            
+            <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1">
+                <p:tab title="button.xhtml">
+                    <pre class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:commandButton value="Default" type="button"/&gt;
+    &lt;p:commandButton value="With Icon" type="button" icon="ui-icon-check"/&gt;
+    &lt;p:commandButton value="Icon Position" type="button" icon="ui-icon-refresh" iconPos="right"/&gt;                
+    &lt;p:commandButton value="Inline" type="button" icon="ui-icon-delete" styleClass="ui-btn-inline" /&gt;
+    &lt;p:commandButton type="button" icon="ui-icon-info" /&gt;
+    &lt;p:commandButton value="Ajax" /&gt;
+    &lt;p:commandButton value="Non-Ajax" ajax="false"/&gt;
+    &lt;p:commandButton value="Theme" type="button" icon="ui-icon-delete" styleClass="ui-btn-b" /&gt;
+    &lt;p:commandButton value="Mini" type="button" styleClass="ui-mini"/&gt;
+    &lt;p:button value="Go Button" outcome="index" icon="ui-icon-info"/&gt;
+&lt;/h:form&gt;
+                    </pre>   
+                </p:tab>
+            </p:accordionPanel>
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>

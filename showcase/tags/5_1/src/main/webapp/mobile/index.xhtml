@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/mobile.xhtml">
+
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>PrimeFaces Mobile</h1>
+            <p class="jqm-home">
+                PrimeFaces Mobile (PFM) is a UI Kit to create JSF applications optimized for mobile devices. PFM is built on top of jQuery Mobile, 
+                a touch-optimized HTML5 UI framework providing support for <a href="http://jquerymobile.com/gbs/">various platforms</a>.
+            </p>
+            <p>In addition to the seamless integration with jQuery Mobile, PFM features a Mobile Renderkit for popular PrimeFaces components, ajax framework extensions,
+                mobile ajax behavior events, integrated navigation model, lazy loading of pages, responsive widgets and more.
+            </p>
+
+            <p:graphicImage styleClass="devices" name="mobile/images/devices.png" />
+        </pm:content>
+    </ui:define>
+
+</ui:composition>

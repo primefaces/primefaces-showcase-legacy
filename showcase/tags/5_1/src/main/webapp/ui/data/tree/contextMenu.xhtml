@@ -1,0 +1,287 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="title">
+        Tree - <span class="subitem">ContextMenu</span>
+    </ui:define>
+
+    <ui:define name="description">
+        ContextMenu has special integration with Tree. Even different menus can be assigned to different node types by matching node types.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <p:growl id="messages" showDetail="true" />
+            
+            <p:tree id="docs" value="#{treeContextMenuView.root}" var="doc" selectionMode="single" selection="#{treeContextMenuView.selectedNode}" dynamic="true">                    
+                <p:treeNode expandedIcon="ui-icon-folder-open" collapsedIcon="ui-icon-folder-collapsed">
+                    <h:outputText value="#{doc.name}"/>
+                </p:treeNode>
+                <p:treeNode type="document" icon="ui-icon-document">
+                    <h:outputText value="#{doc.name}" />
+                </p:treeNode>
+                <p:treeNode type="picture" icon="ui-icon-image">
+                    <h:outputText value="#{doc.name}" />
+                </p:treeNode>
+                <p:treeNode type="mp3" icon="ui-icon-video">
+                    <h:outputText value="#{doc.name}" />
+                </p:treeNode>
+            </p:tree>
+            
+            <p:contextMenu for="docs">
+                <p:menuitem value="View" update="messages" actionListener="#{treeContextMenuView.displaySelectedSingle}" icon="ui-icon-search" />
+                <p:menuitem value="Delete" update="docs" actionListener="#{treeContextMenuView.deleteNode}" icon="ui-icon-close"/>
+            </p:contextMenu>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="contextMenu.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:growl id="messages" showDetail="true" /&gt;
+
+    &lt;p:tree id="docs" value="\#{treeContextMenuView.root}" var="doc" selectionMode="single" selection="\#{treeContextMenuView.selectedNode}" dynamic="true"&gt;                    
+        &lt;p:treeNode expandedIcon="ui-icon-folder-open" collapsedIcon="ui-icon-folder-collapsed"&gt;
+            &lt;h:outputText value="\#{doc.name}"/&gt;
+        &lt;/p:treeNode&gt;
+        &lt;p:treeNode type="document" icon="ui-icon-document"&gt;
+            &lt;h:outputText value="\#{doc.name}" /&gt;
+        &lt;/p:treeNode&gt;
+        &lt;p:treeNode type="picture" icon="ui-icon-image"&gt;
+            &lt;h:outputText value="\#{doc.name}" /&gt;
+        &lt;/p:treeNode&gt;
+        &lt;p:treeNode type="mp3" icon="ui-icon-video"&gt;
+            &lt;h:outputText value="\#{doc.name}" /&gt;
+        &lt;/p:treeNode&gt;
+    &lt;/p:tree&gt;
+
+    &lt;p:contextMenu for="docs"&gt;
+        &lt;p:menuitem value="View" update="messages" actionListener="\#{treeContextMenuView.displaySelectedSingle}" icon="ui-icon-search" /&gt;
+        &lt;p:menuitem value="Delete" update="docs" actionListener="\#{treeContextMenuView.deleteNode}" icon="ui-icon-close"/&gt;
+    &lt;/p:contextMenu&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ContextMenuView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data.tree;
+
+import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import org.primefaces.model.TreeNode;
+import org.primefaces.showcase.service.DocumentService;
+
+@ManagedBean(name="treeContextMenuView")
+@ViewScoped
+public class ContextMenuView implements Serializable {
+    
+     private TreeNode root;
+    
+    private TreeNode selectedNode;
+    
+    @ManagedProperty("\#{documentService}")
+    private DocumentService service;
+    
+    @PostConstruct
+    public void init() {
+        root = service.createDocuments();
+    }
+
+    public TreeNode getRoot() {
+        return root;
+    }
+
+    public TreeNode getSelectedNode() {
+        return selectedNode;
+    }
+
+    public void setSelectedNode(TreeNode selectedNode) {
+        this.selectedNode = selectedNode;
+    }
+
+    public void setService(DocumentService service) {
+        this.service = service;
+    }
+    
+    public void displaySelectedSingle() {
+        if(selectedNode != null) {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", selectedNode.getData().toString());
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+	}
+     
+    public void deleteNode() { 
+        selectedNode.getChildren().clear();
+        selectedNode.getParent().getChildren().remove(selectedNode);
+        selectedNode.setParent(null);
+        
+        selectedNode = null;
+    }  
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="DocumentService.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.service;
+
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
+import org.primefaces.showcase.domain.Document;
+
+@ManagedBean(name = "documentService")
+@ApplicationScoped
+public class DocumentService {
+    
+    public TreeNode createDocuments() {
+        TreeNode root = new DefaultTreeNode(new Document("Files", "-", "Folder"), null);
+		
+		TreeNode documents = new DefaultTreeNode(new Document("Documents", "-", "Folder"), root);
+		TreeNode pictures = new DefaultTreeNode(new Document("Pictures", "-", "Folder"), root);
+		TreeNode movies = new DefaultTreeNode(new Document("Movies", "-", "Folder"), root);
+		
+		TreeNode work = new DefaultTreeNode(new Document("Work", "-", "Folder"), documents);
+		TreeNode primefaces = new DefaultTreeNode(new Document("PrimeFaces", "-", "Folder"), documents);
+		
+		//Documents
+		TreeNode expenses = new DefaultTreeNode("document", new Document("Expenses.doc", "30 KB", "Word Document"), work);
+		TreeNode resume = new DefaultTreeNode("document", new Document("Resume.doc", "10 KB", "Word Document"), work);
+		TreeNode refdoc = new DefaultTreeNode("document", new Document("RefDoc.pages", "40 KB", "Pages Document"), primefaces);
+		
+		//Pictures
+		TreeNode barca = new DefaultTreeNode("picture", new Document("barcelona.jpg", "30 KB", "JPEG Image"), pictures);
+		TreeNode primelogo = new DefaultTreeNode("picture", new Document("logo.jpg", "45 KB", "JPEG Image"), pictures);
+		TreeNode optimus = new DefaultTreeNode("picture", new Document("optimusprime.png", "96 KB", "PNG Image"), pictures);
+		
+		//Movies
+		TreeNode pacino = new DefaultTreeNode(new Document("Al Pacino", "-", "Folder"), movies);
+		TreeNode deniro = new DefaultTreeNode(new Document("Robert De Niro", "-", "Folder"), movies);
+		
+		TreeNode scarface = new DefaultTreeNode("mp3", new Document("Scarface", "15 GB", "Movie File"), pacino);
+		TreeNode carlitosWay = new DefaultTreeNode("mp3", new Document("Carlitos' Way", "24 GB", "Movie File"), pacino);
+		
+		TreeNode goodfellas = new DefaultTreeNode("mp3", new Document("Goodfellas", "23 GB", "Movie File"), deniro);
+		TreeNode untouchables = new DefaultTreeNode("mp3", new Document("Untouchables", "17 GB", "Movie File"), deniro);
+        
+        return root;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Document.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.domain;
+
+import java.io.Serializable;
+
+public class Document implements Serializable, Comparable&lt;Document&gt; {
+
+	private String name;
+	
+	private String size;
+	
+	private String type;
+	
+	public Document(String name, String size, String type) {
+		this.name = name;
+		this.size = size;
+		this.type = type;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	//Eclipse Generated hashCode and equals
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((size == null) ? 0 : size.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Document other = (Document) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (size == null) {
+			if (other.size != null)
+				return false;
+		} else if (!size.equals(other.size))
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
+
+    public int compareTo(Document document) {
+        return this.getName().compareTo(document.getName());
+    }
+}  
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-474" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
