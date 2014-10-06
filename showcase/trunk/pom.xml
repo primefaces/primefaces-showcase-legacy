@@ -216,13 +216,13 @@
             </activation>
             <properties>
                 <jsfVersion>Mojarra-2.2.7</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.1-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.2-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>5.1-SNAPSHOT</version>
+                    <version>5.2-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -235,13 +235,13 @@
             <id>stable</id>
             <properties>
                 <jsfVersion>Mojarra-2.2.7</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.0</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.1</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>5.0</version>
+                    <version>5.1</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -254,13 +254,13 @@
             <id>elite</id>
             <properties>
                 <jsfVersion>Mojarra-2.2.7</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.0.7</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.0.10</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>5.0.7</version>
+                    <version>5.0.10</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
