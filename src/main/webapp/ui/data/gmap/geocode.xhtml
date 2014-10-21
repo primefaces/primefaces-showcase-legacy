@@ -1,0 +1,102 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="head">
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <style type="text/css">
+            .ui-button {
+                margin: 10px 0px 0px 70px;
+            }
+        </style>
+	</ui:define>
+    
+    <ui:define name="title">
+        GMap - <span class="subitem">Geocode</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Google Maps API is used to find the coordinates of an address (Geocode) or an address with coordinates (Reverse Geocode).
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form prependId="false">	
+           <p:gmap id="gmap" widgetVar="geoMap" center="38.9568857, 35.2408826" zoom="5" type="ROADMAP" model="#{geocodeView.simpleModel}" style="width:600px;height:400px">
+                <p:ajax event="geocode" listener="#{geocodeView.onGeocode}" update="gmap" />
+                <p:ajax event="reverseGeocode" listener="#{geocodeView.onReverseGeocode}" update="gmap" />
+           </p:gmap>
+           
+           <p:commandButton value="Geocode (Ankara)" onclick="PF('geoMap').geocode('Ankara')" type="button" />
+           <p:commandButton value="ReverseGeocode (Istanbul)" onclick="PF('geoMap').reverseGeocode(41.0053215, 29.0121795)" type="button" />
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="geocode.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form prependId="false"&gt;	
+   &lt;p:gmap id="gmap" widgetVar="geoMap" center="38.9568857, 35.2408826" zoom="5" type="ROADMAP" model="\#{geocodeView.simpleModel}" style="width:600px;height:400px"&gt;
+        &lt;p:ajax event="geocode" listener="\#{geocodeView.onGeocode}" update="gmap" /&gt;
+        &lt;p:ajax event="reverseGeocode" listener="\#{geocodeView.onReverseGeocode}" update="gmap" /&gt;
+   &lt;/p:gmap&gt;
+
+   &lt;p:commandButton value="Geocode (Ankara)" onclick="PF('geoMap').geocode('Ankara')" type="button" /&gt;
+   &lt;p:commandButton value="ReverseGeocode (Istanbul)" onclick="PF('geoMap').reverseGeocode(41.0053215,29.0121795)" type="button" /&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="GeocodeView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data.gmap;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.event.map.GeocodeEvent;
+import org.primefaces.event.map.ReverseGeocodeEvent;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
+
+@ManagedBean
+public class GeocodeView {
+    
+    private MapModel simpleModel;
+    
+    @PostConstruct
+    public void init() {
+        simpleModel = new DefaultMapModel();
+    }
+    
+    public void onGeocode(GeocodeEvent event) {
+        LatLng coord = new LatLng(event.getLatlng().getLat(), event.getLatlng().getLng());
+        
+        simpleModel.addOverlay(new Marker(coord, "Ankara"));
+    }
+    
+    public void onReverseGeocode(ReverseGeocodeEvent event) {
+        LatLng coord = new LatLng(41.0053215, 29.0121795);
+        
+        simpleModel.addOverlay(new Marker(coord, event.getAddress()));
+    }
+
+    public MapModel getSimpleModel() {
+        return simpleModel;
+    }
+
+}
+                </pre>
+            </p:tab>
+            
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
