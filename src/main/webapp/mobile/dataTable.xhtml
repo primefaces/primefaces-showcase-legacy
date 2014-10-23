@@ -15,7 +15,8 @@
             
             <h:form>
                 
-                <p:dataTable var="car" value="#{dtSelectionView.cars1}" selectionMode="single" selection="#{dtSelectionView.selectedCar}" rowKey="#{car.id}">
+                <p:dataTable var="car" value="#{dtSelectionView.cars1}" selectionMode="single" selection="#{dtSelectionView.selectedCar}" rowKey="#{car.id}"
+                             paginator="true" rows="5">
                     <p:column headerText="Id" sortBy="#{car.id}">
                         <h:outputText value="#{car.id}" />
                     </p:column>
