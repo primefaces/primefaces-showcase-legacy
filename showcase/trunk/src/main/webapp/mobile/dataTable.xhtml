@@ -6,30 +6,34 @@
     xmlns:pm="http://primefaces.org/mobile"
     xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
     template="/WEB-INF/mobile.xhtml">
-    
+
     <ui:define name="content">
         <pm:content styleClass="jqm-content">
             <h1>DataTable</h1>
             <p>DataTable presents a collection of data in a responsive tabular layout. Columns can be given priority to define visibility depending 
             on screen size and optional reflow mode enables stacking on smaller screens.</p>
             
-            <p:dataTable var="car" value="#{dtBasicView.cars}">
-                <p:column headerText="Id">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
+            <h:form>
+                
+                <p:dataTable var="car" value="#{dtBasicView.cars}">
+                    <p:column headerText="Id" sortBy="#{car.id}">
+                        <h:outputText value="#{car.id}" />
+                    </p:column>
 
-                <p:column headerText="Year">
-                    <h:outputText value="#{car.year}" />
-                </p:column>
+                    <p:column headerText="Year" sortBy="#{car.year}">
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
 
-                <p:column headerText="Brand">
-                    <h:outputText value="#{car.brand}" />
-                </p:column>
+                    <p:column headerText="Brand" sortBy="#{car.brand}">
+                        <h:outputText value="#{car.brand}" />
+                    </p:column>
 
-                <p:column headerText="Color">
-                    <h:outputText value="#{car.color}" />
-                </p:column>
-            </p:dataTable>
+                    <p:column headerText="Color" sortBy="#{car.color}">
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+                </p:dataTable>
+                
+            </h:form>
             
             <h2>Source</h2>
             <p:accordionPanel activeIndex="-1" multiple="true">
