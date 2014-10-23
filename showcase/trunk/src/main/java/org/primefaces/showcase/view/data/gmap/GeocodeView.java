@@ -15,6 +15,7 @@
  */
 package org.primefaces.showcase.view.data.gmap;
 
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import org.primefaces.event.map.GeocodeEvent;
@@ -35,15 +36,16 @@ public class GeocodeView {
     }
     
     public void onGeocode(GeocodeEvent event) {
-        LatLng coord = new LatLng(event.getLatlng().getLat(), event.getLatlng().getLng());
-        
-        simpleModel.addOverlay(new Marker(coord, "Ankara"));
+        List<LatLng> latLng = event.getLatlng();
+        for(int i = 0; i < latLng.size(); i++) {
+            LatLng coord = new LatLng(latLng.get(i).getLat(),latLng.get(i).getLng());
+            simpleModel.addOverlay(new Marker(coord, "Atatürk"));
+        }
     }
     
     public void onReverseGeocode(ReverseGeocodeEvent event) {
         LatLng coord = new LatLng(41.0053215, 29.0121795);
-        
-        simpleModel.addOverlay(new Marker(coord, event.getAddress()));
+        simpleModel.addOverlay(new Marker(coord, event.getAddress().get(0)));
     }
 
     public MapModel getSimpleModel() {
