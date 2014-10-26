@@ -9,14 +9,62 @@
     
     <ui:define name="content">
         <pm:content styleClass="jqm-content">
-            <h1>DataTable</h1>
+            <h1>DataTable (since v5.1.2)</h1>
             <p>DataTable presents a collection of data in a responsive tabular layout. Columns can be given priority to define visibility depending 
             on screen size and optional reflow mode enables stacking on smaller screens.</p>
             
-            <h:form>
+            <h:form id="form">
+                <p:growl id="msgs" showDetail="true" />                
                 
-                <p:dataTable var="car" value="#{dtSelectionView.cars1}" selectionMode="single" selection="#{dtSelectionView.selectedCar}" rowKey="#{car.id}"
-                             paginator="true" rows="5">
+                <h2 class="first">Basic</h2>
+                <p>...</p>
+                <p:dataTable var="car" value="#{dtMobileView.cars1}">
+                    <p:column headerText="Id">
+                        <h:outputText value="#{car.id}" />
+                    </p:column>
+
+                    <p:column headerText="Year">
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <p:column headerText="Brand">
+                        <h:outputText value="#{car.brand}" />
+                    </p:column>
+
+                    <p:column headerText="Color">
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+                </p:dataTable>
+                
+                <h2>Reflow Mode</h2>
+                <p>...</p>
+                <p:dataTable var="car" value="#{dtMobileView.cars2}">
+                    <p:column headerText="Id">
+                        <h:outputText value="#{car.id}" />
+                    </p:column>
+
+                    <p:column headerText="Year">
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+
+                    <p:column headerText="Brand">
+                        <h:outputText value="#{car.brand}" />
+                    </p:column>
+
+                    <p:column headerText="Color">
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+                </p:dataTable>
+                
+                <h2>Advanced</h2>
+                <p>...</p>
+                <p:dataTable id="cars" var="car" value="#{dtMobileView.cars3}" selectionMode="multiple" selection="#{dtSelectionView.selectedCars}" rowKey="#{car.id}"
+                             paginator="true" rows="10" >
+                    
+                    <p:ajax event="swipeleft" listener="#{dtMobileView.onRowSwipe}" update="@this" />
+                    <p:ajax event="swiperight" listener="#{dtMobileView.onRowSwipe}" update="@this" />
+                    <p:ajax event="tap" listener="#{dtMobileView.onRowTapHold}" update="@parent:msgs " />
+                    
                     <p:column headerText="Id" sortBy="#{car.id}">
                         <h:outputText value="#{car.id}" />
                     </p:column>
