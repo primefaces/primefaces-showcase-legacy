@@ -71,7 +71,7 @@ public class DatatableView implements Serializable {
         this.selectedCars = selectedCars;
     }
         
-    public void onRowSwipe(SwipeEvent event) {
+    public void onRowSwipeRight(SwipeEvent event) {
         Car car = ((Car) event.getData());
         cars3.remove(car);
         
@@ -80,8 +80,8 @@ public class DatatableView implements Serializable {
         }
     }
     
-    public void onRowTapHold(SelectEvent event) {
-        FacesMessage msg = new FacesMessage("Tapped on ", ((Car) event.getObject()).getId());
+    public void onRowSwipeLeft(SwipeEvent event) {
+        FacesMessage msg = new FacesMessage("Swiped Left", ((Car) event.getData()).getId());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }
