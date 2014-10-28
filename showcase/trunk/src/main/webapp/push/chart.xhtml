@@ -42,8 +42,7 @@
     <ui:define name="implementation">
 
         <h:form>
-            <p:pieChart widgetVar="browserChart" value="#{browserStatsView.pieModel}" legendPosition="w"
-                    title="Browser Stats" style="width:400px;height:300px" showDataLabels="true" />
+            <p:chart type="pie" widgetVar="browserChart" model="#{browserStatsView.pieModel}" style="width:400px;height:300px"  />
 
             <p:socket onMessage="handleMessage" channel="/browser" />
         </h:form>
@@ -55,8 +54,7 @@
             <p:tab title="chart.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;p:pieChart widgetVar="browserChart" value="\#{browserStatsView.pieModel}" legendPosition="w"
-            title="Browser Stats" style="width:400px;height:300px" showDataLabels="true" /&gt;
+    &lt;p:chart type="pie" widgetVar="browserChart" model="\#{browserStatsView.pieModel}" style="width:400px;height:300px"  /&gt;
 
     &lt;p:socket onMessage="handleMessage" channel="/browser" /&gt;
 &lt;/h:form&gt;
@@ -101,6 +99,9 @@ public class BrowserStatsView {
     public void init() {
         pieModel = new PieChartModel();
         pieModel.setData(agents);
+        pieModel.setTitle("Browser Stats");
+        pieModel.setShowDataLabels(true);
+        pieModel.setLegendPosition("w");
     }
 
     public PieChartModel getPieModel() {
