@@ -35,6 +35,9 @@ public class BrowserStatsView {
     public void init() {
         pieModel = new PieChartModel();
         pieModel.setData(agents);
+        pieModel.setTitle("Browser Stats");
+        pieModel.setShowDataLabels(true);
+        pieModel.setLegendPosition("w");
     }
 
     public PieChartModel getPieModel() {

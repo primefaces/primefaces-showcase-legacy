@@ -94,7 +94,7 @@
     </filter>
     <filter-mapping>
         <filter-name>Browser Stats Filter</filter-name>
-        <url-pattern>/push/chart.jsf</url-pattern>
+        <url-pattern>/push/chart.xhtml</url-pattern>
     </filter-mapping>
     
     <servlet>
