@@ -90,7 +90,7 @@ public class ColumnsView implements Serializable {
     
     private List&lt;Car&gt; filteredCars;
     
-    @ManagedProperty("#{carService}")
+    @ManagedProperty("\#{carService}")
     private CarService service;
 
     @PostConstruct
