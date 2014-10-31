@@ -28,28 +28,34 @@ import org.primefaces.model.map.Marker;
 @ManagedBean
 public class GeocodeView {
     
-    private MapModel simpleModel;
+    private MapModel simpleGeoModel;
+    private MapModel simpleRevGeoModel;
     
     @PostConstruct
     public void init() {
-        simpleModel = new DefaultMapModel();
+        simpleGeoModel = new DefaultMapModel();
+        simpleRevGeoModel = new DefaultMapModel();
     }
     
     public void onGeocode(GeocodeEvent event) {
         List<LatLng> latLng = event.getLatlng();
         for(int i = 0; i < latLng.size(); i++) {
-            LatLng coord = new LatLng(latLng.get(i).getLat(),latLng.get(i).getLng());
-            simpleModel.addOverlay(new Marker(coord, "Atatürk"));
+            LatLng coord = new LatLng(latLng.get(i).getLat(), latLng.get(i).getLng());
+            simpleGeoModel.addOverlay(new Marker(coord, event.getAddress().get(0)));
         }
     }
     
     public void onReverseGeocode(ReverseGeocodeEvent event) {
-        LatLng coord = new LatLng(41.0053215, 29.0121795);
-        simpleModel.addOverlay(new Marker(coord, event.getAddress().get(0)));
+        LatLng coord = new LatLng(event.getLatlng().get(0).getLat(), event.getLatlng().get(0).getLng());
+        simpleRevGeoModel.addOverlay(new Marker(coord, event.getAddress().get(0)));
     }
 
-    public MapModel getSimpleModel() {
-        return simpleModel;
+    public MapModel getSimpleGeoModel() {
+        return simpleGeoModel;
     }
 
+    public MapModel getSimpleRevGeoModel() {
+        return simpleRevGeoModel;
+    }
+    
 }
