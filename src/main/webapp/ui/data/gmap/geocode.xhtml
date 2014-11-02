@@ -118,6 +118,7 @@ import javax.faces.bean.ManagedBean;
 import org.primefaces.event.map.GeocodeEvent;
 import org.primefaces.event.map.ReverseGeocodeEvent;
 import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.GeocodeResult;
 import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.MapModel;
 import org.primefaces.model.map.Marker;
@@ -137,25 +138,26 @@ public class GeocodeView {
     }
     
     public void onGeocode(GeocodeEvent event) {
-        List&lt;LatLng&gt; coordinates = event.getCoordinates();
+        List&lt;GeocodeResult&gt; results = event.getResults();
         
-        if (coordinates != null &amp;&amp; !coordinates.isEmpty()) {
-            centerGeoMap = coordinates.get(0).getLat() + "," + coordinates.get(0).getLng();
+        if (results != null &amp;&amp; !results.isEmpty()) {
+            LatLng center = results.get(0).getLatLng();
+            centerGeoMap = center.getLat() + "," + center.getLng();
             
-            for (int i = 0; i &lt; coordinates.size(); i++) {
-                LatLng coord = new LatLng(coordinates.get(i).getLat(), coordinates.get(i).getLng());
-                geoModel.addOverlay(new Marker(coord, event.getAddress()));
+            for (int i = 0; i &lt; results.size(); i++) {
+                GeocodeResult result = results.get(i);
+                geoModel.addOverlay(new Marker(result.getLatLng(), result.getAddress()));
             }
         }
     }
     
     public void onReverseGeocode(ReverseGeocodeEvent event) {
-        List&lt;String&gt; address = event.getAddress();
+        List&lt;String&gt; addresses = event.getAddresses();
         LatLng coord = event.getLatlng();
         
-        if (address != null) {
+        if (addresses != null &amp;&amp; !addresses.isEmpty()) {
             centerRevGeoMap = coord.getLat() + "," + coord.getLng();
-            revGeoModel.addOverlay(new Marker(coord, address.get(0)));
+            revGeoModel.addOverlay(new Marker(coord, addresses.get(0)));
         }
     }
 
