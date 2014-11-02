@@ -28,34 +28,53 @@ import org.primefaces.model.map.Marker;
 @ManagedBean
 public class GeocodeView {
     
-    private MapModel simpleGeoModel;
-    private MapModel simpleRevGeoModel;
+    private MapModel geoModel;
+    private MapModel revGeoModel;
+    private String centerGeoMap = "41.850033, -87.6500523";
+    private String centerRevGeoMap = "41.850033, -87.6500523";
     
     @PostConstruct
     public void init() {
-        simpleGeoModel = new DefaultMapModel();
-        simpleRevGeoModel = new DefaultMapModel();
+        geoModel = new DefaultMapModel();
+        revGeoModel = new DefaultMapModel();
     }
     
     public void onGeocode(GeocodeEvent event) {
-        List<LatLng> latLng = event.getLatlng();
-        for(int i = 0; i < latLng.size(); i++) {
-            LatLng coord = new LatLng(latLng.get(i).getLat(), latLng.get(i).getLng());
-            simpleGeoModel.addOverlay(new Marker(coord, event.getAddress().get(0)));
+        List<LatLng> coordinates = event.getCoordinates();
+        
+        if (coordinates != null && !coordinates.isEmpty()) {
+            centerGeoMap = coordinates.get(0).getLat() + "," + coordinates.get(0).getLng();
+            
+            for (int i = 0; i < coordinates.size(); i++) {
+                LatLng coord = new LatLng(coordinates.get(i).getLat(), coordinates.get(i).getLng());
+                geoModel.addOverlay(new Marker(coord, event.getAddress()));
+            }
         }
     }
     
     public void onReverseGeocode(ReverseGeocodeEvent event) {
-        LatLng coord = new LatLng(event.getLatlng().get(0).getLat(), event.getLatlng().get(0).getLng());
-        simpleRevGeoModel.addOverlay(new Marker(coord, event.getAddress().get(0)));
+        List<String> address = event.getAddress();
+        LatLng coord = event.getLatlng();
+        
+        if (address != null) {
+            centerRevGeoMap = coord.getLat() + "," + coord.getLng();
+            revGeoModel.addOverlay(new Marker(coord, address.get(0)));
+        }
     }
 
-    public MapModel getSimpleGeoModel() {
-        return simpleGeoModel;
+    public MapModel getGeoModel() {
+        return geoModel;
     }
 
-    public MapModel getSimpleRevGeoModel() {
-        return simpleRevGeoModel;
+    public MapModel getRevGeoModel() {
+        return revGeoModel;
     }
-    
+
+    public String getCenterGeoMap() {
+        return centerGeoMap;
+    }
+
+    public String getCenterRevGeoMap() {
+        return centerRevGeoMap;
+    }
 }
