@@ -34,7 +34,7 @@
         <h:form prependId="false">
             
             <h3 style="margin-top:0">Geocode</h3>
-            <h:panelGrid columns="3" style="margin-bottom:10px">
+            <h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
                 <p:outputLabel for="address" value="Address:" />
                 <p:inputText id="address" />
                 <p:commandButton value="Geocode" icon="ui-icon-search" onclick="geocode()" type="button" />
@@ -45,7 +45,7 @@
             </p:gmap>
 
             <h3>Reverse Geocode</h3>
-            <h:panelGrid columns="5" style="margin-bottom:10px">
+            <h:panelGrid columns="5" style="margin-bottom:10px" cellpadding="5">
                 <p:outputLabel for="lat" value="Lat:" />
                 <p:inputText id="lat" />
                 <p:outputLabel for="lng" value="Lng:" />
@@ -81,7 +81,7 @@
 &lt;h:form prependId="false"&gt;
 
     &lt;h3 style="margin-top:0"&gt;Geocode&lt;/h3&gt;
-    &lt;h:panelGrid columns="3" style="margin-bottom:10px"&gt;
+    &lt;h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5"&gt;
         &lt;p:outputLabel for="address" value="Address:" /&gt;
         &lt;p:inputText id="address" /&gt;
         &lt;p:commandButton value="Geocode" icon="ui-icon-search" onclick="geocode()" type="button" /&gt;
@@ -92,7 +92,7 @@
     &lt;/p:gmap&gt;
 
     &lt;h3&gt;Reverse Geocode&lt;/h3&gt;
-    &lt;h:panelGrid columns="5" style="margin-bottom:10px"&gt;
+    &lt;h:panelGrid columns="5" style="margin-bottom:10px" cellpadding="5"&gt;
         &lt;p:outputLabel for="lat" value="Lat:" /&gt;
         &lt;p:inputText id="lat" /&gt;
         &lt;p:outputLabel for="lng" value="Lng:" /&gt;
