@@ -232,7 +232,7 @@
             </dependencies>
         </profile>
         <profile>
-            <id>commnity-stable</id>
+            <id>community-stable</id>
             <properties>
                 <jsfVersion>Mojarra-2.2.7</jsfVersion>
                 <primefacesVersion>PrimeFaces-5.1</primefacesVersion>
@@ -254,13 +254,13 @@
             <id>elite-stable</id>
             <properties>
                 <jsfVersion>Mojarra-2.2.7</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.1.1</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.1.2</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>5.1.1</version>
+                    <version>5.1.2</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -273,13 +273,13 @@
             <id>elite-dev</id>
             <properties>
                 <jsfVersion>Mojarra-2.2.7</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.1.2-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.1.3-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>5.1.2-SNAPSHOT</version>
+                    <version>5.1.3-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
