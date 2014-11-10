@@ -15,15 +15,18 @@
  */
 package org.primefaces.showcase.view.data.datatable;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 
 @ManagedBean(name="dtPaginatorView")
-public class PaginatorView {
+@ViewScoped
+public class PaginatorView implements Serializable {
     
     private List<Car> cars;
     
