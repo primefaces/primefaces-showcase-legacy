@@ -478,6 +478,10 @@ public class AutoCompleteView {
     public void setService(ThemeService service) {
         this.service = service;
     }
+
+    public char getThemeGroup(Theme theme) {
+        return theme.getDisplayName().charAt(0);
+    }
 }
                     </pre>
                 </p:tab>
