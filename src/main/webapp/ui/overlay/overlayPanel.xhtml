@@ -17,7 +17,7 @@
 
     <ui:define name="implementation">
 
-       <h:form>      
+       <h:form id="form">      
             <p:commandButton id="imageBtn" value="Basic" type="button" />
             <p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade">
                 <p:graphicImage name="/demo/images/nature/nature1.jpg" width="300" />
@@ -56,7 +56,55 @@
                         <p:graphicImage name="/demo/images/nature/#{image}" width="300" />
                     </ui:repeat>
                 </p:imageSwitch>
-            </p:overlayPanel>      
+            </p:overlayPanel>    
+            
+             <br /><br />
+            
+            <p:dataTable id="basicDT" var="car" value="#{dtSelectionView.cars1}">
+                <f:facet name="header">
+                    DataTable Integration
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{car.id}" />
+                </p:column>
+                <p:column headerText="Year">
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+                <p:column headerText="Brand">
+                    <h:outputText value="#{car.brand}" />
+                </p:column>
+                <p:column headerText="Color">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+                <p:column style="width:32px;text-align: center">
+                     <p:commandButton update=":form:carDetail" oncomplete="PF('carOP').show('#{component.clientId}')" icon="ui-icon-search" title="View">
+                        <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" />
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+            
+            <p:overlayPanel widgetVar="carOP" showEffect="fade" hideEffect="fade" dismissable="false" showCloseIcon="true">
+                <p:outputPanel id="carDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty dtSelectionView.selectedCar}" columnClasses="label,value">
+                        <f:facet name="header">
+                            <p:graphicImage name="demo/images/car/#{dtSelectionView.selectedCar.brand}-big.gif"/> 
+                        </f:facet>
+                        
+                        <h:outputText value="Id:" />
+                        <h:outputText value="#{dtSelectionView.selectedCar.id}" />
+
+                        <h:outputText value="Year" />
+                        <h:outputText value="#{dtSelectionView.selectedCar.year}" />
+
+                        <h:outputText value="Color:" />
+                        <h:outputText value="#{dtSelectionView.selectedCar.color}" style="color:#{dtSelectionView.selectedCar.color}"/>
+                    
+                        <h:outputText value="Price" />
+                        <h:outputText value="\$#{dtSelectionView.selectedCar.price}" />
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:overlayPanel>
+             
         </h:form>
         
     </ui:define>
@@ -101,6 +149,52 @@
             &lt;/ui:repeat&gt;
         &lt;/p:imageSwitch&gt;
     &lt;/p:overlayPanel&gt;
+    
+    &lt;p:dataTable id="basicDT" var="car" value="\#{dtSelectionView.cars1}"&gt;
+        &lt;f:facet name="header"&gt;
+            DataTable Integration
+        &lt;/f:facet&gt;
+        &lt;p:column headerText="Id"&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Year"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Brand"&gt;
+            &lt;h:outputText value="\#{car.brand}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Color"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column style="width:32px;text-align: center"&gt;
+             &lt;p:commandButton update=":form:carDetail" oncomplete="PF('carOP').show('\#{component.clientId}')" icon="ui-icon-search" title="View"&gt;
+                &lt;f:setPropertyActionListener value="\#{car}" target="\#{dtSelectionView.selectedCar}" /&gt;
+            &lt;/p:commandButton&gt;
+        &lt;/p:column&gt;
+    &lt;/p:dataTable&gt;
+            
+    &lt;p:overlayPanel widgetVar="carOP" showEffect="fade" hideEffect="fade" dismissable="false" showCloseIcon="true"&gt;
+        &lt;p:outputPanel id="carDetail" style="text-align:center;"&gt;
+            &lt;p:panelGrid  columns="2" rendered="\#{not empty dtSelectionView.selectedCar}" columnClasses="label,value"&gt;
+                &lt;f:facet name="header"&gt;
+                    &lt;p:graphicImage name="demo/images/car/\#{dtSelectionView.selectedCar.brand}-big.gif"/&gt; 
+                &lt;/f:facet&gt;
+
+                &lt;h:outputText value="Id:" /&gt;
+                &lt;h:outputText value="\#{dtSelectionView.selectedCar.id}" /&gt;
+
+                &lt;h:outputText value="Year" /&gt;
+                &lt;h:outputText value="\#{dtSelectionView.selectedCar.year}" /&gt;
+
+                &lt;h:outputText value="Color:" /&gt;
+                &lt;h:outputText value="\#{dtSelectionView.selectedCar.color}" style="color:\#{dtSelectionView.selectedCar.color}"/&gt;
+
+                &lt;h:outputText value="Price" /&gt;
+                &lt;h:outputText value="\$\#{dtSelectionView.selectedCar.price}" /&gt;
+            &lt;/p:panelGrid&gt;
+        &lt;/p:outputPanel&gt;
+    &lt;/p:overlayPanel&gt;
+
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
