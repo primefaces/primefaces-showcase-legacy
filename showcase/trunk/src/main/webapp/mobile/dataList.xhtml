@@ -25,8 +25,8 @@
 			</p:dataList>
             
             <h2>Advanced</h2>
-            <p>Images, Links, Inset layout, formatting, header and footer.</p>
-            <p:dataList value="#{dtBasicView.cars}" var="car" pt:data-inset="true">
+            <p>Paginator (since v5.1.4), images, Links, Inset layout, formatting, header and footer.</p>
+            <p:dataList value="#{dtBasicView.cars}" var="car" pt:data-inset="true" paginator="true" rows="5">
                 <f:facet name="header">
                     List of Cars
                 </f:facet>
@@ -56,8 +56,8 @@
 &lt;/p:dataList&gt;
 
 &lt;h2&gt;Advanced&lt;/h2&gt;
-&lt;p&gt;Images, Links, Inset layout, formatting, header and footer.&lt;/p&gt;
-&lt;p:dataList value="\#{dtBasicView.cars}" var="car" pt:data-inset="true"&gt;
+&lt;p&gt;Paginator (since v5.1.4), images, Links, Inset layout, formatting, header and footer.&lt;/p&gt;
+&lt;p:dataList value="\#{dtBasicView.cars}" var="car" pt:data-inset="true" paginator="true" rows="5"&gt;
     &lt;f:facet name="header"&gt;
         List of Cars
     &lt;/f:facet&gt;
