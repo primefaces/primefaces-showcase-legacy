@@ -254,7 +254,7 @@
             <id>elite-stable</id>
             <properties>
                 <jsfVersion>Mojarra-2.2.7</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.1.3</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.1.4</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
@@ -273,7 +273,7 @@
             <id>elite-dev</id>
             <properties>
                 <jsfVersion>Mojarra-2.2.7</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.1.4-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.1.5-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
