@@ -12,16 +12,22 @@
     <ui:define name="description">
         OrderList is used to sort a collection via Drag and Drop based reordering, transition effects, pojo support, theme support and more.
     </ui:define>
-
+    
     <ui:define name="implementation">
 
         <h:form>
+            <p:growl id="msgs" showDetail="true" />
+            
             <h3 style="margin-top: 0">Basic OrderList</h3>
             <p:orderList value="#{orderListView.cities}" var="city" controlsLocation="none" itemLabel="#{city}" itemValue="#{city}" />
             <p:commandButton value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" />
             
-            <h3>Pojo Support with Clip Effect, Captions, Custom Content and Reorder Controls</h3>
+            <h3>Pojo Support with Clip Effect, Captions, Custom Content, Reorder Controls and Events (since v5.1.5)</h3>
             <p:orderList value="#{orderListView.themes}" var="theme" itemValue="#{theme}" converter="theme" controlsLocation="left">
+                <p:ajax event="select" listener="#{orderListView.onSelect}" update="msgs"/>
+                <p:ajax event="unselect" listener="#{orderListView.onUnselect}" update="msgs"/>
+                <p:ajax event="reorder" listener="#{orderListView.onReorder}" update="msgs"/>
+                
                 <f:facet name="caption">Available</f:facet>
 
                 <p:column style="width:25%">
@@ -57,12 +63,18 @@
             <p:tab title="orderList.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
+    &lt;p:growl id="msgs" showDetail="true" /&gt;
+            
     &lt;h3 style="margin-top: 0"&gt;Basic OrderList&lt;/h3&gt;
     &lt;p:orderList value="\#{orderListView.cities}" var="city" controlsLocation="none" itemLabel="\#{city}" itemValue="\#{city}" /&gt;
     &lt;p:commandButton value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" /&gt;
 
-    &lt;h3&gt;Pojo Support with Clip Effect, Captions, Custom Content and Reorder Controls&lt;/h3&gt;
+    &lt;h3&gt;Pojo Support with Clip Effect, Captions, Custom Content, Reorder Controls and Events (since v5.1.5)&lt;/h3&gt;
     &lt;p:orderList value="\#{orderListView.themes}" var="theme" itemValue="\#{theme}" converter="theme" controlsLocation="left"&gt;
+        &lt;p:ajax event="select" listener="\#{orderListView.onSelect}" update="msgs"/&gt;
+        &lt;p:ajax event="unselect" listener="\#{orderListView.onUnselect}" update="msgs"/&gt;
+        &lt;p:ajax event="reorder" listener="\#{orderListView.onReorder}" update="msgs"/&gt;
+
         &lt;f:facet name="caption"&gt;Available&lt;/f:facet&gt;
 
         &lt;p:column style="width:25%"&gt;
@@ -99,8 +111,12 @@ package org.primefaces.showcase.view.data;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 
 import org.primefaces.showcase.service.ThemeService;
 import org.primefaces.showcase.domain.Theme;
@@ -152,7 +168,22 @@ public class OrderListView {
 
     public void setThemes(List&lt;Theme&gt; themes) {
         this.themes = themes;
-    }    
+    }   
+
+    public void onSelect(SelectEvent event) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item Selected", event.getObject().toString()));
+    }
+    
+    public void onUnselect(UnselectEvent event) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item Unselected", event.getObject().toString()));
+    }
+    
+    public void onReorder() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "List Reordered", null));
+    } 
 }
 
                 </pre>
