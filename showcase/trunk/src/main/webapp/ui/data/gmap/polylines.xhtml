@@ -22,7 +22,7 @@
         <h:form prependId="false">			
             <p:growl id="growl" life="3000" />
 
-            <p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px" model="#{polylinesView.polylineModel}">
+            <p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:100%;height:400px" model="#{polylinesView.polylineModel}">
                 <p:ajax event="overlaySelect" listener="#{polylinesView.onPolylineSelect}" update="growl" />
             </p:gmap>					
         </h:form>
@@ -36,7 +36,7 @@
 &lt;h:form&gt;			
     &lt;p:growl id="growl" life="3000" /&gt;
 
-    &lt;p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px" model="\#{polylinesView.polylineModel}"&gt;
+    &lt;p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:100%;height:400px" model="\#{polylinesView.polylineModel}"&gt;
         &lt;p:ajax event="overlaySelect" listener="\#{polylinesView.onPolylineSelect}" update="growl" /&gt;
     &lt;/p:gmap&gt;					
 &lt;/h:form&gt;

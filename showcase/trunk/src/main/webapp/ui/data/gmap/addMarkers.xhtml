@@ -56,7 +56,7 @@
 
         <p:growl id="messages" showDetail="true" />
 
-        <p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px"
+        <p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:100%;height:400px"
             model="#{addMarkersView.emptyModel}" onPointClick="handlePointClick(event);" widgetVar="map" />
 
         <p:dialog widgetVar="dlg" showEffect="fade">
@@ -84,7 +84,7 @@
                 <pre name="code" class="brush:xml">
 &lt;p:growl id="messages" showDetail="true" /&gt;
 
-&lt;p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px"
+&lt;p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:100%;height:400px"
     model="\#{addMarkersView.emptyModel}" onPointClick="handlePointClick(event);" widgetVar="map" /&gt;
 
 &lt;p:dialog widgetVar="dlg" showEffect="fade"&gt;
