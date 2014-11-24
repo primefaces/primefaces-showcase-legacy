@@ -22,7 +22,7 @@
        <h:form prependId="false">	
             <p:growl id="messages" showDetail="true" life="2000" />
 
-            <p:gmap id="gmap" center="41.381542, 2.122893" zoom="15" type="ROADMAP" style="width:600px;height:400px">
+            <p:gmap id="gmap" center="41.381542, 2.122893" zoom="15" type="ROADMAP" style="width:100%;height:400px">
                 <p:ajax event="stateChange" listener="#{eventView.onStateChange}" update="messages" />
                 <p:ajax event="pointSelect" listener="#{eventView.onPointSelect}" update="messages" />
             </p:gmap>
@@ -37,7 +37,7 @@
 &lt;h:form&gt;	
     &lt;p:growl id="messages" showDetail="true" life="2000" /&gt;
 
-    &lt;p:gmap id="gmap" center="41.381542, 2.122893" zoom="15" type="ROADMAP" style="width:600px;height:400px"&gt;
+    &lt;p:gmap id="gmap" center="41.381542, 2.122893" zoom="15" type="ROADMAP" style="width:100%;height:400px"&gt;
         &lt;p:ajax event="stateChange" listener="\#{eventView.onStateChange}" update="messages" /&gt;
         &lt;p:ajax event="pointSelect" listener="\#{eventView.onPointSelect}" update="messages" /&gt;
     &lt;/p:gmap&gt;
