@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Menu - <span class="subitem">Steps</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Steps components is an indicator for the steps in a workflow.
+    </ui:define>
+    
+      <ui:define name="head">
+          <f:facet name="first">
+        <style type="text/css">
+.ui-steps .ui-steps-item {
+    width: 24%;
+}
+
+.ui-state-highlight {
+    text-shadow: none !important;
+}
+        </style>
+          </f:facet>
+	</ui:define>
+
+    <ui:define name="implementation">
+        <p:steps activeIndex="1">
+            <p:menuitem value="Personal" />
+            <p:menuitem value="Seat Selection" />
+            <p:menuitem value="Payment" />
+            <p:menuitem value="Confirmation" />
+        </p:steps>
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="steps.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:steps activeIndex="1"&gt;
+    &lt;p:menuitem value="Personal" /&gt;
+    &lt;p:menuitem value="Seat Selection" /&gt;
+    &lt;p:menuitem value="Payment" /&gt;
+    &lt;p:menuitem value="Confirmation" /&gt;
+&lt;/p:steps&gt;
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
