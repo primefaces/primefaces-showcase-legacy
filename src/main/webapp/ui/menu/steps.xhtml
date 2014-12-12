@@ -23,12 +23,48 @@
 .ui-state-highlight {
     text-shadow: none !important;
 }
+
+.ui-steps.custom {
+    margin-bottom: 30px;
+}
+
+.ui-steps.custom .ui-steps-item .ui-menuitem-link {
+    height: 10px;
+    padding: 0 1em;
+}
+
+.ui-steps.custom .ui-steps-item .ui-steps-number {
+    background-color: #0081c2;
+    color: #FFFFFF;
+    display: inline-block;
+    width: 30px;
+    border-radius: 10px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 35em) {
+    .ui-steps.ui-steps.custom .ui-steps-item .ui-menuitem-link {
+        height: auto;
+        padding: 1em;
+    }
+}
         </style>
           </f:facet>
 	</ui:define>
 
     <ui:define name="implementation">
+        
+        <h3 style="margin-top:0">Basic</h3>
         <p:steps activeIndex="1">
+            <p:menuitem value="Personal" />
+            <p:menuitem value="Seat Selection" />
+            <p:menuitem value="Payment" />
+            <p:menuitem value="Confirmation" />
+        </p:steps>
+        
+        <h3>Styled</h3>
+        <p:steps styleClass="custom">
             <p:menuitem value="Personal" />
             <p:menuitem value="Seat Selection" />
             <p:menuitem value="Payment" />
@@ -40,12 +76,57 @@
         <p:tabView>
             <p:tab title="steps.xhtml">
                 <pre name="code" class="brush:xml">
+&lt;h3 style="margin-top:0"&gt;Basic&lt;/h3&gt;
 &lt;p:steps activeIndex="1"&gt;
     &lt;p:menuitem value="Personal" /&gt;
     &lt;p:menuitem value="Seat Selection" /&gt;
     &lt;p:menuitem value="Payment" /&gt;
     &lt;p:menuitem value="Confirmation" /&gt;
 &lt;/p:steps&gt;
+
+&lt;h3&gt;Styled&lt;/h3&gt;
+&lt;p:steps styleClass="custom"&gt;
+    &lt;p:menuitem value="Personal" /&gt;
+    &lt;p:menuitem value="Seat Selection" /&gt;
+    &lt;p:menuitem value="Payment" /&gt;
+    &lt;p:menuitem value="Confirmation" /&gt;
+&lt;/p:steps&gt;
+
+&lt;style type="text/css"&gt;
+.ui-steps .ui-steps-item {
+    width: 24%;
+}
+
+.ui-state-highlight {
+    text-shadow: none !important;
+}
+
+.ui-steps.custom {
+    margin-bottom: 30px;
+}
+
+.ui-steps.custom .ui-steps-item .ui-menuitem-link {
+    height: 10px;
+    padding: 0 1em;
+}
+
+.ui-steps.custom .ui-steps-item .ui-steps-number {
+    background-color: \#0081c2;
+    color: \#FFFFFF;
+    display: inline-block;
+    width: 30px;
+    border-radius: 10px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 35em) {
+    .ui-steps.ui-steps.custom .ui-steps-item .ui-menuitem-link {
+        height: auto;
+        padding: 1em;
+    }
+}
+&lt;/style&gt;
                 </pre>
             </p:tab>
         </p:tabView>
