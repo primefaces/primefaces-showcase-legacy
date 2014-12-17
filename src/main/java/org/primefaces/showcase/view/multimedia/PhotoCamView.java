@@ -47,7 +47,7 @@ public class PhotoCamView {
         
 		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
 		String newFileName = servletContext.getRealPath("") + File.separator + "resources" + File.separator + "demo" +
-                                    File.separator + "images" + File.separator + "photocam" + File.separator + filename + ".png";
+                                    File.separator + "images" + File.separator + "photocam" + File.separator + filename + ".jpeg";
 		
 		FileImageOutputStream imageOutput;
 		try {
