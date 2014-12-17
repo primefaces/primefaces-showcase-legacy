@@ -6,21 +6,22 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        PhotoCam
+        PhotoCam <span class="subitem">Reimplemented since v5.1.7</span>
     </ui:define>
 
     <ui:define name="description">
-        PhotoCam is an input component to take photos with the webcam and send them to the backend model. Note that
-        PhotoCam is not supported on IE.
+        PhotoCam is an input component to take photos with the webcam and send them to the backend model.
     </ui:define>
 
     <ui:define name="implementation">
         
         <h:form>        
             <h:panelGrid columns="3" cellpadding="5">
-                <p:photoCam widgetVar="pc" listener="#{photoCamView.oncapture}" update="photo"/>
+                <p:photoCam widgetVar="pc" listener="#{photoCamView.oncapture}" update="photo" />
                 <p:commandButton type="button" value="Capture" onclick="PF('pc').capture()"/>
-                <p:graphicImage id="photo" name="demo/images/photocam/#{photoCamView.filename}.png" />
+                <p:outputPanel id="photo">
+                    <p:graphicImage name="demo/images/photocam/#{photoCamView.filename}.jpeg" rendered="#{not empty photoCamView.filename}"/>
+                </p:outputPanel>
             </h:panelGrid>
         </h:form>
         
@@ -32,9 +33,11 @@
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;        
     &lt;h:panelGrid columns="3" cellpadding="5"&gt;
-        &lt;p:photoCam widgetVar="pc" listener="\#{photoCamView.oncapture}" update="photo"/&gt;
+        &lt;p:photoCam widgetVar="pc" listener="\#{photoCamView.oncapture}" update="photo" /&gt;
         &lt;p:commandButton type="button" value="Capture" onclick="PF('pc').capture()"/&gt;
-        &lt;p:graphicImage id="photo" name="demo/images/photocam/\#{photoCamView.filename}.png" /&gt;
+        &lt;p:outputPanel id="photo"&gt;
+            &lt;p:graphicImage name="demo/images/photocam/\#{photoCamView.filename}.jpeg" rendered="\#{not empty photoCamView.filename}"/&gt;
+        &lt;/p:outputPanel&gt;
     &lt;/h:panelGrid&gt;
 &lt;/h:form&gt;
                 </pre>
@@ -76,7 +79,7 @@ public class PhotoCamView {
         
 		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
 		String newFileName = servletContext.getRealPath("") + File.separator + "resources" + File.separator + "demo" +
-                                    File.separator + "images" + File.separator + "photocam" + File.separator + filename + ".png";
+                                    File.separator + "images" + File.separator + "photocam" + File.separator + filename + ".jpeg";
 		
 		FileImageOutputStream imageOutput;
 		try {
