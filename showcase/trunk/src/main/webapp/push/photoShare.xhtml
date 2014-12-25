@@ -60,6 +60,12 @@
 &lt;/h:form&gt;
 
 &lt;p:socket onMessage="handleMessage" channel="/photoshare" /&gt;
+
+&lt;script type="text/javascript"&gt;
+        function handleMessage(data) {
+            $('\#photoshare').prepend('&lt;img src="' + data + '"&gt;');
+        }
+&lt;/script&gt;
                 </pre>
             </p:tab>
 
