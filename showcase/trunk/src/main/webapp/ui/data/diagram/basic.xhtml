@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-diagram-element {
+                border:0.1em dotted #d4e06b; 	
+                width:14em; 
+                height:4em; 	
+                line-height:4em;
+                text-align: center;
+            }
+        </style>
+
+        <script type="text/javascript">
+//<![CDATA[
+/**
+ * PrimeFaces Diagram Widget
+ */
+//]]>
+		</script>
+
+	</ui:define>
+    
+    <ui:define name="title">
+        Diagram - <span class="subitem">Basic</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Diagram is used to create visual elements and connect them on a web page. It uses SVG in modern browsers, and VML on IE 8 and below.
+    </ui:define>
+    
+
+
+
+    <ui:define name="implementation">
+
+        <p:diagram value="#{diagramBasicView.model}" style="height:400px" styleClass="ui-widget-content" />
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="basic.xhtml">
+                <pre name="code" class="brush:xml">
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
