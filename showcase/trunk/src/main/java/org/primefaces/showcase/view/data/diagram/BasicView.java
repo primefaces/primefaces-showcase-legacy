@@ -22,8 +22,11 @@ import org.primefaces.model.diagram.DefaultDiagramModel;
 import org.primefaces.model.diagram.DiagramModel;
 import org.primefaces.model.diagram.Element;
 import org.primefaces.model.diagram.ElementConnection;
-import org.primefaces.model.diagram.ElementEndPoint;
-import org.primefaces.model.diagram.ElementEndPointAnchor;
+import org.primefaces.model.diagram.endpoint.DefaultEndPoint;
+import org.primefaces.model.diagram.endpoint.DotEndPoint;
+import org.primefaces.model.diagram.endpoint.EndPoint;
+import org.primefaces.model.diagram.endpoint.EndPointAnchor;
+import org.primefaces.model.diagram.endpoint.RectangleEndPoint;
 
 @ManagedBean(name = "diagramBasicView")
 @RequestScoped
@@ -36,13 +39,13 @@ public class BasicView {
         model = new DefaultDiagramModel();
         
         Element elementA = new Element("A", "20em", "6em");
-        elementA.addEndPoint(new ElementEndPoint(ElementEndPointAnchor.BOTTOM));
+        elementA.addEndPoint(new DefaultEndPoint(EndPointAnchor.BOTTOM));
         
         Element elementB = new Element("B", "10em", "18em");
-        elementB.addEndPoint(new ElementEndPoint(ElementEndPointAnchor.TOP));
+        elementB.addEndPoint(new DotEndPoint(EndPointAnchor.TOP));
         
         Element elementC = new Element("C", "40em", "18em");
-        elementC.addEndPoint(new ElementEndPoint(ElementEndPointAnchor.TOP));
+        elementC.addEndPoint(new RectangleEndPoint(EndPointAnchor.TOP, 20, 20));
                         
         model.addElement(elementA);
         model.addElement(elementB);
