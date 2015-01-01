@@ -15,15 +15,13 @@
  */
 package org.primefaces.showcase.view.data.diagram;
 
-import java.util.Iterator;
-import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import org.primefaces.model.diagram.DefaultDiagramModel;
 import org.primefaces.model.diagram.DiagramModel;
 import org.primefaces.model.diagram.Element;
-import org.primefaces.model.diagram.ElementConnector;
+import org.primefaces.model.diagram.ElementConnection;
 import org.primefaces.model.diagram.ElementEndPoint;
 import org.primefaces.model.diagram.ElementEndPointAnchor;
 
@@ -50,8 +48,8 @@ public class BasicView {
         model.addElement(elementB);
         model.addElement(elementC);
         
-        model.addConnector(new ElementConnector(elementA.getEndPoints().get(0), elementB.getEndPoints().get(0)));
-        model.addConnector(new ElementConnector(elementA.getEndPoints().get(0), elementC.getEndPoints().get(0)));
+        model.addConnection(new ElementConnection(elementA.getEndPoints().get(0), elementB.getEndPoints().get(0)));
+        model.addConnection(new ElementConnection(elementA.getEndPoints().get(0), elementC.getEndPoints().get(0)));
     }
     
     public DiagramModel getModel() {
