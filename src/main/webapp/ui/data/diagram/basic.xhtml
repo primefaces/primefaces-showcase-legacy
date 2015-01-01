@@ -18,6 +18,47 @@
 
         <script type="text/javascript">
 //<![CDATA[
+/**
+ * PrimeFaces Diagram Widget
+ */
+PrimeFaces.widget.Diagram = PrimeFaces.widget.BaseWidget.extend({
+
+    init: function(cfg) {
+        this._super(cfg);
+        
+        var $this = this;
+        
+        jsPlumb.ready(function() {
+            $this.canvas = jsPlumb.getInstance({
+                Container: $this.jq.attr('id')
+            });
+
+            $this.canvas.doWhileSuspended(function() {
+                $this.initEndPoints();
+                $this.initConnections();
+            });
+        });
+    },
+    
+    initEndPoints: function() {
+        for(var i = 0; i < this.cfg.endPoints.length; i++) {
+            var endPoint = this.cfg.endPoints[i];
+                        
+            this.canvas.addEndpoint(endPoint.element, endPoint);
+        } 
+        
+        
+    },
+    
+    initConnections: function() {
+        for(var i = 0; i < this.cfg.connections.length; i++) {
+            var connection = this.cfg.connections[i];
+                        
+            this.canvas.connect({uuids:[connection.endPointOne,connection.endPointTwo]});
+        } 
+    }
+
+});
 
 //]]>
 		</script>
