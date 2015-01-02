@@ -23,10 +23,7 @@ import org.primefaces.model.diagram.DiagramModel;
 import org.primefaces.model.diagram.Element;
 import org.primefaces.model.diagram.ElementConnection;
 import org.primefaces.model.diagram.endpoint.DefaultEndPoint;
-import org.primefaces.model.diagram.endpoint.DotEndPoint;
-import org.primefaces.model.diagram.endpoint.EndPoint;
 import org.primefaces.model.diagram.endpoint.EndPointAnchor;
-import org.primefaces.model.diagram.endpoint.RectangleEndPoint;
 
 @ManagedBean(name = "diagramBasicView")
 @RequestScoped
@@ -42,17 +39,17 @@ public class BasicView {
         elementA.addEndPoint(new DefaultEndPoint(EndPointAnchor.BOTTOM));
         
         Element elementB = new Element("B", "10em", "18em");
-        elementB.addEndPoint(new DotEndPoint(EndPointAnchor.TOP));
+        elementB.addEndPoint(new DefaultEndPoint(EndPointAnchor.TOP));
         
         Element elementC = new Element("C", "40em", "18em");
-        elementC.addEndPoint(new RectangleEndPoint(EndPointAnchor.TOP, 20, 20));
+        elementC.addEndPoint(new DefaultEndPoint(EndPointAnchor.TOP));
                         
         model.addElement(elementA);
         model.addElement(elementB);
         model.addElement(elementC);
         
-        model.addConnection(new ElementConnection(elementA.getEndPoints().get(0), elementB.getEndPoints().get(0)));
-        model.addConnection(new ElementConnection(elementA.getEndPoints().get(0), elementC.getEndPoints().get(0)));
+        model.connect(new ElementConnection(elementA.getEndPoints().get(0), elementB.getEndPoints().get(0)));        
+        model.connect(new ElementConnection(elementA.getEndPoints().get(0), elementC.getEndPoints().get(0)));
     }
     
     public DiagramModel getModel() {
