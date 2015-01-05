@@ -24,7 +24,6 @@ import org.primefaces.model.diagram.Element;
 import org.primefaces.model.diagram.ElementConnection;
 import org.primefaces.model.diagram.connector.FlowChartConnector;
 import org.primefaces.model.diagram.endpoint.BlankEndPoint;
-import org.primefaces.model.diagram.endpoint.DefaultEndPoint;
 import org.primefaces.model.diagram.endpoint.EndPoint;
 import org.primefaces.model.diagram.endpoint.EndPointAnchor;
 import org.primefaces.model.diagram.overlay.ArrowOverlay;
