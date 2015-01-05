@@ -39,7 +39,7 @@ public class FlowChartView {
     public void init() {
         model = new DefaultDiagramModel();
         
-        model.setConnector(new FlowChartConnector());
+        model.setDefaultConnector(new FlowChartConnector());
         
         Element start = new Element("Fight for your dream", "20em", "6em");
         start.addEndPoint(new BlankEndPoint(EndPointAnchor.BOTTOM));
