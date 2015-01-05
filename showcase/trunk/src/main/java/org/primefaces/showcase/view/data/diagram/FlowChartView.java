@@ -39,6 +39,8 @@ public class FlowChartView {
     public void init() {
         model = new DefaultDiagramModel();
         
+        model.setConnector(new FlowChartConnector());
+        
         Element start = new Element("Fight for your dream", "20em", "6em");
         start.addEndPoint(new BlankEndPoint(EndPointAnchor.BOTTOM));
         start.addEndPoint(new BlankEndPoint(EndPointAnchor.LEFT));
@@ -79,7 +81,7 @@ public class FlowChartView {
     }
     
     private ElementConnection createConnection(EndPoint from, EndPoint to, String label) {
-        ElementConnection conn = new ElementConnection(from, to, new FlowChartConnector());
+        ElementConnection conn = new ElementConnection(from, to);
         conn.getOverlays().add(new ArrowOverlay(20, 20, 1, 1));
         
         if(label != null) {
