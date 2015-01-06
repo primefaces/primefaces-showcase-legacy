@@ -21,8 +21,7 @@ import javax.faces.bean.RequestScoped;
 import org.primefaces.model.diagram.DefaultDiagramModel;
 import org.primefaces.model.diagram.DiagramModel;
 import org.primefaces.model.diagram.Element;
-import org.primefaces.model.diagram.ElementConnection;
-import org.primefaces.model.diagram.connector.FlowChartConnector;
+import org.primefaces.model.diagram.Connection;
 import org.primefaces.model.diagram.connector.StateMachineConnector;
 import org.primefaces.model.diagram.endpoint.BlankEndPoint;
 import org.primefaces.model.diagram.endpoint.EndPoint;
@@ -84,8 +83,8 @@ public class StateMachineView {
         return model;
     }
     
-    private ElementConnection createConnection(EndPoint from, EndPoint to, String label) {
-        ElementConnection conn = new ElementConnection(from, to, new StateMachineConnector());
+    private Connection createConnection(EndPoint from, EndPoint to, String label) {
+        Connection conn = new Connection(from, to, new StateMachineConnector());
         conn.getOverlays().add(new ArrowOverlay(20, 20, 1, 1));
         
         if(label != null) {
