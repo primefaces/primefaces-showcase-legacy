@@ -21,7 +21,7 @@ import javax.faces.bean.RequestScoped;
 import org.primefaces.model.diagram.DefaultDiagramModel;
 import org.primefaces.model.diagram.DiagramModel;
 import org.primefaces.model.diagram.Element;
-import org.primefaces.model.diagram.endpoint.DefaultEndPoint;
+import org.primefaces.model.diagram.endpoint.DotEndPoint;
 import org.primefaces.model.diagram.endpoint.EndPoint;
 import org.primefaces.model.diagram.endpoint.EndPointAnchor;
 
@@ -36,21 +36,21 @@ public class EditableView {
         model = new DefaultDiagramModel();
         
         Element elementA = new Element("A", "20em", "6em");
-        EndPoint endPointA = new DefaultEndPoint(EndPointAnchor.BOTTOM);
+        EndPoint endPointA = new DotEndPoint(EndPointAnchor.BOTTOM);
         endPointA.setSource(true);
         elementA.addEndPoint(endPointA);
         
         Element elementB = new Element("B", "10em", "18em");
-        EndPoint endPointB1 = new DefaultEndPoint(EndPointAnchor.RIGHT);
+        EndPoint endPointB1 = new DotEndPoint(EndPointAnchor.RIGHT);
         endPointB1.setTarget(true);
         elementB.addEndPoint(endPointB1);
         
-        EndPoint endPointB2 = new DefaultEndPoint(EndPointAnchor.LEFT);
+        EndPoint endPointB2 = new DotEndPoint(EndPointAnchor.LEFT);
         endPointB2.setSource(true);
         elementB.addEndPoint(endPointB2);
         
         Element elementC = new Element("C", "40em", "18em");
-        EndPoint endPointC = new DefaultEndPoint(EndPointAnchor.LEFT);
+        EndPoint endPointC = new DotEndPoint(EndPointAnchor.LEFT);
         endPointC.setSource(true);
         endPointC.setTarget(true);
         elementC.addEndPoint(endPointC);
