@@ -15,9 +15,14 @@
  */
 package org.primefaces.showcase.view.data.diagram;
 
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.diagram.ConnectEvent;
 import org.primefaces.model.diagram.DefaultDiagramModel;
 import org.primefaces.model.diagram.DiagramModel;
 import org.primefaces.model.diagram.Element;
@@ -29,8 +34,8 @@ import org.primefaces.model.diagram.endpoint.RectangleEndPoint;
 import org.primefaces.model.diagram.overlay.ArrowOverlay;
 
 @ManagedBean(name = "diagramEditableView")
-@RequestScoped
-public class EditableView {
+@ViewScoped
+public class EditableView implements Serializable {
     
     private DefaultDiagramModel model;
 
@@ -41,7 +46,7 @@ public class EditableView {
         model.getDefaultConnectionOverlays().add(new ArrowOverlay(20, 20, 1, 1));
         model.setDefaultConnector(new StraightConnector());
         
-        Element elementA = new Element("A", "20em", "6em");
+        Element elementA = new Element("A", "25em", "6em");
         EndPoint endPointA = new RectangleEndPoint(EndPointAnchor.BOTTOM);
         endPointA.setSource(true);
         elementA.addEndPoint(endPointA);
@@ -67,5 +72,12 @@ public class EditableView {
     
     public DiagramModel getModel() {
         return model;
+    }
+    
+    public void onConnect(ConnectEvent event) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "New Connection", 
+                    "From " + event.getSourceElement().getContent() + " To " + event.getTargetElement().getContent());
+        
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }

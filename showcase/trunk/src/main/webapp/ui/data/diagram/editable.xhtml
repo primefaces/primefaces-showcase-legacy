@@ -3,7 +3,8 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
-                template="./template.xhtml">
+                template="./template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="head">
         <style type="text/css">
@@ -20,7 +21,89 @@
 
         <script type="text/javascript">
 //<![CDATA[
+/**
+ * PrimeFaces Diagram Widget
+ */
+PrimeFaces.widget.Diagram = PrimeFaces.widget.BaseWidget.extend({
 
+    init: function(cfg) {
+        this._super(cfg);
+        
+        var $this = this;
+        
+        jsPlumb.ready(function() {
+            $this.canvas = jsPlumb.getInstance({
+                Container: $this.jq.attr('id'),
+                Connector: $this.cfg.defaultConnector,
+                PaintStyle: $this.cfg.paintStyle,
+                HoverPaintStyle: $this.cfg.hoverPaintStyle,
+                ConnectionOverlays: $this.cfg.connectionOverlays,
+                ConnectionsDetachable: ($this.cfg.connectionsDetachable === false) ? false : true
+            });
+
+            $this.canvas.doWhileSuspended(function() {
+                $this.initEndPoints();
+                $this.initConnections();
+                
+                $this.canvas.draggable($this.jq.children('.ui-diagram-draggable'), {
+                    containment: true
+                });
+            });
+            
+            $this.canvas.bind('connection', function(info) {
+                $this.onConnect(info);
+            });
+        });
+    },
+    
+    initEndPoints: function() {
+        for(var i = 0; i < this.cfg.endPoints.length; i++) {
+            var endPoint = this.cfg.endPoints[i];
+                        
+            this.canvas.addEndpoint(endPoint.element, endPoint);
+        }
+    },
+    
+    initConnections: function() {
+        if(this.cfg.connections) {
+            for(var i = 0; i < this.cfg.connections.length; i++) {      
+                this.canvas.connect(this.cfg.connections[i]);
+            }
+        }
+    },
+    
+    onConnect: function(info) {
+        var options = {
+            source: this.id,
+            process: this.id,
+            params: [
+                {name: this.id + '_connect', value: true},
+                {name: this.id + '_sourceId', value: info.sourceId.substring(this.id.length + 1)},
+                {name: this.id + '_targetId', value: info.targetId.substring(this.id.length + 1)},
+                {name: this.id + '_sourceEndPointId', value: info.sourceEndpoint.getUuid()},
+                {name: this.id + '_targetEndPointId', value: info.targetEndpoint.getUuid()}
+            ]
+        };
+        
+        if(this.hasBehavior('connect')) {
+            var connectBehavior = this.cfg.behaviors['connect'];
+
+            connectBehavior.call(this, options);
+        } 
+        else {
+            PrimeFaces.ajax.Request.handle(options); 
+        }
+    },
+    
+    hasBehavior: function(event) {
+        if(this.cfg.behaviors) {
+            return this.cfg.behaviors[event] != undefined;
+        }
+    
+        return false;
+    }
+
+});
 //]]>
 		</script>
 
@@ -31,13 +114,19 @@
     </ui:define>
 
     <ui:define name="description">
-        Connections can be created from source to target. In this example, rectangle endpoints are targets whereas 
-        circle endpoints are the targets. Once a connection is made, diagram makes an ajax request to save changes in the backend model.
+        Connections can be created on the fly from source to target using drag and drop. In this example, rectangle endpoints are sources whereas 
+        circle endpoints are the targets. Once a connection is made, diagram makes an ajax request to save changes in the backend model. Additionally, optional
+        ajax events are provided as callbacks.
     </ui:define>
 
     <ui:define name="implementation">
-
-        <p:diagram value="#{diagramEditableView.model}" style="height:400px" styleClass="ui-widget-content" />
+        <h:form>
+            <p:growl id="msgs" showDetail="true" />
+            
+            <p:diagram value="#{diagramEditableView.model}" style="height:400px" styleClass="ui-widget-content">
+                <p:ajax event="connect" listener="#{diagramEditableView.onConnect}" update="msgs" />
+            </p:diagram>
+        </h:form>
         
     </ui:define>
 
