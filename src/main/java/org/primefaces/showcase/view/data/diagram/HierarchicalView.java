@@ -21,7 +21,7 @@ import javax.faces.bean.RequestScoped;
 import org.primefaces.model.diagram.DefaultDiagramModel;
 import org.primefaces.model.diagram.DiagramModel;
 import org.primefaces.model.diagram.Element;
-import org.primefaces.model.diagram.ElementConnection;
+import org.primefaces.model.diagram.Connection;
 import org.primefaces.model.diagram.connector.StraightConnector;
 import org.primefaces.model.diagram.endpoint.EndPointAnchor;
 import org.primefaces.model.diagram.endpoint.RectangleEndPoint;
@@ -71,12 +71,12 @@ public class HierarchicalView {
         model.addElement(tst);
                         
         //connections
-        model.connect(new ElementConnection(ceo.getEndPoints().get(0), cfo.getEndPoints().get(0), new StraightConnector()));        
-        model.connect(new ElementConnection(ceo.getEndPoints().get(0), cto.getEndPoints().get(0), new StraightConnector()));
-        model.connect(new ElementConnection(cfo.getEndPoints().get(1), fin.getEndPoints().get(0), new StraightConnector()));
-        model.connect(new ElementConnection(cfo.getEndPoints().get(1), pur.getEndPoints().get(0), new StraightConnector()));
-        model.connect(new ElementConnection(cto.getEndPoints().get(1), dev.getEndPoints().get(0), new StraightConnector()));
-        model.connect(new ElementConnection(cto.getEndPoints().get(1), tst.getEndPoints().get(0), new StraightConnector()));
+        model.connect(new Connection(ceo.getEndPoints().get(0), cfo.getEndPoints().get(0), new StraightConnector()));        
+        model.connect(new Connection(ceo.getEndPoints().get(0), cto.getEndPoints().get(0), new StraightConnector()));
+        model.connect(new Connection(cfo.getEndPoints().get(1), fin.getEndPoints().get(0), new StraightConnector()));
+        model.connect(new Connection(cfo.getEndPoints().get(1), pur.getEndPoints().get(0), new StraightConnector()));
+        model.connect(new Connection(cto.getEndPoints().get(1), dev.getEndPoints().get(0), new StraightConnector()));
+        model.connect(new Connection(cto.getEndPoints().get(1), tst.getEndPoints().get(0), new StraightConnector()));
     }
     
     public DiagramModel getModel() {

@@ -21,7 +21,7 @@ import javax.faces.bean.RequestScoped;
 import org.primefaces.model.diagram.DefaultDiagramModel;
 import org.primefaces.model.diagram.DiagramModel;
 import org.primefaces.model.diagram.Element;
-import org.primefaces.model.diagram.ElementConnection;
+import org.primefaces.model.diagram.Connection;
 import org.primefaces.model.diagram.endpoint.DotEndPoint;
 import org.primefaces.model.diagram.endpoint.EndPointAnchor;
 
@@ -48,8 +48,8 @@ public class BasicView {
         model.addElement(elementB);
         model.addElement(elementC);
         
-        model.connect(new ElementConnection(elementA.getEndPoints().get(0), elementB.getEndPoints().get(0)));        
-        model.connect(new ElementConnection(elementA.getEndPoints().get(0), elementC.getEndPoints().get(0)));
+        model.connect(new Connection(elementA.getEndPoints().get(0), elementB.getEndPoints().get(0)));        
+        model.connect(new Connection(elementA.getEndPoints().get(0), elementC.getEndPoints().get(0)));
     }
     
     public DiagramModel getModel() {
