@@ -39,7 +39,9 @@ public class FlowChartView {
     public void init() {
         model = new DefaultDiagramModel();
         
-        model.setDefaultConnector(new FlowChartConnector());
+        FlowChartConnector connector = new FlowChartConnector();
+        connector.setPaintStyle("{strokeStyle:'#C7B097',lineWidth:3}");
+        model.setDefaultConnector(connector);
         
         Element start = new Element("Fight for your dream", "20em", "6em");
         start.addEndPoint(new BlankEndPoint(EndPointAnchor.BOTTOM));
