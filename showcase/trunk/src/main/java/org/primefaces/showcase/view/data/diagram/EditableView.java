@@ -21,7 +21,6 @@ import javax.faces.bean.RequestScoped;
 import org.primefaces.model.diagram.DefaultDiagramModel;
 import org.primefaces.model.diagram.DiagramModel;
 import org.primefaces.model.diagram.Element;
-import org.primefaces.model.diagram.connector.StraightConnector;
 import org.primefaces.model.diagram.endpoint.DefaultEndPoint;
 import org.primefaces.model.diagram.endpoint.EndPoint;
 import org.primefaces.model.diagram.endpoint.EndPointAnchor;
@@ -35,8 +34,6 @@ public class EditableView {
     @PostConstruct
     public void init() {
         model = new DefaultDiagramModel();
-        
-        model.setDefaultConnector(new StraightConnector());
         
         Element elementA = new Element("A", "20em", "6em");
         EndPoint endPointA = new DefaultEndPoint(EndPointAnchor.BOTTOM);
