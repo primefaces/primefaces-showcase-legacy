@@ -38,6 +38,7 @@ public class FlowChartView {
     @PostConstruct
     public void init() {
         model = new DefaultDiagramModel();
+        model.setMaxConnections(-1);
         
         FlowChartConnector connector = new FlowChartConnector();
         connector.setPaintStyle("{strokeStyle:'#C7B097',lineWidth:3}");
