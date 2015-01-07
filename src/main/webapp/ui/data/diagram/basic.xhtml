@@ -15,21 +15,15 @@
                 text-align: center;
             }
         </style>
-
-        <script type="text/javascript">
-//<![CDATA[
-
-//]]>
-		</script>
-
 	</ui:define>
     
     <ui:define name="title">
-        Diagram - <span class="subitem">Basic</span>
+        Diagram - <span class="subitem">Basic - Since 5.1.8</span>
     </ui:define>
 
     <ui:define name="description">
-        Diagram is used to create visual elements and connect them on a web page. SVG is on modern browsers, and VML on IE 8 and below.
+        Diagram is generic component to create visual elements and connect them on a web page. SVG is on modern browsers, and VML on IE 8 and below. Component
+        is highly flexible in terms of api, events and theming.
     </ui:define>
 
     <ui:define name="implementation">
@@ -42,6 +36,57 @@
         <p:tabView>
             <p:tab title="basic.xhtml">
                 <pre name="code" class="brush:xml">
+&lt;p:diagram value="\#{diagramBasicView.model}" style="height:400px" styleClass="ui-widget-content" /&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="basic.xhtml">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data.diagram;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import org.primefaces.model.diagram.DefaultDiagramModel;
+import org.primefaces.model.diagram.DiagramModel;
+import org.primefaces.model.diagram.Element;
+import org.primefaces.model.diagram.Connection;
+import org.primefaces.model.diagram.endpoint.DotEndPoint;
+import org.primefaces.model.diagram.endpoint.EndPointAnchor;
+
+@ManagedBean(name = "diagramBasicView")
+@RequestScoped
+public class BasicView {
+    
+    private DefaultDiagramModel model;
+
+    @PostConstruct
+    public void init() {
+        model = new DefaultDiagramModel();
+        model.setMaxConnections(-1);
+        
+        Element elementA = new Element("A", "20em", "6em");
+        elementA.addEndPoint(new DotEndPoint(EndPointAnchor.BOTTOM));
+        
+        Element elementB = new Element("B", "10em", "18em");
+        elementB.addEndPoint(new DotEndPoint(EndPointAnchor.TOP));
+        
+        Element elementC = new Element("C", "40em", "18em");
+        elementC.addEndPoint(new DotEndPoint(EndPointAnchor.TOP));
+                        
+        model.addElement(elementA);
+        model.addElement(elementB);
+        model.addElement(elementC);
+        
+        model.connect(new Connection(elementA.getEndPoints().get(0), elementB.getEndPoints().get(0)));        
+        model.connect(new Connection(elementA.getEndPoints().get(0), elementC.getEndPoints().get(0)));
+    }
+    
+    public DiagramModel getModel() {
+        return model;
+    }
+}
+
                 </pre>
             </p:tab>
         </p:tabView>
