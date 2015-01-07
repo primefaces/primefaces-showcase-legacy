@@ -49,30 +49,41 @@ public class EditableView implements Serializable {
         model.setMaxConnections(-1);
         
         model.getDefaultConnectionOverlays().add(new ArrowOverlay(20, 20, 1, 1));
-        model.setDefaultConnector(new StraightConnector());
+        StraightConnector connector = new StraightConnector();
+        connector.setPaintStyle("{strokeStyle:'#98AFC7', lineWidth:3}");
+        connector.setHoverPaintStyle("{strokeStyle:'#5C738B'}");
+        model.setDefaultConnector(connector);
         
-        Element elementA = new Element("A", "25em", "6em");
-        EndPoint endPointA = new RectangleEndPoint(EndPointAnchor.BOTTOM);
-        endPointA.setSource(true);
-        elementA.addEndPoint(endPointA);
+        Element computerA = new Element(new NetworkElement("Computer A", "computer-icon.png"), "10em", "6em");
+        EndPoint endPointCA = createRectangleEndPoint(EndPointAnchor.BOTTOM);
+        endPointCA.setSource(true);
+        computerA.addEndPoint(endPointCA);
         
-        Element elementB = new Element("B", "10em", "18em");
-        EndPoint endPointB1 = new DotEndPoint(EndPointAnchor.LEFT);
-        endPointB1.setTarget(true);
-        elementB.addEndPoint(endPointB1);
+        Element computerB = new Element(new NetworkElement("Computer A", "computer-icon.png"), "25em", "6em");
+        EndPoint endPointCB = createRectangleEndPoint(EndPointAnchor.BOTTOM);
+        endPointCB.setSource(true);
+        computerB.addEndPoint(endPointCB);
         
-        EndPoint endPointB2 = new RectangleEndPoint(EndPointAnchor.RIGHT);
-        endPointB2.setSource(true);
-        elementB.addEndPoint(endPointB2);
+        Element computerC = new Element(new NetworkElement("Computer A", "computer-icon.png"), "40em", "6em");
+        EndPoint endPointCC = createRectangleEndPoint(EndPointAnchor.BOTTOM);
+        endPointCC.setSource(true);
+        computerC.addEndPoint(endPointCC);
         
-        Element elementC = new Element("C", "40em", "18em");
-        EndPoint endPointC = new DotEndPoint(EndPointAnchor.LEFT);
-        endPointC.setTarget(true);
-        elementC.addEndPoint(endPointC);
+        Element serverA = new Element(new NetworkElement("Server A", "server-icon.png"), "15em", "24em");
+        EndPoint endPointSA = createDotEndPoint(EndPointAnchor.TOP);
+        endPointSA.setTarget(true);
+        serverA.addEndPoint(endPointSA);
+        
+        Element serverB = new Element(new NetworkElement("Server B", "server-icon.png"), "35em", "24em");
+        EndPoint endPointSB = createDotEndPoint(EndPointAnchor.TOP);
+        endPointSB.setTarget(true);
+        serverB.addEndPoint(endPointSB);
                         
-        model.addElement(elementA);
-        model.addElement(elementB);
-        model.addElement(elementC);
+        model.addElement(computerA);
+        model.addElement(computerB);
+        model.addElement(computerC);
+        model.addElement(serverA);
+        model.addElement(serverB);
     }
     
     public DiagramModel getModel() {
@@ -113,5 +124,61 @@ public class EditableView implements Serializable {
         
         RequestContext.getCurrentInstance().update("form:msgs");
         suspendEvent = true;
+    }
+    
+    private EndPoint createDotEndPoint(EndPointAnchor anchor) {
+        DotEndPoint endPoint = new DotEndPoint(anchor);
+        endPoint.setScope("network");
+        endPoint.setTarget(true);
+        endPoint.setStyle("{fillStyle:'#98AFC7'}");
+        endPoint.setHoverStyle("{fillStyle:'#5C738B'}");
+        
+        return endPoint;
+    }
+    
+    private EndPoint createRectangleEndPoint(EndPointAnchor anchor) {
+        RectangleEndPoint endPoint = new RectangleEndPoint(anchor);
+        endPoint.setScope("network");
+        endPoint.setSource(true);
+        endPoint.setStyle("{fillStyle:'#98AFC7'}");
+        endPoint.setHoverStyle("{fillStyle:'#5C738B'}");
+        
+        return endPoint;
+    }
+    
+    public class NetworkElement implements Serializable {
+        
+        private String name;
+        private String image;
+
+        public NetworkElement() {
+        }
+
+        public NetworkElement(String name, String image) {
+            this.name = name;
+            this.image = image;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
+        
     }
 }
