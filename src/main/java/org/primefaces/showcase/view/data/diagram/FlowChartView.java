@@ -58,7 +58,7 @@ public class FlowChartView {
         giveup.addEndPoint(new BlankEndPoint(EndPointAnchor.LEFT));
         giveup.addEndPoint(new BlankEndPoint(EndPointAnchor.RIGHT));
         
-        Element succeed = new Element("Do you meet some trouble?", "50em", "18em");
+        Element succeed = new Element("Succeed", "50em", "18em");
         succeed.addEndPoint(new BlankEndPoint(EndPointAnchor.LEFT));
         succeed.setStyleClass("ui-diagram-success");
         

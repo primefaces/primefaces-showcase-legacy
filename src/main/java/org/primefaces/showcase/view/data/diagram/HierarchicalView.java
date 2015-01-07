@@ -23,9 +23,9 @@ import org.primefaces.model.diagram.DiagramModel;
 import org.primefaces.model.diagram.Element;
 import org.primefaces.model.diagram.Connection;
 import org.primefaces.model.diagram.connector.StraightConnector;
+import org.primefaces.model.diagram.endpoint.DotEndPoint;
 import org.primefaces.model.diagram.endpoint.EndPoint;
 import org.primefaces.model.diagram.endpoint.EndPointAnchor;
-import org.primefaces.model.diagram.endpoint.RectangleEndPoint;
 
 @ManagedBean(name = "diagramHierarchicalView")
 @RequestScoped
@@ -86,7 +86,7 @@ public class HierarchicalView {
     }
     
     private EndPoint createEndPoint(EndPointAnchor anchor) {
-        RectangleEndPoint endPoint = new RectangleEndPoint(anchor);
+        DotEndPoint endPoint = new DotEndPoint(anchor);
         endPoint.setStyle("{fillStyle:'#404a4e'}");
         endPoint.setHoverStyle("{fillStyle:'#20282b'}");
         
