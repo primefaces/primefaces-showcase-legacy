@@ -21,13 +21,6 @@
                 background-color: #C7C6C4;
             }
         </style>
-
-        <script type="text/javascript">
-//<![CDATA[
-
-//]]>
-		</script>
-
 	</ui:define>
     
     <ui:define name="title">
@@ -35,9 +28,9 @@
     </ui:define>
 
     <ui:define name="description">
-        Connections can be created and edited on the fly using drag and drop. In this example, rectangle endpoints are sources whereas 
-        circle endpoints are the targets. Once a connection is created, removed or changed, diagram makes an ajax request to save changes in the backend model. Additionally, optional
-        ajax events are provided as callbacks.
+        Connections can be created and edited on the fly using drag and drop. In this example, computers are sources whereas 
+        servers are the targets. Once a connection is created, removed or changed using drag and drop, diagram makes an ajax request 
+        to save changes in the backend model. Additionally, optional ajax events are provided as callbacks.
     </ui:define>
 
     <ui:define name="implementation">
@@ -136,12 +129,14 @@ public class EditableView implements Serializable {
         computerC.addEndPoint(endPointCC);
         
         Element serverA = new Element(new NetworkElement("Server A", "server-icon.png"), "15em", "24em");
-        EndPoint endPointSA = createDotEndPoint(EndPointAnchor.TOP);
+        EndPoint endPointSA = createDotEndPoint(EndPointAnchor.AUTO_DEFAULT);
+        serverA.setDraggable(false);
         endPointSA.setTarget(true);
         serverA.addEndPoint(endPointSA);
         
         Element serverB = new Element(new NetworkElement("Server B", "server-icon.png"), "35em", "24em");
-        EndPoint endPointSB = createDotEndPoint(EndPointAnchor.TOP);
+        EndPoint endPointSB = createDotEndPoint(EndPointAnchor.AUTO_DEFAULT);
+        serverB.setDraggable(false);
         endPointSB.setTarget(true);
         serverB.addEndPoint(endPointSB);
                         

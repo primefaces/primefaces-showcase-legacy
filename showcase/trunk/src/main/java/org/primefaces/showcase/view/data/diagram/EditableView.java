@@ -70,12 +70,14 @@ public class EditableView implements Serializable {
         computerC.addEndPoint(endPointCC);
         
         Element serverA = new Element(new NetworkElement("Server A", "server-icon.png"), "15em", "24em");
-        EndPoint endPointSA = createDotEndPoint(EndPointAnchor.TOP);
+        EndPoint endPointSA = createDotEndPoint(EndPointAnchor.AUTO_DEFAULT);
+        serverA.setDraggable(false);
         endPointSA.setTarget(true);
         serverA.addEndPoint(endPointSA);
         
         Element serverB = new Element(new NetworkElement("Server B", "server-icon.png"), "35em", "24em");
-        EndPoint endPointSB = createDotEndPoint(EndPointAnchor.TOP);
+        EndPoint endPointSB = createDotEndPoint(EndPointAnchor.AUTO_DEFAULT);
+        serverB.setDraggable(false);
         endPointSB.setTarget(true);
         serverB.addEndPoint(endPointSB);
                         
