@@ -40,30 +40,30 @@ public class StateMachineView {
         model = new DefaultDiagramModel();
         model.setMaxConnections(-1);
         
-        Element start = new Element(null, "25em", "6em");
+        StateMachineConnector connector = new StateMachineConnector();
+        connector.setOrientation(StateMachineConnector.Orientation.ANTICLOCKWISE);
+        model.setDefaultConnector(connector);
+        
+        Element start = new Element(null, "15em", "5em");
         start.addEndPoint(new BlankEndPoint(EndPointAnchor.BOTTOM));
         start.setStyleClass("start-node");
         
-        Element idle = new Element("Idle", "20em", "18em");
+        Element idle = new Element("Idle", "10em", "20em");
         idle.addEndPoint(new BlankEndPoint(EndPointAnchor.TOP));
         idle.addEndPoint(new BlankEndPoint(EndPointAnchor.BOTTOM_RIGHT));
         idle.addEndPoint(new BlankEndPoint(EndPointAnchor.BOTTOM_LEFT));
         
-        Element turnedOn = new Element("TurnedOn", "20em", "30em");
+        Element turnedOn = new Element("TurnedOn", "10em", "35em");
         turnedOn.addEndPoint(new BlankEndPoint(EndPointAnchor.TOP));
-        turnedOn.addEndPoint(new BlankEndPoint(EndPointAnchor.BOTTOM));
-        turnedOn.addEndPoint(new BlankEndPoint(EndPointAnchor.LEFT));
-        
-        BlankEndPoint test = new BlankEndPoint(EndPointAnchor.BOTTOM);
-        test.setSource(true);
-        test.setTarget(true);
-        
-        Element activity = new Element("Activity", "20em", "42em");
-        activity.addEndPoint(new BlankEndPoint(EndPointAnchor.TOP));
-        activity.addEndPoint(new BlankEndPoint(EndPointAnchor.TOP_LEFT));
-        activity.addEndPoint(new BlankEndPoint(EndPointAnchor.RIGHT));
-        activity.addEndPoint(test);
+        turnedOn.addEndPoint(new BlankEndPoint(EndPointAnchor.RIGHT));
+        turnedOn.addEndPoint(new BlankEndPoint(EndPointAnchor.BOTTOM_RIGHT));
+                
+        Element activity = new Element("Activity", "45em", "35em");
         activity.addEndPoint(new BlankEndPoint(EndPointAnchor.LEFT));
+        activity.addEndPoint(new BlankEndPoint(EndPointAnchor.BOTTOM_LEFT));
+        activity.addEndPoint(new BlankEndPoint(EndPointAnchor.TOP));
+        activity.addEndPoint(new BlankEndPoint(EndPointAnchor.TOP_RIGHT));
+        activity.addEndPoint(new BlankEndPoint(EndPointAnchor.TOP_LEFT));
                                 
         model.addElement(start);
         model.addElement(idle);
@@ -85,7 +85,7 @@ public class StateMachineView {
     }
     
     private Connection createConnection(EndPoint from, EndPoint to, String label) {
-        Connection conn = new Connection(from, to, new StateMachineConnector());
+        Connection conn = new Connection(from, to);
         conn.getOverlays().add(new ArrowOverlay(20, 20, 1, 1));
         
         if(label != null) {
