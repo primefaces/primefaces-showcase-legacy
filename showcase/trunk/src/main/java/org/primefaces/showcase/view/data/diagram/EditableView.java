@@ -21,7 +21,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.diagram.ConnectEvent;
+import org.primefaces.event.diagram.ConnectionChangeEvent;
+import org.primefaces.event.diagram.DisconnectEvent;
 import org.primefaces.model.diagram.DefaultDiagramModel;
 import org.primefaces.model.diagram.DiagramModel;
 import org.primefaces.model.diagram.Element;
@@ -37,6 +40,8 @@ import org.primefaces.model.diagram.overlay.ArrowOverlay;
 public class EditableView implements Serializable {
     
     private DefaultDiagramModel model;
+    
+    private boolean suspendEvent;
 
     @PostConstruct
     public void init() {
@@ -74,9 +79,38 @@ public class EditableView implements Serializable {
     }
     
     public void onConnect(ConnectEvent event) {
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "New Connection", 
+        if(!suspendEvent) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Connected", 
+                    "From " + event.getSourceElement().getData()+ " To " + event.getTargetElement().getData());
+        
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        
+            RequestContext.getCurrentInstance().update("form:msgs");
+        }
+        else {
+            suspendEvent = false;
+        }
+    }
+    
+    public void onDisconnect(DisconnectEvent event) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Disconnected", 
                     "From " + event.getSourceElement().getData()+ " To " + event.getTargetElement().getData());
         
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        
+        RequestContext.getCurrentInstance().update("form:msgs");
+    }
+    
+    public void onConnectionChange(ConnectionChangeEvent event) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Connection Changed", 
+                    "Original Source:" + event.getOriginalSourceElement().getData() + 
+                    ", New Source: " + event.getNewSourceElement().getData() + 
+                    ", Original Target: " + event.getOriginalTargetElement().getData() + 
+                    ", New Target: " + event.getNewTargetElement().getData());
+        
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        
+        RequestContext.getCurrentInstance().update("form:msgs");
+        suspendEvent = true;
     }
 }

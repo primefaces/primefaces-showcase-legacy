@@ -50,11 +50,11 @@ PrimeFaces.widget.Diagram = PrimeFaces.widget.BaseWidget.extend({
                 });
             });
             
-            $this.canvas.bind('connection', function(info) {
-                $this.onConnect(info);
-            });
+            $this.bindEvents();
+            
+            
         });
-    },
+    },    
     
     initEndPoints: function() {
         for(var i = 0; i < this.cfg.endPoints.length; i++) {
@@ -72,6 +72,22 @@ PrimeFaces.widget.Diagram = PrimeFaces.widget.BaseWidget.extend({
         }
     },
     
+    bindEvents: function() {
+        var $this = this;
+        
+        this.canvas.bind('connection', function(info) {
+            $this.onConnect(info);
+        });
+
+        this.canvas.bind('connectionDetached', function(info) {
+            $this.onDisconnect(info);
+        });
+
+        this.canvas.bind('connectionMoved', function(info) {
+            $this.onConnectionChange(info);
+        });
+    },
+    
     onConnect: function(info) {
         var options = {
             source: this.id,
@@ -86,9 +102,59 @@ PrimeFaces.widget.Diagram = PrimeFaces.widget.BaseWidget.extend({
         };
         
         if(this.hasBehavior('connect')) {
-            var connectBehavior = this.cfg.behaviors['connect'];
+            var behavior = this.cfg.behaviors['connect'];
 
-            connectBehavior.call(this, options);
+            behavior.call(this, options);
+        } 
+        else {
+            PrimeFaces.ajax.Request.handle(options); 
+        }
+    },
+    
+    onDisconnect: function(info) {
+        var options = {
+            source: this.id,
+            process: this.id,
+            params: [
+                {name: this.id + '_disconnect', value: true},
+                {name: this.id + '_sourceId', value: info.sourceId.substring(this.id.length + 1)},
+                {name: this.id + '_targetId', value: info.targetId.substring(this.id.length + 1)},
+                {name: this.id + '_sourceEndPointId', value: info.sourceEndpoint.getUuid()},
+                {name: this.id + '_targetEndPointId', value: info.targetEndpoint.getUuid()}
+            ]
+        };
+        
+        if(this.hasBehavior('disconnect')) {
+            var behavior = this.cfg.behaviors['disconnect'];
+
+            behavior.call(this, options);
+        } 
+        else {
+            PrimeFaces.ajax.Request.handle(options); 
+        }
+    },
+    
+    onConnectionChange: function(info) {
+        var options = {
+            source: this.id,
+            process: this.id,
+            params: [
+                {name: this.id + '_connectionChange', value: true},
+                {name: this.id + '_originalSourceId', value: info.originalSourceId.substring(this.id.length + 1)},
+                {name: this.id + '_newSourceId', value: info.newSourceId.substring(this.id.length + 1)},
+                {name: this.id + '_originalTargetId', value: info.originalTargetId.substring(this.id.length + 1)},
+                {name: this.id + '_newTargetId', value: info.newTargetId.substring(this.id.length + 1)},
+                {name: this.id + '_originalSourceEndPointId', value: info.originalSourceEndpoint.getUuid()},
+                {name: this.id + '_newSourceEndPointId', value: info.newSourceEndpoint.getUuid()},
+                {name: this.id + '_originalTargetEndPointId', value: info.originalTargetEndpoint.getUuid()},
+                {name: this.id + '_newTargetEndPointId', value: info.newTargetEndpoint.getUuid()}
+            ]
+        };
+        
+        if(this.hasBehavior('connectionChange')) {
+            var behavior = this.cfg.behaviors['connectionChange'];
+
+            behavior.call(this, options);
         } 
         else {
             PrimeFaces.ajax.Request.handle(options); 
@@ -114,17 +180,19 @@ PrimeFaces.widget.Diagram = PrimeFaces.widget.BaseWidget.extend({
     </ui:define>
 
     <ui:define name="description">
-        Connections can be created on the fly from source to target using drag and drop. In this example, rectangle endpoints are sources whereas 
-        circle endpoints are the targets. Once a connection is made, diagram makes an ajax request to save changes in the backend model. Additionally, optional
+        Connections can be created and edited on the fly using drag and drop. In this example, rectangle endpoints are sources whereas 
+        circle endpoints are the targets. Once a connection is created, removed or changed, diagram makes an ajax request to save changes in the backend model. Additionally, optional
         ajax events are provided as callbacks.
     </ui:define>
 
     <ui:define name="implementation">
-        <h:form>
+        <h:form id="form">
             <p:growl id="msgs" showDetail="true" />
             
             <p:diagram value="#{diagramEditableView.model}" style="height:400px" styleClass="ui-widget-content">
-                <p:ajax event="connect" listener="#{diagramEditableView.onConnect}" update="msgs" />
+                <p:ajax event="connect" listener="#{diagramEditableView.onConnect}" />
+                <p:ajax event="disconnect" listener="#{diagramEditableView.onDisconnect}" />
+                <p:ajax event="connectionChange" listener="#{diagramEditableView.onConnectionChange}" />
             </p:diagram>
         </h:form>
         
