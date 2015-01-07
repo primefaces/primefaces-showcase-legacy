@@ -23,7 +23,7 @@
         <script type="text/javascript">
             //<![CDATA[
                 function handleMessage(data) {
-                    $('#photoshare').prepend('<img src="' + data + '">');
+                    $('#images').prepend('<img src="' + data + '">');
                 }
             //]]> 
         </script>
@@ -34,7 +34,7 @@
     </ui:define>
 
     <ui:define name="description">
-        When you take the snapshot, the snapshot is appears on all connected clients.
+        When you take a photo with PhotoCam component, the image is send to all connected clients instantly.
     </ui:define>
 
     <ui:define name="implementation">
@@ -42,7 +42,7 @@
         <h:form prependId="false">
             <p:photoCam id="photo" widgetVar="pc" listener="#{photoShareView.sendPhoto}"/>
             <p:commandButton id="button" type="button" value="Capture" onclick="PF('pc').capture()" icon="fa fa-camera"/>
-            <div id="photoshare"/>
+            <p:outputPanel id="images" style="margin-top:10px"/>
         </h:form>
 
         <p:socket onMessage="handleMessage" channel="/photoshare" />
@@ -56,14 +56,14 @@
 &lt;h:form prependId="false"&gt;
     &lt;p:photoCam id="photo" widgetVar="pc" listener="\#{photoShareView.sendPhoto}"/&gt;
     &lt;p:commandButton id="button" type="button" value="Capture" onclick="PF('pc').capture()" icon="fa fa-camera"/&gt;
-    &lt;div id="photoshare"/&gt;
+    &lt;p:outputPanel id="images" style="margin-top:10px"/>
 &lt;/h:form&gt;
 
 &lt;p:socket onMessage="handleMessage" channel="/photoshare" /&gt;
 
 &lt;script type="text/javascript"&gt;
         function handleMessage(data) {
-            $('\#photoshare').prepend('&lt;img src="' + data + '"&gt;');
+            $('\#images').prepend('&lt;img src="' + data + '"&gt;');
         }
 &lt;/script&gt;
                 </pre>
