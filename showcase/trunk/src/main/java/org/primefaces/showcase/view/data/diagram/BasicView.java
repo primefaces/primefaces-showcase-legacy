@@ -29,11 +29,12 @@ import org.primefaces.model.diagram.endpoint.EndPointAnchor;
 @RequestScoped
 public class BasicView {
     
-    private DiagramModel model;
+    private DefaultDiagramModel model;
 
     @PostConstruct
     public void init() {
         model = new DefaultDiagramModel();
+        model.setMaxConnections(-1);
         
         Element elementA = new Element("A", "20em", "6em");
         elementA.addEndPoint(new DotEndPoint(EndPointAnchor.BOTTOM));

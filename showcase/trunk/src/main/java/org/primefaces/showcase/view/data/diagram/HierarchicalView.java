@@ -30,11 +30,12 @@ import org.primefaces.model.diagram.endpoint.RectangleEndPoint;
 @RequestScoped
 public class HierarchicalView {
     
-    private DiagramModel model;
+    private DefaultDiagramModel model;
 
     @PostConstruct
     public void init() {
         model = new DefaultDiagramModel();
+        model.setMaxConnections(-1);
         
         Element ceo = new Element("CEO", "25em", "6em");
         ceo.addEndPoint(new RectangleEndPoint(EndPointAnchor.BOTTOM));

@@ -46,6 +46,7 @@ public class EditableView implements Serializable {
     @PostConstruct
     public void init() {
         model = new DefaultDiagramModel();
+        model.setMaxConnections(-1);
         
         model.getDefaultConnectionOverlays().add(new ArrowOverlay(20, 20, 1, 1));
         model.setDefaultConnector(new StraightConnector());

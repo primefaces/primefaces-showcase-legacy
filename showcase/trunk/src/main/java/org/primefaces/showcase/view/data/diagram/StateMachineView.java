@@ -33,11 +33,12 @@ import org.primefaces.model.diagram.overlay.LabelOverlay;
 @RequestScoped
 public class StateMachineView {
     
-    private DiagramModel model;
+    private DefaultDiagramModel model;
 
     @PostConstruct
     public void init() {
         model = new DefaultDiagramModel();
+        model.setMaxConnections(-1);
         
         Element start = new Element(null, "25em", "6em");
         start.addEndPoint(new BlankEndPoint(EndPointAnchor.BOTTOM));
