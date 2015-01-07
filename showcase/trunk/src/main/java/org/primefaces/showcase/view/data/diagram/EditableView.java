@@ -19,7 +19,6 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.diagram.ConnectEvent;
@@ -76,7 +75,7 @@ public class EditableView implements Serializable {
     
     public void onConnect(ConnectEvent event) {
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "New Connection", 
-                    "From " + event.getSourceElement().getContent() + " To " + event.getTargetElement().getContent());
+                    "From " + event.getSourceElement().getData()+ " To " + event.getTargetElement().getData());
         
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
