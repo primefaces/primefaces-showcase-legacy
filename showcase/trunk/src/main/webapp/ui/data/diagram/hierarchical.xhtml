@@ -8,12 +8,12 @@
     <ui:define name="head">
         <style type="text/css">
             .ui-diagram-element {	
-                width:14em; 
-                height:4em; 	
-                line-height:4em;
+                width:5em; 
+                height:5em;
+                line-height:5em;
                 text-align: center;
                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
-                border-radius: 4px;
+                border-radius: 5em;
                 border: 1px solid #404a4e;
                 background-color: #404a4e;
                 color: #cccccc;
@@ -59,9 +59,9 @@ import org.primefaces.model.diagram.DiagramModel;
 import org.primefaces.model.diagram.Element;
 import org.primefaces.model.diagram.Connection;
 import org.primefaces.model.diagram.connector.StraightConnector;
+import org.primefaces.model.diagram.endpoint.DotEndPoint;
 import org.primefaces.model.diagram.endpoint.EndPoint;
 import org.primefaces.model.diagram.endpoint.EndPointAnchor;
-import org.primefaces.model.diagram.endpoint.RectangleEndPoint;
 
 @ManagedBean(name = "diagramHierarchicalView")
 @RequestScoped
@@ -122,7 +122,7 @@ public class HierarchicalView {
     }
     
     private EndPoint createEndPoint(EndPointAnchor anchor) {
-        RectangleEndPoint endPoint = new RectangleEndPoint(anchor);
+        DotEndPoint endPoint = new DotEndPoint(anchor);
         endPoint.setStyle("{fillStyle:'#404a4e'}");
         endPoint.setHoverStyle("{fillStyle:'#20282b'}");
         
