@@ -23,7 +23,8 @@
             
             <p:commandButton id="citySubmit" value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" />
             
-            <h3>PickList on Steroids: Pojo Support with Effect, Captions, Custom Content, Reordering, Filtering, Checkboxes and Ajax Transfer</h3>
+            <h3>PickList on Steroids: Pojo Support with Effect, Captions, Custom Content, Reordering, Filtering, Checkboxes <br />
+                and Ajax Events; Transfer, Select (since v5.1.9), UnSelect (since v5.1.9), Reorder (since v5.1.9)</h3>
             <p:pickList id="PojoPickList" value="#{pickListView.themes}" var="theme" effect="bounce"
                         itemValue="#{theme}" itemLabel="#{theme.displayName}" showSourceControls="true" showTargetControls="true" showCheckbox="true"
                         showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains" converter="theme">
@@ -32,6 +33,9 @@
                 <f:facet name="targetCaption">Starting</f:facet>
 
                 <p:ajax event="transfer" listener="#{pickListView.onTransfer}" update="msg" />
+                <p:ajax event="select" listener="#{pickListView.onSelect}" update="msg"/>
+                <p:ajax event="unselect" listener="#{pickListView.onUnselect}" update="msg"/>
+                <p:ajax event="reorder" listener="#{pickListView.onReorder}" update="msg"/>
                 
                 <p:column style="width:25%">
                     <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
@@ -87,7 +91,8 @@
 
     &lt;p:commandButton id="citySubmit" value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" /&gt;
 
-    &lt;h3&gt;PickList on Steroids: Pojo Support with Effect, Captions, Custom Content, Reordering, Filtering, Checkboxes and Ajax Transfer&lt;/h3&gt;
+    &lt;h3&gt;PickList on Steroids: Pojo Support with Effect, Captions, Custom Content, Reordering, Filtering, Checkboxes 
+                    and Ajax Events; Transfer, Select (since v5.1.9), UnSelect (since v5.1.9), Reorder (since v5.1.9)&lt;/h3&gt;
     &lt;p:pickList id="PojoPickList" value="\#{pickListView.themes}" var="theme" effect="bounce"
                 itemValue="\#{theme}" itemLabel="\#{theme.displayName}" showSourceControls="true" showTargetControls="true" showCheckbox="true"
                 showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains" converter="theme"&gt;
@@ -96,6 +101,9 @@
         &lt;f:facet name="targetCaption"&gt;Starting&lt;/f:facet&gt;
 
         &lt;p:ajax event="transfer" listener="\#{pickListView.onTransfer}" update="msg" /&gt;
+        &lt;p:ajax event="select" listener="\#{pickListView.onSelect}" update="msg" /&gt;
+        &lt;p:ajax event="unselect" listener="\#{pickListView.onUnselect}" update="msg" /&gt;
+        &lt;p:ajax event="reorder" listener="\#{pickListView.onReorder}" update="msg" /&gt;
 
         &lt;p:column style="width:25%"&gt;
             &lt;h:outputText styleClass="ui-theme ui-theme-\#{theme.name}" /&gt;
@@ -150,8 +158,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.SelectEvent;
 
 import org.primefaces.event.TransferEvent;
+import org.primefaces.event.UnselectEvent;
 import org.primefaces.model.DualListModel;
 import org.primefaces.showcase.domain.Theme;
 import org.primefaces.showcase.service.ThemeService;
@@ -225,7 +235,22 @@ public class PickListView {
         msg.setDetail(builder.toString());
         
         FacesContext.getCurrentInstance().addMessage(null, msg);
-    }  
+    } 
+
+    public void onSelect(SelectEvent event) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item Selected", event.getObject().toString()));
+    }
+    
+    public void onUnselect(UnselectEvent event) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item Unselected", event.getObject().toString()));
+    }
+    
+    public void onReorder() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "List Reordered", null));
+    } 
 }
 
                 </pre>
