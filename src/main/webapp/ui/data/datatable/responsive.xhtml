@@ -15,7 +15,7 @@
 
     <ui:define name="implementation">
         <p:dataTable var="car" value="#{dtBasicView.cars}">
-            <p:column headerText="Id (p1)" priority="1">
+            <p:column headerText="Id">
                 <h:outputText value="#{car.id}" />
             </p:column>
 
@@ -38,7 +38,7 @@
             <p:tab title="responsive.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;p:dataTable var="car" value="\#{dtBasicView.cars}"&gt;
-    &lt;p:column headerText="Id (p1)" priority="1"&gt;
+    &lt;p:column headerText="Id"&gt;
         &lt;h:outputText value="\#{car.id}" /&gt;
     &lt;/p:column&gt;
 
