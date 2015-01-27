@@ -6,14 +6,16 @@
                 template="./template.xhtml">
 
     <ui:define name="title">
-        DataTable - <span class="subitem">Responsive (since v5.1.9)</span>
+        DataTable - <span class="subitem">Responsive</span>
     </ui:define>
 
     <ui:define name="description">
-        In responsive mode, visibility of columns are toggled based on the screen size and their priority (1-6). Lower value means higher priority.
+        DataTable has two responsive modes. In priority mode, visibility of columns are toggled based on the screen size and their priority (1-6). On the other hand
+        in reflow mode, columns are displayed as stacked on smaller screens.
     </ui:define>
 
     <ui:define name="implementation">
+        <h3 style="margin-top:0">Column Priority (since v5.1.9)</h3>
         <p:dataTable var="car" value="#{dtBasicView.cars}">
             <p:column headerText="Id">
                 <h:outputText value="#{car.id}" />
@@ -31,12 +33,32 @@
                 <h:outputText value="#{car.color}" />
             </p:column>
         </p:dataTable>
+        
+        <h3>Reflow (since v5.1.10)</h3>
+        <p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true">
+            <p:column headerText="Id">
+                <h:outputText value="#{car.id}" />
+            </p:column>
+
+            <p:column headerText="Year">
+                <h:outputText value="#{car.year}" />
+            </p:column>
+
+            <p:column headerText="Brand">
+                <h:outputText value="#{car.brand}" />
+            </p:column>
+
+            <p:column headerText="Color">
+                <h:outputText value="#{car.color}" />
+            </p:column>
+        </p:dataTable>
     </ui:define>
 
     <ui:define name="source">
         <p:tabView>
             <p:tab title="responsive.xhtml">
                 <pre name="code" class="brush:xml">
+&lt;h3 style="margin-top:0"&gt;Column Priority (since v5.1.9)&lt;/h3&gt;
 &lt;p:dataTable var="car" value="\#{dtBasicView.cars}"&gt;
     &lt;p:column headerText="Id"&gt;
         &lt;h:outputText value="\#{car.id}" /&gt;
@@ -51,6 +73,25 @@
     &lt;/p:column&gt;
 
     &lt;p:column headerText="Color (p4)" priority="4"&gt;
+        &lt;h:outputText value="\#{car.color}" /&gt;
+    &lt;/p:column&gt;
+&lt;/p:dataTable&gt;
+
+&lt;h3&gt;Reflow (since v5.1.10)&lt;/h3&gt;
+&lt;p:dataTable var="car" value="\#{dtBasicView.cars}" reflow="true"&gt;
+    &lt;p:column headerText="Id"&gt;
+        &lt;h:outputText value="\#{car.id}" /&gt;
+    &lt;/p:column&gt;
+
+    &lt;p:column headerText="Year"&gt;
+        &lt;h:outputText value="\#{car.year}" /&gt;
+    &lt;/p:column&gt;
+
+    &lt;p:column headerText="Brand"&gt;
+        &lt;h:outputText value="\#{car.brand}" /&gt;
+    &lt;/p:column&gt;
+
+    &lt;p:column headerText="Color"&gt;
         &lt;h:outputText value="\#{car.color}" /&gt;
     &lt;/p:column&gt;
 &lt;/p:dataTable&gt;
