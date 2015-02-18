@@ -352,20 +352,6 @@ public class AutoCompleteView {
         
         return filteredThemes;
 	}
-
-    public List&lt;Theme&gt; completeTheme(String query) {
-        List&lt;Theme&gt; allThemes = service.getThemes();
-		List&lt;Theme&gt; filteredThemes = new ArrayList&lt;Theme&gt;();
-        
-        for (int i = 0; i &lt; allThemes.size(); i++) {
-            Theme skin = allThemes.get(i);
-            if(skin.getName().toLowerCase().contains(query)) {
-                filteredThemes.add(skin);
-            }
-        }
-        
-        return filteredThemes;
-	}
     
     public void onItemSelect(SelectEvent event) {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item Selected", event.getObject().toString()));
