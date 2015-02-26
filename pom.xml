@@ -9,11 +9,11 @@
 
     <name>primefaces-showcase</name>
     <url>http://maven.apache.org</url>
-    
+
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>        
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -42,7 +42,7 @@
             <artifactId>hibernate-validator</artifactId>
             <version>5.0.1.Final</version>
         </dependency>
-        
+
          <!-- Data Exporter -->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -73,7 +73,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
+
         <!-- File Upload -->
         <dependency>
             <groupId>commons-fileupload</groupId>
@@ -85,47 +85,47 @@
             <artifactId>commons-io</artifactId>
             <version>2.2</version>
         </dependency>
-        
+
         <!-- FeedReader -->
         <dependency>
             <groupId>rome</groupId>
             <artifactId>rome</artifactId>
             <version>1.0</version>
         </dependency>
-        
+
         <!-- Twitter API -->
         <dependency>
             <groupId>org.twitter4j</groupId>
             <artifactId>twitter4j-core</artifactId>
             <version>3.0.5</version>
-        </dependency> 
-        
+        </dependency>
+
         <!-- Atmosphere -->
         <dependency>
             <groupId>org.atmosphere</groupId>
             <artifactId>atmosphere-runtime</artifactId>
-            <version>2.2.2</version>
-        </dependency>        
+            <version>2.3.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
             <version>1</version>
         </dependency>
-        
+
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.6.1</version>
-        </dependency>  
-        
+        </dependency>
+
         <!-- Themes -->
         <dependency>
             <groupId>org.primefaces.themes</groupId>
             <artifactId>all-themes</artifactId>
             <version>1.0.10</version>
         </dependency>
-        
+
         <!-- GraphicImage -->
         <dependency>
             <groupId>net.sourceforge.barbecue</groupId>
@@ -137,7 +137,7 @@
             <artifactId>jfreechart</artifactId>
             <version>1.0.0</version>
         </dependency>
-        
+
         <!-- Barcode -->
         <dependency>
             <groupId>net.glxn</groupId>
@@ -150,7 +150,7 @@
             <version>2.1</version>
         </dependency>
     </dependencies>
-    
+
     <repositories>
         <repository>
             <id>prime-repo</id>
@@ -158,7 +158,7 @@
             <url>http://repository.primefaces.org</url>
         </repository>
     </repositories>
-    
+
     <build>
         <resources>
             <resource>
@@ -166,7 +166,7 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-    
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -190,7 +190,7 @@
 				</configuration>
 			</plugin>
         </plugins>
-        
+
         <extensions>
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
@@ -199,7 +199,7 @@
             </extension>
         </extensions>
     </build>
-    
+
     <distributionManagement>
         <repository>
             <id>prime-repo</id>
@@ -207,7 +207,7 @@
             <url>sftp://primefaces.org/var/www/repository</url>
         </repository>
     </distributionManagement>
-  
+
     <profiles>
         <profile>
             <id>dev</id>
