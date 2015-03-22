@@ -18,6 +18,7 @@
         <h:form id="form">
             <p:growl id="msgs" showDetail="true" />
             
+            <h3 style="margin-top:0">Basic Resize</h3>
             <p:dataTable id="cars1" var="car" value="#{dtResizableColumnsView.cars1}" resizableColumns="true" style="margin-bottom:20px">
                 <f:facet name="header">
                     Basic Resize
@@ -36,10 +37,11 @@
                 </p:column>
             </p:dataTable>
             
-            <p:dataTable id="cars2" var="car" value="#{dtResizableColumnsView.cars2}" resizableColumns="true" liveResize="true">
+            <h3>Live Resize with Callback</h3>
+            <p:dataTable id="cars2" var="car" value="#{dtResizableColumnsView.cars2}" resizableColumns="true" liveResize="true" style="margin-bottom:20px">
                 <p:ajax event="colResize" update=":form:msgs" listener="#{dtResizableColumnsView.onResize}" />
                 <f:facet name="header">
-                    Live Resize with Callback
+                    
                 </f:facet>
                 <p:column headerText="Id" id="id">
                     <h:outputText value="#{car.id}" />
@@ -54,6 +56,59 @@
                     <h:outputText value="#{car.color}" />
                 </p:column>
             </p:dataTable>
+            
+            <h3>Expand Mode with Grouping</h3>
+            <p:dataTable var="sale" value="#{dtGroupView.sales}" resizableColumns="true" resizeMode="expand">
+                <f:facet name="header">
+                    
+                </f:facet>
+
+                <p:columnGroup type="header">
+                    <p:row>
+                        <p:column rowspan="3" headerText="Manufacturer" />
+                        <p:column colspan="4" headerText="Sale Rate" />
+                    </p:row>
+                    <p:row>
+                        <p:column colspan="2" headerText="Sales" />
+                        <p:column colspan="2" headerText="Profit" />
+                    </p:row>
+                    <p:row>
+                        <p:column headerText="Last Year" />
+                        <p:column headerText="This Year" />
+                        <p:column headerText="Last Year" />
+                        <p:column headerText="This Year" />
+                    </p:row>
+                </p:columnGroup>
+
+                <p:column>
+                    <h:outputText value="#{sale.manufacturer}" />
+                </p:column>
+                <p:column>
+                    <h:outputText value="#{sale.lastYearProfit}%" />
+                </p:column>
+                <p:column>
+                    <h:outputText value="#{sale.thisYearProfit}%" />
+                </p:column>
+                <p:column>
+                    <h:outputText value="#{sale.lastYearSale}">
+                        <f:convertNumber type="currency" currencySymbol="$" />
+                    </h:outputText>
+                </p:column>
+                <p:column>
+                    <h:outputText value="#{sale.thisYearSale}">
+                        <f:convertNumber type="currency" currencySymbol="$" />
+                    </h:outputText>
+                </p:column>
+
+                <p:columnGroup type="footer">
+                    <p:row>
+                        <p:column colspan="3" style="text-align:right" footerText="Totals:" />
+                        <p:column footerText="\$#{dtGroupView.lastYearTotal}" />
+
+                        <p:column footerText="\$#{dtGroupView.thisYearTotal}" />
+                    </p:row>
+                </p:columnGroup>
+            </p:dataTable>
         </h:form>
         
     </ui:define>
@@ -65,6 +120,7 @@
 &lt;h:form id="form"&gt;
     &lt;p:growl id="msgs" showDetail="true" /&gt;
 
+    &lt;h3 style="margin-top:0"&gt;Basic Resize&lt;/h3&gt;
     &lt;p:dataTable id="cars1" var="car" value="\#{dtResizableColumnsView.cars1}" resizableColumns="true" style="margin-bottom:20px"&gt;
         &lt;f:facet name="header"&gt;
             Basic Resize
@@ -83,10 +139,11 @@
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
 
-    &lt;p:dataTable id="cars2" var="car" value="\#{dtResizableColumnsView.cars2}" resizableColumns="true" liveResize="true"&gt;
+    &lt;h3&gt;Live Resize with Callback&lt;/h3&gt;
+    &lt;p:dataTable id="cars2" var="car" value="\#{dtResizableColumnsView.cars2}" resizableColumns="true" liveResize="true" style="margin-bottom:20px"&gt;
         &lt;p:ajax event="colResize" update=":form:msgs" listener="\#{dtResizableColumnsView.onResize}" /&gt;
         &lt;f:facet name="header"&gt;
-            Live Resize with Callback
+
         &lt;/f:facet&gt;
         &lt;p:column headerText="Id" id="id"&gt;
             &lt;h:outputText value="\#{car.id}" /&gt;
@@ -100,6 +157,59 @@
         &lt;p:column headerText="Color" id="color"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
+    &lt;/p:dataTable&gt;
+
+    &lt;h3&gt;Expand Mode with Grouping&lt;/h3&gt;
+    &lt;p:dataTable var="sale" value="\#{dtGroupView.sales}" resizableColumns="true" resizeMode="expand"&gt;
+        &lt;f:facet name="header"&gt;
+
+        &lt;/f:facet&gt;
+
+        &lt;p:columnGroup type="header"&gt;
+            &lt;p:row&gt;
+                &lt;p:column rowspan="3" headerText="Manufacturer" /&gt;
+                &lt;p:column colspan="4" headerText="Sale Rate" /&gt;
+            &lt;/p:row&gt;
+            &lt;p:row&gt;
+                &lt;p:column colspan="2" headerText="Sales" /&gt;
+                &lt;p:column colspan="2" headerText="Profit" /&gt;
+            &lt;/p:row&gt;
+            &lt;p:row&gt;
+                &lt;p:column headerText="Last Year" /&gt;
+                &lt;p:column headerText="This Year" /&gt;
+                &lt;p:column headerText="Last Year" /&gt;
+                &lt;p:column headerText="This Year" /&gt;
+            &lt;/p:row&gt;
+        &lt;/p:columnGroup&gt;
+
+        &lt;p:column&gt;
+            &lt;h:outputText value="\#{sale.manufacturer}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column&gt;
+            &lt;h:outputText value="\#{sale.lastYearProfit}%" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column&gt;
+            &lt;h:outputText value="\#{sale.thisYearProfit}%" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column&gt;
+            &lt;h:outputText value="\#{sale.lastYearSale}"&gt;
+                &lt;f:convertNumber type="currency" currencySymbol="$" /&gt;
+            &lt;/h:outputText&gt;
+        &lt;/p:column&gt;
+        &lt;p:column&gt;
+            &lt;h:outputText value="\#{sale.thisYearSale}"&gt;
+                &lt;f:convertNumber type="currency" currencySymbol="$" /&gt;
+            &lt;/h:outputText&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:columnGroup type="footer"&gt;
+            &lt;p:row&gt;
+                &lt;p:column colspan="3" style="text-align:right" footerText="Totals:" /&gt;
+                &lt;p:column footerText="\$\#{dtGroupView.lastYearTotal}" /&gt;
+
+                &lt;p:column footerText="\$\#{dtGroupView.thisYearTotal}" /&gt;
+            &lt;/p:row&gt;
+        &lt;/p:columnGroup&gt;
     &lt;/p:dataTable&gt;
 &lt;/h:form&gt;
                 </pre>
