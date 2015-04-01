@@ -65,7 +65,7 @@ function cancel() {
             <p:commandButton value="Cancel" actionListener="#{progressBarView.cancel}" oncomplete="PF('pbAjax').cancel();PF('startButton2').enable();" />
             <br /><br />
             <p:progressBar widgetVar="pbAjax" ajax="true" value="#{progressBarView.progress}" labelTemplate="{value}%" styleClass="animated" global="false">
-                <p:ajax event="complete" listener="#{progressBarView.onComplete}" update="growl" oncomplete="startButton2.enable()"/>
+                <p:ajax event="complete" listener="#{progressBarView.onComplete}" update="growl" oncomplete="PF('startButton2').enable()"/>
             </p:progressBar>
 
             <h3>Static Display</h3>
@@ -92,7 +92,7 @@ function cancel() {
     &lt;p:commandButton value="Cancel" actionListener="\#{progressBarView.cancel}" oncomplete="PF('pbAjax').cancel();PF('startButton2').enable();" /&gt;
     &lt;br /&gt;&lt;br /&gt;
     &lt;p:progressBar widgetVar="pbAjax" ajax="true" value="\#{progressBarView.progress}" labelTemplate="{value}%" styleClass="animated" global="false"&gt;
-        &lt;p:ajax event="complete" listener="\#{progressBarView.onComplete}" update="growl" oncomplete="startButton2.enable()"/&gt;
+        &lt;p:ajax event="complete" listener="\#{progressBarView.onComplete}" update="growl" oncomplete="PF('startButton2').enable()"/&gt;
     &lt;/p:progressBar&gt;
 
     &lt;h3&gt;Static Display&lt;/h3&gt;
