@@ -211,13 +211,13 @@
             </activation>
             <properties>
                 <jsfVersion>Mojarra-2.2.8</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.2-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.3-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>5.2-SNAPSHOT</version>
+                    <version>5.3-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -235,13 +235,13 @@
             <id>community-stable</id>
             <properties>
                 <jsfVersion>Mojarra-2.2.8</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.1</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.2</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>5.1</version>
+                    <version>5.2</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -251,7 +251,7 @@
                 <dependency>
                     <groupId>org.atmosphere</groupId>
                     <artifactId>atmosphere-runtime</artifactId>
-                    <version>2.2.6</version>
+                    <version>2.3.0-RC6</version>
                 </dependency>
             </dependencies>
         </profile>
