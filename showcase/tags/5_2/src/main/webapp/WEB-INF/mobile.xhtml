@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
+    
+    <h:head>
+        <h:outputStylesheet name="mobile/css/demo.css" />
+        <h:outputStylesheet name="main/css/sh.css" />
+        <ui:insert name="head" />
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-12200033-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </h:head>
+    
+    <h:body>
+        
+        <pm:page styleClass="jqm-demos">            
+            <pm:header styleClass="jqm-header">
+                <h2><p:graphicImage name="mobile/images/logo.png" alt="PrimeFaces Mobile" /></h2>
+                <p><span class="logoDarkText">Mobile</span><span class="logoBlueText">Showcase</span></p>
+                <a class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" href="#menu" data-role="button" role="button">Menu</a>
+            </pm:header>
+            
+            <ui:insert name="content" />
+            
+            <div id="menu" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
+                <p:menu> 
+                   <p:submenu label="Components">
+                        <p:menuitem value="Accordion" outcome="accordion" />
+                        <p:menuitem value="AutoComplete" outcome="autoComplete" />
+                        <p:menuitem value="Button" outcome="button" />
+                        <p:menuitem value="Calendar" outcome="calendar" />
+                        <p:menuitem value="DataList" outcome="dataList" />
+                        <p:menuitem value="DataGrid" outcome="dataGrid" />
+                        <p:menuitem value="DataTable" outcome="dataTable" />
+                        <p:menuitem value="Dialog" outcome="dialog" />
+                        <p:menuitem value="Forms" outcome="forms" />
+                        <p:menuitem value="Growl" outcome="growl" />   
+                        <p:menuitem value="Link" outcome="link" />
+                        <p:menuitem value="Menu" outcome="menu" />
+                        <p:menuitem value="OverlayPanel" outcome="overlayPanel" />
+                        <p:menuitem value="Panel" outcome="panel" />
+                        <p:menuitem value="PanelGrid" outcome="panelGrid" />
+                        <p:menuitem value="TabMenu" outcome="tabMenu" />
+                        <p:menuitem value="TabView" outcome="tabView" />
+                        <p:menuitem value="Toolbar" outcome="toolbar" />
+                        <p:menuitem value="Upload" outcome="upload" />
+                    </p:submenu>
+                    <p:submenu label="Framework">
+                        <p:menuitem value="Single Page" outcome="singlePage" target="_blank"/>
+                        <p:menuitem value="Multi Page" outcome="multiPage" target="_blank"/>
+                        <p:menuitem value="Navigation" outcome="navigation" target="_blank"/>
+                        <p:menuitem value="Transitions" outcome="transitions" target="_blank"/>
+                        <p:menuitem value="Lazy Load" outcome="lazyload" target="_blank"/>
+                        <p:menuitem value="Ajax" outcome="ajax" target="_blank"/>
+                        <p:menuitem value="Events" outcome="events" target="_blank"/> 
+                        <p:menuitem value="Theming" outcome="theming" target="_blank" />
+                    </p:submenu>
+                    <p:submenu label="Apps">
+                        <p:menuitem value="Twitter" outcome="twitter" target="_blank"/>
+                        <p:menuitem value="Weather" outcome="weather" target="_blank"/>
+                        <p:menuitem value="Translate" outcome="translate" target="_blank"/>
+                        <p:menuitem value="News" outcome="news" target="_blank"/>
+                        <p:menuitem value="Contacts" outcome="contacts" target="_blank"/>
+                        <p:menuitem value="Push" outcome="checkin" target="_blank"/>
+                    </p:submenu>
+                </p:menu>
+            </div>
+            
+            <pm:footer styleClass="jqm-footer" fixed="true" tapToggle="false">
+                <p>Running #{build.primefacesVersion} on #{build.jsfVersion}</p>
+            </pm:footer>
+
+        </pm:page>
+        
+        <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
+        <script language="javascript">
+            SyntaxHighlighter.all();
+        </script>
+    </h:body>
+    
+</html>

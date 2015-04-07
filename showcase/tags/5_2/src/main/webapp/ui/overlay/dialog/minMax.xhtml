@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="title">
+        Dialog - <span class="subitem">Minimize/Maximize</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Dialog can be minimizable and maximizable.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+       <p:commandButton value="Show Dialog" onclick="PF('dlg').show();" type="button" />
+       
+       <p:dialog header="Dialog" widgetVar="dlg" minimizable="true" maximizable="true">
+           <h:outputText value="This Dialog can be Maximized an Minimized!" />
+       </p:dialog>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="minMax.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:commandButton value="Show Dialog" onclick="PF('dlg').show();" type="button" /&gt;
+
+&lt;p:dialog header="Dialog" widgetVar="dlg" minimizable="true" maximizable="true"&gt;
+   &lt;h:outputText value="This Dialog can be Maximized an Minimized!" /&gt;
+&lt;/p:dialog&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-181" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

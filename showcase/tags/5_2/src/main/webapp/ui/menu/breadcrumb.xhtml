@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Menu - <span class="subitem">Breadcrumb</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Breadcrumb provides contextual information about the page hierarchy.
+    </ui:define>
+
+    <ui:define name="implementation">
+        <p:breadCrumb>
+            <p:menuitem value="Categories" url="#" />
+            <p:menuitem value="Sports" url="#" />
+            <p:menuitem value="Basketball" url="#" />
+            <p:menuitem value="NBA" url="#" />
+            <p:menuitem value="Teams" url="#" />
+            <p:menuitem value="L.A. Lakers" url="#" />
+            <p:menuitem value="Roster" url="#" />
+            <p:menuitem value="Kobe Bryant" url="#" />
+        </p:breadCrumb>
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="breadcrumb.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:breadCrumb&gt;
+    &lt;p:menuitem value="Categories" url="\#" /&gt;
+    &lt;p:menuitem value="Sports" url="\#" /&gt;
+    &lt;p:menuitem value="Basketball" url="\#" /&gt;
+    &lt;p:menuitem value="NBA" url="\#" /&gt;
+    &lt;p:menuitem value="Teams" url="\#" /&gt;
+    &lt;p:menuitem value="L.A. Lakers" url="\#" /&gt;
+    &lt;p:menuitem value="Roster" url="\#" /&gt;
+    &lt;p:menuitem value="Kobe Bryant" url="\#" /&gt;
+&lt;/p:breadCrumb&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-41" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

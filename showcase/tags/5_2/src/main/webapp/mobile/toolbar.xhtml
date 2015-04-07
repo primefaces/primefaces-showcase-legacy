@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/WEB-INF/mobile.xhtml">
+    
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>Toolbar</h1>
+            <p>Toolbar is a container component to group content in a horizontal bar.</p>
+            
+            <p:toolbar>
+                <f:facet name="left">
+                    <p:commandButton type="button" value="New" icon="ui-icon-plus" />
+                    <p:commandButton type="button" value="List" icon="ui-icon-bullets"/>
+                    <p:commandButton type="button" value="Delete" icon="ui-icon-minus"/>
+                </f:facet>
+                
+                <f:facet name="right">
+                    <p:commandButton type="button" value="Settings" icon="ui-icon-gear" />
+                </f:facet>
+            </p:toolbar>
+            
+            <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1">
+                <p:tab title="toolbar.xhtml">
+                    <pre class="brush:xml">
+&lt;p:toolbar&gt;
+    &lt;f:facet name="left"&gt;
+        &lt;p:commandButton type="button" value="New" icon="ui-icon-plus" /&gt;
+        &lt;p:commandButton type="button" value="List" icon="ui-icon-bullets"/&gt;
+        &lt;p:commandButton type="button" value="Delete" icon="ui-icon-minus"/&gt;
+    &lt;/f:facet&gt;
+
+    &lt;f:facet name="right"&gt;
+        &lt;p:commandButton type="button" value="Settings" icon="ui-icon-gear" /&gt;
+    &lt;/f:facet&gt;
+&lt;/p:toolbar&gt;
+                    </pre>
+                </p:tab>
+            </p:accordionPanel>
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>

@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Charts - <span class="subitem">Donut</span>
+    </ui:define>
+
+    <ui:define name="description">
+        DonutChart is created with a DonutChartModel.
+    </ui:define>
+
+    <ui:define name="implementation">
+        <p:chart type="donut" model="#{chartView.donutModel1}" style="width:400px;height:300px" />
+        <br />
+        <p:chart type="donut" model="#{chartView.donutModel2}" style="width:400px;height:300px" />        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="donut.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:chart type="donut" model="\#{chartView.donutModel1}" style="width:400px;height:300px" /&gt;
+
+&lt;p:chart type="donut" model="\#{chartView.donutModel2}" style="width:400px;height:300px" /&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ChartView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.examples;
+
+import javax.annotation.PostConstruct;
+import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import javax.faces.bean.ManagedBean;
+
+import org.primefaces.model.chart.DonutChartModel;
+
+@ManagedBean
+public class ChartView implements Serializable {
+
+    private DonutChartModel donutModel1;
+    private DonutChartModel donutModel2;
+
+    @PostConstruct
+	public void init() {
+        createDonutModels();
+	}
+
+    public DonutChartModel getDonutModel1() {
+        return donutModel1;
+    }
+    
+    public DonutChartModel getDonutModel2() {
+        return donutModel2;
+    }
+    
+    private void createDonutModels() {
+        donutModel1 = initDonutModel();
+        donutModel1.setTitle("Donut Chart");
+        donutModel1.setLegendPosition("w");
+        
+        donutModel2 = initDonutModel();
+        donutModel2.setTitle("Custom Options");
+        donutModel2.setLegendPosition("e");
+        donutModel2.setSliceMargin(5);
+        donutModel2.setShowDataLabels(true);
+        donutModel2.setDataFormat("value");
+        donutModel2.setShadow(false);
+    }
+
+    private DonutChartModel initDonutModel() {
+        DonutChartModel model = new DonutChartModel();
+        
+        Map&lt;String, Number&gt; circle1 = new LinkedHashMap&lt;String, Number&gt;();
+        circle1.put("Brand 1", 150);
+        circle1.put("Brand 2", 400);
+        circle1.put("Brand 3", 200);
+        circle1.put("Brand 4", 10);
+        model.addCircle(circle1);
+        
+        Map&lt;String, Number&gt; circle2 = new LinkedHashMap&lt;String, Number&gt;();
+        circle2.put("Brand 1", 540);
+        circle2.put("Brand 2", 125);
+        circle2.put("Brand 3", 702);
+        circle2.put("Brand 4", 421);
+        model.addCircle(circle2);
+        
+        Map&lt;String, Number&gt; circle3 = new LinkedHashMap&lt;String, Number&gt;();
+        circle3.put("Brand 1", 40);
+        circle3.put("Brand 2", 325);
+        circle3.put("Brand 3", 402);
+        circle3.put("Brand 4", 421);
+        model.addCircle(circle3);
+        
+        return model;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-76" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

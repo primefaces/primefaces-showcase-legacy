@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+    
+    <ui:define name="title">
+        Layout - <span class="subitem">Element</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Layouts can also be created at element level. Example below is a simple split panel implementation.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <p:layout style="min-width:400px;min-height:200px;">
+            <p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200">
+                West
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                Center
+            </p:layoutUnit>
+        </p:layout>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="element.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:layout style="min-width:400px;min-height:200px;"&gt;
+    &lt;p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200"&gt;
+        West
+    &lt;/p:layoutUnit&gt;
+
+    &lt;p:layoutUnit position="center"&gt;
+        Center
+    &lt;/p:layoutUnit&gt;
+&lt;/p:layout&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-285" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="title">
+        ContextMenu - <span class="subitem">Basic</span>
+    </ui:define>
+
+    <ui:define name="description">
+        ContextMenu is an overlay menu display mainly displayed using right-click.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        Right click to view the menu options.
+    
+        <h:form>				
+            <p:growl id="messages" showDetail="true"/>
+
+            <p:contextMenu>
+                <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk"/>
+                <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+                <p:menuitem value="Delete" actionListener="#{menuView.delete}" ajax="false" icon="ui-icon-close"/>
+                <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink"/>
+            </p:contextMenu>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="basic.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;				
+    &lt;p:growl id="messages" showDetail="true"/&gt;
+
+    &lt;p:contextMenu&gt;
+        &lt;p:menuitem value="Save" actionListener="\#{menuView.save}" update="messages" icon="ui-icon-disk"/&gt;
+        &lt;p:menuitem value="Update" actionListener="\#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/&gt;
+        &lt;p:menuitem value="Delete" actionListener="\#{menuView.delete}" ajax="false" icon="ui-icon-close"/&gt;
+        &lt;p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink"/&gt;
+    &lt;/p:contextMenu&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="MenuView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.menu;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+@ManagedBean
+public class MenuView {
+    
+    public void save() {
+		addMessage("Success", "Data saved");
+	}
+	
+	public void update() {
+		addMessage("Success", "Data updated");
+	}
+	
+	public void delete() {
+		addMessage("Success", "Data deleted");
+	}
+	
+	public void addMessage(String summary, String detail) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-124" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,187 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    
+    <ui:define name="head">
+		<style type="text/css">
+			.ui-panel, div.ui-state-hover {
+				margin: 10px;
+				width:200px;
+			}
+			
+			.ui-dashboard-column {
+				width:220px;
+			}
+		</style>
+
+	</ui:define>
+
+    <ui:define name="title">
+        Dashboard
+    </ui:define>
+
+    <ui:define name="description">
+        Dashboard is a layout component featuring dragdrop based content reordering similar to portal environments.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <div style="height:500px">
+            <h:form>
+                <p:growl id="msgs" showDetail="true" />
+
+                <p:dashboard id="board" model="#{dashboardView.model}">
+                    <p:ajax event="reorder" listener="#{dashboardView.handleReorder}" update="msgs" />
+
+                    <p:panel id="sports" header="Sports">
+                        <h:outputText value="Sports Content" />
+                    </p:panel>
+
+                    <p:panel id="finance" header="Finance">
+                        <h:outputText value="Finance Content" />
+                    </p:panel>
+
+                    <p:panel id="lifestyle" header="Lifestyle">
+                        <h:outputText value="Lifestyle Content"  />
+                    </p:panel>
+
+                    <p:panel id="weather" header="Weather">
+                        <h:outputText value="Weather Content" />
+                    </p:panel>
+
+                    <p:panel id="politics" header="Politics">
+                        <h:outputText value="Politics Content" />
+                    </p:panel>
+                </p:dashboard>
+
+                <div style="clear:both" />
+            </h:form>
+        </div>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="dashboard.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;div style="height:500px"&gt;
+    &lt;h:form&gt;
+        &lt;p:growl id="msgs" showDetail="true" /&gt;
+
+        &lt;p:dashboard id="board" model="\#{dashboardView.model}"&gt;
+            &lt;p:ajax event="reorder" listener="\#{dashboardView.handleReorder}" update="msgs" /&gt;
+
+            &lt;p:panel id="sports" header="Sports"&gt;
+                &lt;h:outputText value="Sports Content" /&gt;
+            &lt;/p:panel&gt;
+
+            &lt;p:panel id="finance" header="Finance"&gt;
+                &lt;h:outputText value="Finance Content" /&gt;
+            &lt;/p:panel&gt;
+
+            &lt;p:panel id="lifestyle" header="Lifestyle"&gt;
+                &lt;h:outputText value="Lifestyle Content"  /&gt;
+            &lt;/p:panel&gt;
+
+            &lt;p:panel id="weather" header="Weather"&gt;
+                &lt;h:outputText value="Weather Content" /&gt;
+            &lt;/p:panel&gt;
+
+            &lt;p:panel id="politics" header="Politics"&gt;
+                &lt;h:outputText value="Politics Content" /&gt;
+            &lt;/p:panel&gt;
+        &lt;/p:dashboard&gt;
+
+        &lt;div style="clear:both" /&gt;
+    &lt;/h:form&gt;
+&lt;/div&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="DashboardView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.panel;
+
+import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.CloseEvent;
+import org.primefaces.event.DashboardReorderEvent;
+import org.primefaces.event.ToggleEvent;
+import org.primefaces.model.DashboardColumn;
+import org.primefaces.model.DashboardModel;
+import org.primefaces.model.DefaultDashboardColumn;
+import org.primefaces.model.DefaultDashboardModel;
+
+@ManagedBean
+@ViewScoped
+public class DashboardView implements Serializable {
+    
+    private DashboardModel model;
+	
+    @PostConstruct
+	public void init() {
+		model = new DefaultDashboardModel();
+		DashboardColumn column1 = new DefaultDashboardColumn();
+		DashboardColumn column2 = new DefaultDashboardColumn();
+		DashboardColumn column3 = new DefaultDashboardColumn();
+		
+		column1.addWidget("sports");
+		column1.addWidget("finance");
+		
+		column2.addWidget("lifestyle");
+		column2.addWidget("weather");
+		
+		column3.addWidget("politics");
+
+		model.addColumn(column1);
+		model.addColumn(column2);
+		model.addColumn(column3);
+	}
+	
+	public void handleReorder(DashboardReorderEvent event) {
+		FacesMessage message = new FacesMessage();
+		message.setSeverity(FacesMessage.SEVERITY_INFO);
+		message.setSummary("Reordered: " + event.getWidgetId());
+		message.setDetail("Item index: " + event.getItemIndex() + ", Column index: " + event.getColumnIndex() + ", Sender index: " + event.getSenderColumnIndex());
+		
+		addMessage(message);
+	}
+	
+	public void handleClose(CloseEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Panel Closed", "Closed panel id:'" + event.getComponent().getId() + "'");
+		
+		addMessage(message);
+	}
+	
+	public void handleToggle(ToggleEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, event.getComponent().getId() + " toggled", "Status:" + event.getVisibility().name());
+		
+		addMessage(message);
+	}
+	
+	private void addMessage(FacesMessage message) {
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+	
+	public DashboardModel getModel() {
+		return model;
+	}
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-127" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

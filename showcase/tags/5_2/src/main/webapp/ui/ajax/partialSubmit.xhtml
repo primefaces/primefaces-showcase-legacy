@@ -1,0 +1,248 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-log {
+                left:auto;
+                right:20px;
+                top:300px;
+            }
+        </style>
+    </ui:define>
+    
+    <ui:define name="title">
+        Ajax Framework - <span class="subitem">Partial Submit</span>
+    </ui:define>
+
+    <ui:define name="description">
+    PartialSubmit reduces network traffic by only adding the partially processed components to the ajax request post. For big pages with many input components, 
+        partialSubmit is extremely useful as it leads to more lightweight requests. Compare the Post Data displayed by the logger for the difference.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form id="form">
+            <p:log />
+
+            <h:panelGrid columns="5" cellpadding="5">
+                <h:outputLabel for="name" value="Name:" style="font-weight:bold" />
+                <p:inputText id="name" />
+                <p:commandButton value="False" partialSubmit="false" process="name" />
+                <p:commandButton value="True" partialSubmit="true" process="name" />
+            </h:panelGrid>
+
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputTextarea />
+            <br />
+            <p:inputTextarea />
+            <br />
+            <p:inputTextarea />
+            <br />
+            <p:inputTextarea />
+            <br />
+            <p:inputTextarea />
+            <br />
+            <p:inputTextarea />
+            <br />
+            <h:selectOneMenu />
+            <br />
+            <h:selectOneMenu />
+            <br />
+            <h:selectOneMenu />
+            <br />
+            <h:selectOneMenu />
+            <br />
+            <h:selectOneMenu />
+            <br />
+            <h:selectOneMenu />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputText />
+            <br />
+            <p:inputTextarea />
+            <br />
+            <p:inputTextarea />
+            <br />
+            <p:inputTextarea />
+            <br />
+            <p:inputTextarea />
+            <br />
+            <p:inputTextarea />
+            <br />
+            <p:inputTextarea />
+            <br />
+            <h:selectOneMenu />
+            <br />
+            <h:selectOneMenu />
+            <br />
+            <h:selectOneMenu />
+            <br />
+            <h:selectOneMenu />
+            <br />
+            <h:selectOneMenu />
+            <br />
+            <h:selectOneMenu />
+            <br />
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="partialSubmit.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form id="form"&gt;
+    &lt;p:log /&gt;
+
+    &lt;h:panelGrid columns="5" cellpadding="5"&gt;
+        &lt;h:outputLabel for="name" value="Name:" style="font-weight:bold" /&gt;
+        &lt;p:inputText id="name" /&gt;
+        &lt;p:commandButton value="False" partialSubmit="false" process="name" /&gt;
+        &lt;p:commandButton value="True" partialSubmit="true" process="name" /&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputText /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;p:inputTextarea /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+    &lt;h:selectOneMenu /&gt;
+    &lt;br /&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

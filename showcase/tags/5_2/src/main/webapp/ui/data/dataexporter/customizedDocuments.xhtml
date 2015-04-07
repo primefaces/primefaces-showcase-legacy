@@ -1,0 +1,196 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="title">
+        DataExporter - <span class="subitem">Customized Documents</span>
+    </ui:define>
+
+    <ui:define name="description">
+        DataExporter provides easy customization options for the exported document using pre and post processors.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <p:dataTable id="tbl" var="car" value="#{customizedDocumentsView.cars}" 
+                         paginator="true" rows="10">
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Id" />
+                    </f:facet>
+                    <h:outputText value="#{car.id}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Year" />
+                    </f:facet>
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Brand" />
+                    </f:facet>
+                    <h:outputText value="#{car.brand}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Color" />
+                    </f:facet>
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+            </p:dataTable>
+            
+            <h:commandLink id="excel">
+                <p:graphicImage name="/demo/images/excel.png" />
+                <p:dataExporter type="xls" target="tbl" fileName="cars" postProcessor="#{customizedDocumentsView.postProcessXLS}" />
+            </h:commandLink>
+
+            <h:commandLink id="pdf">
+                <p:graphicImage name="/demo/images/pdf.png" />
+                <p:dataExporter type="pdf" target="tbl" fileName="cars" preProcessor="#{customizedDocumentsView.preProcessPDF}" />
+            </h:commandLink>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="customizedDocuments.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:dataTable id="tbl" var="car" value="\#{customizedDocumentsView.cars}" 
+                 paginator="true" rows="10"&gt;
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Id" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Year" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Brand" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.brand}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Color" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:dataTable&gt;
+
+    &lt;h:commandLink id="excel"&gt;
+        &lt;p:graphicImage name="/demo/images/excel.png" /&gt;
+        &lt;p:dataExporter type="xls" target="tbl" fileName="cars" postProcessor="\#{customizedDocumentsView.postProcessXLS}" /&gt;
+    &lt;/h:commandLink&gt;
+
+    &lt;h:commandLink id="pdf"&gt;
+        &lt;p:graphicImage name="/demo/images/pdf.png" /&gt;
+        &lt;p:dataExporter type="pdf" target="tbl" fileName="cars" preProcessor="\#{customizedDocumentsView.preProcessPDF}" /&gt;
+    &lt;/h:commandLink&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="CustomizedDocumentsView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data.dataexporter;
+
+import com.lowagie.text.BadElementException;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Image;
+import com.lowagie.text.PageSize;
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+
+import org.primefaces.showcase.domain.Car;
+import org.primefaces.showcase.service.CarService;
+
+@ManagedBean
+public class CustomizedDocumentsView implements Serializable {
+    
+    private List&lt;Car&gt; cars;
+        
+    @ManagedProperty("\#{carService}")
+    private CarService service;
+    
+    @PostConstruct
+    public void init() {
+        cars = service.createCars(100);
+    }
+
+    public List&lt;Car&gt; getCars() {
+        return cars;
+    }
+
+    public void setService(CarService service) {
+        this.service = service;
+    }
+    
+    public void postProcessXLS(Object document) {
+		HSSFWorkbook wb = (HSSFWorkbook) document;
+		HSSFSheet sheet = wb.getSheetAt(0);
+		HSSFRow header = sheet.getRow(0);
+		
+		HSSFCellStyle cellStyle = wb.createCellStyle();  
+		cellStyle.setFillForegroundColor(HSSFColor.GREEN.index);
+		cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+		
+		for(int i=0; i &lt; header.getPhysicalNumberOfCells();i++) {
+			HSSFCell cell = header.getCell(i);
+			
+			cell.setCellStyle(cellStyle);
+		}
+	}
+	
+	public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
+		Document pdf = (Document) document;
+        pdf.open();
+        pdf.setPageSize(PageSize.A4);
+
+		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+		String logo = servletContext.getRealPath("") + File.separator + "resources" + File.separator + "demo" + File.separator + "images" + File.separator + "prime_logo.png";
+		
+		pdf.add(Image.getInstance(logo));
+	}
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-132" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

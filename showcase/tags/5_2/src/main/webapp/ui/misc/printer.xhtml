@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Printer
+    </ui:define>
+
+    <ui:define name="description">
+        Printer is used to print a certain component instead of the whole page.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <p:commandButton value="Print" type="button" icon="ui-icon-print" style="display:block;margin-bottom: 20px">
+            <p:printer target="image" />
+        </p:commandButton>
+        
+        <p:graphicImage id="image" name="demo/images/nature/nature10.jpg" />
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="printer.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:commandButton value="Print" type="button" icon="ui-icon-print" style="display:block;margin-bottom: 20px"&gt;
+    &lt;p:printer target="image" /&gt;
+&lt;/p:commandButton&gt;
+
+&lt;p:graphicImage id="image" name="demo/images/nature/nature10.jpg" /&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-368" />
+        </p:tabView>
+    </ui:define>
+
+</ui:composition>

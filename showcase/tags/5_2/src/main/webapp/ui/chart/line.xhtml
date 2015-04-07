@@ -1,0 +1,144 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Charts - <span class="subitem">Line</span>
+    </ui:define>
+
+    <ui:define name="description">
+        LineChart is displayed using a LineChartModel.
+    </ui:define>
+
+    <ui:define name="implementation">
+        <p:chart type="line" model="#{chartView.lineModel1}" style="height:300px;"/>
+        <br /><br />
+        <p:chart type="line" model="#{chartView.lineModel2}" style="height:300px;"/>
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="line.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:chart type="line" model="\#{chartView.lineModel1}" style="height:300px;"/&gt;
+
+&lt;p:chart type="line" model="\#{chartView.lineModel2}" style="height:300px;"/&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ChartView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.examples;
+
+import javax.annotation.PostConstruct;
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.LineChartModel;
+import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.LineChartSeries;
+
+@ManagedBean
+public class ChartView implements Serializable {
+
+    private LineChartModel lineModel1;
+    private LineChartModel lineModel2;
+    
+    @PostConstruct
+	public void init() {
+        createLineModels();
+	}
+
+    public LineChartModel getLineModel1() {
+        return lineModel1;
+    }
+
+    public LineChartModel getLineModel2() {
+        return lineModel2;
+    }
+    
+    private void createLineModels() {
+        lineModel1 = initLinearModel();
+        lineModel1.setTitle("Linear Chart");
+        lineModel1.setLegendPosition("e");
+        Axis yAxis = lineModel1.getAxis(AxisType.Y);
+        yAxis.setMin(0);
+        yAxis.setMax(10);
+        
+        lineModel2 = initCategoryModel();
+        lineModel2.setTitle("Category Chart");
+        lineModel2.setLegendPosition("e");
+        lineModel2.setShowPointLabels(true);
+        lineModel2.getAxes().put(AxisType.X, new CategoryAxis("Years"));
+        yAxis = lineModel2.getAxis(AxisType.Y);
+        yAxis.setLabel("Births");
+        yAxis.setMin(0);
+        yAxis.setMax(200);
+    }
+    
+    private CartesianChartModel initLinearModel() {
+        CartesianChartModel model = new CartesianChartModel();
+
+        LineChartSeries series1 = new LineChartSeries();
+        series1.setLabel("Series 1");
+
+        series1.set(1, 2);
+        series1.set(2, 1);
+        series1.set(3, 3);
+        series1.set(4, 6);
+        series1.set(5, 8);
+
+        LineChartSeries series2 = new LineChartSeries();
+        series2.setLabel("Series 2");
+
+        series2.set(1, 6);
+        series2.set(2, 3);
+        series2.set(3, 2);
+        series2.set(4, 7);
+        series2.set(5, 9);
+
+        model.addSeries(series1);
+        model.addSeries(series2);
+        
+        return model;
+    }
+    
+    private LineChartModel initCategoryModel() {
+        LineChartModel model = new LineChartModel();
+
+        ChartSeries boys = new ChartSeries();
+        boys.setLabel("Boys");
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
+
+        ChartSeries girls = new ChartSeries();
+        girls.setLabel("Girls");
+        girls.set("2004", 52);
+        girls.set("2005", 60);
+        girls.set("2006", 110);
+        girls.set("2007", 90);
+        girls.set("2008", 120);
+
+        model.addSeries(boys);
+        model.addSeries(girls);
+        
+        return model;
+    }
+
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-71" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

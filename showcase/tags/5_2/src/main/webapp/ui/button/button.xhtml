@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Button
+    </ui:define>
+
+    <ui:define name="description">
+        Button is an extension to the standard h:button component featuring advanced skinning capabilities. Just like h:button, button does GET requests targeting bookmarkable URLs.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <p:button outcome="productDetail" value="Bookmark" icon="ui-icon-star" style="margin-right:20px;">
+            <f:param name="productId" value="10" />
+        </p:button>
+        
+        <p:button outcome="productDetail" value="With Icon" icon="ui-icon-star" style="margin-right:20px;">
+            <f:param name="productId" value="20" />
+        </p:button>
+        
+        <p:button outcome="productDetail" icon="ui-icon-star" style="margin-right:20px;" title="Icon Only">
+            <f:param name="productId" value="30" />
+        </p:button>
+        
+        <p:button outcome="productDetail" value="Bookmark" icon="ui-icon-star" disabled="true" style="margin-right:20px;">
+            <f:param name="productId" value="40" />
+        </p:button>
+    
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="button.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:button outcome="productDetail" value="Bookmark" icon="ui-icon-star"&gt;
+    &lt;f:param name="productId" value="10" /&gt;
+&lt;/p:button&gt;
+
+&lt;p:button outcome="productDetail" value="With Icon" icon="ui-icon-star"&gt;
+    &lt;f:param name="productId" value="20" /&gt;
+&lt;/p:button&gt;
+
+&lt;p:button outcome="productDetail" icon="ui-icon-star" title="Icon Only"&gt;
+    &lt;f:param name="productId" value="30" /&gt;
+&lt;/p:button&gt;
+
+&lt;p:button outcome="productDetail" value="Bookmark" icon="ui-icon-star" disabled="true"&gt;
+    &lt;f:param name="productId" value="40" /&gt;
+&lt;/p:button&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-43" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,101 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Charts - <span class="subitem">Pie</span>
+    </ui:define>
+
+    <ui:define name="description">
+        PieChart is created with a PieChartModel.
+    </ui:define>
+
+    <ui:define name="implementation">
+        <p:chart type="pie" model="#{chartView.pieModel1}" style="width:400px;height:300px" />
+        <br />
+        <p:chart type="pie" model="#{chartView.pieModel2}" style="width:400px;height:300px" />
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="pie.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:chart type="pie" model="\#{chartView.pieModel1}" style="width:400px;height:300px" /&gt;
+            
+&lt;p:chart type="pie" model="\#{chartView.pieModel2}" style="width:400px;height:300px" /&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ChartView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.examples;
+
+import javax.annotation.PostConstruct;
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.model.chart.PieChartModel;
+
+@ManagedBean
+public class ChartView implements Serializable {
+
+    private PieChartModel pieModel1;
+    private PieChartModel pieModel2;
+
+    @PostConstruct
+	public void init() {
+        createPieModels();
+	}
+
+    public PieChartModel getPieModel1() {
+        return pieModel1;
+    }
+    
+    public PieChartModel getPieModel2() {
+        return pieModel2;
+    }
+    
+    private void createPieModels() {
+        createPieModel1();
+        createPieModel2();
+    }
+
+    private void createPieModel1() {
+        pieModel1 = new PieChartModel();
+        
+        pieModel1.set("Brand 1", 540);
+        pieModel1.set("Brand 2", 325);
+        pieModel1.set("Brand 3", 702);
+        pieModel1.set("Brand 4", 421);
+        
+        pieModel1.setTitle("Simple Pie");
+        pieModel1.setLegendPosition("w");
+    }
+    
+    private void createPieModel2() {
+        pieModel2 = new PieChartModel();
+        
+        pieModel2.set("Brand 1", 540);
+        pieModel2.set("Brand 2", 325);
+        pieModel2.set("Brand 3", 702);
+        pieModel2.set("Brand 4", 421);
+        
+        pieModel2.setTitle("Custom Pie");
+        pieModel2.setLegendPosition("e");
+        pieModel2.setFill(false);
+        pieModel2.setShowDataLabels(true);
+        pieModel2.setDiameter(150);
+    }
+    
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-69" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,97 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Charts - <span class="subitem">MeterGauge</span>
+    </ui:define>
+
+    <ui:define name="description">
+        MeterGauge chart is displayed using a MeterGaugeChartModel.
+    </ui:define>
+
+    <ui:define name="implementation">
+        <p:chart type="metergauge" model="#{chartView.meterGaugeModel1}" style="width:400px;height:250px" />
+        <br /><br />
+        <p:chart type="metergauge" model="#{chartView.meterGaugeModel2}" style="width:400px;height:250px" />
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="metergauge.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:chart type="metergauge" model="\#{chartBean.meterGaugeModel1}" style="width:400px;height:250px" /&gt;
+
+&lt;p:chart type="metergauge" model="\#{chartBean.meterGaugeModel2}" style="width:400px;height:250px" /&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ChartView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.examples;
+
+import javax.annotation.PostConstruct;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.model.chart.MeterGaugeChartModel;
+
+@ManagedBean
+public class ChartView implements Serializable {
+
+    private MeterGaugeChartModel meterGaugeModel1;
+    private MeterGaugeChartModel meterGaugeModel2;
+
+    @PostConstruct
+	public void init() {
+        createMeterGaugeModels();
+	}
+
+    public MeterGaugeChartModel getMeterGaugeModel1() {
+        return meterGaugeModel1;
+    }
+    
+    public MeterGaugeChartModel getMeterGaugeModel2() {
+        return meterGaugeModel2;
+    }
+
+    private MeterGaugeChartModel initMeterGaugeModel() {
+        List&lt;Number&gt; intervals = new ArrayList&lt;Number&gt;(){{
+            add(20);
+            add(50);
+            add(120);
+            add(220);
+        }};
+        
+        return new MeterGaugeChartModel(140, intervals);
+    }
+
+    private void createMeterGaugeModels() {
+        meterGaugeModel1 = initMeterGaugeModel();
+        meterGaugeModel1.setTitle("MeterGauge Chart");
+        meterGaugeModel1.setGaugeLabel("km/h");
+        
+        meterGaugeModel2 = initMeterGaugeModel();
+        meterGaugeModel2.setTitle("Custom Options");
+        meterGaugeModel2.setSeriesColors("66cc66,93b75f,E7E658,cc6666");
+        meterGaugeModel2.setGaugeLabel("km/h");
+        meterGaugeModel2.setGaugeLabelPosition("bottom");
+        meterGaugeModel2.setShowTickLabels(false);
+        meterGaugeModel2.setLabelHeightAdjust(110);
+        meterGaugeModel2.setIntervalOuterRadius(100);
+    }
+
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-82" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,231 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/WEB-INF/mobile.xhtml">
+    
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h2 class="first">Forms</h2>
+                        
+            <pm:field>
+                <p:outputLabel for="basic" value="Basic:" />
+                <p:inputText id="basic" />
+            </pm:field>
+
+            <pm:field>
+                <p:outputLabel for="password" value="Password:" />
+                <p:password id="password" />
+            </pm:field>
+            
+            <pm:field>
+                <p:outputLabel for="search" value="Search:" />
+                <p:inputText id="search" placeholder="Search text" type="search"/>
+            </pm:field>
+
+            <pm:field>
+                <p:outputLabel for="phone" value="Phone:" />
+                <p:inputText id="phone" placeholder="Phone Number" type="tel" />
+            </pm:field>
+
+            <pm:field>
+                <p:outputLabel for="textarea" value="Textarea" />
+                <p:inputTextarea id="textarea" />
+            </pm:field>
+
+            <pm:field>
+                <p:outputLabel for="selectOneMenu" value="SelectOneMenu" />
+                <p:selectOneMenu id="selectOneMenu">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItem itemLabel="Option 1" itemValue="1" />
+                    <f:selectItem itemLabel="Option 2" itemValue="2" />
+                    <f:selectItem itemLabel="Option 3" itemValue="3" />
+                </p:selectOneMenu>
+            </pm:field>
+
+            <pm:field>
+                <p:outputLabel for="slider" value="Slider" />
+                <pm:inputSlider id="slider" value="50"/>
+            </pm:field>
+
+            <pm:field>
+                <p:outputLabel for="rangeSlider" value="RangeSlider" />
+                <pm:rangeSlider id="rangeSlider">
+                    <pm:inputSlider id="sliderStart" value="20" />
+                    <pm:inputSlider id="sliderEnd" value="80"/>
+                </pm:rangeSlider>
+            </pm:field>
+                
+            <pm:field>
+                <p:outputLabel for="switch" value="Switch" />
+                <p:inputSwitch id="switch" />
+            </pm:field>
+
+            <pm:field>
+                <p:outputLabel for="selectOneRadio" value="SelectOneRadio" />
+                <p:selectOneRadio id="selectOneRadio">
+                    <f:selectItem itemLabel="Option 1" itemValue="1" />
+                    <f:selectItem itemLabel="Option 2" itemValue="2" />
+                    <f:selectItem itemLabel="Option 3" itemValue="3" />
+                </p:selectOneRadio>
+            </pm:field>
+
+            <pm:field>
+                <p:outputLabel for="selectOneButton" value="SelectOneButton" />
+                <p:selectOneButton id="selectOneButton">
+                    <f:selectItem itemLabel="Option 1" itemValue="1" />
+                    <f:selectItem itemLabel="Option 2" itemValue="2" />
+                    <f:selectItem itemLabel="Option 3" itemValue="3" />
+                </p:selectOneButton>
+            </pm:field>
+
+            <pm:field>
+                <p:outputLabel for="selectBooleanCheckbox" value="SelectBooleanCheckbox" />
+                <p:selectBooleanCheckbox id="selectBooleanCheckbox" itemLabel="I agree"/>
+            </pm:field>
+
+            <pm:field>
+                <p:outputLabel for="selectManyCheckbox" value="SelectManyCheckbox" />
+                <p:selectManyCheckbox id="selectManyCheckbox">
+                    <f:selectItem itemLabel="Option 1" itemValue="1" />
+                    <f:selectItem itemLabel="Option 2" itemValue="2" />
+                    <f:selectItem itemLabel="Option 3" itemValue="3" />
+                </p:selectManyCheckbox>
+            </pm:field>
+
+            <pm:field>
+                <p:outputLabel for="selectManyButton" value="SelectManyButton" />
+                <p:selectManyButton id="selectManyButton">
+                    <f:selectItem itemLabel="Option 1" itemValue="1" />
+                    <f:selectItem itemLabel="Option 2" itemValue="2" />
+                    <f:selectItem itemLabel="Option 3" itemValue="3" />
+                </p:selectManyButton>
+            </pm:field>
+
+            <pm:field>
+                <p:outputLabel for="selectCheckboxMenu" value="SelectCheckboxMenu" />
+                <p:selectCheckboxMenu id="selectCheckboxMenu" label="SelectCheckboxMenu">
+                    <f:selectItem itemLabel="Select Multiple" itemValue="" />
+                    <f:selectItem itemLabel="Option 1" itemValue="1" />
+                    <f:selectItem itemLabel="Option 2" itemValue="2" />
+                    <f:selectItem itemLabel="Option 3" itemValue="3" />
+                </p:selectCheckboxMenu>
+            </pm:field>
+            
+            <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1">
+                <p:tab title="forms.xhtml">
+                    <pre class="brush:xml">
+&lt;pm:field&gt;
+    &lt;p:outputLabel for="basic" value="Basic:" /&gt;
+    &lt;p:inputText id="basic" /&gt;
+&lt;/pm:field&gt;
+
+&lt;pm:field&gt;
+    &lt;p:outputLabel for="password" value="Password:" /&gt;
+    &lt;p:password id="password" /&gt;
+&lt;/pm:field&gt;
+
+&lt;pm:field&gt;
+    &lt;p:outputLabel for="search" value="Search:" /&gt;
+    &lt;p:inputText id="search" placeholder="Search text" type="search"/&gt;
+&lt;/pm:field&gt;
+
+&lt;pm:field&gt;
+    &lt;p:outputLabel for="phone" value="Phone:" /&gt;
+    &lt;p:inputText id="phone" placeholder="Phone Number" type="tel" /&gt;
+&lt;/pm:field&gt;
+
+&lt;pm:field&gt;
+    &lt;p:outputLabel for="textarea" value="Textarea" /&gt;
+    &lt;p:inputTextarea id="textarea" /&gt;
+&lt;/pm:field&gt;
+
+&lt;pm:field&gt;
+    &lt;p:outputLabel for="selectOneMenu" value="SelectOneMenu" /&gt;
+    &lt;p:selectOneMenu id="selectOneMenu"&gt;
+        &lt;f:selectItem itemLabel="Select One" itemValue="" /&gt;
+        &lt;f:selectItem itemLabel="Option 1" itemValue="1" /&gt;
+        &lt;f:selectItem itemLabel="Option 2" itemValue="2" /&gt;
+        &lt;f:selectItem itemLabel="Option 3" itemValue="3" /&gt;
+    &lt;/p:selectOneMenu&gt;
+&lt;/pm:field&gt;
+
+&lt;pm:field&gt;
+    &lt;p:outputLabel for="slider" value="Slider" /&gt;
+    &lt;pm:inputSlider id="slider" value="50"/&gt;
+&lt;/pm:field&gt;
+
+&lt;pm:field&gt;
+    &lt;p:outputLabel for="rangeSlider" value="RangeSlider" /&gt;
+    &lt;pm:rangeSlider id="rangeSlider"&gt;
+        &lt;pm:inputSlider id="sliderStart" value="20" /&gt;
+        &lt;pm:inputSlider id="sliderEnd" value="80"/&gt;
+    &lt;/pm:rangeSlider&gt;
+&lt;/pm:field&gt;
+
+&lt;pm:field&gt;
+    &lt;p:outputLabel for="switch" value="Switch" /&gt;
+    &lt;p:inputSwitch id="switch" /&gt;
+&lt;/pm:field&gt;
+
+&lt;pm:field&gt;
+    &lt;p:outputLabel for="selectOneRadio" value="SelectOneRadio" /&gt;
+    &lt;p:selectOneRadio id="selectOneRadio"&gt;
+        &lt;f:selectItem itemLabel="Option 1" itemValue="1" /&gt;
+        &lt;f:selectItem itemLabel="Option 2" itemValue="2" /&gt;
+        &lt;f:selectItem itemLabel="Option 3" itemValue="3" /&gt;
+    &lt;/p:selectOneRadio&gt;
+&lt;/pm:field&gt;
+
+&lt;pm:field&gt;
+    &lt;p:outputLabel for="selectOneButton" value="SelectOneButton" /&gt;
+    &lt;p:selectOneButton id="selectOneButton"&gt;
+        &lt;f:selectItem itemLabel="Option 1" itemValue="1" /&gt;
+        &lt;f:selectItem itemLabel="Option 2" itemValue="2" /&gt;
+        &lt;f:selectItem itemLabel="Option 3" itemValue="3" /&gt;
+    &lt;/p:selectOneButton&gt;
+&lt;/pm:field&gt;
+
+&lt;pm:field&gt;
+    &lt;p:outputLabel for="selectBooleanCheckbox" value="SelectBooleanCheckbox" /&gt;
+    &lt;p:selectBooleanCheckbox id="selectBooleanCheckbox" itemLabel="I agree"/&gt;
+&lt;/pm:field&gt;
+
+&lt;pm:field&gt;
+    &lt;p:outputLabel for="selectManyCheckbox" value="SelectManyCheckbox" /&gt;
+    &lt;p:selectManyCheckbox id="selectManyCheckbox"&gt;
+        &lt;f:selectItem itemLabel="Option 1" itemValue="1" /&gt;
+        &lt;f:selectItem itemLabel="Option 2" itemValue="2" /&gt;
+        &lt;f:selectItem itemLabel="Option 3" itemValue="3" /&gt;
+    &lt;/p:selectManyCheckbox&gt;
+&lt;/pm:field&gt;
+
+&lt;pm:field&gt;
+    &lt;p:outputLabel for="selectManyButton" value="SelectManyButton" /&gt;
+    &lt;p:selectManyButton id="selectManyButton"&gt;
+        &lt;f:selectItem itemLabel="Option 1" itemValue="1" /&gt;
+        &lt;f:selectItem itemLabel="Option 2" itemValue="2" /&gt;
+        &lt;f:selectItem itemLabel="Option 3" itemValue="3" /&gt;
+    &lt;/p:selectManyButton&gt;
+&lt;/pm:field&gt;
+
+&lt;pm:field&gt;
+    &lt;p:outputLabel for="selectCheckboxMenu" value="SelectCheckboxMenu" /&gt;
+    &lt;p:selectCheckboxMenu id="selectCheckboxMenu"&gt;
+        &lt;f:selectItem itemLabel="Select Multiple" itemValue="" /&gt;
+        &lt;f:selectItem itemLabel="Option 1" itemValue="1" /&gt;
+        &lt;f:selectItem itemLabel="Option 2" itemValue="2" /&gt;
+        &lt;f:selectItem itemLabel="Option 3" itemValue="3" /&gt;
+    &lt;/p:selectCheckboxMenu&gt;
+&lt;/pm:field&gt;                        
+                    </pre>
+                </p:tab>
+            </p:accordionPanel>
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>

@@ -1,0 +1,75 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Cache
+    </ui:define>
+
+    <ui:define name="description">
+        Cache component is used to reduce page load time by caching the content in a global cache after the initial rendering. Various
+        cache providers are supported like ehcache and hazelcast. In this example, toolbar component is cached and output would be retrieved from cache.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <p:cache region="testcache" key="toolbar" disabled="true">
+                <p:toolbar>
+                    <p:toolbarGroup align="left">
+                        <p:commandButton type="button" value="New" icon="ui-icon-document" />
+
+                        <p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/>
+
+                        <p:separator />
+
+                        <p:commandButton type="button" title="Save" icon="ui-icon-disk"/>
+                        <p:commandButton type="button" title="Delete" icon="ui-icon-trash"/>
+                        <p:commandButton type="button" title="Print" icon="ui-icon-print"/>
+                    </p:toolbarGroup>
+
+                    <p:toolbarGroup align="right">
+                        <p:commandButton type="button" value="Quit" icon="ui-icon-close"/>
+                    </p:toolbarGroup>
+                </p:toolbar>
+            </p:cache>
+        </h:form>
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="cache.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:cache region="testcache" key="toolbar"&gt;
+        &lt;p:toolbar&gt;
+            &lt;p:toolbarGroup align="left"&gt;
+                &lt;p:commandButton type="button" value="New" icon="ui-icon-document" /&gt;
+
+                &lt;p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/&gt;
+
+                &lt;p:separator /&gt;
+
+                &lt;p:commandButton type="button" title="Save" icon="ui-icon-disk"/&gt;
+                &lt;p:commandButton type="button" title="Delete" icon="ui-icon-trash"/&gt;
+                &lt;p:commandButton type="button" title="Print" icon="ui-icon-print"/&gt;
+            &lt;/p:toolbarGroup&gt;
+
+            &lt;p:toolbarGroup align="right"&gt;
+                &lt;p:commandButton type="button" value="Quit" icon="ui-icon-close"/&gt;
+            &lt;/p:toolbarGroup&gt;
+        &lt;/p:toolbar&gt;
+    &lt;/p:cache&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-46" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,391 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                template="/WEB-INF/template.xhtml">
+    
+    <ui:define name="head">
+		<style type="text/css">
+			.carItem {
+				width:200px;
+				height:200px;
+				text-align:center;
+			}
+            
+            .carouselAdvanced .carItem {
+                width: 250px;
+                height: 195px;
+            }
+            
+            .value {
+                font-weight: bold;
+            }
+            
+            .ui-carousel {
+                display: block;
+                margin-bottom: 20px;
+            }
+		</style>
+    </ui:define>
+    
+    <ui:define name="title">
+        Carousel
+    </ui:define>
+
+    <ui:define name="description">
+        Carousel displays data using a slide effect.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form id="form">
+            <p:carousel value="#{carouselView.cars}" headerText="Basic" var="car" itemStyleClass="carItem">
+                <h:panelGrid columns="2" style="width:100%" cellpadding="5" columnClasses="label,value">
+                    <f:facet name="header">
+                        <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
+                    </f:facet>
+
+                    <h:outputText value="Id:" />
+                    <h:outputText value="#{car.id}" />
+
+                    <h:outputText value="Year" />
+                    <h:outputText value="#{car.year}" />
+
+                    <h:outputText value="Color:" />
+                    <h:outputText value="#{car.color}" style="color:#{car.color}"/>
+
+                    <h:outputText value="Price" />
+                    <h:outputText value="\$#{car.price}" />
+                </h:panelGrid>
+
+                <f:facet name="footer">
+                        In total there are #{fn:length(carouselView.cars)} cars.
+                </f:facet>
+            </p:carousel>
+
+            <p:carousel value="#{carouselView.cars}" headerText="Advanced" var="car" itemStyleClass="carItem" numVisible="1" easing="easeOutBounce" styleClass="carouselAdvanced">
+                <p:panelGrid columns="2" style="width:100%" columnClasses="label,value">
+                    <f:facet name="header">
+                        <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
+                    </f:facet>
+
+                    <h:outputText value="Id:" />
+                    <h:outputText value="#{car.id}" />
+
+                    <h:outputText value="Year" />
+                    <h:outputText value="#{car.year}" />
+
+                    <h:outputText value="Color:" />
+                    <h:outputText value="#{car.color}" style="color:#{car.color}"/>
+
+                    <h:outputText value="Price" />
+                    <h:outputText value="\$#{car.price}" />
+
+                    <f:facet name="footer">
+                        <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" icon="ui-icon-search">
+                            <f:setPropertyActionListener value="#{car}" target="#{carouselView.selectedCar}" />
+                        </p:commandButton>
+                    </f:facet>
+                </p:panelGrid>
+            </p:carousel> 
+            
+            <p:carousel numVisible="1" itemStyle="height:200px;width:600px;" effect="easeInStrong" headerText="Tabs" style="margin-bottom:0">
+                <p:tab title="Godfather Part I">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
+                        <h:outputText
+                            value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T
+                            hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, 
+                            but given to ruthless violence whenever anything stands against the good of the family." />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Godfather Part II">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather2.jpg" />
+                        <h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. 
+                        In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, 
+                        killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows." />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Godfather Part III">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather3.jpg" />
+                        <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. 
+                            Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />
+                    </h:panelGrid>
+                </p:tab>
+            </p:carousel>
+
+            <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="carDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty carouselView.selectedCar}" columnClasses="label,value">
+                        <f:facet name="header">
+                            <p:graphicImage name="demo/images/car/#{carouselView.selectedCar.brand}-big.gif"/> 
+                        </f:facet>
+
+                        <h:outputText value="Id:" />
+                        <h:outputText value="#{carouselView.selectedCar.id}" />
+
+                        <h:outputText value="Year" />
+                        <h:outputText value="#{carouselView.selectedCar.year}" />
+
+                        <h:outputText value="Color:" />
+                        <h:outputText value="#{carouselView.selectedCar.color}" style="color:#{carouselView.selectedCar.color}"/>
+
+                        <h:outputText value="Price" />
+                        <h:outputText value="\$#{carouselView.selectedCar.price}" />
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="carousel.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form id="form"&gt;
+    &lt;p:carousel value="\#{carouselView.cars}" headerText="Basic" var="car" itemStyleClass="carItem"&gt;
+        &lt;h:panelGrid columns="2" style="width:100%" cellpadding="5" columnClasses="label,value"&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;p:graphicImage name="demo/images/car/\#{car.brand}.gif"/&gt; 
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value="Id:" /&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+
+            &lt;h:outputText value="Year" /&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+
+            &lt;h:outputText value="Color:" /&gt;
+            &lt;h:outputText value="\#{car.color}" style="color:\#{car.color}"/&gt;
+
+            &lt;h:outputText value="Price" /&gt;
+            &lt;h:outputText value="\$\#{car.price}" /&gt;
+        &lt;/h:panelGrid&gt;
+
+        &lt;f:facet name="footer"&gt;
+                In total there are \#{fn:length(carouselView.cars)} cars.
+        &lt;/f:facet&gt;
+    &lt;/p:carousel&gt;
+
+    &lt;p:carousel value="\#{carouselView.cars}" headerText="Advanced" var="car" itemStyleClass="carItem" numVisible="1" easing="easeOutBounce" styleClass="carouselAdvanced"&gt;
+        &lt;p:panelGrid columns="2" style="width:100%" columnClasses="label,value"&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;p:graphicImage name="demo/images/car/\#{car.brand}.gif"/&gt; 
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value="Id:" /&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+
+            &lt;h:outputText value="Year" /&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+
+            &lt;h:outputText value="Color:" /&gt;
+            &lt;h:outputText value="\#{car.color}" style="color:\#{car.color}"/&gt;
+
+            &lt;h:outputText value="Price" /&gt;
+            &lt;h:outputText value="\$\#{car.price}" /&gt;
+
+            &lt;f:facet name="footer"&gt;
+                &lt;p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" icon="ui-icon-search"&gt;
+                    &lt;f:setPropertyActionListener value="\#{car}" target="\#{carouselView.selectedCar}" /&gt;
+                &lt;/p:commandButton&gt;
+            &lt;/f:facet&gt;
+        &lt;/p:panelGrid&gt;
+    &lt;/p:carousel&gt; 
+
+    &lt;p:carousel numVisible="1" itemStyle="height:200px;width:600px;" effect="easeInStrong" headerText="Tabs" style="margin-bottom:0"&gt;
+        &lt;p:tab title="Godfather Part I"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather1.jpg" /&gt;
+                &lt;h:outputText
+                    value="The story begins as Don Vito Corleone..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part II"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather2.jpg" /&gt;
+                &lt;h:outputText value="Francis Ford Coppola's..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part III"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather3.jpg" /&gt;
+                &lt;h:outputText value="After a break of more than 15 years..." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+    &lt;/p:carousel&gt;
+
+    &lt;p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false"&gt;
+        &lt;p:outputPanel id="carDetail" style="text-align:center;"&gt;
+            &lt;p:panelGrid  columns="2" rendered="\#{not empty carouselView.selectedCar}" columnClasses="label,value"&gt;
+                &lt;f:facet name="header"&gt;
+                    &lt;p:graphicImage name="demo/images/car/\#{carouselView.selectedCar.brand}-big.gif"/&gt; 
+                &lt;/f:facet&gt;
+
+                &lt;h:outputText value="Id:" /&gt;
+                &lt;h:outputText value="\#{carouselView.selectedCar.id}" /&gt;
+
+                &lt;h:outputText value="Year" /&gt;
+                &lt;h:outputText value="\#{carouselView.selectedCar.year}" /&gt;
+
+                &lt;h:outputText value="Color:" /&gt;
+                &lt;h:outputText value="\#{carouselView.selectedCar.color}" style="color:\#{carouselView.selectedCar.color}"/&gt;
+
+                &lt;h:outputText value="Price" /&gt;
+                &lt;h:outputText value="\$\#{carouselView.selectedCar.price}" /&gt;
+            &lt;/p:panelGrid&gt;
+        &lt;/p:outputPanel&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="CarouselView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data;
+
+import java.io.Serializable;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
+import org.primefaces.showcase.domain.Car;
+import org.primefaces.showcase.service.CarService;
+
+@ManagedBean
+@ViewScoped
+public class CarouselView implements Serializable {
+    
+    private List&lt;Car&gt; cars;
+    
+    private Car selectedCar;
+    
+    @ManagedProperty("#{carService}")
+    private CarService service;
+    
+    @PostConstruct
+    public void init() {
+        cars = service.createCars(9);
+    }
+
+    public List&lt;Car&gt; getCars() {
+        return cars;
+    }
+
+    public void setService(CarService service) {
+        this.service = service;
+    }
+
+    public Car getSelectedCar() {
+        return selectedCar;
+    }
+
+    public void setSelectedCar(Car selectedCar) {
+        this.selectedCar = selectedCar;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="CarService.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.showcase.domain.Car;
+
+@ManagedBean(name = "carService")
+@ApplicationScoped
+public class CarService {
+    
+    private final static String[] colors;
+	
+	private final static String[] brands;
+    
+    static {
+		colors = new String[10];
+		colors[0] = "Black";
+		colors[1] = "White";
+		colors[2] = "Green";
+		colors[3] = "Red";
+		colors[4] = "Blue";
+		colors[5] = "Orange";
+		colors[6] = "Silver";
+		colors[7] = "Yellow";
+		colors[8] = "Brown";
+		colors[9] = "Maroon";
+		
+		brands = new String[10];
+		brands[0] = "BMW";
+		brands[1] = "Mercedes";
+		brands[2] = "Volvo";
+		brands[3] = "Audi";
+		brands[4] = "Renault";
+		brands[5] = "Fiat";
+		brands[6] = "Volkswagen";
+		brands[7] = "Honda";
+		brands[8] = "Jaguar";
+		brands[9] = "Ford";
+	}
+    
+    public List&lt;Car&gt; createCars(int size) {
+        List&lt;Car&gt; list = new ArrayList&lt;Car&gt;();
+		for(int i = 0 ; i &lt; size ; i++) {
+			list.add(new Car(getRandomId(), getRandomBrand(), getRandomYear(), getRandomColor(), getRandomPrice(), getRandomSoldState()));
+        }
+        
+        return list;
+    }
+    
+    private String getRandomId() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+    
+    private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+	
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+	
+	private String getRandomBrand() {
+		return brands[(int) (Math.random() * 10)];
+	}
+    
+    public int getRandomPrice() {
+		return (int) (Math.random() * 100000);
+	}
+    
+    public boolean getRandomSoldState() {
+		return (Math.random() &gt; 0.5) ? true: false;
+	}
+
+    public List&lt;String&gt; getColors() {
+        return Arrays.asList(colors);
+    }
+    
+    public List&lt;String&gt; getBrands() {
+        return Arrays.asList(brands);
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-61" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        DialogFramework - <span class="subitem">Message</span>
+    </ui:define>
+
+    <ui:define name="description">
+        A facesmessage can be displayed in a dynamically generated dialog on runtime.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <p:commandButton value="Show" icon="ui-icon-script" actionListener="#{dfView.showMessage}" />
+        </h:form>
+    
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="message.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:commandButton value="Show" icon="ui-icon-script" actionListener="\#{dfView.showMessage}" /&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="DFView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.df;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.context.RequestContext;
+
+@ManagedBean(name = "dfView")
+public class DFView {
+        
+    public void showMessage() {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "What we do in life", "Echoes in eternity.");
+        
+        RequestContext.getCurrentInstance().showMessageInDialog(message);
+    }
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-530" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

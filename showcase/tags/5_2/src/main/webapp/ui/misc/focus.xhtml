@@ -1,0 +1,118 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Focus
+    </ui:define>
+
+    <ui:define name="description">
+        Focus manages element focus in forms. By default first visible and enabled input element(e.g. text, textarea, select) is chosen to receive focus automatically.
+		It is also possible to explicitly declare the component to receive focus via the for attribute. Focus is also aware of failed validations, first invalid input component receives a focus automatically.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <p:panel id="panel" header="Register">
+
+                <p:focus context="panel"/>
+
+                <p:messages />
+
+                <h:panelGrid columns="3">
+                    <p:outputLabel for="username" value="Username" />
+                    <p:inputText id="username" value="#{focusView.username}" required="true" label="Firstname">
+                        <f:validateLength minimum="2" />
+                    </p:inputText>
+                    <p:message for="username" />
+
+                    <p:outputLabel for="email" value="Email" />
+                    <p:inputText id="email" value="#{focusView.email}" required="true" label="Surname"/>
+                    <p:message for="email" />
+                </h:panelGrid>
+
+                <p:commandButton id="submitButton" value="Save" update="@parent" actionListener="#{focusView.save}" />
+            </p:panel>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="focus.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:panel id="panel" header="Register"&gt;
+
+        &lt;p:focus context="panel"/&gt;
+
+        &lt;p:messages /&gt;
+
+        &lt;h:panelGrid columns="3"&gt;
+            &lt;p:outputLabel for="username" value="Username" /&gt;
+            &lt;p:inputText id="username" value="\#{focusView.username}" required="true" label="Firstname"&gt;
+                &lt;f:validateLength minimum="2" /&gt;
+            &lt;/p:inputText&gt;
+            &lt;p:message for="username" /&gt;
+
+            &lt;p:outputLabel for="email" value="Email" /&gt;
+            &lt;p:inputText id="email" value="\#{focusView.email}" required="true" label="Surname"/&gt;
+            &lt;p:message for="email" /&gt;
+        &lt;/h:panelGrid&gt;
+
+        &lt;p:commandButton id="submitButton" value="Save" update="@parent" actionListener="\#{focusView.save}" /&gt;
+    &lt;/p:panel&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="FocusView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.misc;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+@ManagedBean
+public class FocusView {
+    
+    private String username;
+    private String email;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    public void save() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "User Saved"));
+        username = null;
+        email = null;
+    }
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-217" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

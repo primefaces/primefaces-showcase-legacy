@@ -1,0 +1,64 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Sticky
+    </ui:define>
+
+    <ui:define name="description">
+        Sticky component positions the target component as fixed so that the component stays in window viewport during scrolling. 
+        Scroll down to see the sticky toolbar.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <p:toolbar id="tb">
+            <f:facet name="left">
+                <p:commandButton type="button" value="New" icon="ui-icon-document" />
+                <p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/>
+            </f:facet>
+            <f:facet name="right">
+                <p:commandButton type="button" title="Save" icon="ui-icon-disk"/>
+                <p:commandButton type="button" title="Delete" icon="ui-icon-trash"/>
+                <p:commandButton type="button" title="Print" icon="ui-icon-print"/>
+            </f:facet>
+        </p:toolbar>
+        
+        <div style="height:800px"></div>
+
+        <p:sticky target="tb" />
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="sticky.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:toolbar id="tb"&gt;
+    &lt;f:facet name="left"&gt;
+        &lt;p:commandButton type="button" value="New" icon="ui-icon-document" /&gt;
+        &lt;p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/&gt;
+    &lt;/f:facet&gt;
+    &lt;f:facet name="right"&gt;
+        &lt;p:commandButton type="button" title="Save" icon="ui-icon-disk"/&gt;
+        &lt;p:commandButton type="button" title="Delete" icon="ui-icon-trash"/&gt;
+        &lt;p:commandButton type="button" title="Print" icon="ui-icon-print"/&gt;
+    &lt;/f:facet&gt;
+&lt;/p:toolbar&gt;
+
+&lt;div style="height:800px"&gt;&lt;/div&gt;
+
+&lt;p:sticky target="tb" /&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-467" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

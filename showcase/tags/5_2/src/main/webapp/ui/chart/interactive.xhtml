@@ -1,0 +1,175 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">
+            .right div {
+                float: right;
+            }
+        </style>
+	</ui:define>
+
+    <ui:define name="title">
+        Charts - <span class="subitem">Interactive</span>
+    </ui:define>
+
+    <ui:define name="description">
+        When a series data is clicked, information can be passed to a backing bean using itemSelect ajax behavior.
+    </ui:define>
+
+    <ui:define name="implementation">
+        <h:form>
+            <p:growl id="growl" showDetail="true" />
+
+            <h:panelGrid columns="2" columnClasses="left,right" style="width:100%">
+                <p:chart type="pie" model="#{chartView.pieModel1}" style="width:400px;height:300px">
+                    <p:ajax event="itemSelect" listener="#{chartView.itemSelect}" update="growl" />
+                </p:chart>
+
+                <p:chart type="bar" model="#{chartView.barModel}" style="width:400px;height:300px">
+                    <p:ajax event="itemSelect" listener="#{chartView.itemSelect}" update="growl" />
+                </p:chart>  
+            </h:panelGrid>
+
+        </h:form>
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="interactive.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:growl id="growl" showDetail="true" /&gt;
+
+    &lt;h:panelGrid columns="2" columnClasses="left,right" style="width:100%"&gt;
+        &lt;p:chart type="pie" model="\#{chartView.pieModel1}" style="width:400px;height:300px"&gt;
+            &lt;p:ajax event="itemSelect" listener="\#{chartView.itemSelect}" update="growl" /&gt;
+        &lt;/p:chart&gt;
+
+        &lt;p:chart type="bar" model="\#{chartView.barModel}" style="width:400px;height:300px"&gt;
+            &lt;p:ajax event="itemSelect" listener="\#{chartView.itemSelect}" update="growl" /&gt;
+        &lt;/p:chart&gt;  
+    &lt;/h:panelGrid&gt;
+
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ChartView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.examples;
+
+import javax.annotation.PostConstruct;
+import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.ItemSelectEvent;
+
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.PieChartModel;
+
+
+@ManagedBean
+public class ChartView implements Serializable {
+
+    private BarChartModel barModel;
+    private PieChartModel pieModel1;
+
+    @PostConstruct
+	public void init() {
+        createBarModels();
+        createPieModels();
+	}
+
+    public BarChartModel getBarModel() {
+        return barModel;
+    }
+    
+    public PieChartModel getPieModel1() {
+        return pieModel1;
+    }
+
+    private void createBarModels() {
+        createBarModel();
+    }
+    
+    private void createBarModel() {
+        barModel = initBarModel();
+        
+        barModel.setTitle("Bar Chart");
+        barModel.setLegendPosition("ne");
+        
+        Axis xAxis = barModel.getAxis(AxisType.X);
+        xAxis.setLabel("Gender");
+        
+        Axis yAxis = barModel.getAxis(AxisType.Y);
+        yAxis.setLabel("Births");
+        yAxis.setMin(0);
+        yAxis.setMax(200);
+    }
+    
+    private BarChartModel initBarModel() {
+        BarChartModel model = new BarChartModel();
+
+        ChartSeries boys = new ChartSeries();
+        boys.setLabel("Boys");
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
+
+        ChartSeries girls = new ChartSeries();
+        girls.setLabel("Girls");
+        girls.set("2004", 52);
+        girls.set("2005", 60);
+        girls.set("2006", 110);
+        girls.set("2007", 135);
+        girls.set("2008", 120);
+
+        model.addSeries(boys);
+        model.addSeries(girls);
+        
+        return model;
+    }
+
+    private void createPieModels() {
+        createPieModel1();
+    }
+    
+    private void createPieModel1() {
+        pieModel1 = new PieChartModel();
+        
+        pieModel1.set("Brand 1", 540);
+        pieModel1.set("Brand 2", 325);
+        pieModel1.set("Brand 3", 702);
+        pieModel1.set("Brand 4", 421);
+        
+        pieModel1.setTitle("Simple Pie");
+        pieModel1.setLegendPosition("w");
+    }
+
+    public void itemSelect(ItemSelectEvent event) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item selected",
+                        "Item Index: " + event.getItemIndex() + ", Series Index:" + event.getSeriesIndex());
+        
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-88" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

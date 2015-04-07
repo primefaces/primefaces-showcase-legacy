@@ -1,0 +1,103 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Charts - <span class="subitem">Zoom</span>
+    </ui:define>
+
+    <ui:define name="description">
+        A specific part on Cartesian Charts can be zoomed using mouse drag.
+    </ui:define>
+
+    <ui:define name="implementation">
+        <p:chart type="line" model="#{chartView.zoomModel}" style="height:300px;" widgetVar="chart"/>
+        <br />    
+        <p:commandButton type="button" value="Reset" icon="ui-icon-cancel" onclick="PF('chart').resetZoom()"/>    
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="zoom.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:chart type="line" model="\#{chartView.zoomModel}" style="height:300px;" widgetVar="chart"/&gt;
+
+&lt;p:commandButton type="button" value="Reset" icon="ui-icon-cancel" onclick="PF('chart').resetZoom()"/&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ChartView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.examples;
+
+import javax.annotation.PostConstruct;
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.LineChartModel;
+import org.primefaces.model.chart.LineChartSeries;
+
+@ManagedBean
+public class ChartView implements Serializable {
+
+    private LineChartModel zoomModel;
+
+    @PostConstruct
+	public void init() {
+        createZoomModel();
+	}
+
+    public LineChartModel getZoomModel() {
+        return zoomModel;
+    }
+    
+    private void createZoomModel() {
+        zoomModel = initLinearModel();
+        zoomModel.setTitle("Zoom");
+        zoomModel.setZoom(true);
+        zoomModel.setLegendPosition("e");
+        Axis yAxis = zoomModel.getAxis(AxisType.Y);
+        yAxis.setMin(0);
+        yAxis.setMax(10);
+    }
+    
+    private LineChartModel initLinearModel() {
+        LineChartModel model = new LineChartModel();
+
+        LineChartSeries series1 = new LineChartSeries();
+        series1.setLabel("Series 1");
+
+        series1.set(1, 2);
+        series1.set(2, 1);
+        series1.set(3, 3);
+        series1.set(4, 6);
+        series1.set(5, 8);
+
+        LineChartSeries series2 = new LineChartSeries();
+        series2.setLabel("Series 2");
+
+        series2.set(1, 6);
+        series2.set(2, 3);
+        series2.set(3, 2);
+        series2.set(4, 7);
+        series2.set(5, 9);
+
+        model.addSeries(series1);
+        model.addSeries(series2);
+        
+        return model;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-68" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

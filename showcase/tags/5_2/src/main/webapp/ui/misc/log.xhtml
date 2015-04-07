@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-log {
+                left: 500px;
+                top: 250px;
+            }
+        </style>
+    </ui:define>
+    
+    <ui:define name="title">
+        Log
+    </ui:define>
+
+    <ui:define name="description">
+        Log component is a visual console to display internal logs of PrimeFaces. Using log client side API,
+        you can also use the component.
+    </ui:define>
+
+    <ui:define name="implementation">
+        <p:log id="log" />
+
+        <h3 style="margin-top:0">Client Side API</h3>
+        <p:commandButton type="button" id="info" value="Info" onclick="PrimeFaces.info('This is an info message.')" />
+        <p:commandButton type="button" id="warn" value="Warn" onclick="PrimeFaces.warn('This is a warn message.')" />
+        <p:commandButton type="button" id="debug" value="Debug" onclick="PrimeFaces.debug('This is a debug message.')" />
+        <p:commandButton type="button" id="error" value="Error" onclick="PrimeFaces.error('This is an error message.')" />
+
+        <h3>Ajax Request</h3>
+        <h:form id="form">
+            <h:panelGrid id="grid" columns="4" cellpadding="5">
+                <p:outputLabel for="name" value="Name:" style="font-weight:bold"/>
+                <p:inputText id="name" />
+                <p:commandButton value="Submit" update="grid"/>
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="log.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:log id="log" /&gt;
+
+&lt;h3 style="margin-top:0"&gt;Client Side API&lt;/h3&gt;
+&lt;p:commandButton type="button" id="info" value="Info" onclick="PrimeFaces.info('This is an info message.')" /&gt;
+&lt;p:commandButton type="button" id="warn" value="Warn" onclick="PrimeFaces.warn('This is a warn message.')" /&gt;
+&lt;p:commandButton type="button" id="debug" value="Debug" onclick="PrimeFaces.debug('This is a debug message.')" /&gt;
+&lt;p:commandButton type="button" id="error" value="Error" onclick="PrimeFaces.error('This is an error message.')" /&gt;
+
+&lt;h3&gt;Ajax Request&lt;/h3&gt;
+&lt;h:form id="form"&gt;
+    &lt;h:panelGrid id="grid" columns="4" cellpadding="5"&gt;
+        &lt;p:outputLabel for="name" value="Name:" style="font-weight:bold"/&gt;
+        &lt;p:inputText id="name" /&gt;
+        &lt;p:commandButton value="Submit" update="grid"/&gt;
+    &lt;/h:panelGrid&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-298" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

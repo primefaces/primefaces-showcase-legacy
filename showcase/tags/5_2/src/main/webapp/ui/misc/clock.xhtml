@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Clock
+    </ui:define>
+
+    <ui:define name="description">
+        Clock displays server or client datetime live. AutoSync feature in server mode can sync the 
+        clock with server periodically.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <h3 style="margin-top:0">Client</h3>
+            <p:clock />
+
+            <h3>Server</h3>
+            <p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" />
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="clock.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;h3 style="margin-top:0"&gt;Client&lt;/h3&gt;
+    &lt;p:clock /&gt;
+
+    &lt;h3&gt;Server&lt;/h3&gt;
+    &lt;p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" /&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-98" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

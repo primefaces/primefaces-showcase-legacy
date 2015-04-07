@@ -1,0 +1,642 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    
+      <ui:define name="head">
+        <style type="text/css">
+            .ui-datalist .ui-datalist-content {
+                border:0 none
+            }
+            
+            .ui-datalist ul {
+                padding: 0px 10px 0 20px;
+                margin: 5px 0;
+            }
+            
+            .value {
+                font-weight: bold;
+            }
+        </style>
+	</ui:define>
+
+    <ui:define name="title">
+        AutoComplete
+    </ui:define>
+
+    <ui:define name="description">
+        AutoComplete displays suggestions while the input is being type. AutoComplete
+        features various options, customizable content, multiple selection, effects and events.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <p:growl id="msgs" showDetail="true" />
+            
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel value="Simple:" for="acSimple" />
+                <p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" />
+
+                <p:outputLabel value="Min Length (3):" for="acMinLength" />
+                <p:autoComplete id="acMinLength" minQueryLength="3" value="#{autoCompleteView.txt2}" completeMethod="#{autoCompleteView.completeText}" effect="fade" />
+
+                <p:outputLabel value="Delay(1000):" for="acDelay" />
+                <p:autoComplete id="acDelay" queryDelay="1000" value="#{autoCompleteView.txt3}" completeMethod="#{autoCompleteView.completeText}" effect="blind" />
+
+                <p:outputLabel value="Max Results(5):" for="acMaxResults" />
+                <p:autoComplete id="acMaxResults" maxResults="5" value="#{autoCompleteView.txt4}" completeMethod="#{autoCompleteView.completeText}" />
+
+                <p:outputLabel value="Force Selection:" for="acForce" />
+                <p:autoComplete id="acForce" forceSelection="true" value="#{autoCompleteView.txt5}" completeMethod="#{autoCompleteView.completeText}" />
+
+                <p:outputLabel value="DropDown:" for="dd" />
+                <p:autoComplete id="dd" dropdown="true" value="#{autoCompleteView.txt6}" completeMethod="#{autoCompleteView.completeText}" />
+
+                <p:outputLabel value="Cache:" for="cache" />
+                <p:autoComplete id="cache" cache="true" cacheTimeout="30000" value="#{autoCompleteView.txt7}" completeMethod="#{autoCompleteView.completeText}" />
+                
+                <p:outputLabel value="Select Event:" for="event" />
+                <p:autoComplete id="event" value="#{autoCompleteView.txt8}" completeMethod="#{autoCompleteView.completeText}">
+                    <p:ajax event="itemSelect" listener="#{autoCompleteView.onItemSelect}" update="msgs" />
+                </p:autoComplete>
+                
+                <p:outputLabel value="Pojo:" for="themePojo" />
+                <p:autoComplete id="themePojo" value="#{autoCompleteView.theme1}" completeMethod="#{autoCompleteView.completeTheme}"
+                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter" forceSelection="true" />
+                
+                <p:outputLabel value="Custom Content:" for="themeCustom" />
+                <p:autoComplete id="themeCustom" value="#{autoCompleteView.theme2}" completeMethod="#{autoCompleteView.completeTheme}"
+                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter" forceSelection="true">
+                    <p:column>
+                        <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
+                    </p:column>
+                    
+                    <p:column>
+                        <h:outputText value="#{theme.displayName}" />
+                    </p:column>
+                </p:autoComplete>
+                
+                <p:outputLabel value="Multiple:" for="themes" />
+                <p:autoComplete id="themes" multiple="true" value="#{autoCompleteView.selectedThemes}" completeMethod="#{autoCompleteView.completeTheme}"
+                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter" forceSelection="true">
+                    <p:column style="width:10%">
+                        <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
+                    </p:column>
+                    
+                    <p:column>
+                        <h:outputText value="#{theme.displayName}" />
+                    </p:column>
+                </p:autoComplete>
+                
+                <p:outputLabel value="Itemtip:" for="itemTip" />
+                <p:autoComplete id="itemTip" value="#{autoCompleteView.theme3}" completeMethod="#{autoCompleteView.completeTheme}"
+                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter">
+                    <f:facet name="itemtip">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <f:facet name="header">
+                                <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" style="margin-left:50px" />
+                            </f:facet>
+                            
+                            <h:outputText value="Display:" />
+                            <h:outputText value="#{theme.displayName}" />
+                            
+                            <h:outputText value="Key" />
+                            <h:outputText value="#{theme.name}" />
+                        </h:panelGrid>
+                    </f:facet>
+                </p:autoComplete>
+                
+                <p:outputLabel value="Group:" for="group" />
+                <p:autoComplete id="group" value="#{autoCompleteView.theme4}" completeMethod="#{autoCompleteView.completeThemeContains}" 
+                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter" forceSelection="true" 
+                                groupBy="#{autoCompleteView.getThemeGroup(theme)}" scrollHeight="250"/>
+            </h:panelGrid>
+            
+            <p:commandButton value="Submit" icon="ui-icon-check" update="output msgs" oncomplete="PF('dlg').show()" />
+            
+            <p:dialog header="Values" resizable="false" showEffect="fade" widgetVar="dlg">
+                <p:panelGrid id="output" columns="2" columnClasses="label, value">
+                    <h:outputText value="Simple:" />
+                    <h:outputText value="#{autoCompleteView.txt1}" />
+                    
+                    <h:outputText value="Min Length" />
+                    <h:outputText value="#{autoCompleteView.txt2}" />
+                    
+                    <h:outputText value="Delay:" />
+                    <h:outputText value="#{autoCompleteView.txt3}" />
+                    
+                    <h:outputText value="Max Results:" />
+                    <h:outputText value="#{autoCompleteView.txt4}" />
+                    
+                    <h:outputText value="Force Selection:" />
+                    <h:outputText value="#{autoCompleteView.txt5}" />
+                    
+                    <h:outputText value="Dropdown:" />
+                    <h:outputText value="#{autoCompleteView.txt6}" />
+                    
+                    <h:outputText value="Cache:" />
+                    <h:outputText value="#{autoCompleteView.txt7}" />
+                    
+                    <h:outputText value="Select Event:" />
+                    <h:outputText value="#{autoCompleteView.txt8}" />
+                    
+                    <h:outputText value="Pojo:" />
+                    <h:outputText value="#{autoCompleteView.theme1}" />
+                    
+                    <h:outputText value="Custom Content:" />
+                    <h:outputText value="#{autoCompleteView.theme2}" />
+                    
+                    <h:outputText value="Multiple:" />
+                    <p:dataList value="#{autoCompleteView.selectedThemes}" var="t">
+                        <h:outputText value="#{t}" />
+                    </p:dataList>
+                    
+                    <h:outputText value="Itemtip:" />
+                    <h:outputText value="#{autoCompleteView.theme3}" />
+                </p:panelGrid>
+            </p:dialog>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="autoComplete.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:growl id="msgs" showDetail="true" /&gt;
+
+    &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+        &lt;p:outputLabel value="Simple:" for="acSimple" /&gt;
+        &lt;p:autoComplete id="acSimple" value="\#{autoCompleteView.txt1}" completeMethod="\#{autoCompleteView.completeText}" /&gt;
+
+        &lt;p:outputLabel value="Min Length (3):" for="acMinLength" /&gt;
+        &lt;p:autoComplete id="acMinLength" minQueryLength="3" value="\#{autoCompleteView.txt2}" completeMethod="\#{autoCompleteView.completeText}" effect="fade" /&gt;
+
+        &lt;p:outputLabel value="Delay(1000):" for="acDelay" /&gt;
+        &lt;p:autoComplete id="acDelay" queryDelay="1000" value="\#{autoCompleteView.txt3}" completeMethod="\#{autoCompleteView.completeText}" effect="blind" /&gt;
+
+        &lt;p:outputLabel value="Max Results(5):" for="acMaxResults" /&gt;
+        &lt;p:autoComplete id="acMaxResults" maxResults="5" value="\#{autoCompleteView.txt4}" completeMethod="\#{autoCompleteView.completeText}" /&gt;
+
+        &lt;p:outputLabel value="Force Selection:" for="acForce" /&gt;
+        &lt;p:autoComplete id="acForce" forceSelection="true" value="\#{autoCompleteView.txt5}" completeMethod="\#{autoCompleteView.completeText}" /&gt;
+
+        &lt;p:outputLabel value="DropDown:" for="dd" /&gt;
+        &lt;p:autoComplete id="dd" dropdown="true" value="\#{autoCompleteView.txt6}" completeMethod="\#{autoCompleteView.completeText}" /&gt;
+
+        &lt;p:outputLabel value="Cache:" for="cache" /&gt;
+        &lt;p:autoComplete id="cache" cache="true" cacheTimeout="30000" value="\#{autoCompleteView.txt7}" completeMethod="\#{autoCompleteView.completeText}" /&gt;
+
+        &lt;p:outputLabel value="Select Event:" for="event" /&gt;
+        &lt;p:autoComplete id="event" value="\#{autoCompleteView.txt8}" completeMethod="\#{autoCompleteView.completeText}"&gt;
+            &lt;p:ajax event="itemSelect" listener="\#{autoCompleteView.onItemSelect}" update="msgs" /&gt;
+        &lt;/p:autoComplete&gt;
+
+        &lt;p:outputLabel value="Pojo:" for="themePojo" /&gt;
+        &lt;p:autoComplete id="themePojo" value="\#{autoCompleteView.theme1}" completeMethod="\#{autoCompleteView.completeTheme}"
+                        var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" converter="themeConverter" forceSelection="true" /&gt;
+
+        &lt;p:outputLabel value="Custom Content:" for="themeCustom" /&gt;
+        &lt;p:autoComplete id="themeCustom" value="\#{autoCompleteView.theme2}" completeMethod="\#{autoCompleteView.completeTheme}"
+                        var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" converter="themeConverter" forceSelection="true"&gt;
+            &lt;p:column&gt;
+                &lt;h:outputText styleClass="ui-theme ui-theme-\#{theme.name}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column&gt;
+                &lt;h:outputText value="\#{theme.displayName}" /&gt;
+            &lt;/p:column&gt;
+        &lt;/p:autoComplete&gt;
+
+        &lt;p:outputLabel value="Multiple:" for="themes" /&gt;
+        &lt;p:autoComplete id="themes" multiple="true" value="\#{autoCompleteView.selectedThemes}" completeMethod="\#{autoCompleteView.completeTheme}"
+                        var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" converter="themeConverter" forceSelection="true"&gt;
+            &lt;p:column style="width:10%"&gt;
+                &lt;h:outputText styleClass="ui-theme ui-theme-\#{theme.name}" /&gt;
+            &lt;/p:column&gt;
+
+            &lt;p:column&gt;
+                &lt;h:outputText value="\#{theme.displayName}" /&gt;
+            &lt;/p:column&gt;
+        &lt;/p:autoComplete&gt;
+
+        &lt;p:outputLabel value="Itemtip:" for="itemTip" /&gt;
+        &lt;p:autoComplete id="itemTip" value="\#{autoCompleteView.theme3}" completeMethod="\#{autoCompleteView.completeTheme}"
+                        var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" converter="themeConverter" forceSelection="true"&gt;
+            &lt;f:facet name="itemtip"&gt;
+                &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+                    &lt;f:facet name="header"&gt;
+                        &lt;h:outputText styleClass="ui-theme ui-theme-\#{theme.name}" style="margin-left:50px" /&gt;
+                    &lt;/f:facet&gt;
+
+                    &lt;h:outputText value="Display:" /&gt;
+                    &lt;h:outputText value="\#{theme.displayName}" /&gt;
+
+                    &lt;h:outputText value="Key" /&gt;
+                    &lt;h:outputText value="\#{theme.name}" /&gt;
+                &lt;/h:panelGrid&gt;
+            &lt;/f:facet&gt;
+        &lt;/p:autoComplete&gt;
+
+        &lt;p:outputLabel value="Group:" for="group" /&gt;
+        &lt;p:autoComplete id="group" value="\#{autoCompleteView.theme4}" completeMethod="\#{autoCompleteView.completeThemeContains}" 
+                var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" converter="themeConverter"
+                groupBy="\#{autoCompleteView.getThemeGroup(theme)}" scrollHeight="250"/&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:commandButton value="Submit" icon="ui-icon-check" update="output msgs" oncomplete="PF('dlg').show()" /&gt;
+
+    &lt;p:dialog header="Values" resizable="false" showEffect="fade" widgetVar="dlg"&gt;
+        &lt;p:panelGrid id="output" columns="2" columnClasses="label, value"&gt;
+            &lt;h:outputText value="Simple:" /&gt;
+            &lt;h:outputText value="\#{autoCompleteView.txt1}" /&gt;
+
+            &lt;h:outputText value="Min Length" /&gt;
+            &lt;h:outputText value="\#{autoCompleteView.txt2}" /&gt;
+
+            &lt;h:outputText value="Delay:" /&gt;
+            &lt;h:outputText value="\#{autoCompleteView.txt3}" /&gt;
+
+            &lt;h:outputText value="Max Results:" /&gt;
+            &lt;h:outputText value="\#{autoCompleteView.txt4}" /&gt;
+
+            &lt;h:outputText value="Force Selection:" /&gt;
+            &lt;h:outputText value="\#{autoCompleteView.txt5}" /&gt;
+
+            &lt;h:outputText value="Dropdown:" /&gt;
+            &lt;h:outputText value="\#{autoCompleteView.txt6}" /&gt;
+
+            &lt;h:outputText value="Cache:" /&gt;
+            &lt;h:outputText value="\#{autoCompleteView.txt7}" /&gt;
+
+            &lt;h:outputText value="Select Event:" /&gt;
+            &lt;h:outputText value="\#{autoCompleteView.txt8}" /&gt;
+
+            &lt;h:outputText value="Pojo:" /&gt;
+            &lt;h:outputText value="\#{autoCompleteView.theme1}" /&gt;
+
+            &lt;h:outputText value="Custom Content:" /&gt;
+            &lt;h:outputText value="\#{autoCompleteView.theme2}" /&gt;
+
+            &lt;h:outputText value="Multiple:" /&gt;
+            &lt;p:dataList value="\#{autoCompleteView.selectedThemes}" var="t"&gt;
+                &lt;h:outputText value="\#{t}" /&gt;
+            &lt;/p:dataList&gt;
+
+            &lt;h:outputText value="Itemtip:" /&gt;
+            &lt;h:outputText value="\#{autoCompleteView.theme3}" /&gt;
+        &lt;/p:panelGrid&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="AutoCompleteView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.SelectEvent;
+import org.primefaces.showcase.domain.Theme;
+import org.primefaces.showcase.service.ThemeService;
+
+@ManagedBean
+public class AutoCompleteView {
+    
+    private String txt1;
+    private String txt2;
+    private String txt3;
+    private String txt4;
+    private String txt5;
+    private String txt6;
+    private String txt7;
+    private String txt8;
+    private Theme theme1;
+    private Theme theme2;
+    private Theme theme3;
+    private Theme theme4;
+    private List&lt;Theme&gt; selectedThemes;
+    
+    @ManagedProperty("\#{themeService}")
+    private ThemeService service;
+    
+    public List&lt;String&gt; completeText(String query) {
+		List&lt;String&gt; results = new ArrayList&lt;String&gt;();
+		for(int i = 0; i &lt; 10; i++) {
+			results.add(query + i);
+		}
+		
+		return results;
+	}
+    
+    public List&lt;Theme&gt; completeTheme(String query) {
+        List&lt;Theme&gt; allThemes = service.getThemes();
+		List&lt;Theme&gt; filteredThemes = new ArrayList&lt;Theme&gt;();
+        
+        for (int i = 0; i &lt; allThemes.size(); i++) {
+            Theme skin = allThemes.get(i);
+            if(skin.getName().toLowerCase().startsWith(query)) {
+                filteredThemes.add(skin);
+            }
+        }
+        
+        return filteredThemes;
+	}
+    
+    public void onItemSelect(SelectEvent event) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item Selected", event.getObject().toString()));
+    }
+
+    public String getTxt1() {
+        return txt1;
+    }
+
+    public void setTxt1(String txt1) {
+        this.txt1 = txt1;
+    }
+
+    public String getTxt2() {
+        return txt2;
+    }
+
+    public void setTxt2(String txt2) {
+        this.txt2 = txt2;
+    }
+
+    public String getTxt3() {
+        return txt3;
+    }
+
+    public void setTxt3(String txt3) {
+        this.txt3 = txt3;
+    }
+
+    public String getTxt4() {
+        return txt4;
+    }
+
+    public void setTxt4(String txt4) {
+        this.txt4 = txt4;
+    }
+
+    public String getTxt5() {
+        return txt5;
+    }
+
+    public void setTxt5(String txt5) {
+        this.txt5 = txt5;
+    }
+
+    public String getTxt6() {
+        return txt6;
+    }
+
+    public void setTxt6(String txt6) {
+        this.txt6 = txt6;
+    }
+
+    public String getTxt7() {
+        return txt7;
+    }
+
+    public void setTxt7(String txt7) {
+        this.txt7 = txt7;
+    }
+
+    public String getTxt8() {
+        return txt8;
+    }
+
+    public void setTxt8(String txt8) {
+        this.txt8 = txt8;
+    }
+
+    public Theme getTheme1() {
+        return theme1;
+    }
+
+    public void setTheme1(Theme theme1) {
+        this.theme1 = theme1;
+    }
+
+    public Theme getTheme2() {
+        return theme2;
+    }
+
+    public void setTheme2(Theme theme2) {
+        this.theme2 = theme2;
+    }
+
+    public Theme getTheme3() {
+        return theme3;
+    }
+
+    public void setTheme3(Theme theme3) {
+        this.theme3 = theme3;
+    }
+
+    public Theme getTheme4() {
+        return theme3;
+    }
+
+    public void setTheme4(Theme theme4) {
+        this.theme4 = theme4;
+    }
+
+    public List&lt;Theme&gt; getSelectedThemes() {
+        return selectedThemes;
+    }
+
+    public void setSelectedThemes(List&lt;Theme&gt; selectedThemes) {
+        this.selectedThemes = selectedThemes;
+    }
+    
+    public void setService(ThemeService service) {
+        this.service = service;
+    }
+
+    public char getThemeGroup(Theme theme) {
+        return theme.getDisplayName().charAt(0);
+    }
+}
+                    </pre>
+                </p:tab>
+
+                <p:tab title="Theme.java">
+                    <pre name="code" class="brush:java">
+package org.primefaces.showcase.domain;
+
+public class Theme {
+
+    private int id;   
+    private String displayName;  
+    private String name;
+  
+    public Theme() {}
+
+    public Theme(int id, String displayName, String name) {
+        this.id = id;
+        this.displayName = displayName;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    @Override
+    public String toString() {
+        return name;
+    }
+}
+
+                </pre>
+            </p:tab>
+
+            <p:tab title="ThemeService.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
+import org.primefaces.showcase.domain.Theme;
+
+@ManagedBean(name="themeService", eager = true)
+@ApplicationScoped
+public class ThemeService {
+    
+    private List&lt;Theme&gt; themes;
+    
+    @PostConstruct
+    public void init() {
+        themes = new ArrayList&lt;Theme&gt;();
+        themes.add(new Theme(0, "Afterdark", "afterdark"));
+        themes.add(new Theme(1, "Afternoon", "afternoon"));
+        themes.add(new Theme(2, "Afterwork", "afterwork"));
+        themes.add(new Theme(3, "Aristo", "aristo"));
+        themes.add(new Theme(4, "Black-Tie", "black-tie"));
+        themes.add(new Theme(5, "Blitzer", "blitzer"));
+        themes.add(new Theme(6, "Bluesky", "bluesky"));
+        themes.add(new Theme(7, "Bootstrap", "bootstrap"));
+        themes.add(new Theme(8, "Casablanca", "casablanca"));
+        themes.add(new Theme(9, "Cupertino", "cupertino"));
+        themes.add(new Theme(10, "Cruze", "cruze"));
+        themes.add(new Theme(11, "Dark-Hive", "dark-hive"));
+        themes.add(new Theme(12, "Delta", "delta"));
+        themes.add(new Theme(13, "Dot-Luv", "dot-luv"));
+        themes.add(new Theme(14, "Eggplant", "eggplant"));
+        themes.add(new Theme(15, "Excite-Bike", "excite-bike"));
+        themes.add(new Theme(16, "Flick", "flick"));
+        themes.add(new Theme(17, "Glass-X", "glass-x"));
+        themes.add(new Theme(18, "Home", "home"));
+        themes.add(new Theme(19, "Hot-Sneaks", "hot-sneaks"));
+        themes.add(new Theme(20, "Humanity", "humanity"));
+        themes.add(new Theme(21, "Le-Frog", "le-frog"));
+        themes.add(new Theme(22, "Midnight", "midnight"));
+        themes.add(new Theme(23, "Mint-Choc", "mint-choc"));
+        themes.add(new Theme(24, "Overcast", "overcast"));
+        themes.add(new Theme(25, "Pepper-Grinder", "pepper-grinder"));
+        themes.add(new Theme(26, "Redmond", "redmond"));
+        themes.add(new Theme(27, "Rocket", "rocket"));
+        themes.add(new Theme(28, "Sam", "sam"));
+        themes.add(new Theme(29, "Smoothness", "smoothness"));
+        themes.add(new Theme(30, "South-Street", "south-street"));
+        themes.add(new Theme(31, "Start", "start"));
+        themes.add(new Theme(32, "Sunny", "sunny"));
+        themes.add(new Theme(33, "Swanky-Purse", "swanky-purse"));
+        themes.add(new Theme(34, "Trontastic", "trontastic"));
+        themes.add(new Theme(35, "UI-Darkness", "ui-darkness"));
+        themes.add(new Theme(36, "UI-Lightness", "ui-lightness"));
+        themes.add(new Theme(37, "Vader", "vader"));
+    }
+    
+    public List&lt;Theme&gt; getThemes() {
+        return themes;
+    } 
+}
+
+                </pre>
+            </p:tab>
+
+            <p:tab title="ThemeConverter.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.convert;
+
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+
+import org.primefaces.showcase.domain.Theme;
+import org.primefaces.showcase.service.ThemeService;
+
+@FacesConverter("themeConverter")
+public class ThemeConverter implements Converter {
+
+    public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
+        if(value != null &amp;&amp; value.trim().length() &gt; 0) {
+            try {
+                ThemeService service = (ThemeService) fc.getExternalContext().getApplicationMap().get("themeService");
+                return service.getThemes().get(Integer.parseInt(value));
+            } catch(NumberFormatException e) {
+                throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid theme."));
+            }
+        }
+        else {
+            return null;
+        }
+    }
+
+    public String getAsString(FacesContext fc, UIComponent uic, Object object) {
+        if(object != null) {
+            return String.valueOf(((Theme) object).getId());
+        }
+        else {
+            return null;
+        }
+    }   
+}     
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-25" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

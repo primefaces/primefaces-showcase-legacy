@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="title">
+        FileUpload - <span class="subitem">Drag and Drop</span>
+    </ui:define>
+
+    <ui:define name="description">
+        In supported browsers, a file can be selected by dragdrop from filesystem. FileUpload component itself is the drop zone.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>         
+            <p:fileUpload fileUploadListener="#{fileUploadView.handleFileUpload}" mode="advanced" dragDropSupport="true" 
+                          update="messages" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+            
+            <p:growl id="messages" showDetail="true" />          
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="dnd.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:fileUpload fileUploadListener="\#{fileUploadView.handleFileUpload}" mode="advanced" dragDropSupport="true" 
+                          update="messages" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" /&gt;
+
+    &lt;p:growl id="messages" showDetail="true" /&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="FileUploadView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.file;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
+
+@ManagedBean
+public class FileUploadView {
+
+    public void handleFileUpload(FileUploadEvent event) {
+        FacesMessage message = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-210" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

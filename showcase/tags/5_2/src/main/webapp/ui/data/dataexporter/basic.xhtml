@@ -1,0 +1,235 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-paginator a {
+                margin-right: 5px;
+            }
+        </style>
+	</ui:define>
+
+    
+    <ui:define name="title">
+        DataExporter - <span class="subitem">Basic</span>
+    </ui:define>
+    
+    <ui:define name="description">
+        EXCEL, PDF, CSV and XML are the supported formats.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <p:dataTable id="tbl" var="car" value="#{dataExporterView.cars}" 
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                         paginator="true" rows="10" style="margin-bottom:20px">
+                
+                <f:facet name="{Exporters}">
+                    <div style="float:right">
+                        <h:commandLink>
+                            <p:graphicImage name="/demo/images/excel.png" width="24"/>
+                            <p:dataExporter type="xls" target="tbl" fileName="cars" />
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <p:graphicImage name="/demo/images/pdf.png" width="24"/>
+                            <p:dataExporter type="pdf" target="tbl" fileName="cars"/>
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <p:graphicImage name="/demo/images/csv.png" width="24"/>
+                            <p:dataExporter type="csv" target="tbl" fileName="cars" />
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <p:graphicImage name="/demo/images/xml.png" width="24"/>
+                            <p:dataExporter type="xml" target="tbl" fileName="cars" />
+                        </h:commandLink>
+                    </div>
+                </f:facet>
+                
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Id" />
+                    </f:facet>
+                    <h:outputText value="#{car.id}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Year"/>
+                    </f:facet>
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Brand" />
+                    </f:facet>
+                    <h:outputText value="#{car.brand}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Color" />
+                    </f:facet>
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+            </p:dataTable>
+
+            <h3>Export Page Data Only</h3>
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/excel.png" />
+                <p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/>
+            </h:commandLink>
+
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/pdf.png" />
+                <p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true" />
+            </h:commandLink>
+
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/csv.png" />
+                <p:dataExporter type="csv" target="tbl" fileName="cars" pageOnly="true" />
+            </h:commandLink>
+
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/xml.png" />
+                <p:dataExporter type="xml" target="tbl" fileName="cars" pageOnly="true" />
+            </h:commandLink>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="basic.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:dataTable id="tbl" var="car" value="\#{dataExporterView.cars}" 
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                 paginator="true" rows="10" style="margin-bottom:20px"&gt;
+
+        &lt;f:facet name="{Exporters}"&gt;
+            &lt;h:commandLink&gt;
+                &lt;p:graphicImage name="/demo/images/excel.png" width="24"/&gt;
+                &lt;p:dataExporter type="xls" target="tbl" fileName="cars" /&gt;
+            &lt;/h:commandLink&gt;
+
+            &lt;h:commandLink&gt;
+                &lt;p:graphicImage name="/demo/images/pdf.png" width="24"/&gt;
+                &lt;p:dataExporter type="pdf" target="tbl" fileName="cars"/&gt;
+            &lt;/h:commandLink&gt;
+
+            &lt;h:commandLink&gt;
+                &lt;p:graphicImage name="/demo/images/csv.png" width="24"/&gt;
+                &lt;p:dataExporter type="csv" target="tbl" fileName="cars" /&gt;
+            &lt;/h:commandLink&gt;
+
+            &lt;h:commandLink&gt;
+                &lt;p:graphicImage name="/demo/images/xml.png" width="24"/&gt;
+                &lt;p:dataExporter type="xml" target="tbl" fileName="cars" /&gt;
+            &lt;/h:commandLink&gt;
+        &lt;/f:facet&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Id" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Year"/&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Brand" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.brand}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Color" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:dataTable&gt;
+
+    &lt;h3&gt;Export Page Data Only&lt;/h3&gt;
+    &lt;h:commandLink&gt;
+        &lt;p:graphicImage name="/demo/images/excel.png" /&gt;
+        &lt;p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/&gt;
+    &lt;/h:commandLink&gt;
+
+    &lt;h:commandLink&gt;
+        &lt;p:graphicImage name="/demo/images/pdf.png" /&gt;
+        &lt;p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true" /&gt;
+    &lt;/h:commandLink&gt;
+
+    &lt;h:commandLink&gt;
+        &lt;p:graphicImage name="/demo/images/csv.png" /&gt;
+        &lt;p:dataExporter type="csv" target="tbl" fileName="cars" pageOnly="true" /&gt;
+    &lt;/h:commandLink&gt;
+
+    &lt;h:commandLink&gt;
+        &lt;p:graphicImage name="/demo/images/xml.png" /&gt;
+        &lt;p:dataExporter type="xml" target="tbl" fileName="cars" pageOnly="true" /&gt;
+    &lt;/h:commandLink&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="DataExporterView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data.dataexporter;
+
+import java.io.Serializable;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+
+import org.primefaces.showcase.domain.Car;
+import org.primefaces.showcase.service.CarService;
+
+@ManagedBean
+public class DataExporterView implements Serializable {
+    
+    private List&lt;Car&gt; cars;
+        
+    @ManagedProperty("\#{carService}")
+    private CarService service;
+    
+    @PostConstruct
+    public void init() {
+        cars = service.createCars(100);
+    }
+
+    public List&lt;Car&gt; getCars() {
+        return cars;
+    }
+
+    public void setService(CarService service) {
+        this.service = service;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-132" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

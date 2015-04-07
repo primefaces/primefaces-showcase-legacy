@@ -1,0 +1,405 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    
+    <ui:define name="head">
+        <script type="text/javascript">            
+            PrimeFaces.locales['de'] = {
+                closeText: 'Schließen',
+                prevText: 'Zurück',
+                nextText: 'Weiter',
+                monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+                monthNamesShort: ['Jan', 'Feb', 'März', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+                dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+                dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+                dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+                weekHeader: 'Woche',
+                FirstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Nur Zeit',
+                timeText: 'Zeit',
+                hourText: 'Stunde',
+                minuteText: 'Minute',
+                secondText: 'Sekunde',
+                currentText: 'Aktuelles Datum',
+                ampm: false,
+                month: 'Monat',
+                week: 'Woche',
+                day: 'Tag',
+                allDayText: 'Ganzer Tag'
+            };
+        </script>
+        
+        <style type="text/css">
+            .value {
+                font-weight: bold;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="title">
+        Calendar
+    </ui:define>
+
+    <ui:define name="description">
+        Calendar is an input component to pick a datetime.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true" />
+            
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel for="inline" value="Inline:" />
+                <p:calendar id="inline" value="#{calendarView.date1}" mode="inline" />
+                
+                <p:outputLabel for="popup" value="Popup:" />
+                <p:calendar id="popup" value="#{calendarView.date2}" />
+                
+                <p:outputLabel for="button" value="Button:" />
+                <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+                
+                <p:outputLabel for="event" value="Select Event:" />
+                <p:calendar id="event" value="#{calendarView.date4}">
+                    <p:ajax event="dateSelect" listener="#{calendarView.onDateSelect}" update="msgs" />
+                </p:calendar>
+                
+                <p:outputLabel for="german" value="German:" />
+                <p:calendar id="german" value="#{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
+                
+                <p:outputLabel for="restricted" value="Restricted:" />
+                <p:calendar id="restricted" value="#{calendarView.date6}" mindate="4/1/14" maxdate="7/1/14" />
+                
+                <p:outputLabel for="multi" value="Multiple:" />
+                <p:calendar id="multi" value="#{calendarView.date7}" pages="3" />
+                
+                <p:outputLabel for="effect" value="Effect:" />
+                <p:calendar id="effect" value="#{calendarView.date8}" effect="fold" />
+                
+                <p:outputLabel for="mask" value="Mask:" />
+                <p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
+                
+                <p:outputLabel for="datetime" value="Datetime:" />
+                <p:calendar id="datetime" value="#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
+                
+                <p:outputLabel for="time" value="Time:" />
+                <p:calendar id="time" value="#{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  />
+            </h:panelGrid>
+            
+            <p:commandButton value="Submit" update="msgs" actionListener="#{calendarView.click}" icon="ui-icon-check" />
+            
+            <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                    <h:outputText value="Inline:" />
+                    <h:outputText value="#{calendarView.date1}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    
+                    <h:outputText value="Popup:" />
+                    <h:outputText value="#{calendarView.date2}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    
+                    <h:outputText value="Button:" />
+                    <h:outputText value="#{calendarView.date3}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    
+                    <h:outputText value="Event:" />
+                    <h:outputText value="#{calendarView.date4}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    
+                    <h:outputText value="German:" />
+                    <h:outputText value="#{calendarView.date5}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    
+                    <h:outputText value="Restricted:" />
+                    <h:outputText value="#{calendarView.date6}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    
+                    <h:outputText value="Multiple:" />
+                    <h:outputText value="#{calendarView.date7}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    
+                    <h:outputText value="Effect:" />
+                    <h:outputText value="#{calendarView.date8}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    
+                    <h:outputText value="Mask:" />
+                    <h:outputText value="#{calendarView.date9}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    
+                    <h:outputText value="Datetime:" />
+                    <h:outputText value="#{calendarView.date10}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    
+                    <h:outputText value="Time:" />
+                    <h:outputText value="#{calendarView.date11}">
+                        <f:convertDateTime pattern="HH:mm a" />
+                    </h:outputText>
+                </p:panelGrid>
+            </p:dialog>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="calendar.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form id="form"&gt;
+    &lt;p:growl id="msgs" showDetail="true" /&gt;
+
+    &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+        &lt;p:outputLabel for="inline" value="Inline:" /&gt;
+        &lt;p:calendar id="inline" value="\#{calendarView.date1}" mode="inline" /&gt;
+
+        &lt;p:outputLabel for="popup" value="Popup:" /&gt;
+        &lt;p:calendar id="popup" value="\#{calendarView.date2}" /&gt;
+
+        &lt;p:outputLabel for="button" value="Button:" /&gt;
+        &lt;p:calendar id="button" value="\#{calendarView.date3}" showOn="button" /&gt;
+
+        &lt;p:outputLabel for="event" value="Select Event:" /&gt;
+        &lt;p:calendar id="event" value="\#{calendarView.date4}"&gt;
+            &lt;p:ajax event="dateSelect" listener="\#{calendarView.onDateSelect}" update="msgs" /&gt;
+        &lt;/p:calendar&gt;
+
+        &lt;p:outputLabel for="german" value="German:" /&gt;
+        &lt;p:calendar id="german" value="\#{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" /&gt;
+
+        &lt;p:outputLabel for="restricted" value="Restricted:" /&gt;
+        &lt;p:calendar id="restricted" value="\#{calendarView.date6}" mindate="4/1/14" maxdate="7/1/14" /&gt;
+
+        &lt;p:outputLabel for="multi" value="Multiple:" /&gt;
+        &lt;p:calendar id="multi" value="\#{calendarView.date7}" pages="3" /&gt;
+
+        &lt;p:outputLabel for="effect" value="Effect:" /&gt;
+        &lt;p:calendar id="effect" value="\#{calendarView.date8}" effect="fold" /&gt;
+
+        &lt;p:outputLabel for="mask" value="Mask:" /&gt;
+        &lt;p:calendar id="mask" value="\#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" /&gt;
+
+        &lt;p:outputLabel for="datetime" value="Datetime:" /&gt;
+        &lt;p:calendar id="datetime" value="\#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" /&gt;
+
+        &lt;p:outputLabel for="time" value="Time:" /&gt;
+        &lt;p:calendar id="time" value="\#{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  /&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:commandButton value="Submit" update="msgs" actionListener="\#{calendarView.click}" icon="ui-icon-check" /&gt;
+
+    &lt;p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold"&gt;
+        &lt;p:panelGrid id="display" columns="2" columnClasses="label,value"&gt;
+            &lt;h:outputText value="Inline:" /&gt;
+            &lt;h:outputText value="\#{calendarView.date1}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputText value="Popup:" /&gt;
+            &lt;h:outputText value="\#{calendarView.date2}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputText value="Button:" /&gt;
+            &lt;h:outputText value="\#{calendarView.date3}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputText value="Event:" /&gt;
+            &lt;h:outputText value="\#{calendarView.date4}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputText value="German:" /&gt;
+            &lt;h:outputText value="\#{calendarView.date5}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputText value="Restricted:" /&gt;
+            &lt;h:outputText value="\#{calendarView.date6}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputText value="Multiple:" /&gt;
+            &lt;h:outputText value="\#{calendarView.date7}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputText value="Effect:" /&gt;
+            &lt;h:outputText value="\#{calendarView.date8}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputText value="Mask:" /&gt;
+            &lt;h:outputText value="\#{calendarView.date9}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputText value="Datetime:" /&gt;
+            &lt;h:outputText value="\#{calendarView.date10}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputText value="Time:" /&gt;
+            &lt;h:outputText value="\#{calendarView.date11}"&gt;
+                &lt;f:convertDateTime pattern="HH:mm a" /&gt;
+            &lt;/h:outputText&gt;
+        &lt;/p:panelGrid&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="CalendarView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
+
+@ManagedBean
+public class CalendarView {
+        
+    private Date date1;
+    private Date date2;
+    private Date date3;
+    private Date date4;
+    private Date date5;
+    private Date date6;
+    private Date date7;
+    private Date date8;
+    private Date date9;
+    private Date date10;
+    private Date date11;
+    
+    public void onDateSelect(SelectEvent event) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
+    }
+    
+    public void click() {
+        RequestContext requestContext = RequestContext.getCurrentInstance();
+        
+        requestContext.update("form:display");
+        requestContext.execute("PF('dlg').show()");
+    }
+
+    public Date getDate1() {
+        return date1;
+    }
+
+    public void setDate1(Date date1) {
+        this.date1 = date1;
+    }
+
+    public Date getDate2() {
+        return date2;
+    }
+
+    public void setDate2(Date date2) {
+        this.date2 = date2;
+    }
+
+    public Date getDate3() {
+        return date3;
+    }
+
+    public void setDate3(Date date3) {
+        this.date3 = date3;
+    }
+
+    public Date getDate4() {
+        return date4;
+    }
+
+    public void setDate4(Date date4) {
+        this.date4 = date4;
+    }
+
+    public Date getDate5() {
+        return date5;
+    }
+
+    public void setDate5(Date date5) {
+        this.date5 = date5;
+    }
+
+    public Date getDate6() {
+        return date6;
+    }
+
+    public void setDate6(Date date6) {
+        this.date6 = date6;
+    }
+
+    public Date getDate7() {
+        return date7;
+    }
+
+    public void setDate7(Date date7) {
+        this.date7 = date7;
+    }
+
+    public Date getDate8() {
+        return date8;
+    }
+
+    public void setDate8(Date date8) {
+        this.date8 = date8;
+    } 
+
+    public Date getDate9() {
+        return date9;
+    }
+
+    public void setDate9(Date date9) {
+        this.date9 = date9;
+    }
+
+    public Date getDate10() {
+        return date10;
+    }
+
+    public void setDate10(Date date10) {
+        this.date10 = date10;
+    }
+
+    public Date getDate11() {
+        return date11;
+    }
+
+    public void setDate11(Date date11) {
+        this.date11 = date11;
+    }
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-48" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

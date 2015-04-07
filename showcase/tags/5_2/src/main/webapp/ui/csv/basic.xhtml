@@ -1,0 +1,241 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Client Side Validation - <span class="subitem">Basic</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Client Side Validation Framework implements JSF validation API within the browser.
+        <ul style="margin-bottom:0">
+            <li>Compatible with Server Side Implementation.</li>
+            <li>Conversion and Validation happens at client side.</li>
+            <li>Partial Processing support for Ajax.</li>
+            <li>I18n support along with component specific messages.</li>
+            <li>Client side Renderers for message components.</li>
+            <li>Easy to write custom client converters and validators.</li>
+            <li>Global or Component based enable/disable.</li>
+            <li>Little footprint using HTML5.</li>
+            <li>Advanced Bean Validation Integration.</li>
+        </ul>
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <p:panel header="Validate">
+                <p:messages autoUpdate="true"/>
+
+                <h:panelGrid id="grid" columns="4" cellpadding="5">
+                    <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>					
+                    <p:inputText id="name" value="#{validationView.text}" required="true" label="Name"/>
+                    <p:message for="name" />
+                    <h:outputText value="#{validationView.text}" />
+
+                    <h:outputLabel for="number" value="Number:" style="font-weight:bold"/>					
+                    <p:inputText id="number" value="#{validationView.integer}" label="Number">
+                        <f:validateDoubleRange minimum="5" maximum="8" />
+                    </p:inputText>
+                    <p:message for="number" />
+                    <h:outputText value="#{validationView.integer}" />
+
+                    <h:outputLabel for="dd" value="Double:" style="font-weight:bold"/>					
+                    <p:inputText id="dd" value="#{validationView.doubleNumber}" converterMessage="Cannot convert to double.">
+                        <f:validateDoubleRange minimum="5.5" maximum="8.5" />
+                    </p:inputText>
+                    <p:message for="dd" />
+                    <h:outputText value="#{validationView.doubleNumber}" />
+
+                    <h:outputLabel for="money" value="Currency ($):" style="font-weight:bold"/>					
+                    <p:inputText id="money" value="#{validationView.money}" label="Currency">
+                        <f:convertNumber type="currency" currencySymbol="$"/>
+                    </p:inputText>
+                    <p:message for="money" />
+                    <h:outputText value="#{validationView.money}">
+                        <f:convertNumber  type="currency" currencySymbol="$" />
+                    </h:outputText>
+
+                    <h:outputLabel for="regex" value="Regex (^[a-zA-Z]+$):" style="font-weight:bold"/>					
+                    <p:inputText id="regex" value="#{validationView.regexText}" validatorMessage="Value does not match pattern.">
+                        <f:validateRegex pattern="^[a-zA-Z]+$" />
+                    </p:inputText>
+                    <p:message for="regex" />
+                    <h:outputText value="#{validationView.regexText}" />
+
+                    <h:outputLabel for="date" value="Date" style="font-weight:bold"/>					
+                    <p:inputText id="date" value="#{validationView.date}" label="Date">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:inputText>
+                    <p:message for="date" />
+                    <h:outputText value="#{validationView.date}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+
+                    <h:outputLabel for="desc" value="Description" style="font-weight:bold"/>
+                    <p:inputTextarea id="desc" value="#{validationView.description}" required="true" label="Description">
+                        <f:validateLength minimum="3" maximum="10" /> 
+                    </p:inputTextarea>
+                    <p:message for="desc" />
+                    <h:outputText value="#{validationView.description}" />
+                </h:panelGrid>
+
+                <p:commandButton value="Non-Ajax" ajax="false" icon="ui-icon-check" validateClient="true" style="margin-right:10px"/>
+                <p:commandButton value="Ajax" update="grid" icon="ui-icon-check" validateClient="true" style="margin-right:10px"/>
+                <p:commandButton value="Partial" update="grid" process="name number" validateClient="true" icon="ui-icon-check" style="margin-right:10px"/>
+                <p:commandButton value="Disabled" ajax="false" icon="ui-icon-check" />
+            </p:panel>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="basic.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:panel header="Validate"&gt;
+        &lt;p:messages autoUpdate="true"/&gt;
+
+        &lt;h:panelGrid id="grid" columns="4" cellpadding="5"&gt;
+            &lt;h:outputLabel for="name" value="Name:" style="font-weight:bold"/&gt;					
+            &lt;p:inputText id="name" value="\#{validationView.text}" required="true" label="Name"/&gt;
+            &lt;p:message for="name" /&gt;
+            &lt;h:outputText value="\#{validationView.text}" /&gt;
+
+            &lt;h:outputLabel for="number" value="Number:" style="font-weight:bold"/&gt;					
+            &lt;p:inputText id="number" value="\#{validationView.integer}" label="Number"&gt;
+                &lt;f:validateDoubleRange minimum="5" maximum="8" /&gt;
+            &lt;/p:inputText&gt;
+            &lt;p:message for="number" /&gt;
+            &lt;h:outputText value="\#{validationView.integer}" /&gt;
+
+            &lt;h:outputLabel for="dd" value="Double:" style="font-weight:bold"/&gt;					
+            &lt;p:inputText id="dd" value="\#{validationView.doubleNumber}" converterMessage="Cannot convert to double."&gt;
+                &lt;f:validateDoubleRange minimum="5.5" maximum="8.5" /&gt;
+            &lt;/p:inputText&gt;
+            &lt;p:message for="dd" /&gt;
+            &lt;h:outputText value="\#{validationView.doubleNumber}" /&gt;
+
+            &lt;h:outputLabel for="money" value="Currency ($):" style="font-weight:bold"/&gt;					
+            &lt;p:inputText id="money" value="\#{validationView.money}" label="Currency"&gt;
+                &lt;f:convertNumber type="currency" currencySymbol="$"/&gt;
+            &lt;/p:inputText&gt;
+            &lt;p:message for="money" /&gt;
+            &lt;h:outputText value="\#{validationView.money}"&gt;
+                &lt;f:convertNumber  type="currency" currencySymbol="$" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputLabel for="regex" value="Regex (^[a-zA-Z]+$):" style="font-weight:bold"/&gt;					
+            &lt;p:inputText id="regex" value="\#{validationView.regexText}" validatorMessage="Value does not match pattern."&gt;
+                &lt;f:validateRegex pattern="^[a-zA-Z]+$" /&gt;
+            &lt;/p:inputText&gt;
+            &lt;p:message for="regex" /&gt;
+            &lt;h:outputText value="\#{validationView.regexText}" /&gt;
+
+            &lt;h:outputLabel for="date" value="Date" style="font-weight:bold"/&gt;					
+            &lt;p:inputText id="date" value="\#{validationView.date}" label="Date"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
+            &lt;/p:inputText&gt;
+            &lt;p:message for="date" /&gt;
+            &lt;h:outputText value="\#{validationView.date}"&gt;
+                &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
+            &lt;/h:outputText&gt;
+
+            &lt;h:outputLabel for="desc" value="Description" style="font-weight:bold"/&gt;
+            &lt;p:inputTextarea id="desc" value="\#{validationView.description}" required="true" label="Description"&gt;
+                &lt;f:validateLength minimum="3" maximum="10" /&gt; 
+            &lt;/p:inputTextarea&gt;
+            &lt;p:message for="desc" /&gt;
+            &lt;h:outputText value="\#{validationView.description}" /&gt;
+        &lt;/h:panelGrid&gt;
+
+        &lt;p:commandButton value="Non-Ajax" ajax="false" icon="ui-icon-check" validateClient="true" style="margin-right:10px"/&gt;
+        &lt;p:commandButton value="Ajax" update="grid" icon="ui-icon-check" validateClient="true" style="margin-right:10px"/&gt;
+        &lt;p:commandButton value="Partial" update="grid" process="name number" validateClient="true" icon="ui-icon-check" style="margin-right:10px"/&gt;
+        &lt;p:commandButton value="Disabled" ajax="false" icon="ui-icon-check" /&gt;
+    &lt;/p:panel&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ValidationView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.csv;
+
+import java.util.Date;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class ValidationView {
+    
+    private String text;
+    private String description;
+    private Integer integer;
+    private Double doubleNumber;
+    private Double money;
+    private String regexText;
+    private Date date;
+
+    public String getText() {
+        return text;
+    }
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getInteger() {
+        return integer;
+    }
+    public void setInteger(Integer integer) {
+        this.integer = integer;
+    }
+
+    public Double getDoubleNumber() {
+        return doubleNumber;
+    }
+    public void setDoubleNumber(Double doubleNumber) {
+        this.doubleNumber = doubleNumber;
+    }
+
+    public Double getMoney() {
+        return money;
+    }
+    public void setMoney(Double money) {
+        this.money = money;
+    }
+
+    public String getRegexText() {
+        return regexText;
+    }
+    public void setRegexText(String regexText) {
+        this.regexText = regexText;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+    public void setDate(Date date) {
+        this.date = date;
+    } 
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-534" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

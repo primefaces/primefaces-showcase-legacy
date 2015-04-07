@@ -1,0 +1,23 @@
+<!DOCTYPE html [
+    <!ENTITY bull "&#8226;">
+]>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+                    
+    <ui:define name="subsubmenu">
+        <div class="ContentSideSections SubSubMenu clearfix">
+            <ul>  
+                <li><a href="#{request.contextPath}/ui/data/diagram/basic.xhtml">&bull; Basic</a></li>
+                <li><a href="#{request.contextPath}/ui/data/diagram/hierarchical.xhtml">&bull; Hierarchical</a></li>
+                <li><a href="#{request.contextPath}/ui/data/diagram/flowchart.xhtml">&bull; FlowChart</a></li>
+                <li><a href="#{request.contextPath}/ui/data/diagram/statemachine.xhtml">&bull; StateMachine</a></li>
+                <li><a href="#{request.contextPath}/ui/data/diagram/editable.xhtml">&bull; Editable</a></li>
+            </ul>
+        </div>
+    </ui:define>
+    
+</ui:composition>

@@ -1,0 +1,104 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    <ui:define name="head">
+         <script type="text/javascript">
+            //<![CDATA[
+function start() {
+    PF('statusDialog').show();
+}
+
+function stop() {
+    PF('statusDialog').hide();
+}
+            //]]>
+        </script>    
+    </ui:define>
+
+    <ui:define name="title">
+        FileDownload
+    </ui:define>
+
+    <ui:define name="description">
+        FileDownload is used to stream binary contents like files stored in database to the client. FileDownload is used by attaching it to any JSF command component 
+        like button or a link. Additionally presentation of download can be configured with the contentDisposition attribute that takes either "attachment" or "inline" as a value.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
+            <p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
+        </p:dialog>
+       
+        <h:form>   
+            <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+                <p:fileDownload value="#{fileDownloadView.file}" />
+            </p:commandButton>      
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="download.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false"&gt;
+    &lt;p:graphicImage name="/demo/images/ajaxloadingbar.gif" /&gt;
+&lt;/p:dialog&gt;
+
+&lt;h:form&gt;
+    &lt;p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s"&gt;
+        &lt;p:fileDownload value="\#{fileDownloadView.file}" /&gt;
+    &lt;/p:commandButton&gt;
+&lt;/h:form&gt;
+
+&lt;script type="text/javascript"&gt;
+function start() {
+    PF('statusDialog').show();
+}
+
+function stop() {
+    PF('statusDialog').hide();
+}
+&lt;/script&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="FileDownloadView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.file;
+
+import java.io.InputStream;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
+
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
+
+@ManagedBean
+public class FileDownloadView {
+    
+    private StreamedContent file;
+	
+	public FileDownloadView() {        
+        InputStream stream = ((ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext()).getResourceAsStream("/resources/demo/images/optimus.jpg");
+		file = new DefaultStreamedContent(stream, "image/jpg", "downloaded_optimus.jpg");
+	}
+
+    public StreamedContent getFile() {
+        return file;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-208" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

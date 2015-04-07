@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Ajax Framework - <span class="subitem">Counter</span>
+    </ui:define>
+
+    <ui:define name="description">
+        An integer variable is incremented each time the button is clicked and current value is updated with ajax.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputText value="Counter: " />
+                <h:outputText id="output" value="#{counterView.number}" />
+            </h:panelGrid>
+
+            <p:commandButton value="Count" actionListener="#{counterView.increment}" update="output" />
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="counter.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+        &lt;h:outputText value="Counter: " /&gt;
+        &lt;h:outputText id="output" value="\#{counterView.number}" /&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:commandButton value="Count" actionListener="\#{counterView.increment}" update="output" /&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="CounterView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.ajax;
+
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+@ManagedBean
+@ViewScoped
+public class CounterView implements Serializable {
+    
+    private int number;
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void increment() {
+        number++;
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

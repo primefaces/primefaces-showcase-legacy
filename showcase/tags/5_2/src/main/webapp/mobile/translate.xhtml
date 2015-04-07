@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile">
+    
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
+    
+    <h:head>
+        <h:outputStylesheet name="main/css/sh.css" />
+        <style type="text/css">
+            .ui-grid-b div {
+                padding: 0em 0.5em;
+            }
+        </style>
+    </h:head>
+    
+    <h:body>
+        
+        <pm:page>
+            <pm:header title="Translate" swatch="b"></pm:header>
+            
+            <pm:content>
+                <h:form id="main">
+                    <pm:field>
+                        <p:outputLabel for="from" value="From" />
+                        <p:selectOneMenu id="from" value="#{translateView.from}">
+                            <f:selectItems value="#{translateView.languages}" />
+                        </p:selectOneMenu>
+                    </pm:field>
+                    
+                    <pm:field>
+                        <p:outputLabel for="to" value="To" />
+                        <p:selectOneMenu id="to" value="#{translateView.to}">
+                            <f:selectItems value="#{translateView.languages}" />
+                        </p:selectOneMenu>
+                    </pm:field>
+                    
+                    <p:panelGrid columns="3" styleClass="ui-responsive">
+                        <p:inputTextarea value="#{translateView.text}" placeholder="Text" />
+                        <p:commandButton value="Translate" icon="ui-icon-refresh" update="display" actionListener="#{translateView.translate}"/>
+                        <p:inputTextarea id="display" value="#{translateView.result}" readonly="true" placeholder="Result"/>
+                    </p:panelGrid>
+                </h:form>
+                
+                <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1">
+                <p:tab title="translate.xhtml">
+                    <pre class="brush:xml">
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"&gt;
+    
+    &lt;f:view renderKitId="PRIMEFACES_MOBILE" /&gt;
+    
+    &lt;h:head&gt;
+        &lt;style type="text/css"&gt;
+            .ui-grid-b div {
+                padding: 0em 0.5em;
+            }
+        &lt;/style&gt;
+    &lt;/h:head&gt;
+    
+    &lt;h:body&gt;
+        
+        &lt;pm:page&gt;
+            &lt;pm:header title="Translate" swatch="b"&gt;&lt;/pm:header&gt;
+            
+            &lt;pm:content&gt;
+                &lt;h:form id="main"&gt;
+                    &lt;pm:field&gt;
+                        &lt;p:outputLabel for="from" value="From" /&gt;
+                        &lt;p:selectOneMenu id="from" value="\#{translateView.from}"&gt;
+                            &lt;f:selectItems value="\#{translateView.languages}" /&gt;
+                        &lt;/p:selectOneMenu&gt;
+                    &lt;/pm:field&gt;
+                    
+                    &lt;pm:field&gt;
+                        &lt;p:outputLabel for="to" value="To" /&gt;
+                        &lt;p:selectOneMenu id="to" value="\#{translateView.to}"&gt;
+                            &lt;f:selectItems value="\#{translateView.languages}" /&gt;
+                        &lt;/p:selectOneMenu&gt;
+                    &lt;/pm:field&gt;
+                    
+                    &lt;p:panelGrid columns="3" styleClass="ui-responsive"&gt;
+                        &lt;p:inputTextarea value="\#{translateView.text}" placeholder="Text" /&gt;
+                        &lt;p:commandButton value="Translate" icon="ui-icon-refresh" update="display" actionListener="\#{translateView.translate}"/&gt;
+                        &lt;p:inputTextarea id="display" value="\#{translateView.result}" readonly="true" placeholder="Result"/&gt;
+                    &lt;/p:panelGrid&gt;
+                &lt;/h:form&gt;
+                
+            &lt;/pm:content&gt;
+        &lt;/pm:page&gt;
+    &lt;/h:body&gt;
+    
+&lt;/html&gt;
+                    </pre>   
+                </p:tab>
+                <p:tab title="TranslateView.java">
+                    <pre class="brush:java">
+package org.primefaces.examples.mobile;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.ResourceBundle;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import org.primefaces.json.JSONArray;
+import org.primefaces.json.JSONObject;
+
+@ManagedBean
+public class TranslateView {
+    
+    private final static String TRANSLATE_URL_KEY = "translate.url";
+    private final static String BUNDLE_NAME = "translate";
+    
+    private String translateURL;
+    private String from;
+    private String to;
+    private String text;
+    private String result;
+    private Map&lt;String,String&gt; languages;
+
+    @PostConstruct
+    public void init() {
+        languages = new LinkedHashMap&lt;String, String&gt;();
+        languages.put("English", "en");
+        languages.put("Turkish", "tr");
+        languages.put("Italian", "it");
+        languages.put("Spanish", "es");
+        languages.put("German", "de");
+        languages.put("French", "fr");
+        languages.put("Portuguese", "pt");
+        
+        Map&lt;String,Object&gt; app = FacesContext.getCurrentInstance().getExternalContext().getApplicationMap();
+        translateURL = (String) app.get(TRANSLATE_URL_KEY);
+        
+        if(translateURL == null) {
+            translateURL = ResourceBundle.getBundle(BUNDLE_NAME).getString(TRANSLATE_URL_KEY);
+            app.put(TRANSLATE_URL_KEY, translateURL);
+        }
+    }
+    
+    public void translate() throws Exception {        
+        String url = translateURL + "&amp;lang" + from + "-" + to + "&amp;text=" + text;
+        String response = getResponse(url);
+        JSONObject json = new JSONObject(response);
+        JSONArray jsonArray = json.getJSONArray("text");
+        result = jsonArray.getString(0);
+    }
+    
+    private String getResponse(String url) throws Exception {
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        con.setRequestMethod("GET");
+        int responseCode = con.getResponseCode();
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder response = new StringBuilder();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        
+        return response.toString();
+    }
+
+    public Map&lt;String, String&gt; getLanguages() {
+        return languages;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public String getText() {
+        return text;
+    }
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+}
+
+                    </pre>
+                </p:tab>
+            </p:accordionPanel>
+            </pm:content>
+        </pm:page>
+        
+        <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
+        <script language="javascript">
+            SyntaxHighlighter.all();
+        </script>
+        
+    </h:body>
+    
+</html>

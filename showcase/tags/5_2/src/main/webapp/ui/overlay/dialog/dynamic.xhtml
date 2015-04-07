@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="title">
+        Dialog - <span class="subitem">Dynamic</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Dynamic dialogs fetch their content just before they are displayed rather than initial page load. This is a useful feature to reduce page size and speed up page load time.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+       <p:commandButton value="Show Dialog" onclick="PF('dlg').show();" type="button" />
+       
+       <p:dialog header="Dialog" widgetVar="dlg" dynamic="true">
+           <h:outputText value="This content is loaded lazy." />
+       </p:dialog>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="dynamic.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:commandButton value="Show Dialog" onclick="PF('dlg').show();" type="button" /&gt;
+       
+&lt;p:dialog header="Dialog" widgetVar="dlg" dynamic="true"&gt;
+   &lt;h:outputText value="This content is loaded lazy." /&gt;
+&lt;/p:dialog&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-181" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

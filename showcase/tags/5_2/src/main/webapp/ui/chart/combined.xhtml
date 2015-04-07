@@ -1,0 +1,99 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Charts - <span class="subitem">Combined</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Different types of series can be displayed on the same graph.
+    </ui:define>
+
+    <ui:define name="implementation">
+        <p:chart type="bar" model="#{chartView.combinedModel}" style="height:300px" />
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="combined.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:chart type="bar" model="\#{chartView.Model.combinedModel}" style="height:300px" /&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ChartView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.examples;
+
+import javax.annotation.PostConstruct;
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.BarChartSeries;
+import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.LineChartSeries;
+
+@ManagedBean
+public class ChartView implements Serializable {
+
+    private CartesianChartModel combinedModel;
+
+    @PostConstruct
+	public void init() {
+        createCombinedModel();
+	}
+
+    public CartesianChartModel getCombinedModel() {
+        return combinedModel;
+    }
+    
+    private void createCombinedModel() {
+        combinedModel = new BarChartModel();
+
+        BarChartSeries boys = new BarChartSeries();
+        boys.setLabel("Boys");
+
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
+
+        LineChartSeries girls = new LineChartSeries();
+        girls.setLabel("Girls");
+
+        girls.set("2004", 52);
+        girls.set("2005", 60);
+        girls.set("2006", 110);
+        girls.set("2007", 135);
+        girls.set("2008", 120);
+
+        combinedModel.addSeries(boys);
+        combinedModel.addSeries(girls);
+        
+        combinedModel.setTitle("Bar and Line");
+        combinedModel.setLegendPosition("ne");
+        combinedModel.setMouseoverHighlight(false);
+        combinedModel.setShowDatatip(false);
+        combinedModel.setShowPointLabels(true);
+        Axis yAxis = combinedModel.getAxis(AxisType.Y);
+        yAxis.setMin(0);
+        yAxis.setMax(200);
+    }
+    
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-84" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

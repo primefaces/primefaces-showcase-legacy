@@ -1,0 +1,219 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .display {
+                font-size: 36px !important;
+            }
+        </style>
+        
+        <script type="text/javascript">
+            //<![CDATA[
+                function handleMessage(data) {
+                    var series = [],
+                    chart = PF('browserChart').plot;
+            
+                    for(var key in data) {
+                        series.push([key, data[key]]);
+                    }
+                    
+                    chart.series[0].data = series;
+                    chart.replot();
+                }
+            //]]> 
+        </script>
+    </ui:define>
+    
+    <ui:define name="title">
+        Browser Stats
+    </ui:define>
+
+    <ui:define name="description">
+        Data can be pushed from anywhere such as JSF backing beans, CDI Events, JMS and more. In this example a servlet filter keeps track of
+        browser stats of visitors to this page and when a new user makes a request to view this page, stats data is pushed from filter and chart component to visualize
+        the stats is updated real-time.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <p:chart type="pie" widgetVar="browserChart" model="#{browserStatsView.pieModel}" style="width:400px;height:300px"  />
+
+            <p:socket onMessage="handleMessage" channel="/browser" />
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="chart.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:chart type="pie" widgetVar="browserChart" model="\#{browserStatsView.pieModel}" style="width:400px;height:300px"  /&gt;
+
+    &lt;p:socket onMessage="handleMessage" channel="/browser" /&gt;
+&lt;/h:form&gt;
+
+&lt;script type="text/javascript"&gt;
+    function handleMessage(data) {
+        var series = [],
+        chart = PF('browserChart').plot;
+
+        for(var key in data) {
+            series.push([key, data[key]]);
+        }
+
+        chart.series[0].data = series;
+        chart.replot();
+    }
+&lt;/script&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="BrowserStatsView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.push.browser;
+
+import java.util.Map;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+import org.primefaces.model.chart.PieChartModel;
+
+@ManagedBean
+@RequestScoped
+public class BrowserStatsView {
+    
+    private PieChartModel pieModel;
+    
+    @ManagedProperty("\#{browserStats}")
+    private Map agents;
+    
+    @PostConstruct
+    public void init() {
+        pieModel = new PieChartModel();
+        pieModel.setData(agents);
+        pieModel.setTitle("Browser Stats");
+        pieModel.setShowDataLabels(true);
+        pieModel.setLegendPosition("w");
+    }
+
+    public PieChartModel getPieModel() {
+        return pieModel;
+    }    
+
+    public Map getAgents() {
+        return agents;
+    }
+
+    public void setAgents(Map&lt;String, Integer&gt; agents) {
+        this.agents = agents;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="BrowserStatsResource.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.push.browser;
+
+import java.util.Map;
+import org.primefaces.push.annotation.OnMessage;
+import org.primefaces.push.annotation.PushEndpoint;
+import org.primefaces.push.impl.JSONEncoder;
+
+@PushEndpoint("/browser")
+public class BrowserStatsResource {
+ 
+    @OnMessage(encoders = {JSONEncoder.class})
+    public Map onMessage(Map data) {
+        return data;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="UserAgentListener.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.filter;
+
+import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import org.primefaces.push.EventBus;
+import org.primefaces.push.EventBusFactory;
+
+/**
+ * Filter to keep track of browsers of visitors, mapped to the demo page /push/chart.jsf
+ */
+public class UserAgentListener implements Filter {
+        
+    private ServletContext context;
+    
+    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
+        String agent = ((HttpServletRequest) req).getHeader("User-Agent");
+        if(agent != null) {
+            boolean match = false;
+            Map&lt;String,Integer&gt; agents = (Map) context.getAttribute("browserStats");
+                    
+            for (Map.Entry&lt;String, Integer&gt; entry : agents.entrySet()) {
+                String key = entry.getKey();
+                if(agent.indexOf(key) != -1) {
+                    Integer value = agents.get(key);
+                    agents.put(key, ++value);
+                    match = true;
+                    break;
+                }
+            }
+            
+            if(match == false) {
+                Integer value = agents.get("Other");
+                agents.put("Other", ++value);
+            }
+            
+            EventBus eventBus = EventBusFactory.getDefault().eventBus();
+            eventBus.publish("/browser", agents);
+        }
+
+		chain.doFilter(req, resp);
+	}
+
+	public void init(FilterConfig filterConfig) throws ServletException {
+		Map&lt;String,Integer&gt; agents = new LinkedHashMap&lt;String, Integer&gt;();
+        agents.put("MSIE", 0);
+        agents.put("Firefox", 0);
+        agents.put("Chrome", 0);
+        agents.put("Safari", 0);
+        agents.put("Other", 0);
+        
+        context = filterConfig.getServletContext();
+        context.setAttribute("browserStats", agents);
+	}
+	
+	public void destroy() {
+		
+	}
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-526" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

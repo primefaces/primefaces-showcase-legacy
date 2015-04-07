@@ -1,0 +1,113 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .imagebox a{
+                margin-left:10px;
+            }
+        </style>
+    </ui:define>
+    
+    <ui:define name="title">
+        LightBox
+    </ui:define>
+
+    <ui:define name="description">
+        LightBox is a modal overlay component to display images, inline content and iframes.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h3 style="margin-top: 0">Images</h3>
+        <p:lightBox styleClass="imagebox" id="lighbox1">  
+            <h:outputLink value="../../resources/demo/images/nature/nature1.jpg" title="Nature 1">  
+                <h:graphicImage name="/demo/images/nature/nature1.jpg" id="nature1" style="height: 77px; width: 100px" />  
+            </h:outputLink>
+            
+            <h:outputLink value="../../resources/demo/images/nature/nature2.jpg" title="Nature 2">  
+                <h:graphicImage name="/demo/images/nature/nature2.jpg" id="nature2" style="height: 77px; width: 100px" />  
+            </h:outputLink>
+            
+            <h:outputLink value="../../resources/demo/images/nature/nature3.jpg" title="Nature 3">  
+                <h:graphicImage name="/demo/images/nature/nature3.jpg" id="nature3" style="height: 77px; width: 100px" />  
+            </h:outputLink>
+            
+            <h:outputLink value="../../resources/demo/images/nature/nature4.jpg" title="Nature 4">  
+                <h:graphicImage name="/demo/images/nature/nature4.jpg" id="nature4" style="height: 77px; width: 100px" />  
+            </h:outputLink>
+        </p:lightBox>
+        
+        <h3>Inline</h3>
+        <p:lightBox id="lighbox2">
+            <h:outputLink value="#">
+                <h:outputText value="Video Content" />
+            </h:outputLink>
+
+            <f:facet name="inline">
+                <p:media value="http://vimeo.com/moogaloop.swf?clip_id=87780794"  width="400" height="225" player="flash" />
+            </f:facet>
+        </p:lightBox>
+
+        <h3>IFrame</h3>
+        <p:lightBox iframe="true" id="lighbox3">
+            <h:outputLink value="http://www.primefaces.org" title="PrimeFaces HomePage">
+                <h:outputText value="PrimeFaces HomePage" />
+            </h:outputLink>
+        </p:lightBox>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="lightBox.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h3 style="margin-top: 0"&gt;Images&lt;/h3&gt;
+&lt;p:lightBox styleClass="imagebox" id="lighbox1"&gt;  
+    &lt;h:outputLink value="../../resources/demo/images/nature/nature1.jpg" title="Nature 1"&gt;  
+        &lt;h:graphicImage name="/demo/images/nature/nature1.jpg" id="nature1" style="height: 77px; width: 100px" /&gt;  
+    &lt;/h:outputLink&gt;
+
+    &lt;h:outputLink value="../../resources/demo/images/nature/nature2.jpg" title="Nature 2"&gt;  
+        &lt;h:graphicImage name="/demo/images/nature/nature2.jpg" id="nature2" style="height: 77px; width: 100px" /&gt;  
+    &lt;/h:outputLink&gt;
+
+    &lt;h:outputLink value="../../resources/demo/images/nature/nature3.jpg" title="Nature 3"&gt;  
+        &lt;h:graphicImage name="/demo/images/nature/nature3.jpg" id="nature3" style="height: 77px; width: 100px" /&gt;  
+    &lt;/h:outputLink&gt;
+
+    &lt;h:outputLink value="../../resources/demo/images/nature/nature4.jpg" title="Nature 4"&gt;  
+        &lt;h:graphicImage name="/demo/images/nature/nature4.jpg" id="nature4" style="height: 77px; width: 100px" /&gt;  
+    &lt;/h:outputLink&gt;
+&lt;/p:lightBox&gt;
+
+&lt;h3&gt;Inline&lt;/h3&gt;
+&lt;p:lightBox id="lighbox2"&gt;
+    &lt;h:outputLink value="\#"&gt;
+        &lt;h:outputText value="Video Content" /&gt;
+    &lt;/h:outputLink&gt;
+
+    &lt;f:facet name="inline"&gt;
+        &lt;p:media value="http://vimeo.com/moogaloop.swf?clip_id=87780794"  width="400" height="225" player="flash" /&gt;
+    &lt;/f:facet&gt;
+&lt;/p:lightBox&gt;
+
+&lt;h3&gt;IFrame&lt;/h3&gt;
+&lt;p:lightBox iframe="true" id="lighbox3"&gt;
+    &lt;h:outputLink value="http://www.primefaces.org" title="PrimeFaces HomePage"&gt;
+        &lt;h:outputText value="PrimeFaces HomePage" /&gt;
+    &lt;/h:outputLink&gt;
+&lt;/p:lightBox&gt;
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-292" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

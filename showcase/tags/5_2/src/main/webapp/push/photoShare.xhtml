@@ -1,0 +1,148 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head"> 
+        <style type="text/css">
+            #photo {
+                display: block;
+                margin: auto;
+                padding-bottom: 5px;
+            }
+            
+            #button {
+                display: block;
+                margin: auto;
+                width: 320px;
+            }
+
+        </style>
+        <script type="text/javascript">
+            //<![CDATA[
+                function handleMessage(data) {
+                    $('#images').prepend('<img src="' + data + '">');
+                }
+            //]]> 
+        </script>
+    </ui:define>
+    
+    <ui:define name="title">
+        PhotoShare
+    </ui:define>
+
+    <ui:define name="description">
+        When you take a photo with PhotoCam component, the image is send to all connected clients instantly.
+    </ui:define>
+
+    <ui:define name="implementation">
+            
+        <h:form prependId="false">
+            <p:photoCam id="photo" widgetVar="pc" listener="#{photoShareView.sendPhoto}"/>
+            <p:commandButton id="button" type="button" value="Capture" onclick="PF('pc').capture()" icon="fa fa-camera"/>
+            <p:outputPanel id="images" style="margin-top:10px"/>
+        </h:form>
+
+        <p:socket onMessage="handleMessage" channel="/photoshare" />
+  
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="photoShare.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form prependId="false"&gt;
+    &lt;p:photoCam id="photo" widgetVar="pc" listener="\#{photoShareView.sendPhoto}"/&gt;
+    &lt;p:commandButton id="button" type="button" value="Capture" onclick="PF('pc').capture()" icon="fa fa-camera"/&gt;
+    &lt;p:outputPanel id="images" style="margin-top:10px"/>
+&lt;/h:form&gt;
+
+&lt;p:socket onMessage="handleMessage" channel="/photoshare" /&gt;
+
+&lt;script type="text/javascript"&gt;
+        function handleMessage(data) {
+            $('\#images').prepend('&lt;img src="' + data + '"&gt;');
+        }
+&lt;/script&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="PhotoShareView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.push.photoshare;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
+import javax.faces.FacesException;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.imageio.stream.FileImageOutputStream;
+import javax.servlet.ServletContext;
+import org.primefaces.event.CaptureEvent;
+import org.primefaces.push.EventBus;
+import org.primefaces.push.EventBusFactory;
+
+@ManagedBean
+@ApplicationScoped
+public class PhotoShareView implements Serializable {
+    
+    private volatile String filename;
+
+    private String getRandomImageName() {
+        int i = (int) (Math.random() * 10000000);
+
+        return String.valueOf(i);
+    }
+
+    public void sendPhoto(CaptureEvent captureEvent) {
+        filename = getRandomImageName();
+        byte[] data = captureEvent.getData();
+
+        ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+        String newFileName = servletContext.getRealPath("") + File.separator + "resources" + File.separator + "demo"
+                + File.separator + "images" + File.separator + "photoshare" + File.separator + filename + ".png";
+
+        FileImageOutputStream imageOutput;
+        try {
+            imageOutput = new FileImageOutputStream(new File(newFileName));
+            imageOutput.write(data, 0, data.length);
+            imageOutput.close();
+        } catch (IOException e) {
+            throw new FacesException("Error in writing captured image.", e);
+        }
+
+        EventBus eventBus = EventBusFactory.getDefault().eventBus();
+        eventBus.publish("/photoshare", "/showcase/javax.faces.resource/demo/images/photoshare/" + filename + ".png.xhtml");
+
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="PhotoShareResource.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.push.photoshare;
+
+import org.primefaces.push.annotation.OnMessage;
+import org.primefaces.push.annotation.PushEndpoint;
+import org.primefaces.push.impl.JSONEncoder;
+
+@PushEndpoint("/photoshare")
+public class PhotoShareResource {
+    
+    @OnMessage(encoders = {JSONEncoder.class})
+    public String onMessage(String filename) {
+        return filename;
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

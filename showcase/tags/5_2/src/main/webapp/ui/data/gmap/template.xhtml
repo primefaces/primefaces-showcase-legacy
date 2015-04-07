@@ -1,0 +1,33 @@
+<!DOCTYPE html [
+    <!ENTITY bull "&#8226;">
+]>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+                    
+    <ui:define name="subsubmenu">
+        <div class="ContentSideSections SubSubMenu clearfix">
+            <ul>  
+                <li><a href="#{request.contextPath}/ui/data/gmap/basic.xhtml">&bull; Basic</a></li>
+                <li><a href="#{request.contextPath}/ui/data/gmap/event.xhtml">&bull; Event</a></li>
+                <li><a href="#{request.contextPath}/ui/data/gmap/markers.xhtml">&bull; Markers</a></li>
+                <li><a href="#{request.contextPath}/ui/data/gmap/markerSelection.xhtml">&bull; Selection</a></li>
+                <li><a href="#{request.contextPath}/ui/data/gmap/addMarkers.xhtml">&bull; Add Markers</a></li>
+                <li><a href="#{request.contextPath}/ui/data/gmap/draggableMarkers.xhtml">&bull; Draggable</a></li>
+                <li><a href="#{request.contextPath}/ui/data/gmap/infoWindow.xhtml">&bull; InfoWindow</a></li>
+                <li><a href="#{request.contextPath}/ui/data/gmap/polylines.xhtml">&bull; Polylines</a></li>
+                <li><a href="#{request.contextPath}/ui/data/gmap/polygons.xhtml">&bull; Polygons</a></li>
+                <li><a href="#{request.contextPath}/ui/data/gmap/circles.xhtml">&bull; Circles</a></li>
+                <li><a href="#{request.contextPath}/ui/data/gmap/rectangles.xhtml">&bull; Rectangles</a></li>
+                <li><a href="#{request.contextPath}/ui/data/gmap/street.xhtml">&bull; StreetView</a></li>
+                <li><a href="#{request.contextPath}/ui/data/gmap/controls.xhtml">&bull; Controls</a></li>
+                <li><a href="#{request.contextPath}/ui/data/gmap/geocode.xhtml">&bull; Geocode</a></li>
+                <li><a href="#{request.contextPath}/ui/data/gmap/mapDialog.xhtml">&bull; Dialog</a></li>
+            </ul>
+        </div>
+    </ui:define>
+    
+</ui:composition>

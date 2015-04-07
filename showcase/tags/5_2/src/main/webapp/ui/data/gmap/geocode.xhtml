@@ -1,0 +1,188 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="head">
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>        
+        <script type="text/javascript">
+            function geocode() {
+                PF('geoMap').geocode(document.getElementById('address').value);
+            }
+
+            function reverseGeocode() {
+                var lat = document.getElementById('lat').value,
+                    lng = document.getElementById('lng').value;
+
+                PF('revGeoMap').reverseGeocode(lat, lng);
+            }
+        </script>
+	</ui:define>
+    
+    <ui:define name="title">
+        GMap - <span class="subitem">Geocode (since v5.1.2)</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Geocoding support is provided with geocode and reverseGeocode ajax behavior events.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form prependId="false">
+            
+            <h3 style="margin-top:0">Geocode</h3>
+            <h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+                <p:outputLabel for="address" value="Address:" />
+                <p:inputText id="address" />
+                <p:commandButton value="Geocode" icon="ui-icon-search" onclick="geocode()" type="button" />
+            </h:panelGrid>
+            
+            <p:gmap id="geoGmap" widgetVar="geoMap" center="#{geocodeView.centerGeoMap}" zoom="2" type="ROADMAP" model="#{geocodeView.geoModel}" style="width:100%;height:400px">
+                <p:ajax event="geocode" listener="#{geocodeView.onGeocode}" update="@this" />
+            </p:gmap>
+
+            <h3>Reverse Geocode</h3>
+            <h:panelGrid columns="5" style="margin-bottom:10px" cellpadding="5">
+                <p:outputLabel for="lat" value="Lat:" />
+                <p:inputText id="lat" />
+                <p:outputLabel for="lng" value="Lng:" />
+                <p:inputText id="lng" />
+                <p:commandButton value="Reverse Geocode" icon="ui-icon-search" onclick="reverseGeocode()" type="button"/>
+            </h:panelGrid>
+            
+            <p:gmap id="revGeoGmap" widgetVar="revGeoMap" center="#{geocodeView.centerRevGeoMap}" zoom="2" type="ROADMAP" model="#{geocodeView.revGeoModel}" style="width:100%;height:400px">
+                <p:ajax event="reverseGeocode" listener="#{geocodeView.onReverseGeocode}" update="@this" />
+            </p:gmap>
+
+        </h:form>
+        
+    </ui:define>
+ 
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="geocode.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;script type="text/javascript"&gt;
+    function geocode() {
+        PF('geoMap').geocode(document.getElementById('address').value);
+    }
+
+    function reverseGeocode() {
+        var lat = document.getElementById('lat').value,
+            lng = document.getElementById('lng').value;
+
+        PF('revGeoMap').reverseGeocode(lat, lng);
+    }
+&lt;/script&gt;
+
+&lt;h:form prependId="false"&gt;
+
+    &lt;h3 style="margin-top:0"&gt;Geocode&lt;/h3&gt;
+    &lt;h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5"&gt;
+        &lt;p:outputLabel for="address" value="Address:" /&gt;
+        &lt;p:inputText id="address" /&gt;
+        &lt;p:commandButton value="Geocode" icon="ui-icon-search" onclick="geocode()" type="button" /&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:gmap id="geoGmap" widgetVar="geoMap" center="\#{geocodeView.centerGeoMap}" zoom="2" type="ROADMAP" model="\#{geocodeView.geoModel}" style="width:100%;height:400px"&gt;
+        &lt;p:ajax event="geocode" listener="\#{geocodeView.onGeocode}" update="@this" /&gt;
+    &lt;/p:gmap&gt;
+
+    &lt;h3&gt;Reverse Geocode&lt;/h3&gt;
+    &lt;h:panelGrid columns="5" style="margin-bottom:10px" cellpadding="5"&gt;
+        &lt;p:outputLabel for="lat" value="Lat:" /&gt;
+        &lt;p:inputText id="lat" /&gt;
+        &lt;p:outputLabel for="lng" value="Lng:" /&gt;
+        &lt;p:inputText id="lng" /&gt;
+        &lt;p:commandButton value="Reverse Geocode" icon="ui-icon-search" onclick="reverseGeocode()" type="button"/&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:gmap id="revGeoGmap" widgetVar="revGeoMap" center="\#{geocodeView.centerRevGeoMap}" zoom="2" type="ROADMAP" model="\#{geocodeView.revGeoModel}" style="width:100%;height:400px"&gt;
+        &lt;p:ajax event="reverseGeocode" listener="\#{geocodeView.onReverseGeocode}" update="@this" /&gt;
+    &lt;/p:gmap&gt;
+
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="GeocodeView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data.gmap;
+
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.event.map.GeocodeEvent;
+import org.primefaces.event.map.ReverseGeocodeEvent;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.GeocodeResult;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
+
+@ManagedBean
+public class GeocodeView {
+    
+    private MapModel geoModel;
+    private MapModel revGeoModel;
+    private String centerGeoMap = "41.850033, -87.6500523";
+    private String centerRevGeoMap = "41.850033, -87.6500523";
+    
+    @PostConstruct
+    public void init() {
+        geoModel = new DefaultMapModel();
+        revGeoModel = new DefaultMapModel();
+    }
+    
+    public void onGeocode(GeocodeEvent event) {
+        List&lt;GeocodeResult&gt; results = event.getResults();
+        
+        if (results != null &amp;&amp; !results.isEmpty()) {
+            LatLng center = results.get(0).getLatLng();
+            centerGeoMap = center.getLat() + "," + center.getLng();
+            
+            for (int i = 0; i &lt; results.size(); i++) {
+                GeocodeResult result = results.get(i);
+                geoModel.addOverlay(new Marker(result.getLatLng(), result.getAddress()));
+            }
+        }
+    }
+    
+    public void onReverseGeocode(ReverseGeocodeEvent event) {
+        List&lt;String&gt; addresses = event.getAddresses();
+        LatLng coord = event.getLatlng();
+        
+        if (addresses != null &amp;&amp; !addresses.isEmpty()) {
+            centerRevGeoMap = coord.getLat() + "," + coord.getLng();
+            revGeoModel.addOverlay(new Marker(coord, addresses.get(0)));
+        }
+    }
+
+    public MapModel getGeoModel() {
+        return geoModel;
+    }
+
+    public MapModel getRevGeoModel() {
+        return revGeoModel;
+    }
+
+    public String getCenterGeoMap() {
+        return centerGeoMap;
+    }
+
+    public String getCenterRevGeoMap() {
+        return centerRevGeoMap;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-224" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

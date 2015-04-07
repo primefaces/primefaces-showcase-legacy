@@ -1,0 +1,158 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Menu - <span class="subitem">Menubar</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Menubar displays root items horizontally and nested items as tiered.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>	
+            <p:growl id="messages"/>
+
+            <p:menubar>
+                <p:submenu label="File" icon="ui-icon-document">
+                    <p:submenu label="New" icon="ui-icon-contact">
+                        <p:menuitem value="Project" url="#" />
+                        <p:menuitem value="Other" url="#" />
+                    </p:submenu>
+                    <p:menuitem value="Open" url="#" />
+                    <p:separator />
+                    <p:menuitem value="Quit" url="#" />
+                </p:submenu>
+
+                <p:submenu label="Edit" icon="ui-icon-pencil">
+                    <p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+                    <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+                </p:submenu>
+
+                <p:submenu label="Help" icon="ui-icon-help">
+                    <p:menuitem value="Contents" url="#" />
+                    <p:submenu label="Search" icon="ui-icon-search">
+                        <p:submenu label="Text">
+                            <p:menuitem value="Workspace" url="#" />
+                        </p:submenu>
+                        <p:menuitem value="File" url="#" />
+                    </p:submenu>
+                </p:submenu>
+
+                <p:submenu label="Actions" icon="ui-icon-gear">
+                    <p:submenu label="Ajax" icon="ui-icon-refresh">
+                        <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" update="messages"/>
+                        <p:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
+                    </p:submenu>
+                    <p:submenu label="Non-Ajax" icon="ui-icon-newwin">
+                        <p:menuitem value="Delete" actionListener="#{menuView.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
+                    </p:submenu>
+                </p:submenu>
+
+                <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
+
+                <f:facet name="options">
+                    <p:inputText style="margin-right:10px" placeholder="Search"/>
+                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+                </f:facet>
+            </p:menubar>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="menubar.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;	
+    &lt;p:growl id="messages"/&gt;
+
+    &lt;p:menubar&gt;
+        &lt;p:submenu label="File" icon="ui-icon-document"&gt;
+            &lt;p:submenu label="New" icon="ui-icon-contact"&gt;
+                &lt;p:menuitem value="Project" url="\#" /&gt;
+                &lt;p:menuitem value="Other" url="\#" /&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:menuitem value="Open" url="\#" /&gt;
+            &lt;p:separator /&gt;
+            &lt;p:menuitem value="Quit" url="\#" /&gt;
+        &lt;/p:submenu&gt;
+
+        &lt;p:submenu label="Edit" icon="ui-icon-pencil"&gt;
+            &lt;p:menuitem value="Undo" url="\#" icon="ui-icon-arrowreturnthick-1-w" /&gt;
+            &lt;p:menuitem value="Redo" url="\#" icon="ui-icon-arrowreturnthick-1-e" /&gt;
+        &lt;/p:submenu&gt;
+
+        &lt;p:submenu label="Help" icon="ui-icon-help"&gt;
+            &lt;p:menuitem value="Contents" url="\#" /&gt;
+            &lt;p:submenu label="Search" icon="ui-icon-search"&gt;
+                &lt;p:submenu label="Text"&gt;
+                    &lt;p:menuitem value="Workspace" url="\#" /&gt;
+                &lt;/p:submenu&gt;
+                &lt;p:menuitem value="File" url="\#" /&gt;
+            &lt;/p:submenu&gt;
+        &lt;/p:submenu&gt;
+
+        &lt;p:submenu label="Actions" icon="ui-icon-gear"&gt;
+            &lt;p:submenu label="Ajax" icon="ui-icon-refresh"&gt;
+                &lt;p:menuitem value="Save" actionListener="\#{menuView.save}" icon="ui-icon-disk" update="messages"/&gt;
+                &lt;p:menuitem value="Update" actionListener="\#{menuView.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:submenu label="Non-Ajax" icon="ui-icon-newwin"&gt;
+                &lt;p:menuitem value="Delete" actionListener="\#{menuView.delete}" icon="ui-icon-close" update="messages" ajax="false"/&gt;
+            &lt;/p:submenu&gt;
+        &lt;/p:submenu&gt;
+
+        &lt;p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" /&gt;
+
+        &lt;f:facet name="options"&gt;
+            &lt;p:inputText style="margin-right:10px" placeholder="Search"/&gt;
+            &lt;p:commandButton type="button" value="Logout" icon="ui-icon-extlink" /&gt;
+        &lt;/f:facet&gt;
+    &lt;/p:menubar&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="MenuView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.menu;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+@ManagedBean
+public class MenuView {
+    
+    public void save() {
+		addMessage("Success", "Data saved");
+	}
+	
+	public void update() {
+		addMessage("Success", "Data updated");
+	}
+	
+	public void delete() {
+		addMessage("Success", "Data deleted");
+	}
+	
+	public void addMessage(String summary, String detail) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-311" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

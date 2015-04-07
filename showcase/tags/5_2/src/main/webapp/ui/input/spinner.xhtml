@@ -1,0 +1,190 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-grid td {
+                white-space: nowrap;
+            }
+        </style>
+    </ui:define>
+    
+    <ui:define name="title">
+        Spinner
+    </ui:define>
+
+    <ui:define name="description">
+        Spinner is used to provide an input with increment and decrement buttons on an input text.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="5" class="ui-grid">
+                <h:outputLabel for="basic" value="Basic Spinner: " />
+                <p:spinner id="basic" value="#{spinnerView.number1}" />
+
+                <h:outputLabel for="step" value="Step Factor: " />
+                <p:spinner id="step" value="#{spinnerView.number2}" stepFactor="0.25" />
+
+                <h:outputLabel for="minMax" value="Min/Max: " />
+                <p:spinner id="minMax" value="#{spinnerView.number3}" min="0" max="100" />
+
+                <h:outputLabel for="prefix" value="Prefix: " />
+                <p:spinner id="prefix" value="#{spinnerView.number4}" prefix="$" min="0" />
+
+                <h:outputLabel for="ajaxSpinner" value="Ajax Spinner: " />
+                <p:outputPanel>
+                    <p:spinner id="ajaxSpinner" value="#{spinnerView.number5}">
+                        <p:ajax update="ajaxSpinnerValue" process="@this" />
+                    </p:spinner>
+                    <h:outputText id="ajaxSpinnerValue" value="#{spinnerView.number5}" style="padding-left: 10px" />
+                </p:outputPanel>
+            </h:panelGrid>
+            
+            <br />
+            
+            <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" />
+
+            <p:dialog header="Values" widgetVar="dlg" showEffect="fold" hideEffect="fold">
+                <h:panelGrid id="display" columns="2" cellpadding="5">
+                    <h:outputText value="Value 1: " />
+                    <h:outputText value="#{spinnerView.number1}" />
+
+                    <h:outputText value="Value 2: " />
+                    <h:outputText value="#{spinnerView.number2}" />
+
+                    <h:outputText value="Value 3: " />
+                    <h:outputText value="#{spinnerView.number3}" />
+
+                    <h:outputText value="Value 4: " />
+                    <h:outputText value="#{spinnerView.number4}" />
+
+                    <h:outputText value="Value 5: " />
+                    <h:outputText value="#{spinnerView.number5}" />
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="spinner.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;h:panelGrid columns="2" cellpadding="5" class="ui-grid"&gt;
+        &lt;h:outputLabel for="basic" value="Basic Spinner: " /&gt;
+        &lt;p:spinner id="basic" value="\#{spinnerView.number1}" /&gt;
+
+        &lt;h:outputLabel for="step" value="Step Factor: " /&gt;
+        &lt;p:spinner id="step" value="\#{spinnerView.number2}" stepFactor="0.25" /&gt;
+
+        &lt;h:outputLabel for="minMax" value="Min/Max: " /&gt;
+        &lt;p:spinner id="minMax" value="\#{spinnerView.number3}" min="0" max="100" /&gt;
+
+        &lt;h:outputLabel for="prefix" value="Prefix: " /&gt;
+        &lt;p:spinner id="prefix" value="\#{spinnerView.number4}" prefix="$" min="0" /&gt;
+
+        &lt;h:outputLabel for="ajaxSpinner" value="Ajax Spinner: " /&gt;
+        &lt;p:outputPanel&gt;
+            &lt;p:spinner id="ajaxSpinner" value="\#{spinnerView.number5}"&gt;
+                &lt;p:ajax update="ajaxSpinnerValue" process="@this" /&gt;
+            &lt;/p:spinner&gt;
+            &lt;h:outputText id="ajaxSpinnerValue" value="\#{spinnerView.number5}" style="padding-left: 10px" /&gt;
+        &lt;/p:outputPanel&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" /&gt;
+
+    &lt;p:dialog header="Values" widgetVar="dlg" showEffect="fold" hideEffect="fold"&gt;
+        &lt;h:panelGrid id="display" columns="2" cellpadding="5"&gt;
+            &lt;h:outputText value="Value 1: " /&gt;
+            &lt;h:outputText value="\#{spinnerView.number1}" /&gt;
+
+            &lt;h:outputText value="Value 2: " /&gt;
+            &lt;h:outputText value="\#{spinnerView.number2}" /&gt;
+
+            &lt;h:outputText value="Value 3: " /&gt;
+            &lt;h:outputText value="\#{spinnerView.number3}" /&gt;
+
+            &lt;h:outputText value="Value 4: " /&gt;
+            &lt;h:outputText value="\#{spinnerView.number4}" /&gt;
+
+            &lt;h:outputText value="Value 5: " /&gt;
+            &lt;h:outputText value="\#{spinnerView.number5}" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="SpinnerView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class SpinnerView {
+    
+    private int number1;   
+    private double number2;  
+    private int number3;   
+    private int number4; 
+    private int number5;
+
+    public int getNumber1() {
+        return number1;
+    }
+
+    public void setNumber1(int number1) {
+        this.number1 = number1;
+    }
+
+    public double getNumber2() {
+        return number2;
+    }
+
+    public void setNumber2(double number2) {
+        this.number2 = number2;
+    }
+
+    public int getNumber3() {
+        return number3;
+    }
+
+    public void setNumber3(int number3) {
+        this.number3 = number3;
+    }
+
+    public int getNumber4() {
+        return number4;
+    }
+
+    public void setNumber4(int number4) {
+        this.number4 = number4;
+    }
+
+    public int getNumber5() {
+        return number5;
+    }
+
+    public void setNumber5(int number5) {
+        this.number5 = number5;
+    }
+}
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-452" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

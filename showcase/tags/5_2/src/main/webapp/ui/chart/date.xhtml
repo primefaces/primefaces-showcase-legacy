@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Charts - <span class="subitem">Date</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Dates in charts are displayed using DateAxis API that provides special zooming, boundaries and formatting capabilities.
+    </ui:define>
+
+    <ui:define name="implementation">
+        <p:chart type="line" model="#{chartView.dateModel}" style="height:400px;"/>
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="date.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:chart type="line" model="\#{chartView.dateModel}" style="height:400px;"/&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ChartView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.examples;
+
+import javax.annotation.PostConstruct;
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.LineChartModel;
+import org.primefaces.model.chart.DateAxis;
+import org.primefaces.model.chart.LineChartSeries;
+
+@ManagedBean
+public class ChartView implements Serializable {
+
+    private LineChartModel dateModel;
+
+    @PostConstruct
+	public void init() {
+        createDateModel();
+	}
+
+    public LineChartModel getDateModel() {
+        return dateModel;
+    }
+    
+    private void createDateModel() {
+        dateModel = new LineChartModel();
+        LineChartSeries series1 = new LineChartSeries();
+        series1.setLabel("Series 1");
+
+        series1.set("2014-01-01", 51);
+        series1.set("2014-01-06", 22);
+        series1.set("2014-01-12", 65);
+        series1.set("2014-01-18", 74);
+        series1.set("2014-01-24", 24);
+        series1.set("2014-01-30", 51);
+
+        LineChartSeries series2 = new LineChartSeries();
+        series2.setLabel("Series 2");
+
+        series2.set("2014-01-01", 32);
+        series2.set("2014-01-06", 73);
+        series2.set("2014-01-12", 24);
+        series2.set("2014-01-18", 12);
+        series2.set("2014-01-24", 74);
+        series2.set("2014-01-30", 62);
+
+        dateModel.addSeries(series1);
+        dateModel.addSeries(series2);
+        
+        dateModel.setTitle("Zoom for Details");
+        dateModel.setZoom(true);
+        dateModel.getAxis(AxisType.Y).setLabel("Values");
+        DateAxis axis = new DateAxis("Dates");
+        axis.setTickAngle(-50);
+        axis.setMax("2014-02-01");
+        axis.setTickFormat("%b %#d, %y");
+        
+        dateModel.getAxes().put(AxisType.X, axis);
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-87" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

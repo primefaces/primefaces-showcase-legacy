@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        
+    <h:head>
+        <h:outputStylesheet name="main/css/showcase.css" />
+        <h:outputStylesheet name="main/css/sh.css" />
+        
+        <style type="text/css">
+            .ui-layout-north {
+                z-index:20 !important;
+                overflow:visible !important;;
+            }
+
+            .ui-layout-north .ui-layout-unit-content {
+                overflow:visible !important;
+            }
+            
+            body {
+                background-color: #FFFFFF;
+            }
+        </style>
+	</h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true" >
+                <p:layoutUnit id="top" position="north" size="50">
+
+                    <p:menubar>
+                        <p:submenu label="File" icon="ui-icon-document">
+                            <p:submenu label="New" icon="ui-icon-contact">
+                                <p:menuitem value="Project" url="#" />
+                                <p:menuitem value="Other" url="#" />
+                            </p:submenu>
+                            <p:menuitem value="Open" url="#" />
+                            <p:menuitem value="Quit" url="#" />
+                        </p:submenu>
+
+                        <p:submenu label="Edit" icon="ui-icon-pencil">
+                            <p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w"></p:menuitem>
+                            <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e"></p:menuitem>
+                        </p:submenu>
+
+                        <p:submenu label="Help" icon="ui-icon-help">
+                            <p:menuitem value="Contents" url="#" />
+                            <p:submenu label="Search" icon="ui-icon-search">
+                                <p:submenu label="Text">
+                                    <p:menuitem value="Workspace" url="#" />
+                                </p:submenu>
+                                <p:menuitem value="File" url="#" />
+                            </p:submenu>
+                        </p:submenu>
+                    </p:menubar>
+                </p:layoutUnit>
+
+                <p:layoutUnit id="bottom" position="south" size="60">
+                    Bottom Content
+                </p:layoutUnit>
+
+                <p:layoutUnit id="left" position="west" size="300" resizable="true" closable="true" collapsible="true" header="Options" minSize="200">
+                    <p:accordionPanel>
+                        <p:tab title="Menu 1">
+                            <br />
+                            <p:calendar mode="inline" navigator="none"/>
+                            <br />
+                        </p:tab>
+
+                        <p:tab title="Menu 2">
+                            <h:outputText value="Menu 2 Content" />
+                        </p:tab>
+
+                        <p:tab title="Menu 3">
+                            <h:outputText value="Menu 3 Content" />
+                        </p:tab>
+                    </p:accordionPanel>
+                </p:layoutUnit>
+
+                <p:layoutUnit id="right" position="east" size="250" header="Gallery" resizable="true" closable="true" collapsible="true"
+                              style="text-align:center">
+
+                    <p:lightBox style="text-align:center;margin-top:20px;">
+                        <h:outputLink value="#{request.contextPath}/resources/demo/images/nature/nature1.jpg" title="Nature 1" style="margin-bottom:5px;">
+                            <p:graphicImage name="demo/images/nature/nature1.jpg" width="150"/>
+                        </h:outputLink>
+
+                        <h:outputLink value="#{request.contextPath}/resources/demo/images/nature/nature2.jpg" title="Nature 2" style="margin-bottom:2px;">
+                            <p:graphicImage name="demo/images/nature/nature2.jpg" width="150"/>
+                        </h:outputLink>
+
+                        <h:outputLink value="#{request.contextPath}/resources/demo/images/nature/nature3.jpg" title="Nature 3" style="margin-bottom:2px;">
+                            <p:graphicImage name="demo/images/nature/nature3.jpg" width="150"/>
+                        </h:outputLink>
+
+                        <h:outputLink value="#{request.contextPath}/resources/demo/images/nature/nature4.jpg" title="Nature 4" style="margin-bottom:2px;">
+                            <p:graphicImage name="demo/images/nature/nature4.jpg" width="150"/>
+                        </h:outputLink>
+                    </p:lightBox>
+
+                    <p:commandButton value="Show Dialog" onclick="PF('dlg').show();" type="button" style="margin-top:10px"/>
+
+                </p:layoutUnit>
+
+                <p:layoutUnit id="center" position="center">
+
+                </p:layoutUnit>
+
+            </p:layout>
+
+            <p:dialog header="Basic Dialog" widgetVar="dlg" modal="true">
+                <h:outputText value="Resistance to PrimeFaces is futile!" />
+            </p:dialog>
+            
+            <script language="javascript" src="#{request.contextPath}/resources/main/js/sh.js"></script>
+            <script language="javascript">
+                SyntaxHighlighter.all();
+            </script>
+
+        </h:body>
+
+    </f:view>
+    
+    
+</html>
+

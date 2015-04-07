@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Ajax Framework - <span class="subitem">Partial Process</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Partial processing enables executing certain components while ignoring others during a request.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>		
+            <h:panelGrid id="grid" cellpadding="5" columns="2" style="margin-bottom:10px">
+                <f:facet name="header">
+                    <p:messages id="msgs" />
+                </f:facet>
+
+                <p:outputLabel for="firstname" value="Firstname:" />
+                <p:inputText id="firstname" value="#{userView.firstname}" />
+
+                <p:outputLabel for="surname" value="Surname:" />
+                <p:inputText id="surname" value="#{userView.lastname}" required="true" requiredMessage="Surname is required." />
+            </h:panelGrid>
+
+            <h:panelGrid columns="6" cellpadding="5">
+                <p:commandButton value="All" id="btnAll" process="@all" update="grid" actionListener="#{userView.save}" />
+                <p:commandButton value="Form" id="btnForm" process="@form" update="grid" actionListener="#{userView.save}" />
+                <p:commandButton value="This" id="btnThis" process="@this" update="grid" actionListener="#{userView.save}" />
+                <p:commandButton value="None" id="btnNone" process="@none" update="grid" actionListener="#{userView.save}" />
+                <p:commandButton value="Parent" id="btnParent" process="@parent" update="grid" actionListener="#{userView.save}" />
+                <p:commandButton value="This Surname" id="btnSurname" process="@this,surname" update="grid" actionListener="#{userView.save}" />
+            </h:panelGrid>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="process.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;h:panelGrid id="grid" cellpadding="5" columns="2" style="margin-bottom:10px"&gt;
+        &lt;f:facet name="header"&gt;
+            &lt;p:messages id="msgs" /&gt;
+        &lt;/f:facet&gt;
+
+        &lt;p:outputLabel for="firstname" value="Firstname:" /&gt;
+        &lt;p:inputText id="firstname" value="\#{userView.firstname}" /&gt;
+
+        &lt;p:outputLabel for="surname" value="Surname:" /&gt;
+        &lt;p:inputText id="surname" value="\#{userView.lastname}" required="true" requiredMessage="Surname is required." /&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;h:panelGrid columns="6" cellpadding="5"&gt;
+        &lt;p:commandButton value="All" id="btnAll" process="@all" update="grid" actionListener="\#{userView.save}" /&gt;
+        &lt;p:commandButton value="Form" id="btnForm" process="@form" update="grid" actionListener="\#{userView.save}" /&gt;
+        &lt;p:commandButton value="This" id="btnThis" process="@this" update="grid" actionListener="\#{userView.save}" /&gt;
+        &lt;p:commandButton value="None" id="btnNone" process="@none" update="grid" actionListener="\#{userView.save}" /&gt;
+        &lt;p:commandButton value="Parent" id="btnParent" process="@parent" update="grid" actionListener="\#{userView.save}" /&gt;
+        &lt;p:commandButton value="This Surname" id="btnSurname" process="@this,surname" update="grid" actionListener="\#{userView.save}" /&gt;
+    &lt;/h:panelGrid&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="UserView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.ajax;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+@ManagedBean
+public class UserView {
+    
+    private String firstname;
+	private String lastname;
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+	public void save() {
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage("Welcome " + firstname + " " + lastname));
+	}
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+    </ui:define>
+
+</ui:composition>

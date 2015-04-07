@@ -1,0 +1,131 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mobile"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="/WEB-INF/mobile.xhtml">
+    
+    <ui:define name="content">
+        <pm:content styleClass="jqm-content">
+            <h1>PanelGrid</h1>
+            <p>PanelGrid is a container component to create grid based layouts.</p>
+            
+            <h2 class="first">Two Column Grid</h2>
+            <p:panelGrid columns="2">
+                <p:commandButton value="A" type="button"/>
+                <p:commandButton value="B" type="button"/>
+            </p:panelGrid>
+            
+            <h2>Three Column Grid</h2>
+            <p:panelGrid columns="3">
+                <p:commandButton value="A" type="button"/>
+                <p:commandButton value="B" type="button"/>
+                <p:commandButton value="C" type="button"/>
+            </p:panelGrid>
+            
+            <h2>Four Column Grid</h2>
+            <p:panelGrid columns="4">
+                <p:commandButton value="A" type="button"/>
+                <p:commandButton value="B" type="button"/>
+                <p:commandButton value="C" type="button"/>
+                <p:commandButton value="D" type="button"/>
+            </p:panelGrid>
+            
+            <h2>Five Column Grid</h2>
+            <p:panelGrid columns="5">
+                <p:commandButton value="A" type="button"/>
+                <p:commandButton value="B" type="button"/>
+                <p:commandButton value="C" type="button"/>
+                <p:commandButton value="D" type="button"/>
+                <p:commandButton value="E" type="button"/>
+            </p:panelGrid>
+            
+            <h2>Multi Row Grid</h2>
+            <p:panelGrid columns="3">
+                <p:commandButton value="A" type="button"/>
+                <p:commandButton value="B" type="button"/>
+                <p:commandButton value="C" type="button"/>
+                
+                <p:commandButton value="D" type="button"/>
+                <p:commandButton value="E" type="button"/>
+                <p:commandButton value="F" type="button"/>
+                
+                <p:commandButton value="G" type="button"/>
+                <p:commandButton value="H" type="button"/>
+                <p:commandButton value="I" type="button"/>
+            </p:panelGrid>
+            
+            <h2>Responsive</h2>
+            <p:panelGrid columns="4" styleClass="ui-responsive">
+                <p:commandButton value="A" type="button"/>
+                <p:commandButton value="B" type="button"/>
+                <p:commandButton value="C" type="button"/>
+                <p:commandButton value="D" type="button"/>
+            </p:panelGrid>
+            
+            <h2>Source</h2>
+            <p:accordionPanel activeIndex="-1">
+                <p:tab title="panelGrid.xtml">
+                    <pre class="brush:xml">
+&lt;h2 class="first"&gt;Two Column Grid&lt;/h2&gt;
+&lt;p:panelGrid columns="2"&gt;
+    &lt;p:commandButton value="A" type="button"/&gt;
+    &lt;p:commandButton value="B" type="button"/&gt;
+&lt;/p:panelGrid&gt;
+
+&lt;h2&gt;Three Column Grid&lt;/h2&gt;
+&lt;p:panelGrid columns="3"&gt;
+    &lt;p:commandButton value="A" type="button"/&gt;
+    &lt;p:commandButton value="B" type="button"/&gt;
+    &lt;p:commandButton value="C" type="button"/&gt;
+&lt;/p:panelGrid&gt;
+
+&lt;h2&gt;Four Column Grid&lt;/h2&gt;
+&lt;p:panelGrid columns="4"&gt;
+    &lt;p:commandButton value="A" type="button"/&gt;
+    &lt;p:commandButton value="B" type="button"/&gt;
+    &lt;p:commandButton value="C" type="button"/&gt;
+    &lt;p:commandButton value="D" type="button"/&gt;
+&lt;/p:panelGrid&gt;
+
+&lt;h2&gt;Five Column Grid&lt;/h2&gt;
+&lt;p:panelGrid columns="5"&gt;
+    &lt;p:commandButton value="A" type="button"/&gt;
+    &lt;p:commandButton value="B" type="button"/&gt;
+    &lt;p:commandButton value="C" type="button"/&gt;
+    &lt;p:commandButton value="D" type="button"/&gt;
+    &lt;p:commandButton value="E" type="button"/&gt;
+&lt;/p:panelGrid&gt;
+
+&lt;h2&gt;Multi Row Grid&lt;/h2&gt;
+&lt;p:panelGrid columns="3"&gt;
+    &lt;p:commandButton value="A" type="button"/&gt;
+    &lt;p:commandButton value="B" type="button"/&gt;
+    &lt;p:commandButton value="C" type="button"/&gt;
+
+    &lt;p:commandButton value="D" type="button"/&gt;
+    &lt;p:commandButton value="E" type="button"/&gt;
+    &lt;p:commandButton value="F" type="button"/&gt;
+
+    &lt;p:commandButton value="G" type="button"/&gt;
+    &lt;p:commandButton value="H" type="button"/&gt;
+    &lt;p:commandButton value="I" type="button"/&gt;
+&lt;/p:panelGrid&gt;
+
+&lt;h2&gt;Responsive&lt;/h2&gt;
+&lt;p:panelGrid columns="4" styleClass="ui-responsive"&gt;
+    &lt;p:commandButton value="A" type="button"/&gt;
+    &lt;p:commandButton value="B" type="button"/&gt;
+    &lt;p:commandButton value="C" type="button"/&gt;
+    &lt;p:commandButton value="D" type="button"/&gt;
+&lt;/p:panelGrid&gt;
+                    </pre>
+                </p:tab>
+            </p:accordionPanel>
+            
+        </pm:content>
+    </ui:define>
+    
+</ui:composition>
