@@ -256,16 +256,16 @@
             </dependencies>
         </profile>
         <profile>
-            <id>elite-stable</id>
+            <id>elite-dev-5.1.x</id>
             <properties>
                 <jsfVersion>Mojarra-2.2.8</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.1.14</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.1.16-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>5.1.14</version>
+                    <version>5.1.16-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -283,13 +283,13 @@
             <id>elite-dev</id>
             <properties>
                 <jsfVersion>Mojarra-2.2.8</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.1.15-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.2.1-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>5.1.15-SNAPSHOT</version>
+                    <version>5.2.1-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -299,7 +299,7 @@
                 <dependency>
                     <groupId>org.atmosphere</groupId>
                     <artifactId>atmosphere-runtime</artifactId>
-                    <version>2.2.6</version>
+                    <version>2.3.0-RC6</version>
                 </dependency>
             </dependencies>
         </profile>
