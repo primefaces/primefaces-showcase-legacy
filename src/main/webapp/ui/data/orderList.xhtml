@@ -22,7 +22,7 @@
             <p:orderList value="#{orderListView.cities}" var="city" controlsLocation="none" itemLabel="#{city}" itemValue="#{city}" />
             <p:commandButton value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" />
             
-            <h3>Pojo Support with Clip Effect, Captions, Custom Content, Reorder Controls and Events (since v5.1.5)</h3>
+            <h3>Pojo Support with Clip Effect, Captions, Custom Content, Reorder Controls and Events</h3>
             <p:orderList value="#{orderListView.themes}" var="theme" itemValue="#{theme}" converter="theme" controlsLocation="left">
                 <p:ajax event="select" listener="#{orderListView.onSelect}" update="msgs"/>
                 <p:ajax event="unselect" listener="#{orderListView.onUnselect}" update="msgs"/>
@@ -69,7 +69,7 @@
     &lt;p:orderList value="\#{orderListView.cities}" var="city" controlsLocation="none" itemLabel="\#{city}" itemValue="\#{city}" /&gt;
     &lt;p:commandButton value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" /&gt;
 
-    &lt;h3&gt;Pojo Support with Clip Effect, Captions, Custom Content, Reorder Controls and Events (since v5.1.5)&lt;/h3&gt;
+    &lt;h3&gt;Pojo Support with Clip Effect, Captions, Custom Content, Reorder Controls and Events&lt;/h3&gt;
     &lt;p:orderList value="\#{orderListView.themes}" var="theme" itemValue="\#{theme}" converter="theme" controlsLocation="left"&gt;
         &lt;p:ajax event="select" listener="\#{orderListView.onSelect}" update="msgs"/&gt;
         &lt;p:ajax event="unselect" listener="\#{orderListView.onUnselect}" update="msgs"/&gt;

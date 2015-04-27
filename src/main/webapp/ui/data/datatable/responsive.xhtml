@@ -16,7 +16,7 @@
 
     <ui:define name="implementation">
         <h:form>
-        <h3 style="margin-top:0">Column Priority (since v5.1.9)</h3>
+        <h3 style="margin-top:0">Column Priority</h3>
         <p:dataTable var="car" value="#{dtBasicView.cars}">
             <p:column headerText="Id">
                 <h:outputText value="#{car.id}" />
@@ -35,7 +35,7 @@
             </p:column>
         </p:dataTable>
         
-        <h3>Reflow (since v5.1.10)</h3>
+        <h3>Reflow</h3>
         <p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="5" paginator="true">
             <p:column headerText="Id">
                 <h:outputText value="#{car.id}" />
@@ -60,7 +60,7 @@
         <p:tabView>
             <p:tab title="responsive.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h3 style="margin-top:0"&gt;Column Priority (since v5.1.9)&lt;/h3&gt;
+&lt;h3 style="margin-top:0"&gt;Column Priority&lt;/h3&gt;
 &lt;p:dataTable var="car" value="\#{dtBasicView.cars}"&gt;
     &lt;p:column headerText="Id"&gt;
         &lt;h:outputText value="\#{car.id}" /&gt;
@@ -79,7 +79,7 @@
     &lt;/p:column&gt;
 &lt;/p:dataTable&gt;
 
-&lt;h3&gt;Reflow (since v5.1.10)&lt;/h3&gt;
+&lt;h3&gt;Reflow&lt;/h3&gt;
 &lt;p:dataTable var="car" value="\#{dtBasicView.cars}" reflow="true" rows="5" paginator="true"&gt;
     &lt;p:column headerText="Id"&gt;
         &lt;h:outputText value="\#{car.id}" /&gt;
