@@ -2,15 +2,9 @@
 
 ![PrimeFaces icon](http://blog.primefaces.org/wp-content/uploads/2011/08/bloglogo.png)
 
-### Overview
-
-[PrimeFaces](http://www.primefaces.org/index) is one of the most popular UI libraries in Java EE Ecosystem and widely used by software companies, world renowned brands, banks, financial institutions, insurance companies, universities and more. Here are [some of the users](http://www.primefaces.org/whouses) who notified us or subscribed to a [PrimeFaces Support Service](http://www.primefaces.org/support).
-
-Please visit [PrimeFaces.org](http://www.primefaces.org) for more information.
-
 ### Getting Started
 
-Deplyyable version of **PrimeFaces Showcase** war file can be downloaded manually or build it from sources.  
+Deployable version of **PrimeFaces Showcase** war file can be downloaded manually or build it from sources.  
 
 ##### Prebuilt war
 
