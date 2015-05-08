@@ -1,0 +1,120 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml" >
+
+    <ui:define name="title">
+        AccordionPanel
+    </ui:define>
+
+    <ui:define name="description">
+        AccordionPanel is a container component with vertically stacked panels.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true" sticky="true" />
+
+            <h3>DataModel</h3>
+            <p:accordionPanel value="#{accordionPanalTestView.tabs}" var="tab" multiple="true">
+                <p:tab title="#{tab.name}">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80%;">Name</th>
+                                <th style="width: 20%;">Checkbox</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <p:dataList id="dataList"
+                                        value="#{tab.rows}"
+                                        var="row"
+                                        type="none">
+
+                                <tr>
+                                    <td><h:outputLabel id="label" value="#{row.name}"/></td>
+                                    <td><p:selectBooleanCheckbox id="checkbox" label="Checkbox" value="#{row.checkbox}"/></td>
+                                </tr>
+                            </p:dataList>
+                        </tbody>
+                    </table>
+                </p:tab>
+            </p:accordionPanel>
+            <p:commandButton id="applyBtn"
+                             value="submit"
+                             process="@form"
+                             update="msgs"
+                             action="#{accordionPanalTestView.handleSubmit}"/>
+        </h:form>
+
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="accordionPanel.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form id="form"&gt;
+    &lt;p:growl id="msgs" showDetail="true" /&gt;
+
+&lt;/h:form&gt;
+
+                </pre>
+            </p:tab>
+
+            <p:tab title="TabbedView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.panel;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.TabChangeEvent;
+import org.primefaces.event.TabCloseEvent;
+import org.primefaces.showcase.domain.Car;
+
+@ManagedBean
+public class TabbedView {
+
+    private List&lt;Car&gt; cars;
+
+    @PostConstruct
+    public void init() {
+        cars = new ArrayList&lt;Car&gt;();
+        cars.add(new Car("Y25YIH5", "Fiat", 2014, "Black", 10000, true));
+        cars.add(new Car("JHF261G", "BMW", 2013, "Blue", 50000, true));
+        cars.add(new Car("HSFY23H", "Ford", 2012, "Black", 35000, false));
+        cars.add(new Car("GMDK353", "Volvo", 2014, "White", 40000, true));
+        cars.add(new Car("345GKM5", "Jaguar", 2011, "Gray", 48000, false));
+    }
+
+    public List&lt;Car&gt; getCars() {
+        return cars;
+    }
+
+    public void onTabChange(TabChangeEvent event) {
+        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void onTabClose(TabCloseEvent event) {
+        FacesMessage msg = new FacesMessage("Tab Closed", "Closed tab: " + event.getTab().getTitle());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+}
+
+                </pre>
+            </p:tab>
+
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-14"/>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
