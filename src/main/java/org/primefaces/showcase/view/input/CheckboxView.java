@@ -24,7 +24,8 @@ import javax.faces.bean.ManagedBean;
 public class CheckboxView {
     
     private String[] selectedConsoles;  
-    private String[] selectedCities; 
+    private String[] selectedConsoles2;
+    private String[] selectedCities;
     private List<String> cities;
     
     @PostConstruct
@@ -57,6 +58,14 @@ public class CheckboxView {
         this.selectedCities = selectedCities;
     }
 
+    public String[] getSelectedConsoles2() {
+        return selectedConsoles2;
+    }
+
+    public void setSelectedConsoles2(String[] selectedConsoles2) {
+        this.selectedConsoles2 = selectedConsoles2;
+    }
+    
     public List<String> getCities() {
         return cities;
     }

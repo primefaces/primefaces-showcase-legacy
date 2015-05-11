@@ -11,9 +11,17 @@
                 padding: 0px 10px 0 20px;
                 margin: 5px 0;
             }
+            
+            .ui-datalist {
+                margin-bottom: 10px
+            }
+            
+            .ui-noborder tr.ui-widget-content {
+                background: none;
+            }
         </style>
-	</ui:define>
-    
+    </ui:define>
+
     <ui:define name="title">
         SelectManyCheckbox
     </ui:define>
@@ -25,34 +33,80 @@
     <ui:define name="implementation">
 
         <h:form>
-            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                <p:outputLabel for="basic" value="Basic:" />
-                <p:selectManyCheckbox id="basic" value="#{checkboxView.selectedConsoles}">
+            <h3 style="margin-top:0px">Basic Layout</h3>
+            <p:selectManyCheckbox id="basic" value="#{checkboxView.selectedConsoles}">
+                <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+            </p:selectManyCheckbox>
+                        
+            <h3>Grid Layout</h3>
+            <p:selectManyCheckbox id="grid" value="#{checkboxView.selectedCities}" layout="grid" columns="3">
+                <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}" />
+            </p:selectManyCheckbox>
+
+            <h3>Custom Layout (since v5.2.3)</h3>
+            <p:outputPanel id="customPanel" style="margin-bottom:20px">
+                <p:selectManyCheckbox id="custom" value="#{checkboxView.selectedConsoles2}" layout="custom">
                     <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-                    <f:selectItem itemLabel="PS4" itemValue="PS+" />
+                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
                     <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
                 </p:selectManyCheckbox>
 
-                <h:outputText value="Grid:" />
-                <p:selectManyCheckbox id="grid" value="#{checkboxView.selectedCities}" layout="grid" columns="3">
-                    <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}" />
-                </p:selectManyCheckbox>
-            </h:panelGrid>
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-4">
+                            <p:checkbox id="opt1" for="custom" itemIndex="0" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <p:checkbox id="opt2" for="custom" itemIndex="1" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <p:checkbox id="opt3" for="custom" itemIndex="2" />
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-4">
+                            <h:outputLabel for="opt1" value="Xbox One" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <h:outputLabel for="opt2" value="PS4" />
+                        </div>
+                        <div class="ui-grid-col-4">
+                            <h:outputLabel for="opt3" value="Wii U" />
+                        </div>
+                    </div>
+                </div>
+            </p:outputPanel>
+
+            <p:separator />
 
             <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
 
             <p:dialog header="Values" modal="true" showEffect="clip" widgetVar="dlg" resizable="false">
                 <p:outputPanel id="display">
                     <p:dataList value="#{checkboxView.selectedConsoles}" var="console">
+                        <f:facet name="header">
+                            Basic
+                        </f:facet>
                         #{console}
                     </p:dataList>
                     <p:dataList value="#{checkboxView.selectedCities}" var="city">
+                        <f:facet name="header">
+                            Grid
+                        </f:facet>
                         #{city}
+                    </p:dataList>
+                    <p:dataList value="#{checkboxView.selectedConsoles2}" var="console">
+                        <f:facet name="header">
+                            Custom
+                        </f:facet>
+                        #{console}
                     </p:dataList>
                 </p:outputPanel>
             </p:dialog>
         </h:form>
-        
+
     </ui:define>
 
     <ui:define name="source">
@@ -60,29 +114,75 @@
             <p:tab title="manyCheckbox.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
-        &lt;p:outputLabel for="basic" value="Basic:" /&gt;
-        &lt;p:selectManyCheckbox id="basic" value="\#{checkboxView.selectedConsoles}"&gt;
+    &lt;h3 style="margin-top:0px"&gt;Basic Layout&lt;/h3&gt;
+    &lt;p:selectManyCheckbox id="basic" value="\#{checkboxView.selectedConsoles}"&gt;
+        &lt;f:selectItem itemLabel="Xbox One" itemValue="Xbox One" /&gt;
+        &lt;f:selectItem itemLabel="PS4" itemValue="PS4" /&gt;
+        &lt;f:selectItem itemLabel="Wii U" itemValue="Wii U" /&gt;
+    &lt;/p:selectManyCheckbox&gt;
+
+    &lt;h3&gt;Grid Layout&lt;/h3&gt;
+    &lt;p:selectManyCheckbox id="grid" value="\#{checkboxView.selectedCities}" layout="grid" columns="3"&gt;
+        &lt;f:selectItems value="\#{checkboxView.cities}" var="city" itemLabel="\#{city}" itemValue="\#{city}" /&gt;
+    &lt;/p:selectManyCheckbox&gt;
+
+    &lt;h3&gt;Custom Layout (since v5.2.3)&lt;/h3&gt;
+    &lt;p:outputPanel id="customPanel" style="margin-bottom:20px"&gt;
+        &lt;p:selectManyCheckbox id="custom" value="\#{checkboxView.selectedConsoles2}" layout="custom"&gt;
             &lt;f:selectItem itemLabel="Xbox One" itemValue="Xbox One" /&gt;
-            &lt;f:selectItem itemLabel="PS4" itemValue="PS+" /&gt;
+            &lt;f:selectItem itemLabel="PS4" itemValue="PS4" /&gt;
             &lt;f:selectItem itemLabel="Wii U" itemValue="Wii U" /&gt;
         &lt;/p:selectManyCheckbox&gt;
 
-        &lt;h:outputText value="Grid:" /&gt;
-        &lt;p:selectManyCheckbox id="grid" value="\#{checkboxView.selectedCities}" layout="grid" columns="3"&gt;
-            &lt;f:selectItems value="\#{checkboxView.cities}" var="city" itemLabel="\#{city}" itemValue="\#{city}" /&gt;
-        &lt;/p:selectManyCheckbox&gt;
-    &lt;/h:panelGrid&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-4"&gt;
+                    &lt;p:checkbox id="opt1" for="custom" itemIndex="0" /&gt;
+                &lt;/div&gt;
+                &lt;div class="ui-grid-col-4"&gt;
+                    &lt;p:checkbox id="opt2" for="custom" itemIndex="1" /&gt;
+                &lt;/div&gt;
+                &lt;div class="ui-grid-col-4"&gt;
+                    &lt;p:checkbox id="opt3" for="custom" itemIndex="2" /&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-4"&gt;
+                    &lt;h:outputLabel for="opt1" value="Xbox One" /&gt;
+                &lt;/div&gt;
+                &lt;div class="ui-grid-col-4"&gt;
+                    &lt;h:outputLabel for="opt2" value="PS4" /&gt;
+                &lt;/div&gt;
+                &lt;div class="ui-grid-col-4"&gt;
+                    &lt;h:outputLabel for="opt3" value="Wii U" /&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/p:outputPanel&gt;
+
+    &lt;p:separator /&gt;
 
     &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" /&gt;
 
     &lt;p:dialog header="Values" modal="true" showEffect="clip" widgetVar="dlg" resizable="false"&gt;
         &lt;p:outputPanel id="display"&gt;
             &lt;p:dataList value="\#{checkboxView.selectedConsoles}" var="console"&gt;
+                &lt;f:facet name="header"&gt;
+                    Basic
+                &lt;/f:facet&gt;
                 \#{console}
             &lt;/p:dataList&gt;
             &lt;p:dataList value="\#{checkboxView.selectedCities}" var="city"&gt;
+                &lt;f:facet name="header"&gt;
+                    Grid
+                &lt;/f:facet&gt;
                 \#{city}
+            &lt;/p:dataList&gt;
+            &lt;p:dataList value="\#{checkboxView.selectedConsoles2}" var="console"&gt;
+                &lt;f:facet name="header"&gt;
+                    Custom
+                &lt;/f:facet&gt;
+                \#{console}
             &lt;/p:dataList&gt;
         &lt;/p:outputPanel&gt;
     &lt;/p:dialog&gt;
@@ -102,8 +202,9 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class CheckboxView {
     
-    private String[] selectedConsoles; 
-    private String[] selectedCities;  
+    private String[] selectedConsoles;  
+    private String[] selectedConsoles2;
+    private String[] selectedCities;
     private List&lt;String&gt; cities;
     
     @PostConstruct
@@ -136,13 +237,22 @@ public class CheckboxView {
         this.selectedCities = selectedCities;
     }
 
+    public String[] getSelectedConsoles2() {
+        return selectedConsoles2;
+    }
+
+    public void setSelectedConsoles2(String[] selectedConsoles2) {
+        this.selectedConsoles2 = selectedConsoles2;
+    }
+    
     public List&lt;String&gt; getCities() {
         return cities;
     }
 }
+
                 </pre>
             </p:tab>
-            
+
             <p:tab title="Documentation" titleStyleClass="tab-doc docslide-418" />
         </p:tabView>
 
