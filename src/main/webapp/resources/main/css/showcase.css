@@ -323,7 +323,7 @@ input.searchInput {
 }
 
 /** Responsive **/
-@media (min-width: 929px) {
+@media (min-width: 961px) {
 	.PFTopLinks {
 		display: block
 	}
@@ -357,7 +357,7 @@ input.searchInput {
     }
 }
 
-@media (max-width: 930px) {
+@media (max-width: 960px) {
 	.PFTopLinks {
 		display: none
 	}
