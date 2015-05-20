@@ -12,17 +12,17 @@
                 -webkit-box-sizing:border-box;
                 -moz-box-sizing: border-box;
             }
-            
+
             /** InputText **/
             .ui-fluid .ui-inputtext {
                 width: 100%;
             }
-            
+
             /** InputTextarea **/
             .ui-fluid .ui-inputtextarea {
                 width: 100%;
             }
-            
+
             /** SelectOneMenu **/
             .ui-fluid .ui-selectonemenu {
                 width: 100%;
@@ -31,13 +31,18 @@
                 width: 32px;
                 padding: 0 6px;
             }
+            
+            /** Caşendar **/
+            .ui-calendar, .ui-calendar input {
+                width: 100%;
+            }
 
             /** Spinner **/
             .ui-fluid .ui-spinner {
                 width: 100%;
             }
             .ui-fluid .ui-spinner .ui-spinner-input {
-
+                padding-right: 36px;
                 width: 100%;
             }
             .ui-fluid .ui-spinner .ui-spinner-button {
@@ -46,21 +51,55 @@
             .ui-fluid .ui-spinner .ui-spinner-button .ui-icon {
                 left: 6px;
             }
-           
+
             /** AutoComplete **/
             .ui-fluid .ui-autocomplete,
             .ui-fluid .ui-autocomplete-input {
                 width: 100%;
             }
             
+            /** InputMask **/
+            .ui-fluid .ui-inputmask {
+                width: 100%;
+            }
+
             /** Button **/
             .ui-fluid .ui-button {
                 width: 100%;
             }
 
+            /** ButtonSet **/
+            .ui-fluid .ui-buttonset {
+                width: 100%;
+            }
+            
+            .ui-fluid .ui-buttonset.ui-buttonset-1 .ui-button {width: 100%;}
+            .ui-fluid .ui-buttonset.ui-buttonset-2 .ui-button {width: 50%;}
+            .ui-fluid .ui-buttonset.ui-buttonset-3 .ui-button {width: 33%;}
+            .ui-fluid .ui-buttonset.ui-buttonset-4 .ui-button {width: 25%;}
+            .ui-fluid .ui-buttonset.ui-buttonset-5 .ui-button {width: 20%;}
+            .ui-fluid .ui-buttonset.ui-buttonset-6 .ui-button {width: 16%;}
+            
+            @media (max-width: 35em) {
+               .ui-fluid .ui-buttonset.ui-buttonset-1 .ui-button,
+               .ui-fluid .ui-buttonset.ui-buttonset-2 .ui-button,
+               .ui-fluid .ui-buttonset.ui-buttonset-3 .ui-button,
+               .ui-fluid .ui-buttonset.ui-buttonset-4 .ui-button,
+               .ui-fluid .ui-buttonset.ui-buttonset-5 .ui-button,
+               .ui-fluid .ui-buttonset.ui-buttonset-6 .ui-button {
+                    width: 100%;
+                }
+            }
+            
+            /** Demo **/
             .ui-grid-row .ui-grid-col-2,
             .ui-grid-row .ui-grid-col-10 {
                 padding: 0.5em 0;
+            }
+            
+            .ui-panelgrid-transparent .ui-panelgrid-content.ui-widget-content {
+                background: none;
+                border: 0 none;
             }
         </style>
     </ui:define>
@@ -75,67 +114,100 @@
 
     <ui:define name="implementation">
 
-        <div class="ui-grid ui-grid-responsive ui-fluid">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    <p:outputLabel for="input" value="Input"/>
-                </div>
-                <div class="ui-grid-col-10">
-                    <p:inputText id="input"/>
-                </div>
-            </div>
+        <div class="ui-fluid">
+            <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-transparent">
+                <p:outputLabel for="input" value="Input"/>
+                <p:inputText id="input"/>
 
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    <p:outputLabel for="area" value="Textarea"/>
-                </div>
-                <div class="ui-grid-col-10">
-                    <p:inputTextarea id="area"/>
-                </div>
-            </div>
+                <p:outputLabel for="area" value="Textarea"/>
+                <p:inputTextarea id="area"/>
 
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    <p:outputLabel for="spinner" value="Spinner"/>
-                </div>
-                <div class="ui-grid-col-10">
-                    <p:spinner id="spinner"/>
-                </div>
-            </div>
+                <p:outputLabel for="calendar" value="Calendar"/>
+                <p:calendar id="calendar"/>
+
+                <p:outputLabel for="ac" value="AutoComplete"/>
+                <p:autoComplete id="ac" completeMethod="#{autoCompleteView.completeText}" />
+
+                <p:outputLabel for="mask" value="Mask"/>
+                <p:inputMask id="mask" mask="99/99/9999"/>
+                
+                <p:outputLabel for="onemenu" value="OneMenu"/>
+                <p:selectOneMenu id="onemenu">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                </p:selectOneMenu>
+                
+                <p:outputLabel for="spinner" value="Spinner"/>
+                <p:spinner id="spinner"/>
+                
+                <p:outputLabel for="slider" value="Slider"/>
+                <p:outputPanel>
+                    <p:inputText id="slider"/>
+                    <p:slider for="slider" />
+                </p:outputPanel>
+
+                <p:outputLabel for="btn" value="Button" />
+                <p:commandButton id="btn" value="Edit" icon="fa fa-edit" type="button"/>
+
+                <p:outputLabel for="booleanBtn" value="BooleanButton" />
+                <p:selectBooleanButton id="booleanBtn" onLabel="Yes" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close"/>
+
+                <p:outputLabel for="oneBtn" value="OneButton" />
+                <p:selectOneButton id="oneBtn">
+                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                </p:selectOneButton>
+                
+                <p:outputLabel for="manyBtn" value="ManyButton"/>
+                <p:selectOneButton id="manyBtn">
+                    <f:selectItem itemLabel="Sentinel" itemValue="Sentinel" />
+                    <f:selectItem itemLabel="Spark" itemValue="Spark" />
+                    <f:selectItem itemLabel="Ronin" itemValue="Ronin" />
+                    <f:selectItem itemLabel="Rio" itemValue="Rio" />
+                    <f:selectItem itemLabel="Primus" itemValue="Primus" />
+                </p:selectOneButton>
+            </p:panelGrid> 
             
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    <p:outputLabel for="ac" value="AutoComplete"/>
-                </div>
-                <div class="ui-grid-col-10">
-                    <p:autoComplete id="ac" completeMethod="#{autoCompleteView.completeText}" />
-                </div>
-            </div>
+            <p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" style="margin-top:20px">
+                <f:facet name="header">
+                    DataTable
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{car.id}" />
+                </p:column>
 
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    <p:outputLabel for="onemenu" value="OneMenu"/>
-                </div>
-                <div class="ui-grid-col-10">
-                    <p:selectOneMenu id="onemenu">
-                        <f:selectItem itemLabel="Select One" itemValue="" />
-                        <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-                        <f:selectItem itemLabel="PS4" itemValue="PS4" />
-                        <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-                    </p:selectOneMenu>
-                </div>
-            </div>
+                <p:column headerText="Year">
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+
+                <p:column headerText="Brand">
+                    <h:outputText value="#{car.brand}" />
+                </p:column>
+
+                <p:column headerText="Color">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+            </p:dataTable>
             
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    <p:outputLabel for="btn" value="Button"/>
-                </div>
-                <div class="ui-grid-col-10">
-                    <p:commandButton id="btn" value="Edit" icon="fa fa-edit" type="button"/>
-                </div>
-            </div>
+            <p:dataGrid var="car" value="#{dataGridView.cars}" columns="3" layout="grid"
+                rows="12" paginator="true" style="margin-top:20px">
+                
+                <f:facet name="header">
+                    DataGrid
+                </f:facet>
+
+                <p:panel header="#{car.id}" style="text-align:center">
+                    <h:panelGrid columns="1" style="width:100%">
+                        <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
+
+                        <h:outputText value="#{car.brand} - #{car.year}" />
+                    </h:panelGrid>
+                </p:panel>
+
+            </p:dataGrid>
         </div>
-
 
     </ui:define>
 
