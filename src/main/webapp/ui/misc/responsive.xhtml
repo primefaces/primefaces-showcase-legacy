@@ -1,0 +1,155 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-fluid * {
+                box-sizing: border-box;
+                -webkit-box-sizing:border-box;
+                -moz-box-sizing: border-box;
+            }
+            
+            /** InputText **/
+            .ui-fluid .ui-inputtext {
+                width: 100%;
+            }
+            
+            /** InputTextarea **/
+            .ui-fluid .ui-inputtextarea {
+                width: 100%;
+            }
+            
+            /** SelectOneMenu **/
+            .ui-fluid .ui-selectonemenu {
+                width: 100%;
+            }
+            .ui-selectonemenu .ui-selectonemenu-trigger {
+                width: 32px;
+                padding: 0 6px;
+            }
+
+            /** Spinner **/
+            .ui-fluid .ui-spinner {
+                width: 100%;
+            }
+            .ui-fluid .ui-spinner .ui-spinner-input {
+
+                width: 100%;
+            }
+            .ui-fluid .ui-spinner .ui-spinner-button {
+                width: auto;
+            }
+            .ui-fluid .ui-spinner .ui-spinner-button .ui-icon {
+                left: 6px;
+            }
+           
+            /** AutoComplete **/
+            .ui-fluid .ui-autocomplete,
+            .ui-fluid .ui-autocomplete-input {
+                width: 100%;
+            }
+            
+            /** Button **/
+            .ui-fluid .ui-button {
+                width: 100%;
+            }
+
+            .ui-grid-row .ui-grid-col-2,
+            .ui-grid-row .ui-grid-col-10 {
+                padding: 0.5em 0;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="title">
+        Responsive Design
+    </ui:define>
+
+    <ui:define name="description">
+        In combination with Grid CSS, ui-fluid style class provides fluid width for efficient use of space in screen.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <div class="ui-grid ui-grid-responsive ui-fluid">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <p:outputLabel for="input" value="Input"/>
+                </div>
+                <div class="ui-grid-col-10">
+                    <p:inputText id="input"/>
+                </div>
+            </div>
+
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <p:outputLabel for="area" value="Textarea"/>
+                </div>
+                <div class="ui-grid-col-10">
+                    <p:inputTextarea id="area"/>
+                </div>
+            </div>
+
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <p:outputLabel for="spinner" value="Spinner"/>
+                </div>
+                <div class="ui-grid-col-10">
+                    <p:spinner id="spinner"/>
+                </div>
+            </div>
+            
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <p:outputLabel for="ac" value="AutoComplete"/>
+                </div>
+                <div class="ui-grid-col-10">
+                    <p:autoComplete id="ac" completeMethod="#{autoCompleteView.completeText}" />
+                </div>
+            </div>
+
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <p:outputLabel for="onemenu" value="OneMenu"/>
+                </div>
+                <div class="ui-grid-col-10">
+                    <p:selectOneMenu id="onemenu">
+                        <f:selectItem itemLabel="Select One" itemValue="" />
+                        <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                        <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                        <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                    </p:selectOneMenu>
+                </div>
+            </div>
+            
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <p:outputLabel for="btn" value="Button"/>
+                </div>
+                <div class="ui-grid-col-10">
+                    <p:commandButton id="btn" value="Edit" icon="fa fa-edit" type="button"/>
+                </div>
+            </div>
+        </div>
+
+
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="inputText.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:inputText /&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-272" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
