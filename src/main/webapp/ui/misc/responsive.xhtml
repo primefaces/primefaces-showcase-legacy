@@ -154,13 +154,6 @@
             .ui-grid-row .ui-grid-col-10 {
                 padding: 0.5em 0;
             }
-
-            .ui-panelgrid-transparent .ui-panelgrid-content.ui-widget-content, 
-            .ui-panelgrid-transparent .ui-panelgrid-header.ui-widget-header,
-            .ui-panelgrid-transparent .ui-panelgrid-footer.ui-widget-header {
-                background: none;
-                border: 0 none;
-            }
         </style>
     </ui:define>
 
@@ -176,7 +169,7 @@
     <ui:define name="implementation">
 
         <div class="ui-fluid">
-            <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-transparent">
+            <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
                 <p:outputLabel for="input" value="Input"/>
                 <p:inputText id="input"/>
 
@@ -263,7 +256,7 @@
             </p:panelGrid>
 
             <p:dialog header="Login" widgetVar="dlg" resizable="false" responsive="true">
-                <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-transparent" columnClasses="ui-grid-col-4,ui-grid-col-8">
+                <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-4,ui-grid-col-8">
                     <h:outputLabel for="username" value="Username:" />
                     <p:inputText id="username" />
 
@@ -336,7 +329,7 @@
 
             <p:accordionPanel style="margin-top:20px">
                 <p:tab title="Godfather Part I">
-                    <p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-transparent">
+                    <p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
                         <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
                         <h:outputText
                             value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
@@ -346,7 +339,7 @@
                     </p:panelGrid>
                 </p:tab>
                 <p:tab title="Godfather Part II">
-                    <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-transparent">
+                    <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
                         <p:graphicImage name="demo/images/godfather/godfather2.jpg" />
                         <h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. 
                                       In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, 
@@ -354,7 +347,7 @@
                     </p:panelGrid>
                 </p:tab>
                 <p:tab title="Godfather Part III">
-                    <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-transparent">
+                    <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
                         <p:graphicImage name="demo/images/godfather/godfather3.jpg" />
                         <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. 
                                       Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />
@@ -402,7 +395,7 @@
 
 
             <p:panel header="Panel" footer="Movie Details" style="margin-top:20px">
-                <p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-transparent">
+                <p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
                     <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
                     <h:outputText
                         value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
