@@ -12,6 +12,10 @@
             .ui-grid-row .ui-grid-col-10 {
                 padding: 0.5em 0;
             }
+            
+            .ui-outputlabel {
+                font-weight: bold;
+            }
         </style>
     </ui:define>
 
@@ -65,6 +69,16 @@
                     <p:inputText id="slider"/>
                     <p:slider for="slider" />
                 </p:outputPanel>
+                
+                <p:outputLabel for="radio" value="Radio"/>
+                <p:selectOneRadio id="radio" value="#{radioView.city2}" layout="responsive" columns="3">
+                    <f:selectItems value="#{radioView.cities}" var="c" itemLabel="#{city}" itemValue="#{city}"/>
+                </p:selectOneRadio>
+                
+                <p:outputLabel for="chkbox" value="Checkbox"/>
+                <p:selectManyCheckbox id="chkbox" value="#{checkboxView.selectedCities2}" layout="responsive" columns="3">
+                    <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}" />
+                </p:selectManyCheckbox>
 
                 <p:outputLabel for="btn" value="Button" />
                 <p:commandButton id="btn" value="Edit" icon="fa fa-edit" type="button"/>
