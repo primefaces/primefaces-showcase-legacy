@@ -206,7 +206,7 @@
                 <p:commandButton id="dialog" value="Show" icon="ui-icon-extlink" type="button" onclick="PF('dlg').show()" />
             </p:panelGrid>
             
-            <p:dialog header="Login" widgetVar="dlg" resizable="false" >
+            <p:dialog header="Login" widgetVar="dlg" resizable="false" responsive="true">
                 <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-transparent" columnClasses="ui-grid-col-4,ui-grid-col-8">
                     <h:outputLabel for="username" value="Username:" />
                     <p:inputText id="username" />
@@ -218,7 +218,9 @@
                         <p:commandButton value="Login" type="button" onclick="PF('dlg').hide()"/>
                     </f:facet>  
                 </p:panelGrid>
-            </p:dialog>   
+            </p:dialog>
+            
+            <p:chart type="line" model="#{chartView.lineModel1}" style="height:300px;margin:20px 0" responsive="true"/>
 
             <p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" style="margin-top:20px">
                 <f:facet name="header">
