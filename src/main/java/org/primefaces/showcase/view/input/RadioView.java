@@ -24,7 +24,8 @@ import javax.faces.bean.ManagedBean;
 public class RadioView {
     
     private String console;    
-    private String city;  
+    private String city; 
+    private String city2; 
     private List<String> cities;  
     private String color;
     
@@ -58,6 +59,14 @@ public class RadioView {
         this.city = city;
     }
 
+    public String getCity2() {
+        return city2;
+    }
+
+    public void setCity2(String city2) {
+        this.city2 = city2;
+    }
+    
     public String getColor() {
         return color;
     }

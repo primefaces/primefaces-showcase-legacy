@@ -10,6 +10,9 @@
             .value {
                 font-weight: bold;
             }
+
+            
+
         </style>
 	</ui:define>
     
@@ -41,7 +44,12 @@
                     <f:selectItems value="#{radioView.cities}" var="c" itemLabel="#{city}" itemValue="#{city}"/>
                 </p:selectOneRadio>
             </h:panelGrid>
-
+            
+            <h3>Responsive - Since v5.2.4</h3>
+            <p:selectOneRadio id="city2" value="#{radioView.city2}" layout="responsive" columns="3">
+                <f:selectItems value="#{radioView.cities}" var="c" itemLabel="#{city}" itemValue="#{city}"/>
+            </p:selectOneRadio>
+                
             <h3>Custom Layout</h3>
             <p:outputPanel id="customPanel" style="margin-bottom:10px">
                 <p:selectOneRadio id="customRadio" value="#{radioView.color}" layout="custom">
@@ -74,6 +82,9 @@
                     
                     <h:outputText value="City:" />
                     <h:outputText value="#{radioView.city}" />
+                    
+                    <h:outputText value="City 2:" />
+                    <h:outputText value="#{radioView.city2}" />
                     
                     <h:outputText value="Color:" />
                     <h:outputText value="#{radioView.color}" />
@@ -139,6 +150,9 @@
             &lt;h:outputText value="City:" /&gt;
             &lt;h:outputText value="\#{radioView.city}" /&gt;
 
+            &lt;h:outputText value="City 2:" /&gt;
+            &lt;h:outputText value="\#{radioView.city2}" /&gt;
+
             &lt;h:outputText value="Color:" /&gt;
             &lt;h:outputText value="\#{radioView.color}" /&gt;
         &lt;/p:panelGrid&gt;
@@ -160,7 +174,8 @@ import javax.faces.bean.ManagedBean;
 public class RadioView {
     
     private String console;    
-    private String city;  
+    private String city;
+    private String city2;  
     private List&lt;String&gt; cities;  
     private String color;
     
@@ -192,6 +207,14 @@ public class RadioView {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getCity2() {
+        return city2;
+    }
+
+    public void setCity2(String city2) {
+        this.city2 = city2;
     }
 
     public String getColor() {
