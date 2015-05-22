@@ -73,6 +73,21 @@
                 width: 100%;
             }
 
+            /** CheckboxMenu **/
+            .ui-fluid .ui-selectcheckboxmenu {
+                width: 100%;
+            }
+            
+            .ui-fluid .ui-selectcheckboxmenu .ui-selectcheckboxmenu-trigger .ui-icon {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            
+            .ui-fluid .ui-selectcheckboxmenu-trigger {
+                width: 32px;
+            }
+            
             /** Button **/
             .ui-fluid .ui-button {
                 width: 100%;
@@ -101,9 +116,36 @@
                 }
             }
 
+            /** SplitButton **/
+            .ui-fluid .ui-splitbutton .ui-button {
+                width: 96%;
+            }
+            .ui-fluid .ui-splitbutton .ui-button.ui-splitbutton-menubutton {
+                width: 4%;
+            }
+
+            @media (max-width: 35em) {
+                .ui-fluid .ui-splitbutton .ui-button {
+                    width: 90%;
+                }
+                .ui-fluid .ui-splitbutton .ui-button.ui-splitbutton-menubutton {
+                    width: 10%;
+                }
+            }
+
             /** Listbox **/
             .ui-selectonelistbox,
             .ui-selectmanymenu {
+                width: 100%;
+            }
+
+            /** Tree **/
+            .ui-fluid .ui-tree {
+                width: 100%;
+            }
+
+            /** Menu **/
+            .ui-fluid .ui-menu {
                 width: 100%;
             }
 
@@ -175,6 +217,19 @@
                 <p:outputLabel for="btn" value="Button" />
                 <p:commandButton id="btn" value="Edit" icon="fa fa-edit" type="button"/>
 
+                <p:outputLabel for="spbtn" value="SplitButton" />
+                <p:splitButton id="spbtn" value="Save" type="button" icon="ui-icon-disk">
+                    <p:menuitem value="Update" url="#" icon="ui-icon-arrowrefresh-1-w" />
+                    <p:menuitem value="Delete" url="#" icon="ui-icon-close" />
+                    <p:separator />
+                    <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink" />
+                </p:splitButton>
+
+                <p:outputLabel for="chkmenu" value="CheckboxMenu" />
+                <p:selectCheckboxMenu id="chkmenu" label="Cities">
+                    <f:selectItems value="#{checkboxView.cities}" />
+                </p:selectCheckboxMenu>
+
                 <p:outputLabel for="booleanBtn" value="BooleanButton" />
                 <p:selectBooleanButton id="booleanBtn" onLabel="Yes" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close"/>
 
@@ -201,11 +256,11 @@
                     <f:selectItem itemLabel="Rio" itemValue="Rio" />
                     <f:selectItem itemLabel="Primus" itemValue="Primus" />
                 </p:selectOneListbox>
-                
+
                 <p:outputLabel for="dialog" value="Dialog" />
                 <p:commandButton id="dialog" value="Show" icon="ui-icon-extlink" type="button" onclick="PF('dlg').show()" />
             </p:panelGrid>
-            
+
             <p:dialog header="Login" widgetVar="dlg" resizable="false" responsive="true">
                 <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-transparent" columnClasses="ui-grid-col-4,ui-grid-col-8">
                     <h:outputLabel for="username" value="Username:" />
@@ -219,7 +274,7 @@
                     </f:facet>  
                 </p:panelGrid>
             </p:dialog>
-            
+
             <p:chart type="line" model="#{chartView.lineModel1}" style="height:300px;margin:20px 0" responsive="true"/>
 
             <p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" style="margin-top:20px">
@@ -260,6 +315,24 @@
 
             </p:dataGrid>
 
+            <p:tree value="#{treeIconView.root}" var="doc" style="margin-top:20px">
+                <p:treeNode expandedIcon="ui-icon-folder-open" collapsedIcon="ui-icon-folder-collapsed">
+                    <h:outputText value="#{doc.name}"/>
+                </p:treeNode>
+
+                <p:treeNode type="document" icon="ui-icon-document">
+                    <h:outputText value="#{doc.name}" />
+                </p:treeNode>
+
+                <p:treeNode type="picture" icon="ui-icon-image">
+                    <h:outputText value="#{doc.name}" />
+                </p:treeNode>
+
+                <p:treeNode type="mp3" icon="ui-icon-video">
+                    <h:outputText value="#{doc.name}" />
+                </p:treeNode>
+            </p:tree>
+
             <p:accordionPanel style="margin-top:20px">
                 <p:tab title="Godfather Part I">
                     <p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-transparent">
@@ -287,6 +360,45 @@
                     </p:panelGrid>
                 </p:tab>
             </p:accordionPanel>
+
+            <p:panelGrid layout="grid" columns="2" style="margin-top:20px">
+                <p:menu toggleable="true">
+                    <p:submenu label="File">
+                        <p:menuitem value="Save" url="#" icon="ui-icon-disk" />
+                        <p:menuitem value="Update" url="#" icon="ui-icon-arrowrefresh-1-w"/>
+                    </p:submenu>
+                    <p:submenu label="Edit">
+                        <p:menuitem value="Delete" url="#" icon="ui-icon-close"/>
+                    </p:submenu>
+                    <p:submenu label="View">
+                        <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
+                        <p:menuitem value="Internal" outcome="/mobile/index" icon="ui-icon-star"/>
+                    </p:submenu>
+                </p:menu>
+
+                <p:panelMenu>
+                    <p:submenu label="Ajax Menuitems">
+                        <p:menuitem value="Save" url="#" icon="ui-icon-disk" />
+                        <p:menuitem value="Update" url="#" icon="ui-icon-arrowrefresh-1-w"/>
+                    </p:submenu>
+                    <p:submenu label="Non-Ajax Menuitem">
+                        <p:menuitem value="Delete" url="#" icon="ui-icon-close"/>
+                    </p:submenu>
+                    <p:separator />
+                    <p:submenu label="Navigations" >
+                        <p:submenu label="Links" icon="ui-icon-extlink">
+                            <p:submenu label="PrimeFaces" icon="ui-icon-heart">
+                                <p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" />
+                                <p:menuitem value="Docs" url="http://www.primefaces.org/documentation" icon="ui-icon-document" />
+                                <p:menuitem value="Download" url="http://www.primefaces.org/downloads" icon="ui-icon-arrowthick-1-s" />
+                                <p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
+                            </p:submenu>
+                        </p:submenu>
+                        <p:menuitem value="Mobile" outcome="/mobile/index" icon="ui-icon-signal" />
+                    </p:submenu>
+                </p:panelMenu>
+            </p:panelGrid>
+
 
             <p:panel header="Panel" footer="Movie Details" style="margin-top:20px">
                 <p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-transparent">
