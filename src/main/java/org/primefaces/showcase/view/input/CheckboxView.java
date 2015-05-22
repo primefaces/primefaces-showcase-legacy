@@ -26,6 +26,7 @@ public class CheckboxView {
     private String[] selectedConsoles;  
     private String[] selectedConsoles2;
     private String[] selectedCities;
+    private String[] selectedCities2;
     private List<String> cities;
     
     @PostConstruct
@@ -58,6 +59,14 @@ public class CheckboxView {
         this.selectedCities = selectedCities;
     }
 
+    public String[] getSelectedCities2() {
+        return selectedCities2;
+    }
+
+    public void setSelectedCities2(String[] selectedCities2) {
+        this.selectedCities2 = selectedCities2;
+    }
+    
     public String[] getSelectedConsoles2() {
         return selectedConsoles2;
     }

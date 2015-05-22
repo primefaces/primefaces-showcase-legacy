@@ -44,6 +44,11 @@
             <p:selectManyCheckbox id="grid" value="#{checkboxView.selectedCities}" layout="grid" columns="3">
                 <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}" />
             </p:selectManyCheckbox>
+            
+            <h3>Responsive (since v5.2.4)</h3>
+            <p:selectManyCheckbox id="grid2" value="#{checkboxView.selectedCities2}" layout="responsive" columns="3">
+                <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}" />
+            </p:selectManyCheckbox>
 
             <h3>Custom Layout (since v5.2.3)</h3>
             <p:outputPanel id="customPanel" style="margin-bottom:20px">
@@ -56,24 +61,16 @@
                 <div class="ui-grid ui-grid-responsive">
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-4">
+                            <h:outputLabel for="opt1" value="Xbox One" style="display:block"/>
                             <p:checkbox id="opt1" for="custom" itemIndex="0" />
                         </div>
                         <div class="ui-grid-col-4">
+                            <h:outputLabel for="opt2" value="PS4" style="display:block"/>
                             <p:checkbox id="opt2" for="custom" itemIndex="1" />
                         </div>
                         <div class="ui-grid-col-4">
+                            <h:outputLabel for="opt3" value="Wii U" style="display:block"/>
                             <p:checkbox id="opt3" for="custom" itemIndex="2" />
-                        </div>
-                    </div>
-                    <div class="ui-grid-row">
-                        <div class="ui-grid-col-4">
-                            <h:outputLabel for="opt1" value="Xbox One" />
-                        </div>
-                        <div class="ui-grid-col-4">
-                            <h:outputLabel for="opt2" value="PS4" />
-                        </div>
-                        <div class="ui-grid-col-4">
-                            <h:outputLabel for="opt3" value="Wii U" />
                         </div>
                     </div>
                 </div>
@@ -92,6 +89,12 @@
                         #{console}
                     </p:dataList>
                     <p:dataList value="#{checkboxView.selectedCities}" var="city">
+                        <f:facet name="header">
+                            Grid
+                        </f:facet>
+                        #{city}
+                    </p:dataList>
+                    <p:dataList value="#{checkboxView.selectedCities2}" var="city">
                         <f:facet name="header">
                             Grid
                         </f:facet>
@@ -126,6 +129,11 @@
         &lt;f:selectItems value="\#{checkboxView.cities}" var="city" itemLabel="\#{city}" itemValue="\#{city}" /&gt;
     &lt;/p:selectManyCheckbox&gt;
 
+    &lt;h3&gt;Responsive (since v5.2.4)&lt;/h3&gt;
+    &lt;p:selectManyCheckbox id="grid2" value="\#{checkboxView.selectedCities2}" layout="responsive" columns="3"&gt;
+        &lt;f:selectItems value="\#{checkboxView.cities}" var="city" itemLabel="\#{city}" itemValue="\#{city}" /&gt;
+    &lt;/p:selectManyCheckbox&gt;
+
     &lt;h3&gt;Custom Layout (since v5.2.3)&lt;/h3&gt;
     &lt;p:outputPanel id="customPanel" style="margin-bottom:20px"&gt;
         &lt;p:selectManyCheckbox id="custom" value="\#{checkboxView.selectedConsoles2}" layout="custom"&gt;
@@ -137,24 +145,16 @@
         &lt;div class="ui-grid ui-grid-responsive"&gt;
             &lt;div class="ui-grid-row"&gt;
                 &lt;div class="ui-grid-col-4"&gt;
+                    &lt;h:outputLabel for="opt1" value="Xbox One" style="display:block"/&gt;
                     &lt;p:checkbox id="opt1" for="custom" itemIndex="0" /&gt;
                 &lt;/div&gt;
                 &lt;div class="ui-grid-col-4"&gt;
+                    &lt;h:outputLabel for="opt2" value="PS4" style="display:block"/&gt;
                     &lt;p:checkbox id="opt2" for="custom" itemIndex="1" /&gt;
                 &lt;/div&gt;
                 &lt;div class="ui-grid-col-4"&gt;
+                    &lt;h:outputLabel for="opt3" value="Wii U" style="display:block"/&gt;
                     &lt;p:checkbox id="opt3" for="custom" itemIndex="2" /&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-4"&gt;
-                    &lt;h:outputLabel for="opt1" value="Xbox One" /&gt;
-                &lt;/div&gt;
-                &lt;div class="ui-grid-col-4"&gt;
-                    &lt;h:outputLabel for="opt2" value="PS4" /&gt;
-                &lt;/div&gt;
-                &lt;div class="ui-grid-col-4"&gt;
-                    &lt;h:outputLabel for="opt3" value="Wii U" /&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
@@ -173,6 +173,12 @@
                 \#{console}
             &lt;/p:dataList&gt;
             &lt;p:dataList value="\#{checkboxView.selectedCities}" var="city"&gt;
+                &lt;f:facet name="header"&gt;
+                    Grid
+                &lt;/f:facet&gt;
+                \#{city}
+            &lt;/p:dataList&gt;
+            &lt;p:dataList value="\#{checkboxView.selectedCities2}" var="city"&gt;
                 &lt;f:facet name="header"&gt;
                     Grid
                 &lt;/f:facet&gt;
@@ -205,6 +211,7 @@ public class CheckboxView {
     private String[] selectedConsoles;  
     private String[] selectedConsoles2;
     private String[] selectedCities;
+    private String[] selectedCities2;
     private List&lt;String&gt; cities;
     
     @PostConstruct
@@ -235,6 +242,14 @@ public class CheckboxView {
 
     public void setSelectedCities(String[] selectedCities) {
         this.selectedCities = selectedCities;
+    }
+
+    public String[] getSelectedCities2() {
+        return selectedCities;
+    }
+
+    public void setSelectedCities(String[] selectedCities2) {
+        this.selectedCities2 = selectedCities2;
     }
 
     public String[] getSelectedConsoles2() {
