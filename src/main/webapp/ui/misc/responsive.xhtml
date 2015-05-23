@@ -303,9 +303,267 @@
 
     <ui:define name="source">
         <p:tabView>
-            <p:tab title="inputText.xhtml">
+            <p:tab title="responsive.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;p:inputText /&gt;
+&lt;div class="ui-fluid"&gt;
+    &lt;p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank"&gt;
+        &lt;p:outputLabel for="input" value="Input"/&gt;
+        &lt;p:inputText id="input"/&gt;
+
+        &lt;p:outputLabel for="area" value="Textarea"/&gt;
+        &lt;p:inputTextarea id="area"/&gt;
+
+        &lt;p:outputLabel for="calendar" value="Calendar"/&gt;
+        &lt;p:calendar id="calendar"/&gt;
+
+        &lt;p:outputLabel for="ac" value="AutoComplete"/&gt;
+        &lt;p:autoComplete id="ac" completeMethod="\#{autoCompleteView.completeText}" /&gt;
+
+        &lt;p:outputLabel for="mask" value="Mask"/&gt;
+        &lt;p:inputMask id="mask" mask="99/99/9999"/&gt;
+
+        &lt;p:outputLabel for="pwd" value="Password"/&gt;
+        &lt;p:password id="pwd" /&gt;
+
+        &lt;p:outputLabel for="keyboard" value="Keyboard"/&gt;
+        &lt;p:keyboard id="keyboard" /&gt;
+
+        &lt;p:outputLabel for="onemenu" value="OneMenu"/&gt;
+        &lt;p:selectOneMenu id="onemenu"&gt;
+            &lt;f:selectItem itemLabel="Select One" itemValue="" /&gt;
+            &lt;f:selectItem itemLabel="Xbox One" itemValue="Xbox One" /&gt;
+            &lt;f:selectItem itemLabel="PS4" itemValue="PS4" /&gt;
+            &lt;f:selectItem itemLabel="Wii U" itemValue="Wii U" /&gt;
+        &lt;/p:selectOneMenu&gt;
+
+        &lt;p:outputLabel for="spinner" value="Spinner"/&gt;
+        &lt;p:spinner id="spinner"/&gt;
+
+        &lt;p:outputLabel for="slider" value="Slider"/&gt;
+        &lt;p:outputPanel&gt;
+            &lt;p:inputText id="slider"/&gt;
+            &lt;p:slider for="slider" /&gt;
+        &lt;/p:outputPanel&gt;
+
+        &lt;p:outputLabel for="radio" value="Radio"/&gt;
+        &lt;p:selectOneRadio id="radio" value="\#{radioView.city2}" layout="responsive" columns="3"&gt;
+            &lt;f:selectItems value="\#{radioView.cities}" var="c" itemLabel="\#{city}" itemValue="\#{city}"/&gt;
+        &lt;/p:selectOneRadio&gt;
+
+        &lt;p:outputLabel for="chkbox" value="Checkbox"/&gt;
+        &lt;p:selectManyCheckbox id="chkbox" value="\#{checkboxView.selectedCities2}" layout="responsive" columns="3"&gt;
+            &lt;f:selectItems value="\#{checkboxView.cities}" var="city" itemLabel="\#{city}" itemValue="\#{city}" /&gt;
+        &lt;/p:selectManyCheckbox&gt;
+
+        &lt;p:outputLabel for="btn" value="Button" /&gt;
+        &lt;p:commandButton id="btn" value="Edit" icon="fa fa-edit" type="button"/&gt;
+
+        &lt;p:outputLabel for="spbtn" value="SplitButton" /&gt;
+        &lt;p:splitButton id="spbtn" value="Save" type="button" icon="ui-icon-disk"&gt;
+            &lt;p:menuitem value="Update" url="\#" icon="ui-icon-arrowrefresh-1-w" /&gt;
+            &lt;p:menuitem value="Delete" url="\#" icon="ui-icon-close" /&gt;
+            &lt;p:separator /&gt;
+            &lt;p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink" /&gt;
+        &lt;/p:splitButton&gt;
+
+        &lt;p:outputLabel for="chkmenu" value="CheckboxMenu" /&gt;
+        &lt;p:selectCheckboxMenu id="chkmenu" label="Cities"&gt;
+            &lt;f:selectItems value="\#{checkboxView.cities}" /&gt;
+        &lt;/p:selectCheckboxMenu&gt;
+
+        &lt;p:outputLabel for="booleanBtn" value="BooleanButton" /&gt;
+        &lt;p:selectBooleanButton id="booleanBtn" onLabel="Yes" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close"/&gt;
+
+        &lt;p:outputLabel for="oneBtn" value="OneButton" /&gt;
+        &lt;p:selectOneButton id="oneBtn"&gt;
+            &lt;f:selectItem itemLabel="Xbox One" itemValue="Xbox One" /&gt;
+            &lt;f:selectItem itemLabel="PS4" itemValue="PS4" /&gt;
+        &lt;/p:selectOneButton&gt;
+
+        &lt;p:outputLabel for="manyBtn" value="ManyButton"/&gt;
+        &lt;p:selectOneButton id="manyBtn"&gt;
+            &lt;f:selectItem itemLabel="Sentinel" itemValue="Sentinel" /&gt;
+            &lt;f:selectItem itemLabel="Spark" itemValue="Spark" /&gt;
+            &lt;f:selectItem itemLabel="Ronin" itemValue="Ronin" /&gt;
+            &lt;f:selectItem itemLabel="Rio" itemValue="Rio" /&gt;
+            &lt;f:selectItem itemLabel="Primus" itemValue="Primus" /&gt;
+        &lt;/p:selectOneButton&gt;
+
+        &lt;p:outputLabel for="listbox" value="Listbox"/&gt;
+        &lt;p:selectOneListbox id="listbox"&gt;
+            &lt;f:selectItem itemLabel="Sentinel" itemValue="Sentinel" /&gt;
+            &lt;f:selectItem itemLabel="Spark" itemValue="Spark" /&gt;
+            &lt;f:selectItem itemLabel="Ronin" itemValue="Ronin" /&gt;
+            &lt;f:selectItem itemLabel="Rio" itemValue="Rio" /&gt;
+            &lt;f:selectItem itemLabel="Primus" itemValue="Primus" /&gt;
+        &lt;/p:selectOneListbox&gt;
+
+        &lt;p:outputLabel for="dialog" value="Dialog" /&gt;
+        &lt;p:commandButton id="dialog" value="Show" icon="ui-icon-extlink" type="button" onclick="PF('dlg').show()" /&gt;
+    &lt;/p:panelGrid&gt;
+
+    &lt;p:dialog header="Login" widgetVar="dlg" resizable="false" responsive="true"&gt;
+        &lt;p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-4,ui-grid-col-8"&gt;
+            &lt;h:outputLabel for="username" value="Username:" /&gt;
+            &lt;p:inputText id="username" /&gt;
+
+            &lt;h:outputLabel for="password" value="Password:" /&gt;
+            &lt;p:password id="password" /&gt;
+
+            &lt;f:facet name="footer"&gt;
+                &lt;p:commandButton value="Login" type="button" onclick="PF('dlg').hide()"/&gt;
+            &lt;/f:facet&gt;  
+        &lt;/p:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+    &lt;p:chart type="line" model="\#{chartView.lineModel1}" style="height:300px;margin:20px 0" responsive="true"/&gt;
+
+    &lt;p:dataTable var="car" value="\#{dtBasicView.cars}" reflow="true" style="margin-top:20px"&gt;
+        &lt;f:facet name="header"&gt;
+            DataTable
+        &lt;/f:facet&gt;
+        &lt;p:column headerText="Id"&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Year"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Brand"&gt;
+            &lt;h:outputText value="\#{car.brand}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:dataTable&gt;
+
+    &lt;p:dataGrid var="car" value="\#{dataGridView.cars}" columns="3" layout="grid"
+                rows="12" paginator="true" style="margin-top:20px"&gt;
+
+        &lt;f:facet name="header"&gt;
+            DataGrid
+        &lt;/f:facet&gt;
+
+        &lt;p:panel header="\#{car.id}" style="text-align:center"&gt;
+            &lt;h:panelGrid columns="1" style="width:100%"&gt;
+                &lt;p:graphicImage name="demo/images/car/\#{car.brand}.gif"/&gt; 
+
+                &lt;h:outputText value="\#{car.brand} - \#{car.year}" /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:panel&gt;
+
+    &lt;/p:dataGrid&gt;
+
+    &lt;p:tree value="\#{treeIconView.root}" var="doc" style="margin-top:20px"&gt;
+        &lt;p:treeNode expandedIcon="ui-icon-folder-open" collapsedIcon="ui-icon-folder-collapsed"&gt;
+            &lt;h:outputText value="\#{doc.name}"/&gt;
+        &lt;/p:treeNode&gt;
+
+        &lt;p:treeNode type="document" icon="ui-icon-document"&gt;
+            &lt;h:outputText value="\#{doc.name}" /&gt;
+        &lt;/p:treeNode&gt;
+
+        &lt;p:treeNode type="picture" icon="ui-icon-image"&gt;
+            &lt;h:outputText value="\#{doc.name}" /&gt;
+        &lt;/p:treeNode&gt;
+
+        &lt;p:treeNode type="mp3" icon="ui-icon-video"&gt;
+            &lt;h:outputText value="\#{doc.name}" /&gt;
+        &lt;/p:treeNode&gt;
+    &lt;/p:tree&gt;
+
+    &lt;p:orderList value="\#{orderListView.themes}" var="theme" itemValue="\#{theme}" converter="theme" controlsLocation="left" responsive="true" style="margin-top:20px"&gt;                
+        &lt;f:facet name="caption"&gt;Available&lt;/f:facet&gt;
+
+        &lt;p:column style="width:25%"&gt;
+            &lt;h:outputText styleClass="ui-theme ui-theme-\#{theme.name}" /&gt;
+        &lt;/p:column&gt;
+
+         &lt;p:column style="width:75%;"&gt;
+            &lt;h:outputText value="\#{theme.displayName}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:orderList&gt;
+
+    &lt;p:accordionPanel style="margin-top:20px"&gt;
+        &lt;p:tab title="Godfather Part I"&gt;
+            &lt;p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather1.jpg" /&gt;
+                &lt;h:outputText
+                    value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+                    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, 
+                    but given to ruthless violence whenever anything stands against the good of the family." /&gt;
+            &lt;/p:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part II"&gt;
+            &lt;p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather2.jpg" /&gt;
+                &lt;h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. 
+                              In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, 
+                              killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows." /&gt;
+            &lt;/p:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part III"&gt;
+            &lt;p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather3.jpg" /&gt;
+                &lt;h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. 
+                              Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." /&gt;
+            &lt;/p:panelGrid&gt;
+        &lt;/p:tab&gt;
+    &lt;/p:accordionPanel&gt;
+
+    &lt;p:panelGrid layout="grid" columns="2" style="margin-top:20px"&gt;
+        &lt;p:menu toggleable="true"&gt;
+            &lt;p:submenu label="File"&gt;
+                &lt;p:menuitem value="Save" url="\#" icon="ui-icon-disk" /&gt;
+                &lt;p:menuitem value="Update" url="\#" icon="ui-icon-arrowrefresh-1-w"/&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:submenu label="Edit"&gt;
+                &lt;p:menuitem value="Delete" url="\#" icon="ui-icon-close"/&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:submenu label="View"&gt;
+                &lt;p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/&gt;
+                &lt;p:menuitem value="Internal" outcome="/mobile/index" icon="ui-icon-star"/&gt;
+            &lt;/p:submenu&gt;
+        &lt;/p:menu&gt;
+
+        &lt;p:panelMenu&gt;
+            &lt;p:submenu label="Ajax Menuitems"&gt;
+                &lt;p:menuitem value="Save" url="\#" icon="ui-icon-disk" /&gt;
+                &lt;p:menuitem value="Update" url="\#" icon="ui-icon-arrowrefresh-1-w"/&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:submenu label="Non-Ajax Menuitem"&gt;
+                &lt;p:menuitem value="Delete" url="\#" icon="ui-icon-close"/&gt;
+            &lt;/p:submenu&gt;
+            &lt;p:separator /&gt;
+            &lt;p:submenu label="Navigations" &gt;
+                &lt;p:submenu label="Links" icon="ui-icon-extlink"&gt;
+                    &lt;p:submenu label="PrimeFaces" icon="ui-icon-heart"&gt;
+                        &lt;p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" /&gt;
+                        &lt;p:menuitem value="Docs" url="http://www.primefaces.org/documentation" icon="ui-icon-document" /&gt;
+                        &lt;p:menuitem value="Download" url="http://www.primefaces.org/downloads" icon="ui-icon-arrowthick-1-s" /&gt;
+                        &lt;p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" /&gt;
+                    &lt;/p:submenu&gt;
+                &lt;/p:submenu&gt;
+                &lt;p:menuitem value="Mobile" outcome="/mobile/index" icon="ui-icon-signal" /&gt;
+            &lt;/p:submenu&gt;
+        &lt;/p:panelMenu&gt;
+    &lt;/p:panelGrid&gt;
+
+
+    &lt;p:panel header="Panel" footer="Movie Details" style="margin-top:20px"&gt;
+        &lt;p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank"&gt;
+            &lt;p:graphicImage name="demo/images/godfather/godfather1.jpg" /&gt;
+            &lt;h:outputText
+                value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+                Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, 
+                but given to ruthless violence whenever anything stands against the good of the family." /&gt;
+        &lt;/p:panelGrid&gt;
+    &lt;/p:panel&gt;
+&lt;/div&gt;
                 </pre>
             </p:tab>
 
