@@ -16,6 +16,15 @@
             .ui-outputlabel {
                 font-weight: bold;
             }
+            
+            .ui-orderlist .ui-orderlist-list {
+                height: auto;
+            }
+            
+            .ui-orderlist .ui-grid-row .ui-grid-col-2, 
+            .ui-orderlist .ui-grid-row .ui-grid-col-10 {
+                padding: 0;
+            }
         </style>
     </ui:define>
 
@@ -198,6 +207,18 @@
                     <h:outputText value="#{doc.name}" />
                 </p:treeNode>
             </p:tree>
+            
+            <p:orderList value="#{orderListView.themes}" var="theme" itemValue="#{theme}" converter="theme" controlsLocation="left" responsive="true" style="margin-top:20px">                
+                <f:facet name="caption">Available</f:facet>
+
+                <p:column style="width:25%">
+                    <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
+                </p:column>
+
+                 <p:column style="width:75%;">
+                    <h:outputText value="#{theme.displayName}" />
+                </p:column>
+            </p:orderList>
 
             <p:accordionPanel style="margin-top:20px">
                 <p:tab title="Godfather Part I">
