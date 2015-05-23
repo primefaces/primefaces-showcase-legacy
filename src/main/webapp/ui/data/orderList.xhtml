@@ -81,7 +81,7 @@
     &lt;p:commandButton value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" /&gt;
 
     &lt;h3&gt;Pojo Support with Clip Effect, Captions, Custom Content, Reorder Controls, Events and Responsive&lt;/h3&gt;
-    &lt;p:orderList value="\#{orderListView.themes}" var="theme" itemValue="\#{theme}" converter="theme" controlsLocation="left" responsive=true&gt;
+    &lt;p:orderList value="\#{orderListView.themes}" var="theme" itemValue="\#{theme}" converter="theme" controlsLocation="left" responsive="true"&gt;
         &lt;p:ajax event="select" listener="\#{orderListView.onSelect}" update="msgs"/&gt;
         &lt;p:ajax event="unselect" listener="\#{orderListView.onUnselect}" update="msgs"/&gt;
         &lt;p:ajax event="reorder" listener="\#{orderListView.onReorder}" update="msgs"/&gt;
