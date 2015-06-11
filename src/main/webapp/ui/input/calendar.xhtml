@@ -89,7 +89,7 @@
                 <p:calendar id="datetime" value="#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
                 
                 <p:outputLabel for="time" value="Time:" />
-                <p:calendar id="time" value="#{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  />
+                <p:calendar id="time" value="#{calendarView.date11}" pattern="HH:mm" timeOnly="true"  />
             </h:panelGrid>
             
             <p:commandButton value="Submit" update="msgs" actionListener="#{calendarView.click}" icon="ui-icon-check" />
@@ -148,7 +148,7 @@
                     
                     <h:outputText value="Time:" />
                     <h:outputText value="#{calendarView.date11}">
-                        <f:convertDateTime pattern="HH:mm a" />
+                        <f:convertDateTime pattern="HH:mm" />
                     </h:outputText>
                 </p:panelGrid>
             </p:dialog>
@@ -197,7 +197,7 @@
         &lt;p:calendar id="datetime" value="\#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" /&gt;
 
         &lt;p:outputLabel for="time" value="Time:" /&gt;
-        &lt;p:calendar id="time" value="\#{calendarView.date11}" pattern="HH:mm a" timeOnly="true"  /&gt;
+        &lt;p:calendar id="time" value="\#{calendarView.date11}" pattern="HH:mm" timeOnly="true"  /&gt;
     &lt;/h:panelGrid&gt;
 
     &lt;p:commandButton value="Submit" update="msgs" actionListener="\#{calendarView.click}" icon="ui-icon-check" /&gt;
@@ -256,7 +256,7 @@
 
             &lt;h:outputText value="Time:" /&gt;
             &lt;h:outputText value="\#{calendarView.date11}"&gt;
-                &lt;f:convertDateTime pattern="HH:mm a" /&gt;
+                &lt;f:convertDateTime pattern="HH:mm" /&gt;
             &lt;/h:outputText&gt;
         &lt;/p:panelGrid&gt;
     &lt;/p:dialog&gt;
