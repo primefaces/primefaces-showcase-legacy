@@ -15,7 +15,7 @@
             .ui-carousel {
                 margin-bottom: 20px;
             }
-		</style>
+        </style>
     </ui:define>
     
     <ui:define name="title">
@@ -29,8 +29,8 @@
     <ui:define name="implementation">
         
         <h:form id="form">
-            <p:carousel value="#{carouselView.cars}" headerText="Basic" var="car" itemStyle="height:200px;text-align:center" pageLinks="5">
-                <h:panelGrid columns="2" style="width:100%" cellpadding="5" columnClasses="label,value">
+            <p:carousel value="#{carouselView.cars}" headerText="Basic" var="car" itemStyle="height:200px;text-align:center" responsive="true">
+                <h:panelGrid columns="2" style="width:100%" columnClasses="label,value">
                     <f:facet name="header">
                         <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
                     </f:facet>
@@ -46,6 +46,12 @@
 
                     <h:outputText value="Price" />
                     <h:outputText value="\$#{car.price}" />
+                    
+                    <f:facet name="footer">
+                        <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" icon="ui-icon-search">
+                            <f:setPropertyActionListener value="#{car}" target="#{carouselView.selectedCar}" />
+                        </p:commandButton>
+                    </f:facet>
                 </h:panelGrid>
 
                 <f:facet name="footer">
@@ -136,101 +142,7 @@
         <p:tabView>
             <p:tab title="carousel.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:form id="form"&gt;
-    &lt;p:carousel value="\#{carouselView.cars}" headerText="Basic" var="car" itemStyleClass="carItem"&gt;
-        &lt;h:panelGrid columns="2" style="width:100%" cellpadding="5" columnClasses="label,value"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;p:graphicImage name="demo/images/car/\#{car.brand}.gif"/&gt; 
-            &lt;/f:facet&gt;
-
-            &lt;h:outputText value="Id:" /&gt;
-            &lt;h:outputText value="\#{car.id}" /&gt;
-
-            &lt;h:outputText value="Year" /&gt;
-            &lt;h:outputText value="\#{car.year}" /&gt;
-
-            &lt;h:outputText value="Color:" /&gt;
-            &lt;h:outputText value="\#{car.color}" style="color:\#{car.color}"/&gt;
-
-            &lt;h:outputText value="Price" /&gt;
-            &lt;h:outputText value="\$\#{car.price}" /&gt;
-        &lt;/h:panelGrid&gt;
-
-        &lt;f:facet name="footer"&gt;
-                In total there are \#{fn:length(carouselView.cars)} cars.
-        &lt;/f:facet&gt;
-    &lt;/p:carousel&gt;
-
-    &lt;p:carousel value="\#{carouselView.cars}" headerText="Advanced" var="car" itemStyleClass="carItem" numVisible="1" easing="easeOutBounce" styleClass="carouselAdvanced"&gt;
-        &lt;p:panelGrid columns="2" style="width:100%" columnClasses="label,value"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;p:graphicImage name="demo/images/car/\#{car.brand}.gif"/&gt; 
-            &lt;/f:facet&gt;
-
-            &lt;h:outputText value="Id:" /&gt;
-            &lt;h:outputText value="\#{car.id}" /&gt;
-
-            &lt;h:outputText value="Year" /&gt;
-            &lt;h:outputText value="\#{car.year}" /&gt;
-
-            &lt;h:outputText value="Color:" /&gt;
-            &lt;h:outputText value="\#{car.color}" style="color:\#{car.color}"/&gt;
-
-            &lt;h:outputText value="Price" /&gt;
-            &lt;h:outputText value="\$\#{car.price}" /&gt;
-
-            &lt;f:facet name="footer"&gt;
-                &lt;p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" icon="ui-icon-search"&gt;
-                    &lt;f:setPropertyActionListener value="\#{car}" target="\#{carouselView.selectedCar}" /&gt;
-                &lt;/p:commandButton&gt;
-            &lt;/f:facet&gt;
-        &lt;/p:panelGrid&gt;
-    &lt;/p:carousel&gt; 
-
-    &lt;p:carousel numVisible="1" itemStyle="height:200px;width:600px;" effect="easeInStrong" headerText="Tabs" style="margin-bottom:0"&gt;
-        &lt;p:tab title="Godfather Part I"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-                &lt;p:graphicImage name="demo/images/godfather/godfather1.jpg" /&gt;
-                &lt;h:outputText
-                    value="The story begins as Don Vito Corleone..." /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-        &lt;p:tab title="Godfather Part II"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-                &lt;p:graphicImage name="demo/images/godfather/godfather2.jpg" /&gt;
-                &lt;h:outputText value="Francis Ford Coppola's..." /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-        &lt;p:tab title="Godfather Part III"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-                &lt;p:graphicImage name="demo/images/godfather/godfather3.jpg" /&gt;
-                &lt;h:outputText value="After a break of more than 15 years..." /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-    &lt;/p:carousel&gt;
-
-    &lt;p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false"&gt;
-        &lt;p:outputPanel id="carDetail" style="text-align:center;"&gt;
-            &lt;p:panelGrid  columns="2" rendered="\#{not empty carouselView.selectedCar}" columnClasses="label,value"&gt;
-                &lt;f:facet name="header"&gt;
-                    &lt;p:graphicImage name="demo/images/car/\#{carouselView.selectedCar.brand}-big.gif"/&gt; 
-                &lt;/f:facet&gt;
-
-                &lt;h:outputText value="Id:" /&gt;
-                &lt;h:outputText value="\#{carouselView.selectedCar.id}" /&gt;
-
-                &lt;h:outputText value="Year" /&gt;
-                &lt;h:outputText value="\#{carouselView.selectedCar.year}" /&gt;
-
-                &lt;h:outputText value="Color:" /&gt;
-                &lt;h:outputText value="\#{carouselView.selectedCar.color}" style="color:\#{carouselView.selectedCar.color}"/&gt;
-
-                &lt;h:outputText value="Price" /&gt;
-                &lt;h:outputText value="\$\#{carouselView.selectedCar.price}" /&gt;
-            &lt;/p:panelGrid&gt;
-        &lt;/p:outputPanel&gt;
-    &lt;/p:dialog&gt;
-&lt;/h:form&gt;
+TODO
                 </pre>
             </p:tab>
 
