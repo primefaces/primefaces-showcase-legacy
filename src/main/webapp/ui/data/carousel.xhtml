@@ -8,23 +8,11 @@
     
     <ui:define name="head">
 		<style type="text/css">
-			.carItem {
-				width:200px;
-				height:200px;
-				text-align:center;
-			}
-            
-            .carouselAdvanced .carItem {
-                width: 250px;
-                height: 195px;
-            }
-            
-            .value {
+             .value {
                 font-weight: bold;
             }
             
             .ui-carousel {
-                display: block;
                 margin-bottom: 20px;
             }
 		</style>
@@ -41,7 +29,7 @@
     <ui:define name="implementation">
         
         <h:form id="form">
-            <p:carousel value="#{carouselView.cars}" headerText="Basic" var="car" itemStyleClass="carItem">
+            <p:carousel value="#{carouselView.cars}" headerText="Basic" var="car" itemStyle="height:200px;text-align:center" pageLinks="5">
                 <h:panelGrid columns="2" style="width:100%" cellpadding="5" columnClasses="label,value">
                     <f:facet name="header">
                         <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
@@ -65,8 +53,8 @@
                 </f:facet>
             </p:carousel>
 
-            <p:carousel value="#{carouselView.cars}" headerText="Advanced" var="car" itemStyleClass="carItem" numVisible="1" easing="easeOutBounce" styleClass="carouselAdvanced">
-                <p:panelGrid columns="2" style="width:100%" columnClasses="label,value">
+            <p:carousel value="#{carouselView.cars}" headerText="Advanced" var="car" itemStyle="height:200px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px">
+                <h:panelGrid columns="2" style="width:100%" columnClasses="label,value">
                     <f:facet name="header">
                         <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
                     </f:facet>
@@ -88,10 +76,10 @@
                             <f:setPropertyActionListener value="#{car}" target="#{carouselView.selectedCar}" />
                         </p:commandButton>
                     </f:facet>
-                </p:panelGrid>
+                </h:panelGrid>
             </p:carousel> 
-            
-            <p:carousel numVisible="1" itemStyle="height:200px;width:600px;" effect="easeInStrong" headerText="Tabs" style="margin-bottom:0">
+    
+            <p:carousel numVisible="1" effect="easeInStrong" headerText="Tabs" style="margin-bottom:0">
                 <p:tab title="Godfather Part I">
                     <h:panelGrid columns="2" cellpadding="10">
                         <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
