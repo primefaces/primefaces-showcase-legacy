@@ -16,6 +16,15 @@
                 margin-bottom: 20px;
             }
         </style>
+
+        <style type="text/css">
+
+        </style>
+        <script type="text/javascript">
+            //<![CDATA[
+           
+            //]]>  
+        </script>
     </ui:define>
     
     <ui:define name="title">
@@ -29,8 +38,8 @@
     <ui:define name="implementation">
         
         <h:form id="form">
-            <p:carousel value="#{carouselView.cars}" headerText="Basic" var="car" itemStyle="height:200px;text-align:center" responsive="true">
-                <h:panelGrid columns="2" style="width:100%" columnClasses="label,value">
+            <p:carousel value="#{carouselView.cars}" headerText="Responsive" var="car" itemStyle="text-align:center" responsive="true">
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
                         <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
                     </f:facet>
@@ -46,20 +55,14 @@
 
                     <h:outputText value="Price" />
                     <h:outputText value="\$#{car.price}" />
-                    
-                    <f:facet name="footer">
-                        <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" icon="ui-icon-search">
-                            <f:setPropertyActionListener value="#{car}" target="#{carouselView.selectedCar}" />
-                        </p:commandButton>
-                    </f:facet>
-                </h:panelGrid>
+                </p:panelGrid>
 
                 <f:facet name="footer">
                         In total there are #{fn:length(carouselView.cars)} cars.
                 </f:facet>
             </p:carousel>
 
-            <p:carousel value="#{carouselView.cars}" headerText="Advanced" var="car" itemStyle="height:200px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px">
+            <p:carousel value="#{carouselView.cars}" headerText="Custom" var="car" itemStyle="height:200px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px">
                 <h:panelGrid columns="2" style="width:100%" columnClasses="label,value">
                     <f:facet name="header">
                         <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
