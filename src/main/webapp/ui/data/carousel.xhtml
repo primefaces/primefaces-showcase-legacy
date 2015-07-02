@@ -16,15 +16,6 @@
                 margin-bottom: 20px;
             }
         </style>
-
-        <style type="text/css">
-
-        </style>
-        <script type="text/javascript">
-            //<![CDATA[
-           
-            //]]>  
-        </script>
     </ui:define>
     
     <ui:define name="title">
@@ -32,7 +23,7 @@
     </ui:define>
 
     <ui:define name="description">
-        Carousel displays data using a slide effect.
+        Carousel displays data using a slide effect. Since v5.2.8, responsive mode, swipe support for touch enabled devices and various customization options are available.
     </ui:define>
 
     <ui:define name="implementation">
@@ -62,7 +53,7 @@
                 </f:facet>
             </p:carousel>
 
-            <p:carousel value="#{carouselView.cars}" headerText="Custom" var="car" itemStyle="height:200px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px">
+            <p:carousel value="#{carouselView.cars}" headerText="Custom" var="car" itemStyle="height:200px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px" circular="true">
                 <h:panelGrid columns="2" style="width:100%" columnClasses="label,value">
                     <f:facet name="header">
                         <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
@@ -145,7 +136,107 @@
         <p:tabView>
             <p:tab title="carousel.xhtml">
                 <pre name="code" class="brush:xml">
-TODO
+&lt;h:form id="form"&gt;
+    &lt;p:carousel value="\#{carouselView.cars}" headerText="Responsive" var="car" itemStyle="text-align:center" responsive="true"&gt;
+        &lt;p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank"&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;p:graphicImage name="demo/images/car/\#{car.brand}.gif"/&gt; 
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value="Id:" /&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+
+            &lt;h:outputText value="Year" /&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+
+            &lt;h:outputText value="Color:" /&gt;
+            &lt;h:outputText value="\#{car.color}" style="color:\#{car.color}"/&gt;
+
+            &lt;h:outputText value="Price" /&gt;
+            &lt;h:outputText value="\$\#{car.price}" /&gt;
+        &lt;/p:panelGrid&gt;
+
+        &lt;f:facet name="footer"&gt;
+                In total there are \#{fn:length(carouselView.cars)} cars.
+        &lt;/f:facet&gt;
+    &lt;/p:carousel&gt;
+
+    &lt;p:carousel value="\#{carouselView.cars}" headerText="Custom" var="car" itemStyle="height:200px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px" cricular="true"&gt;
+        &lt;h:panelGrid columns="2" style="width:100%" columnClasses="label,value"&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;p:graphicImage name="demo/images/car/\#{car.brand}.gif"/&gt; 
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value="Id:" /&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+
+            &lt;h:outputText value="Year" /&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+
+            &lt;h:outputText value="Color:" /&gt;
+            &lt;h:outputText value="\#{car.color}" style="color:\#{car.color}"/&gt;
+
+            &lt;h:outputText value="Price" /&gt;
+            &lt;h:outputText value="\$\#{car.price}" /&gt;
+
+            &lt;f:facet name="footer"&gt;
+                &lt;p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" icon="ui-icon-search"&gt;
+                    &lt;f:setPropertyActionListener value="\#{car}" target="\#{carouselView.selectedCar}" /&gt;
+                &lt;/p:commandButton&gt;
+            &lt;/f:facet&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:carousel&gt; 
+
+    &lt;p:carousel numVisible="1" effect="easeInStrong" headerText="Tabs" style="margin-bottom:0"&gt;
+        &lt;p:tab title="Godfather Part I"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather1.jpg" /&gt;
+                &lt;h:outputText
+                    value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+                    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, 
+                    but given to ruthless violence whenever anything stands against the good of the family." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part II"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather2.jpg" /&gt;
+                &lt;h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. 
+                In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, 
+                killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+        &lt;p:tab title="Godfather Part III"&gt;
+            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
+                &lt;p:graphicImage name="demo/images/godfather/godfather3.jpg" /&gt;
+                &lt;h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. 
+                    Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." /&gt;
+            &lt;/h:panelGrid&gt;
+        &lt;/p:tab&gt;
+    &lt;/p:carousel&gt;
+
+    &lt;p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false"&gt;
+        &lt;p:outputPanel id="carDetail" style="text-align:center;"&gt;
+            &lt;p:panelGrid  columns="2" rendered="\#{not empty carouselView.selectedCar}" columnClasses="label,value"&gt;
+                &lt;f:facet name="header"&gt;
+                    &lt;p:graphicImage name="demo/images/car/\#{carouselView.selectedCar.brand}-big.gif"/&gt; 
+                &lt;/f:facet&gt;
+
+                &lt;h:outputText value="Id:" /&gt;
+                &lt;h:outputText value="\#{carouselView.selectedCar.id}" /&gt;
+
+                &lt;h:outputText value="Year" /&gt;
+                &lt;h:outputText value="\#{carouselView.selectedCar.year}" /&gt;
+
+                &lt;h:outputText value="Color:" /&gt;
+                &lt;h:outputText value="\#{carouselView.selectedCar.color}" style="color:\#{carouselView.selectedCar.color}"/&gt;
+
+                &lt;h:outputText value="Price" /&gt;
+                &lt;h:outputText value="\$\#{carouselView.selectedCar.price}" /&gt;
+            &lt;/p:panelGrid&gt;
+        &lt;/p:outputPanel&gt;
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
                 </pre>
             </p:tab>
 
