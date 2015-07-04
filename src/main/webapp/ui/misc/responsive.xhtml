@@ -40,7 +40,7 @@
     <ui:define name="implementation">
 
         <div class="ui-fluid">
-            <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
+            <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
                 <p:outputLabel for="input" value="Input"/>
                 <p:inputText id="input"/>
 
@@ -219,6 +219,26 @@
                     <h:outputText value="#{theme.displayName}" />
                 </p:column>
             </p:orderList>
+            
+            <p:carousel value="#{carouselView.cars}" headerText="Carousel" var="car" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
+                    </f:facet>
+
+                    <h:outputText value="Id:" />
+                    <h:outputText value="#{car.id}" />
+
+                    <h:outputText value="Year" />
+                    <h:outputText value="#{car.year}" />
+
+                    <h:outputText value="Color:" />
+                    <h:outputText value="#{car.color}" style="color:#{car.color}"/>
+
+                    <h:outputText value="Price" />
+                    <h:outputText value="\$#{car.price}" />
+                </p:panelGrid>
+            </p:carousel>
 
             <p:accordionPanel style="margin-top:20px">
                 <p:tab title="Godfather Part I">
