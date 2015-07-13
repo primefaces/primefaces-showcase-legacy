@@ -22,8 +22,7 @@
     </ui:define>
 
     <ui:define name="description">
-        TreeTable has two responsive modes. In priority mode, visibility of columns are toggled based on the screen size and their priority (1-6). On the other hand
-        in reflow mode, columns are displayed as stacked on smaller screens.
+        In responsive mode, visibility of columns are toggled based on the screen size and their priority (1-6).
     </ui:define>
 
     <ui:define name="implementation">
@@ -37,35 +36,19 @@
                 <p:column headerText="Name">
                     <h:outputText value="#{document.name}" />
                 </p:column>
-                <p:column headerText="Size" priority="2">
+                <p:column headerText="Size (p3)" priority="3">
                     <h:outputText value="#{document.size}" />
                 </p:column>
-                <p:column headerText="Type"  priority="3">
+                <p:column headerText="Type (p2)"  priority="2">
                     <h:outputText value="#{document.type}" />
                 </p:column>
-                <p:column style="width:24px"  priority="4">
+                <p:column style="width:24px"  headerText="(p4)" priority="4">
                     <p:commandLink update=":form:documentPanel" oncomplete="PF('documentDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search">
                         <f:setPropertyActionListener value="#{document}" target="#{ttBasicView.selectedDocument}" />
                     </p:commandLink>
                 </p:column>
             </p:treeTable>
-            
-            <h3>Reflow</h3>
-            <p:treeTable value="#{ttBasicView.root}" var="document" reflow="true">
-                <f:facet name="header">
-                    Document Viewer
-                </f:facet>
-                <p:column headerText="Name">
-                    <h:outputText value="#{document.name}" />
-                </p:column>
-                <p:column headerText="Size">
-                    <h:outputText value="#{document.size}" />
-                </p:column>
-                <p:column headerText="Type">
-                    <h:outputText value="#{document.type}" />
-                </p:column>
-            </p:treeTable>
-            
+
             <p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true" resizable="false">
                 <p:outputPanel id="documentPanel">
                     <p:panelGrid  columns="2" columnClasses="label,value" rendered="#{not empty ttBasicView.selectedDocument}">
@@ -97,32 +80,16 @@
         &lt;p:column headerText="Name"&gt;
             &lt;h:outputText value="\#{document.name}" /&gt;
         &lt;/p:column&gt;
-        &lt;p:column headerText="Size" priority="2"&gt;
+        &lt;p:column headerText="Size (p3)" priority="2"&gt;
             &lt;h:outputText value="\#{document.size}" /&gt;
         &lt;/p:column&gt;
-        &lt;p:column headerText="Type"  priority="3"&gt;
+        &lt;p:column headerText="Type (p2)"  priority="3"&gt;
             &lt;h:outputText value="\#{document.type}" /&gt;
         &lt;/p:column&gt;
-        &lt;p:column style="width:24px"  priority="4"&gt;
+        &lt;p:column style="width:24px" headerText="(p4)" priority="4"&gt;
             &lt;p:commandLink update=":form:documentPanel" oncomplete="PF('documentDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search"&gt;
                 &lt;f:setPropertyActionListener value="\#{document}" target="\#{ttBasicView.selectedDocument}" /&gt;
             &lt;/p:commandLink&gt;
-        &lt;/p:column&gt;
-    &lt;/p:treeTable&gt;
-
-    &lt;h3&gt;Reflow&lt;/h3&gt;
-    &lt;p:treeTable value="\#{ttBasicView.root}" var="document" reflow="true"&gt;
-        &lt;f:facet name="header"&gt;
-            Document Viewer
-        &lt;/f:facet&gt;
-        &lt;p:column headerText="Name"&gt;
-            &lt;h:outputText value="\#{document.name}" /&gt;
-        &lt;/p:column&gt;
-        &lt;p:column headerText="Size"&gt;
-            &lt;h:outputText value="\#{document.size}" /&gt;
-        &lt;/p:column&gt;
-        &lt;p:column headerText="Type"&gt;
-            &lt;h:outputText value="\#{document.type}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:treeTable&gt;
 
