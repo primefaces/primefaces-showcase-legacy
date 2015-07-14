@@ -13,17 +13,6 @@
         OrderList is used to sort a collection via Drag and Drop based reordering, transition effects, pojo support, theme support and more.
     </ui:define>
     
-    <ui:define name="head">
-        <style type="text/css">
-            
-        </style>
-        <script type="text/javascript">
-            //<![CDATA[
-            
-            //]]>  
-        </script>
-    </ui:define>
-    
     <ui:define name="implementation">
 
         <h:form>
@@ -41,11 +30,11 @@
                 
                 <f:facet name="caption">Available</f:facet>
 
-                <p:column style="width:25%">
+                <p:column style="width:32px">
                     <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
                 </p:column>
 
-                 <p:column style="width:75%;">
+                 <p:column>
                     <h:outputText value="#{theme.displayName}" />
                 </p:column>
             </p:orderList>
@@ -88,11 +77,11 @@
 
         &lt;f:facet name="caption"&gt;Available&lt;/f:facet&gt;
 
-        &lt;p:column style="width:25%"&gt;
+        &lt;p:column style="width:32px"&gt;
             &lt;h:outputText styleClass="ui-theme ui-theme-\#{theme.name}" /&gt;
         &lt;/p:column&gt;
 
-         &lt;p:column style="width:75%;"&gt;
+         &lt;p:column&gt;
             &lt;h:outputText value="\#{theme.displayName}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:orderList&gt;
