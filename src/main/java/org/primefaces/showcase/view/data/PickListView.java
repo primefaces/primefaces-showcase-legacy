@@ -56,7 +56,7 @@ public class PickListView {
         cities = new DualListModel<String>(citiesSource, citiesTarget);
         
         //Themes
-        List<Theme> themesSource = service.getThemes().subList(0, 6);
+        List<Theme> themesSource = service.getThemes().subList(0, 5);
         List<Theme> themesTarget = new ArrayList<Theme>();
         
         themes = new DualListModel<Theme>(themesSource, themesTarget);

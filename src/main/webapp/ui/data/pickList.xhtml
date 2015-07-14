@@ -12,7 +12,7 @@
     <ui:define name="description">
         PickList is a dual list input component featuring Drag and Drop based reordering, transition effects, pojo support, theming filtering, captions, checkbox selection, client-server callbacks, responsive layout and more.
     </ui:define>
-
+    
     <ui:define name="implementation">
 
         <h:form>
@@ -37,11 +37,11 @@
                 <p:ajax event="unselect" listener="#{pickListView.onUnselect}" update="msg"/>
                 <p:ajax event="reorder" listener="#{pickListView.onReorder}" update="msg"/>
                 
-                <p:column style="width:25%">
+                <p:column style="width:10%">
                     <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
                 </p:column>
 
-                <p:column style="width:75%;">
+                <p:column style="width:90%;">
                     <h:outputText value="#{theme.displayName}" />
                 </p:column>
             </p:pickList>
@@ -105,11 +105,11 @@
         &lt;p:ajax event="unselect" listener="\#{pickListView.onUnselect}" update="msg" /&gt;
         &lt;p:ajax event="reorder" listener="\#{pickListView.onReorder}" update="msg" /&gt;
 
-        &lt;p:column style="width:25%"&gt;
+        &lt;p:column style="width:10%"&gt;
             &lt;h:outputText styleClass="ui-theme ui-theme-\#{theme.name}" /&gt;
         &lt;/p:column&gt;
 
-        &lt;p:column style="width:75%;"&gt;
+        &lt;p:column style="width:90%;"&gt;
             &lt;h:outputText value="\#{theme.displayName}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:pickList&gt;
@@ -192,7 +192,7 @@ public class PickListView {
         cities = new DualListModel&lt;String&gt;(citiesSource, citiesTarget);
         
         //Themes
-        List&lt;Theme&gt; themesSource = service.getThemes().subList(0, 6);
+        List&lt;Theme&gt; themesSource = service.getThemes().subList(0, 5);
         List&lt;Theme&gt; themesTarget = new ArrayList&lt;Theme&gt;();
         
         themes = new DualListModel&lt;Theme&gt;(themesSource, themesTarget);

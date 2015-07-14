@@ -214,26 +214,14 @@
                 <f:facet name="sourceCaption">Available</f:facet>
                 <f:facet name="targetCaption">Starting</f:facet>
                 
-                <p:column style="width:25%">
+                <p:column style="width:10%">
                     <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
                 </p:column>
 
-                <p:column style="width:75%;">
+                <p:column style="width:90%;">
                     <h:outputText value="#{theme.displayName}" />
                 </p:column>
             </p:pickList>
-            
-            <p:orderList value="#{orderListView.themes}" var="theme" itemValue="#{theme}" converter="theme" controlsLocation="left" responsive="true" style="margin-top:20px">                
-                <f:facet name="caption">Available</f:facet>
-
-                <p:column style="width:25%">
-                    <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
-                </p:column>
-
-                 <p:column style="width:75%;">
-                    <h:outputText value="#{theme.displayName}" />
-                </p:column>
-            </p:orderList>
             
             <p:carousel value="#{carouselView.cars}" headerText="Carousel" var="car" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
@@ -254,6 +242,20 @@
                     <h:outputText value="\$#{car.price}" />
                 </p:panelGrid>
             </p:carousel>
+            
+            <p:orderList value="#{orderListView.themes}" var="theme" itemValue="#{theme}" converter="theme" controlsLocation="left" responsive="true" style="margin-top:20px">                
+                <f:facet name="caption">Available</f:facet>
+
+                <p:column style="width:25%">
+                    <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
+                </p:column>
+
+                 <p:column style="width:75%;">
+                    <h:outputText value="#{theme.displayName}" />
+                </p:column>
+            </p:orderList>
+            
+            
 
             <p:accordionPanel style="margin-top:20px">
                 <p:tab title="Godfather Part I">
