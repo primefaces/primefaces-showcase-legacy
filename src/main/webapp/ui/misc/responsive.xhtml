@@ -40,7 +40,7 @@
     <ui:define name="implementation">
 
         <div class="ui-fluid">
-            <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
                 <p:outputLabel for="input" value="Input"/>
                 <p:inputText id="input"/>
 
@@ -50,7 +50,7 @@
                 <p:outputLabel for="calendar" value="Calendar"/>
                 <p:calendar id="calendar"/>
 
-                <p:outputLabel for="ac" value="AutoComplete"/>
+                <p:outputLabel for="ac" value="Auto Complete"/>
                 <p:autoComplete id="ac" completeMethod="#{autoCompleteView.completeText}" />
 
                 <p:outputLabel for="mask" value="Mask"/>
@@ -100,27 +100,25 @@
                     <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink" />
                 </p:splitButton>
 
-                <p:outputLabel for="chkmenu" value="CheckboxMenu" />
+                <p:outputLabel for="chkmenu" value="Checkbox Menu" />
                 <p:selectCheckboxMenu id="chkmenu" label="Cities">
                     <f:selectItems value="#{checkboxView.cities}" />
                 </p:selectCheckboxMenu>
 
-                <p:outputLabel for="booleanBtn" value="BooleanButton" />
+                <p:outputLabel for="booleanBtn" value="Boolean Button" />
                 <p:selectBooleanButton id="booleanBtn" onLabel="Yes" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close"/>
 
                 <p:outputLabel for="oneBtn" value="OneButton" />
                 <p:selectOneButton id="oneBtn">
-                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                    <f:selectItem itemLabel="XB1" itemValue="XB1" />
                     <f:selectItem itemLabel="PS4" itemValue="PS4" />
                 </p:selectOneButton>
 
-                <p:outputLabel for="manyBtn" value="ManyButton"/>
+                <p:outputLabel for="manyBtn" value="Many Button"/>
                 <p:selectOneButton id="manyBtn">
-                    <f:selectItem itemLabel="Sentinel" itemValue="Sentinel" />
                     <f:selectItem itemLabel="Spark" itemValue="Spark" />
                     <f:selectItem itemLabel="Ronin" itemValue="Ronin" />
                     <f:selectItem itemLabel="Rio" itemValue="Rio" />
-                    <f:selectItem itemLabel="Primus" itemValue="Primus" />
                 </p:selectOneButton>
 
                 <p:outputLabel for="listbox" value="Listbox"/>
@@ -411,9 +409,9 @@
         &lt;p:outputLabel for="booleanBtn" value="BooleanButton" /&gt;
         &lt;p:selectBooleanButton id="booleanBtn" onLabel="Yes" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close"/&gt;
 
-        &lt;p:outputLabel for="oneBtn" value="OneButton" /&gt;
+        &lt;p:outputLabel for="oneBtn" value="One Button" /&gt;
         &lt;p:selectOneButton id="oneBtn"&gt;
-            &lt;f:selectItem itemLabel="Xbox One" itemValue="Xbox One" /&gt;
+            &lt;f:selectItem itemLabel="XB1" itemValue="XB1" /&gt;
             &lt;f:selectItem itemLabel="PS4" itemValue="PS4" /&gt;
         &lt;/p:selectOneButton&gt;
 
