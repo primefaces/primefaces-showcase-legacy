@@ -208,6 +208,21 @@
                 </p:treeNode>
             </p:tree>
             
+            <p:pickList id="PojoPickList" value="#{pickListView.themes}" var="theme" effect="bounce" style="margin-top:20px"
+                        itemValue="#{theme}" itemLabel="#{theme.displayName}" showSourceControls="true" showTargetControls="true" converter="theme" responsive="true">
+               
+                <f:facet name="sourceCaption">Available</f:facet>
+                <f:facet name="targetCaption">Starting</f:facet>
+                
+                <p:column style="width:25%">
+                    <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
+                </p:column>
+
+                <p:column style="width:75%;">
+                    <h:outputText value="#{theme.displayName}" />
+                </p:column>
+            </p:pickList>
+            
             <p:orderList value="#{orderListView.themes}" var="theme" itemValue="#{theme}" converter="theme" controlsLocation="left" responsive="true" style="margin-top:20px">                
                 <f:facet name="caption">Available</f:facet>
 
