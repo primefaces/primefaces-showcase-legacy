@@ -130,9 +130,11 @@
                     <f:selectItem itemLabel="Primus" itemValue="Primus" />
                 </p:selectOneListbox>
 
-                <p:outputLabel for="dialog" value="Dialog" />
-                <p:commandButton id="dialog" value="Show" icon="ui-icon-extlink" type="button" onclick="PF('dlg').show()" />
+                <p:spacer />
+                <p:spacer />
             </p:panelGrid>
+            
+            <p:commandButton id="dialog" value="Dialog" icon="ui-icon-extlink" type="button" onclick="PF('dlg').show()" style="margin-top:20px;display:block"/>
 
             <p:dialog header="Login" widgetVar="dlg" resizable="false" responsive="true">
                 <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-4,ui-grid-col-8">
