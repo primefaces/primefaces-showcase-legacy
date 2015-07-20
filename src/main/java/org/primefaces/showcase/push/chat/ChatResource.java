@@ -47,15 +47,21 @@ public class ChatResource {
     @Inject
     private EventBus eventBus;
 
+    @Inject
+    private RemoteEndpoint endpoint;
+
     @OnOpen
-    public void onOpen(RemoteEndpoint r) {
-        logger.info("OnOpen {}", r);
+    public void onOpen() {
+        logger.info("onOpen {} for room {} and user {}", new String[]{endpoint.toString(), room, username});
 
         eventBus.publish(room + "/*", new Message(String.format("%s has entered the room '%s'",  username, room), true));
     }
 
     @OnClose
-    public void onClose(RemoteEndpoint r) {
+    public void onClose() {
+
+        logger.info("onClose {} for room {} and user {}", new String[]{endpoint.toString(), room, username});
+
         ChatUsers users= (ChatUsers) ctx.getAttribute("chatUsers");
         users.remove(username);
         
