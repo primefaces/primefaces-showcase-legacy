@@ -49,19 +49,19 @@
     <ui:define name="implementation">
         
         <h3 style="margin-top:0">Basic</h3>
-        <p:steps activeIndex="1">
+        <p:steps>
             <p:menuitem value="Personal" />
             <p:menuitem value="Seat Selection" />
             <p:menuitem value="Payment" />
             <p:menuitem value="Confirmation" />
         </p:steps>
         
-        <h3>Styled</h3>
-        <p:steps styleClass="custom">
-            <p:menuitem value="Personal" />
-            <p:menuitem value="Seat Selection" />
-            <p:menuitem value="Payment" />
-            <p:menuitem value="Confirmation" />
+        <h3>Interactive</h3>
+        <p:steps activeIndex="1" styleClass="custom" readonly="false">
+            <p:menuitem value="Personal" url="#"/>
+            <p:menuitem value="Seat Selection" url="#"/>
+            <p:menuitem value="Payment" url="#"/>
+            <p:menuitem value="Confirmation" url="#"/>
         </p:steps>
     </ui:define>
 
@@ -70,19 +70,19 @@
             <p:tab title="steps.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h3 style="margin-top:0"&gt;Basic&lt;/h3&gt;
-&lt;p:steps activeIndex="1"&gt;
+&lt;p:steps&gt;
     &lt;p:menuitem value="Personal" /&gt;
     &lt;p:menuitem value="Seat Selection" /&gt;
     &lt;p:menuitem value="Payment" /&gt;
     &lt;p:menuitem value="Confirmation" /&gt;
 &lt;/p:steps&gt;
 
-&lt;h3&gt;Styled&lt;/h3&gt;
-&lt;p:steps styleClass="custom"&gt;
-    &lt;p:menuitem value="Personal" /&gt;
-    &lt;p:menuitem value="Seat Selection" /&gt;
-    &lt;p:menuitem value="Payment" /&gt;
-    &lt;p:menuitem value="Confirmation" /&gt;
+&lt;h3&gt;Interactive&lt;/h3&gt;
+&lt;p:steps activeIndex="1" styleClass="custom" readonly="false"&gt;
+    &lt;p:menuitem value="Personal" url="#"/&gt;
+    &lt;p:menuitem value="Seat Selection" url="#"/&gt;
+    &lt;p:menuitem value="Payment" url="#"/&gt;
+    &lt;p:menuitem value="Confirmation" url="#"/&gt;
 &lt;/p:steps&gt;
 
 &lt;style type="text/css"&gt;
