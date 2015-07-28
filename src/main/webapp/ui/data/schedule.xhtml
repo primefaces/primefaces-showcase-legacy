@@ -70,20 +70,16 @@
             
             <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
                 <h:panelGrid id="eventDetails" columns="2">
-                    <h:outputLabel for="title" value="Title:" />
+                    <p:outputLabel for="title" value="Titles:" />
                     <p:inputText id="title" value="#{scheduleView.event.title}" required="true" />
 
-                    <h:outputLabel for="from" value="From:" />
-                    <p:inputMask id="from" value="#{scheduleView.event.startDate}" mask="99/99/9999">
-                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+2"/>
-                    </p:inputMask>
+                    <p:outputLabel for="from" value="From:" />
+                    <p:calendar id="from" value="#{scheduleView.event.startDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
 
-                    <h:outputLabel for="to" value="To:" />
-                    <p:inputMask id="to" value="#{scheduleView.event.endDate}" mask="99/99/9999">
-                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+2"/>
-                    </p:inputMask>
+                    <p:outputLabel for="to" value="To:" />
+                    <p:calendar id="to" value="#{scheduleView.event.endDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
 
-                    <h:outputLabel for="allDay" value="All Day:" />
+                    <p:outputLabel for="allDay" value="All Day:" />
                     <h:selectBooleanCheckbox id="allDay" value="#{scheduleView.event.allDay}" />
 
                     <p:commandButton type="reset" value="Reset" />
@@ -121,20 +117,16 @@
 
     &lt;p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip"&gt;
         &lt;h:panelGrid id="eventDetails" columns="2"&gt;
-            &lt;h:outputLabel for="title" value="Title:" /&gt;
+            &lt;p:outputLabel for="title" value="Titles:" /&gt;
             &lt;p:inputText id="title" value="\#{scheduleView.event.title}" required="true" /&gt;
 
-            &lt;h:outputLabel for="from" value="From:" /&gt;
-            &lt;p:inputMask id="from" value="\#{scheduleView.event.startDate}" mask="99/99/9999"&gt;
-                &lt;f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+2"/&gt;
-            &lt;/p:inputMask&gt;
+            &lt;p:outputLabel for="from" value="From:" /&gt;
+            &lt;p:calendar id="from" value="\#{scheduleView.event.startDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/&gt;
 
-            &lt;h:outputLabel for="to" value="To:" /&gt;
-            &lt;p:inputMask id="to" value="\#{scheduleView.event.endDate}" mask="99/99/9999"&gt;
-                &lt;f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+2"/&gt;
-            &lt;/p:inputMask&gt;
+            &lt;p:outputLabel for="to" value="To:" /&gt;
+            &lt;p:calendar id="to" value="\#{scheduleView.event.endDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/&gt;
 
-            &lt;h:outputLabel for="allDay" value="All Day:" /&gt;
+            &lt;p:outputLabel for="allDay" value="All Day:" /&gt;
             &lt;h:selectBooleanCheckbox id="allDay" value="\#{scheduleView.event.allDay}" /&gt;
 
             &lt;p:commandButton type="reset" value="Reset" /&gt;
