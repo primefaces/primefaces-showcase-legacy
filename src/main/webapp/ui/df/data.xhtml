@@ -56,7 +56,11 @@ import org.primefaces.showcase.domain.Car;
 public class DFView {
         
     public void chooseCar() {
-        RequestContext.getCurrentInstance().openDialog("selectCar");
+        Map&lt;String,Object&gt; options = new HashMap&lt;String, Object&gt;();
+        options.put("resizable", false);
+        options.put("draggable", false);
+        options.put("modal", true);
+        RequestContext.getCurrentInstance().openDialog("selectCar", options, null);
     }
     
     public void onCarChosen(SelectEvent event) {
@@ -71,47 +75,47 @@ public class DFView {
             
             <p:tab title="selectCar.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;!DOCTYPE html>
+&lt;!DOCTYPE html&gt;
 &lt;html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"&gt;
     
-    &lt;h:head>
-        &lt;title>Cars&lt;/title>
-                &lt;style type="text/css">
+    &lt;h:head&gt;
+        &lt;title&gt;Cars&lt;/title&gt;
+                &lt;style type="text/css"&gt;
             .ui-widget {
                 font-size: 90%;
             }
-        &lt;/style>
-    &lt;/h:head>
+        &lt;/style&gt;
+    &lt;/h:head&gt;
     
-    &lt;h:body>
-        &lt;h:form>
-            &lt;p:dataTable var="car" value="\#{dfCarsView.cars}">
-                &lt;p:column headerText="Id">
-                    &lt;h:outputText value="\#{dfCarsView.id}" />
-                &lt;/p:column>
+    &lt;h:body&gt;
+        &lt;h:form&gt;
+            &lt;p:dataTable var="car" value="\#{dfCarsView.cars}"&gt;
+                &lt;p:column headerText="Id"&gt;
+                    &lt;h:outputText value="\#{dfCarsView.id}" /&gt;
+                &lt;/p:column&gt;
 
-                &lt;p:column headerText="Year">
-                    &lt;h:outputText value="\#{dfCarsView.year}" />
-                &lt;/p:column>
+                &lt;p:column headerText="Year"&gt;
+                    &lt;h:outputText value="\#{dfCarsView.year}" /&gt;
+                &lt;/p:column&gt;
 
-                &lt;p:column headerText="Brand">
-                    &lt;h:outputText value="\#{dfCarsView.brand}" />
-                &lt;/p:column>
+                &lt;p:column headerText="Brand"&gt;
+                    &lt;h:outputText value="\#{dfCarsView.brand}" /&gt;
+                &lt;/p:column&gt;
 
-                &lt;p:column headerText="Color">
-                    &lt;h:outputText value="\#{dfCarsView.color}" />
-                &lt;/p:column>
+                &lt;p:column headerText="Color"&gt;
+                    &lt;h:outputText value="\#{dfCarsView.color}" /&gt;
+                &lt;/p:column&gt;
 
-                &lt;p:column headerText="Select Car">
-                    &lt;p:commandButton icon="ui-icon-search" actionListener="\#{dfCarsView.selectCarFromDialog(car)}" />
-                &lt;/p:column>
-            &lt;/p:dataTable>
-        &lt;/h:form>
-    &lt;/h:body>
+                &lt;p:column style="width:32px;text-align: center"&gt;
+                    &lt;p:commandButton icon="ui-icon-search" actionListener="\#{dfCarsView.selectCarFromDialog(car)}" /&gt;
+                &lt;/p:column&gt;
+            &lt;/p:dataTable&gt;
+        &lt;/h:form&gt;
+    &lt;/h:body&gt;
     
-&lt;/html>
+&lt;/html&gt;
                 </pre>
             </p:tab>
             

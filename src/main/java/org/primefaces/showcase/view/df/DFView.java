@@ -28,21 +28,29 @@ import org.primefaces.showcase.domain.Car;
 public class DFView {
     
     public void viewCars() {
-        RequestContext.getCurrentInstance().openDialog("viewCars");
+        Map<String,Object> options = new HashMap<String, Object>();
+        options.put("resizable", false);
+        RequestContext.getCurrentInstance().openDialog("viewCars", options, null);
     }
     
     public void viewCarsCustomized() {
         Map<String,Object> options = new HashMap<String, Object>();
         options.put("modal", true);
-        options.put("draggable", false);
-        options.put("resizable", false);
-        options.put("contentHeight", 320);
+        options.put("width", 640);
+        options.put("height", 340);
+        options.put("contentWidth", "100%");
+        options.put("contentHeight", "100%");
+        options.put("headerElement", "customheader");
         
         RequestContext.getCurrentInstance().openDialog("viewCars", options, null);
     }
     
     public void chooseCar() {
-        RequestContext.getCurrentInstance().openDialog("selectCar");
+        Map<String,Object> options = new HashMap<String, Object>();
+        options.put("resizable", false);
+        options.put("draggable", false);
+        options.put("modal", true);
+        RequestContext.getCurrentInstance().openDialog("selectCar", options, null);
     }
     
     public void onCarChosen(SelectEvent event) {

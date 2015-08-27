@@ -13,6 +13,8 @@
     </h:head>
     
     <h:body>
+        <i id="customheader" class="fa fa-fw fa-car" style="display:none"></i>
+        
         <p:dataTable var="car" value="#{dfCarsView.cars}">
             <p:column headerText="Id">
                 <h:outputText value="#{car.id}" />
