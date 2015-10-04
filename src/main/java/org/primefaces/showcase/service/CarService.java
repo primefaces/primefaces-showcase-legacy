@@ -19,8 +19,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+
 import org.primefaces.showcase.domain.Car;
 
 @ManagedBean(name = "carService")
@@ -65,6 +67,16 @@ public class CarService {
         
         return list;
     }
+    
+	public List<Car> findByBrand(String selectedBrand) {
+        List<Car> list = new ArrayList<Car>();
+        int max = (int) (Math.random() * 5) + 1;
+		for(int i = 0 ; i < max; i++) {
+			list.add(new Car(getRandomId(), selectedBrand, getRandomYear(), getRandomColor(), getRandomPrice(), getRandomSoldState()));
+        }
+        
+        return list;
+	}
     
     private String getRandomId() {
 		return UUID.randomUUID().toString().substring(0, 8);

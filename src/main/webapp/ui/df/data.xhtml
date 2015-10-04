@@ -18,9 +18,19 @@
         <h:form>
             <p:growl id="growl" showDetail="true" />
 
-            <p:commandButton value="Select Car" icon="ui-icon-extlink" actionListener="#{dfView.chooseCar}">
-                <p:ajax event="dialogReturn" listener="#{dfView.onCarChosen}" update="growl" />
-            </p:commandButton>
+
+    		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+		        <p:outputLabel for="brand" value="Brand:" />
+		        <p:selectOneMenu id="brand" value="#{dfView.selectedBrand}" style="width:125px">
+		            <f:selectItem itemLabel="Select One" itemValue="" />
+		            <f:selectItems value="#{dfView.brands}" />
+		        </p:selectOneMenu>
+
+				<p:outputLabel value="" />
+	            <p:commandButton value="Select Car" icon="ui-icon-extlink" actionListener="#{dfView.chooseCar}">
+	                <p:ajax event="dialogReturn" listener="#{dfView.onCarChosen}" update="growl" />
+	            </p:commandButton>
+    		</h:panelGrid>
         </h:form>
         
     </ui:define>

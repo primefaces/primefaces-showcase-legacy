@@ -17,10 +17,14 @@ package org.primefaces.showcase.view.df;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+
 import org.primefaces.context.RequestContext;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
@@ -29,17 +33,38 @@ import org.primefaces.showcase.service.CarService;
 @ViewScoped
 public class DFCarsView implements Serializable {
     
-    private List<Car> cars;
+	private static final long serialVersionUID = 1L;
+
+	private List<Car> cars;
+    
+    private String selectedBrand;
 
     @ManagedProperty("#{carService}")
     private CarService service;
-    
+
     @PostConstruct
     public void init() {
-        cars = service.createCars(9);
+        Map<String, String[]> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterValuesMap();
+        setBrand(params.get("params"));
+        findCars();
     }
     
-    public List<Car> getCars() {
+    private void findCars() {
+    	if (selectedBrand == null) {
+    		cars = service.createCars(9);
+    	} else {
+    		cars = service.findByBrand(selectedBrand);
+    	}
+	}
+
+	private void setBrand(String[] brand) {
+		if (brand == null) {
+			return;
+		}
+		selectedBrand = brand[0];
+	}
+
+	public List<Car> getCars() {
         return cars;
     }
 
@@ -50,4 +75,8 @@ public class DFCarsView implements Serializable {
     public void selectCarFromDialog(Car car) {
         RequestContext.getCurrentInstance().closeDialog(car);
     }
+
+	public String getSelectedBrand() {
+		return selectedBrand;
+	}
 }
