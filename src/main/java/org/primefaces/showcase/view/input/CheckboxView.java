@@ -32,14 +32,14 @@ public class CheckboxView {
     @PostConstruct
     public void init() {
         cities = new ArrayList<String>();
-        cities.add("San Francisco");
+        cities.add("Miami");
         cities.add("London");
         cities.add("Paris");
         cities.add("Istanbul");
         cities.add("Berlin");
         cities.add("Barcelona");
         cities.add("Rome");
-        cities.add("Sao Paulo");
+        cities.add("Brasilia");
         cities.add("Amsterdam");
     }
 
