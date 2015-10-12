@@ -36,11 +36,6 @@
                 color: #816A51;
             }
         </style>
-                <script type="text/javascript">
-//<![CDATA[
-
-//]]>
-		</script>
 	</ui:define>
     
     <ui:define name="title">
@@ -62,6 +57,39 @@
             <p:tab title="basic.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;p:diagram value="\#{diagramFlowChartView.model}" style="height:600px" styleClass="ui-widget-content" /&gt;
+
+
+/* Demo CSS */
+&lt;style type="text/css"&gt;
+    .ui-diagram-element {	
+        width:14em; 
+        height:4em; 	
+        line-height:4em;
+        text-align: center;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+        border-radius: 4px;
+        border: 1px solid transparent;
+        background-color: #98AFC7;
+        color: #ffffff;
+    }
+
+    .ui-diagram-success {
+        background-color: #9CB071;
+        color: #ffffff;
+        border-color: #7ab02c;
+    }
+
+    .ui-diagram-fail {
+        background-color: #C34A2C;
+        color: #ffffff;
+    }
+
+    .flow-label {
+        font-size: 24px;
+        font-weight: bold;
+        color: #816A51;
+    }
+&lt;/style&gt;
                 </pre>
             </p:tab>
             
