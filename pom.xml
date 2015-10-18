@@ -5,7 +5,7 @@
     <groupId>org.primefaces</groupId>
     <artifactId>showcase</artifactId>
     <packaging>war</packaging>
-    <version>5.3</version>
+    <version>5.4-SNAPSHOT</version>
 
     <name>primefaces-showcase</name>
     <url>http://maven.apache.org</url>
@@ -235,7 +235,7 @@
             <id>community-stable</id>
             <properties>
                 <jsfVersion>Mojarra-2.2.8</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.2</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.3</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
