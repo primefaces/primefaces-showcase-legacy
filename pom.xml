@@ -211,13 +211,13 @@
             </activation>
             <properties>
                 <jsfVersion>Mojarra-2.2.8</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.3-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.4-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>5.3-SNAPSHOT</version>
+                    <version>5.4-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -241,7 +241,7 @@
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>5.2</version>
+                    <version>5.3</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -256,31 +256,7 @@
             </dependencies>
         </profile>
         <profile>
-            <id>elite-dev-5.1.x</id>
-            <properties>
-                <jsfVersion>Mojarra-2.2.8</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.1.21-SNAPSHOT</primefacesVersion>
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>org.primefaces</groupId>
-                    <artifactId>primefaces</artifactId>
-                    <version>5.1.21-SNAPSHOT</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.glassfish</groupId>
-                    <artifactId>javax.faces</artifactId>
-                    <version>2.2.8</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.atmosphere</groupId>
-                    <artifactId>atmosphere-runtime</artifactId>
-                    <version>2.2.6</version>
-                </dependency>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>elite-dev</id>
+            <id>elite-dev-5.2.x</id>
             <properties>
                 <jsfVersion>Mojarra-2.2.8</jsfVersion>
                 <primefacesVersion>PrimeFaces-5.2.14-SNAPSHOT</primefacesVersion>
