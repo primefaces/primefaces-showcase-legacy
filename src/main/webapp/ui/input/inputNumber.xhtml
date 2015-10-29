@@ -1,0 +1,371 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        InputNumber
+    </ui:define>
+
+    <ui:define name="description">
+        InputNumber formats input fields with numeric Strings. It supports currency symbols, minimum and maximum value, negative numbers, and a lot of round methods. 
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <p:panelGrid>  
+                <f:facet name="header">  
+                    <p:row>  
+                        <p:column style="font-weight: bold;">inputNumber</p:column>  
+                        <p:column style="font-weight: bold;">Numeric Value</p:column>  
+                        <p:column style="font-weight: bold;">Description</p:column>  
+                    </p:row>  
+                </f:facet>
+                <p:row>  
+                    <p:column>  
+                        <p:inputNumber id="input1" value="#{inputNumberView.input1}">  
+                            <p:ajax update="output1" />  
+                        </p:inputNumber>  
+                    </p:column>  
+                    <p:column>  
+                        <p:inputText id="output1" disabled="true" value="#{inputNumberView.input1}"/>  
+                    </p:column>  
+                    <p:column>  
+                        Without configuration
+                    </p:column>  
+                </p:row>
+                <p:row>  
+                    <p:column>  
+                        <p:inputNumber id="input2" value="#{inputNumberView.input2}" symbol=" CHF" symbolPosition="s"  
+                                       decimalSeparator="," thousandSeparator=".">  
+                            <p:ajax update="output2" />  
+                        </p:inputNumber>  
+                    </p:column>  
+                    <p:column>  
+                        <p:inputText id="output2" disabled="true" value="#{inputNumberView.input2}"/>  
+                    </p:column>  
+                    <p:column>  
+                        Suffix currency symbol and comma for decimal separator
+                    </p:column>  
+                </p:row>
+                <p:row>  
+                    <p:column>  
+                        <p:inputNumber id="input3" value="#{inputNumberView.input3}" minValue="-1000.999" maxValue="1000">  
+                            <p:ajax update="output3" />  
+                        </p:inputNumber>  
+                    </p:column>  
+                    <p:column>  
+                        <p:inputText id="output3" disabled="true" value="#{inputNumberView.input3}"/>  
+                    </p:column>  
+                    <p:column>  
+                        Maximun and minimum values (-1000.999 to 1000.000)
+                    </p:column>  
+                </p:row>
+                <p:row>  
+                    <p:column>
+                        <p:inputNumber id="input4" value="#{inputNumberView.input4}" decimalPlaces="6">  
+                            <p:ajax update="output4" />  
+                        </p:inputNumber>  
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="output4" disabled="true" value="#{inputNumberView.input4}"/>  
+                    </p:column>
+                    <p:column>
+                        Custom decimal places
+                    </p:column>  
+                </p:row>
+                <p:row>  
+                    <p:column>
+                        <p:inputNumber id="input5" value="#{inputNumberView.input5}" symbol="%"  
+                                        symbolPosition="s" required="true" emptyValue="empty">
+                            <p:ajax update="output5" />  
+                        </p:inputNumber>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="output5" disabled="true" value="#{inputNumberView.input5}"/>  
+                    </p:column>
+                    <p:column>
+                        Empty value (empty) and required
+                    </p:column>  
+                </p:row>
+                <p:row>  
+                    <p:column>
+                        <p:inputNumber id="input6" value="#{inputNumberView.input6}" symbol="%"  
+                                        symbolPosition="s" emptyValue="zero"> 
+                            <p:ajax update="output6" />  
+                        </p:inputNumber>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="output6" disabled="true" value="#{inputNumberView.input6}"/>  
+                    </p:column>
+                    <p:column>
+                        Empty value (zero)
+                    </p:column>  
+                </p:row>
+                <p:row>  
+                    <p:column>
+                        <p:inputNumber id="Input7" value="#{inputNumberView.input7}" symbol="%"  
+                                        symbolPosition="s" emptyValue="sign">  
+                            <p:ajax update="output7" />  
+                        </p:inputNumber>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="output7" disabled="true" value="#{inputNumberView.input7}"/>  
+                    </p:column>
+                    <p:column>
+                        Empty value (sign)
+                    </p:column>  
+                </p:row>
+                <p:row>  
+                    <p:column>
+                        <p:inputNumber id="Input8" value="#{inputNumberView.input8}" decimalPlaces="15">  
+                            <p:ajax update="output8" />  
+                        </p:inputNumber>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="output8" disabled="true" value="#{inputNumberView.input8}"/>  
+                    </p:column>
+                    <p:column>
+                        15 Decimals using BigDecimal
+                    </p:column>  
+                </p:row>
+            </p:panelGrid>
+        </h:form>
+
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="inputNumber.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:panelGrid&gt;  
+        &lt;f:facet name="header"&gt;  
+            &lt;p:row&gt;  
+                &lt;p:column style="font-weight: bold;"&gt;inputNumber&lt;/p:column&gt;  
+                &lt;p:column style="font-weight: bold;"&gt;Numeric Value&lt;/p:column&gt;  
+                &lt;p:column style="font-weight: bold;"&gt;Description&lt;/p:column&gt;  
+            &lt;/p:row&gt;  
+        &lt;/f:facet&gt;
+        &lt;p:row&gt;  
+            &lt;p:column&gt;  
+                &lt;p:inputNumber id="input1" value="#{inputNumberView.input1}"&gt;  
+                    &lt;p:ajax update="output1" /&gt;  
+                &lt;/p:inputNumber&gt;  
+            &lt;/p:column&gt;  
+            &lt;p:column&gt;  
+                &lt;p:inputText id="output1" disabled="true" value="#{inputNumberView.input1}"/&gt;  
+            &lt;/p:column&gt;  
+            &lt;p:column&gt;  
+                Without configuration
+            &lt;/p:column&gt;  
+        &lt;/p:row&gt;
+        &lt;p:row&gt;  
+            &lt;p:column&gt;  
+                &lt;p:inputNumber id="input2" value="#{inputNumberView.input2}" symbol=" CHF" symbolPosition="s"  
+                               decimalSeparator="," thousandSeparator="."&gt;  
+                    &lt;p:ajax update="output2" /&gt;  
+                &lt;/p:inputNumber&gt;  
+            &lt;/p:column&gt;  
+            &lt;p:column&gt;  
+                &lt;p:inputText id="output2" disabled="true" value="#{inputNumberView.input2}"/&gt;  
+            &lt;/p:column&gt;  
+            &lt;p:column&gt;  
+                Suffix currency symbol and comma for decimal separator
+            &lt;/p:column&gt;  
+        &lt;/p:row&gt;
+        &lt;p:row&gt;  
+            &lt;p:column&gt;  
+                &lt;p:inputNumber id="input3" value="#{inputNumberView.input3}" minValue="-1000.999" maxValue="1000"&gt;  
+                    &lt;p:ajax update="output3" /&gt;  
+                &lt;/p:inputNumber&gt;  
+            &lt;/p:column&gt;  
+            &lt;p:column&gt;  
+                &lt;p:inputText id="output3" disabled="true" value="#{inputNumberView.input3}"/&gt;  
+            &lt;/p:column&gt;  
+            &lt;p:column&gt;  
+                Maximun and minimum values (-1000.999 to 1000.000)
+            &lt;/p:column&gt;  
+        &lt;/p:row&gt;
+        &lt;p:row&gt;  
+            &lt;p:column&gt;
+                &lt;p:inputNumber id="input4" value="#{inputNumberView.input4}" decimalPlaces="6"&gt;  
+                    &lt;p:ajax update="output4" /&gt;  
+                &lt;/p:inputNumber&gt;  
+            &lt;/p:column&gt;
+            &lt;p:column&gt;
+                &lt;p:inputText id="output4" disabled="true" value="#{inputNumberView.input4}"/&gt;  
+            &lt;/p:column&gt;
+            &lt;p:column&gt;
+                Custom decimal places
+            &lt;/p:column&gt;  
+        &lt;/p:row&gt;
+        &lt;p:row&gt;  
+            &lt;p:column&gt;
+                &lt;p:inputNumber id="input5" value="#{inputNumberView.input5}" symbol="%"  
+                                symbolPosition="s" required="true" emptyValue="empty"&gt;
+                    &lt;p:ajax update="output5" /&gt;  
+                &lt;/p:inputNumber&gt;
+            &lt;/p:column&gt;
+            &lt;p:column&gt;
+                &lt;p:inputText id="output5" disabled="true" value="#{inputNumberView.input5}"/&gt;  
+            &lt;/p:column&gt;
+            &lt;p:column&gt;
+                Empty value (empty) and required
+            &lt;/p:column&gt;  
+        &lt;/p:row&gt;
+        &lt;p:row&gt;  
+            &lt;p:column&gt;
+                &lt;p:inputNumber id="input6" value="#{inputNumberView.input6}" symbol="%"  
+                                symbolPosition="s" emptyValue="zero"&gt; 
+                    &lt;p:ajax update="output6" /&gt;  
+                &lt;/p:inputNumber&gt;
+            &lt;/p:column&gt;
+            &lt;p:column&gt;
+                &lt;p:inputText id="output6" disabled="true" value="#{inputNumberView.input6}"/&gt;  
+            &lt;/p:column&gt;
+            &lt;p:column&gt;
+                Empty value (zero)
+            &lt;/p:column&gt;  
+        &lt;/p:row&gt;
+        &lt;p:row&gt;  
+            &lt;p:column&gt;
+                &lt;p:inputNumber id="Input7" value="#{inputNumberView.input7}" symbol="%"  
+                                symbolPosition="s" emptyValue="sign"&gt;  
+                    &lt;p:ajax update="output7" /&gt;  
+                &lt;/p:inputNumber&gt;
+            &lt;/p:column&gt;
+            &lt;p:column&gt;
+                &lt;p:inputText id="output7" disabled="true" value="#{inputNumberView.input7}"/&gt;  
+            &lt;/p:column&gt;
+            &lt;p:column&gt;
+                Empty value (sign)
+            &lt;/p:column&gt;  
+        &lt;/p:row&gt;
+        &lt;p:row&gt;  
+            &lt;p:column&gt;
+                &lt;p:inputNumber id="Input8" value="#{inputNumberView.input8}" decimalPlaces="15"&gt;  
+                    &lt;p:ajax update="output8" /&gt;  
+                &lt;/p:inputNumber&gt;
+            &lt;/p:column&gt;
+            &lt;p:column&gt;
+                &lt;p:inputText id="output8" disabled="true" value="#{inputNumberView.input8}"/&gt;  
+            &lt;/p:column&gt;
+            &lt;p:column&gt;
+                15 Decimals using BigDecimal
+            &lt;/p:column&gt;  
+        &lt;/p:row&gt;
+    &lt;/p:panelGrid&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="InputNumberView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import java.math.BigDecimal;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+@ManagedBean
+@ViewScoped
+public class InputNumberView {
+
+    private Double input1 = new Double(0);
+    private Double input2 = new Double(0);
+    private Double input3 = new Double(0);
+    private Double input4 = new Double(0);
+    private Double input5 = new Double(0);
+    private Double input6 = new Double(0);
+    private Double input7 = null;
+    private BigDecimal input8 = new BigDecimal(0);
+
+
+    public InputNumberView() {
+        input1 = 0d;
+        input2 = 0d;
+        input3 = 0d;
+        input4 = 0d;
+        input5 = 251.31;
+        input6 = 60d;
+        input8 = new BigDecimal("1234.000000001");
+    }
+
+    public Double getInput1() {
+        return input1;
+    }
+
+    public void setInput1(Double input1) {
+        this.input1 = input1;
+    }
+
+    public Double getInput2() {
+        return input2;
+    }
+
+    public void setInput2(Double input2) {
+        this.input2 = input2;
+    }
+
+    public Double getInput3() {
+        return input3;
+    }
+
+    public void setInput3(Double input3) {
+        this.input3 = input3;
+    }
+
+    public Double getInput4() {
+        return input4;
+    }
+
+    public void setInput4(Double input4) {
+        this.input4 = input4;
+    }
+
+    public Double getInput5() {
+        return input5;
+    }
+
+    public void setInput5(Double input5) {
+        this.input5 = input5;
+    }
+
+    public Double getInput6() {
+        return input6;
+    }
+
+    public void setInput6(Double input6) {
+        this.input6 = input6;
+    }
+
+    public Double getInput7() {
+        return input7;
+    }
+
+    public void setInput7(Double input7) {
+        this.input7 = input7;
+    }
+
+    public BigDecimal getInput8() {
+        return input8;
+    }
+
+    public void setInput8(BigDecimal input8) {
+        this.input8 = input8;
+    }
+}
+
+                </pre>
+            </p:tab>
+
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-281" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
