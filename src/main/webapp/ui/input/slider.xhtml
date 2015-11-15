@@ -47,7 +47,7 @@
             <h:panelGrid columns="1" style="margin-bottom: 10px">
                 <p:inputText id="txt5" value="#{sliderView.number5}" />
                 <p:slider for="txt5">
-                    <p:ajax event="slideEnd" listener="#{sliderView.onSlideEnd}" />
+                    <p:ajax event="slideEnd" listener="#{sliderView.onSlideEnd}" update="growl" />
                 </p:slider>
             </h:panelGrid>
             
@@ -118,7 +118,7 @@
     &lt;h:panelGrid columns="1" style="margin-bottom: 10px"&gt;
         &lt;p:inputText id="txt5" value="\#{sliderView.number5}" /&gt;
         &lt;p:slider for="txt5"&gt;
-            &lt;p:ajax event="slideEnd" listener="\#{sliderView.onSlideEnd}" /&gt;
+            &lt;p:ajax event="slideEnd" listener="\#{sliderView.onSlideEnd}" update="growl" /&gt;
         &lt;/p:slider&gt;
     &lt;/h:panelGrid&gt;
 
