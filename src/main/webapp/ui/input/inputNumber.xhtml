@@ -6,7 +6,7 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        InputNumber
+        InputNumber <span class="blue">- since v5.3.4</span>
     </ui:define>
 
     <ui:define name="description">
@@ -16,7 +16,7 @@
     <ui:define name="implementation">
 
         <h:form>
-            <p:panelGrid>  
+            <p:panelGrid class="ui-noborder">  
                 <f:facet name="header">  
                     <p:row>  
                         <p:column style="font-weight: bold;">inputNumber</p:column>  
@@ -142,7 +142,7 @@
             <p:tab title="inputNumber.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;p:panelGrid&gt;  
+    &lt;p:panelGrid class="ui-noborder"&gt;  
         &lt;f:facet name="header"&gt;  
             &lt;p:row&gt;  
                 &lt;p:column style="font-weight: bold;"&gt;inputNumber&lt;/p:column&gt;  
@@ -362,8 +362,6 @@ public class InputNumberView {
 
                 </pre>
             </p:tab>
-
-            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-281" />
         </p:tabView>
 
     </ui:define>
