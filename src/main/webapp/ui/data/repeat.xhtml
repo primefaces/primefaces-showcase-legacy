@@ -91,23 +91,23 @@
             <p:tab title="repeat.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form id="form"&gt;
-    &lt;p:repeat value="#{dataListView.cars1}" var="car"&gt;
+    &lt;p:repeat value="\#{dataListView.cars1}" var="car"&gt;
         &lt;h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail"&gt;
             &lt;p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()"&gt;
-                &lt;f:setPropertyActionListener value="#{car}" target="#{dataListView.selectedCar}" /&gt;
-                &lt;p:graphicImage name="demo/images/car/#{car.brand}-big.gif" /&gt; 
+                &lt;f:setPropertyActionListener value="\#{car}" target="\#{dataListView.selectedCar}" /&gt;
+                &lt;p:graphicImage name="demo/images/car/\#{car.brand}-big.gif" /&gt; 
             &lt;/p:commandLink&gt;
 
             &lt;p:outputPanel&gt;
                 &lt;h:panelGrid columns="2" cellpadding="5"&gt;
                     &lt;h:outputText value="Id:" /&gt;
-                    &lt;h:outputText value="#{car.id}" style="font-weight: bold"/&gt;
+                    &lt;h:outputText value="\#{car.id}" style="font-weight: bold"/&gt;
 
                     &lt;h:outputText value="Year:" /&gt;
-                    &lt;h:outputText value="#{car.year}" style="font-weight: bold"/&gt;
+                    &lt;h:outputText value="\#{car.year}" style="font-weight: bold"/&gt;
 
                     &lt;h:outputText value="Color:" /&gt;
-                    &lt;h:outputText value="#{car.color}" style="font-weight: bold"/&gt;
+                    &lt;h:outputText value="\#{car.color}" style="font-weight: bold"/&gt;
                 &lt;/h:panelGrid&gt;
             &lt;/p:outputPanel&gt;
         &lt;/h:panelGrid&gt;
@@ -116,22 +116,22 @@
 
     &lt;p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false"&gt;
         &lt;p:outputPanel id="carDetail" style="text-align:center;"&gt;
-            &lt;p:panelGrid  columns="2" rendered="#{not empty dataListView.selectedCar}" columnClasses="label,value"&gt;
+            &lt;p:panelGrid  columns="2" rendered="\#{not empty dataListView.selectedCar}" columnClasses="label,value"&gt;
                 &lt;f:facet name="header"&gt;
-                    &lt;p:graphicImage name="demo/images/car/#{dataListView.selectedCar.brand}-big.gif"/&gt; 
+                    &lt;p:graphicImage name="demo/images/car/\#{dataListView.selectedCar.brand}-big.gif"/&gt; 
                 &lt;/f:facet&gt;
 
                 &lt;h:outputText value="Id:" /&gt;
-                &lt;h:outputText value="#{dataListView.selectedCar.id}" /&gt;
+                &lt;h:outputText value="\#{dataListView.selectedCar.id}" /&gt;
 
                 &lt;h:outputText value="Year" /&gt;
-                &lt;h:outputText value="#{dataListView.selectedCar.year}" /&gt;
+                &lt;h:outputText value="\#{dataListView.selectedCar.year}" /&gt;
 
                 &lt;h:outputText value="Color:" /&gt;
-                &lt;h:outputText value="#{dataListView.selectedCar.color}" style="color:#{dataListView.selectedCar.color}"/&gt;
+                &lt;h:outputText value="\#{dataListView.selectedCar.color}" style="color:\#{dataListView.selectedCar.color}"/&gt;
 
                 &lt;h:outputText value="Price" /&gt;
-                &lt;h:outputText value="\$#{dataListView.selectedCar.price}" /&gt;
+                &lt;h:outputText value="\$\#{dataListView.selectedCar.price}" /&gt;
             &lt;/p:panelGrid&gt;
         &lt;/p:outputPanel&gt;
     &lt;/p:dialog&gt;
