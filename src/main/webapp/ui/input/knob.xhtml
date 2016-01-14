@@ -1,0 +1,188 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            table {
+                background-color: white;
+                width: 100%;
+            }
+
+            .Wid20{
+                width: 20%;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="title">
+        Knob
+    </ui:define>
+
+    <ui:define name="description">
+        Knob's useful to insert numeric values in a range.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <p:growl autoUpdate="true"/>
+
+        <h3 style="margin-top: 0">Basic</h3>
+        <h:panelGrid columns="2" cellpadding="10" columnClasses="Wid20">    
+            <p:knob value="#{knobView.value}">  
+                <p:ajax listener="#{knobView.onChange}"/>  
+            </p:knob>
+            <h:outputText value="The Knob automatically convert the value to an integer number. There's also an AJAX listener fired when the value changes."/>
+        </h:panelGrid>
+
+        <h3>Max,Min and Step</h3>  
+        <h:panelGrid columns="2" cellpadding="10" columnClasses="Wid20">  
+            <p:knob max="1000" step="50" value="950"/>  
+            <h:outputText value="You can set the max and min value (the default range is 0-100), it's also possible to set a custom increment/decrement step" />  
+        </h:panelGrid>  
+
+        <h3>Show/Hide label</h3>  
+        <h:panelGrid columns="2" cellpadding="10" columnClasses="Wid20">  
+            <p:knob showLabel="false" value="65"/>  
+            <h:outputText value="You can hide the value label" />  
+        </h:panelGrid>  
+
+        <h3>Label template</h3>  
+        <h:panelGrid columns="2" cellpadding="10" columnClasses="Wid20">  
+            <p:knob labelTemplate="{value}%" value="35"/>  
+            <h:outputText value="Just like PrimeFaces's ProgressBar, you can set the output format of the label" />  
+        </h:panelGrid>  
+
+        <h3>Disabled</h3> 
+        <h:panelGrid columns="2" cellpadding="10" columnClasses="Wid20">  
+            <p:knob disabled="true" value="85"/>  
+            <h:outputText value="Like any other input component the knob can be disabled" />  
+        </h:panelGrid>  
+
+        <h3>Cursor</h3> 
+        <h:panelGrid columns="2" cellpadding="10" columnClasses="Wid20">  
+            <p:knob cursor="true" value="0"/>  
+            <h:outputText value="Setting this attribute to true the bar is not filled, leaving just a little cursor to show the value of the knob" />  
+        </h:panelGrid>  
+
+        <h3>Thickness</h3> 
+        <h:panelGrid columns="3" cellpadding="10" columnClasses="Wid20, Wid20">  
+            <p:knob thickness=".2" value="50"/>  
+            <p:knob thickness=".5" value="50"/>  
+            <h:outputText value="You can change the thickness of the bar" />  
+        </h:panelGrid>  
+
+        <h3>Theme</h3>  
+        <h:panelGrid columns="2" cellpadding="10" columnClasses="Wid20">  
+            <p:knob colorTheme="hot-sneaks" value="45"/>  
+            <h:outputText value="Knob will syncs with PrimeFaces theme. It's also possbile to fix the theme using this attribute" />  
+        </h:panelGrid>  
+
+        <h3>Colors</h3> 
+        <h:panelGrid columns="3" cellpadding="10">  
+            <p:knob foregroundColor="red" backgroundColor="#00000" value="25"/>  
+            <p:knob foregroundColor="#808080" backgroundColor="#0000FF" value="75"/>  
+        </h:panelGrid>  
+
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="knob.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:growl autoUpdate="true"/&gt;
+
+&lt;h3 style="margin-top: 0"&gt;Basic&lt;/h3&gt;
+&lt;h:panelGrid columns="2" cellpadding="10"&gt;    
+    &lt;p:knob value="\#{knobView.value}"&gt;  
+        &lt;p:ajax listener="\#{knobView.onChange}"/&gt;  
+    &lt;/p:knob&gt;
+    &lt;h:outputText value="The Knob automatically convert the value to an integer number. There's also an AJAX listener fired when the value changes."/&gt;
+&lt;/h:panelGrid&gt;
+
+&lt;h3&gt;Max,Min and Step&lt;/h3&gt;  
+&lt;h:panelGrid columns="2" cellpadding="10"&gt;  
+    &lt;p:knob max="1000" step="50" value="950"/&gt;  
+    &lt;h:outputText value="You can set the max and min value (the default range is 0-100), it's also possible to set a custom increment/decrement step" /&gt;  
+&lt;/h:panelGrid&gt;  
+
+&lt;h3&gt;Show/Hide label&lt;/h3&gt;  
+&lt;h:panelGrid columns="2" cellpadding="10"&gt;  
+    &lt;p:knob showLabel="false" value="65"/&gt;  
+    &lt;h:outputText value="You can hide the value label" /&gt;  
+&lt;/h:panelGrid&gt;  
+
+&lt;h3&gt;Label template&lt;/h3&gt;  
+&lt;h:panelGrid columns="2" cellpadding="10"&gt;  
+    &lt;p:knob labelTemplate="{value}%" value="35"/&gt;  
+    &lt;h:outputText value="Just like PrimeFaces's ProgressBar, you can set the output format of the label" /&gt;  
+&lt;/h:panelGrid&gt;  
+
+&lt;h3&gt;Disabled&lt;/h3&gt; 
+&lt;h:panelGrid columns="2" cellpadding="10"&gt;  
+    &lt;p:knob disabled="true" value="85"/&gt;  
+    &lt;h:outputText value="Like any other input component the knob can be disabled" /&gt;  
+&lt;/h:panelGrid&gt;  
+
+&lt;h3&gt;Cursor&lt;/h3&gt; 
+&lt;h:panelGrid columns="2" cellpadding="10"&gt;  
+    &lt;p:knob cursor="true" value="0"/&gt;  
+    &lt;h:outputText value="Setting this attribute to true the bar is not filled, leaving just a little cursor to show the value of the knob" /&gt;  
+&lt;/h:panelGrid&gt;  
+
+&lt;h3&gt;Thickness&lt;/h3&gt; 
+&lt;h:panelGrid columns="3" cellpadding="10"&gt;  
+    &lt;p:knob thickness=".2" value="50"/&gt;  
+    &lt;p:knob thickness=".5" value="50"/&gt;  
+    &lt;h:outputText value="You can change the thickness of the bar" /&gt;  
+&lt;/h:panelGrid&gt;  
+
+&lt;h3&gt;Theme&lt;/h3&gt;  
+&lt;h:panelGrid columns="2" cellpadding="10"&gt;  
+    &lt;p:knob colorTheme="hot-sneaks" value="45"/&gt;  
+    &lt;h:outputText value="Knob will syncs with PrimeFaces theme. It's also possbile to fix the theme using this attribute" /&gt;  
+&lt;/h:panelGrid&gt;  
+
+&lt;h3&gt;Colors&lt;/h3&gt; 
+&lt;h:panelGrid columns="3" cellpadding="10"&gt;  
+    &lt;p:knob foregroundColor="red" backgroundColor="\#00000" value="25"/&gt;  
+    &lt;p:knob foregroundColor="\#808080" backgroundColor="\#0000FF" value="75"/&gt;  
+&lt;/h:panelGrid&gt;
+                </pre>
+            </p:tab>
+             <p:tab title="KnobView.java">
+                 <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+@ManagedBean
+public class KnobView implements Serializable {  
+  
+    private int value = 50;  
+  
+    public int getValue() {  
+        return value;  
+    }  
+  
+    public void setValue(int value) {  
+        this.value = value;  
+    }  
+  
+    public void onChange(){  
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "You have selected: " + value, null));  
+    }  
+}    
+                 </pre>
+             </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
