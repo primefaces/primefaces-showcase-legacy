@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>Level 2</title>
+        <style type="text/css">
+            .ui-widget {
+                font-size: 90%;
+            }
+        </style>
+    </h:head>
+    
+    <h:body>        
+        <h:form id="level2form">
+            <p class="ui-widget">You are at Level 2.</p>
+            
+            <p:commandButton id="level2button" value="Go to Level 3" icon="ui-icon-extlink" actionListener="#{dfLevel2View.openLevel3}">
+                <p:ajax event="dialogReturn" listener="#{dfLevel2View.onReturnFromLevel3}" />
+            </p:commandButton>
+        </h:form>
+    </h:body>
+    
+</html>

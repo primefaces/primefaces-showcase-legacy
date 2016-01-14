@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Level 3</title>
+        <style type="text/css">
+            .ui-widget {
+                font-size: 90%;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="level3form">
+             <p class="ui-widget">
+                        Welcome to Level 3, enter value and click send to transfer data from level 3 back to level 2.
+                    </p>
+
+                    <h:panelGrid columns="2">
+                        <p:outputLabel for="val" value="Return Value" />
+                        <p:inputText id="val" value="#{dfLevel3View.val}" />
+                    </h:panelGrid>
+
+                    <p:commandButton value="Send" actionListener="#{dfLevel3View.closeDialog()}" />
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,240 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Dialog Framework - <span class="subitem">Nested (since v5.3.6)</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Nested dialogs are supported to allow creating a dialog from another dialog. Demo here has 3 level of nested dialogs where last dialog returns data
+        back to the root.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form id="rootform">
+            <p:growl id="growl" showDetail="true" />
+
+            <p:commandButton id="rootbtn" value="View" icon="ui-icon-extlink" actionListener="#{dfRootView.openLevel1}">
+                <p:ajax event="dialogReturn" listener="#{dfRootView.onReturnFromLevel1}" update="growl"/>
+            </p:commandButton>
+        </h:form>
+
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="nested.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form id="rootform"&gt;
+    &lt;p:growl id="growl" showDetail="true" /&gt;
+
+    &lt;p:commandButton id="rootbtn" value="View" icon="ui-icon-extlink" actionListener="\#{dfRootView.openLevel1}"&gt;
+        &lt;p:ajax event="dialogReturn" listener="\#{dfRootView.onReturnFromLevel1}" update="growl"/&gt;
+    &lt;/p:commandButton&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+            <p:tab title="level1.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"&gt;
+    
+    &lt;h:head&gt;
+        &lt;title&gt;Level 1&lt;/title&gt;
+        &lt;style type="text/css"&gt;
+            .ui-widget {
+                font-size: 90%;
+            }
+        &lt;/style&gt;
+    &lt;/h:head&gt;
+    
+    &lt;h:body&gt;        
+        &lt;h:form id="level1form"&gt;
+            &lt;p class="ui-widget"&gt;You are at Level 1.&lt;/p&gt;
+
+            &lt;p:commandButton id="level1btn" value="Go into level 2" icon="ui-icon-extlink" actionListener="\#{dfLevel1View.openLevel2}"&gt;
+                &lt;p:ajax event="dialogReturn" listener="\#{dfLevel1View.onReturnFromLevel2}" /&gt;
+            &lt;/p:commandButton&gt;
+        &lt;/h:form&gt;
+    &lt;/h:body&gt;
+    
+&lt;/html&gt;
+                </pre>
+            </p:tab>
+            <p:tab title="level2.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"&gt;
+    
+    &lt;h:head&gt;
+        &lt;title&gt;Level 2&lt;/title&gt;
+        &lt;style type="text/css"&gt;
+            .ui-widget {
+                font-size: 90%;
+            }
+        &lt;/style&gt;
+    &lt;/h:head&gt;
+    
+    &lt;h:body&gt;        
+        &lt;h:form id="level2form"&gt;
+            &lt;p class="ui-widget"&gt;You are at Level 2.&lt;/p&gt;
+            
+            &lt;p:commandButton id="level2button" value="Go to Level 3" icon="ui-icon-extlink" actionListener="\#{dfLevel2View.openLevel3}"&gt;
+                &lt;p:ajax event="dialogReturn" listener="\#{dfLevel2View.onReturnFromLevel3}" /&gt;
+            &lt;/p:commandButton&gt;
+        &lt;/h:form&gt;
+    &lt;/h:body&gt;
+    
+&lt;/html&gt;
+                </pre>
+            </p:tab>
+            <p:tab title="level3.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"&gt;
+    &lt;h:head&gt;
+        &lt;title&gt;Level 3&lt;/title&gt;
+        &lt;style type="text/css"&gt;
+            .ui-widget {
+                font-size: 90%;
+            }
+        &lt;/style&gt;
+    &lt;/h:head&gt;
+    &lt;h:body&gt;
+        &lt;h:form id="level3form"&gt;
+             &lt;p class="ui-widget"&gt;
+                        Welcome to Level 3, enter value and click send to transfer data from level 3 back to level 2.
+                    &lt;/p&gt;
+
+                    &lt;h:panelGrid columns="2"&gt;
+                        &lt;p:outputLabel for="val" value="Return Value" /&gt;
+                        &lt;p:inputText id="val" value="\#{dfLevel3View.val}" /&gt;
+                    &lt;/h:panelGrid&gt;
+
+                    &lt;p:commandButton value="Send" actionListener="\#{dfLevel3View.closeDialog()}" /&gt;
+        &lt;/h:form&gt;
+    &lt;/h:body&gt;
+&lt;/html&gt;
+                </pre>
+            </p:tab>
+            <p:tab title="DFRootView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.df;
+
+import java.util.HashMap;
+import java.util.Map;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
+
+@ManagedBean(name = "dfRootView")
+public class DFRootView {
+    
+    public void openLevel1() {
+        Map&lt;String,Object&gt; options = new HashMap&lt;String, Object&gt;();
+        options.put("modal", true);
+        RequestContext.getCurrentInstance().openDialog("level1", options, null);
+    }
+    
+    public void onReturnFromLevel1(SelectEvent event) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Data Returned", event.getObject().toString()));
+    }
+}
+                </pre>
+            </p:tab>
+            <p:tab title="DFLevel1View.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.df;
+
+import java.util.HashMap;
+import java.util.Map;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
+
+@ManagedBean(name = "dfLevel1View")
+public class DFLevel1View {
+    
+    public void openLevel2() {
+        Map&lt;String,Object&gt; options = new HashMap&lt;String, Object&gt;();
+        options.put("modal", true);
+        RequestContext.getCurrentInstance().openDialog("level2", options, null);
+    }
+    
+    public void onReturnFromLevel2(SelectEvent event) {
+        //pass back to root
+        RequestContext.getCurrentInstance().closeDialog(event.getObject());
+    }
+}
+                </pre>
+            </p:tab>
+            <p:tab title="DFLevel2View.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.df;
+
+import java.util.HashMap;
+import java.util.Map;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
+
+@ManagedBean(name = "dfLevel2View")
+public class DFLevel2View {
+    
+    public void openLevel3() {
+        Map&lt;String,Object&gt; options = new HashMap&lt;String, Object&gt;();
+        options.put("modal", true);
+        RequestContext.getCurrentInstance().openDialog("level3", options, null);
+    }
+    
+    public void onReturnFromLevel3(SelectEvent event) {
+        //pass back to level 1
+        RequestContext.getCurrentInstance().closeDialog(event.getObject());
+    }
+}
+                </pre>
+            </p:tab>
+            <p:tab title="DFLevel3View.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.df;
+
+import javax.faces.bean.ManagedBean;
+import org.primefaces.context.RequestContext;
+
+@ManagedBean(name = "dfLevel3View")
+public class DFLevel3View {
+    
+    private String val;
+
+    public String getVal() {
+        return val;
+    }
+
+    public void setVal(String val) {
+        this.val = val;
+    }
+
+    public void closeDialog() {
+        //pass back to level 2
+        RequestContext.getCurrentInstance().closeDialog(val);
+    }
+}
+                </pre>
+            </p:tab>
+        </p:tabView>
+    </ui:define>
+
+</ui:composition>
