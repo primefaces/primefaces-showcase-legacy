@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        ImpportEnum
+    </ui:define>
+
+    <ui:define name="description">
+        In older EL versions (&lt; 3.0), it's not possible to use enum constants or any other static fields/methods in an EL expression. <br/>
+        As it is not really "cool" to create beans with getter/setter for each constants class, we provide an utils tag which allows to import enum values in a page.<br/>
+        <br/>
+        The enum values can be accessed via the name of the class (default setting) or via a custom name (var attribtue).<br/>
+        It also possible to get all enum values of the class with the "ALL_VALUES" suffix or a custom prefix via the "allSuffix" attribute. <br/>
+    </ui:define>
+
+    <ui:define name="implementation">
+        <p:importEnum type="javax.faces.application.ProjectStage" var="JsfProjectStages" allSuffix="ALL_ENUM_VALUES" />  
+
+        Development: #{JsfProjectStages.Development}
+        
+        <br/>  
+
+        ALL:   
+        <ui:repeat var="current" value="#{JsfProjectStages.ALL_ENUM_VALUES}">  
+            <h:outputText value="#{current}" /> &#160;  
+        </ui:repeat>
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="importConstants.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:importEnum type="javax.faces.application.ProjectStage" var="JsfProjectStages" allSuffix="ALL_ENUM_VALUES" /&gt;  
+
+Development: #{JsfProjectStages.Development}  
+
+&lt;br/&gt;
+
+ALL:   
+&lt;ui:repeat var="current" value="\#{JsfProjectStages.ALL_ENUM_VALUES}"&gt;  
+    &lt;h:outputText value="\#{current}" /&gt; &#160;  
+&lt;/ui:repeat>&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="ProjectStage.java">
+                <pre name="code" class="brush:java">
+package javax.faces.application;
+
+public enum ProjectStage
+{
+    Development,
+    Production,
+    SystemTest,
+    UnitTest;
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-251" />
+        </p:tabView>
+    </ui:define>
+
+</ui:composition>

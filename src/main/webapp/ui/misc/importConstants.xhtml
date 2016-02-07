@@ -1,0 +1,64 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        ImpportConstants
+    </ui:define>
+
+    <ui:define name="description">
+        In older EL versions (&lt; 3.0), it's not possible to use constants or any other static fields/methods in an EL expression.<br/>
+        As it is not really "cool" to create beans with getter/setter for each constants class, we provide an utils tag which allows to import constant fields in a page.<br/>
+        <br/>
+        The constants can be accessed via the name of the class (default setting) or via a custom name (var attribtue). 
+    </ui:define>
+
+    <ui:define name="implementation">
+        <p:importConstants type="org.primefaces.util.Constants" var="PFConstants" /> 
+        
+        LIBRARY:  
+        <h:outputText value="#{PFConstants.LIBRARY}" />
+        <br />
+        DOWNLOAD_COOKIE:
+        <h:outputText value="#{PFConstants.DOWNLOAD_COOKIE}" />
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="importConstants.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;p:importConstants type="org.primefaces.util.Constants" var="PFConstants" /&gt;
+
+LIBRARY:  
+&lt;h:outputText value="\#{PFConstants.LIBRARY}" /&gt;
+
+&lt;br /&gt;
+
+DOWNLOAD_COOKIE:
+&lt;h:outputText value="\#{PFConstants.DOWNLOAD_COOKIE}" /&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="Constants.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.util;
+
+public class Constants {
+    
+    public static final String DOWNLOAD_COOKIE = "primefaces.download";
+
+    public final static String LIBRARY = "primefaces";
+    
+    public final static String PUSH_PATH = "/primepush";
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-251" />
+        </p:tabView>
+    </ui:define>
+
+</ui:composition>
