@@ -20,7 +20,18 @@
                 font-weight: bold;
             }
         </style>
-	</ui:define>
+
+        <style type="text/css">
+
+        </style>
+        <script type="text/javascript">
+            //<![CDATA[
+
+
+            
+            //]]>  
+        </script>
+    </ui:define>
 
     <ui:define name="title">
         AutoComplete
@@ -36,84 +47,21 @@
         <h:form>
             <p:growl id="msgs" showDetail="true" />
             
-            <h:panelGrid columns="2" cellpadding="5">
-                <p:outputLabel value="Simple:" for="acSimple" />
-                <p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" />
+            <p:outputLabel value="Multiple:" for="themes" />
+            <p:autoComplete id="themes" multiple="true"
+                value="#{autoCompleteView.selectedThemes}"
+                completeMethod="#{autoCompleteView.completeTheme}" var="theme"
+                itemLabel="#{theme.displayName}" itemValue="#{theme}"
+                converter="themeConverter" forceSelection="true" selectLimit="3"
+                dropdown="true">
+                <p:column style="width:10%">
+                    <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
+                </p:column>
 
-                <p:outputLabel value="Min Length (3):" for="acMinLength" />
-                <p:autoComplete id="acMinLength" minQueryLength="3" value="#{autoCompleteView.txt2}" completeMethod="#{autoCompleteView.completeText}" effect="fade" />
-
-                <p:outputLabel value="Delay(1000):" for="acDelay" />
-                <p:autoComplete id="acDelay" queryDelay="1000" value="#{autoCompleteView.txt3}" completeMethod="#{autoCompleteView.completeText}" effect="blind" />
-
-                <p:outputLabel value="Max Results(5):" for="acMaxResults" />
-                <p:autoComplete id="acMaxResults" maxResults="5" value="#{autoCompleteView.txt4}" completeMethod="#{autoCompleteView.completeText}" />
-
-                <p:outputLabel value="Force Selection:" for="acForce" />
-                <p:autoComplete id="acForce" forceSelection="true" value="#{autoCompleteView.txt5}" completeMethod="#{autoCompleteView.completeText}" />
-
-                <p:outputLabel value="DropDown:" for="dd" />
-                <p:autoComplete id="dd" dropdown="true" value="#{autoCompleteView.txt6}" completeMethod="#{autoCompleteView.completeText}" />
-
-                <p:outputLabel value="Cache:" for="cache" />
-                <p:autoComplete id="cache" cache="true" cacheTimeout="30000" value="#{autoCompleteView.txt7}" completeMethod="#{autoCompleteView.completeText}" />
-                
-                <p:outputLabel value="Select Event:" for="event" />
-                <p:autoComplete id="event" value="#{autoCompleteView.txt8}" completeMethod="#{autoCompleteView.completeText}">
-                    <p:ajax event="itemSelect" listener="#{autoCompleteView.onItemSelect}" update="msgs" />
-                </p:autoComplete>
-                
-                <p:outputLabel value="Pojo:" for="themePojo" />
-                <p:autoComplete id="themePojo" value="#{autoCompleteView.theme1}" completeMethod="#{autoCompleteView.completeTheme}"
-                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter" forceSelection="true" />
-                
-                <p:outputLabel value="Custom Content:" for="themeCustom" />
-                <p:autoComplete id="themeCustom" value="#{autoCompleteView.theme2}" completeMethod="#{autoCompleteView.completeTheme}"
-                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter" forceSelection="true">
-                    <p:column>
-                        <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
-                    </p:column>
-                    
-                    <p:column>
-                        <h:outputText value="#{theme.displayName}" />
-                    </p:column>
-                </p:autoComplete>
-                
-                <p:outputLabel value="Multiple:" for="themes" />
-                <p:autoComplete id="themes" multiple="true" value="#{autoCompleteView.selectedThemes}" completeMethod="#{autoCompleteView.completeTheme}"
-                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter" forceSelection="true">
-                    <p:column style="width:10%">
-                        <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" />
-                    </p:column>
-                    
-                    <p:column>
-                        <h:outputText value="#{theme.displayName}" />
-                    </p:column>
-                </p:autoComplete>
-                
-                <p:outputLabel value="Itemtip:" for="itemTip" />
-                <p:autoComplete id="itemTip" value="#{autoCompleteView.theme3}" completeMethod="#{autoCompleteView.completeTheme}"
-                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter">
-                    <f:facet name="itemtip">
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <f:facet name="header">
-                                <h:outputText styleClass="ui-theme ui-theme-#{theme.name}" style="margin-left:50px" />
-                            </f:facet>
-                            
-                            <h:outputText value="Display:" />
-                            <h:outputText value="#{theme.displayName}" />
-                            
-                            <h:outputText value="Key" />
-                            <h:outputText value="#{theme.name}" />
-                        </h:panelGrid>
-                    </f:facet>
-                </p:autoComplete>
-                
-                <p:outputLabel value="Group:" for="group" />
-                <p:autoComplete id="group" value="#{autoCompleteView.theme4}" completeMethod="#{autoCompleteView.completeThemeContains}" 
-                                var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="themeConverter" forceSelection="true" 
-                                groupBy="#{autoCompleteView.getThemeGroup(theme)}" scrollHeight="250"/>
-            </h:panelGrid>
+                <p:column>
+                    <h:outputText value="#{theme.displayName}" />
+                </p:column>
+            </p:autoComplete>
             
             <p:commandButton value="Submit" icon="ui-icon-check" update="output msgs" oncomplete="PF('dlg').show()" />
             
