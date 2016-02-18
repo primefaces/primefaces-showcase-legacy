@@ -222,7 +222,7 @@
                 <dependency>
                     <groupId>org.glassfish</groupId>
                     <artifactId>javax.faces</artifactId>
-                    <version>2.2.12</version>
+                    <version>2.2.8</version>
                 </dependency>
                 <dependency>
                     <groupId>org.atmosphere</groupId>
@@ -259,13 +259,13 @@
             <id>elite-dev</id>
             <properties>
                 <jsfVersion>Mojarra-2.2.8</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.3.8-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.3.7-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>5.3.8-SNAPSHOT</version>
+                    <version>5.3.7-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -283,13 +283,13 @@
             <id>elite-dev-5.2.x</id>
             <properties>
                 <jsfVersion>Mojarra-2.2.8</jsfVersion>
-                <primefacesVersion>PrimeFaces-5.2.21-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-5.2.20-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>5.2.21-SNAPSHOT</version>
+                    <version>5.2.20-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
