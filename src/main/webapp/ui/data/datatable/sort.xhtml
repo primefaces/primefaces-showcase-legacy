@@ -12,6 +12,17 @@
     <ui:define name="description">
         Sorting is enabled with sortBy expressions. Both single and multiple column sorting are supported.
     </ui:define>
+    
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-datatable input {
+                box-sizing: border-box;
+                width: 100%;
+                -webkit-box-shadow: none;
+                box-shadow: none !important;
+            }
+        </style>
+    </ui:define>
 
     <ui:define name="implementation">
         
@@ -37,7 +48,29 @@
                 </p:column>
             </p:dataTable>
             
-            <p:dataTable var="car" value="#{dtSortView.cars2}" sortMode="multiple">
+            <p:dataTable var="car" value="#{dtSortView.cars2}" style="margin-bottom:40px">
+                <f:facet name="header">
+                    Editable Values
+                </f:facet>
+                <p:ajax event="sort" skipChildren="false" />
+                <p:column headerText="Id" sortBy="#{car.id}">
+                    <p:inputText value="#{car.id}" />
+                </p:column>
+
+                <p:column headerText="Year" sortBy="#{car.year}">
+                    <p:inputText value="#{car.year}" />
+                </p:column>
+
+                <p:column headerText="Brand" sortBy="#{car.brand}">
+                    <p:inputText value="#{car.brand}" />
+                </p:column>
+
+                <p:column headerText="Color" sortBy="#{car.color}">
+                    <p:inputText value="#{car.color}" />
+                </p:column>
+            </p:dataTable>
+            
+            <p:dataTable var="car" value="#{dtSortView.cars3}" sortMode="multiple">
                 <f:facet name="header">
                     Multiple Column Sort with Metakey
                 </f:facet>
@@ -87,7 +120,29 @@
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt;
 
-    &lt;p:dataTable var="car" value="\#{dtSortView.cars2}" sortMode="multiple"&gt;
+    &lt;p:dataTable var="car" value="\#{dtSortView.cars2}" style="margin-bottom:40px"&gt;
+        &lt;f:facet name="header"&gt;
+            Editable Values
+        &lt;/f:facet&gt;
+        &lt;p:ajax event="sort" skipChildren="false" /&gt;
+        &lt;p:column headerText="Id" sortBy="\#{car.id}"&gt;
+            &lt;p:inputText value="\#{car.id}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Year" sortBy="\#{car.year}"&gt;
+            &lt;p:inputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Brand" sortBy="\#{car.brand}"&gt;
+            &lt;p:inputText value="\#{car.brand}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column headerText="Color" sortBy="\#{car.color}"&gt;
+            &lt;p:inputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:dataTable&gt;
+
+    &lt;p:dataTable var="car" value="\#{dtSortView.cars3}" sortMode="multiple"&gt;
         &lt;f:facet name="header"&gt;
             Multiple Column Sort with Metakey
         &lt;/f:facet&gt;
@@ -130,14 +185,16 @@ public class SortView implements Serializable {
     
     private List&lt;Car&gt; cars1;
     private List&lt;Car&gt; cars2;
+    private List&lt;Car&gt; cars3;
     
-    @ManagedProperty("\#{carService}")
+    @ManagedProperty("#{carService}")
     private CarService service;
 
     @PostConstruct
     public void init() {
         cars1 = service.createCars(10);
-        cars2 = service.createCars(50);
+        cars2 = service.createCars(10);
+        cars3 = service.createCars(50);
     }
 
     public List&lt;Car&gt; getCars1() {
@@ -145,6 +202,10 @@ public class SortView implements Serializable {
     }
 
     public List&lt;Car&gt; getCars2() {
+        return cars2;
+    }
+    
+    public List&lt;Car&gt; getCars3() {
         return cars2;
     }
 

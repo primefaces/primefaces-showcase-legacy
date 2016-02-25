@@ -30,6 +30,7 @@ public class SortView implements Serializable {
     
     private List<Car> cars1;
     private List<Car> cars2;
+    private List<Car> cars3;
     
     @ManagedProperty("#{carService}")
     private CarService service;
@@ -37,7 +38,8 @@ public class SortView implements Serializable {
     @PostConstruct
     public void init() {
         cars1 = service.createCars(10);
-        cars2 = service.createCars(50);
+        cars2 = service.createCars(10);
+        cars3 = service.createCars(50);
     }
 
     public List<Car> getCars1() {
@@ -45,6 +47,10 @@ public class SortView implements Serializable {
     }
 
     public List<Car> getCars2() {
+        return cars2;
+    }
+    
+    public List<Car> getCars3() {
         return cars2;
     }
 
