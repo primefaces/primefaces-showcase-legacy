@@ -6,14 +6,14 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        ImpportConstants
+        ImportConstants
     </ui:define>
 
     <ui:define name="description">
         In older EL versions (&lt; 3.0), it's not possible to use constants or any other static fields/methods in an EL expression.<br/>
         As it is not really "cool" to create beans with getter/setter for each constants class, we provide an utils tag which allows to import constant fields in a page.<br/>
         <br/>
-        The constants can be accessed via the name of the class (default setting) or via a custom name (var attribtue). 
+        The constants can be accessed via the name of the class (default setting) or via a custom name (var attribute). 
     </ui:define>
 
     <ui:define name="implementation">
@@ -56,8 +56,6 @@ public class Constants {
 }
                 </pre>
             </p:tab>
-            
-            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-251" />
         </p:tabView>
     </ui:define>
 
