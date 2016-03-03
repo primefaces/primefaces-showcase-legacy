@@ -11,11 +11,11 @@
                 padding: 0px 10px 0 20px;
                 margin: 5px 0;
             }
-            
+
             .ui-datalist {
                 margin-bottom: 10px
             }
-            
+
             .ui-noborder tr.ui-widget-content {
                 background: none;
             }
@@ -39,12 +39,12 @@
                 <f:selectItem itemLabel="PS4" itemValue="PS4" />
                 <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
             </p:selectManyCheckbox>
-                        
+
             <h3>Grid Layout</h3>
             <p:selectManyCheckbox id="grid" value="#{checkboxView.selectedCities}" layout="grid" columns="3">
                 <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}" />
             </p:selectManyCheckbox>
-            
+
             <h3>Responsive (since v5.2.4)</h3>
             <p:selectManyCheckbox id="grid2" value="#{checkboxView.selectedCities2}" layout="responsive" columns="3">
                 <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}" />
@@ -75,6 +75,11 @@
                     </div>
                 </div>
             </p:outputPanel>
+
+            <h3>Grouped (since v5.4)</h3>
+            <p:selectManyCheckbox id="grid3" value="#{checkboxView.cars}" layout="pageDirection" columns="1">
+                <f:selectItems value="#{checkboxView.cars}" var="car" itemLabel="#{car}" itemValue="#{car}" />
+            </p:selectManyCheckbox>
 
             <p:separator />
 
@@ -207,13 +212,13 @@ import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 public class CheckboxView {
-    
-    private String[] selectedConsoles;  
+
+    private String[] selectedConsoles;
     private String[] selectedConsoles2;
     private String[] selectedCities;
     private String[] selectedCities2;
     private List&lt;String&gt; cities;
-    
+
     @PostConstruct
     public void init() {
         cities = new ArrayList&lt;String&gt;();
@@ -259,7 +264,7 @@ public class CheckboxView {
     public void setSelectedConsoles2(String[] selectedConsoles2) {
         this.selectedConsoles2 = selectedConsoles2;
     }
-    
+
     public List&lt;String&gt; getCities() {
         return cities;
     }
