@@ -76,11 +76,6 @@
                 </div>
             </p:outputPanel>
 
-            <h3>Grouped (since v6.0)</h3>
-            <p:selectManyCheckbox id="grid3" value="#{checkboxView.cars}" layout="pageDirection" columns="1">
-                <f:selectItems value="#{checkboxView.cars}" var="car" itemLabel="#{car}" itemValue="#{car}" />
-            </p:selectManyCheckbox>
-
             <p:separator />
 
             <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
