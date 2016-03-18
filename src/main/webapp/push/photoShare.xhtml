@@ -79,9 +79,9 @@ import java.io.Serializable;
 import javax.faces.FacesException;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.imageio.stream.FileImageOutputStream;
-import javax.servlet.ServletContext;
 import org.primefaces.event.CaptureEvent;
 import org.primefaces.push.EventBus;
 import org.primefaces.push.EventBusFactory;
@@ -102,8 +102,8 @@ public class PhotoShareView implements Serializable {
         filename = getRandomImageName();
         byte[] data = captureEvent.getData();
 
-        ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-        String newFileName = servletContext.getRealPath("") + File.separator + "resources" + File.separator + "demo"
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        String newFileName = externalContext.getRealPath("") + File.separator + "resources" + File.separator + "demo"
                 + File.separator + "images" + File.separator + "photoshare" + File.separator + filename + ".png";
 
         FileImageOutputStream imageOutput;
