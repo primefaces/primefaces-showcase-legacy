@@ -18,7 +18,7 @@
         <h:form>
             <p:dataTable var="car" value="#{dtPaginatorView.cars}" rows="10" 
                          paginator="true"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15">
                 <p:column headerText="Id">
                     <h:outputText value="#{car.id}" />
@@ -47,7 +47,7 @@
 &lt;h:form&gt;
     &lt;p:dataTable var="car" value="\#{dtPaginatorView.cars}" rows="10"
                          paginator="true"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15"&gt;
         &lt;p:column headerText="Id"&gt;
             &lt;h:outputText value="\#{car.id}" /&gt;
