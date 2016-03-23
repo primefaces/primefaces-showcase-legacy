@@ -18,9 +18,9 @@ package org.primefaces.showcase.view.multimedia;
 import java.io.File;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.imageio.stream.FileImageOutputStream;
-import javax.servlet.ServletContext;
 import org.primefaces.model.CroppedImage;
 
 @ManagedBean
@@ -44,8 +44,8 @@ public class CropperView {
         }
 		
 		setNewImageName(getRandomImageName());
-		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-		String newFileName = servletContext.getRealPath("") + File.separator + "resources" + File.separator + "demo" + 
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		String newFileName = externalContext.getRealPath("") + File.separator + "resources" + File.separator + "demo" +
                     File.separator + "images" + File.separator + "crop" + File.separator + getNewImageName() + ".jpg";
 		
 		FileImageOutputStream imageOutput;
@@ -55,6 +55,7 @@ public class CropperView {
 			imageOutput.close();
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Cropping failed."));
+			return;
 		}
         
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "Cropping finished."));
