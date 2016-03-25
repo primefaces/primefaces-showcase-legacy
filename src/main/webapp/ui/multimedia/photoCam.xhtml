@@ -52,9 +52,9 @@ import java.io.IOException;
 import javax.faces.FacesException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.imageio.stream.FileImageOutputStream;
-import javax.servlet.ServletContext;
 import org.primefaces.event.CaptureEvent;
 
 @ManagedBean
@@ -76,9 +76,9 @@ public class PhotoCamView {
     public void oncapture(CaptureEvent captureEvent) {
         filename = getRandomImageName();
         byte[] data = captureEvent.getData();
-        
-		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-		String newFileName = servletContext.getRealPath("") + File.separator + "resources" + File.separator + "demo" +
+
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        String newFileName = externalContext.getRealPath("") + File.separator + "resources" + File.separator + "demo" +
                                     File.separator + "images" + File.separator + "photocam" + File.separator + filename + ".jpeg";
 		
 		FileImageOutputStream imageOutput;
