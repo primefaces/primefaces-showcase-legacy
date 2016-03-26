@@ -17,6 +17,9 @@
         
         <h3 style="margin-top:0">JFreeChart</h3>
         <p:graphicImage value="#{graphicImageView.chart}" />
+        
+        <h3>JFreeChart rendered as DataURI / ViewScoped support</h3>
+        <p:graphicImage value="#{graphicImageView.chart}" stream="false" />
 
         <h3>GraphicText</h3>
         <p:graphicImage value="#{graphicImageView.graphicText}" />
@@ -29,6 +32,9 @@
                 <pre name="code" class="brush:xml">
 &lt;h3 style="margin-top:0"&gt;JFreeChart&lt;/h3&gt;
 &lt;p:graphicImage value="\#{graphicImageView.chart}" /&gt;
+
+&lt;h3&gt;JFreeChart rendered as DataURI / ViewScoped support&lt;/h3&gt;
+&lt;p:graphicImage value="\#{graphicImageView.chart}" stream="false" /&gt;
 
 &lt;h3&gt;GraphicText&lt;/h3&gt;
 &lt;p:graphicImage value="\#{graphicImageView.graphicText}" /&gt;
