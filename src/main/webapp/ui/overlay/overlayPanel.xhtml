@@ -26,7 +26,7 @@
             <br /><br />
 
             <p:commandButton id="movieBtn" value="Dynamic" type="button" />
-            <p:overlayPanel id="moviePanel" for="movieBtn" hideEffect="fade" dynamic="true" style="width:600px">
+            <p:overlayPanel id="moviePanel" for="movieBtn" hideEffect="fade" dynamic="true" style="width:600px" modal="true">
                 <p:dataTable var="movies" value="#{movieView.movieList}" rows="5" paginator="true">
                     <p:column headerText="Movie">
                         <h:outputText value="#{movies.movie}" />
