@@ -19,7 +19,7 @@
             <h:panelGrid columns="3" cellpadding="5">
                 <h:outputLabel for="menu" value="Location:" />
                 <p:selectCheckboxMenu id="menu" value="#{checkboxView.selectedCities}" label="Cities" 
-                                      filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                                      filter="true" filterMatchMode="startsWith" panelStyle="width:250px" style="max-width:200px;">
                     <f:selectItems value="#{checkboxView.cities}" />
                 </p:selectCheckboxMenu>
                 <p:commandLink value="Submit" update="display" />
@@ -42,7 +42,7 @@
     &lt;h:panelGrid columns="3" cellpadding="5"&gt;
         &lt;h:outputLabel for="menu" value="Location:" /&gt;
         &lt;p:selectCheckboxMenu id="menu" value="\#{checkboxView.selectedCities}" label="Cities" 
-                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px"&gt;
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px" style="max-width:200px;"&gt;
             &lt;f:selectItems value="\#{checkboxView.cities}" /&gt;
         &lt;/p:selectCheckboxMenu&gt;
         &lt;p:commandLink value="Submit" update="display" /&gt;
