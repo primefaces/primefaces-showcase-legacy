@@ -1,48 +1,48 @@
 @charset "UTF-8";
 
 @font-face {
-    font-family: 'exosemibold';
-    src: url("#{resource['main/fonts/exo-semibold-webfont.eot']}");
-    src: url("#{resource['main/fonts/exo-semibold-webfont.eot?#iefix']}") format('embedded-opentype'),
-         url("#{resource['main/fonts/exo-semibold-webfont.woff']}") format('woff'),
-         url("#{resource['main/fonts/exo-semibold-webfont.ttf']}") format('truetype'),
-         url("#{resource['main/fonts/exo-semibold-webfont.svg#exosemibold']}") format('svg');
+    font-family: 'latobold';
+    src: url("#{resource['main/fonts/lato-bold-webfont.eot']}");
+    src: url("#{resource['main/fonts/lato-bold-webfont.eot?#iefix']}") format('embedded-opentype'),
+         url("#{resource['main/fonts/lato-bold-webfont.woff']}") format('woff'),
+         url("#{resource['main/fonts/lato-bold-webfont.ttf']}") format('truetype'),
+         url("#{resource['main/fonts/lato-bold-webfont.svg#latobold']}") format('svg');
     font-weight: normal;
     font-style: normal;
 
 }
 
 @font-face {
-    font-family: 'exobolditalic';
-    src: url("#{resource['main/fonts/exo-bolditalic-webfont.eot']}");
-    src: url("#{resource['main/fonts/exo-bolditalic-webfont.eot?#iefix']}") format('embedded-opentype'),
-         url("#{resource['main/fonts/exo-bolditalic-webfont.woff']}") format('woff'),
-         url("#{resource['main/fonts/exo-bolditalic-webfont.ttf']}") format('truetype'),
-         url("#{resource['main/fonts/exo-bolditalic-webfont.svg#exobolditalic']}") format('svg');
+    font-family: 'latoblack';
+    src: url("#{resource['main/fonts/lato-black-webfont.eot']}");
+    src: url("#{resource['main/fonts/lato-black-webfont.eot?#iefix']}") format('embedded-opentype'),
+         url("#{resource['main/fonts/lato-black-webfont.woff']}") format('woff'),
+         url("#{resource['main/fonts/lato-black-webfont.ttf']}") format('truetype'),
+         url("#{resource['main/fonts/lato-black-webfont.svg#latoblack']}") format('svg');
     font-weight: normal;
     font-style: normal;
 
 }
 
 @font-face {
-    font-family: 'exomedium';
-    src: url("#{resource['main/fonts/exo-medium-webfont.eot']}");
-    src: url("#{resource['main/fonts/exo-medium-webfont.eot?#iefix']}") format('embedded-opentype'),
-         url("#{resource['main/fonts/exo-medium-webfont.woff']}") format('woff'),
-         url("#{resource['main/fonts/exo-medium-webfont.ttf']}") format('truetype'),
-         url("#{resource['main/fonts/exo-medium-webfont.svg#exomedium']}") format('svg');
+    font-family: 'latolight';
+    src: url("#{resource['main/fonts/lato-light-webfont.eot']}");
+    src: url("#{resource['main/fonts/lato-light-webfont.eot?#iefix']}") format('embedded-opentype'),
+         url("#{resource['main/fonts/lato-light-webfont.woff']}") format('woff'),
+         url("#{resource['main/fonts/lato-light-webfont.ttf']}") format('truetype'),
+         url("#{resource['main/fonts/lato-light-webfont.svg#latolight']}") format('svg');
     font-weight: normal;
     font-style: normal;
 
 }
 
 @font-face {
-    font-family: 'exoregular';
-    src: url("#{resource['main/fonts/exo-regular-webfont.eot']}");
-    src: url("#{resource['main/fonts/exo-regular-webfont.eot?#iefix']}") format('embedded-opentype'),
-         url("#{resource['main/fonts/exo-regular-webfont.woff']}") format('woff'),
-         url("#{resource['main/fonts/exo-regular-webfont.ttf']}") format('truetype'),
-         url("#{resource['main/fonts/exo-regular-webfont.svg#exoregular']}") format('svg');
+    font-family: 'latoregular';
+    src: url("#{resource['main/fonts/lato-regular-webfont.eot']}");
+    src: url("#{resource['main/fonts/lato-regular-webfont.eot?#iefix']}") format('embedded-opentype'),
+         url("#{resource['main/fonts/lato-regular-webfont.woff']}") format('woff'),
+         url("#{resource['main/fonts/lato-regular-webfont.ttf']}") format('truetype'),
+         url("#{resource['main/fonts/lato-regular-webfont.svg#latoregular']}") format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -50,7 +50,7 @@
 
 /*  ----------------------------------------------------------------------------------------------------- */
 
-body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-color:#20272a; font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;}
+body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-color:#20272a; font-family: 'latoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;}
 
 	#LOGOTEXTSIDE{display:block;width:290px; float:left; height:74px; z-index:999; background-image:url(#{resource['main/images/logoCircuitLines.svg']}); background-repeat:no-repeat; background-position:center right;
 				  margin:-20px 0px 0px 0px; padding-top:25px; line-height:30px;}
@@ -147,6 +147,7 @@ a{ text-decoration:none; outline:none;color: #25AAE1}
 .underline{ text-decoration:underline;}
 .fontSize34{font-size:34px;}
 .fontSize30{font-size:30px;}
+.fontSize28{font-size:28px;}
 .fontSize24{font-size:24px;}
 .fontSize21{font-size:21px;}
 .fontSize18{font-size:18px;}
@@ -174,10 +175,10 @@ a{ text-decoration:none; outline:none;color: #25AAE1}
 .marLefRigAuto{ margin-left:auto !important; margin-right:auto !important;}
 
 /*fonts*/
-.boldFont{font-family: 'exosemibold', "Trebuchet MS", Arial, Helvetica, sans-serif;}
-.boldItalicFont{font-family: 'exobolditalic', "Trebuchet MS", Arial, Helvetica, sans-serif;}
-.mediumFont{font-family: 'exomedium', "Trebuchet MS", Arial, Helvetica, sans-serif;}
-.regularFont{font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;}
+.boldFont{font-family: 'latobold', "Trebuchet MS", Arial, Helvetica, sans-serif;}
+.blackFont{font-family: 'latoblack', "Trebuchet MS", Arial, Helvetica, sans-serif;}
+.lightFont{font-family: 'latolight', "Trebuchet MS", Arial, Helvetica, sans-serif;}
+.regularFont{font-family: 'latoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;}
 
 .bordersOfMenuSide{border-top:solid 1px #404a4e;}
 .hiddenIcons{opacity:0; filter:alpha(opacity=0);margin-left:-30px}
@@ -203,7 +204,7 @@ a{ text-decoration:none; outline:none;color: #25AAE1}
 .defaultTopic{font-size:46px; color:#e26e60; line-height:46px; padding:10px 0px 10px 0px;}
 
 /* buttons */
-.BigButton{width:90%; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; display:table; font-size:18px; font-family: 'exobolditalic', "Trebuchet MS", Arial, Helvetica, sans-serif; color:#404c51; margin:10px 0px 10px 0px; cursor:pointer;
+.BigButton{width:90%; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; display:table; font-size:18px; font-family: 'latoblack', "Trebuchet MS", Arial, Helvetica, sans-serif; color:#404c51; margin:10px 0px 10px 0px; cursor:pointer;
 padding:20px; border-radius:5px; border-right:solid 60px #404c51;}
 	.BigButton img{ margin-right:-60px; height:23px;}	
 
@@ -302,7 +303,7 @@ input.searchInput {
 
 .Source .ui-tabs .ui-tabs-nav li.ui-state-default a {
     color: #84939F;
-    font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-family: 'latoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;
     text-shadow: none;
 }
 

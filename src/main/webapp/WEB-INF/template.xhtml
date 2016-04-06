@@ -50,7 +50,7 @@
                 <h:graphicImage name="main/images/logo.svg" />
                 <h:graphicImage id="BlueLogo" styleClass="hiddenLogo" name="main/images/logoBlue.svg" />
             </span>
-            <div class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/><input id="menuSearch" type="text" placeholder="Search Menu" class="mediumFont fontSize14 mustClose searchInput"/></div>
+            <div class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/><input id="menuSearch" type="text" placeholder="Search Menu" class="boldFont fontSize14 mustClose searchInput"/></div>
             
             <span id="SubMenu-Ajax" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/ajaxCore.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/ajaxCoreBlue.svg" /><span class="MainLinkText">Ajax Core</span></span>
             <div class="SubMenuLinkContainer">
@@ -297,7 +297,7 @@
 			<div class="ContentSideSections" id="PFTopLinksCover" style="height:60px;">
                 <a id="LOGOTEXTSIDE" href="#{request.contextPath}/index.xhtml">
                     <span class="dispBlock logoDarkText fontSize30">PrimeFaces</span>
-                    <span class="dispBlock logoBlueText fontSize30 mediumFont">SHOWCASE</span>
+                    <span class="dispBlock logoBlueText fontSize28 regularFont">SHOWCASE</span>
                 </a>
                 
                 <a href="#{request.contextPath}/ui/misc/mockosx.xhtml" class="PFTopLinks floatRight boldFont marginRight20"><h:graphicImage name="main/images/pfMockosx.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">MockOSX</span></a>
@@ -329,9 +329,9 @@
                 
                 <div class="mobileLogoCover">
                     <h:graphicImage name="main/images/logoBlue.svg" style="height:40px;" styleClass="floatLeft marginRight10"/>
-                    <span class="dispBlock logoDarkText fontSize16 floatLeft">PrimeFaces <span class="dispBlock logoBlueText fontSize18 mediumFont">SHOWCASE</span></span> 
+                    <span class="dispBlock logoDarkText fontSize16 floatLeft">PrimeFaces <span class="dispBlock logoBlueText fontSize18 boldFont">SHOWCASE</span></span> 
                 </div>
-                <select id="mobilemenu" class="selectmenu mediumFont">
+                <select id="mobilemenu" class="selectmenu regularFont">
                     <option value="">Menu</option>
                     <option value="#{request.contextPath}/index.xhtml" class="LEVEL1">Home</option>
                     <optgroup label="Ajax Framework" class="LEVEL1">
@@ -633,7 +633,7 @@
                 
                 <div class="ContentSideSections">
                     <div class="Content100 overHidden TextShadow">
-                        <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock"><ui:insert name="title" /></span>
+                        <span class="fontSize30 TextShadow orange regularFont marginBottom20 dispBlock"><ui:insert name="title" /></span>
                         <span class="defaultText dispTable"><ui:insert name="description" />
                         </span>
                     </div>

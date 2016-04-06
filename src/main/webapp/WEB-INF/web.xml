@@ -160,19 +160,19 @@
         <mime-type>image/svg+xml</mime-type>
     </mime-mapping>
     <mime-mapping>
-        <extension>svg#exosemibold</extension>
+        <extension>svg#latobold</extension>
         <mime-type>image/svg+xml</mime-type>
     </mime-mapping>
     <mime-mapping>
-        <extension>svg#exobolditalic</extension>
+        <extension>svg#latoblack</extension>
         <mime-type>image/svg+xml</mime-type>
     </mime-mapping>
         <mime-mapping>
-        <extension>svg#exomedium</extension>
+        <extension>svg#latolight</extension>
         <mime-type>image/svg+xml</mime-type>
     </mime-mapping>
-        <mime-mapping>
-        <extension>svg#exoregular</extension>
+    <mime-mapping>
+        <extension>svg#latoregular</extension>
         <mime-type>image/svg+xml</mime-type>
     </mime-mapping>
     <mime-mapping>
