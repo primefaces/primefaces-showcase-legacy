@@ -82,7 +82,7 @@ public class DFView {
     
     &lt;h:head&gt;
         &lt;title&gt;Cars&lt;/title&gt;
-                &lt;style type="text/css"&gt;
+        &lt;style type="text/css"&gt;
             .ui-widget {
                 font-size: 90%;
             }
@@ -93,19 +93,19 @@ public class DFView {
         &lt;h:form&gt;
             &lt;p:dataTable var="car" value="\#{dfCarsView.cars}"&gt;
                 &lt;p:column headerText="Id"&gt;
-                    &lt;h:outputText value="\#{dfCarsView.id}" /&gt;
+                    &lt;h:outputText value="\#{car.id}" /&gt;
                 &lt;/p:column&gt;
 
                 &lt;p:column headerText="Year"&gt;
-                    &lt;h:outputText value="\#{dfCarsView.year}" /&gt;
+                    &lt;h:outputText value="\#{car.year}" /&gt;
                 &lt;/p:column&gt;
 
                 &lt;p:column headerText="Brand"&gt;
-                    &lt;h:outputText value="\#{dfCarsView.brand}" /&gt;
+                    &lt;h:outputText value="\#{car.brand}" /&gt;
                 &lt;/p:column&gt;
 
                 &lt;p:column headerText="Color"&gt;
-                    &lt;h:outputText value="\#{dfCarsView.color}" /&gt;
+                    &lt;h:outputText value="\#{car.color}" /&gt;
                 &lt;/p:column&gt;
 
                 &lt;p:column style="width:32px;text-align: center"&gt;
