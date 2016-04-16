@@ -50,9 +50,9 @@
 
 /*  ----------------------------------------------------------------------------------------------------- */
 
-body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-color:#20272a; font-family: 'latoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;}
+body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-color:#20272a; font-family: 'latoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;color:#5C666A;}
 
-	#LOGOTEXTSIDE{display:block;width:290px; float:left; height:74px; z-index:999; background-image:url(#{resource['main/images/logoCircuitLines.svg']}); background-repeat:no-repeat; background-position:center right;
+	#LOGOTEXTSIDE{display:block;width:290px; float:left; height:74px; z-index:999; background-image:url("#{resource['main/images/logoCircuitLines.svg']}"); background-repeat:no-repeat; background-position:center right;
 				  margin:-20px 0px 0px 0px; padding-top:25px; line-height:30px;}
 		.logoDarkText{color:#5c666a;}
 		.logoBlueText{color:#25aae1;}
@@ -105,7 +105,7 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 				-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
 					.PropertyBox img{width:80%;}
 					.PropertyBox .PropertyTopic{display:block; color:#25aae1; font-size:18px;}
-					.PropertyBox .PropertyText{display:block; color:#8c9aa5; font-size:14px;}
+					.PropertyBox .PropertyText{display:block; color:#5C666A; font-size:14px;}
 					
 				.MOBILE .PropertyBox{width:27%; height:250px; float:left; padding:3%; overflow:hidden; text-align:center; border-radius:5px; -webkit-border-radius:5px; display:block;
 				-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
@@ -113,7 +113,7 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 					.MOBILE .PropertyBox .PropertyTopic{display:block; color:#25aae1; font-size:12px;}
 					.MOBILE .PropertyBox .PropertyText{display:block; color:#8c9aa5; font-size:11px;}
 				
-				.widgetsLink{width:90%; height:auto; background-image:url(#{resource['main/images/widgetIconCover.svg']}); background-position:top; background-repeat:no-repeat; background-size:contain; display:table;
+				.widgetsLink{width:90%; height:auto; background-image:url("#{resource['main/images/widgetIconCover.svg']}"); background-position:top; background-repeat:no-repeat; background-size:contain; display:table;
 							 text-align:center; padding:5%;}
 					.widgetsLink img{width:40%; height:auto; margin-top:5%;}
 					.widgetsLink span{ width:100%; margin-top:10px; overflow:hidden; height:50px; display:table; font-size:14px;}
@@ -123,7 +123,7 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 					.MOBILE .widgetsLink span{ width:100%; margin-top:0px; overflow:hidden; height:50px; display:table; font-size:11px;}
 				
 			.BoxesIndent{width:85%; float:right; padding-top:30px;}
-				.brandLogo{ background-image:url(#{resource['main/images/brandLogo.svg']}); background-repeat:no-repeat; background-position:center; background-size:contain; width:70px; height:70px; display:block;
+				.brandLogo{ background-image:url("#{resource['main/images/brandLogo.svg']}"); background-repeat:no-repeat; background-position:center; background-size:contain; width:70px; height:70px; display:block;
 				margin:10px 10px 10px 0px; float:left;}
 				
 			.MOBILE .BoxesIndent{width:85%; float:none; margin:0px auto; padding-top:30px;}
@@ -186,9 +186,8 @@ a{ text-decoration:none; outline:none;color: #25AAE1}
 .emptyBox{display:block; height:121px;}
 
 /* display */
-.dispBlock{ display:block;}
-.dispTable{ display:table;}
-.overHidden{ overflow:hidden;}
+.dispTable{display:table;}
+.overHidden{overflow:hidden;}
 
 /* floating */
 .floatRight{float:right;}
@@ -200,7 +199,7 @@ a{ text-decoration:none; outline:none;color: #25AAE1}
 .Content100{width:100%;}
 
 /* general text styles */
-.defaultText{font-size:18px; color:#84939f;}
+.defaultText{font-size:18px; color:#5C666A;}
 .defaultTopic{font-size:46px; color:#e26e60; line-height:46px; padding:10px 0px 10px 0px;}
 
 /* buttons */
@@ -215,7 +214,7 @@ padding:20px; border-radius:5px; border-right:solid 60px #404c51;}
 	
 /* text colors */
 .orange{color:#fca752;}
-.gray{color:#84939f;}
+.gray{color:#5C666A;}
 .pink{color:#e26e61;}
 .yellow{color:#fdd106;}
 .green{color:#39b54a;}
@@ -246,7 +245,7 @@ input.searchInput {
 }
 
 .Implementation {
-    background-color:#dfe4e6;
+    background-color:#ffffff;
 }
 
 .Implementation h3 {

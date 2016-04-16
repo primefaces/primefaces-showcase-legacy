@@ -308,14 +308,17 @@
     background: #ffffff;
     border-left: 0px none;
     border-right: 0px none;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
 }
 
 /* Tabview */
-.ui-tabview.ui-widget-content {
+.ui-tabs.ui-widget-content:not(.ui-ribbon) {
     border:0px none;
 }
 
-.ui-tabview .ui-tabview-nav {
+.ui-tabs:not(.ui-ribbon) .ui-tabs-nav {
     background: transparent;
 }
 
@@ -340,7 +343,10 @@
  */
 .ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: visible; border: 0 none; -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.75); -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.75); box-shadow: 0 1px 4px rgba(0,0,0,0.75); }
 .ui-dialog .ui-dialog-titlebar { position: relative; background: transparent !important; padding: 0 0 8px 0; margin: 20px 20px 5px 20px; border: solid #e5e5e5; border-width: 0 0 1px 0; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; }
-.ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .1em 0; color: #353536; font-size: 20px !important; }
+.ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .1em 0; color: #353536; font-size: 20px !important; } 
+.ui-dialog .ui-dialog-titlebar-close { position: absolute; right: -16px !important; top: -16px !important; margin: 0; width: 30px; height: 30px; background: url("#{resource['primefaces-delta:images/modalClose.png']}") 0 0 no-repeat; border: 0 !important; z-index: 10000; padding: 0px !important;}
+.ui-dialog .ui-dialog-titlebar-close span { display: none !important; }
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 0; }
 .ui-dialog .ui-dialog-content { position: relative; border: 0; padding: 15px 20px 20px 20px; background: none; overflow: auto; zoom: 1; }
 .ui-dialog .ui-dialog-buttonpane { text-align: left; border: solid #e5e5e5; border-width: 1px 0 0 0; background: transparent; margin: 20px 20px 10px 20px; padding: 10px 0 0 0; }
 .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { float: right; }
@@ -578,12 +584,12 @@ button.ui-button span {
 }
 
 /* PrimeFaces Extensions */
-.ui-inputtext, .ui-widget-content .ui-inputtext, .ui-widget-header .ui-inputtext {
+.ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield {
 	background: #ffffff;
 	color: #222222;
 }
 
-.ui-inputtext.ui-state-focus, .ui-widget-content .ui-inputtext.ui-state-focus, .ui-widget-header .ui-inputtext.ui-state-focus {
+.ui-inputfield.ui-state-focus, .ui-widget-content .ui-inputfield.ui-state-focus, .ui-widget-header .ui-inputfield.ui-state-focus {
 	-moz-box-shadow: 0px 0px 5px #14A4FF;
 	-webkit-box-shadow: 0px 0px 5px #14A4FF;
 	box-shadow: 0px 0px 5px #14A4FF;
@@ -644,6 +650,28 @@ button.ui-button span {
 }
 
 .ui-panel.ui-widget .ui-panel-titlebar {
-
      border-width: 0 0 1px 0;
 }
+
+/* Ribbon */
+.ui-ribbon-group-content .ui-button.ui-state-default {
+    border: 1px solid #d3d3d3; 
+    background: #f9f9fc; 
+    font-weight: normal; 
+    color: #555555;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+.ui-ribbon-group-content .ui-button.ui-state-hover {
+    border: 1px solid #a6a6ac;
+    background: #ededf0;
+    font-weight: normal;
+    color: #212121;
+}
+
+.ui-ribbon-group-content .ui-button.ui-state-default span {
+    text-shadow: none !important;
+}
+
+
