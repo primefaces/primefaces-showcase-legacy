@@ -32,7 +32,7 @@
 
 /* Interaction Cues
 ----------------------------------*/
-.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #1b77b2; background: #1f88cc; color: #FFFFFF; }
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #1c7ab7; background: #186ba0; color: #FFFFFF; }
 .ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #363636; }
 .ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #fef1ec; color: #cd0a0a; }
 .ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a { color: #cd0a0a; }
@@ -447,13 +447,13 @@
 }
 
 .ui-datepicker-current-day a {
-	background: #1f88cc !important;
+	background: #186ba0 !important;
 	filter: none !important;
 	color: #FFFFFF !important;
 }
 
 .ui-datepicker-today a.ui-state-highlight {
-	border: 1px solid #1b77b2 !important;
+	border: 1px solid #1c7ab7 !important;
 }
 
 .ui-datepicker td a.ui-state-default.ui-state-hover {
@@ -564,8 +564,8 @@ button.ui-button.ui-state-active, .ui-button.ui-state-active {
 .ui-chkbox-box.ui-state-focus.ui-state-active,
 .ui-radiobutton-box.ui-state-active,
 .ui-radiobutton-box.ui-state-focus.ui-state-active{
-    border: 1px solid #1b77b2; 
-    background: #1f88cc; 
+    border: 1px solid #1c7ab7; 
+    background: #186ba0; 
     color: #FFFFFF;
 }
 
@@ -630,7 +630,7 @@ button.ui-button.ui-state-active, .ui-button.ui-state-active {
     border-color: #d9d9d9;
 }
 .ui-datatable th.ui-state-active{
-    background: #1f89ce;
+    background: #186ba0;
     color: #ffffff;
 }
 .ui-datatable th.ui-state-active .ui-icon-carat-2-n-s {
@@ -696,7 +696,7 @@ button.ui-button.ui-state-active, .ui-button.ui-state-active {
 }
 
 .ui-treetable th.ui-state-active {
-    background: #1f89ce;
+    background: #186ba0;
     color: #ffffff;
 }
 
@@ -725,7 +725,7 @@ button.ui-button.ui-state-active, .ui-button.ui-state-active {
 
 .ui-selectonebutton .ui-button.ui-state-active,
 .ui-selectmanybutton .ui-button.ui-state-active {
-   border: 1px solid #1b77b2; background: #1f88cc; color: #FFFFFF;
+   border: 1px solid #1c7ab7; background: #186ba0; color: #FFFFFF;
 }
 
 /* SelectOneMenu */
