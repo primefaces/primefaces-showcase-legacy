@@ -22,11 +22,11 @@
 
 /* Interaction states
 ----------------------------------*/
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #e2e2e2; background: #f6f6f6; font-weight: normal; color: #212121; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #d6d6d6; background: #eeeeee; font-weight: normal; color: #555555; }
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #555555; text-decoration: none; }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #d8d8d8; background: #ececec; font-weight: normal; color: #212121; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #bebebe; background: #d6d6d6; font-weight: normal; color: #212121; }
 .ui-state-hover a, .ui-state-hover a:hover { color: #212121; text-decoration: none; }
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #cecece; background: #ffffff; font-weight: normal; color: #212121; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #bebebe; background: #d6d6d6; font-weight: normal; color: #212121; }
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #212121; text-decoration: none; }
 .ui-widget :active { outline: none; }
 
@@ -495,13 +495,13 @@ td.ui-datepicker-unselectable {
 .ui-progressbar { height: 10px; text-align: left; border: 0 none; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; background: #ffffff; -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.35) inset, 0 1px 0 rgba(255,255,255,0.15); -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.35) inset, 0 1px 0 rgba(255,255,255,0.15); box-shadow: 0 1px 3px rgba(0,0,0,0.35) inset, 0 1px 0 rgba(255,255,255,0.15); }
 .ui-progressbar .ui-progressbar-value { margin: 0px !important; height:100%; border: 0 none; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; }
 .ui-progressbar .ui-progressbar-value {
-	background: #27abff; /* Old browsers */
-	background: -moz-linear-gradient(top, #27abff 0%, #059eff 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#27abff), color-stop(100%,#059eff)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #27abff 0%,#059eff 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #27abff 0%,#059eff 100%); /* Opera11.10+ */
-	background: -ms-linear-gradient(top, #27abff 0%,#059eff 100%); /* IE10+ */
-	background: linear-gradient(top, #27abff 0%,#059eff 100%); /* W3C */
+	background: #1f89ce; /* Old browsers */
+	background: -moz-linear-gradient(top, #1f89ce 0%, #059eff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1f89ce), color-stop(100%,#059eff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #1f89ce 0%,#059eff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #1f89ce 0%,#059eff 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, #1f89ce 0%,#059eff 100%); /* IE10+ */
+	background: linear-gradient(top, #1f89ce 0%,#059eff 100%); /* W3C */
 }
 
 .ui-progressbar .ui-progressbar-label {
@@ -515,23 +515,23 @@ td.ui-datepicker-unselectable {
     transition: background-color .2s;
 }
 .ui-button, button.ui-button.ui-state-default, .ui-button.ui-state-default {
-	border: 1px solid #2399e5;
-	color: #FFF;
-	background: #27abff; /* Old browsers */
+	border: 1px solid #1f89ce;
+	color: #FFFFFF;
+	background: #2399e5; /* Old browsers */
 }
 .ui-button, .ui-button span, button.ui-button.ui-state-default span, .ui-button.ui-state-default span {
 	font-weight: bold;
 }
 button.ui-button.ui-state-hover, .ui-button.ui-state-hover,
 button.ui-button.ui-state-focus, .ui-button.ui-state-focus {
-	border: 1px solid #1f88cc;
-	background: #2399e5; /* Old browsers */
+	border: 1px solid #1c7ab7;
+	background: #1f89ce; /* Old browsers */
 	outline: 0 none;
 }
 
 button.ui-button.ui-state-active, .ui-button.ui-state-active {
-	border: 1px solid #1b77b2;
-	background: #1f88cc; /* Old browsers */
+	border: 1px solid #1c7ab7;
+	background: #186ba0; /* Old browsers */
 }
 
 .ui-toggle-switch label {
@@ -568,9 +568,9 @@ button.ui-button.ui-state-active, .ui-button.ui-state-active {
 }
 
 .ui-inputfield.ui-state-focus, .ui-widget-content .ui-inputfield.ui-state-focus, .ui-widget-header .ui-inputfield.ui-state-focus {
-	-moz-box-shadow: 0px 0px 5px #14A4FF;
-	-webkit-box-shadow: 0px 0px 5px #14A4FF;
-	box-shadow: 0px 0px 5px #14A4FF;
+	-moz-box-shadow: 0px 0px 5px #1f89ce;
+	-webkit-box-shadow: 0px 0px 5px #1f89ce;
+	box-shadow: 0px 0px 5px #1f89ce;
 }
 
 /* InputSwitch */
@@ -580,7 +580,7 @@ button.ui-button.ui-state-active, .ui-button.ui-state-active {
 }
 
 .ui-paginator .ui-paginator-page.ui-state-active {
-	background: #27abff;
+	background: #1f89ce;
 	color: #ffffff;
 	border-color: #168dd9;
 }
@@ -588,7 +588,7 @@ button.ui-button.ui-state-active, .ui-button.ui-state-active {
 /* PanelMenu */
 .ui-panelmenu .ui-panelmenu-header.ui-state-active,
 .ui-panelmenu .ui-panelmenu-header.ui-state-active a {
-    background: #27abff;
+    background: #1f89ce;
     color: #ffffff;
     border-color: #168dd9;
 }
@@ -610,7 +610,7 @@ button.ui-button.ui-state-active, .ui-button.ui-state-active {
     border-color: #d9d9d9;
 }
 .ui-datatable th.ui-state-active{
-    background: #27abff;
+    background: #1f89ce;
     color: #ffffff;
 }
 .ui-datatable th.ui-state-active .ui-icon-carat-2-n-s {
@@ -676,10 +676,19 @@ button.ui-button.ui-state-active, .ui-button.ui-state-active {
 }
 
 .ui-treetable th.ui-state-active {
-    background: #27abff;
+    background: #1f89ce;
     color: #ffffff;
 }
 
 .ui-treetable th.ui-state-active .ui-icon-carat-2-n-s {
     background-image: url("#{resource['primefaces-delta:images/ui-icons_ffffff_256x240.png']}");
+}
+
+/* Inputs */
+.ui-inputfield {
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+    
 }
