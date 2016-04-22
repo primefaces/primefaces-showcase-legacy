@@ -64,7 +64,7 @@
 .ui-state-default .ui-icon { background-image: url("#{resource['primefaces-delta:images/ui-icons_888888_256x240.png']}"); }
 .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url("#{resource['primefaces-delta:images/ui-icons_454545_256x240.png']}"); }
 .ui-state-active .ui-icon {background-image: url("#{resource['primefaces-delta:images/ui-icons_454545_256x240.png']}"); }
-.ui-state-highlight .ui-icon {background-image: url("#{resource['primefaces-delta:images/ui-icons_2e83ff_256x240.png']}"); }
+.ui-state-highlight .ui-icon {background-image: url("#{resource['primefaces-delta:images/ui-icons_ffffff_256x240.png']}"); }
 .ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url("#{resource['primefaces-delta:images/ui-icons_cd0a0a_256x240.png']}"); }
 
 /* positioning */
@@ -344,9 +344,6 @@
 .ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: visible; border: 0 none; -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.75); -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.75); box-shadow: 0 1px 4px rgba(0,0,0,0.75); }
 .ui-dialog .ui-dialog-titlebar { position: relative; background: transparent !important; padding: 0 0 8px 0; margin: 20px 20px 5px 20px; border: solid #e5e5e5; border-width: 0 0 1px 0; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; }
 .ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .1em 0; color: #353536; font-size: 20px !important; } 
-.ui-dialog .ui-dialog-titlebar-close { position: absolute; right: -16px !important; top: -16px !important; margin: 0; width: 30px; height: 30px; background: url("#{resource['primefaces-delta:images/modalClose.png']}") 0 0 no-repeat; border: 0 !important; z-index: 10000; padding: 0px !important;}
-.ui-dialog .ui-dialog-titlebar-close span { display: none !important; }
-.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 0; }
 .ui-dialog .ui-dialog-content { position: relative; border: 0; padding: 15px 20px 20px 20px; background: none; overflow: auto; zoom: 1; }
 .ui-dialog .ui-dialog-buttonpane { text-align: left; border: solid #e5e5e5; border-width: 1px 0 0 0; background: transparent; margin: 20px 20px 10px 20px; padding: 10px 0 0 0; }
 .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { float: right; }
@@ -544,9 +541,9 @@ td.ui-datepicker-unselectable {
 	font-weight: bold;
 }
 button.ui-button.ui-state-hover, .ui-button.ui-state-hover,
-button.ui-button.ui-state-focus {
+button.ui-button.ui-state-focus, .ui-button.ui-state-focus {
 	border: 1px solid #0c6aa6;
-	box-shadow: 0 1px 0 #58b3ff inset, 0 1px 2px rgba(0,0,0,0.2) !important;
+	box-shadow: 0 1px 8px #58b3ff, 0 1px 2px rgba(0,0,0,0.2) !important;
 	background: #279cff; /* Old browsers */
 	background: -moz-linear-gradient(top, #279cff 0%, #058dff 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#279cff), color-stop(100%,#058dff)); /* Chrome,Safari4+ */
@@ -581,6 +578,19 @@ button.ui-button span {
 	text-align: left;
 	width: auto;
 	cursor: pointer;
+}
+
+/* Checkbox and Radio */
+.ui-state-highlight .ui-chkbox-box .ui-icon, 
+.ui-state-highlight .ui-radiobutton-box .ui-icon {
+    background-image: url("#{resource['primefaces-delta:images/ui-icons_2e83ff_256x240.png']}");
+}
+
+/* TimeLine */
+.timeline-content .timeline-event-selected {
+    background: #14a4ff none repeat scroll 0 0;
+    border: 1px solid #14a4ff;
+    color: #ffffff;
 }
 
 /* PrimeFaces Extensions */
@@ -631,6 +641,10 @@ button.ui-button span {
 }
 .ui-datatable-odd {
     background-color: #f9f9fa;
+}
+
+.ui-datatable-rowordering.ui-state-active {
+    background: #14a4ff none repeat scroll 0 0;
 }
 
 /* Panel */
