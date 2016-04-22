@@ -543,7 +543,6 @@ td.ui-datepicker-unselectable {
 button.ui-button.ui-state-hover, .ui-button.ui-state-hover,
 button.ui-button.ui-state-focus, .ui-button.ui-state-focus {
 	border: 1px solid #0c6aa6;
-	box-shadow: 0 1px 8px #58b3ff, 0 1px 2px rgba(0,0,0,0.2) !important;
 	background: #279cff; /* Old browsers */
 	background: -moz-linear-gradient(top, #279cff 0%, #058dff 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#279cff), color-stop(100%,#058dff)); /* Chrome,Safari4+ */
@@ -552,6 +551,9 @@ button.ui-button.ui-state-focus, .ui-button.ui-state-focus {
 	background: -ms-linear-gradient(top, #279cff 0%,#058dff 100%); /* IE10+ */
 	background: linear-gradient(top, #279cff 0%,#058dff 100%); /* W3C */
 	outline: 0 none;
+}
+button.ui-button.ui-state-focus, .ui-button.ui-state-focus {
+	box-shadow: 0 1px 8px #58b3ff, 0 1px 2px rgba(0,0,0,0.2) !important;
 }
 button.ui-button.ui-state-hover span {
 	text-shadow: 0 -1px 0 #117cc0;
@@ -584,6 +586,14 @@ button.ui-button span {
 .ui-state-highlight .ui-chkbox-box .ui-icon, 
 .ui-state-highlight .ui-radiobutton-box .ui-icon {
     background-image: url("#{resource['primefaces-delta:images/ui-icons_2e83ff_256x240.png']}");
+}
+
+.ui-chkbox-box.ui-state-focus.ui-state-active,
+.ui-radiobutton-box.ui-state-focus.ui-state-active{
+    border: 1px solid #a6a6ac; 
+    background: #ededf0; 
+    font-weight: normal; 
+    color: #212121; 
 }
 
 /* TimeLine */
@@ -625,6 +635,10 @@ button.ui-button span {
     border-color: #168dd9;
 }
 
+.ui-panelmenu .ui-panelmenu-header.ui-state-active .ui-icon {
+    background-image: url("#{resource['primefaces-delta:images/ui-icons_ffffff_256x240.png']}");
+}
+
 /* DataTable */
 .ui-datatable th {
     font-weight: bold;
@@ -634,10 +648,14 @@ button.ui-button span {
 }
 .ui-datatable th.ui-state-hover{
     background: #d3d5d8;
+    border-color: #d3d3d3;
 }
 .ui-datatable th.ui-state-active{
     background: #27abff;
     color: #ffffff;
+}
+.ui-datatable th.ui-state-active .ui-icon-carat-2-n-s {
+    background-image: url("#{resource['primefaces-delta:images/ui-icons_ffffff_256x240.png']}");
 }
 .ui-datatable-odd {
     background-color: #f9f9fa;
@@ -687,5 +705,23 @@ button.ui-button span {
 .ui-ribbon-group-content .ui-button.ui-state-default span {
     text-shadow: none !important;
 }
+ 
+/* Tree */
+.ui-tree .ui-chkbox-box .ui-icon {
+    background-image: url("#{resource['primefaces-delta:images/ui-icons_454545_256x240.png']}");
+}
 
+/* TreeTable */
+.ui-treetable th.ui-state-hover{
+    background: #d3d5d8;
+    border-color: #d3d3d3;
+}
 
+.ui-treetable th.ui-state-active {
+    background: #27abff;
+    color: #ffffff;
+}
+
+.ui-treetable th.ui-state-active .ui-icon-carat-2-n-s {
+    background-image: url("#{resource['primefaces-delta:images/ui-icons_ffffff_256x240.png']}");
+}
