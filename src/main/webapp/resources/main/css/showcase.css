@@ -1,18 +1,6 @@
 @charset "UTF-8";
 
 @font-face {
-    font-family: 'latobold';
-    src: url("#{resource['main/fonts/lato-bold-webfont.eot']}");
-    src: url("#{resource['main/fonts/lato-bold-webfont.eot?#iefix']}") format('embedded-opentype'),
-         url("#{resource['main/fonts/lato-bold-webfont.woff']}") format('woff'),
-         url("#{resource['main/fonts/lato-bold-webfont.ttf']}") format('truetype'),
-         url("#{resource['main/fonts/lato-bold-webfont.svg#latobold']}") format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
     font-family: 'latoblack';
     src: url("#{resource['main/fonts/lato-black-webfont.eot']}");
     src: url("#{resource['main/fonts/lato-black-webfont.eot?#iefix']}") format('embedded-opentype'),
@@ -21,19 +9,6 @@
          url("#{resource['main/fonts/lato-black-webfont.svg#latoblack']}") format('svg');
     font-weight: normal;
     font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'latolight';
-    src: url("#{resource['main/fonts/lato-light-webfont.eot']}");
-    src: url("#{resource['main/fonts/lato-light-webfont.eot?#iefix']}") format('embedded-opentype'),
-         url("#{resource['main/fonts/lato-light-webfont.woff']}") format('woff'),
-         url("#{resource['main/fonts/lato-light-webfont.ttf']}") format('truetype'),
-         url("#{resource['main/fonts/lato-light-webfont.svg#latolight']}") format('svg');
-    font-weight: normal;
-    font-style: normal;
-
 }
 
 @font-face {
@@ -175,9 +150,7 @@ a{ text-decoration:none; outline:none;color: #25AAE1}
 .marLefRigAuto{ margin-left:auto !important; margin-right:auto !important;}
 
 /*fonts*/
-.boldFont{font-family: 'latobold', "Trebuchet MS", Arial, Helvetica, sans-serif;}
 .blackFont{font-family: 'latoblack', "Trebuchet MS", Arial, Helvetica, sans-serif;}
-.lightFont{font-family: 'latolight', "Trebuchet MS", Arial, Helvetica, sans-serif;}
 .regularFont{font-family: 'latoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;}
 
 .bordersOfMenuSide{border-top:solid 1px #404a4e;}
