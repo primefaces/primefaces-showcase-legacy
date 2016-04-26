@@ -76,6 +76,11 @@
                 </div>
             </p:outputPanel>
 
+            <h3>Grouped (since v6.0)</h3>
+            <p:selectManyCheckbox id="grid3" value="#{checkboxView.selectedCars}" layout="pageDirection" columns="1">
+                <f:selectItems value="#{checkboxView.cars}" var="car" itemLabel="#{car}" itemValue="#{car}" />
+            </p:selectManyCheckbox>
+            
             <p:separator />
 
             <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
@@ -105,6 +110,12 @@
                             Custom
                         </f:facet>
                         #{console}
+                    </p:dataList>
+                    <p:dataList value="#{checkboxView.selectedCars}" var="car">
+                        <f:facet name="header">
+                            Cars
+                        </f:facet>
+                        #{car}
                     </p:dataList>
                 </p:outputPanel>
             </p:dialog>
@@ -160,6 +171,11 @@
         &lt;/div&gt;
     &lt;/p:outputPanel&gt;
 
+    &lt;h3&gt;Grouped (since v6.0)&lt;/h3&gt;
+    &lt;p:selectManyCheckbox id="grid3" value="\#{checkboxView.selectedCars}" layout="pageDirection" columns="1"&gt;
+        &lt;f:selectItems value="\#{checkboxView.cars}" var="car" itemLabel="\#{car}" itemValue="\#{car}" /&gt;
+    &lt;/p:selectManyCheckbox&gt;
+
     &lt;p:separator /&gt;
 
     &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" /&gt;
@@ -190,6 +206,12 @@
                 &lt;/f:facet&gt;
                 \#{console}
             &lt;/p:dataList&gt;
+            &lt;p:dataList value="\#{checkboxView.selectedCars}" var="car"&gt;
+                &lt;f:facet name="header"&gt;
+                    Cars
+                &lt;/f:facet&gt;
+                \#{car}
+            &lt;/p:dataList&gt;
         &lt;/p:outputPanel&gt;
     &lt;/p:dialog&gt;
 &lt;/h:form&gt;
@@ -204,6 +226,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.model.SelectItem;
+import javax.faces.model.SelectItemGroup;
 
 @ManagedBean
 public class CheckboxView {
@@ -213,6 +237,8 @@ public class CheckboxView {
     private String[] selectedCities;
     private String[] selectedCities2;
     private List&lt;String&gt; cities;
+    private List&lt;SelectItem&gt; cars;
+    private String[] selectedCars;
 
     @PostConstruct
     public void init() {
@@ -226,6 +252,24 @@ public class CheckboxView {
         cities.add("Rome");
         cities.add("Brasilia");
         cities.add("Amsterdam");
+
+        cars = new ArrayList&lt;SelectItem&gt;();
+        SelectItemGroup germanCars = new SelectItemGroup("German Cars");
+        germanCars.setSelectItems(new SelectItem[] {
+            new SelectItem("BMW", "BMW"),
+            new SelectItem("Mercedes", "Mercedes"),
+            new SelectItem("Volkswagen", "Volkswagen")
+        });
+        
+        SelectItemGroup americanCars = new SelectItemGroup("American Cars");
+        americanCars.setSelectItems(new SelectItem[]{
+            new SelectItem("Chrysler", "Chrysler"),
+            new SelectItem("GM", "GM"),
+            new SelectItem("Ford", "Ford")
+        });
+
+        cars.add(germanCars);
+        cars.add(americanCars);
     }
 
     public String[] getSelectedConsoles() {
@@ -262,6 +306,22 @@ public class CheckboxView {
 
     public List&lt;String&gt; getCities() {
         return cities;
+    }
+
+    public List&lt;SelectItem&gt; getCars() {
+        return cars;
+    }
+
+    public void setCars(List&lt;SelectItem&gt; cars) {
+        this.cars = cars;
+    }
+
+    public String[] getSelectedCars() {
+        return selectedCars;
+    }
+
+    public void setSelectedCars(String[] selectedCars) {
+        this.selectedCars = selectedCars;
     }
 }
 
