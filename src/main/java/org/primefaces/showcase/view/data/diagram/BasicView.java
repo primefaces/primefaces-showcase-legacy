@@ -35,6 +35,7 @@ public class BasicView {
     public void init() {
         model = new DefaultDiagramModel();
         model.setMaxConnections(-1);
+        model.setConnectionsDetachable(false);
         
         Element elementA = new Element("A", "20em", "6em");
         elementA.addEndPoint(new DotEndPoint(EndPointAnchor.BOTTOM));

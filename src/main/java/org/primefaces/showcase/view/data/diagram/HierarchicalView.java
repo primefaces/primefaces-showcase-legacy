@@ -37,6 +37,7 @@ public class HierarchicalView {
     public void init() {
         model = new DefaultDiagramModel();
         model.setMaxConnections(-1);
+        model.setConnectionsDetachable(false);
                 
         Element ceo = new Element("CEO", "25em", "6em");
         ceo.addEndPoint(createEndPoint(EndPointAnchor.BOTTOM));
