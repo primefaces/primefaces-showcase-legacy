@@ -19,6 +19,10 @@
         </resource-bundle>
     </application>
     
+    <lifecycle>
+        <phase-listener>org.primefaces.component.lifecycle.LifecyclePhaseListener</phase-listener>
+    </lifecycle>
+    
     <converter>
         <converter-id>theme</converter-id>
         <converter-class>org.primefaces.showcase.convert.ThemeConverter</converter-class>
