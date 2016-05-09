@@ -16,6 +16,12 @@
 
     <ui:define name="implementation">
         <p:commandButton value="Dummy Ajax Request" update="@none" />
+        <h:commandButton value="Dummy Ajax Request">
+            <f:ajax render="@none" />
+        </h:commandButton>
+        
+        <br />
+        
         <p:lifecycle/>
     </ui:define>
 
@@ -24,6 +30,10 @@
             <p:tab title="separator.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;p:commandButton value="Dummy Ajax Request" update="@none" /&gt;
+&lt;h:commandButton value="Dummy Ajax Request"&gt;
+    &lt;f:ajax render="@none" /&gt;
+&lt;/h:commandButton&gt;
+
 &lt;p:lifecycle/&gt;
                 </pre>
             </p:tab>
