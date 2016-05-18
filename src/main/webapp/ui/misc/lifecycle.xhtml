@@ -10,8 +10,8 @@
     </ui:define>
 
     <ui:define name="description">
-        Lifecycle is a utility component which display the execution time of each JSF phase. <br />
-        It will also automatically be refreshed after each ajax request.
+        Lifecycle is a utility component which displays the execution time of each JSF phase. <br />
+        It also synchronizes automatically after each AJAX request.
     </ui:define>
 
     <ui:define name="implementation">
@@ -19,10 +19,10 @@
         <h:commandButton value="Dummy Ajax Request">
             <f:ajax render="@none" />
         </h:commandButton>
-        
+
         <br />
         <br />
-        
+
         <p:lifecycle/>
     </ui:define>
 
@@ -38,7 +38,7 @@
 &lt;p:lifecycle/&gt;
                 </pre>
             </p:tab>
-            
+
             <p:tab title="Documentation" titleStyleClass="tab-doc docslide-441" />
         </p:tabView>
 
