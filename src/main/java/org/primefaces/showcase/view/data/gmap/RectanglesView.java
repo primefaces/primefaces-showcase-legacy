@@ -38,11 +38,11 @@ public class RectanglesView implements Serializable {
         rectangleModel = new DefaultMapModel();
 
         //Shared coordinates
-        LatLng coord1 = new LatLng(36.879466, 30.667648);
-        LatLng coord4 = new LatLng(36.885233, 30.702323);
+        LatLng ne = new LatLng(36.879466, 30.667648);
+        LatLng sw = new LatLng(36.885233, 30.702323);
 
         //Rectangle
-        Rectangle rect = new Rectangle(new LatLngBounds(coord1, coord4));
+        Rectangle rect = new Rectangle(new LatLngBounds(sw, ne));
         rect.setStrokeColor("#d93c3c");
         rect.setFillColor("#d93c3c");
         rect.setFillOpacity(0.5);

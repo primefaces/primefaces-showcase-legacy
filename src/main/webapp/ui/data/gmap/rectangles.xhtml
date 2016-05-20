@@ -8,7 +8,7 @@
     <ui:define name="head">
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	</ui:define>
-    
+
     <ui:define name="title">
         GMap - <span class="subitem">Rectangles</span>
     </ui:define>
@@ -26,7 +26,7 @@
                 <p:ajax event="overlaySelect" listener="#{rectanglesView.onRectangleSelect}" update="growl" />
             </p:gmap>
         </h:form>
-        
+
     </ui:define>
 
     <ui:define name="source">
@@ -48,50 +48,50 @@
 package org.primefaces.showcase.view.data.gmap;
 
 import java.io.Serializable;
-import javax.annotation.PostConstruct; 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
- 
+
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.LatLngBounds;
 import org.primefaces.model.map.MapModel;
 import org.primefaces.model.map.Rectangle;
- 
+
 @ManagedBean
 public class RectanglesView implements Serializable {
- 
+
     private MapModel rectangleModel;
-     
+
     @PostConstruct
     public void init() {
         rectangleModel = new DefaultMapModel();
 
         //Shared coordinates
-        LatLng coord1 = new LatLng(36.879466, 30.667648);
-        LatLng coord4 = new LatLng(36.885233, 30.702323);
+        LatLng ne = new LatLng(36.879466, 30.667648);
+        LatLng sw = new LatLng(36.885233, 30.702323);
 
         //Rectangle
-        Rectangle rect = new Rectangle(new LatLngBounds(coord1, coord4));
+        Rectangle rect = new Rectangle(new LatLngBounds(sw, ne));
         rect.setStrokeColor("#d93c3c");
         rect.setFillColor("#d93c3c");
         rect.setFillOpacity(0.5);
         rectangleModel.addOverlay(rect);
     }
- 
+
     public MapModel getRectangleModel() {
         return rectangleModel;
     }
- 
+
     public void onRectangleSelect(OverlaySelectEvent event) {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Rectangle Selected", null));
     }
 }
                 </pre>
             </p:tab>
-            
+
             <p:tab title="Documentation" titleStyleClass="tab-doc docslide-225" />
         </p:tabView>
 
