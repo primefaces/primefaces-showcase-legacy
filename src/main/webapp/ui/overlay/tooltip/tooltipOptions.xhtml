@@ -10,21 +10,32 @@
     </ui:define>
 
     <ui:define name="description">
-        Tooltip has various customization options such as effects, events and custom content support.
+        Tooltip has various customization options such as effects, positioning, events and custom content support.
+    </ui:define>
+    
+        	<ui:define name="head">
+        <style type="text/css">
+
+        </style>
+        <script type="text/javascript">
+            //<![CDATA[
+
+            //]]>  
+        </script>
     </ui:define>
 
     <ui:define name="implementation">
 
-        <h:panelGrid columns="3" cellpadding="5">
+        <h:panelGrid columns="3" cellpadding="8">
             <h:outputText value="Focus/Blur: " />
             <p:inputText id="focus" title="This tooltip is displayed when input gets the focus" />
             <p:tooltip id="toolTipFocus" for="focus" showEvent="focus" hideEvent="blur" />
             
-            <h:outputText value="Fade: " />
+            <h:outputText value="Position: " />
             <h:outputLink id="fade" value="#">
-                <h:outputText value="Fade Effect" />
+                <h:outputText value="Top" />
             </h:outputLink>
-            <p:tooltip id="toolTipFade" for="fade" value="Fade effect is used by default" />
+            <p:tooltip id="toolTipFade" for="fade" value="There are 4 options for position" position="top"/>
             
             <h:outputText value="Track Mouse: " />
             <h:outputLink id="track" value="#">
@@ -37,14 +48,14 @@
                 <h:outputText value="Clip/Explode Effects" />
             </h:outputLink>
             <p:tooltip id="toolTipGrow" for="grow" value="This tooltip uses clip/explode effects for the animation"
-                       showEffect="clip" hideEffect="explode" />
+                       showEffect="clip" hideEffect="explode" position="left"/>
             
             <h:outputText value="Content: " />
             <h:outputLink id="content" value="#">
-                <h:outputText value="Primefaces" />
+                <h:outputText value="PrimeFaces" />
             </h:outputLink>
-            <p:tooltip id="toolTipContent" for="content">
-                <p:graphicImage name="/demo/images/prime_logo.png" />
+            <p:tooltip id="toolTipContent" for="content" position="bottom">
+                <p:graphicImage name="/demo/images/logo-trans.png" />
             </p:tooltip>
         </h:panelGrid>
         
@@ -54,36 +65,36 @@
         <p:tabView>
             <p:tab title="tooltipOptions.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:panelGrid columns="3" cellpadding="5"&gt;
+&lt;h:panelGrid columns="3" cellpadding="8"&gt;
     &lt;h:outputText value="Focus/Blur: " /&gt;
     &lt;p:inputText id="focus" title="This tooltip is displayed when input gets the focus" /&gt;
     &lt;p:tooltip id="toolTipFocus" for="focus" showEvent="focus" hideEvent="blur" /&gt;
 
-    &lt;h:outputText value="Fade: " /&gt;
-    &lt;h:outputLink id="fade" value="\#"&gt;
-        &lt;h:outputText value="Fade Effect" /&gt;
+    &lt;h:outputText value="Position: " /&gt;
+    &lt;h:outputLink id="fade" value="#"&gt;
+        &lt;h:outputText value="Top" /&gt;
     &lt;/h:outputLink&gt;
-    &lt;p:tooltip id="toolTipFade" for="fade" value="Fade effect is used by default" /&gt;
+    &lt;p:tooltip id="toolTipFade" for="fade" value="There are 4 options for position" position="top"/&gt;
 
     &lt;h:outputText value="Track Mouse: " /&gt;
-    &lt;h:outputLink id="track" value="\#"&gt;
+    &lt;h:outputLink id="track" value="#"&gt;
         &lt;h:outputText value="Mouse Tracking" /&gt;
     &lt;/h:outputLink&gt;
     &lt;p:tooltip id="toolTipTrack" for="track" value="This tooltip tracks mouse position" trackMouse="true" /&gt;
 
     &lt;h:outputText value="Clip/Explode: " /&gt;
-    &lt;h:outputLink id="grow" value="\#"&gt;
+    &lt;h:outputLink id="grow" value="#"&gt;
         &lt;h:outputText value="Clip/Explode Effects" /&gt;
     &lt;/h:outputLink&gt;
     &lt;p:tooltip id="toolTipGrow" for="grow" value="This tooltip uses clip/explode effects for the animation"
-               showEffect="clip" hideEffect="explode" /&gt;
+               showEffect="clip" hideEffect="explode" position="left"/&gt;
 
     &lt;h:outputText value="Content: " /&gt;
-    &lt;h:outputLink id="content" value="\#"&gt;
-        &lt;h:outputText value="Primefaces" /&gt;
+    &lt;h:outputLink id="content" value="#"&gt;
+        &lt;h:outputText value="PrimeFaces" /&gt;
     &lt;/h:outputLink&gt;
-    &lt;p:tooltip id="toolTipContent" for="content"&gt;
-        &lt;p:graphicImage name="/demo/images/prime_logo.png" /&gt;
+    &lt;p:tooltip id="toolTipContent" for="content" position="bottom"&gt;
+        &lt;p:graphicImage name="/demo/images/logo-trans.png" /&gt;
     &lt;/p:tooltip&gt;
 &lt;/h:panelGrid&gt;
                 </pre>

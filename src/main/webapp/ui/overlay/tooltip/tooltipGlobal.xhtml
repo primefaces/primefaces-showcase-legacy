@@ -14,13 +14,13 @@
         Global tooltip binds to clickable elements with title attributes. Ajax updates are supported as well, meaning
             if target component is updated with ajax, tooltip can still bind.
     </ui:define>
-
+    
     <ui:define name="implementation">
 
         <p:tooltip />
         
         <h:form>  
-            <h:panelGrid columns="2" cellpadding="5">
+            <h:panelGrid columns="2" cellpadding="10">
                 <h:outputText value="Input: " />
                 <p:inputText pt:data-tooltip="Tooltip for an input" />
 
@@ -43,7 +43,7 @@
 &lt;p:tooltip /&gt;
         
 &lt;h:form&gt;
-    &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+    &lt;h:panelGrid columns="2" cellpadding="10"&gt;
         &lt;h:outputText value="Input: " /&gt;
         &lt;p:inputText pt:data-tooltip="Tooltip for an input" /&gt;
 
