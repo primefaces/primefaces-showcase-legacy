@@ -7,307 +7,285 @@
     
     <ui:define name="head">
 		<style type="text/css">
-.ui-grid {
-    margin-bottom: 10px;
-}
-
-.ui-grid .ui-grid-row div {
-    background-color: #cccccc;
+.ui-g div {
+    background-color: #d3d3d3;
     text-align: center;
-    border: 1px solid #dddddd;
-    padding: 10px 0px;
+    border: 1px solid #e0e0e0;
 }
 		</style>
-
-	</ui:define>
+    </ui:define>
 
     <ui:define name="title">
         Grid CSS
     </ui:define>
 
     <ui:define name="description">
-        Grid CSS is a lightweight (1.4KB) responsive layout utility optimized for mobile devices, tablets and desktops.
+        Grid CSS is a lightweight responsive layout utility optimized for mobile devices, tablets and desktops.
     </ui:define>
 
     <ui:define name="implementation">
-        
-        <h3 style="margin-top: 0">Responsive and Fluid</h3>
-        <div class="ui-grid ui-grid-responsive">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-            </div>
+        <h3 style="margin-top: 0">Basic</h3>
+        <div class="ui-g">
+            <div class="ui-g-1">1</div>
+            <div class="ui-g-1">1</div>
+            <div class="ui-g-1">1</div>
+            <div class="ui-g-1">1</div>
+            <div class="ui-g-1">1</div>
+            <div class="ui-g-1">1</div>
+            <div class="ui-g-1">1</div>
+            <div class="ui-g-1">1</div>
+            <div class="ui-g-1">1</div>
+            <div class="ui-g-1">1</div>
+            <div class="ui-g-1">1</div>
+            <div class="ui-g-1">1</div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-2">2</div>
+            <div class="ui-g-2">2</div>
+            <div class="ui-g-2">2</div>
+            <div class="ui-g-2">2</div>
+            <div class="ui-g-2">2</div>
+            <div class="ui-g-2">2</div>
+        </div>
+
+
+        <div class="ui-g">
+            <div class="ui-g-3">3</div>
+            <div class="ui-g-3">3</div>
+            <div class="ui-g-3">3</div>
+            <div class="ui-g-3">3</div>
+        </div>
+
+
+        <div class="ui-g">
+            <div class="ui-g-4">4</div>
+            <div class="ui-g-4">4</div>
+            <div class="ui-g-4">4</div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-6">6</div>
+            <div class="ui-g-6">6</div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-12">12</div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-4">4</div>
+            <div class="ui-g-8">8</div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-3">3</div>
+            <div class="ui-g-9">9</div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-3">3</div>
+            <div class="ui-g-5">5</div>
+            <div class="ui-g-4">4</div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-4">4</div>
+            <div class="ui-g-2">2</div>
+            <div class="ui-g-2">2</div>
+            <div class="ui-g-3">3</div>
+            <div class="ui-g-1">1</div>
         </div>
         
-        <div class="ui-grid ui-grid-responsive">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2">2</div>
-                <div class="ui-grid-col-2">2</div>
-                <div class="ui-grid-col-2">2</div>
-                <div class="ui-grid-col-2">2</div>
-                <div class="ui-grid-col-2">2</div>
-                <div class="ui-grid-col-2">2</div>
-            </div>
+        <h3>Responsive</h3>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-lg-3">ui-g-12 ui-md-6 ui-lg-3</div>
+            <div class="ui-g-12 ui-md-6 ui-lg-3">ui-g-12 ui-md-6 ui-lg-3</div>
+            <div class="ui-g-12 ui-md-6 ui-lg-3">ui-g-12 ui-md-6 ui-lg-3</div>
+            <div class="ui-g-12 ui-md-6 ui-lg-3">ui-g-12 ui-md-6 ui-lg-3</div>
         </div>
         
-        <div class="ui-grid ui-grid-responsive">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-3">3</div>
-                <div class="ui-grid-col-3">3</div>
-                <div class="ui-grid-col-3">3</div>
-                <div class="ui-grid-col-3">3</div>
-            </div>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-lg-4">ui-g-12 ui-md-6 ui-lg-4</div>
+            <div class="ui-g-12 ui-md-6 ui-lg-4">ui-g-12 ui-md-6 ui-lg-4</div>
+            <div class="ui-g-12 ui-lg-4">ui-g-12 ui-lg-4</div>
         </div>
         
-        <div class="ui-grid ui-grid-responsive">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-4">4</div>
-                <div class="ui-grid-col-4">4</div>
-                <div class="ui-grid-col-4">4</div>
+        <h3>Nested</h3>
+        <div class="ui-g">
+            <div class="ui-g-8 ui-g-nopad">
+                <div class="ui-g-6">6</div>
+                <div class="ui-g-6">6</div>
+                <div class="ui-g-12">12</div>
             </div>
+            <div class="ui-g-4">4</div>
         </div>
         
-        <div class="ui-grid ui-grid-responsive">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-6">6</div>
-                <div class="ui-grid-col-6">6</div>
+        <h3>Sample Layout</h3>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-2">Menu</div>
+            <div class="ui-g-12 ui-md-10 ui-g-nopad">
+                <div class="ui-g-12">
+                    Bar
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet, orci nec dictum convallis, ligula mauris vestibulum turpis, nec varius tortor quam at diam. Nullam a viverra nibh. In tincidunt tempor lectus quis vulputate. Pellentesque nec dui aliquam, lobortis est in, lobortis ante</div>
+                        <div class="ui-g-12 ui-md-4">Maecenas vel nisi aliquet, vulputate tortor id, laoreet massa. Maecenas mattis tristique bibendum. Suspendisse vel mi dictum, vestibulum lacus quis, pulvinar quam. Proin vulputate, nibh at finibus varius, leo eros lacinia elit, nec blandit odio tellus a justo. Donec nec ex auctor, tristique nulla nec, rutrum sapien.</div>
+                        <div class="ui-g-12 ui-md-4">Proin efficitur in leo eget ornare. Nam vestibulum neque sed velit sagittis sodales. Sed scelerisque hendrerit magna a hendrerit. Cras tempor sem at justo pharetra convallis. Curabitur vel sodales purus. Vestibulum interdum facilisis nulla imperdiet suscipit. Quisque lectus felis, condimentum eget hendrerit sit amet.</div>
+                    </div>
+                    
+                    <div class="ui-g">
+                        <div class="ui-g-6 ui-md-3"><p:graphicImage name="demo/images/nature/nature1.jpg" style="width:100%"/></div>  
+                        <div class="ui-g-6 ui-md-3"><p:graphicImage name="demo/images/nature/nature2.jpg" style="width:100%"/></div> 
+                        <div class="ui-g-6 ui-md-3"><p:graphicImage name="demo/images/nature/nature3.jpg" style="width:100%"/></div>    
+                        <div class="ui-g-6 ui-md-3"><p:graphicImage name="demo/images/nature/nature4.jpg" style="width:100%"/></div>      
+                    </div>
+                    
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-6">Phasellus faucibus purus volutpat mauris lacinia sodales. Ut sit amet sapien facilisis, commodo dui non, fringilla tellus. Quisque tempus facilisis nisi sodales finibus. Pellentesque neque orci, ullamcorper vitae ligula quis, dignissim euismod augue.</div>
+                        <div class="ui-g-12 ui-md-6">Fusce ullamcorper congue massa, eget ullamcorper nunc lobortis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ultrices dui eget dolor feugiat dapibus. Aliquam pretium leo et egestas luctus. Nunc facilisis gravida tellus.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                Footer
             </div>
         </div>
-        
-        <div class="ui-grid ui-grid-responsive">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-12">12</div>
-            </div>
-        </div>
-        
-        <div class="ui-grid ui-grid-responsive">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-4">4</div>
-                <div class="ui-grid-col-8">8</div>
-            </div>
-        </div>
-        
-        <div class="ui-grid ui-grid-responsive">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-3">3</div>
-                <div class="ui-grid-col-9">9</div>
-            </div>
-        </div>
-        
-        <div class="ui-grid ui-grid-responsive">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-3">3</div>
-                <div class="ui-grid-col-5">5</div>
-                <div class="ui-grid-col-4">4</div>
-            </div>
-        </div>
-        
-        <div class="ui-grid ui-grid-responsive">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-4">4</div>
-                <div class="ui-grid-col-2">2</div>
-                <div class="ui-grid-col-2">2</div>
-                <div class="ui-grid-col-3">3</div>
-                <div class="ui-grid-col-1">1</div>
-            </div>
-        </div>
-        
-        <h3>Multiline</h3>
-        <div class="ui-grid ui-grid-responsive">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-4">4</div>
-                <div class="ui-grid-col-4">4</div>
-                <div class="ui-grid-col-4">4</div>
-            </div>
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-4">4</div>
-                <div class="ui-grid-col-4">4</div>
-                <div class="ui-grid-col-4">4</div>
-            </div>
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-4">4</div>
-                <div class="ui-grid-col-4">4</div>
-                <div class="ui-grid-col-4">4</div>
-            </div>
-        </div>
-        
-        <h3>Fixed</h3>
-        <div class="ui-grid ui-grid-fixed">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-                <div class="ui-grid-col-1">1</div>
-            </div>
-        </div>
-        
-        <h3>Not Responsive</h3>
-        <div class="ui-grid">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-6">6</div>
-                <div class="ui-grid-col-6">6</div>
-            </div>
-        </div>
-        
     </ui:define>
 
     <ui:define name="source">
         <p:tabView>
             <p:tab title="grid.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h3 style="margin-top: 0"&gt;Responsive and Fluid&lt;/h3&gt;
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-    &lt;/div&gt;
+&lt;h3 style="margin-top: 0"&gt;Basic&lt;/h3&gt;
+&lt;div class="ui-g"&gt;
+    &lt;div class="ui-g-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-g-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-g-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-g-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-g-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-g-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-g-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-g-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-g-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-g-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-g-1"&gt;1&lt;/div&gt;
+    &lt;div class="ui-g-1"&gt;1&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
-        &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
-        &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
-        &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
-        &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
-        &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
-    &lt;/div&gt;
+&lt;div class="ui-g"&gt;
+    &lt;div class="ui-g-2"&gt;2&lt;/div&gt;
+    &lt;div class="ui-g-2"&gt;2&lt;/div&gt;
+    &lt;div class="ui-g-2"&gt;2&lt;/div&gt;
+    &lt;div class="ui-g-2"&gt;2&lt;/div&gt;
+    &lt;div class="ui-g-2"&gt;2&lt;/div&gt;
+    &lt;div class="ui-g-2"&gt;2&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-3"&gt;3&lt;/div&gt;
-        &lt;div class="ui-grid-col-3"&gt;3&lt;/div&gt;
-        &lt;div class="ui-grid-col-3"&gt;3&lt;/div&gt;
-        &lt;div class="ui-grid-col-3"&gt;3&lt;/div&gt;
-    &lt;/div&gt;
+
+&lt;div class="ui-g"&gt;
+    &lt;div class="ui-g-3"&gt;3&lt;/div&gt;
+    &lt;div class="ui-g-3"&gt;3&lt;/div&gt;
+    &lt;div class="ui-g-3"&gt;3&lt;/div&gt;
+    &lt;div class="ui-g-3"&gt;3&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
-        &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
-        &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
-    &lt;/div&gt;
+
+&lt;div class="ui-g"&gt;
+    &lt;div class="ui-g-4"&gt;4&lt;/div&gt;
+    &lt;div class="ui-g-4"&gt;4&lt;/div&gt;
+    &lt;div class="ui-g-4"&gt;4&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;6&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;6&lt;/div&gt;
-    &lt;/div&gt;
+&lt;div class="ui-g"&gt;
+    &lt;div class="ui-g-6"&gt;6&lt;/div&gt;
+    &lt;div class="ui-g-6"&gt;6&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-12"&gt;12&lt;/div&gt;
-    &lt;/div&gt;
+&lt;div class="ui-g"&gt;
+    &lt;div class="ui-g-12"&gt;12&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
-        &lt;div class="ui-grid-col-8"&gt;8&lt;/div&gt;
-    &lt;/div&gt;
+&lt;div class="ui-g"&gt;
+    &lt;div class="ui-g-4"&gt;4&lt;/div&gt;
+    &lt;div class="ui-g-8"&gt;8&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-3"&gt;3&lt;/div&gt;
-        &lt;div class="ui-grid-col-9"&gt;9&lt;/div&gt;
-    &lt;/div&gt;
+&lt;div class="ui-g"&gt;
+    &lt;div class="ui-g-3"&gt;3&lt;/div&gt;
+    &lt;div class="ui-g-9"&gt;9&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-3"&gt;3&lt;/div&gt;
-        &lt;div class="ui-grid-col-5"&gt;5&lt;/div&gt;
-        &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
-    &lt;/div&gt;
+&lt;div class="ui-g"&gt;
+    &lt;div class="ui-g-3"&gt;3&lt;/div&gt;
+    &lt;div class="ui-g-5"&gt;5&lt;/div&gt;
+    &lt;div class="ui-g-4"&gt;4&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
-        &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
-        &lt;div class="ui-grid-col-2"&gt;2&lt;/div&gt;
-        &lt;div class="ui-grid-col-3"&gt;3&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-    &lt;/div&gt;
+&lt;div class="ui-g"&gt;
+    &lt;div class="ui-g-4"&gt;4&lt;/div&gt;
+    &lt;div class="ui-g-2"&gt;2&lt;/div&gt;
+    &lt;div class="ui-g-2"&gt;2&lt;/div&gt;
+    &lt;div class="ui-g-3"&gt;3&lt;/div&gt;
+    &lt;div class="ui-g-1"&gt;1&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;h3&gt;Multiline&lt;/h3&gt;
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
-        &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
-        &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
-        &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
-        &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
-        &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
-        &lt;div class="ui-grid-col-4"&gt;4&lt;/div&gt;
-    &lt;/div&gt;
+&lt;h3&gt;Responsive&lt;/h3&gt;
+&lt;div class="ui-g"&gt;
+    &lt;div class="ui-g-12 ui-md-6 ui-lg-3"&gt;ui-g-12 ui-md-6 ui-lg-3&lt;/div&gt;
+    &lt;div class="ui-g-12 ui-md-6 ui-lg-3"&gt;ui-g-12 ui-md-6 ui-lg-3&lt;/div&gt;
+    &lt;div class="ui-g-12 ui-md-6 ui-lg-3"&gt;ui-g-12 ui-md-6 ui-lg-3&lt;/div&gt;
+    &lt;div class="ui-g-12 ui-md-6 ui-lg-3"&gt;ui-g-12 ui-md-6 ui-lg-3&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;h3&gt;Fixed&lt;/h3&gt;
-&lt;div class="ui-grid ui-grid-fixed"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-        &lt;div class="ui-grid-col-1"&gt;1&lt;/div&gt;
-    &lt;/div&gt;
+&lt;div class="ui-g"&gt;
+    &lt;div class="ui-g-12 ui-md-6 ui-lg-4"&gt;ui-g-12 ui-md-6 ui-lg-4&lt;/div&gt;
+    &lt;div class="ui-g-12 ui-md-6 ui-lg-4"&gt;ui-g-12 ui-md-6 ui-lg-4&lt;/div&gt;
+    &lt;div class="ui-g-12 ui-lg-4"&gt;ui-g-12 ui-lg-4&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;h3&gt;Not Responsive&lt;/h3&gt;
-&lt;div class="ui-grid"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;6&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;6&lt;/div&gt;
+&lt;h3&gt;Nested&lt;/h3&gt;
+&lt;div class="ui-g"&gt;
+    &lt;div class="ui-g-8 ui-g-nopad"&gt;
+        &lt;div class="ui-g-6"&gt;6&lt;/div&gt;
+        &lt;div class="ui-g-6"&gt;6&lt;/div&gt;
+        &lt;div class="ui-g-12"&gt;12&lt;/div&gt;
     &lt;/div&gt;
-&lt;/div&gt;     
+    &lt;div class="ui-g-4"&gt;4&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Sample Layout&lt;/h3&gt;
+&lt;div class="ui-g"&gt;
+    &lt;div class="ui-g-12 ui-md-2"&gt;M&lt;/div&gt;
+    &lt;div class="ui-g-12 ui-md-10 ui-g-nopad"&gt;
+        &lt;div class="ui-g-12"&gt;
+            Bar
+        &lt;/div&gt;
+        &lt;div class="ui-g-12 ui-g-nopad"&gt;
+            &lt;div class="ui-g"&gt;
+                &lt;div class="ui-g-12 ui-md-4"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet, orci nec dictum convallis, ligula mauris vestibulum turpis, nec varius tortor quam at diam. Nullam a viverra nibh. In tincidunt tempor lectus quis vulputate. Pellentesque nec dui aliquam, lobortis est in, lobortis ante&lt;/div&gt;
+                &lt;div class="ui-g-12 ui-md-4"&gt;Maecenas vel nisi aliquet, vulputate tortor id, laoreet massa. Maecenas mattis tristique bibendum. Suspendisse vel mi dictum, vestibulum lacus quis, pulvinar quam. Proin vulputate, nibh at finibus varius, leo eros lacinia elit, nec blandit odio tellus a justo. Donec nec ex auctor, tristique nulla nec, rutrum sapien.&lt;/div&gt;
+                &lt;div class="ui-g-12 ui-md-4"&gt;Proin efficitur in leo eget ornare. Nam vestibulum neque sed velit sagittis sodales. Sed scelerisque hendrerit magna a hendrerit. Cras tempor sem at justo pharetra convallis. Curabitur vel sodales purus. Vestibulum interdum facilisis nulla imperdiet suscipit. Quisque lectus felis, condimentum eget hendrerit sit amet.&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="ui-g"&gt;
+                &lt;div class="ui-g-6 ui-md-3"&gt;&lt;p:graphicImage name="demo/images/nature/nature1.jpg" style="width:100%"/&gt;&lt;/div&gt;  
+                &lt;div class="ui-g-6 ui-md-3"&gt;&lt;p:graphicImage name="demo/images/nature/nature2.jpg" style="width:100%"/&gt;&lt;/div&gt; 
+                &lt;div class="ui-g-6 ui-md-3"&gt;&lt;p:graphicImage name="demo/images/nature/nature3.jpg" style="width:100%"/&gt;&lt;/div&gt;    
+                &lt;div class="ui-g-6 ui-md-3"&gt;&lt;p:graphicImage name="demo/images/nature/nature4.jpg" style="width:100%"/&gt;&lt;/div&gt;      
+            &lt;/div&gt;
+
+            &lt;div class="ui-g"&gt;
+                &lt;div class="ui-g-12 ui-md-6"&gt;Phasellus faucibus purus volutpat mauris lacinia sodales. Ut sit amet sapien facilisis, commodo dui non, fringilla tellus. Quisque tempus facilisis nisi sodales finibus. Pellentesque neque orci, ullamcorper vitae ligula quis, dignissim euismod augue.&lt;/div&gt;
+                &lt;div class="ui-g-12 ui-md-6"&gt;Fusce ullamcorper congue massa, eget ullamcorper nunc lobortis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ultrices dui eget dolor feugiat dapibus. Aliquam pretium leo et egestas luctus. Nunc facilisis gravida tellus.&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-g-12"&gt;
+        Footer
+    &lt;/div&gt;
+&lt;/div&gt;    
                 </pre>
             </p:tab>
             
