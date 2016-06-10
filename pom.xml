@@ -259,6 +259,30 @@
             <id>elite-dev</id>
             <properties>
                 <jsfVersion>Mojarra-2.2.8</jsfVersion>
+                <primefacesVersion>PrimeFaces-6.0.1-SNAPSHOT</primefacesVersion>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.primefaces</groupId>
+                    <artifactId>primefaces</artifactId>
+                    <version>6.0.1-SNAPSHOT</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish</groupId>
+                    <artifactId>javax.faces</artifactId>
+                    <version>2.2.8</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.atmosphere</groupId>
+                    <artifactId>atmosphere-runtime</artifactId>
+                    <version>2.4.3</version>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>elite-dev-5.3.x</id>
+            <properties>
+                <jsfVersion>Mojarra-2.2.8</jsfVersion>
                 <primefacesVersion>PrimeFaces-5.3.14-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
