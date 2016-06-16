@@ -16,11 +16,6 @@
     <ui:define name="implementation">
         
         <h:form id="form">
-            <p:contextMenu for="cars">
-                <p:menuitem value="View" update="carDetail" icon="ui-icon-search" oncomplete="PF('carDialog').show()"/>
-                <p:menuitem value="Delete" update="cars" icon="ui-icon-close" actionListener="#{dtContextMenuView.deleteCar}"/>
-            </p:contextMenu>
-
             <p:dataTable id="cars" var="car" value="#{dtContextMenuView.cars}" rowKey="#{car.id}"
                          selection="#{dtContextMenuView.selectedCar}" selectionMode="single">
                 <f:facet name="header">
@@ -40,6 +35,11 @@
                 </p:column>
             </p:dataTable> 
 
+            <p:contextMenu for="cars">
+                <p:menuitem value="View" update="carDetail" icon="ui-icon-search" oncomplete="PF('carDialog').show()"/>
+                <p:menuitem value="Delete" update="cars" icon="ui-icon-close" actionListener="#{dtContextMenuView.deleteCar}"/>
+            </p:contextMenu>
+            
             <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="carDetail" style="text-align:center;">
                     <p:panelGrid  columns="2" rendered="#{not empty dtContextMenuView.selectedCar}" columnClasses="label,value">
@@ -70,11 +70,6 @@
             <p:tab title="contextMenu.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form id="form"&gt;
-    &lt;p:contextMenu for="cars"&gt;
-        &lt;p:menuitem value="View" update="carDetail" icon="ui-icon-search" oncomplete="PF('carDialog').show()"/&gt;
-        &lt;p:menuitem value="Delete" update="cars" icon="ui-icon-close" actionListener="\#{dtContextMenuView.deleteCar}"/&gt;
-    &lt;/p:contextMenu&gt;
-
     &lt;p:dataTable id="cars" var="car" value="\#{dtContextMenuView.cars}" rowKey="\#{car.id}"
                  selection="\#{dtContextMenuView.selectedCar}" selectionMode="single"&gt;
         &lt;f:facet name="header"&gt;
@@ -93,6 +88,11 @@
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:dataTable&gt; 
+
+    &lt;p:contextMenu for="cars"&gt;
+        &lt;p:menuitem value="View" update="carDetail" icon="ui-icon-search" oncomplete="PF('carDialog').show()"/&gt;
+        &lt;p:menuitem value="Delete" update="cars" icon="ui-icon-close" actionListener="\#{dtContextMenuView.deleteCar}"/&gt;
+    &lt;/p:contextMenu&gt;
 
     &lt;p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false"&gt;
         &lt;p:outputPanel id="carDetail" style="text-align:center;"&gt;
