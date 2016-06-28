@@ -1,0 +1,156 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        TriStateCheckbox
+    </ui:define>
+
+    <ui:define name="description">
+        The TriStateCheckbox add a new state for a common SelectBooleanCheckbox. The value of TriStateCheckbox are mapped to 0,1,2 string values. 
+        This component can be customized with CSS classes for icons.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form>
+            <p:growl id="growl" showDetail="true"/>  
+
+            <h:panelGrid id="triStateGrid" columns="2">  
+                <h:outputText value="Basic Usage: "/>  
+                <p:triStateCheckbox value="#{triStateCheckboxView.value1}"/>  
+
+                <h:outputText value="Ajax Behavior: "/>  
+                <p:triStateCheckbox id="ajaxTriState" value="#{triStateCheckboxView.value2}">  
+                    <p:ajax event="change" update="growl" listener="#{triStateCheckboxView.addMessage}"/>  
+                </p:triStateCheckbox>  
+
+                <h:outputText value="Customs Icons: "/>  
+                <p:triStateCheckbox value="#{triStateCheckboxView.value3}"  
+                                     stateTwoIcon="ui-icon-plus"  
+                                     stateThreeIcon="ui-icon-minus"/>  
+
+                <h:panelGroup/>  
+                <p:triStateCheckbox value="#{triStateCheckboxView.value4}" itemLabel="Item Label"/>                  
+            </h:panelGrid>  
+
+            <p:commandButton value="Submit" process="triStateGrid" update="display" oncomplete="PF('dlg').show()"  
+                             style="margin-top:10px;"/>  
+       
+
+            <p:dialog header="Selected Values" showEffect="fade" hideEffect="fade" widgetVar="dlg">  
+                <h:panelGrid id="display" columns="1" style="margin: 10px;">  
+                    <h:outputText value="Value 1: #{triStateCheckboxView.value1}"/>  
+                    <h:outputText value="Value 2: #{triStateCheckboxView.value2}"/>  
+                    <h:outputText value="Value 3: #{triStateCheckboxView.value3}"/>  
+                    <h:outputText value="Value 4: #{triStateCheckboxView.value4}"/>  
+                </h:panelGrid>  
+            </p:dialog>  
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="triStateCheckbox.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:growl id="growl" showDetail="true"/&gt;  
+
+    &lt;h:panelGrid id="triStateGrid" columns="2"&gt;  
+        &lt;h:outputText value="Basic Usage: "/&gt;  
+        &lt;p:triStateCheckbox value="\#{triStateCheckboxView.value1}"/&gt;  
+
+        &lt;h:outputText value="Ajax Behavior: "/&gt;  
+        &lt;p:triStateCheckbox id="ajaxTriState" value="\#{triStateCheckboxView.value2}"&gt;  
+            &lt;p:ajax event="change" update="growl" listener="\#{triStateCheckboxView.addMessage}"/&gt;  
+        &lt;/p:triStateCheckbox&gt;  
+
+        &lt;h:outputText value="Customs Icons: "/&gt;  
+        &lt;p:triStateCheckbox value="\#{triStateCheckboxView.value3}"  
+                             stateTwoIcon="ui-icon-plus"  
+                             stateThreeIcon="ui-icon-minus"/&gt;  
+
+        &lt;h:panelGroup/&gt;  
+        &lt;p:triStateCheckbox value="\#{triStateCheckboxView.value4}" itemLabel="Item Label"/&gt;                  
+    &lt;/h:panelGrid&gt;  
+
+    &lt;p:commandButton value="Submit" process="triStateGrid" update="display" oncomplete="PF('dlg').show()"  
+                     style="margin-top:10px;"/&gt;  
+
+    &lt;p:dialog header="Selected Values" showEffect="fade" hideEffect="fade" widgetVar="dlg"&gt;  
+        &lt;h:panelGrid id="display" columns="1" style="margin: 10px;"&gt;  
+            &lt;h:outputText value="Value 1: \#{triStateCheckboxView.value1}"/&gt;  
+            &lt;h:outputText value="Value 2: \#{triStateCheckboxView.value2}"/&gt;  
+            &lt;h:outputText value="Value 3: \#{triStateCheckboxView.value3}"/&gt;  
+            &lt;h:outputText value="Value 4: \#{triStateCheckboxView.value4}"/&gt;  
+        &lt;/h:panelGrid&gt;  
+    &lt;/p:dialog&gt; 
+&lt;/h:form&gt; 
+                </pre>
+            </p:tab>
+            <p:tab title="TriStateCheckboxView.java">
+                <pre name="code" class="brush:java">
+@ManagedBean(name = "triStateCheckboxView")  
+@ViewScoped
+public class TriStateCheckboxView implements Serializable {
+
+    private String value1;
+    private String value2;
+    private String value3;
+    private String value4;
+
+    @PostConstruct
+    public void init() {
+        value1 = "2";
+        value4 = "1";
+    }
+
+    public String getValue1() {
+        return value1;
+    }
+
+    public void setValue1(String value1) {
+        this.value1 = value1;
+    }
+
+    public String getValue2() {
+        return value2;
+    }
+
+    public void setValue2(String value2) {
+        this.value2 = value2;
+    }
+
+    public String getValue3() {
+        return value3;
+    }
+
+    public void setValue3(String value3) {
+        this.value3 = value3;
+    }
+
+    public String getValue4() {
+        return value4;
+    }
+
+    public void setValue4(String value4) {
+        this.value4 = value4;
+    }
+
+    public void addMessage() {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "State has been changed", "State is = " + value2);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+} 
+                </pre>
+            </p:tab>
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
