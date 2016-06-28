@@ -10,8 +10,7 @@
     </ui:define>
 
     <ui:define name="description">
-        The TriStateCheckbox add a new state for a common SelectBooleanCheckbox. The value of TriStateCheckbox are mapped to 0,1,2 string values. 
-        This component can be customized with CSS classes for icons.
+        TriStateCheckbox add a new state to a checkbox value.
     </ui:define>
 
     <ui:define name="implementation">
@@ -19,7 +18,7 @@
         <h:form>
             <p:growl id="growl" showDetail="true"/>  
 
-            <h:panelGrid id="triStateGrid" columns="2">  
+            <h:panelGrid id="triStateGrid" columns="2" cellpadding="5">  
                 <h:outputText value="Basic Usage: "/>  
                 <p:triStateCheckbox value="#{triStateCheckboxView.value1}"/>  
 
@@ -60,7 +59,7 @@
 &lt;h:form&gt;
     &lt;p:growl id="growl" showDetail="true"/&gt;  
 
-    &lt;h:panelGrid id="triStateGrid" columns="2"&gt;  
+    &lt;h:panelGrid id="triStateGrid" columns="2" cellpadding="5"&gt;  
         &lt;h:outputText value="Basic Usage: "/&gt;  
         &lt;p:triStateCheckbox value="\#{triStateCheckboxView.value1}"/&gt;  
 
