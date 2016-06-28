@@ -27,12 +27,7 @@
 
     <ui:define name="implementation">
         
-        <h:form id="form">
-            <p:contextMenu for="docs">
-                <p:menuitem value="View" update="documentPanel" icon="ui-icon-search" oncomplete="PF('documentDialog').show()"/>
-                <p:menuitem value="Delete" actionListener="#{ttContextMenuView.deleteNode}" update="docs" icon="ui-icon-close"/>
-            </p:contextMenu>
-            
+        <h:form id="form">            
             <p:treeTable id="docs" value="#{ttContextMenuView.root}" var="document" selectionMode="single" selection="#{ttContextMenuView.selectedNode}">
                 <f:facet name="header">
                     Document Viewer
@@ -47,6 +42,11 @@
                     <h:outputText value="#{document.type}" />
                 </p:column>
             </p:treeTable>
+            
+            <p:contextMenu for="docs">
+                <p:menuitem value="View" update="documentPanel" icon="ui-icon-search" oncomplete="PF('documentDialog').show()"/>
+                <p:menuitem value="Delete" actionListener="#{ttContextMenuView.deleteNode}" update="docs" icon="ui-icon-close"/>
+            </p:contextMenu>
             
             <p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true" resizable="false">
                 <p:outputPanel id="documentPanel">
@@ -71,10 +71,6 @@
             <p:tab title="contextMenu.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form id="form"&gt;
-    &lt;p:contextMenu for="docs"&gt;
-        &lt;p:menuitem value="View" update="documentPanel" icon="ui-icon-search" oncomplete="PF('documentDialog').show()"/&gt;
-        &lt;p:menuitem value="Delete" actionListener="\#{ttContextMenuView.deleteNode}" update="docs" icon="ui-icon-close"/&gt;
-    &lt;/p:contextMenu&gt;
 
     &lt;p:treeTable id="docs" value="\#{ttContextMenuView.root}" var="document" selectionMode="single" selection="\#{ttContextMenuView.selectedNode}"&gt;
         &lt;f:facet name="header"&gt;
@@ -90,6 +86,11 @@
             &lt;h:outputText value="\#{document.type}" /&gt;
         &lt;/p:column&gt;
     &lt;/p:treeTable&gt;
+
+    &lt;p:contextMenu for="docs"&gt;
+        &lt;p:menuitem value="View" update="documentPanel" icon="ui-icon-search" oncomplete="PF('documentDialog').show()"/&gt;
+        &lt;p:menuitem value="Delete" actionListener="\#{ttContextMenuView.deleteNode}" update="docs" icon="ui-icon-close"/&gt;
+    &lt;/p:contextMenu&gt;
 
     &lt;p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true" resizable="false"&gt;
         &lt;p:outputPanel id="documentPanel"&gt;

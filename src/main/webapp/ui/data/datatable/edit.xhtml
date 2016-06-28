@@ -73,11 +73,6 @@
                     <p:rowEditor />
                 </p:column>
             </p:dataTable>
-            
-            <p:contextMenu for="cars2" widgetVar="cMenu">   
-                <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>  
-                <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
-            </p:contextMenu> 
 
             <p:dataTable id="cars2" var="car" value="#{dtEditView.cars2}" editable="true" editMode="cell" widgetVar="cellCars">
                 <f:facet name="header">
@@ -122,6 +117,11 @@
                     </p:cellEditor>
                 </p:column>
             </p:dataTable>
+            
+            <p:contextMenu for="cars2" widgetVar="cMenu">   
+                <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>  
+                <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
+            </p:contextMenu> 
          </h:form>
         
     </ui:define>
@@ -182,11 +182,6 @@
        &lt;/p:column&gt;
    &lt;/p:dataTable&gt;
 
-   &lt;p:contextMenu for="cars2" widgetVar="cMenu"&gt;   
-       &lt;p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/&gt;  
-       &lt;p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/&gt;  
-   &lt;/p:contextMenu&gt; 
-
    &lt;p:dataTable id="cars2" var="car" value="\#{dtEditView.cars2}" editable="true" editMode="cell" widgetVar="cellCars"&gt;
        &lt;f:facet name="header"&gt;
            Cell Editing with Click and RightClick
@@ -230,6 +225,12 @@
            &lt;/p:cellEditor&gt;
        &lt;/p:column&gt;
    &lt;/p:dataTable&gt;
+
+   &lt;p:contextMenu for="cars2" widgetVar="cMenu"&gt;   
+       &lt;p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/&gt;  
+       &lt;p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/&gt;  
+   &lt;/p:contextMenu&gt; 
+
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
