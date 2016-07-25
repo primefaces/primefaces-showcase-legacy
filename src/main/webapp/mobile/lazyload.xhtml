@@ -17,11 +17,13 @@
             <pm:header title="Lazy Load"></pm:header>
             
             <pm:content>
-                <p>Pages in a multi-page view can be loaded lazily on demand to improve initial page load time. These lazy pages might not even be
-                accessed by the user so loading them with an on-demand approach has a significant speed boost with many pages in a single view. To mark
-                a page to be lazy loaded, enable lazy option.</p>
-                
-                <p:link outcome="pm:lazy" value="Go to Page 2" />
+                <h:form>
+                    <p>Pages in a multi-page view can be loaded lazily on demand to improve initial page load time. These lazy pages might not even be
+                    accessed by the user so loading them with an on-demand approach has a significant speed boost with many pages in a single view. To mark
+                    a page to be lazy loaded, enable lazy option.</p>
+
+                    <p:link outcome="pm:lazy" value="Go to Page 2" />
+                </h:form>
                 
                 <h2>Source</h2>
                 <p:accordionPanel activeIndex="-1">
@@ -46,11 +48,13 @@
             &lt;pm:header title="Lazy Load"&gt;&lt;/pm:header&gt;
             
             &lt;pm:content&gt;
-                &lt;p&gt;Pages in a multi-page view can be loaded lazily on demand to improve initial page load time. These lazy pages might not even be
-                accessed by the user so loading them with an on-demand approach has a significant speed boost with many pages in a single view. To mark
-                a page to be lazy loaded, enable lazy option.&lt;/p&gt;
+                &lt;h:form&gt;
+                    &lt;p&gt;Pages in a multi-page view can be loaded lazily on demand to improve initial page load time. These lazy pages might not even be
+                    accessed by the user so loading them with an on-demand approach has a significant speed boost with many pages in a single view. To mark
+                    a page to be lazy loaded, enable lazy option.&lt;/p&gt;
                 
-                &lt;p:link outcome="pm:lazy" value="Go to Page 2" /&gt;
+                    &lt;p:link outcome="pm:lazy" value="Go to Page 2" /&gt;
+                &lt;/h:form&gt;
                                 
             &lt;/pm:content&gt;
         &lt;/pm:page&gt;
@@ -59,8 +63,10 @@
             &lt;pm:header title="Lazy Page"&gt;&lt;/pm:header&gt;
             
             &lt;pm:content&gt;
-                &lt;p&gt;This page has been loaded on demand just before navigation. It is now cached and accessing it again does not trigger a new load.&lt;/p&gt;
-                &lt;p:link outcome="pm:main" value="Go Back" /&gt;
+                &lt;h:form&gt;
+                    &lt;p&gt;This page has been loaded on demand just before navigation. It is now cached and accessing it again does not trigger a new load.&lt;/p&gt;
+                    &lt;p:link outcome="pm:main" value="Go Back" /&gt;
+                &lt;/h:form&gt;
             &lt;/pm:content&gt;
         &lt;/pm:page&gt;
         
@@ -78,8 +84,10 @@
             <pm:header title="Lazy Page"></pm:header>
             
             <pm:content>
-                <p>This page has been loaded on demand just before navigation. It is now cached and accessing it again does not trigger a new load.</p>
-                <p:link outcome="pm:main" value="Go Back" />
+                <h:form>
+                    <p>This page has been loaded on demand just before navigation. It is now cached and accessing it again does not trigger a new load.</p>
+                    <p:link outcome="pm:main" value="Go Back" />
+                </h:form>
             </pm:content>
         </pm:page>
         
