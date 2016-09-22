@@ -1,0 +1,123 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="title">
+        Timeline - <span class="subitem">Limit Range</span>
+    </ui:define>
+
+    <ui:define name="description">
+        The visible range of the timeline is limited in this demo.
+        <ul>            
+            <li>Minimum visible date is limited to 2015-01-01 using attribute <strong>min</strong></li>
+            <li>Maximum visible date is limited to 2015-12-31 using attribute <strong>max</strong></li>
+            <li>Visible interval is limited to a minimum of 24 hours using attribute <strong>zoomMin</strong></li>
+            <li>Visible interval is limited to a maximum of about 3 months using attribute <strong>zoomMax</strong></li>
+        </ul>
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <p:timeline value="#{limitTimelineRangeView.model}"
+                    min="#{limitTimelineRangeView.min}"
+                    max="#{limitTimelineRangeView.max}"
+                    zoomMin="#{limitTimelineRangeView.zoomMin}"
+                    zoomMax="#{limitTimelineRangeView.zoomMax}"
+                    height="180px" showNavigation="true"/>
+
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="limitRange.xhtml">
+                <pre name="code" class="brush:xml">
+
+&lt;p:timeline value="\#{limitTimelineRangeView.model}"
+             min="\#{limitTimelineRangeView.min}"
+             max="\#{limitTimelineRangeView.max}"
+             zoomMin="\#{limitTimelineRangeView.zoomMin}"
+             zoomMax="\#{limitTimelineRangeView.zoomMax}"
+             height="180px" showNavigation="true"/&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="LimitTimelineRangeView.java">
+                <pre name="code" class="brush:java">
+import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import org.primefaces.model.timeline.TimelineEvent;
+import org.primefaces.model.timeline.TimelineModel;
+
+@ManagedBean(name = "limitTimelineRangeView")
+@ViewScoped
+public class LimitTimelineRangeView implements Serializable {
+
+	private TimelineModel model;
+
+	private Date min;
+	private Date max;
+	private long zoomMin;
+	private long zoomMax;
+
+	@PostConstruct
+	public void init() {
+		model = new TimelineModel();
+
+		Calendar cal = Calendar.getInstance();
+		cal.set(2015, Calendar.MAY, 25, 0, 0, 0);
+		model.add(new TimelineEvent("First", cal.getTime()));
+
+		cal.set(2015, Calendar.MAY, 26, 0, 0, 0);
+		model.add(new TimelineEvent("Last", cal.getTime()));
+
+		// lower limit of visible range
+		cal.set(2015, Calendar.JANUARY, 1, 0, 0, 0);
+		min = cal.getTime();
+
+		// upper limit of visible range
+		cal.set(2015, Calendar.DECEMBER, 31, 0, 0, 0);
+		max = cal.getTime();
+
+		// one day in milliseconds for zoomMin
+		zoomMin = 1000L * 60 * 60 * 24;
+
+		// about three months in milliseconds for zoomMax
+		zoomMax = 1000L * 60 * 60 * 24 * 31 * 3;
+	}
+
+	public TimelineModel getModel() {
+		return model;
+	}
+
+	public Date getMin() {
+		return min;
+	}
+
+	public Date getMax() {
+		return max;
+	}
+
+	public long getZoomMin() {
+		return zoomMin;
+	}
+
+	public long getZoomMax() {
+		return zoomMax;
+	}
+    
+}
+                </pre>
+            </p:tab>
+
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

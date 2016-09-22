@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.primefaces.showcase.view.data;
+package org.primefaces.showcase.view.data.timeline;
 
 import java.io.Serializable;
 import java.util.Calendar;

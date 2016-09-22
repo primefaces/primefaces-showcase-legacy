@@ -3,10 +3,10 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
-                template="/WEB-INF/template.xhtml">
+                template="./template.xhtml">
     
     <ui:define name="title">
-        Timeline
+        Timeline - <span class="subitem">Basic</span>
     </ui:define>
 
     <ui:define name="description">
@@ -35,7 +35,7 @@
 
     <ui:define name="source">
         <p:tabView>
-            <p:tab title="timeline.xhtml">
+            <p:tab title="basic.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;p:growl id="growl" showSummary="true" showDetail="true" autoUpdate="true"/&gt; 
 
