@@ -69,10 +69,7 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 					.PFGrayText{color:#aab7c1;}
 					.PFDarkText{color:#313b3f;}
 					
-				.PropertyBox{width:27%; height:280px; float:left; padding:3%; overflow:hidden; text-align:center; border-radius:5px; -webkit-border-radius:5px; display:block;
-				-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
-				.PropertyBox:hover, .MOBILE .PropertyBox:hover{background-color:#e0e5e9;
-				-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
+				.PropertyBox{width:33%; box-sizing: border-box; height:280px; float:left; padding:3%; overflow:hidden; text-align:center; border-radius:5px; -webkit-border-radius:5px; display:block;}
 					.PropertyBox img{width:80%;}
 					.PropertyBox .PropertyTopic{display:block; color:#25aae1; font-size:18px;}
 					.PropertyBox .PropertyText{display:block; color:#5C666A; font-size:14px;}
@@ -421,6 +418,15 @@ input.searchInput {
 @media (max-width: 640px) {
     .SubSubMenu > ul > li {
         width: 50%;
+    }
+    
+    .PropertyBox {
+        width: 100%;
+        height: auto;
+    }
+    
+    .PropertyBox .PropertyText {
+        font-size: 20px;
     }
 }
 
