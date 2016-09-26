@@ -416,9 +416,11 @@ input.searchInput {
     .PFNextGen iframe {
         margin-left: 0;
     }
-    
-    .SubSubMenu {
-        display: none;
+}
+
+@media (max-width: 640px) {
+    .SubSubMenu > ul > li {
+        width: 50%;
     }
 }
 

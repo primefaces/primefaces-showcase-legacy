@@ -12,6 +12,16 @@
     <ui:define name="description">
         Header of the datatable can be fixed to keep it in viewport during scroll.
     </ui:define>
+    
+    <ui:define name="head">
+        <style type="text/css">
+        @media (max-width: 960px) {
+            .ui-sticky {
+                top: 105px !important;
+            }
+        }
+        </style>
+    </ui:define>
 
     <ui:define name="implementation">
 
