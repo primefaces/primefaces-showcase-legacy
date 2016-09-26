@@ -341,6 +341,7 @@ input.searchInput {
         -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
         -moz-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
     	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
+        z-index: 200;
     }
         
     .mobileLogoCover {
@@ -370,6 +371,10 @@ input.searchInput {
         -webkit-box-shadow: 3px 0 6px rgba(0,0,0,0.3);
         -moz-box-shadow: 3px 0 6px rgba(0,0,0,0.3);
         box-shadow: 3px 0 6px rgba(0,0,0,0.3);
+    }
+    
+    #MENUSIDEindent {
+        padding-bottom: 105px;
     }
     
     .content-container {
