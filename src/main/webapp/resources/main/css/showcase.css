@@ -33,7 +33,9 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 		.logoBlueText{color:#25aae1;}
  
 	/* menu side style*/
-	#MENUSIDE{width:85px; float:left; background-color:#313b3f; border-right:solid 1px #151d21; overflow:hidden; width: 300px; position: fixed;}
+	#MENUSIDE{position: fixed; left: 0px; top: 0px; background-color:#313b3f; border-right:solid 1px #151d21; overflow:hidden; width: 300px; position: fixed;
+             -moz-transition: left 0.3s; -o-transition: left 0.3s;-webkit-transition: left 0.3s;transition: left 0.3s;}
+        #MENUSIDE.active-menu {left: 0px}
 		#MENUSIDEindent{width:100%; height:auto;}
 			#LOGO{height:87px; display:block; padding:27px 0 5px 10px; z-index:997; background-color:#313b3f;margin-left:100px}
 				#LOGO img{width:62px; height:auto; }
@@ -44,25 +46,18 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 			.MenuSideMainLink:hover{background-color:#20282b; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
 				.MenuSideMainLink img{width:30px; height:auto; float:left;}
 				.MainLinkText{color:#9ba5ac; font-size:20px; margin:2px 0px 0px 60px; display:block;}
-				
-			.SubMenuLinkContainer{width:auto; padding:20px; overflow:hidden; background-color:#20282b; display: none;}
+					
+		.SubMenuLinkContainer{width:auto; padding:20px; overflow:hidden; background-color:#20282b; display: none;}
 				.SubMenuLink{width:50%; display:inline-block; float:left; padding:6px 0px; cursor:pointer; border-radius:4px; -webkit-border-radius:4px; color:#659eb3; font-size:14px;
 				}
 				.SubMenuLink:hover{background-color:#101517; color:#8dc5d9;}
-						
-	.selectmenu{width:auto; max-width:120px; float:right; padding:5px; outline:none; font-size:16px; display:block; overflow:hidden;}
-		.LEVEL1{color:#25aae1; padding-left:10px;}
-			.LEVEL2{font-size:12px; color:#25aae1; padding-left:10px;}
-				.selectmenu option{ font-size:12px;}
-				
-				
-	
+										
 	/* content side style*/
 	#CONTENTSIDE{width:auto; overflow:hidden; z-index:1; margin-left:300px; background-color:#eff3f6;}
 		#CONTENTSIDEindent{width:100%; height:auto;}
 			.ContentSideSections{display:block; border-bottom:solid 1px #bcc7cf; padding:30px;}
 			.MOBILE .ContentSideSections{padding:14px 24px;}
-			#PFTopLinksCover{background-color:#eff3f6;}
+			#PFTopLinksCover{background-color:#eff3f6;height: 60px;}
 			#PFMobileTopLinksCover{ position:inherit;}
 				.PFTopLinks{width:80px; display:inline-block; text-align:center; padding:5px; border-radius:5px;  font-size:12px; -webkit-border-radius:5px; margin-top:-10px; -webkit-transition: all 0.5s ease; 
 							-moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease; overflow:hidden;}
@@ -301,14 +296,15 @@ input.searchInput {
 		display: block
 	}
     
-    .selectmenu {
-        display: none;
-    }
-
     .mobileLogoCover {
         display: none;
     }
     
+    #mobile-menu-btn {
+        display: none;
+
+    }
+        
     .PFNextGen iframe {
         margin-left: 100px;
     }
@@ -336,19 +332,48 @@ input.searchInput {
 	}
     
     #PFTopLinksCover {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        box-sizing: border-box;
+        height: 105px;
         padding: 30px 15px 15px 15px;
+        -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
+        -moz-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
+    	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
     }
-    
-    .selectmenu {
-        display: block;
-    }
-    
+        
     .mobileLogoCover {
-        display: block
+        display: block;
+        float: right;
+    }
+    
+    #mobile-menu-btn {
+        display: inline-block;
+        font-size: 36px;
+        margin-left: 24px;
+        color: #5c666a;
+        -moz-transition: color .3s;
+        -o-transition: color .3s;
+        -webkit-transition: color .3s;
+        transition: color .3s;
+    }
+    
+    #mobile-menu-btn:hover {
+        color: #25AAE1;
     }
     
     #MENUSIDE {
-        display: none
+        z-index: 200;
+        left: -301px;
+        top: 105px;
+        -webkit-box-shadow: 3px 0 6px rgba(0,0,0,0.3);
+        -moz-box-shadow: 3px 0 6px rgba(0,0,0,0.3);
+        box-shadow: 3px 0 6px rgba(0,0,0,0.3);
+    }
+    
+    .content-container {
+        margin-top: 120px;
     }
     
     #CONTENTSIDE {

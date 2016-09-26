@@ -25,6 +25,8 @@ $(document).ready(function() {
         
         topLinksCover: $('#PFTopLinksCover'),
         
+        mobileMenuBtn: $('#mobile-menu-btn'),
+        
         contentSideIndent: $('#CONTENTSIDEindent'),
                 
         desktopContainer: $(document.body).children('.PC'),
@@ -77,19 +79,19 @@ $(document).ready(function() {
             
             if(this.activeMenu) {
                 if(this.activeMenu === header) {
-                    headerJQ.removeClass('MenuSideMainLinkDark').next().slideUp(700,"easeInOutQuint");
+                    headerJQ.removeClass('MenuSideMainLinkDark').next().slideUp(300,"easeInOutCirc");
                     this.activeMenu = null;
                     $.removeCookie('menustate', {path: '/'});
                 }
                 else {
-                    $(this.activeMenu).removeClass('MenuSideMainLinkDark').next().slideUp(700,"easeInOutQuint");
-                    headerJQ.addClass("MenuSideMainLinkDark").next().slideDown(700,"easeInOutQuint");
+                    $(this.activeMenu).removeClass('MenuSideMainLinkDark').next().slideUp(300,"easeInOutCirc");
+                    headerJQ.addClass("MenuSideMainLinkDark").next().slideDown(300,"easeInOutCirc");
                     this.activeMenu = header;
                     $.cookie('menustate', headerJQ.attr('id'), {path: '/'});
                 }
             }
             else {
-                headerJQ.addClass("MenuSideMainLinkDark").next().slideDown(700,"easeInOutQuint");
+                headerJQ.addClass("MenuSideMainLinkDark").next().slideDown(300,"easeInOutCirc");
                 this.activeMenu = header;
                 $.cookie('menustate', headerJQ.attr('id'), {path: '/'});
             }
@@ -128,9 +130,14 @@ $(document).ready(function() {
         Showcase.unhighlightMenu();
 	});
     
+    Showcase.mobileMenuBtn.on('click', function(e) {
+       Showcase.menu.toggleClass('active-menu'); 
+       e.preventDefault();
+    });
+    
     // open theme switcher combo
     $("#themeSwitcher").on("click",function(){
-		$("#GlobalThemeSwitcher").slideDown(500);
+		$("#GlobalThemeSwitcher").slideDown(300);
 	})
     .on("mouseleave",function(){
 		$("#GlobalThemeSwitcher").slideUp(1);
@@ -145,7 +152,7 @@ $(document).ready(function() {
     
     // open theme switcher combo
     $("#pushNav").on("click",function(){
-		$("#PushDemos").slideDown(500);
+		$("#PushDemos").slideDown(300);
 	})
     .on("mouseleave",function(){
 		$("#PushDemos").slideUp(1);
