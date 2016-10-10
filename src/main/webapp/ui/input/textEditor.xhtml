@@ -6,7 +6,7 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Text Editor
+        Text Editor - <span class="gray">Since v6.0.6</span>
     </ui:define>
 
     <ui:define name="description">
@@ -17,13 +17,13 @@
 
         <h:form>    
             <h3 style="margin-top:0">Basic</h3>
-            <p:textEditor widgetVar="editor1" value="#{editorView.text}" height="300" style="margin-bottom:50px"/>
+            <p:textEditor widgetVar="editor1" value="#{editorView.text}" height="300" style="margin-bottom:10px"/>
             
             <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
             <p:commandButton value="Clear" type="button" onclick="PF('editor1').clear();" icon="ui-icon-close" />
             
             <h3 class="first">Custom Toolbar</h3>
-            <p:textEditor widgetVar="editor2" value="#{editorView.text2}" height="300" style="margin-bottom:50px" placeholder="Enter your content">
+            <p:textEditor widgetVar="editor2" value="#{editorView.text2}" height="300" style="margin-bottom:10px" placeholder="Enter your content">
                 <f:facet name="toolbar">
                      <span class="ql-formats">
                         <button class="ql-bold"></button>
@@ -60,13 +60,13 @@
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;    
     &lt;h3 style="margin-top:0"&gt;Basic&lt;/h3&gt;
-    &lt;p:textEditor widgetVar="editor1" value="\#{editorView.text}" height="300" style="margin-bottom:50px"/&gt;
+    &lt;p:textEditor widgetVar="editor1" value="\#{editorView.text}" height="300" style="margin-bottom:10px"/&gt;
 
     &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-disk" /&gt;
     &lt;p:commandButton value="Clear" type="button" onclick="PF('editor1').clear();" icon="ui-icon-close" /&gt;
 
     &lt;h3 class="first"&gt;Custom Toolbar&lt;/h3&gt;
-    &lt;p:textEditor widgetVar="editor2" value="\#{editorView.text2}" height="300" style="margin-bottom:50px" placeholder="Enter your content"&gt;
+    &lt;p:textEditor widgetVar="editor2" value="\#{editorView.text2}" height="300" style="margin-bottom:10px" placeholder="Enter your content"&gt;
         &lt;f:facet name="toolbar"&gt;
              &lt;span class="ql-formats"&gt;
                 &lt;button class="ql-bold"&gt;&lt;/button&gt;
