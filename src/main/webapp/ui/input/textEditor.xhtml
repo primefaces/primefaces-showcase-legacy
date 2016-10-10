@@ -1,0 +1,138 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Text Editor
+    </ui:define>
+
+    <ui:define name="description">
+        Editor is an input component with rich text editing features.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>    
+            <h3 style="margin-top:0">Basic</h3>
+            <p:textEditor widgetVar="editor1" value="#{editorView.text}" height="300" style="margin-bottom:50px"/>
+            
+            <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
+            <p:commandButton value="Clear" type="button" onclick="PF('editor1').clear();" icon="ui-icon-close" />
+            
+            <h3 class="first">Custom Toolbar</h3>
+            <p:textEditor widgetVar="editor2" value="#{editorView.text2}" height="300" style="margin-bottom:50px" placeholder="Enter your content">
+                <f:facet name="toolbar">
+                     <span class="ql-formats">
+                        <button class="ql-bold"></button>
+                        <button class="ql-italic"></button>
+                        <button class="ql-underline"></button>
+                        <button class="ql-strike"></button>
+                    </span>
+                    <span class="ql-formats">
+                        <select class="ql-font"></select>
+                        <select class="ql-size"></select>
+                    </span>
+                </f:facet>
+            </p:textEditor>
+            
+            <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
+            <p:commandButton value="Clear" type="button" onclick="PF('editor2').clear();" icon="ui-icon-close" />
+            
+            <p:dialog header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade">
+                <p:outputPanel id="display">
+                    <h3 style="margin-top:0">Basic</h3>
+                    <h:outputText value="#{editorView.text}" escape="false" />
+
+                    <h3>Custom</h3>
+                    <h:outputText value="#{editorView.text2}" escape="false" />
+                </p:outputPanel>
+            </p:dialog>     
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="textEditor.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;    
+    &lt;h3 style="margin-top:0"&gt;Basic&lt;/h3&gt;
+    &lt;p:textEditor widgetVar="editor1" value="\#{editorView.text}" height="300" style="margin-bottom:50px"/&gt;
+
+    &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-disk" /&gt;
+    &lt;p:commandButton value="Clear" type="button" onclick="PF('editor1').clear();" icon="ui-icon-close" /&gt;
+
+    &lt;h3 class="first"&gt;Custom Toolbar&lt;/h3&gt;
+    &lt;p:textEditor widgetVar="editor2" value="\#{editorView.text2}" height="300" style="margin-bottom:50px" placeholder="Enter your content"&gt;
+        &lt;f:facet name="toolbar"&gt;
+             &lt;span class="ql-formats"&gt;
+                &lt;button class="ql-bold"&gt;&lt;/button&gt;
+                &lt;button class="ql-italic"&gt;&lt;/button&gt;
+                &lt;button class="ql-underline"&gt;&lt;/button&gt;
+                &lt;button class="ql-strike"&gt;&lt;/button&gt;
+            &lt;/span&gt;
+            &lt;span class="ql-formats"&gt;
+                &lt;select class="ql-font"&gt;&lt;/select&gt;
+                &lt;select class="ql-size"&gt;&lt;/select&gt;
+            &lt;/span&gt;
+        &lt;/f:facet&gt;
+    &lt;/p:textEditor&gt;
+
+    &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-disk" /&gt;
+    &lt;p:commandButton value="Clear" type="button" onclick="PF('editor2').clear();" icon="ui-icon-close" /&gt;
+
+    &lt;p:dialog header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade"&gt;
+        &lt;p:outputPanel id="display"&gt;
+            &lt;h3 style="margin-top:0"&gt;Basic&lt;/h3&gt;
+            &lt;h:outputText value="\#{editorView.text}" escape="false" /&gt;
+
+            &lt;h3&gt;Custom&lt;/h3&gt;
+            &lt;h:outputText value="\#{editorView.text2}" escape="false" /&gt;
+        &lt;/p:outputPanel&gt;
+    &lt;/p:dialog&gt;     
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="EditorView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.input;
+
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class EditorView {
+    
+    private String text;
+    
+    private String text2;
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getText2() {
+        return text2;
+    }
+
+    public void setText2(String text2) {
+        this.text2 = text2;
+    }
+}
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-198" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
+
