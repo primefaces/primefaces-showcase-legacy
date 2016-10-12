@@ -35,6 +35,8 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.primefaces.component.export.ExcelOptions;
+import org.primefaces.component.export.PDFOptions;
 
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
@@ -43,6 +45,12 @@ import org.primefaces.showcase.service.CarService;
 public class CustomizedDocumentsView implements Serializable {
     
     private List<Car> cars;
+    
+    private List<Car> cars2;
+    
+    private ExcelOptions excelOpt;
+    
+    private PDFOptions pdfOpt;
         
     @ManagedProperty("#{carService}")
     private CarService service;
@@ -50,10 +58,49 @@ public class CustomizedDocumentsView implements Serializable {
     @PostConstruct
     public void init() {
         cars = service.createCars(100);
+        
+        cars2 = service.createCars(100);
+        customizationOptions();
+    }
+    
+    public void customizationOptions() {
+        excelOpt = new ExcelOptions();
+        excelOpt.setFacetBgColor("#F88017");
+        excelOpt.setFacetFontSize("10");
+        excelOpt.setFacetFontColor("#0000ff");
+        excelOpt.setFacetFontStyle("BOLD");
+        excelOpt.setCellFontColor("#00ff00");
+        excelOpt.setCellFontSize("8");
+        
+        pdfOpt = new PDFOptions();
+        pdfOpt.setFacetBgColor("#F88017");
+        pdfOpt.setFacetFontColor("#0000ff");
+        pdfOpt.setFacetFontStyle("BOLD");
+        pdfOpt.setCellFontSize("12");
     }
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public List<Car> getCars2() {
+        return cars2;
+    }
+
+    public ExcelOptions getExcelOpt() {
+        return excelOpt;
+    }
+
+    public void setExcelOpt(ExcelOptions excelOpt) {
+        this.excelOpt = excelOpt;
+    }
+
+    public PDFOptions getPdfOpt() {
+        return pdfOpt;
+    }
+
+    public void setPdfOpt(PDFOptions pdfOpt) {
+        this.pdfOpt = pdfOpt;
     }
 
     public void setService(CarService service) {

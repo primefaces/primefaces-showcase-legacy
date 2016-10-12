@@ -10,7 +10,7 @@
     </ui:define>
 
     <ui:define name="description">
-        DataExporter provides easy customization options for the exported document using pre and post processors.
+        DataExporter provides easy customization options for the exported document using pre and post processors or ExcelOptions and PDFOptions objects.
     </ui:define>
 
     <ui:define name="implementation">
@@ -46,7 +46,7 @@
                     <h:outputText value="#{car.color}" />
                 </p:column>
             </p:dataTable>
-            
+
             <h:commandLink id="excel">
                 <p:graphicImage name="/demo/images/excel.png" />
                 <p:dataExporter type="xls" target="tbl" fileName="cars" postProcessor="#{customizedDocumentsView.postProcessXLS}" />
@@ -56,8 +56,55 @@
                 <p:graphicImage name="/demo/images/pdf.png" />
                 <p:dataExporter type="pdf" target="tbl" fileName="cars" preProcessor="#{customizedDocumentsView.preProcessPDF}" />
             </h:commandLink>
+
+            <p:dataTable id="tbl2" var="car" value="#{customizedDocumentsView.cars2}" 
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                         paginator="true" rows="10" style="margin-top: 25px;">
+
+                <f:facet name="{Exporters}">
+                    <div style="float:right">
+                        <h:commandLink>
+                            <p:graphicImage name="/demo/images/excel.png" width="24"/>
+                            <p:dataExporter type="xls" target="tbl2" fileName="cars" options="#{customizedDocumentsView.excelOpt}" />
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <p:graphicImage name="/demo/images/pdf.png" width="24"/>
+                            <p:dataExporter type="pdf" target="tbl2" fileName="cars" options="#{customizedDocumentsView.pdfOpt}" />
+                        </h:commandLink>
+                    </div>
+                </f:facet>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Id" />
+                    </f:facet>
+                    <h:outputText value="#{car.id}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Year" />
+                    </f:facet>
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Brand" />
+                    </f:facet>
+                    <h:outputText value="#{car.brand}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Color" />
+                    </f:facet>
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+            </p:dataTable>
         </h:form>
-        
+
     </ui:define>
 
     <ui:define name="source">
@@ -105,6 +152,53 @@
         &lt;p:graphicImage name="/demo/images/pdf.png" /&gt;
         &lt;p:dataExporter type="pdf" target="tbl" fileName="cars" preProcessor="\#{customizedDocumentsView.preProcessPDF}" /&gt;
     &lt;/h:commandLink&gt;
+
+    &lt;p:dataTable id="tbl2" var="car" value="\#{customizedDocumentsView.cars2}" 
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                 paginator="true" rows="10" style="margin-top: 25px;"&gt;
+
+        &lt;f:facet name="{Exporters}"&gt;
+            &lt;div style="float:right"&gt;
+                &lt;h:commandLink&gt;
+                    &lt;p:graphicImage name="/demo/images/excel.png" width="24"/&gt;
+                    &lt;p:dataExporter type="xls" target="tbl2" fileName="cars" options="\#{customizedDocumentsView.excelOpt}" /&gt;
+                &lt;/h:commandLink&gt;
+
+                &lt;h:commandLink&gt;
+                    &lt;p:graphicImage name="/demo/images/pdf.png" width="24"/&gt;
+                    &lt;p:dataExporter type="pdf" target="tbl2" fileName="cars" options="\#{customizedDocumentsView.pdfOpt}" /&gt;
+                &lt;/h:commandLink&gt;
+            &lt;/div&gt;
+        &lt;/f:facet&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Id" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Year" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Brand" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.brand}" /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="Color" /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:dataTable&gt;
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
@@ -133,6 +227,8 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.primefaces.component.export.ExcelOptions;
+import org.primefaces.component.export.PDFOptions;
 
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
@@ -141,6 +237,12 @@ import org.primefaces.showcase.service.CarService;
 public class CustomizedDocumentsView implements Serializable {
     
     private List&lt;Car&gt; cars;
+    
+    private List&lt;Car&gt; cars2;
+    
+    private ExcelOptions excelOpt;
+    
+    private PDFOptions pdfOpt;
         
     @ManagedProperty("\#{carService}")
     private CarService service;
@@ -148,10 +250,49 @@ public class CustomizedDocumentsView implements Serializable {
     @PostConstruct
     public void init() {
         cars = service.createCars(100);
+        
+        cars2 = service.createCars(100);
+        customizationOptions();
+    }
+    
+    public void customizationOptions() {
+        excelOpt = new ExcelOptions();
+        excelOpt.setFacetBgColor("\#F88017");
+        excelOpt.setFacetFontSize("10");
+        excelOpt.setFacetFontColor("\#0000ff");
+        excelOpt.setFacetFontStyle("BOLD");
+        excelOpt.setCellFontColor("\#00ff00");
+        excelOpt.setCellFontSize("8");
+        
+        pdfOpt = new PDFOptions();
+        pdfOpt.setFacetBgColor("\#F88017");
+        pdfOpt.setFacetFontColor("\#0000ff");
+        pdfOpt.setFacetFontStyle("BOLD");
+        pdfOpt.setCellFontSize("12");
     }
 
     public List&lt;Car&gt; getCars() {
         return cars;
+    }
+
+    public List&lt;Car&gt; getCars2() {
+        return cars2;
+    }
+
+    public ExcelOptions getExcelOpt() {
+        return excelOpt;
+    }
+
+    public void setExcelOpt(ExcelOptions excelOpt) {
+        this.excelOpt = excelOpt;
+    }
+
+    public PDFOptions getPdfOpt() {
+        return pdfOpt;
+    }
+
+    public void setPdfOpt(PDFOptions pdfOpt) {
+        this.pdfOpt = pdfOpt;
     }
 
     public void setService(CarService service) {
@@ -187,7 +328,7 @@ public class CustomizedDocumentsView implements Serializable {
 }
                 </pre>
             </p:tab>
-            
+
             <p:tab title="Documentation" titleStyleClass="tab-doc docslide-133" />
         </p:tabView>
 
