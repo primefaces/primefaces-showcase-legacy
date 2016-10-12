@@ -1,0 +1,198 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+
+    <ui:define name="title">
+        TreeTable - <span class="subitem">Paginator</span>
+    </ui:define>
+
+    <ui:define name="description">
+        TreeTable provides a highly customizable ajax paginator.
+    </ui:define>
+
+    <ui:define name="implementation">
+        
+        <h:form id="form">
+            <p:treeTable value="#{ttPaginatorView.root}" var="document" paginator="true" rows="10">
+                <f:facet name="header">
+                    Document Viewer
+                </f:facet>
+                <p:column headerText="Name">
+                    <h:outputText value="#{document.name}" />
+                </p:column>
+                <p:column headerText="Size">
+                    <h:outputText value="#{document.size} KB" />
+                </p:column>
+                <p:column headerText="Type">
+                    <h:outputText value="#{document.type}" />
+                </p:column>
+            </p:treeTable>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="paginator.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form id="form"&gt;
+    &lt;p:treeTable value="\#{ttPaginatorView.root}" var="document" paginator="true" rows="10"&gt;
+        &lt;f:facet name="header"&gt;
+            Document Viewer
+        &lt;/f:facet&gt;
+        &lt;p:column headerText="Name"&gt;
+            &lt;h:outputText value="\#{document.name}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Size"&gt;
+            &lt;h:outputText value="\#{document.size} KB" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Type"&gt;
+            &lt;h:outputText value="\#{document.type}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:treeTable&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="PaginatorView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data.treetable;
+
+import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
+import org.primefaces.showcase.domain.Document;
+
+@ManagedBean(name="ttPaginatorView")
+@ViewScoped
+public class PaginatorView implements Serializable {
+    
+    private TreeNode root;
+            
+    @PostConstruct
+    public void init() {
+        root = new DefaultTreeNode();
+        
+        for(int i = 0; i &lt; 50; i++) {
+            TreeNode node = new DefaultTreeNode(new Document("Node " + i, String.valueOf((int) (Math.random() * 1000)), "Document"), root);
+            
+            for(int j = 0; j &lt; 5; j++) {
+                new DefaultTreeNode(new Document("Node " + i + "." + j, String.valueOf((int) (Math.random() * 1000)), "Document"), node);
+            }
+        }
+    }
+
+    public TreeNode getRoot() {
+        return root;
+    }
+}
+                </pre>
+            </p:tab>
+       
+            <p:tab title="Document.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.domain;
+
+import java.io.Serializable;
+
+public class Document implements Serializable, Comparable&lt;Document&gt; {
+
+	private String name;
+	
+	private String size;
+	
+	private String type;
+	
+	public Document(String name, String size, String type) {
+		this.name = name;
+		this.size = size;
+		this.type = type;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	//Eclipse Generated hashCode and equals
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((size == null) ? 0 : size.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Document other = (Document) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (size == null) {
+			if (other.size != null)
+				return false;
+		} else if (!size.equals(other.size))
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
+
+    public int compareTo(Document document) {
+        return this.getName().compareTo(document.getName());
+    }
+}  
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-514" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
