@@ -1,0 +1,474 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+
+    </ui:define>
+
+    <ui:define name="title">
+        Organigram
+    </ui:define>
+
+    <ui:define name="description">
+
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form id="form">
+
+            <style>
+                .ui-organigram .ui-organigram-node.division {
+                    background: #93e7ff;
+                    background: -moz-linear-gradient(top, #93e7ff 0%, #007efc 100%);
+                    background: -webkit-linear-gradient(top, #93e7ff 0%,#007efc 100%);
+                    background: linear-gradient(to bottom, #93e7ff 0%,#007efc 100%);
+                }
+
+                .ui-organigram .ui-organigram-node.employee {
+                    background: #88c048;
+                    background: -moz-linear-gradient(top, #88c048 0%, #69a038 100%);
+                    background: -webkit-linear-gradient(top, #88c048 0%,#69a038 100%);
+                    background: linear-gradient(to bottom, #88c048 0%,#69a038 100%);
+                }
+            </style>
+
+            <p:growl id="growl" />
+
+            <p:organigram id="organigram"
+                           widgetVar="organigram"
+                           value="#{organigramView.rootNode}"
+                           var="node"
+                           leafNodeConnectorHeight="#{organigramView.leafNodeConnectorHeight}"
+                           autoScrollToSelection="#{organigramView.autoScrollToSelection}"
+                           zoom="#{organigramView.zoom}"
+                           selection="#{organigramView.selection}"
+                           style="#{organigramView.style}">
+
+                <p:ajax event="dragdrop" process="@this" update="@form:growl" listener="#{organigramView.nodeDragDropListener}" />
+                <p:ajax event="select" process="@this" update="@form:growl" listener="#{organigramView.nodeSelectListener}" />
+                <p:ajax event="contextmenu" process="@this" />
+                <p:ajax event="collapse" process="@this" update="@form:growl" listener="#{organigramView.nodeCollapseListener}" />
+                <p:ajax event="expand" process="@this" update="@form:growl" listener="#{organigramView.nodeExpandListener}" />
+
+                <p:organigramNode>
+                    <h:outputText value="#{node.data}" />
+                </p:organigramNode>
+
+                <p:organigramNode type="root"
+                                   style="border-radius: 10px;">
+                    <h:outputText value="#{node.data}" />
+                </p:organigramNode>
+
+                <p:organigramNode type="division"
+                                  styleClass="division"
+                                  icon="ui-icon-suitcase"
+                                  iconPos="left">
+                    <h:outputText value="#{node.data}" />
+                </p:organigramNode>
+
+                <p:organigramNode type="employee"
+                                  styleClass="employee"
+                                  icon="ui-icon-person">
+                    <h:outputText value="#{node.data}" />
+                </p:organigramNode>
+            </p:organigram>
+
+            <p:contextMenu for="organigram" nodeType="employee">
+                <p:menuitem value="fire employee"
+                            update="organigram"
+                            icon="ui-icon-close"
+                            actionListener="#{organigramView.removeEmployee()}" />
+            </p:contextMenu>
+
+            <p:contextMenu for="organigram" nodeType="division">
+                <p:menuitem value="Add employee"
+                            ajax="false"
+                            icon="ui-icon-plus"
+                            onclick="PF('addEmployeeDialog').show(); return false;" />
+                <p:menuitem value="Remove division"
+                            update="organigram @form:growl"
+                            icon="ui-icon-close"
+                            actionListener="#{organigramView.removeDivision()}" />
+            </p:contextMenu>
+
+            <p:dialog id="addEmployeeDialog"
+                      widgetVar="addEmployeeDialog"
+                      header="Add employee">
+
+                <p:inputText value="#{organigramView.employeeName}" />
+
+                <p:commandButton process="@parent"
+                                 update=":form:organigram"
+                                 value="Add"
+                                 actionListener="#{organigramView.addEmployee()}"
+                                 oncomplete="PF('addEmployeeDialog').hide();"/>
+
+            </p:dialog>
+        </h:form>
+
+        <h:form>
+            <p:panel header="Options">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="zoom" />
+                    <p:selectBooleanCheckbox value="#{organigramView.zoom}">
+                        <p:ajax process="@this" update=":form:organigram" />
+                    </p:selectBooleanCheckbox>
+
+                    <h:outputLabel value="autoScrollToSelection" />
+                    <p:selectBooleanCheckbox value="#{organigramView.autoScrollToSelection}">
+                        <p:ajax process="@this" update=":form:organigram" />
+                    </p:selectBooleanCheckbox>
+
+                    <h:outputLabel value="leafNodeConnectorHeight" />
+                    <p:inputText value="#{organigramView.leafNodeConnectorHeight}">
+                        <p:ajax process="@this" update=":form:organigram" />
+                    </p:inputText>
+
+                    <h:outputLabel value="style" />
+                    <p:inputText value="#{organigramView.style}" size="100">
+                        <p:ajax process="@this" update=":form:organigram" />
+                    </p:inputText>
+
+                    <p:commandButton value="scrollToSelection" onclick="PF('organigram').scrollToSelection(); return false;" />
+                    <p:commandButton value="Update Organigram" update=":form:organigram" />
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="organigram.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form id="form"&gt;
+
+    &lt;style&gt;
+        .ui-organigram .ui-organigram-node.division {
+            background: #93e7ff;
+            background: -moz-linear-gradient(top, #93e7ff 0%, #007efc 100%);
+            background: -webkit-linear-gradient(top, #93e7ff 0%,#007efc 100%);
+            background: linear-gradient(to bottom, #93e7ff 0%,#007efc 100%);
+        }
+
+        .ui-organigram .ui-organigram-node.employee {
+            background: #88c048;
+            background: -moz-linear-gradient(top, #88c048 0%, #69a038 100%);
+            background: -webkit-linear-gradient(top, #88c048 0%,#69a038 100%);
+            background: linear-gradient(to bottom, #88c048 0%,#69a038 100%);
+        }
+    &lt;/style&gt;
+
+    &lt;p:growl id="growl" /&gt;
+
+    &lt;p:organigram id="organigram"
+                   widgetVar="organigram"
+                   value="#\{organigramView.rootNode}"
+                   var="node"
+                   leafNodeConnectorHeight="#\{organigramView.leafNodeConnectorHeight}"
+                   autoScrollToSelection="#\{organigramView.autoScrollToSelection}"
+                   zoom="#\{organigramView.zoom}"
+                   selection="#\{organigramView.selection}"
+                   style="#\{organigramView.style}"&gt;
+
+        &lt;p:ajax event="dragdrop" process="@this" update="@form:growl" listener="#\{organigramView.nodeDragDropListener}" /&gt;
+        &lt;p:ajax event="select" process="@this" update="@form:growl" listener="#\{organigramView.nodeSelectListener}" /&gt;
+        &lt;p:ajax event="contextmenu" process="@this" /&gt;
+        &lt;p:ajax event="collapse" process="@this" update="@form:growl" listener="#\{organigramView.nodeCollapseListener}" /&gt;
+        &lt;p:ajax event="expand" process="@this" update="@form:growl" listener="#\{organigramView.nodeExpandListener}" /&gt;
+
+        &lt;p:organigramNode&gt;
+            &lt;h:outputText value="#\{node.data}" /&gt;
+        &lt;/p:organigramNode&gt;
+
+        &lt;p:organigramNode type="root"
+                           style="border-radius: 10px;"&gt;
+            &lt;h:outputText value="#\{node.data}" /&gt;
+        &lt;/p:organigramNode&gt;
+
+        &lt;p:organigramNode type="division"
+                          styleClass="division"
+                          icon="ui-icon-suitcase"
+                          iconPos="left"&gt;
+            &lt;h:outputText value="#\{node.data}" /&gt;
+        &lt;/p:organigramNode&gt;
+
+        &lt;p:organigramNode type="employee"
+                          styleClass="employee"
+                          icon="ui-icon-person"&gt;
+            &lt;h:outputText value="#\{node.data}" /&gt;
+        &lt;/p:organigramNode&gt;
+    &lt;/p:organigram&gt;
+
+    &lt;p:contextMenu for="organigram" nodeType="employee"&gt;
+        &lt;p:menuitem value="fire employee"
+                    update="organigram"
+                    icon="ui-icon-close"
+                    actionListener="#\{organigramView.removeEmployee()}" /&gt;
+    &lt;/p:contextMenu&gt;
+
+    &lt;p:contextMenu for="organigram" nodeType="division"&gt;
+        &lt;p:menuitem value="Add employee"
+                    ajax="false"
+                    icon="ui-icon-plus"
+                    onclick="PF('addEmployeeDialog').show(); return false;" /&gt;
+        &lt;p:menuitem value="Remove division"
+                    update="organigram @form:growl"
+                    icon="ui-icon-close"
+                    actionListener="#\{organigramView.removeDivision()}" /&gt;
+    &lt;/p:contextMenu&gt;
+
+    &lt;p:dialog id="addEmployeeDialog"
+              widgetVar="addEmployeeDialog"
+              header="Add employee"&gt;
+
+        &lt;p:inputText value="#\{organigramView.employeeName}" /&gt;
+
+        &lt;p:commandButton process="@parent"
+                         update=":form:organigram"
+                         value="Add"
+                         actionListener="#\{organigramView.addEmployee()}"
+                         oncomplete="PF('addEmployeeDialog').hide();"/&gt;
+
+    &lt;/p:dialog&gt;
+&lt;/h:form&gt;
+
+&lt;h:form&gt;
+    &lt;p:panel header="Options"&gt;
+        &lt;h:panelGrid columns="2"&gt;
+            &lt;h:outputLabel value="zoom" /&gt;
+            &lt;p:selectBooleanCheckbox value="#\{organigramView.zoom}"&gt;
+                &lt;p:ajax process="@this" update=":form:organigram" /&gt;
+            &lt;/p:selectBooleanCheckbox&gt;
+
+            &lt;h:outputLabel value="autoScrollToSelection" /&gt;
+            &lt;p:selectBooleanCheckbox value="#\{organigramView.autoScrollToSelection}"&gt;
+                &lt;p:ajax process="@this" update=":form:organigram" /&gt;
+            &lt;/p:selectBooleanCheckbox&gt;
+
+            &lt;h:outputLabel value="leafNodeConnectorHeight" /&gt;
+            &lt;p:inputText value="#\{organigramView.leafNodeConnectorHeight}"&gt;
+                &lt;p:ajax process="@this" update=":form:organigram" /&gt;
+            &lt;/p:inputText&gt;
+
+            &lt;h:outputLabel value="style" /&gt;
+            &lt;p:inputText value="#\{organigramView.style}" size="100"&gt;
+                &lt;p:ajax process="@this" update=":form:organigram" /&gt;
+            &lt;/p:inputText&gt;
+
+            &lt;p:commandButton value="scrollToSelection" onclick="PF('organigram').scrollToSelection(); return false;" /&gt;
+            &lt;p:commandButton value="Update Organigram" update=":form:organigram" /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:panel&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="OrganigramView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data;
+
+import org.primefaces.component.organigram.OrganigramHelper;
+import org.primefaces.event.organigram.OrganigramNodeCollapseEvent;
+import org.primefaces.event.organigram.OrganigramNodeDragDropEvent;
+import org.primefaces.event.organigram.OrganigramNodeExpandEvent;
+import org.primefaces.event.organigram.OrganigramNodeSelectEvent;
+import org.primefaces.model.DefaultOrganigramNode;
+import org.primefaces.model.OrganigramNode;
+import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+
+@ManagedBean
+@ViewScoped
+public class OrganigramView implements Serializable {
+
+    private OrganigramNode rootNode;
+    private OrganigramNode selection;
+
+    private boolean zoom = false;
+    private String style = "width: 800px";
+    private int leafNodeConnectorHeight = 0;
+    private boolean autoScrollToSelection = false;
+
+    private String employeeName;
+
+    @PostConstruct
+    public void init() {
+        selection = new DefaultOrganigramNode(null, "Ridvan Agar", null);
+
+        rootNode = new DefaultOrganigramNode("root", "CommerceBay GmbH", null);
+        rootNode.setCollapsible(false);
+        rootNode.setDroppable(true);
+
+
+        OrganigramNode softwareDevelopment = addDivision(rootNode, "Software Development", "Ridvan Agar");
+
+        OrganigramNode teamJavaEE = addDivision(softwareDevelopment, "Team JavaEE");
+        addDivision(teamJavaEE, "JSF", "Thomas Andraschko");
+        addDivision(teamJavaEE, "Backend", "Marie Louise");
+
+        OrganigramNode teamMobile = addDivision(softwareDevelopment, "Team Mobile");
+        addDivision(teamMobile, "Android", "Andy Ruby");
+        addDivision(teamMobile, "iOS", "Stevan Jobs");
+
+        addDivision(rootNode, "Managed Services", "Thorsten Schultze", "Sandra Becker");
+
+        OrganigramNode marketing = addDivision(rootNode, "Marketing");
+        addDivision(marketing, "Social Media", "Ali Mente", "Susanne Muster");
+        addDivision(marketing, "Press", "Manfred Mustermann", "Hans Peter");
+
+        addDivision(rootNode, "Management", "Hassan El Manfalouty");
+    }
+
+    protected OrganigramNode addDivision(OrganigramNode parent, String name, String... employees) {
+        OrganigramNode divisionNode = new DefaultOrganigramNode("division", name, parent);
+        divisionNode.setDroppable(true);
+        divisionNode.setDraggable(true);
+        divisionNode.setSelectable(true);
+
+        if (employees != null) {
+            for (String employee : employees) {
+                OrganigramNode employeeNode = new DefaultOrganigramNode("employee", employee, divisionNode);
+                employeeNode.setDraggable(true);
+                employeeNode.setSelectable(true);
+            }
+        }
+
+        return divisionNode;
+    }
+
+    public void nodeDragDropListener(OrganigramNodeDragDropEvent event) {
+        FacesMessage message = new FacesMessage();
+        message.setSummary("Node '" + event.getOrganigramNode().getData() + "' moved from " + event.getSourceOrganigramNode().getData() + " to '" + event.getTargetOrganigramNode().getData() + "'");
+        message.setSeverity(FacesMessage.SEVERITY_INFO);
+
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
+    public void nodeSelectListener(OrganigramNodeSelectEvent event) {
+        FacesMessage message = new FacesMessage();
+        message.setSummary("Node '" + event.getOrganigramNode().getData() + "' selected.");
+        message.setSeverity(FacesMessage.SEVERITY_INFO);
+
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
+    public void nodeCollapseListener(OrganigramNodeCollapseEvent event) {
+        FacesMessage message = new FacesMessage();
+        message.setSummary("Node '" + event.getOrganigramNode().getData() + "' collapsed.");
+        message.setSeverity(FacesMessage.SEVERITY_INFO);
+
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
+    public void nodeExpandListener(OrganigramNodeExpandEvent event) {
+        FacesMessage message = new FacesMessage();
+        message.setSummary("Node '" + event.getOrganigramNode().getData() + "' expanded.");
+        message.setSeverity(FacesMessage.SEVERITY_INFO);
+
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
+    public void removeDivision() {
+        // re-evaluate selection - might be a differenct object instance if viewstate serialization is enabled
+        OrganigramNode currentSelection = OrganigramHelper.findTreeNode(rootNode, selection);
+        setMessage(currentSelection.getData() + " will entfernt werden.", FacesMessage.SEVERITY_INFO);
+    }
+
+    public void removeEmployee() {
+        // re-evaluate selection - might be a differenct object instance if viewstate serialization is enabled
+        OrganigramNode currentSelection = OrganigramHelper.findTreeNode(rootNode, selection);
+        currentSelection.getParent().getChildren().remove(currentSelection);
+    }
+
+    public void addEmployee() {
+        // re-evaluate selection - might be a differenct object instance if viewstate serialization is enabled
+        OrganigramNode currentSelection = OrganigramHelper.findTreeNode(rootNode, selection);
+
+        OrganigramNode employee = new DefaultOrganigramNode("employee", employeeName, currentSelection);
+        employee.setDraggable(true);
+        employee.setSelectable(true);
+    }
+
+    private void setMessage(String msg, FacesMessage.Severity severity) {
+        FacesMessage message = new FacesMessage();
+        message.setSummary(msg);
+        message.setSeverity(severity);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
+    public OrganigramNode getRootNode() {
+        return rootNode;
+    }
+
+    public void setRootNode(OrganigramNode rootNode) {
+        this.rootNode = rootNode;
+    }
+
+    public OrganigramNode getSelection() {
+        return selection;
+    }
+
+    public void setSelection(OrganigramNode selection) {
+        this.selection = selection;
+    }
+
+    public boolean isZoom() {
+        return zoom;
+    }
+
+    public void setZoom(boolean zoom) {
+        this.zoom = zoom;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    public int getLeafNodeConnectorHeight() {
+        return leafNodeConnectorHeight;
+    }
+
+    public void setLeafNodeConnectorHeight(int leafNodeConnectorHeight) {
+        this.leafNodeConnectorHeight = leafNodeConnectorHeight;
+    }
+
+    public boolean isAutoScrollToSelection() {
+        return autoScrollToSelection;
+    }
+
+    public void setAutoScrollToSelection(boolean autoScrollToSelection) {
+        this.autoScrollToSelection = autoScrollToSelection;
+    }
+}
+                </pre>
+            </p:tab>
+
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-61" />
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
