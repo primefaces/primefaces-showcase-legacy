@@ -66,7 +66,7 @@ public class OrganigramView implements Serializable {
 
         OrganigramNode marketing = addDivision(rootNode, "Marketing");
         addDivision(marketing, "Social Media", "Ali Mente", "Susanne Muster");
-        addDivision(marketing, "Press", "Manfred Mustermann", "Hans Peter");
+        addDivision(marketing, "Press", "Michael Gmeiner", "Hans Peter");
 
         addDivision(rootNode, "Management", "Hassan El Manfalouty");
     }
