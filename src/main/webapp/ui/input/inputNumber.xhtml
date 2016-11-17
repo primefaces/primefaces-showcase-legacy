@@ -152,12 +152,12 @@
         &lt;/f:facet&gt;
         &lt;p:row&gt;  
             &lt;p:column&gt;  
-                &lt;p:inputNumber id="input1" value="#{inputNumberView.input1}"&gt;  
+                &lt;p:inputNumber id="input1" value="\#{inputNumberView.input1}"&gt;  
                     &lt;p:ajax update="output1" /&gt;  
                 &lt;/p:inputNumber&gt;  
             &lt;/p:column&gt;  
             &lt;p:column&gt;  
-                &lt;p:inputText id="output1" disabled="true" value="#{inputNumberView.input1}"/&gt;  
+                &lt;p:inputText id="output1" disabled="true" value="\#{inputNumberView.input1}"/&gt;  
             &lt;/p:column&gt;  
             &lt;p:column&gt;  
                 Without configuration
@@ -165,13 +165,13 @@
         &lt;/p:row&gt;
         &lt;p:row&gt;  
             &lt;p:column&gt;  
-                &lt;p:inputNumber id="input2" value="#{inputNumberView.input2}" symbol=" CHF" symbolPosition="s"  
+                &lt;p:inputNumber id="input2" value="\#{inputNumberView.input2}" symbol=" CHF" symbolPosition="s"  
                                decimalSeparator="," thousandSeparator="."&gt;  
                     &lt;p:ajax update="output2" /&gt;  
                 &lt;/p:inputNumber&gt;  
             &lt;/p:column&gt;  
             &lt;p:column&gt;  
-                &lt;p:inputText id="output2" disabled="true" value="#{inputNumberView.input2}"/&gt;  
+                &lt;p:inputText id="output2" disabled="true" value="\#{inputNumberView.input2}"/&gt;  
             &lt;/p:column&gt;  
             &lt;p:column&gt;  
                 Suffix currency symbol and comma for decimal separator
@@ -179,12 +179,12 @@
         &lt;/p:row&gt;
         &lt;p:row&gt;  
             &lt;p:column&gt;  
-                &lt;p:inputNumber id="input3" value="#{inputNumberView.input3}" minValue="-1000.999" maxValue="1000"&gt;  
+                &lt;p:inputNumber id="input3" value="\#{inputNumberView.input3}" minValue="-1000.999" maxValue="1000"&gt;  
                     &lt;p:ajax update="output3" /&gt;  
                 &lt;/p:inputNumber&gt;  
             &lt;/p:column&gt;  
             &lt;p:column&gt;  
-                &lt;p:inputText id="output3" disabled="true" value="#{inputNumberView.input3}"/&gt;  
+                &lt;p:inputText id="output3" disabled="true" value="\#{inputNumberView.input3}"/&gt;  
             &lt;/p:column&gt;  
             &lt;p:column&gt;  
                 Maximun and minimum values (-1000.999 to 1000.000)
@@ -192,12 +192,12 @@
         &lt;/p:row&gt;
         &lt;p:row&gt;  
             &lt;p:column&gt;
-                &lt;p:inputNumber id="input4" value="#{inputNumberView.input4}" decimalPlaces="6"&gt;  
+                &lt;p:inputNumber id="input4" value="\#{inputNumberView.input4}" decimalPlaces="6"&gt;  
                     &lt;p:ajax update="output4" /&gt;  
                 &lt;/p:inputNumber&gt;  
             &lt;/p:column&gt;
             &lt;p:column&gt;
-                &lt;p:inputText id="output4" disabled="true" value="#{inputNumberView.input4}"/&gt;  
+                &lt;p:inputText id="output4" disabled="true" value="\#{inputNumberView.input4}"/&gt;  
             &lt;/p:column&gt;
             &lt;p:column&gt;
                 Custom decimal places
@@ -205,13 +205,13 @@
         &lt;/p:row&gt;
         &lt;p:row&gt;  
             &lt;p:column&gt;
-                &lt;p:inputNumber id="input5" value="#{inputNumberView.input5}" symbol="%"  
+                &lt;p:inputNumber id="input5" value="\#{inputNumberView.input5}" symbol="%"  
                                 symbolPosition="s" required="true" emptyValue="empty"&gt;
                     &lt;p:ajax update="output5" /&gt;  
                 &lt;/p:inputNumber&gt;
             &lt;/p:column&gt;
             &lt;p:column&gt;
-                &lt;p:inputText id="output5" disabled="true" value="#{inputNumberView.input5}"/&gt;  
+                &lt;p:inputText id="output5" disabled="true" value="\#{inputNumberView.input5}"/&gt;  
             &lt;/p:column&gt;
             &lt;p:column&gt;
                 Empty value (empty) and required
@@ -219,7 +219,7 @@
         &lt;/p:row&gt;
         &lt;p:row&gt;  
             &lt;p:column&gt;
-                &lt;p:inputNumber id="input6" value="#{inputNumberView.input6}" symbol="%"  
+                &lt;p:inputNumber id="input6" value="\#{inputNumberView.input6}" symbol="%"  
                                 symbolPosition="s" emptyValue="zero"&gt; 
                     &lt;p:ajax update="output6" /&gt;  
                 &lt;/p:inputNumber&gt;
@@ -233,13 +233,13 @@
         &lt;/p:row&gt;
         &lt;p:row&gt;  
             &lt;p:column&gt;
-                &lt;p:inputNumber id="Input7" value="#{inputNumberView.input7}" symbol="%"  
+                &lt;p:inputNumber id="Input7" value="\#{inputNumberView.input7}" symbol="%"  
                                 symbolPosition="s" emptyValue="sign"&gt;  
                     &lt;p:ajax update="output7" /&gt;  
                 &lt;/p:inputNumber&gt;
             &lt;/p:column&gt;
             &lt;p:column&gt;
-                &lt;p:inputText id="output7" disabled="true" value="#{inputNumberView.input7}"/&gt;  
+                &lt;p:inputText id="output7" disabled="true" value="\#{inputNumberView.input7}"/&gt;  
             &lt;/p:column&gt;
             &lt;p:column&gt;
                 Empty value (sign)
@@ -247,12 +247,12 @@
         &lt;/p:row&gt;
         &lt;p:row&gt;  
             &lt;p:column&gt;
-                &lt;p:inputNumber id="Input8" value="#{inputNumberView.input8}" decimalPlaces="15"&gt;  
+                &lt;p:inputNumber id="Input8" value="\#{inputNumberView.input8}" decimalPlaces="15"&gt;  
                     &lt;p:ajax update="output8" /&gt;  
                 &lt;/p:inputNumber&gt;
             &lt;/p:column&gt;
             &lt;p:column&gt;
-                &lt;p:inputText id="output8" disabled="true" value="#{inputNumberView.input8}"/&gt;  
+                &lt;p:inputText id="output8" disabled="true" value="\#{inputNumberView.input8}"/&gt;  
             &lt;/p:column&gt;
             &lt;p:column&gt;
                 15 Decimals using BigDecimal
