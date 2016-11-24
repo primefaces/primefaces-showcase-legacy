@@ -70,7 +70,7 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 					.PFDarkText{color:#313b3f;}
 					
 				.PropertyBox{width:33%; box-sizing: border-box; height:280px; float:left; padding:3%; overflow:hidden; text-align:center; border-radius:5px; -webkit-border-radius:5px; display:block;}
-					.PropertyBox img{width:80%;}
+					.PropertyBox img{width:53%;}
 					.PropertyBox .PropertyTopic{display:block; color:#25aae1; font-size:18px;}
 					.PropertyBox .PropertyText{display:block; color:#5C666A; font-size:14px;}
 					
