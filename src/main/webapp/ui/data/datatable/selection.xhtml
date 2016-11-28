@@ -195,7 +195,7 @@
                 </p:outputPanel>
             </p:dialog>
             
-            <p:dialog header="Selected Cars" widgetVar="multiCarDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="200">
+            <p:dialog header="Selected Cars" widgetVar="multiCarDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="250">
                 <p:outputPanel id="multiCarDetail" style="text-align:center;">
                     <ui:repeat value="#{dtSelectionView.selectedCars}" var="car">
                         <h:outputText value="#{car.id} - #{car.brand}" style="display:block"/>
@@ -364,7 +364,7 @@
         &lt;/p:outputPanel&gt;
     &lt;/p:dialog&gt;
 
-    &lt;p:dialog header="Selected Cars" widgetVar="multiCarDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="200"&gt;
+    &lt;p:dialog header="Selected Cars" widgetVar="multiCarDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="250"&gt;
         &lt;p:outputPanel id="multiCarDetail" style="text-align:center;"&gt;
             &lt;ui:repeat value="\#{dtSelectionView.selectedCars}" var="car"&gt;
                 &lt;h:outputText value="\#{car.id} - \#{car.brand}" style="display:block"/&gt;
