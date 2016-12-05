@@ -6,7 +6,7 @@
                 template="./template.xhtml">
 
     <ui:define name="title">
-        DataTable - <span class="subitem">Row Grouping</span>
+        DataTable - <span class="subitem">Row Grouping</span> <span class="blue">- since v6.0.11</span>
     </ui:define>
 
     <ui:define name="description">
@@ -14,7 +14,28 @@
     </ui:define>
     
     <ui:define name="implementation">
+        <h3 class="first">Header Row</h3>
+        <h:form>
+            <p:dataTable var="car" value="#{dtSummaryRowView.cars}" sortBy="#{car.brand}">
+                <p:headerRow>
+                    <p:column colspan="3">
+                        <h:outputText value="#{car.brand}" />
+                    </p:column>
+                </p:headerRow>
+                <p:column headerText="Year">
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+                <p:column headerText="Color">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+                <p:column headerText="Id">
+                    <h:outputText value="#{car.id}" />
+                </p:column>
+               
+            </p:dataTable>
+        </h:form>
         
+        <h3>Rowspan</h3>
         <h:form>
             <p:dataTable var="car" value="#{dtSummaryRowView.cars}" sortBy="#{car.brand}">
                 <p:column headerText="Brand" groupRow="true">
@@ -38,6 +59,28 @@
         <p:tabView>
             <p:tab title="rowGroup.xhtml">
                 <pre name="code" class="brush:xml">
+&lt;h3 class="first"&gt;Header Row&lt;/h3&gt;
+&lt;h:form&gt;
+    &lt;p:dataTable var="car" value="\#{dtSummaryRowView.cars}" sortBy="\#{car.brand}"&gt;
+        &lt;p:headerRow&gt;
+            &lt;p:column colspan="3"&gt;
+                &lt;h:outputText value="\#{car.brand}" /&gt;
+            &lt;/p:column&gt;
+        &lt;/p:headerRow&gt;
+        &lt;p:column headerText="Year"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Color"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Id"&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+        &lt;/p:column&gt;
+
+    &lt;/p:dataTable&gt;
+&lt;/h:form&gt;
+
+&lt;h3&gt;Rowspan&lt;/h3&gt;
 &lt;h:form&gt;
     &lt;p:dataTable var="car" value="\#{dtSummaryRowView.cars}" sortBy="\#{car.brand}"&gt;
         &lt;p:column headerText="Brand" groupRow="true"&gt;
