@@ -45,12 +45,12 @@
                 <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}" />
             </p:selectManyCheckbox>
 
-            <h3>Responsive (since v5.2.4)</h3>
+            <h3>Responsive</h3>
             <p:selectManyCheckbox id="grid2" value="#{checkboxView.selectedCities2}" layout="responsive" columns="3">
                 <f:selectItems value="#{checkboxView.cities}" var="city" itemLabel="#{city}" itemValue="#{city}" />
             </p:selectManyCheckbox>
 
-            <h3>Custom Layout (since v5.2.3)</h3>
+            <h3>Custom Layout</h3>
             <p:outputPanel id="customPanel" style="margin-bottom:20px">
                 <p:selectManyCheckbox id="custom" value="#{checkboxView.selectedConsoles2}" layout="custom">
                     <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
@@ -76,7 +76,7 @@
                 </div>
             </p:outputPanel>
 
-            <h3>Grouped (since v6.0)</h3>
+            <h3>Grouped</h3>
             <p:selectManyCheckbox id="grid3" value="#{checkboxView.selectedCars}" layout="pageDirection" columns="1">
                 <f:selectItems value="#{checkboxView.cars}" var="car" itemLabel="#{car}" itemValue="#{car}" />
             </p:selectManyCheckbox>
@@ -140,12 +140,12 @@
         &lt;f:selectItems value="\#{checkboxView.cities}" var="city" itemLabel="\#{city}" itemValue="\#{city}" /&gt;
     &lt;/p:selectManyCheckbox&gt;
 
-    &lt;h3&gt;Responsive (since v5.2.4)&lt;/h3&gt;
+    &lt;h3&gt;Responsive&lt;/h3&gt;
     &lt;p:selectManyCheckbox id="grid2" value="\#{checkboxView.selectedCities2}" layout="responsive" columns="3"&gt;
         &lt;f:selectItems value="\#{checkboxView.cities}" var="city" itemLabel="\#{city}" itemValue="\#{city}" /&gt;
     &lt;/p:selectManyCheckbox&gt;
 
-    &lt;h3&gt;Custom Layout (since v5.2.3)&lt;/h3&gt;
+    &lt;h3&gt;Custom Layout&lt;/h3&gt;
     &lt;p:outputPanel id="customPanel" style="margin-bottom:20px"&gt;
         &lt;p:selectManyCheckbox id="custom" value="\#{checkboxView.selectedConsoles2}" layout="custom"&gt;
             &lt;f:selectItem itemLabel="Xbox One" itemValue="Xbox One" /&gt;
@@ -171,7 +171,7 @@
         &lt;/div&gt;
     &lt;/p:outputPanel&gt;
 
-    &lt;h3&gt;Grouped (since v6.0)&lt;/h3&gt;
+    &lt;h3&gt;Grouped&lt;/h3&gt;
     &lt;p:selectManyCheckbox id="grid3" value="\#{checkboxView.selectedCars}" layout="pageDirection" columns="1"&gt;
         &lt;f:selectItems value="\#{checkboxView.cars}" var="car" itemLabel="\#{car}" itemValue="\#{car}" /&gt;
     &lt;/p:selectManyCheckbox&gt;
