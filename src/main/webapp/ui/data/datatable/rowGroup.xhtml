@@ -16,7 +16,7 @@
     <ui:define name="implementation">
         <h3 class="first">Header Row</h3>
         <h:form>
-            <p:dataTable var="car" value="#{dtSummaryRowView.cars}" sortBy="#{car.brand}">
+            <p:dataTable var="car" value="#{dtRowGroupView.cars}" sortBy="#{car.brand}" expandableRowGroups="true">
                 <p:headerRow>
                     <p:column colspan="3">
                         <h:outputText value="#{car.brand}" />
@@ -31,13 +31,22 @@
                 <p:column headerText="Id">
                     <h:outputText value="#{car.id}" />
                 </p:column>
-               
+                <p:summaryRow>
+                    <p:column colspan="2" style="text-align:right">
+                        <h:outputText value="Total:" />
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{dtRowGroupView.randomPrice}">
+                            <f:convertNumber type="currency" currencySymbol="$" />
+                        </h:outputText>
+                    </p:column>
+                </p:summaryRow>
             </p:dataTable>
         </h:form>
         
         <h3>Rowspan</h3>
         <h:form>
-            <p:dataTable var="car" value="#{dtSummaryRowView.cars}" sortBy="#{car.brand}">
+            <p:dataTable var="car" value="#{dtRowGroupView.cars}" sortBy="#{car.brand}">
                 <p:column headerText="Brand" groupRow="true">
                     <h:outputText value="#{car.brand}" />
                 </p:column>
@@ -61,7 +70,7 @@
                 <pre name="code" class="brush:xml">
 &lt;h3 class="first"&gt;Header Row&lt;/h3&gt;
 &lt;h:form&gt;
-    &lt;p:dataTable var="car" value="\#{dtSummaryRowView.cars}" sortBy="\#{car.brand}"&gt;
+    &lt;p:dataTable var="car" value="\#{dtRowGroupView.cars}" sortBy="\#{car.brand}" expandableRowGroups="true"&gt;
         &lt;p:headerRow&gt;
             &lt;p:column colspan="3"&gt;
                 &lt;h:outputText value="\#{car.brand}" /&gt;
@@ -76,13 +85,22 @@
         &lt;p:column headerText="Id"&gt;
             &lt;h:outputText value="\#{car.id}" /&gt;
         &lt;/p:column&gt;
-
+        &lt;p:summaryRow&gt;
+            &lt;p:column colspan="2" style="text-align:right"&gt;
+                &lt;h:outputText value="Total:" /&gt;
+            &lt;/p:column&gt;
+            &lt;p:column&gt;
+                &lt;h:outputText value="\#{dtRowGroupView.randomPrice}"&gt;
+                    &lt;f:convertNumber type="currency" currencySymbol="$" /&gt;
+                &lt;/h:outputText&gt;
+            &lt;/p:column&gt;
+        &lt;/p:summaryRow&gt;
     &lt;/p:dataTable&gt;
 &lt;/h:form&gt;
 
 &lt;h3&gt;Rowspan&lt;/h3&gt;
 &lt;h:form&gt;
-    &lt;p:dataTable var="car" value="\#{dtSummaryRowView.cars}" sortBy="\#{car.brand}"&gt;
+    &lt;p:dataTable var="car" value="\#{dtRowGroupView.cars}" sortBy="\#{car.brand}"&gt;
         &lt;p:column headerText="Brand" groupRow="true"&gt;
             &lt;h:outputText value="\#{car.brand}" /&gt;
         &lt;/p:column&gt;
@@ -109,11 +127,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 
-@ManagedBean(name="dtSummaryRowView")
-public class SummaryRowView implements Serializable {
+@ManagedBean(name="dtRowGroupView")
+@ViewScoped
+public class RowGroupView implements Serializable {
     
     private List&lt;Car&gt; cars;
     

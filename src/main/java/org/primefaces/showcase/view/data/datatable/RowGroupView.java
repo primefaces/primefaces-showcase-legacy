@@ -20,10 +20,12 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 
 @ManagedBean(name="dtRowGroupView")
+@ViewScoped
 public class RowGroupView implements Serializable {
     
     private List<Car> cars;
@@ -43,4 +45,8 @@ public class RowGroupView implements Serializable {
     public void setService(CarService service) {
         this.service = service;
     }
+    
+    public int getRandomPrice() {
+		return (int) (Math.random() * 100000);
+	}
 }
