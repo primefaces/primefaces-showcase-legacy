@@ -117,6 +117,11 @@
         &lt;/p:selectOneRadio&gt;
     &lt;/h:panelGrid&gt;
 
+    &lt;h3&gt;Responsive&lt;/h3&gt;
+    &lt;p:selectOneRadio id="city2" value="\#{radioView.city2}" layout="responsive" columns="3"&gt;
+        &lt;f:selectItems value="\#{radioView.cities}" var="c" itemLabel="\#{city}" itemValue="\#{city}"/&gt;
+    &lt;/p:selectOneRadio&gt;
+
     &lt;h3&gt;Custom Layout&lt;/h3&gt;
     &lt;p:outputPanel id="customPanel" style="margin-bottom:10px"&gt;
         &lt;p:selectOneRadio id="customRadio" value="\#{radioView.color}" layout="custom"&gt;
