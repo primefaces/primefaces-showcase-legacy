@@ -23,6 +23,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -53,6 +54,9 @@ public class BeanValidationView {
     
     @Pattern(regexp="^[-+]?\\d+$")
     private String pattern;
+    
+    @NotNull
+    private Boolean bool;
 
     public String getName() {
         return name;
@@ -109,4 +113,12 @@ public class BeanValidationView {
     public void setPattern(String pattern) {
         this.pattern = pattern;
     }
+
+    public Boolean getBool() {
+        return bool;
+    }
+    public void setBool(Boolean bool) {
+        this.bool = bool;
+    }
+
 }
