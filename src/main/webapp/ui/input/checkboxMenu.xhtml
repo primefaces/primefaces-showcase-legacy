@@ -14,24 +14,43 @@
     </ui:define>
 
     <ui:define name="implementation">
-        
+
         <h:form>
-            <h:panelGrid columns="3" cellpadding="5">
-                <h:outputLabel for="menu" value="Location:" />
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel for="menu" value="Basic:" />
                 <p:selectCheckboxMenu id="menu" value="#{checkboxView.selectedCities}" label="Cities" 
                                       filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
                     <f:selectItems value="#{checkboxView.cities}" />
                 </p:selectCheckboxMenu>
-                <p:commandLink value="Submit" update="display" />
+
+                <h:outputLabel for="multiple" value="Multiple:" />
+                <p:selectCheckboxMenu id="multiple" value="#{checkboxView.selectedCities2}" multiple="true" 
+                                      filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                    <f:selectItems value="#{checkboxView.cities}" />
+                </p:selectCheckboxMenu>
             </h:panelGrid>
-            
-            <p:outputPanel id="display" style="width:250px;padding-left:5px;margin-top:10px">
-                <p:dataList value="#{checkboxView.selectedCities}" var="city" emptyMessage="No cities selected">
-                    #{city}
-                </p:dataList>
-            </p:outputPanel>
+
+            <p:commandButton value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:10px;" />
+
+            <p:dialog header="Selected Cities" modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog" width="250">
+                <p:outputPanel id="displayCities">
+                    <p:dataList value="#{checkboxView.selectedCities}" var="city" emptyMessage="No cities selected" style="margin-bottom: 10px;">
+                        <f:facet name="header">
+                            Basic
+                        </f:facet>
+                        #{city}
+                    </p:dataList>
+
+                    <p:dataList value="#{checkboxView.selectedCities2}" var="city" emptyMessage="No cities selected">
+                        <f:facet name="header">
+                            Multiple
+                        </f:facet>
+                        #{city}
+                    </p:dataList>
+                </p:outputPanel>
+            </p:dialog>
         </h:form>
-        
+
     </ui:define>
 
     <ui:define name="source">
@@ -39,20 +58,39 @@
             <p:tab title="checkboxMenu.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;h:panelGrid columns="3" cellpadding="5"&gt;
-        &lt;h:outputLabel for="menu" value="Location:" /&gt;
+    &lt;h:panelGrid columns="2" cellpadding="5"&gt;
+        &lt;h:outputLabel for="menu" value="Basic:" /&gt;
         &lt;p:selectCheckboxMenu id="menu" value="\#{checkboxView.selectedCities}" label="Cities" 
                               filter="true" filterMatchMode="startsWith" panelStyle="width:250px"&gt;
             &lt;f:selectItems value="\#{checkboxView.cities}" /&gt;
         &lt;/p:selectCheckboxMenu&gt;
-        &lt;p:commandLink value="Submit" update="display" /&gt;
+
+        &lt;h:outputLabel for="multiple" value="Multiple:" /&gt;
+        &lt;p:selectCheckboxMenu id="multiple" value="\#{checkboxView.selectedCities2}" multiple="true" 
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px"&gt;
+            &lt;f:selectItems value="\#{checkboxView.cities}" /&gt;
+        &lt;/p:selectCheckboxMenu&gt;
     &lt;/h:panelGrid&gt;
 
-    &lt;p:outputPanel id="display" style="width:250px;padding-left:5px;margin-top:10px"&gt;
-        &lt;p:dataList value="\#{checkboxView.selectedCities}" var="city" emptyMessage="No cities selected"&gt;
-            \#{city}
-        &lt;/p:dataList&gt;
-    &lt;/p:outputPanel&gt;
+    &lt;p:commandButton value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:10px;" /&gt;
+
+    &lt;p:dialog header="Selected Cities" modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog" width="250"&gt;
+        &lt;p:outputPanel id="displayCities"&gt;
+            &lt;p:dataList value="\#{checkboxView.selectedCities}" var="city" emptyMessage="No cities selected" style="margin-bottom: 10px;"&gt;
+                &lt;f:facet name="header"&gt;
+                    Basic
+                &lt;/f:facet&gt;
+                \#{city}
+            &lt;/p:dataList&gt;
+
+            &lt;p:dataList value="\#{checkboxView.selectedCities2}" var="city" emptyMessage="No cities selected"&gt;
+                &lt;f:facet name="header"&gt;
+                    Multiple
+                &lt;/f:facet&gt;
+                \#{city}
+            &lt;/p:dataList&gt;
+        &lt;/p:outputPanel&gt;
+    &lt;/p:dialog&gt;
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
@@ -69,7 +107,8 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class CheckboxView {
         
-    private String[] selectedCities;   
+    private String[] selectedCities;
+    private String[] selectedCities2;
     private List&lt;String&gt; cities;
     
     @PostConstruct
@@ -94,6 +133,14 @@ public class CheckboxView {
         this.selectedCities = selectedCities;
     }
 
+    public String[] getSelectedCities2() {
+        return selectedCities2;
+    }
+
+    public void setSelectedCities2(String[] selectedCities2) {
+        this.selectedCities2 = selectedCities2;
+    }
+
     public List&lt;String&gt; getCities() {
         return cities;
     }
@@ -101,7 +148,7 @@ public class CheckboxView {
 
                 </pre>
             </p:tab>
-            
+
             <p:tab title="Documentation" titleStyleClass="tab-doc docslide-415" />
         </p:tabView>
 
