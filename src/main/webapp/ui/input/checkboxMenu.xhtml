@@ -24,7 +24,7 @@
                 </p:selectCheckboxMenu>
 
                 <h:outputLabel for="multiple" value="Multiple:" />
-                <p:selectCheckboxMenu id="multiple" value="#{checkboxView.selectedCities2}" multiple="true" 
+                <p:selectCheckboxMenu id="multiple" value="#{checkboxView.selectedCities2}" label="Cities" multiple="true"
                                       filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
                     <f:selectItems value="#{checkboxView.cities}" />
                 </p:selectCheckboxMenu>
@@ -66,7 +66,7 @@
         &lt;/p:selectCheckboxMenu&gt;
 
         &lt;h:outputLabel for="multiple" value="Multiple:" /&gt;
-        &lt;p:selectCheckboxMenu id="multiple" value="\#{checkboxView.selectedCities2}" multiple="true" 
+        &lt;p:selectCheckboxMenu id="multiple" value="\#{checkboxView.selectedCities2}" label="Cities" multiple="true" 
                               filter="true" filterMatchMode="startsWith" panelStyle="width:250px"&gt;
             &lt;f:selectItems value="\#{checkboxView.cities}" /&gt;
         &lt;/p:selectCheckboxMenu&gt;
