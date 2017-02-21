@@ -161,7 +161,23 @@
             </p:dataTable>
 
             <h3>On-Demand Data</h3>
-            <p:dataTable var="car" value="#{dtScrollView.cars6}" scrollRows="20" scrollable="true" liveScroll="true" scrollHeight="150" style="margin-bottom:0">
+            <p:dataTable var="car" value="#{dtScrollView.cars6}" scrollRows="20" scrollable="true" liveScroll="true" scrollHeight="150">
+                <p:column headerText="Id" footerText="Id">
+                    <h:outputText value="#{car.id}" />
+                </p:column>
+                <p:column headerText="Year" footerText="Year">
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+                <p:column headerText="Brand" footerText="Brand">
+                    <h:outputText value="#{car.brand}" />
+                </p:column>
+                <p:column headerText="Color" footerText="Color">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+            </p:dataTable>
+            
+            <h3>Virtual Scrolling - 20000 Rows</h3>
+            <p:dataTable var="car" value="#{dtScrollView.lazyModel}" scrollRows="20" scrollable="true" virtualScroll="true" scrollHeight="200" lazy="true" rows="40" style="margin-bottom:0">
                 <p:column headerText="Id" footerText="Id">
                     <h:outputText value="#{car.id}" />
                 </p:column>
@@ -313,7 +329,23 @@
     &lt;/p:dataTable&gt;
 
     &lt;h3&gt;On-Demand Data&lt;/h3&gt;
-    &lt;p:dataTable var="car" value="\#{dtScrollView.cars6}" scrollRows="20" scrollable="true" liveScroll="true" scrollHeight="150" style="margin-bottom:0"&gt;
+    &lt;p:dataTable var="car" value="\#{dtScrollView.cars6}" scrollRows="20" scrollable="true" liveScroll="true" scrollHeight="150"&gt;
+        &lt;p:column headerText="Id" footerText="Id"&gt;
+            &lt;h:outputText value="\#{car.id}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Year" footerText="Year"&gt;
+            &lt;h:outputText value="\#{car.year}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Brand" footerText="Brand"&gt;
+            &lt;h:outputText value="\#{car.brand}" /&gt;
+        &lt;/p:column&gt;
+        &lt;p:column headerText="Color" footerText="Color"&gt;
+            &lt;h:outputText value="\#{car.color}" /&gt;
+        &lt;/p:column&gt;
+    &lt;/p:dataTable&gt;
+
+    &lt;h3&gt;Virtual Scrolling - 20000 Rows&lt;/h3&gt;
+    &lt;p:dataTable var="car" value="\#{dtScrollView.lazyModel}" scrollRows="20" scrollable="true" virtualScroll="true" scrollHeight="200" lazy="true" rows="40" style="margin-bottom:0"&gt;
         &lt;p:column headerText="Id" footerText="Id"&gt;
             &lt;h:outputText value="\#{car.id}" /&gt;
         &lt;/p:column&gt;
@@ -341,6 +373,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import org.primefaces.model.LazyDataModel;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 
@@ -354,6 +387,7 @@ public class ScrollView implements Serializable {
     private List&lt;Car&gt; cars4;
     private List&lt;Car&gt; cars5;
     private List&lt;Car&gt; cars6;
+    private LazyDataModel&lt;Car&gt; lazyModel;
     
     @ManagedProperty("#{carService}")
     private CarService service;
@@ -366,6 +400,7 @@ public class ScrollView implements Serializable {
         cars4 = service.createCars(50);
         cars5 = service.createCars(50);
         cars6 = service.createCars(200);
+        lazyModel = new LazyCarDataModel(service.createCars(20000));
     }
 
     public List&lt;Car&gt; getCars1() {
@@ -390,6 +425,14 @@ public class ScrollView implements Serializable {
 
     public List&lt;Car&gt; getCars6() {
         return cars6;
+    }
+
+    public LazyDataModel&lt;Car&gt; getLazyModel() {
+        return lazyModel;
+    }
+
+    public void setLazyModel(LazyDataModel&lt;Car&gt; lazyModel) {
+        this.lazyModel = lazyModel;
     }
 
     public void setService(CarService service) {

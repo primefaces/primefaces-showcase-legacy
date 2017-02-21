@@ -21,6 +21,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import org.primefaces.model.LazyDataModel;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 
@@ -34,6 +35,7 @@ public class ScrollView implements Serializable {
     private List<Car> cars4;
     private List<Car> cars5;
     private List<Car> cars6;
+    private LazyDataModel<Car> lazyModel;
     
     @ManagedProperty("#{carService}")
     private CarService service;
@@ -46,6 +48,7 @@ public class ScrollView implements Serializable {
         cars4 = service.createCars(50);
         cars5 = service.createCars(50);
         cars6 = service.createCars(200);
+        lazyModel = new LazyCarDataModel(service.createCars(20000));
     }
 
     public List<Car> getCars1() {
@@ -70,6 +73,14 @@ public class ScrollView implements Serializable {
 
     public List<Car> getCars6() {
         return cars6;
+    }
+
+    public LazyDataModel<Car> getLazyModel() {
+        return lazyModel;
+    }
+
+    public void setLazyModel(LazyDataModel<Car> lazyModel) {
+        this.lazyModel = lazyModel;
     }
 
     public void setService(CarService service) {
