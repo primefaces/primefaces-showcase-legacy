@@ -3,6 +3,7 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:composite="http://java.sun.com/jsf/composite/composite"
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
@@ -14,7 +15,7 @@
         <ul>
             <li>OutputLabel sets its value as the label of the target component
                     to be displayed in validation errors so that target component does not need to define label attribute again.</li>
-            <li>Support for components with non-trivial markup like spinner, autocomplete, calendar 
+            <li>Support for components with non-trivial markup like spinner, autocomplete, calendar
                 and so on which are not supported by standard outputLabel.</li>
             <li>Theme aware error styling when associated component is not valid.</li>
             <li>Required field indicator.</li>
@@ -22,7 +23,7 @@
     </ui:define>
 
     <ui:define name="implementation">
-        
+
         <h:form>
             <p:panel id="panel" header="Form" style="margin-bottom:10px;">
                 <p:messages id="messages" />
@@ -30,17 +31,37 @@
                     <h:outputLabel for="name" value="Standard Label:" />
                     <p:inputText id="name" required="true" />
 
-                    <p:outputLabel for="extended" value="Extended Label:" />
+                    <p:outputLabel for="@next" value="Extended Label:" />
                     <p:inputText id="extended" required="true" />
 
-                    <p:outputLabel for="number" value="Number:" />
+                    <p:outputLabel for="@next" value="Number:" />
                     <p:spinner id="number" value="0"/>
+
+                    <!-- For testing, don't remove!
+                    <p:outputLabel for="@next" value="Label which considers @NotNull:" />
+                    <p:inputText id="nullable" value="#{outputLabelView.nullableValue}" />
+
+                    <p:outputLabel for="@next" value="Label which considers @NotNull:" />
+                    <p:inputText id="notNull" value="#{outputLabelView.value}" />
+
+                    <p:outputLabel for="@next" value="Label for input wrapped in composite:" />
+                    <composite:inputTextWrapper id="nullableInComposite" value="#{outputLabelView.nullableValue}" required="true" />
+
+                    <p:outputLabel for="@next" value="Label for input wrapped in composite, considering @NotNull:" />
+                    <composite:inputTextWrapper id="notNullInComposite" value="#{outputLabelView.value}" />
+
+                    <p:outputLabel for="@next" value="Label for input wrapped wrapped in composite:" />
+                    <composite:inputTextWrapper id="nullableInCompositeComposite" value="#{outputLabelView.nullableValue}" required="true" />
+
+                    <p:outputLabel for="@next" value="Label for input wrapped wrapped in composite, considering @NotNull:" />
+                    <composite:inputTextWrapper id="notNullInCompositeComposite" value="#{outputLabelView.value}" />
+                    -->
                 </h:panelGrid>
             </p:panel>
 
             <p:commandButton value="Submit" update="panel"  />
         </h:form>
-        
+
     </ui:define>
 
     <ui:define name="source">
@@ -66,7 +87,7 @@
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
-            
+
             <p:tab title="Documentation" titleStyleClass="tab-doc docslide-337" />
         </p:tabView>
 
