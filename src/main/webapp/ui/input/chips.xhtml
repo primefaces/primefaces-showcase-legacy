@@ -15,15 +15,21 @@
 
     <ui:define name="implementation">
 
-        <p:chips />
-        
+        <h:panelGrid columns="2">
+            <p:outputLabel for="chips" value="Values: " />
+            <p:chips id="chips" />
+        </h:panelGrid>
+
     </ui:define>
 
     <ui:define name="source">
         <p:tabView>
             <p:tab title="chips.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;p:chips /&gt;
+&lt;h:panelGrid columns=&quot;2&quot;&gt;
+   &lt;p:outputLabel for=&quot;chips&quot; value=&quot;Values: &quot; /&gt;
+   &lt;p:chips id=&quot;chips&quot; /&gt;
+&lt;/h:panelGrid&gt;
                 </pre>
             </p:tab>
             
