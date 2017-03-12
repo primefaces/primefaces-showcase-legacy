@@ -14,16 +14,28 @@
     </ui:define>
 
     <ui:define name="implementation">
+        <h:form>
+            <p:growl id="msgs" showDetail="true" />
 
-        <p:chips />
-        
+            <p:chips>
+                <p:ajax event="itemSelect" listener="#{chipsView.onItemSelect}" update="msgs" />
+                <p:ajax event="itemUnselect" listener="#{chipsView.onItemUnSelect}" update="msgs" />
+            </p:chips>
+        </h:form>
     </ui:define>
 
     <ui:define name="source">
         <p:tabView>
             <p:tab title="chips.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;p:chips /&gt;
+        &lt;h:form&gt;
+            &lt;p:growl id=&quot;msgs&quot; showDetail=&quot;true&quot; /&gt;
+
+            &lt;p:chips&gt;
+                &lt;p:ajax event=&quot;itemSelect&quot; listener=&quot;\#{chipsView.onItemSelect}&quot; update=&quot;msgs&quot; /&gt;
+                &lt;p:ajax event=&quot;itemUnselect&quot; listener=&quot;\#{chipsView.onItemUnSelect}&quot; update=&quot;msgs&quot; /&gt;
+            &lt;/p:chips&gt;
+        &lt;/h:form&gt;
                 </pre>
             </p:tab>
             
