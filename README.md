@@ -1,6 +1,6 @@
 # PrimeFaces Showcase
 
-![PrimeFaces icon](http://blog.primefaces.org/wp-content/uploads/2011/08/bloglogo.png)
+![PrimeFaces icon](https://www.primefaces.org/wp-content/uploads/2016/10/prime_logo.png)
 
 ### Getting Started
 
