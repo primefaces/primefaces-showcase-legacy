@@ -28,10 +28,11 @@ public class SliderView {
     private int number2;   
     private int number3;   
     private int number4;   
-    private int number5;   
+    private int number5;
     private int number6 = 30;  
     private int number7 = 80;
-
+    private int number8;
+    
     public int getNumber1() {
         return number1;
     }
@@ -87,7 +88,15 @@ public class SliderView {
     public void setNumber7(int number7) {
         this.number7 = number7;
     }
-    
+
+    public int getNumber8() {
+        return number8;
+    }
+
+    public void setNumber8(int number8) {
+        this.number8 = number8;
+    }
+
     public void onSlideEnd(SlideEndEvent event) {
         FacesMessage message = new FacesMessage("Slide Ended", "Value: " + event.getValue());
         FacesContext.getCurrentInstance().addMessage(null, message);
