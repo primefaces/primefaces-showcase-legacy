@@ -45,10 +45,10 @@ public class InfoWindowView implements Serializable {
         LatLng coord4 = new LatLng(36.885233, 30.702323);
          
         //Icons and Data
-        advancedModel.addOverlay(new Marker(coord1, "Konyaalti", "konyaalti.png", "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"));
+        advancedModel.addOverlay(new Marker(coord1, "Konyaalti", "konyaalti.png", "https://maps.google.com/mapfiles/ms/micons/blue-dot.png"));
         advancedModel.addOverlay(new Marker(coord2, "Ataturk Parki", "ataturkparki.png"));
-        advancedModel.addOverlay(new Marker(coord4, "Kaleici", "kaleici.png", "http://maps.google.com/mapfiles/ms/micons/pink-dot.png"));
-        advancedModel.addOverlay(new Marker(coord3, "Karaalioglu Parki", "karaalioglu.png", "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png"));
+        advancedModel.addOverlay(new Marker(coord4, "Kaleici", "kaleici.png", "https://maps.google.com/mapfiles/ms/micons/pink-dot.png"));
+        advancedModel.addOverlay(new Marker(coord3, "Karaalioglu Parki", "karaalioglu.png", "https://maps.google.com/mapfiles/ms/micons/yellow-dot.png"));
     }
  
     public MapModel getAdvancedModel() {
