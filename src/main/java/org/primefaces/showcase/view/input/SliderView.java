@@ -18,13 +18,14 @@ package org.primefaces.showcase.view.input;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 
 import org.primefaces.event.SlideEndEvent;
 
 @ManagedBean
 public class SliderView {
    
-    private int number1;   
+    private float number1;   
     private int number2;   
     private int number3;   
     private int number4;   
@@ -33,11 +34,11 @@ public class SliderView {
     private int number7 = 80;
     private int number8;
     
-    public int getNumber1() {
+    public float getNumber1() {
         return number1;
     }
 
-    public void setNumber1(int number1) {
+    public void setNumber1(float number1) {
         this.number1 = number1;
     }
 
@@ -97,6 +98,11 @@ public class SliderView {
         this.number8 = number8;
     }
 
+    public void onInputChanged(ValueChangeEvent event) {
+        FacesMessage message = new FacesMessage("Input Changed", "Value: " + event.getNewValue());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    } 
+    
     public void onSlideEnd(SlideEndEvent event) {
         FacesMessage message = new FacesMessage("Slide Ended", "Value: " + event.getValue());
         FacesContext.getCurrentInstance().addMessage(null, message);
