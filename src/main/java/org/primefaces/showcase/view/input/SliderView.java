@@ -25,28 +25,29 @@ import org.primefaces.event.SlideEndEvent;
 @ManagedBean
 public class SliderView {
    
-    private float number1;   
-    private int number2;   
+    private int number1;
+    private float number2;  
     private int number3;   
     private int number4;   
     private int number5;
-    private int number6 = 30;  
-    private int number7 = 80;
-    private int number8;
-    
-    public float getNumber1() {
+    private int number6;  
+    private int number7;
+    private int number8 = 30;
+    private int number9 = 80;
+
+    public int getNumber1() {
         return number1;
     }
 
-    public void setNumber1(float number1) {
+    public void setNumber1(int number1) {
         this.number1 = number1;
     }
 
-    public int getNumber2() {
+    public float getNumber2() {
         return number2;
     }
 
-    public void setNumber2(int number2) {
+    public void setNumber2(float number2) {
         this.number2 = number2;
     }
 
@@ -96,6 +97,14 @@ public class SliderView {
 
     public void setNumber8(int number8) {
         this.number8 = number8;
+    }
+
+    public int getNumber9() {
+        return number9;
+    }
+
+    public void setNumber9(int number9) {
+        this.number9 = number9;
     }
 
     public void onInputChanged(ValueChangeEvent event) {
