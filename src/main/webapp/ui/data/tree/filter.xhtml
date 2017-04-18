@@ -1,0 +1,90 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="title">
+        Tree - <span class="subitem">Filter</span>
+    </ui:define>
+
+    <ui:define name="description">
+        Filtering updates the node based on the constraints.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <p:tree value="#{treeBasicView.root}" var="node" filterBy="#{node}">
+                <p:treeNode>
+                    <h:outputText value="#{node}" />
+                </p:treeNode>
+            </p:tree>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="basic.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:tree value="\#{treeBasicView.root}" var="node" filterBy="\#{node}"&gt;
+        &lt;p:treeNode&gt;
+            &lt;h:outputText value="\#{node}" /&gt;
+        &lt;/p:treeNode&gt;
+    &lt;/p:tree&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="BasicView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.data.tree;
+
+import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
+
+@ManagedBean(name="treeBasicView")
+@ViewScoped
+public class BasicView implements Serializable {
+    
+    private TreeNode root;
+    
+    @PostConstruct
+    public void init() {
+		root = new DefaultTreeNode("Root", null);
+		TreeNode node0 = new DefaultTreeNode("Node 0", root);
+		TreeNode node1 = new DefaultTreeNode("Node 1", root);
+		
+		TreeNode node00 = new DefaultTreeNode("Node 0.0", node0);
+		TreeNode node01 = new DefaultTreeNode("Node 0.1", node0);
+		
+		TreeNode node10 = new DefaultTreeNode("Node 1.0", node1);
+        
+        node1.getChildren().add(new DefaultTreeNode("Node 1.1"));
+        node00.getChildren().add(new DefaultTreeNode("Node 0.0.0"));
+        node00.getChildren().add(new DefaultTreeNode("Node 0.0.1"));
+        node01.getChildren().add(new DefaultTreeNode("Node 0.1.0"));
+        node10.getChildren().add(new DefaultTreeNode("Node 1.0.0"));
+        root.getChildren().add(new DefaultTreeNode("Node 2"));
+	}
+
+    public TreeNode getRoot() {
+        return root;
+    }
+}
+
+                </pre>
+            </p:tab>
+            
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
