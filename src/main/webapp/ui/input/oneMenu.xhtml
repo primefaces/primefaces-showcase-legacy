@@ -60,6 +60,12 @@
                         <h:outputText value="#{t.displayName}" />
                     </p:column>
                 </p:selectOneMenu>
+                
+                <p:outputLabel for="lazy" value="Lazy:" />
+                <p:selectOneMenu id="lazy" value="#{selectOneMenuView.option}" lazy="true" style="width:125px">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItems value="#{selectOneMenuView.options}" />
+                </p:selectOneMenu>
             </h:panelGrid>
 
             <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
@@ -77,6 +83,9 @@
 
                     <h:outputText value="Advanced:" />
                     <h:outputText value="#{selectOneMenuView.theme.displayName}" />
+                    
+                    <h:outputText value="Lazy:" />
+                    <h:outputText value="#{selectOneMenuView.option}" />
                 </p:panelGrid>
             </p:dialog>
         </h:form>
@@ -124,6 +133,12 @@
                 &lt;h:outputText value="\#{t.displayName}" /&gt;
             &lt;/p:column&gt;
         &lt;/p:selectOneMenu&gt;
+
+        &lt;p:outputLabel for="lazy" value="Lazy:" /&gt;
+        &lt;p:selectOneMenu id="lazy" value="\#{selectOneMenuView.option}" lazy="true" style="width:125px"&gt;
+            &lt;f:selectItem itemLabel="Select One" itemValue="" /&gt;
+            &lt;f:selectItems value="\#{selectOneMenuView.options}" /&gt;
+        &lt;/p:selectOneMenu&gt;
     &lt;/h:panelGrid&gt;
 
     &lt;p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" /&gt;
@@ -141,6 +156,9 @@
 
             &lt;h:outputText value="Advanced:" /&gt;
             &lt;h:outputText value="\#{selectOneMenuView.theme.displayName}" /&gt;
+
+            &lt;h:outputText value="Lazy:" /&gt;
+            &lt;h:outputText value="\#{selectOneMenuView.option}" /&gt;
         &lt;/p:panelGrid&gt;
     &lt;/p:dialog&gt;
 &lt;/h:form&gt;
@@ -177,6 +195,9 @@ public class SelectOneMenuView {
  
     private Theme theme;   
     private List&lt;Theme&gt; themes;
+
+    private String option;  
+    private List&lt;String&gt; options;
     
     @ManagedProperty("\#{themeService}")
     private ThemeService service;
@@ -205,6 +226,12 @@ public class SelectOneMenuView {
         
         //themes
         themes = service.getThemes();
+
+        //options
+        options = new ArrayList&lt;String&gt;();
+        for(int i = 0; i &lt; 20; i++) {
+            options.add("Option " + i);
+        }
     }
 
     public String getConsole() {
@@ -253,7 +280,23 @@ public class SelectOneMenuView {
     
     public void setService(ThemeService service) {
         this.service = service;
-    }    
+    }
+
+    public String getOption() {
+        return option;
+    }
+
+    public void setOption(String option) {
+        this.option = option;
+    }
+
+    public List&lt;String&gt; getOptions() {
+        return options;
+    }
+
+    public void setOptions(List&lt;String&gt; options) {
+        this.options = options;
+    }
 }
 
                 </pre>

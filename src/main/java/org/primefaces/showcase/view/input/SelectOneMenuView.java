@@ -42,6 +42,9 @@ public class SelectOneMenuView {
     private Theme theme;   
     private List<Theme> themes;
     
+    private String option;  
+    private List<String> options;
+    
     @ManagedProperty("#{themeService}")
     private ThemeService service;
     
@@ -69,6 +72,12 @@ public class SelectOneMenuView {
         
         //themes
         themes = service.getThemes();
+        
+        //options
+        options = new ArrayList<String>();
+        for(int i = 0; i < 20; i++) {
+            options.add("Option " + i);
+        }
     }
 
     public String getConsole() {
@@ -117,5 +126,21 @@ public class SelectOneMenuView {
     
     public void setService(ThemeService service) {
         this.service = service;
-    }    
+    } 
+
+    public String getOption() {
+        return option;
+    }
+
+    public void setOption(String option) {
+        this.option = option;
+    }
+
+    public List<String> getOptions() {
+        return options;
+    }
+
+    public void setOptions(List<String> options) {
+        this.options = options;
+    }
 }
