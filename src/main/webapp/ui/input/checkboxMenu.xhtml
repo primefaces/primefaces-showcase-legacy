@@ -37,9 +37,9 @@
                 </p:selectCheckboxMenu>
             </h:panelGrid>
 
-            <p:commandButton value="Submit" update="displayItems" oncomplete="PF('cityDialog').show()" style="margin-top:10px;" />
+            <p:commandButton value="Submit" update="displayItems" oncomplete="PF('itemDialog').show()" style="margin-top:10px;" />
 
-            <p:dialog header="Selected Items" modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog" width="250">
+            <p:dialog header="Selected Items" modal="true" showEffect="fade" hideEffect="fade" widgetVar="itemDialog" width="250">
                 <p:outputPanel id="displayItems">
                     <p:dataList value="#{checkboxView.selectedCities}" var="city" emptyMessage="No cities selected" style="margin-bottom: 10px;">
                         <f:facet name="header">
@@ -92,9 +92,9 @@
         &lt;/p:selectCheckboxMenu&gt;
     &lt;/h:panelGrid&gt;
 
-    &lt;p:commandButton value="Submit" update="displayItems" oncomplete="PF('cityDialog').show()" style="margin-top:10px;" /&gt;
+    &lt;p:commandButton value="Submit" update="displayItems" oncomplete="PF('itemDialog').show()" style="margin-top:10px;" /&gt;
 
-    &lt;p:dialog header="Selected Cities" modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog" width="250"&gt;
+    &lt;p:dialog header="Selected Items" modal="true" showEffect="fade" hideEffect="fade" widgetVar="itemDialog" width="250"&gt;
         &lt;p:outputPanel id="displayItems"&gt;
             &lt;p:dataList value="\#{checkboxView.selectedCities}" var="city" emptyMessage="No cities selected" style="margin-bottom: 10px;"&gt;
                 &lt;f:facet name="header"&gt;
@@ -108,6 +108,13 @@
                     Multiple
                 &lt;/f:facet&gt;
                 \#{city}
+            &lt;/p:dataList&gt;
+            
+            &lt;p:dataList value="\#{checkboxView.selectedCars}" var="car" emptyMessage="No cars selected"&gt;
+                &lt;f:facet name="header"&gt;
+                    Grouped
+                &lt;/f:facet&gt;
+                \#{car}
             &lt;/p:dataList&gt;
         &lt;/p:outputPanel&gt;
     &lt;/p:dialog&gt;
