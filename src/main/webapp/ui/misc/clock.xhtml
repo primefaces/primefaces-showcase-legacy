@@ -5,6 +5,14 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
 
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-analog-clock {
+                width: 200px;
+            }
+        </style>  
+    </ui:define>
+    
     <ui:define name="title">
         Clock
     </ui:define>
@@ -22,6 +30,9 @@
 
             <h3>Server</h3>
             <p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" />
+               
+            <h3>Analog</h3>
+            <p:clock displayMode="analog" />
         </h:form>
         
     </ui:define>
@@ -36,6 +47,9 @@
 
     &lt;h3&gt;Server&lt;/h3&gt;
     &lt;p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" /&gt;
+
+    &lt;h3&gt;Analog&lt;/h3&gt;
+    &lt;p:clock displayMode="analog" /&gt;
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
