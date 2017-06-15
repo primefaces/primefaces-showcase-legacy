@@ -17,6 +17,7 @@
 
         <h:form>
             <h:panelGrid columns="2" cellpadding="5">
+
                 <h:outputLabel for="menu" value="Basic:" />
                 <p:selectCheckboxMenu id="menu" value="#{checkboxView.selectedCities}" label="Cities" 
                                       filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
@@ -28,12 +29,18 @@
                                       filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
                     <f:selectItems value="#{checkboxView.cities}" />
                 </p:selectCheckboxMenu>
+ 
+                <h:outputLabel for="grouped" value="Grouped:" />
+                <p:selectCheckboxMenu id="grouped" value="#{checkboxView.selectedCars}" label="Cars" multiple="true"
+                                      filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                    <f:selectItems value="#{checkboxView.cars}" />
+                </p:selectCheckboxMenu>
             </h:panelGrid>
 
-            <p:commandButton value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:10px;" />
+            <p:commandButton value="Submit" update="displayItems" oncomplete="PF('itemDialog').show()" style="margin-top:10px;" />
 
-            <p:dialog header="Selected Cities" modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog" width="250">
-                <p:outputPanel id="displayCities">
+            <p:dialog header="Selected Items" modal="true" showEffect="fade" hideEffect="fade" widgetVar="itemDialog" width="250">
+                <p:outputPanel id="displayItems">
                     <p:dataList value="#{checkboxView.selectedCities}" var="city" emptyMessage="No cities selected" style="margin-bottom: 10px;">
                         <f:facet name="header">
                             Basic
@@ -41,11 +48,18 @@
                         #{city}
                     </p:dataList>
 
-                    <p:dataList value="#{checkboxView.selectedCities2}" var="city" emptyMessage="No cities selected">
+                    <p:dataList value="#{checkboxView.selectedCities2}" var="city" emptyMessage="No cities selected" style="margin-bottom: 10px;">
                         <f:facet name="header">
                             Multiple
                         </f:facet>
                         #{city}
+                    </p:dataList>
+                    
+                    <p:dataList value="#{checkboxView.selectedCars}" var="car" emptyMessage="No cars selected">
+                        <f:facet name="header">
+                            Grouped
+                        </f:facet>
+                        #{car}
                     </p:dataList>
                 </p:outputPanel>
             </p:dialog>
@@ -70,12 +84,18 @@
                               filter="true" filterMatchMode="startsWith" panelStyle="width:250px"&gt;
             &lt;f:selectItems value="\#{checkboxView.cities}" /&gt;
         &lt;/p:selectCheckboxMenu&gt;
+        
+        &lt;h:outputLabel for="grouped" value="Grouped:" /&gt;
+        &lt;p:selectCheckboxMenu id="grouped" value="\#{checkboxView.selectedCars}" label="Cars" multiple="true" 
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px"&gt;
+            &lt;f:selectItems value="\#{checkboxView.cars}" /&gt;
+        &lt;/p:selectCheckboxMenu&gt;
     &lt;/h:panelGrid&gt;
 
-    &lt;p:commandButton value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:10px;" /&gt;
+    &lt;p:commandButton value="Submit" update="displayItems" oncomplete="PF('itemDialog').show()" style="margin-top:10px;" /&gt;
 
-    &lt;p:dialog header="Selected Cities" modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog" width="250"&gt;
-        &lt;p:outputPanel id="displayCities"&gt;
+    &lt;p:dialog header="Selected Items" modal="true" showEffect="fade" hideEffect="fade" widgetVar="itemDialog" width="250"&gt;
+        &lt;p:outputPanel id="displayItems"&gt;
             &lt;p:dataList value="\#{checkboxView.selectedCities}" var="city" emptyMessage="No cities selected" style="margin-bottom: 10px;"&gt;
                 &lt;f:facet name="header"&gt;
                     Basic
@@ -88,6 +108,13 @@
                     Multiple
                 &lt;/f:facet&gt;
                 \#{city}
+            &lt;/p:dataList&gt;
+            
+            &lt;p:dataList value="\#{checkboxView.selectedCars}" var="car" emptyMessage="No cars selected"&gt;
+                &lt;f:facet name="header"&gt;
+                    Grouped
+                &lt;/f:facet&gt;
+                \#{car}
             &lt;/p:dataList&gt;
         &lt;/p:outputPanel&gt;
     &lt;/p:dialog&gt;
@@ -103,6 +130,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.model.SelectItem;
+import javax.faces.model.SelectItemGroup;
 
 @ManagedBean
 public class CheckboxView {
@@ -110,6 +139,8 @@ public class CheckboxView {
     private String[] selectedCities;
     private String[] selectedCities2;
     private List&lt;String&gt; cities;
+    private List&lt;SelectItem&gt; cars;
+    private String[] selectedCars;
     
     @PostConstruct
     public void init() {
@@ -123,6 +154,24 @@ public class CheckboxView {
         cities.add("Rome");
         cities.add("Brasilia");
         cities.add("Amsterdam");
+        
+        cars = new ArrayList&lt;SelectItem&gt;();
+        SelectItemGroup germanCars = new SelectItemGroup("German Cars");
+        germanCars.setSelectItems(new SelectItem[] {
+            new SelectItem("BMW", "BMW"),
+            new SelectItem("Mercedes", "Mercedes"),
+            new SelectItem("Volkswagen", "Volkswagen")
+        });
+        
+        SelectItemGroup americanCars = new SelectItemGroup("American Cars");
+        americanCars.setSelectItems(new SelectItem[]{
+            new SelectItem("Chrysler", "Chrysler"),
+            new SelectItem("GM", "GM"),
+            new SelectItem("Ford", "Ford")
+        });
+
+        cars.add(germanCars);
+        cars.add(americanCars);
     }
 
     public String[] getSelectedCities() {
@@ -143,6 +192,26 @@ public class CheckboxView {
 
     public List&lt;String&gt; getCities() {
         return cities;
+    }
+    
+    public List&lt;String&gt; getCities() {
+        return cities;
+    }
+
+    public List&lt;SelectItem&gt; getCars() {
+        return cars;
+    }
+
+    public void setCars(List&lt;SelectItem&gt; cars) {
+        this.cars = cars;
+    }
+
+    public String[] getSelectedCars() {
+        return selectedCars;
+    }
+
+    public void setSelectedCars(String[] selectedCars) {
+        this.selectedCars = selectedCars;
     }
 }
 
