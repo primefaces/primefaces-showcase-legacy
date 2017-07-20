@@ -1,0 +1,259 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .white-button.ui-button.ui-state-default {
+                background-color: #ffffff;
+                color: #222222;
+                border-color: #d6d6d6;
+            }
+
+            .white-button.ui-button.ui-state-default:enabled:hover, 
+            .white-button.ui-button.ui-state-default:focus {
+                background-color: #f2f2f2;
+                border-color: #ccc;
+                color: #373a3c;
+            }
+
+            .green-button.ui-button.ui-state-default {
+                background-color: #5cb85c;
+                border-color: #5cb85c;
+                color: #fff;
+            }
+
+            .green-button.ui-button.ui-state-default:enabled:hover, 
+            .green-button.ui-button.ui-state-default:focus {
+                background-color: #4cae4c;
+                border-color: #5cb85c;
+            }
+
+            .red-button.ui-button.ui-state-default {
+                background-color: #d9534f;
+                border-color: #d9534f;
+                color: #fff;
+            }
+
+            .red-button.ui-button.ui-state-default:enabled:hover, 
+            .red-button.ui-button.ui-state-default:focus {
+                background-color: #d43f3a;
+                border-color: #d9534f;
+            }
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">
+        InputGroup
+    </ui:define>
+
+    <ui:define name="description">
+        Text, icon, buttons and other content can be grouped next to an input by wrapping the addons and input inside .ui-inputgroup element. Multiple addons can be used within the same group as well.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h3 style="margin-top:0">Addons</h3>
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                    <p:inputText placeholder="Username" />      
+                </div>
+            </div>
+
+            <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon">$</span>
+                    <p:inputText placeholder="Price" />
+                    <span class="ui-inputgroup-addon">.00</span>      
+                </div>
+            </div>
+
+            <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon">www</span>
+                    <p:inputText placeholder="Website" />   
+                </div>
+            </div>
+        </div>
+
+        <h3>Multiple Addons</h3>
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="fa fa-credit-card"></i></span>  
+                    <span class="ui-inputgroup-addon"><i class="fa fa-cc-visa"></i></span>   
+                    <p:inputText placeholder="Price" />
+                    <span class="ui-inputgroup-addon">$</span>  
+                    <span class="ui-inputgroup-addon">.00</span>      
+                </div>
+            </div>
+        </div>
+
+        <h3>Button Addons</h3>
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                    <p:commandButton value="Search"/> 
+                    <p:inputText placeholder="Keyword" />        
+                </div>
+            </div>
+
+            <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                    <p:inputText placeholder="Keyboard" />
+                    <p:commandButton icon="fa fa-search"  styleClass="white-button"/>  
+                </div>
+            </div>
+
+            <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                    <p:commandButton icon="fa fa-check" styleClass="green-button"/> 
+                    <p:inputText placeholder="Vote" />
+                    <p:commandButton icon="fa fa-close" styleClass="red-button"/>     
+                </div>
+            </div>
+        </div>
+
+        <h3>Checkbox</h3>
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon-checkbox"><p:selectBooleanCheckbox /></span>
+                    <p:inputText placeholder="Username" />        
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="inputText.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h3 style="margin-top:0"&gt;Addons&lt;/h3&gt;
+&lt;div class="ui-g ui-fluid"&gt;
+    &lt;div class="ui-g-12 ui-md-4"&gt;
+        &lt;div class="ui-inputgroup"&gt;
+            &lt;span class="ui-inputgroup-addon"&gt;&lt;i class="fa fa-user"&gt;&lt;/i&gt;&lt;/span&gt;
+            &lt;p:inputText placeholder="Username" /&gt;      
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="ui-g-12 ui-md-4"&gt;
+        &lt;div class="ui-inputgroup"&gt;
+            &lt;span class="ui-inputgroup-addon"&gt;$&lt;/span&gt;
+            &lt;p:inputText placeholder="Price" /&gt;
+            &lt;span class="ui-inputgroup-addon"&gt;.00&lt;/span&gt;      
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="ui-g-12 ui-md-4"&gt;
+        &lt;div class="ui-inputgroup"&gt;
+            &lt;span class="ui-inputgroup-addon"&gt;www&lt;/span&gt;
+            &lt;p:inputText placeholder="Website" /&gt;   
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Multiple Addons&lt;/h3&gt;
+&lt;div class="ui-g"&gt;
+    &lt;div class="ui-g-12"&gt;
+        &lt;div class="ui-inputgroup"&gt;
+            &lt;span class="ui-inputgroup-addon"&gt;&lt;i class="fa fa-credit-card"&gt;&lt;/i&gt;&lt;/span&gt;  
+            &lt;span class="ui-inputgroup-addon"&gt;&lt;i class="fa fa-cc-visa"&gt;&lt;/i&gt;&lt;/span&gt;   
+            &lt;p:inputText placeholder="Price" /&gt;
+            &lt;span class="ui-inputgroup-addon"&gt;$&lt;/span&gt;  
+            &lt;span class="ui-inputgroup-addon"&gt;.00&lt;/span&gt;      
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Button Addons&lt;/h3&gt;
+&lt;div class="ui-g ui-fluid"&gt;
+    &lt;div class="ui-g-12 ui-md-4"&gt;
+        &lt;div class="ui-inputgroup"&gt;
+            &lt;p:commandButton value="Search"/&gt; 
+            &lt;p:inputText placeholder="Keyword" /&gt;        
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="ui-g-12 ui-md-4"&gt;
+        &lt;div class="ui-inputgroup"&gt;
+            &lt;p:inputText placeholder="Keyboard" /&gt;
+            &lt;p:commandButton icon="fa fa-search"  styleClass="white-button"/&gt;  
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="ui-g-12 ui-md-4"&gt;
+        &lt;div class="ui-inputgroup"&gt;
+            &lt;p:commandButton icon="fa fa-check" styleClass="green-button"/&gt; 
+            &lt;p:inputText placeholder="Vote" /&gt;
+            &lt;p:commandButton icon="fa fa-close" styleClass="red-button"/&gt;     
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Checkbox&lt;/h3&gt;
+&lt;div class="ui-g ui-fluid"&gt;
+    &lt;div class="ui-g-12 ui-md-4"&gt;
+        &lt;div class="ui-inputgroup"&gt;
+            &lt;span class="ui-inputgroup-addon-checkbox"&gt;&lt;p:selectBooleanCheckbox /&gt;&lt;/span&gt;
+            &lt;p:inputText placeholder="Username" /&gt;        
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+/* Demo Style */
+&lt;style type="text/css"&gt;
+    .white-button.ui-button.ui-state-default {
+        background-color: \#ffffff;
+        color: \#222222;
+        border-color: \#d6d6d6;
+    }
+
+    .white-button.ui-button.ui-state-default:enabled:hover, 
+    .white-button.ui-button.ui-state-default:focus {
+        background-color: \#f2f2f2;
+        border-color: \#ccc;
+        color: \#373a3c;
+    }
+
+    .green-button.ui-button.ui-state-default {
+        background-color: \#5cb85c;
+        border-color: \#5cb85c;
+        color: \#fff;
+    }
+
+    .green-button.ui-button.ui-state-default:enabled:hover, 
+    .green-button.ui-button.ui-state-default:focus {
+        background-color: \#4cae4c;
+        border-color: \#5cb85c;
+    }
+
+    .red-button.ui-button.ui-state-default {
+        background-color: \#d9534f;
+        border-color: \#d9534f;
+        color: \#fff;
+    }
+
+    .red-button.ui-button.ui-state-default:enabled:hover, 
+    .red-button.ui-button.ui-state-default:focus {
+        background-color: \#d43f3a;
+        border-color: \#d9534f;
+    }
+
+&lt;/style&gt;
+                </pre>
+            </p:tab>
+
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

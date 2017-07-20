@@ -25,7 +25,7 @@
 
 /*  ----------------------------------------------------------------------------------------------------- */
 
-body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-color:#20272a; font-family: 'latoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;color:#5C666A;}
+body{font-size: 14px; margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-color:#20272a; font-family: 'latoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;color:#5C666A;}
 
 	#LOGOTEXTSIDE{display:block;width:290px; float:left; height:74px; z-index:999; background-image:url("#{resource['main/images/logoCircuitLines.svg']}"); background-repeat:no-repeat; background-position:center right;
 				  margin:-20px 0px 0px 0px; padding-top:25px; line-height:30px;}
@@ -164,8 +164,9 @@ a{ text-decoration:none; outline:none;color: #25AAE1}
 .Content100{width:100%;}
 
 /* general text styles */
-.defaultText{font-size:18px; color:#5C666A;}
+.defaultText{font-size:16px; color:#5C666A;}
 .defaultTopic{font-size:46px; color:#e26e60; line-height:46px; padding:10px 0px 10px 0px;}
+.defaultText.dispTable {font-size: 18px;}
 
 /* buttons */
 .BigButton{width:90%; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; display:table; font-size:18px; font-family: 'latoblack', "Trebuchet MS", Arial, Helvetica, sans-serif; color:#404c51; margin:10px 0px 10px 0px; cursor:pointer;
@@ -204,11 +205,6 @@ input.searchInput {
 * html .clearfix { height:1%; }
 .clearfix { display:block; }
 
-/* override */
-.ui-widget {
-    font-size: 90%;
-}
-
 .Implementation {
     background-color:#ffffff;
 }
@@ -229,6 +225,10 @@ input.searchInput {
     list-style: none;
     width: 20%;
     float: left;
+}
+
+.SubSubMenu ul li a {
+    font-size: 16px;
 }
 
 .SubSubMenu ul li a:hover {
