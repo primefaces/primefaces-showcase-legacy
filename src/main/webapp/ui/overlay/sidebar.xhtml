@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Sidebar
+    </ui:define>
+
+    <ui:define name="description">
+        Sidebar is a panel component displayed as an overlay.
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
+            <h1 style="font-weight:normal">Left Sidebar</h1>
+            <p:commandButton value="Cancel" oncomplete="PF('sidebar1').hide()"/>
+        </p:sidebar>
+
+        <p:sidebar widgetVar="sidebar2" position="right" baseZIndex="10000">
+            <h1 style="font-weight:normal">Right Sidebar</h1>
+            <p:commandButton value="Cancel" oncomplete="PF('sidebar2').hide()"/>
+        </p:sidebar>
+
+        <p:sidebar widgetVar="sidebar3" position="top" baseZIndex="10000">
+            <h1 style="font-weight:normal">Top Sidebar</h1>
+            <p:commandButton value="Cancel" oncomplete="PF('sidebar3').hide()"/>
+        </p:sidebar>
+
+        <p:sidebar widgetVar="sidebar4" position="bottom" baseZIndex="10000">
+            <h1 style="font-weight:normal">Bottom Sidebar</h1>
+            <p:commandButton value="Cancel" oncomplete="PF('sidebar4').hide()"/>
+        </p:sidebar>
+
+        <p:sidebar widgetVar="sidebar5" fullScreen="true" baseZIndex="10000">
+            <h1 style="font-weight:normal">Full Screen Sidebar</h1>
+            <p:commandButton value="Cancel" oncomplete="PF('sidebar5').hide()"/>
+        </p:sidebar>
+
+        <p:commandButton icon="fa fa-arrow-right" oncomplete="PF('sidebar1').show()" />
+        <p:commandButton icon="fa fa-arrow-left" oncomplete="PF('sidebar2').show()" />
+        <p:commandButton icon="fa fa-arrow-down" oncomplete="PF('sidebar3').show()" />
+        <p:commandButton icon="fa fa-arrow-up" oncomplete="PF('sidebar4').show()" />
+        <p:commandButton icon="fa fa-arrows-alt" oncomplete="PF('sidebar5').show()" />
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="sidebar.xhtml">
+                <pre name="code" class="brush:xml">
+
+&lt;p:sidebar widgetVar="sidebar1" baseZIndex="10000"&gt;
+    &lt;h1 style="font-weight:normal"&gt;Left Sidebar&lt;/h1&gt;
+    &lt;p:commandButton value="Cancel" oncomplete="PF('sidebar1').hide()"/&gt;
+&lt;/p:sidebar&gt;
+
+&lt;p:sidebar widgetVar="sidebar2" position="right" baseZIndex="10000"&gt;
+    &lt;h1 style="font-weight:normal"&gt;Right Sidebar&lt;/h1&gt;
+    &lt;p:commandButton value="Cancel" oncomplete="PF('sidebar2').hide()"/&gt;
+&lt;/p:sidebar&gt;
+
+&lt;p:sidebar widgetVar="sidebar3" position="top" baseZIndex="10000"&gt;
+    &lt;h1 style="font-weight:normal"&gt;Top Sidebar&lt;/h1&gt;
+    &lt;p:commandButton value="Cancel" oncomplete="PF('sidebar3').hide()"/&gt;
+&lt;/p:sidebar&gt;
+
+&lt;p:sidebar widgetVar="sidebar4" position="bottom" baseZIndex="10000"&gt;
+    &lt;h1 style="font-weight:normal"&gt;Bottom Sidebar&lt;/h1&gt;
+    &lt;p:commandButton value="Cancel" oncomplete="PF('sidebar4').hide()"/&gt;
+&lt;/p:sidebar&gt;
+
+&lt;p:sidebar widgetVar="sidebar5" fullScreen="true" baseZIndex="10000"&gt;
+    &lt;h1 style="font-weight:normal"&gt;Full Screen Sidebar&lt;/h1&gt;
+    &lt;p:commandButton value="Cancel" oncomplete="PF('sidebar5').hide()"/&gt;
+&lt;/p:sidebar&gt;
+
+&lt;p:commandButton icon="fa fa-arrow-right" oncomplete="PF('sidebar1').show()" /&gt;
+&lt;p:commandButton icon="fa fa-arrow-left" oncomplete="PF('sidebar2').show()" /&gt;
+&lt;p:commandButton icon="fa fa-arrow-down" oncomplete="PF('sidebar3').show()" /&gt;
+&lt;p:commandButton icon="fa fa-arrow-up" oncomplete="PF('sidebar4').show()" /&gt;
+&lt;p:commandButton icon="fa fa-arrows-alt" oncomplete="PF('sidebar5').show()" /&gt;
+
+
+                </pre>
+            </p:tab>
+
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
