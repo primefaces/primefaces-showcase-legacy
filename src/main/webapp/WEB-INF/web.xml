@@ -40,10 +40,12 @@
         <param-value>6Lf2XQkTAAAAANcvOwYqPxWL4iZDksFqHpS39GDA</param-value>
     </context-param>
 
+<!--
     <context-param>
         <param-name>primefaces.PUSH_SERVER_URL</param-name>
         <param-value>http://127.0.0.1:8080</param-value>
     </context-param>
+-->
     <context-param>
         <param-name>primefaces.CLIENT_SIDE_VALIDATION</param-name>
         <param-value>true</param-value>
