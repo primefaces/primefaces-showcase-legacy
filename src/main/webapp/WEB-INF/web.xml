@@ -61,7 +61,7 @@
         <param-value>true</param-value>
     </context-param>
     <context-param> 
-        <param-name>primeFaces.COLLECT_SCRIPTS</param-name>
+        <param-name>primefaces.COLLECT_SCRIPTS</param-name>
         <param-value>true</param-value>
     </context-param>
 
