@@ -271,13 +271,13 @@
             <id>elite-dev</id>
             <properties>
                 <jsfVersion>Mojarra-2.3.2</jsfVersion>
-                <primefacesVersion>PrimeFaces-6.1.6-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-6.1.7-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>6.1.6-SNAPSHOT</version>
+                    <version>6.1.7-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -295,13 +295,13 @@
             <id>elite-dev-6.0.x</id>
             <properties>
                 <jsfVersion>Mojarra-2.3.2</jsfVersion>
-                <primefacesVersion>PrimeFaces-6.0.24-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-6.0.25-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>6.0.24-SNAPSHOT</version>
+                    <version>6.0.25-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
