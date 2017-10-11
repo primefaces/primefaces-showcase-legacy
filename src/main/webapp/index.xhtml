@@ -1,13 +1,11 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	template="/WEB-INF/template.xhtml">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
 
-    <ui:define name="content">
-        <h:outputScript name="main/js/index.js" target="body" />
-
+    <ui:define name="content">        
         <!-- highlight area start-->
         <div class="ContentSideSections overHidden">
             <div class="Content33 floatLeft overHidden TextShadow">
@@ -53,28 +51,17 @@
 
         <!-- bottom boxes area start-->
         <div class="ContentSideSections overHidden">
-            <div class="Content33 floatLeft overHidden" style="background-image:url(#{resource['main/images/highlightCircuitLines.svg']}); min-height:200px; background-position:left top; background-repeat:no-repeat;">
-                <div class="BoxesIndent">
-                    <h:graphicImage name="main/images/optimushear.svg" class="floatLeft overHidden" style="height:60px; margin-right:20px;"/>
-                    <span class="floatLeft PFGrayText fontSize18 boldFont overHidden">Blog<br /><span class="green fontSize24">NEWS</span></span>
-                    <div id="latestNews" class="dispTable overHidden Content100 logoBlueText boldFont fontSize18" style=" padding-top:20px;">
-
-                        <span class="gray dispBlock regularFont fontSize14"></span><br />
-                        <a href="https://blog.primefaces.org" class="pink blackFont underline fontSize14">View All</a>
-                    </div>
-                </div>
-            </div>
-            <div class="Content33 floatLeft overHidden" style="background-image:url(#{resource['main/images/highlightCircuitLines.svg']}); min-height:200px; background-position:left top; background-repeat:no-repeat;">
+            <div class="Content50 floatLeft overHidden testimonials" style="background-image:url(#{resource['main/images/highlightCircuitLines.svg']}); min-height:200px; background-position:left top; background-repeat:no-repeat;">
                 <div class="BoxesIndent">
                     <h:graphicImage name="main/images/testimonials.svg" class="floatLeft overHidden" style="height:60px; margin-right:20px;"/>
                     <span class="floatLeft PFGrayText fontSize18 boldFont overHidden">Community<br /><span class="green fontSize24">TESTIMONIALS</span></span>
                     <div class="dispTable overHidden Content100 logoBlueText boldFont fontSize18" style=" padding-top:20px;">Andy Bailey
-                        <span class="gray dispBlock regularFont fontSize14">"...The PrimeFaces family of components has proved invaluable in greatly reducing time to market for both new applications and the migration of existing JSF applications. There have been quite a few "aha" moments too, when I have been able to use a component to achieve something that with other JSF component libraries simply would be impossible given the time constraints imposed..."</span><br />
+                        <span class="gray dispBlock regularFont fontSize14" style="padding-right: 20px;">"...The PrimeFaces family of components has proved invaluable in greatly reducing time to market for both new applications and the migration of existing JSF applications. There have been quite a few "aha" moments too, when I have been able to use a component to achieve something that with other JSF component libraries simply would be impossible given the time constraints imposed..."</span><br />
                         <a href="https://www.primefaces.org/testimonials" class="pink blackFont underline fontSize14">View All</a>
                     </div>
                 </div>
             </div>
-            <div class="Content33 floatLeft overHidden" style="background-image:url(#{resource['main/images/highlightCircuitLines.svg']}); min-height:200px; background-position:left top; background-repeat:no-repeat;">
+            <div class="Content50 floatLeft overHidden" style="background-image:url(#{resource['main/images/highlightCircuitLines.svg']}); min-height:200px; background-position:left top; background-repeat:no-repeat;">
                 <div class="BoxesIndent">
                     <h:graphicImage name="main/images/loveClients.svg" styleClass="floatLeft overHidden" style="height:60px; margin-right:20px;"/>
                     <span class="floatLeft PFGrayText fontSize18 boldFont overHidden">Who Uses?<br /><span class="green fontSize24">Brands</span></span>
@@ -95,6 +82,81 @@
             </div>
         </div>
         <!-- bottom boxes area end-->
+
+        <div class="ContentSideSections overHidden layouts">
+            <div style="text-align: center;">
+                <span class="green fontSize24">Premium Application Templates</span>
+                <span class="gray dispBlock regularFont fontSize14" style="display: block; padding: 15px 0px;">Create awesome applications in no time using the premium templates and impress your users.</span>
+            </div>
+
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <a href="https://www.primefaces.org/layouts/serenity">
+                        <h:graphicImage alt="Serenity" name="main/images/layouts/serenity-pf-showcase-big.jpg" />
+                    </a>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <a href="https://www.primefaces.org/layouts/avalon">
+                        <h:graphicImage alt="Avalon" name="main/images/layouts/avalon-pf-showcase.png" /> 
+                    </a>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <a href="https://www.primefaces.org/layouts/manhattan">
+                        <h:graphicImage alt="Manhattan" name="main/images/layouts/manhattan-pf-showcase.png" /> 
+                    </a>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <a href="https://www.primefaces.org/layouts/paradise">
+                        <h:graphicImage alt="Paradise" name="main/images/layouts/paradise-pf-showcase.png" /> 
+                    </a>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <a href="https://www.primefaces.org/layouts/ultima">
+                        <h:graphicImage alt="Ultima" name="main/images/layouts/ultima-pf-showcase.png" /> 
+                    </a>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <a href="https://www.primefaces.org/layouts/barcelona">
+                        <h:graphicImage alt="Barcelona" name="main/images/layouts/barcelona-pf-showcase.png" /> 
+                    </a>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <a href="https://www.primefaces.org/layouts/morpheus">
+                        <h:graphicImage alt="Morpheus" name="main/images/layouts/morpheus-pf-showcase.png" /> 
+                    </a>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <a href="https://www.primefaces.org/layouts/verona">
+                        <h:graphicImage alt="Atlantis" name="main/images/layouts/verona-pf-showcase.png" /> 
+                    </a>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <a href="https://www.primefaces.org/layouts/atlantis">
+                        <h:graphicImage alt="Atlantis" name="main/images/layouts/atlantis-pf-showcase.png" /> 
+                    </a>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <a href="https://www.primefaces.org/layouts/poseidon">
+                        <h:graphicImage alt="Poseidon" name="main/images/layouts/poseidon-pf-showcase.png" /> 
+                    </a>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <a href="https://www.primefaces.org/layouts/apollo">
+                        <h:graphicImage alt="Omega" name="main/images/layouts/apollo-pf-showcase.png" /> 
+                    </a>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <a href="https://www.primefaces.org/layouts/omega">
+                        <h:graphicImage alt="Omega" name="main/images/layouts/omega-pf-showcase.png" /> 
+                    </a>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <a href="https://www.primefaces.org/layouts/icarus">
+                        <h:graphicImage alt="Omega" name="main/images/layouts/icarus-pf-showcase.png" /> 
+                    </a>
+                </div>
+            </div>
+        </div>
     </ui:define>
 
 </ui:composition>

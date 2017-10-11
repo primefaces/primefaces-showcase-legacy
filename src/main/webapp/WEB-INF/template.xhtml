@@ -2,397 +2,421 @@
     <!ENTITY nbsp "&#160;">
     <!ENTITY bull "&#8226;">
     <!ENTITY copy "&#169;">
-]>
-<html xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:f="http://java.sun.com/jsf/core"
-        xmlns:ui="http://java.sun.com/jsf/facelets"
-        xmlns:p="http://primefaces.org/ui">
-<h:head>
-    <f:facet name="first">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <link rel="shortcut icon" type="image/png" href="#{request.contextPath}/resources/main/images/favicon.png" />
-    </f:facet>
+    ]>
+    <html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:ui="http://java.sun.com/jsf/facelets"
+          xmlns:p="http://primefaces.org/ui">
+        <h:head>
+            <f:facet name="first">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <link rel="shortcut icon" type="image/png" href="#{request.contextPath}/resources/main/images/favicon.png" />
+            </f:facet>
 
-    <title>PrimeFaces ShowCase</title>
-    <h:outputStylesheet name="main/css/showcase.css" />
-    <h:outputStylesheet name="main/css/perfect-scrollbar.css" />
-    <h:outputStylesheet name="main/css/sh.css" />
-    <h:outputScript name="jquery/jquery.js" library="primefaces" />
-    <h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
-    <h:outputScript name="main/js/perfect-scrollbar.js" />
-    <h:outputScript name="main/js/showcase.js" />
-    <ui:insert name="head" />
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            <title>PrimeFaces ShowCase</title>
+            <h:outputStylesheet name="main/css/showcase.css" />
+            <h:outputStylesheet name="main/css/perfect-scrollbar.css" />
+            <h:outputStylesheet name="main/css/sh.css" />
+            <h:outputStylesheet name="main/css/grid.css" />
+            <h:outputScript name="jquery/jquery.js" library="primefaces" />
+            <h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
+            <h:outputScript name="main/js/perfect-scrollbar.js" />
+            <h:outputScript name="main/js/showcase.js" />
+            <ui:insert name="head" />
+            <script>
+                (function (i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-      ga('create', 'UA-93461466-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-</h:head>
+                ga('create', 'UA-93461466-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+        </h:head>
 
-<h:body>
+        <h:body>
 
-    <!-- PC CONTENT STARTS HERE-->
-    <div class="PC">
+            <!-- PC CONTENT STARTS HERE-->
+            <div class="PC">
 
-	<div id="MENUSIDE">
-    	<div id="MENUSIDEindent">
-            <span id="LOGO" class="bordersOfMenuSide">
-                <h:graphicImage name="main/images/logo.svg" />
-                <h:graphicImage id="BlueLogo" styleClass="hiddenLogo" name="main/images/logoBlue.svg" />
-            </span>
-            <div class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/><input id="menuSearch" type="text" placeholder="Search Menu" class="boldFont fontSize14 mustClose searchInput"/></div>
+                <div id="MENUSIDE">
+                    <div id="MENUSIDEindent">
+                        <span id="LOGO" class="bordersOfMenuSide">
+                            <h:graphicImage name="main/images/logo.svg" />
+                            <h:graphicImage id="BlueLogo" styleClass="hiddenLogo" name="main/images/logoBlue.svg" />
+                        </span>
+                        <div class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/><input id="menuSearch" type="text" placeholder="Search Menu" class="boldFont fontSize14 mustClose searchInput"/></div>
 
-            <span id="SubMenu-Ajax" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/ajaxCore.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/ajaxCoreBlue.svg" /><span class="MainLinkText">Ajax Core</span></span>
-            <div class="SubMenuLinkContainer">
-            	<a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/basic.xhtml">&bull; Basic</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/event.xhtml">&bull; Event</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/listener.xhtml">&bull; Listener</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/counter.xhtml">&bull; Counter</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/process.xhtml">&bull; Process</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/validation.xhtml">&bull; Validation</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/dropdown.xhtml">&bull; Dropdown</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/partialSubmit.xhtml">&bull; PartialSubmit</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/selector.xhtml">&bull; Selector</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/search.xhtml">&bull; Search</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/poll.xhtml">&bull; Poll</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/fragment.xhtml">&bull; Fragment</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/status.xhtml">&bull; Status</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/remoteCommand.xhtml">&bull; RemoteCommand</a>
-            </div>
-
-            <span id="SubMenu-Input" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/input.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/inputBlue.svg" /><span class="MainLinkText">Input</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/autoComplete.xhtml">&bull; AutoComplete</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/inputTextarea.xhtml">&bull; InputTextarea</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/booleanButton.xhtml">&bull; BooleanButton</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/booleanCheckbox.xhtml">&bull; BooleanCheckbox</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/calendar.xhtml">&bull; Calendar</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/checkboxMenu.xhtml">&bull; CheckboxMenu</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/oneMenu.xhtml">&bull; OneMenu</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/editor.xhtml">&bull; Editor</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/inputText.xhtml">&bull; InputText</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/inputGroup.xhtml">&bull; InputGroup</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/inputNumber.xhtml">&bull; InputNumber</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/inputMask.xhtml">&bull; InputMask</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/listbox.xhtml">&bull; Listbox</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/manyButton.xhtml">&bull; ManyButton</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/manyMenu.xhtml">&bull; ManyMenu</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/manyCheckbox.xhtml">&bull; ManyCheckbox</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/multiSelectListbox.xhtml">&bull; MultiSelectListbox</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/oneButton.xhtml">&bull; OneButton</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/oneRadio.xhtml">&bull; OneRadio</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/signature.xhtml">&bull; Signature</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/spinner.xhtml">&bull; Spinner</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/slider.xhtml">&bull; Slider</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/inputSwitch.xhtml">&bull; Switch</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/password.xhtml">&bull; Password</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/keyboard.xhtml">&bull; Keyboard</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/rating.xhtml">&bull; Rating</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/colorPicker.xhtml">&bull; ColorPicker</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/inplace.xhtml">&bull; Inplace</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/keyFilter.xhtml">&bull; KeyFilter</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/knob.xhtml">&bull; Knob</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/textEditor.xhtml">&bull; TextEditor</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/triStateCheckbox.xhtml">&bull; TriStateCheckbox</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/chips.xhtml">&bull; Chips</a>
-            </div>
-
-            <span id="SubMenu-Button" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/button.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/buttonBlue.svg" /><span class="MainLinkText">Button</span></span>
-            <div class="SubMenuLinkContainer">
-            	<a class="SubMenuLink" href="#{request.contextPath}/ui/button/button.xhtml">&bull; Button</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/button/commandButton.xhtml">&bull; CommandButton</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/button/commandLink.xhtml">&bull; CommandLink</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/button/link.xhtml">&bull; Link</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/button/splitButton.xhtml">&bull; SplitButton</a>
-            </div>
-
-            <span id="SubMenu-Data" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/data.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/dataBlue.svg" /><span class="MainLinkText">Data</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/carousel.xhtml">&bull; Carousel</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/dataGrid.xhtml">&bull; DataGrid</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/dataList.xhtml">&bull; DataList</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/datascroller/basic.xhtml">&bull; DataScroller</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/datatable/basic.xhtml">&bull; DataTable</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/diagram/basic.xhtml">&bull; Diagram</a>
-            	<a class="SubMenuLink" href="#{request.contextPath}/ui/data/pickList.xhtml">&bull; PickList</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/orderList.xhtml">&bull; OrderList</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/organigram.xhtml">&bull; Organigram</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/gmap/basic.xhtml">&bull; GMap</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/dataexporter/basic.xhtml">&bull; DataExporter</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/mindmap.xhtml">&bull; Mindmap</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/repeat.xhtml">&bull; Repeat</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/ring.xhtml">&bull; Ring</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/schedule.xhtml">&bull; Schedule</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/tagCloud.xhtml">&bull; TagCloud</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/tree/basic.xhtml">&bull; Tree</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/treetable/basic.xhtml">&bull; TreeTable</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/htree/basic.xhtml">&bull; HorizontalTree</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/timeline/basic.xhtml">&bull; Timeline</a>
-            </div>
-
-            <span id="SubMenu-Panel" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/panel.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/panelBlue.svg" /><span class="MainLinkText">Panel</span></span>
-            <div class="SubMenuLinkContainer">
-            	<a class="SubMenuLink" href="#{request.contextPath}/ui/panel/accordionPanel.xhtml">&bull; Accordion</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/dashboard.xhtml">&bull; Dashboard</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/fieldset.xhtml">&bull; Fieldset</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/grid.xhtml">&bull; Grid CSS</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/layout/element.xhtml">&bull; Layout</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/notificationBar.xhtml">&bull; NotificationBar</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/outputPanel.xhtml">&bull; OutputPanel</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/panel.xhtml">&bull; Panel</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/panelGrid.xhtml">&bull; PanelGrid</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/ribbon.xhtml">&bull; Ribbon</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/scrollPanel.xhtml">&bull; ScrollPanel</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/tabView.xhtml">&bull; TabView</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/toolbar.xhtml">&bull; Toolbar</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/wizard.xhtml">&bull; Wizard</a>
-            </div>
-
-            <span id="SubMenu-Overlay" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/overlay.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/overlayBlue.svg" /><span class="MainLinkText">Overlay</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/overlay/confirmDialog.xhtml">&bull; ConfirmDialog</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/overlay/dialog/basic.xhtml">&bull; Dialog</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/overlay/lightBox.xhtml">&bull; LightBox</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/overlay/overlayPanel.xhtml">&bull; OverlayPanel</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/overlay/tooltip/tooltipOptions.xhtml">&bull; Tooltip</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/overlay/sidebar.xhtml">&bull; Sidebar</a>
-            </div>
-
-            <span id="SubMenu-Menu" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/menu.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/menuBlue.svg" /><span class="MainLinkText">Menu</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/breadcrumb.xhtml">&bull; Breadcrumb</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/contextmenu/basic.xhtml">&bull; ContextMenu</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/dock.xhtml">&bull; Dock</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/megaMenu.xhtml">&bull; MegaMenu</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/menu.xhtml">&bull; Menu</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/menubar.xhtml">&bull; Menubar</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/menuButton.xhtml">&bull; MenuButton</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/panelMenu.xhtml">&bull; PanelMenu</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/slideMenu.xhtml">&bull; SlideMenu</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/stack.xhtml">&bull; Stack</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/steps.xhtml">&bull; Steps</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/tabMenu.xhtml">&bull; TabMenu</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/tieredMenu.xhtml">&bull; TieredMenu</a>
-            </div>
-
-            <span id="SubMenu-Charts" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/charts.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/chartsBlue.svg" /><span class="MainLinkText">Charts</span></span>
-            <div class="SubMenuLinkContainer">
-            	<a class="SubMenuLink" href="#{request.contextPath}/ui/chart/area.xhtml">&bull; Area</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/bar.xhtml">&bull; Bar</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/bubble.xhtml">&bull; Bubble</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/donut.xhtml">&bull; Donut</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/line.xhtml">&bull; Line</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/pie.xhtml">&bull; Pie</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/metergauge.xhtml">&bull; MeterGauge</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/ohlc.xhtml">&bull; OHLC</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/animate.xhtml">&bull; Animate</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/export.xhtml">&bull; Export</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/interactive.xhtml">&bull; Interactive</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/live.xhtml">&bull; Live</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/graphicImage.xhtml">&bull; Static</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/zoom.xhtml">&bull; Zoom</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/combined.xhtml">&bull; Combined</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/multiaxis.xhtml">&bull; MultiAxis</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/date.xhtml">&bull; Date</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/responsive.xhtml">&bull; Responsive</a>
-            </div>
-
-            <span id="SubMenu-Message" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/message.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/messageBlue.svg" /><span class="MainLinkText">Messages</span></span>
-            <div class="SubMenuLinkContainer">
-            	<a class="SubMenuLink" href="#{request.contextPath}/ui/message/growl.xhtml">&bull; Growl</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/message/messages.xhtml">&bull; Messages</a>
-            </div>
-
-            <span id="SubMenu-Multimedia" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/multimedia.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/multimediaBlue.svg" /><span class="MainLinkText">Multimedia</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/barcode.xhtml">&bull; Barcode</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/compare.xhtml">&bull; Compare</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/contentFlow.xhtml">&bull; ContentFlow</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/cropper.xhtml">&bull; Cropper</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/galleria.xhtml">&bull; Galleria</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/graphicImage.xhtml">&bull; GraphicImage</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/media.xhtml">&bull; Media</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/photoCam.xhtml">&bull; PhotoCam</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/switch.xhtml">&bull; Switch</a>
-            </div>
-
-            <span id="SubMenu-File" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/file.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/fileBlue.svg" /><span class="MainLinkText">File</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/file/upload/basic.xhtml">&bull; Upload</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/file/download.xhtml">&bull; Download</a>
-            </div>
-
-            <span id="SubMenu-DragDrop" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/dragdrop.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/dragdropBlue.svg" /><span class="MainLinkText">DragDrop</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/dnd/draggable.xhtml">&bull; Draggable</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/dnd/dataGrid.xhtml">&bull; DataGrid</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/dnd/dataTable.xhtml">&bull; DataTable</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/dnd/custom.xhtml">&bull; Custom</a>
-            </div>
-
-            <span id="SubMenu-CSV" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/clientSideValidation.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/clientSideValidationBlue.svg" /><span class="MainLinkText">Client Side Validation</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/csv/basic.xhtml">&bull; Basic</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/csv/bean.xhtml">&bull; Bean</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/csv/custom.xhtml">&bull; Custom</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/csv/event.xhtml">&bull; Event</a>
-            </div>
-
-            <span id="SubMenu-DF" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/dialogFramework.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/dialogFrameworkBlue.svg" /><span class="MainLinkText">Dialog Framework</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/df/basic.xhtml">&bull; Basic</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/df/data.xhtml">&bull; Data</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/df/message.xhtml">&bull; Message</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/df/nested.xhtml">&bull; Nested</a>
-            </div>
-
-            <span id="SubMenu-Misc" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Misc</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/responsive.xhtml">&bull; Responsive</a>
-            	<a class="SubMenuLink" href="#{request.contextPath}/ui/misc/blockUI.xhtml">&bull; BlockUI</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/cache.xhtml">&bull; Cache</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/captcha.xhtml">&bull; Captcha</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/clock.xhtml">&bull; Clock</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/collector.xhtml">&bull; Collector</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/defaultCommand.xhtml">&bull; DefaultCommand</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/effect.xhtml">&bull; Effect</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/exceptionHandler.xhtml">&bull; ExceptionHandler</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/fa.xhtml">&bull; FontAwesome</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/feedReader.xhtml">&bull; FeedReader</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/focus.xhtml">&bull; Focus</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/hotkey.xhtml">&bull; Hotkey</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/idleMonitor.xhtml">&bull; IdleMonitor</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/importConstants.xhtml">&bull; ImportConstants</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/importEnum.xhtml">&bull; ImportEnum</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/lifecycle.xhtml">&bull; Lifecycle</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/log.xhtml">&bull; Log</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/outputLabel.xhtml">&bull; OutputLabel</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/printer.xhtml">&bull; Printer</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/progressBar.xhtml">&bull; ProgressBar</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/requestContext.xhtml">&bull; RequestContext</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/resetInput.xhtml">&bull; ResetInput</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/resizable.xhtml">&bull; Resizable</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/separator.xhtml">&bull; Separator</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/spacer.xhtml">&bull; Spacer</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/spotlight.xhtml">&bull; Spotlight</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/sticky.xhtml">&bull; Sticky</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/terminal.xhtml">&bull; Terminal</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/themeSwitcher.xhtml">&bull; ThemeSwitcher</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/watermark.xhtml">&bull; Watermark</a>
-            </div>
-        </div>
-    </div>
-
-    <script type="text/javascript">
-        restoreMenuState();
-    </script>
-
-    <div id="CONTENTSIDE">
-    	<div id="CONTENTSIDEindent">
-
-        	<!-- header bar start-->
-			<div class="ContentSideSections" id="PFTopLinksCover">
-                <a id="LOGOTEXTSIDE" href="#{request.contextPath}/index.xhtml">
-                    <span class="dispBlock logoDarkText fontSize30">PrimeFaces</span>
-                    <span class="dispBlock logoBlueText fontSize28 regularFont">SHOWCASE</span>
-                </a>
-
-                <a href="#{request.contextPath}/ui/misc/mockosx.xhtml" class="PFTopLinks floatRight boldFont marginRight20"><h:graphicImage name="main/images/pfMockosx.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">MockOSX</span></a>
-                <a href="http://www.primefaces.org/showcase-ext" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfExtensions.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Extensions</span></a>
-                
-                <a href="#{request.contextPath}/mobile/index.xhtml" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfMobile.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Mobile</span></a>
-                <span class="PFTopLinks floatRight boldFont cursorPointer" id="themeSwitcher">
-                    <h:form>
-                        <h:graphicImage name="main/images/themeswitcher.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Themes</span>
-                        <div id="GlobalThemeSwitcher" class="navOverlay">
-                            <ui:repeat value="#{themeSwitcherView.themes}" var="theme">
-                                <a href="#" data-theme="#{theme.name}"><span class="ui-theme ui-theme-#{theme}"></span><span class="ui-text">#{theme.displayName}</span></a>
-                            </ui:repeat>
+                        <span id="SubMenu-Ajax" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/ajaxCore.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/ajaxCoreBlue.svg" /><span class="MainLinkText">Ajax Core</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/basic.xhtml">&bull; Basic</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/event.xhtml">&bull; Event</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/listener.xhtml">&bull; Listener</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/counter.xhtml">&bull; Counter</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/process.xhtml">&bull; Process</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/validation.xhtml">&bull; Validation</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/dropdown.xhtml">&bull; Dropdown</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/partialSubmit.xhtml">&bull; PartialSubmit</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/selector.xhtml">&bull; Selector</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/search.xhtml">&bull; Search</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/poll.xhtml">&bull; Poll</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/fragment.xhtml">&bull; Fragment</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/status.xhtml">&bull; Status</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/remoteCommand.xhtml">&bull; RemoteCommand</a>
                         </div>
-                        <p:remoteCommand name="changeTheme" actionListener="#{guestPreferences.changeTheme}" />
-                    </h:form>
-                </span>
 
-                <a id="mobile-menu-btn" href="#">
-                    <i class="fa fa-bars"></i>
-                </a>
+                        <span id="SubMenu-Input" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/input.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/inputBlue.svg" /><span class="MainLinkText">Input</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/autoComplete.xhtml">&bull; AutoComplete</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/inputTextarea.xhtml">&bull; InputTextarea</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/booleanButton.xhtml">&bull; BooleanButton</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/booleanCheckbox.xhtml">&bull; BooleanCheckbox</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/calendar.xhtml">&bull; Calendar</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/checkboxMenu.xhtml">&bull; CheckboxMenu</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/oneMenu.xhtml">&bull; OneMenu</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/editor.xhtml">&bull; Editor</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/inputText.xhtml">&bull; InputText</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/inputGroup.xhtml">&bull; InputGroup</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/inputNumber.xhtml">&bull; InputNumber</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/inputMask.xhtml">&bull; InputMask</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/listbox.xhtml">&bull; Listbox</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/manyButton.xhtml">&bull; ManyButton</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/manyMenu.xhtml">&bull; ManyMenu</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/manyCheckbox.xhtml">&bull; ManyCheckbox</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/multiSelectListbox.xhtml">&bull; MultiSelectListbox</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/oneButton.xhtml">&bull; OneButton</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/oneRadio.xhtml">&bull; OneRadio</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/signature.xhtml">&bull; Signature</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/spinner.xhtml">&bull; Spinner</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/slider.xhtml">&bull; Slider</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/inputSwitch.xhtml">&bull; Switch</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/password.xhtml">&bull; Password</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/keyboard.xhtml">&bull; Keyboard</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/rating.xhtml">&bull; Rating</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/colorPicker.xhtml">&bull; ColorPicker</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/inplace.xhtml">&bull; Inplace</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/keyFilter.xhtml">&bull; KeyFilter</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/knob.xhtml">&bull; Knob</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/textEditor.xhtml">&bull; TextEditor</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/triStateCheckbox.xhtml">&bull; TriStateCheckbox</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/input/chips.xhtml">&bull; Chips</a>
+                        </div>
 
-                <div class="mobileLogoCover">
-                    <h:graphicImage name="main/images/logoBlue.svg" style="height:40px;" styleClass="floatLeft marginRight10"/>
-                    <span class="dispBlock logoDarkText fontSize16 floatLeft">PrimeFaces <span class="dispBlock logoBlueText fontSize18 boldFont">SHOWCASE</span></span>
+                        <span id="SubMenu-Button" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/button.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/buttonBlue.svg" /><span class="MainLinkText">Button</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/button/button.xhtml">&bull; Button</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/button/commandButton.xhtml">&bull; CommandButton</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/button/commandLink.xhtml">&bull; CommandLink</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/button/link.xhtml">&bull; Link</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/button/splitButton.xhtml">&bull; SplitButton</a>
+                        </div>
+
+                        <span id="SubMenu-Data" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/data.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/dataBlue.svg" /><span class="MainLinkText">Data</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/carousel.xhtml">&bull; Carousel</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/dataGrid.xhtml">&bull; DataGrid</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/dataList.xhtml">&bull; DataList</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/datascroller/basic.xhtml">&bull; DataScroller</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/datatable/basic.xhtml">&bull; DataTable</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/diagram/basic.xhtml">&bull; Diagram</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/pickList.xhtml">&bull; PickList</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/orderList.xhtml">&bull; OrderList</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/organigram.xhtml">&bull; Organigram</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/gmap/basic.xhtml">&bull; GMap</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/dataexporter/basic.xhtml">&bull; DataExporter</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/mindmap.xhtml">&bull; Mindmap</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/repeat.xhtml">&bull; Repeat</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/ring.xhtml">&bull; Ring</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/schedule.xhtml">&bull; Schedule</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/tagCloud.xhtml">&bull; TagCloud</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/tree/basic.xhtml">&bull; Tree</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/treetable/basic.xhtml">&bull; TreeTable</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/htree/basic.xhtml">&bull; HorizontalTree</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/data/timeline/basic.xhtml">&bull; Timeline</a>
+                        </div>
+
+                        <span id="SubMenu-Panel" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/panel.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/panelBlue.svg" /><span class="MainLinkText">Panel</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/accordionPanel.xhtml">&bull; Accordion</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/dashboard.xhtml">&bull; Dashboard</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/fieldset.xhtml">&bull; Fieldset</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/grid.xhtml">&bull; Grid CSS</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/layout/element.xhtml">&bull; Layout</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/notificationBar.xhtml">&bull; NotificationBar</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/outputPanel.xhtml">&bull; OutputPanel</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/panel.xhtml">&bull; Panel</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/panelGrid.xhtml">&bull; PanelGrid</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/ribbon.xhtml">&bull; Ribbon</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/scrollPanel.xhtml">&bull; ScrollPanel</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/tabView.xhtml">&bull; TabView</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/toolbar.xhtml">&bull; Toolbar</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/wizard.xhtml">&bull; Wizard</a>
+                        </div>
+
+                        <span id="SubMenu-Overlay" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/overlay.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/overlayBlue.svg" /><span class="MainLinkText">Overlay</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/overlay/confirmDialog.xhtml">&bull; ConfirmDialog</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/overlay/dialog/basic.xhtml">&bull; Dialog</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/overlay/lightBox.xhtml">&bull; LightBox</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/overlay/overlayPanel.xhtml">&bull; OverlayPanel</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/overlay/tooltip/tooltipOptions.xhtml">&bull; Tooltip</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/overlay/sidebar.xhtml">&bull; Sidebar</a>
+                        </div>
+
+                        <span id="SubMenu-Menu" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/menu.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/menuBlue.svg" /><span class="MainLinkText">Menu</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/breadcrumb.xhtml">&bull; Breadcrumb</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/contextmenu/basic.xhtml">&bull; ContextMenu</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/dock.xhtml">&bull; Dock</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/megaMenu.xhtml">&bull; MegaMenu</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/menu.xhtml">&bull; Menu</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/menubar.xhtml">&bull; Menubar</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/menuButton.xhtml">&bull; MenuButton</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/panelMenu.xhtml">&bull; PanelMenu</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/slideMenu.xhtml">&bull; SlideMenu</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/stack.xhtml">&bull; Stack</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/steps.xhtml">&bull; Steps</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/tabMenu.xhtml">&bull; TabMenu</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/tieredMenu.xhtml">&bull; TieredMenu</a>
+                        </div>
+
+                        <span id="SubMenu-Charts" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/charts.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/chartsBlue.svg" /><span class="MainLinkText">Charts</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/area.xhtml">&bull; Area</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/bar.xhtml">&bull; Bar</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/bubble.xhtml">&bull; Bubble</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/donut.xhtml">&bull; Donut</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/line.xhtml">&bull; Line</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/pie.xhtml">&bull; Pie</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/metergauge.xhtml">&bull; MeterGauge</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/ohlc.xhtml">&bull; OHLC</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/animate.xhtml">&bull; Animate</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/export.xhtml">&bull; Export</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/interactive.xhtml">&bull; Interactive</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/live.xhtml">&bull; Live</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/graphicImage.xhtml">&bull; Static</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/zoom.xhtml">&bull; Zoom</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/combined.xhtml">&bull; Combined</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/multiaxis.xhtml">&bull; MultiAxis</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/date.xhtml">&bull; Date</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/responsive.xhtml">&bull; Responsive</a>
+                        </div>
+
+                        <span id="SubMenu-Message" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/message.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/messageBlue.svg" /><span class="MainLinkText">Messages</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/message/growl.xhtml">&bull; Growl</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/message/messages.xhtml">&bull; Messages</a>
+                        </div>
+
+                        <span id="SubMenu-Multimedia" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/multimedia.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/multimediaBlue.svg" /><span class="MainLinkText">Multimedia</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/barcode.xhtml">&bull; Barcode</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/compare.xhtml">&bull; Compare</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/contentFlow.xhtml">&bull; ContentFlow</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/cropper.xhtml">&bull; Cropper</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/galleria.xhtml">&bull; Galleria</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/graphicImage.xhtml">&bull; GraphicImage</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/media.xhtml">&bull; Media</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/photoCam.xhtml">&bull; PhotoCam</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/switch.xhtml">&bull; Switch</a>
+                        </div>
+
+                        <span id="SubMenu-File" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/file.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/fileBlue.svg" /><span class="MainLinkText">File</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/file/upload/basic.xhtml">&bull; Upload</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/file/download.xhtml">&bull; Download</a>
+                        </div>
+
+                        <span id="SubMenu-DragDrop" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/dragdrop.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/dragdropBlue.svg" /><span class="MainLinkText">DragDrop</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/dnd/draggable.xhtml">&bull; Draggable</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/dnd/dataGrid.xhtml">&bull; DataGrid</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/dnd/dataTable.xhtml">&bull; DataTable</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/dnd/custom.xhtml">&bull; Custom</a>
+                        </div>
+
+                        <span id="SubMenu-CSV" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/clientSideValidation.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/clientSideValidationBlue.svg" /><span class="MainLinkText">Client Side Validation</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/csv/basic.xhtml">&bull; Basic</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/csv/bean.xhtml">&bull; Bean</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/csv/custom.xhtml">&bull; Custom</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/csv/event.xhtml">&bull; Event</a>
+                        </div>
+
+                        <span id="SubMenu-DF" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/dialogFramework.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/dialogFrameworkBlue.svg" /><span class="MainLinkText">Dialog Framework</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/df/basic.xhtml">&bull; Basic</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/df/data.xhtml">&bull; Data</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/df/message.xhtml">&bull; Message</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/df/nested.xhtml">&bull; Nested</a>
+                        </div>
+
+                        <span id="SubMenu-Misc" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Misc</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/responsive.xhtml">&bull; Responsive</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/blockUI.xhtml">&bull; BlockUI</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/cache.xhtml">&bull; Cache</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/captcha.xhtml">&bull; Captcha</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/clock.xhtml">&bull; Clock</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/collector.xhtml">&bull; Collector</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/defaultCommand.xhtml">&bull; DefaultCommand</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/effect.xhtml">&bull; Effect</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/exceptionHandler.xhtml">&bull; ExceptionHandler</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/fa.xhtml">&bull; FontAwesome</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/feedReader.xhtml">&bull; FeedReader</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/focus.xhtml">&bull; Focus</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/hotkey.xhtml">&bull; Hotkey</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/idleMonitor.xhtml">&bull; IdleMonitor</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/importConstants.xhtml">&bull; ImportConstants</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/importEnum.xhtml">&bull; ImportEnum</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/lifecycle.xhtml">&bull; Lifecycle</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/log.xhtml">&bull; Log</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/outputLabel.xhtml">&bull; OutputLabel</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/printer.xhtml">&bull; Printer</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/progressBar.xhtml">&bull; ProgressBar</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/requestContext.xhtml">&bull; RequestContext</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/resetInput.xhtml">&bull; ResetInput</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/resizable.xhtml">&bull; Resizable</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/separator.xhtml">&bull; Separator</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/spacer.xhtml">&bull; Spacer</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/spotlight.xhtml">&bull; Spotlight</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/sticky.xhtml">&bull; Sticky</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/terminal.xhtml">&bull; Terminal</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/themeSwitcher.xhtml">&bull; ThemeSwitcher</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/watermark.xhtml">&bull; Watermark</a>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    restoreMenuState();
+                </script>
+
+                <div id="CONTENTSIDE">
+                    <div id="CONTENTSIDEindent">
+
+                        <!-- header bar start-->
+                        <div class="ContentSideSections" id="PFTopLinksCover">
+                            <a id="LOGOTEXTSIDE" href="#{request.contextPath}/index.xhtml">
+                                <span class="dispBlock logoDarkText fontSize30">PrimeFaces</span>
+                                <span class="dispBlock logoBlueText fontSize28 regularFont">SHOWCASE</span>
+                            </a>
+
+                            <a href="#{request.contextPath}/ui/misc/mockosx.xhtml" class="PFTopLinks floatRight boldFont marginRight20"><h:graphicImage name="main/images/pfMockosx.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">MockOSX</span></a>
+                            <a href="http://www.primefaces.org/showcase-ext" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfExtensions.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Extensions</span></a>
+
+                            <a href="#{request.contextPath}/mobile/index.xhtml" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfMobile.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Mobile</span></a>
+                            <span class="PFTopLinks floatRight boldFont cursorPointer" id="themeSwitcher">
+                                <h:form>
+                                    <h:graphicImage name="main/images/themeswitcher.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Themes</span>
+                                    <div id="GlobalThemeSwitcher" class="navOverlay">
+                                        <div class="topbar-submenu-header" style="margin-top:16px">PREMIUM</div>
+                                        <a href="http://www.primefaces.org/layouts/serenity"><h:graphicImage name="main/images/layouts/themeswitcher-serenity.png" alt="Serenity" styleClass="ui-layout-img"/><span class="ui-text">Serenity</span></a>
+                                        <a href="http://www.primefaces.org/layouts/avalon"><h:graphicImage name="main/images/layouts/themeswitcher-avalon.png" alt="Avalon (Bootstrap)" styleClass="ui-layout-img"/><span class="ui-text">Avalon</span></a>
+                                        <a href="http://www.primefaces.org/layouts/ultima"><h:graphicImage name="main/images/layouts/themeswitcher-ultima.png" alt="Ultima (Material)" styleClass="ui-layout-img"/><span class="ui-text">Ultima</span></a>
+                                        <a href="http://www.primefaces.org/layouts/paradise"><h:graphicImage name="main/images/layouts/themeswitcher-paradise.png" alt="Paradise" styleClass="ui-layout-img"/><span class="ui-text">Paradise</span></a>
+                                        <a href="http://www.primefaces.org/layouts/barcelona"><h:graphicImage name="main/images/layouts/themeswitcher-barcelona.png" alt="Barcelona (Material)" styleClass="ui-layout-img"/><span class="ui-text">Barcelona</span></a>
+                                        <a href="http://www.primefaces.org/layouts/manhattan"><h:graphicImage name="main/images/layouts/themeswitcher-manhattan.png" alt="Manhattan" styleClass="ui-layout-img"/><span class="ui-text">Manhattan</span></a>
+                                        <a href="http://www.primefaces.org/layouts/morpheus"><h:graphicImage name="main/images/layouts/themeswitcher-morpheus.png" alt="Morpheus" styleClass="ui-layout-img"/><span class="ui-text">Morpheus</span></a>
+                                        <a href="http://www.primefaces.org/layouts/verona"><h:graphicImage name="main/images/layouts/themeswitcher-verona.png" alt="Verona" styleClass="ui-layout-img"/><span class="ui-text">Verona</span></a>
+                                        <a href="http://www.primefaces.org/layouts/atlantis"><h:graphicImage name="main/images/layouts/themeswitcher-atlantis.png" alt="Atlantis" styleClass="ui-layout-img"/><span class="ui-text">Atlantis</span></a>
+                                        <a href="http://www.primefaces.org/layouts/verona"><h:graphicImage name="main/images/layouts/themeswitcher-verona.png" alt="Verona" styleClass="ui-layout-img"/><span class="ui-text">Verona</span></a>
+                                        <a href="http://www.primefaces.org/layouts/icarus"><h:graphicImage name="main/images/layouts/themeswitcher-icarus.png" alt="Icarus" styleClass="ui-layout-img"/><span class="ui-text">Icarus</span></a>
+                                        <a href="http://www.primefaces.org/layouts/poseidon"><h:graphicImage name="main/images/layouts/themeswitcher-poseidon.png" alt="Poseidon" styleClass="ui-layout-img"/><span class="ui-text">Poseidon</span></a>
+                                        <a href="http://www.primefaces.org/layouts/omega"><h:graphicImage name="main/images/layouts/themeswitcher-omega.png" alt="Omega" styleClass="ui-layout-img"/><span class="ui-text">Omega</span></a>
+
+                                        <div class="topbar-submenu-header">FREE</div>
+                                        <ui:repeat value="#{themeSwitcherView.themes}" var="theme">
+                                            <a href="#" data-theme="#{theme.name}"><span class="ui-theme ui-theme-#{theme}"></span><span class="ui-text">#{theme.displayName}</span></a>
+                                        </ui:repeat>
+                                    </div>
+                                    <p:remoteCommand name="changeTheme" actionListener="#{guestPreferences.changeTheme}" />
+                                </h:form>
+                            </span>
+
+                            <a id="mobile-menu-btn" href="#">
+                                <i class="fa fa-bars"></i>
+                            </a>
+
+                            <div class="mobileLogoCover">
+                                <h:graphicImage name="main/images/logoBlue.svg" style="height:40px;" styleClass="floatLeft marginRight10"/>
+                                <span class="dispBlock logoDarkText fontSize16 floatLeft">PrimeFaces <span class="dispBlock logoBlueText fontSize18 boldFont">SHOWCASE</span></span>
+                            </div>
+
+                        </div>
+                        <!-- header bar end-->
+
+                        <div class="content-container">
+                            <ui:insert name="content">
+
+                                <ui:insert name="subsubmenu"></ui:insert>
+
+                                <div class="ContentSideSections">
+                                    <div class="Content100 overHidden TextShadow">
+                                        <span class="fontSize30 TextShadow orange regularFont marginBottom20 dispBlock"><ui:insert name="title" /></span>
+                                        <span class="defaultText dispTable"><ui:insert name="description" />
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="ContentSideSections Implementation">
+                                    <ui:insert name="implementation" />
+                                </div>
+
+                                <div id="SourceContentSide" class="ContentSideSections Source">
+                                    <div class="Content100 overHidden TextShadow">
+                                        <span class="defaultText">
+                                            <span class="fontSize16 logoBlueText">
+                                                <ui:insert name="source" />
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </ui:insert>
+                        </div>
+
+                        <!-- footer start-->
+                        <div class="ContentSideSections">
+                            <span class="floatLeft fontSize14 gray"><a href="http://www.primetek.com.tr">PrimeTek</a>, Copyright &copy; 2017<br />All rights reserved.</span>
+                            <span class="floatRight fontSize14 gray">Running #{build.primefacesVersion} on #{build.jsfVersion}.</span>
+                            <div style="clear:both" />
+                        </div>
+                        <!-- footer end-->
+
+                    </div>
                 </div>
 
             </div>
-            <!-- header bar end-->
+            <!-- PC CONTENT END-->
 
-            <div class="content-container">
-                <ui:insert name="content">
+            <ui:insert name="status">
+                <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
+                    <f:facet name="start">
+                        <p:graphicImage name="main/images/loader.gif" />
+                    </f:facet>
 
-                    <ui:insert name="subsubmenu"></ui:insert>
+                    <f:facet name="complete">
+                        <h:outputText value="" />
+                    </f:facet>
+                </p:ajaxStatus>
+            </ui:insert>
 
-                    <div class="ContentSideSections">
-                        <div class="Content100 overHidden TextShadow">
-                            <span class="fontSize30 TextShadow orange regularFont marginBottom20 dispBlock"><ui:insert name="title" /></span>
-                            <span class="defaultText dispTable"><ui:insert name="description" />
-                            </span>
-                        </div>
-                    </div>
+            <ui:insert name="highlight">
+                <h:outputScript name="main/js/sh.js" target="body"/>
+            </ui:insert>
 
-                    <div class="ContentSideSections Implementation">
-                        <ui:insert name="implementation" />
-                    </div>
-
-                    <div id="SourceContentSide" class="ContentSideSections Source">
-                        <div class="Content100 overHidden TextShadow">
-                            <span class="defaultText">
-                                <span class="fontSize16 logoBlueText">
-                                    <ui:insert name="source" />
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-
-                </ui:insert>
-            </div>
-
-            <!-- footer start-->
-            <div class="ContentSideSections">
-                <span class="floatLeft fontSize14 gray"><a href="http://www.primetek.com.tr">PrimeTek</a>, Copyright &copy; 2017<br />All rights reserved.</span>
-                <span class="floatRight fontSize14 gray">Running #{build.primefacesVersion} on #{build.jsfVersion}.</span>
-                <div style="clear:both" />
-            </div>
-            <!-- footer end-->
-
-        </div>
-    </div>
-
-    </div>
-    <!-- PC CONTENT END-->
-
-     <ui:insert name="status">
-        <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
-            <f:facet name="start">
-                <p:graphicImage name="main/images/loader.gif" />
-            </f:facet>
-
-            <f:facet name="complete">
-                <h:outputText value="" />
-            </f:facet>
-        </p:ajaxStatus>
-    </ui:insert>
-
-    <ui:insert name="highlight">
-        <h:outputScript name="main/js/sh.js" target="body"/>
-    </ui:insert>
-
-    <ui:insert name="body"></ui:insert>
-</h:body>
-</html>
+            <ui:insert name="body"></ui:insert>
+        </h:body>
+    </html>

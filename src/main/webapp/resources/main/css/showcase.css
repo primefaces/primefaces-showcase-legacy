@@ -97,7 +97,7 @@ body{font-size: 14px; margin:0px; height:100%; overflow-x:hidden; overflow-y:aut
 	
 /** ThemeSwitcher **/
 .navOverlay{width:200px; max-height:400px; overflow-y:auto; background-color:#eff3f6; border:solid 1px #bcc7cf; z-index:99999999999; position: absolute; 
-				border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2); -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2); 
+				border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2); -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2); 
 				box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2); margin-left:-60px; display: none;}
 					.navOverlay a{display:block; padding:10px; border-bottom:solid 1px #bcc7cf; text-align:left; color:#87939B; overflow:hidden;}
 					.navOverlay a:hover{ color:#fdd106;}
@@ -160,6 +160,7 @@ a{ text-decoration:none; outline:none;color: #25AAE1}
 
 /* content boxes*/
 .Content33{width:33%; }
+.Content50{width:50%; }
 .Content66{width:65%; background-position:left top; background-repeat:no-repeat;}
 .Content100{width:100%;}
 
@@ -196,6 +197,45 @@ input.searchInput {
 
 .ui-tabs .ui-tabs-nav li.tab-doc {
     float: right
+}
+
+.layouts .ui-g>div {
+    padding: 1em;
+}
+
+.layouts img {
+    width: 100%;
+}
+
+.layouts .ui-g>div img {
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.3);
+    transition: all .5s;
+}
+
+.layouts .ui-g>div a:hover img {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.topbar-submenu-header {
+    padding: 6px 12px;
+    font-weight: 700;
+    text-align: left;
+    background-image: linear-gradient(270deg,#2bc0ec,#1b81d7);
+    color: #fff;
+}
+
+.ui-layout-img {
+    display: inline-block;
+}
+
+.PFTopLinks img.ui-layout-img, .PFTopLinksMobile img.ui-layout-img { 
+    width: 32px;
+    height: auto;
+}
+
+.navOverlay a span.ui-text {
+    vertical-align: top;
 }
 
 /** ClearFix **/
@@ -394,6 +434,10 @@ input.searchInput {
         width: 100%;
     }
     
+    .Content50 {
+        width: 100%;
+    }
+    
     .Content66 {
         width: 100%;
     }
@@ -412,6 +456,10 @@ input.searchInput {
     
     .PFNextGen iframe {
         margin-left: 0;
+    }
+    
+    .testimonials {
+        margin-bottom: 30px;
     }
 }
 
