@@ -144,10 +144,16 @@ $(document).ready(function() {
 	});
     
     $("#GlobalThemeSwitcher > a").on("click", function(e) {
-        var theme = $(this).data("theme");
-        changeTheme([{name:'globaltheme', value:theme}]);
-        PrimeFaces.changeTheme(theme);
-        e.preventDefault();
+        var href = $(this).attr('href');
+        if(href && href !== '#') {
+            window.location.href = href;
+        }
+        else {
+            var theme = $(this).data("theme");
+            changeTheme([{name:'globaltheme', value:theme}]);
+            PrimeFaces.changeTheme(theme);
+            e.preventDefault();
+        }
     });
     
     // open theme switcher combo
