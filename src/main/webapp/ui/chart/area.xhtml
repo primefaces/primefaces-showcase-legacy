@@ -35,6 +35,7 @@ import javax.faces.bean.ManagedBean;
 
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.CategoryAxis;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 
@@ -51,7 +52,7 @@ public class ChartView implements Serializable {
     public LineChartModel getAreaModel() {
         return areaModel;
     }
-    
+
     private void createAreaModel() {
         areaModel = new LineChartModel();
 
@@ -75,12 +76,12 @@ public class ChartView implements Serializable {
 
         areaModel.addSeries(boys);
         areaModel.addSeries(girls);
-        
+
         areaModel.setTitle("Area Chart");
         areaModel.setLegendPosition("ne");
         areaModel.setStacked(true);
         areaModel.setShowPointLabels(true);
-        
+
         Axis xAxis = new CategoryAxis("Years");
         areaModel.getAxes().put(AxisType.X, xAxis);
         Axis yAxis = areaModel.getAxis(AxisType.Y);
@@ -88,11 +89,11 @@ public class ChartView implements Serializable {
         yAxis.setMin(0);
         yAxis.setMax(300);
     }
-    
+
 }
                 </pre>
             </p:tab>
-            
+
         </p:tabView>
 
     </ui:define>
