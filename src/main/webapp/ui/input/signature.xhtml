@@ -17,22 +17,24 @@
     <ui:define name="implementation">
 
         <h:form>
-            <p:growl autoUpdate="true" />
-            
+            <p:growl>
+                <p:autoUpdate />
+            </p:growl>
+
             <p:signature style="width:400px;height:200px" widgetVar="sig" value="#{signatureView.value}" required="true" guideline="true"/>
-          
+
             <div style="margin:20px 0">
                 <p:commandButton value="Submit" icon="ui-icon-check" update="output"/>
                 <p:commandButton value="Clear" icon="ui-icon-close" type="button" onclick="PF('sig').clear()"/>
             </div>
-            
+
             <p:outputPanel id="output">
                 <h:outputText rendered="#{not empty signatureView.value}" style="font-size:24px;display:block" value="Your Signature" />
-                <p:signature style="width:400px;height:200px;" value="#{signatureView.value}" readonly="true" 
+                <p:signature style="width:400px;height:200px;" value="#{signatureView.value}" readonly="true"
                              rendered="#{not empty signatureView.value}" backgroundColor="#eaeaea" color="#03a9f4"/>
             </p:outputPanel>
         </h:form>
-        
+
     </ui:define>
 
     <ui:define name="source">
@@ -40,7 +42,9 @@
             <p:tab title="signature.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;p:growl autoUpdate="true" /&gt;
+    &lt;p:growl&gt;
+        &lt;p:autoUpdate /&gt;
+    &lt;/p:growl&gt;
 
     &lt;p:signature style="width:400px;height:200px" widgetVar="sig" value="\#{signatureView.value}" required="true" guideline="true"/&gt;
 
@@ -51,13 +55,13 @@
 
     &lt;p:outputPanel id="output"&gt;
         &lt;h:outputText rendered="\#{not empty signatureView.value}" style="font-size:24px;display:block" value="Your Signature" /&gt;
-        &lt;p:signature style="width:400px;height:200px;" value="\#{signatureView.value}" readonly="true" 
+        &lt;p:signature style="width:400px;height:200px;" value="\#{signatureView.value}" readonly="true"
                      rendered="\#{not empty signatureView.value}" backgroundColor="\#eaeaea" color="\#03a9f4"/&gt;
     &lt;/p:outputPanel&gt;
 &lt;/h:form&gt;
                 </pre>
             </p:tab>
-            
+
             <p:tab title="SignatureView.java">
                 <pre name="code" class="brush:java">
 package org.primefaces.showcase.view.input;
@@ -66,7 +70,7 @@ import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 public class SignatureView {
-    
+
     private String value;
 
     public String getValue() {

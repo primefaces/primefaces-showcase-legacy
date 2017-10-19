@@ -12,7 +12,7 @@
             }
         </style>
 	</ui:define>
-    
+
     <ui:define name="title">
         SelectOneMenu
     </ui:define>
@@ -22,9 +22,11 @@
     </ui:define>
 
     <ui:define name="implementation">
-        
+
         <h:form>
-            <p:messages autoUpdate="true" />
+            <p:messages>
+                <p:autoUpdate />
+            </p:messages>
 
             <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                 <p:outputLabel for="console" value="Basic:" />
@@ -55,12 +57,12 @@
                     <p:column style="width:10%">
                         <h:outputText styleClass="ui-theme ui-theme-#{t.name}" />
                     </p:column>
-                    
+
                     <p:column>
                         <h:outputText value="#{t.displayName}" />
                     </p:column>
                 </p:selectOneMenu>
-                
+
                 <p:outputLabel for="lazy" value="Lazy:" />
                 <p:selectOneMenu id="lazy" value="#{selectOneMenuView.option}" lazy="true" style="width:125px">
                     <f:selectItem itemLabel="Select One" itemValue="" />
@@ -83,13 +85,13 @@
 
                     <h:outputText value="Advanced:" />
                     <h:outputText value="#{selectOneMenuView.theme.displayName}" />
-                    
+
                     <h:outputText value="Lazy:" />
                     <h:outputText value="#{selectOneMenuView.option}" />
                 </p:panelGrid>
             </p:dialog>
         </h:form>
-        
+
     </ui:define>
 
     <ui:define name="source">
@@ -97,7 +99,9 @@
             <p:tab title="oneMenu.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;p:messages autoUpdate="true" /&gt;
+    &lt;p:messages&gt;
+        &lt;p:autoUpdate /&gt;
+    &lt;/p:messages&gt;
 
     &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
         &lt;p:outputLabel for="console" value="Basic:" /&gt;
@@ -184,37 +188,37 @@ import org.primefaces.showcase.service.ThemeService;
 
 @ManagedBean
 public class SelectOneMenuView {
-    
+
     private String console;
-  
-    private String car;  
+
+    private String car;
     private List&lt;SelectItem&gt; cars;
 
-    private String city;  
+    private String city;
     private Map&lt;String,String&gt; cities = new HashMap&lt;String, String&gt;();
- 
-    private Theme theme;   
+
+    private Theme theme;
     private List&lt;Theme&gt; themes;
 
-    private String option;  
+    private String option;
     private List&lt;String&gt; options;
-    
+
     @ManagedProperty("\#{themeService}")
     private ThemeService service;
-    
+
     @PostConstruct
     public void init() {
         //cars
         SelectItemGroup g1 = new SelectItemGroup("German Cars");
         g1.setSelectItems(new SelectItem[] {new SelectItem("BMW", "BMW"), new SelectItem("Mercedes", "Mercedes"), new SelectItem("Volkswagen", "Volkswagen")});
-        
+
         SelectItemGroup g2 = new SelectItemGroup("American Cars");
         g2.setSelectItems(new SelectItem[] {new SelectItem("Chrysler", "Chrysler"), new SelectItem("GM", "GM"), new SelectItem("Ford", "Ford")});
-        
+
         cars = new ArrayList&lt;SelectItem&gt;();
         cars.add(g1);
         cars.add(g2);
-        
+
         //cities
         cities = new HashMap&lt;String, String&gt;();
         cities.put("New York", "New York");
@@ -223,7 +227,7 @@ public class SelectOneMenuView {
         cities.put("Barcelona","Barcelona");
         cities.put("Istanbul","Istanbul");
         cities.put("Berlin","Berlin");
-        
+
         //themes
         themes = service.getThemes();
 
@@ -265,7 +269,7 @@ public class SelectOneMenuView {
     public void setTheme(Theme theme) {
         this.theme = theme;
     }
-    
+
     public List&lt;SelectItem&gt; getCars() {
         return cars;
     }
@@ -277,7 +281,7 @@ public class SelectOneMenuView {
     public List&lt;Theme&gt; getThemes() {
         return themes;
     }
-    
+
     public void setService(ThemeService service) {
         this.service = service;
     }
@@ -301,17 +305,17 @@ public class SelectOneMenuView {
 
                 </pre>
             </p:tab>
-            
+
             <p:tab title="Theme.java">
                     <pre name="code" class="brush:java">
 package org.primefaces.showcase.domain;
 
 public class Theme {
 
-    private int id;    
-    private String displayName; 
+    private int id;
+    private String displayName;
     private String name;
-    
+
     public Theme() {}
 
     public Theme(int id, String displayName, String name) {
@@ -343,7 +347,7 @@ public class Theme {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     @Override
     public String toString() {
         return name;
@@ -368,9 +372,9 @@ import org.primefaces.showcase.domain.Theme;
 @ManagedBean(name="themeService", eager = true)
 @ApplicationScoped
 public class ThemeService {
-    
+
     private List&lt;Theme&gt; themes;
-    
+
     @PostConstruct
     public void init() {
         themes = new ArrayList&lt;Theme&gt;();
@@ -413,10 +417,10 @@ public class ThemeService {
         themes.add(new Theme(36, "UI-Lightness", "ui-lightness"));
         themes.add(new Theme(37, "Vader", "vader"));
     }
-    
+
     public List&lt;Theme&gt; getThemes() {
         return themes;
-    } 
+    }
 }
 
 
@@ -459,9 +463,9 @@ public class ThemeConverter implements Converter {
         else {
             return null;
         }
-    }   
-}         
-           
+    }
+}
+
                 </pre>
             </p:tab>
 

@@ -14,10 +14,12 @@
     </ui:define>
 
     <ui:define name="implementation">
-        
+
         <h:form>
-            <p:growl autoUpdate="true"/>
-                                
+            <p:growl>
+                <p:autoUpdate />
+            </p:growl>
+
             <p:panelMenu style="width:300px">
                 <p:submenu label="Ajax Menuitems">
                     <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" />
@@ -40,7 +42,7 @@
                 </p:submenu>
             </p:panelMenu>
         </h:form>
-        
+
     </ui:define>
 
     <ui:define name="source">
@@ -48,7 +50,9 @@
             <p:tab title="panelMenu.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-    &lt;p:growl autoUpdate="true"/&gt;
+    &lt;p:growl&gt;
+        &lt;p:autoUpdate /&gt;
+    &lt;/p:growl&gt;
 
     &lt;p:panelMenu style="width:300px"&gt;
         &lt;p:submenu label="Ajax Menuitems"&gt;
@@ -85,19 +89,19 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean
 public class MenuView {
-    
+
     public void save() {
 		addMessage("Success", "Data saved");
 	}
-	
+
 	public void update() {
 		addMessage("Success", "Data updated");
 	}
-	
+
 	public void delete() {
 		addMessage("Success", "Data deleted");
 	}
-	
+
 	public void addMessage(String summary, String detail) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
 		FacesContext.getCurrentInstance().addMessage(null, message);
@@ -105,7 +109,7 @@ public class MenuView {
 }
                 </pre>
             </p:tab>
-            
+
         </p:tabView>
 
     </ui:define>

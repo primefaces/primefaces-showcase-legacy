@@ -24,54 +24,56 @@
     </ui:define>
 
     <ui:define name="implementation">
-        <p:growl autoUpdate="true"/>
+        <p:growl>
+            <p:autoUpdate />
+        </p:growl>
 
         <h3 style="margin-top:0">Basic</h3>
         <div class="knob-container ui-corner-all">
-            <p:knob value="#{knobView.value}">  
-                <p:ajax listener="#{knobView.onChange}"/>  
+            <p:knob value="#{knobView.value}">
+                <p:ajax listener="#{knobView.onChange}"/>
             </p:knob>
         </div>
 
-        <h3>Max,Min and Step</h3>  
+        <h3>Max,Min and Step</h3>
         <div class="knob-container  ui-corner-all">
-            <p:knob max="1000" step="50" value="950"/>   
+            <p:knob max="1000" step="50" value="950"/>
         </div>
 
-        <h3>Show/Hide label</h3> 
+        <h3>Show/Hide label</h3>
         <div class="knob-container  ui-corner-all">
-            <p:knob showLabel="false" value="65"/> 
+            <p:knob showLabel="false" value="65"/>
         </div>
-        
-        <h3>Label template</h3> 
+
+        <h3>Label template</h3>
         <div class="knob-container  ui-corner-all">
-            <p:knob labelTemplate="{value}%" value="35"/>   
+            <p:knob labelTemplate="{value}%" value="35"/>
         </div>
-        
-        <h3>Disabled</h3> 
+
+        <h3>Disabled</h3>
         <div class="knob-container ui-corner-all">
-            <p:knob disabled="true" value="85"/>  
+            <p:knob disabled="true" value="85"/>
         </div>
-        
-        <h3>Cursor</h3> 
+
+        <h3>Cursor</h3>
         <div class="knob-container ui-corner-all">
-            <p:knob cursor="true" value="0"/>   
+            <p:knob cursor="true" value="0"/>
         </div>
-        
+
         <h3>Thickness</h3>
         <div class="knob-container ui-corner-all">
-            <p:knob thickness=".5" value="50"/>  
+            <p:knob thickness=".5" value="50"/>
         </div>
-        
-        <h3>Theme</h3>  
+
+        <h3>Theme</h3>
         <div class="knob-container ui-corner-all">
-            <p:knob colorTheme="hot-sneaks" value="45"/>  
+            <p:knob colorTheme="hot-sneaks" value="45"/>
         </div>
-        
-        <h3>Colors</h3> 
+
+        <h3>Colors</h3>
         <div class="knob-container ui-corner-all">
-            <p:knob foregroundColor="red" backgroundColor="#00000" value="25"/>  
-            <p:knob foregroundColor="#808080" backgroundColor="#0000FF" value="75"/>  
+            <p:knob foregroundColor="red" backgroundColor="#00000" value="25"/>
+            <p:knob foregroundColor="#808080" backgroundColor="#0000FF" value="75"/>
         </div>
     </ui:define>
 
@@ -79,54 +81,56 @@
         <p:tabView>
             <p:tab title="knob.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;p:growl autoUpdate="true"/&gt;
+&lt;p:growl&gt;
+    &lt;p:autoUpdate /&gt;
+&lt;/p:growl&gt;
 
 &lt;h3 style="margin-top:0"&gt;Basic&lt;/h3&gt;
 &lt;div class="knob-container ui-corner-all"&gt;
-    &lt;p:knob value="\#{knobView.value}"&gt;  
-        &lt;p:ajax listener="\#{knobView.onChange}"/&gt;  
+    &lt;p:knob value="\#{knobView.value}"&gt;
+        &lt;p:ajax listener="\#{knobView.onChange}"/&gt;
     &lt;/p:knob&gt;
 &lt;/div&gt;
 
-&lt;h3&gt;Max,Min and Step&lt;/h3&gt;  
+&lt;h3&gt;Max,Min and Step&lt;/h3&gt;
 &lt;div class="knob-container  ui-corner-all"&gt;
-    &lt;p:knob max="1000" step="50" value="950"/&gt;   
+    &lt;p:knob max="1000" step="50" value="950"/&gt;
 &lt;/div&gt;
 
-&lt;h3&gt;Show/Hide label&lt;/h3&gt; 
+&lt;h3&gt;Show/Hide label&lt;/h3&gt;
 &lt;div class="knob-container  ui-corner-all"&gt;
-    &lt;p:knob showLabel="false" value="65"/&gt; 
+    &lt;p:knob showLabel="false" value="65"/&gt;
 &lt;/div&gt;
 
-&lt;h3&gt;Label template&lt;/h3&gt; 
+&lt;h3&gt;Label template&lt;/h3&gt;
 &lt;div class="knob-container  ui-corner-all"&gt;
-    &lt;p:knob labelTemplate="{value}%" value="35"/&gt;   
+    &lt;p:knob labelTemplate="{value}%" value="35"/&gt;
 &lt;/div&gt;
 
-&lt;h3&gt;Disabled&lt;/h3&gt; 
+&lt;h3&gt;Disabled&lt;/h3&gt;
 &lt;div class="knob-container ui-corner-all"&gt;
-    &lt;p:knob disabled="true" value="85"/&gt;  
+    &lt;p:knob disabled="true" value="85"/&gt;
 &lt;/div&gt;
 
-&lt;h3&gt;Cursor&lt;/h3&gt; 
+&lt;h3&gt;Cursor&lt;/h3&gt;
 &lt;div class="knob-container ui-corner-all"&gt;
-    &lt;p:knob cursor="true" value="0"/&gt;   
+    &lt;p:knob cursor="true" value="0"/&gt;
 &lt;/div&gt;
 
 &lt;h3&gt;Thickness&lt;/h3&gt;
 &lt;div class="knob-container ui-corner-all"&gt;
-    &lt;p:knob thickness=".5" value="50"/&gt;  
+    &lt;p:knob thickness=".5" value="50"/&gt;
 &lt;/div&gt;
 
-&lt;h3&gt;Theme&lt;/h3&gt;  
+&lt;h3&gt;Theme&lt;/h3&gt;
 &lt;div class="knob-container ui-corner-all"&gt;
-    &lt;p:knob colorTheme="hot-sneaks" value="45"/&gt;  
+    &lt;p:knob colorTheme="hot-sneaks" value="45"/&gt;
 &lt;/div&gt;
 
-&lt;h3&gt;Colors&lt;/h3&gt; 
+&lt;h3&gt;Colors&lt;/h3&gt;
 &lt;div class="knob-container ui-corner-all"&gt;
-    &lt;p:knob foregroundColor="red" backgroundColor="\#00000" value="25"/&gt;  
-    &lt;p:knob foregroundColor="\#808080" backgroundColor="\#0000FF" value="75"/&gt;  
+    &lt;p:knob foregroundColor="red" backgroundColor="\#00000" value="25"/&gt;
+    &lt;p:knob foregroundColor="\#808080" backgroundColor="\#0000FF" value="75"/&gt;
 &lt;/div&gt;
                 </pre>
             </p:tab>
@@ -140,22 +144,22 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 @ManagedBean
-public class KnobView implements Serializable {  
-  
-    private int value = 50;  
-  
-    public int getValue() {  
-        return value;  
-    }  
-  
-    public void setValue(int value) {  
-        this.value = value;  
-    }  
-  
-    public void onChange(){  
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "You have selected: " + value, null));  
-    }  
-}    
+public class KnobView implements Serializable {
+
+    private int value = 50;
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public void onChange(){
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "You have selected: " + value, null));
+    }
+}
                 </pre>
             </p:tab>
         </p:tabView>

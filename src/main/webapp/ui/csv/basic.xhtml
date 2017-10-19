@@ -25,32 +25,34 @@
     </ui:define>
 
     <ui:define name="implementation">
-        
+
         <h:form>
             <p:panel header="Validate">
-                <p:messages autoUpdate="true"/>
+                <p:messages>
+                    <p:autoUpdate />
+                </p:messages>
 
                 <h:panelGrid id="grid" columns="4" cellpadding="5">
-                    <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>					
+                    <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
                     <p:inputText id="name" value="#{validationView.text}" required="true" label="Name"/>
                     <p:message for="name" />
                     <h:outputText value="#{validationView.text}" />
 
-                    <h:outputLabel for="number" value="Number:" style="font-weight:bold"/>					
+                    <h:outputLabel for="number" value="Number:" style="font-weight:bold"/>
                     <p:inputText id="number" value="#{validationView.integer}" label="Number">
                         <f:validateDoubleRange minimum="5" maximum="8" />
                     </p:inputText>
                     <p:message for="number" />
                     <h:outputText value="#{validationView.integer}" />
 
-                    <h:outputLabel for="dd" value="Double:" style="font-weight:bold"/>					
+                    <h:outputLabel for="dd" value="Double:" style="font-weight:bold"/>
                     <p:inputText id="dd" value="#{validationView.doubleNumber}" converterMessage="Cannot convert to double.">
                         <f:validateDoubleRange minimum="5.5" maximum="8.5" />
                     </p:inputText>
                     <p:message for="dd" />
                     <h:outputText value="#{validationView.doubleNumber}" />
 
-                    <h:outputLabel for="money" value="Currency ($):" style="font-weight:bold"/>					
+                    <h:outputLabel for="money" value="Currency ($):" style="font-weight:bold"/>
                     <p:inputText id="money" value="#{validationView.money}" label="Currency">
                         <f:convertNumber type="currency" currencySymbol="$"/>
                     </p:inputText>
@@ -59,14 +61,14 @@
                         <f:convertNumber  type="currency" currencySymbol="$" />
                     </h:outputText>
 
-                    <h:outputLabel for="regex" value="Regex (^[a-zA-Z]+$):" style="font-weight:bold"/>					
+                    <h:outputLabel for="regex" value="Regex (^[a-zA-Z]+$):" style="font-weight:bold"/>
                     <p:inputText id="regex" value="#{validationView.regexText}" validatorMessage="Value does not match pattern.">
                         <f:validateRegex pattern="^[a-zA-Z]+$" />
                     </p:inputText>
                     <p:message for="regex" />
                     <h:outputText value="#{validationView.regexText}" />
 
-                    <h:outputLabel for="date" value="Date" style="font-weight:bold"/>					
+                    <h:outputLabel for="date" value="Date" style="font-weight:bold"/>
                     <p:inputText id="date" value="#{validationView.date}" label="Date">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </p:inputText>
@@ -77,7 +79,7 @@
 
                     <h:outputLabel for="desc" value="Description" style="font-weight:bold"/>
                     <p:inputTextarea id="desc" value="#{validationView.description}" required="true" label="Description">
-                        <f:validateLength minimum="3" maximum="10" /> 
+                        <f:validateLength minimum="3" maximum="10" />
                     </p:inputTextarea>
                     <p:message for="desc" />
                     <h:outputText value="#{validationView.description}" />
@@ -89,7 +91,7 @@
                 <p:commandButton value="Disabled" ajax="false" icon="ui-icon-check" />
             </p:panel>
         </h:form>
-        
+
     </ui:define>
 
     <ui:define name="source">
@@ -98,29 +100,31 @@
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
     &lt;p:panel header="Validate"&gt;
-        &lt;p:messages autoUpdate="true"/&gt;
+        &lt;p:messages&gt;
+            &lt;p:autoUpdate /&gt;
+        &lt;/p:messages&gt;
 
         &lt;h:panelGrid id="grid" columns="4" cellpadding="5"&gt;
-            &lt;h:outputLabel for="name" value="Name:" style="font-weight:bold"/&gt;					
+            &lt;h:outputLabel for="name" value="Name:" style="font-weight:bold"/&gt;
             &lt;p:inputText id="name" value="\#{validationView.text}" required="true" label="Name"/&gt;
             &lt;p:message for="name" /&gt;
             &lt;h:outputText value="\#{validationView.text}" /&gt;
 
-            &lt;h:outputLabel for="number" value="Number:" style="font-weight:bold"/&gt;					
+            &lt;h:outputLabel for="number" value="Number:" style="font-weight:bold"/&gt;
             &lt;p:inputText id="number" value="\#{validationView.integer}" label="Number"&gt;
                 &lt;f:validateDoubleRange minimum="5" maximum="8" /&gt;
             &lt;/p:inputText&gt;
             &lt;p:message for="number" /&gt;
             &lt;h:outputText value="\#{validationView.integer}" /&gt;
 
-            &lt;h:outputLabel for="dd" value="Double:" style="font-weight:bold"/&gt;					
+            &lt;h:outputLabel for="dd" value="Double:" style="font-weight:bold"/&gt;
             &lt;p:inputText id="dd" value="\#{validationView.doubleNumber}" converterMessage="Cannot convert to double."&gt;
                 &lt;f:validateDoubleRange minimum="5.5" maximum="8.5" /&gt;
             &lt;/p:inputText&gt;
             &lt;p:message for="dd" /&gt;
             &lt;h:outputText value="\#{validationView.doubleNumber}" /&gt;
 
-            &lt;h:outputLabel for="money" value="Currency ($):" style="font-weight:bold"/&gt;					
+            &lt;h:outputLabel for="money" value="Currency ($):" style="font-weight:bold"/&gt;
             &lt;p:inputText id="money" value="\#{validationView.money}" label="Currency"&gt;
                 &lt;f:convertNumber type="currency" currencySymbol="$"/&gt;
             &lt;/p:inputText&gt;
@@ -129,14 +133,14 @@
                 &lt;f:convertNumber  type="currency" currencySymbol="$" /&gt;
             &lt;/h:outputText&gt;
 
-            &lt;h:outputLabel for="regex" value="Regex (^[a-zA-Z]+$):" style="font-weight:bold"/&gt;					
+            &lt;h:outputLabel for="regex" value="Regex (^[a-zA-Z]+$):" style="font-weight:bold"/&gt;
             &lt;p:inputText id="regex" value="\#{validationView.regexText}" validatorMessage="Value does not match pattern."&gt;
                 &lt;f:validateRegex pattern="^[a-zA-Z]+$" /&gt;
             &lt;/p:inputText&gt;
             &lt;p:message for="regex" /&gt;
             &lt;h:outputText value="\#{validationView.regexText}" /&gt;
 
-            &lt;h:outputLabel for="date" value="Date" style="font-weight:bold"/&gt;					
+            &lt;h:outputLabel for="date" value="Date" style="font-weight:bold"/&gt;
             &lt;p:inputText id="date" value="\#{validationView.date}" label="Date"&gt;
                 &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
             &lt;/p:inputText&gt;
@@ -147,7 +151,7 @@
 
             &lt;h:outputLabel for="desc" value="Description" style="font-weight:bold"/&gt;
             &lt;p:inputTextarea id="desc" value="\#{validationView.description}" required="true" label="Description"&gt;
-                &lt;f:validateLength minimum="3" maximum="10" /&gt; 
+                &lt;f:validateLength minimum="3" maximum="10" /&gt;
             &lt;/p:inputTextarea&gt;
             &lt;p:message for="desc" /&gt;
             &lt;h:outputText value="\#{validationView.description}" /&gt;
@@ -171,7 +175,7 @@ import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 public class ValidationView {
-    
+
     private String text;
     private String description;
     private Integer integer;
@@ -227,12 +231,12 @@ public class ValidationView {
     }
     public void setDate(Date date) {
         this.date = date;
-    } 
+    }
 }
 
                 </pre>
             </p:tab>
-            
+
         </p:tabView>
 
     </ui:define>

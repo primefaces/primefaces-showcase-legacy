@@ -10,22 +10,23 @@
     </ui:define>
 
     <ui:define name="description">
-        Fragment component is used to define automatically partially process and update sections whenever 
-        ajax request is triggered by a descandant component. In this example, required input field outside the fragment is ignored and 
+        Fragment component is used to define automatically partially process and update sections whenever
+        ajax request is triggered by a descandant component. In this example, required input field outside the fragment is ignored and
         only the contents of the fragment are processed-updated automatically on button click since
         button is inside the fragment. Fragment makes it easy to define partial ajax process and update without explicitly
         defining component identifiers.
     </ui:define>
 
     <ui:define name="implementation">
-        
-        <h:form>				
+
+        <h:form>
             <h:panelGrid columns="2" cellpadding="5">
                 <p:outputLabel for="ignored" value="Required" />
                 <p:inputText id="ignored" required="true" />
             </h:panelGrid>
 
-            <p:fragment autoUpdate="true">
+            <p:fragment>
+                <p:autoUpdate />
                 <h:panelGrid columns="4" cellpadding="5">
                     <p:outputLabel for="txt" value="Text Value:" />
                     <p:inputText id="txt" value="#{basicView.text}" />
@@ -34,20 +35,21 @@
                 </h:panelGrid>
             </p:fragment>
         </h:form>
-        
+
     </ui:define>
 
     <ui:define name="source">
         <p:tabView>
             <p:tab title="fragment.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:form&gt;				
+&lt;h:form&gt;
     &lt;h:panelGrid columns="2" cellpadding="5"&gt;
         &lt;p:outputLabel for="ignored" value="Required" /&gt;
         &lt;p:inputText id="ignored" required="true" /&gt;
     &lt;/h:panelGrid&gt;
 
-    &lt;p:fragment autoUpdate="true"&gt;
+    &lt;p:fragment&gt;
+        &lt;p:autoUpdate /&gt;
         &lt;h:panelGrid columns="4" cellpadding="5"&gt;
             &lt;p:outputLabel for="txt" value="Text Value:" /&gt;
             &lt;p:inputText id="txt" value="\#{basicView.text}" /&gt;
@@ -67,7 +69,7 @@ import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 public class BasicView {
-    
+
     private String text;
 
     public String getText() {

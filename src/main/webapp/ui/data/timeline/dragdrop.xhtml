@@ -15,7 +15,9 @@
 
     <ui:define name="implementation">
 
-        <p:growl id="growl" showSummary="true" showDetail="false" autoUpdate="true"/>
+        <p:growl id="growl" showSummary="true" showDetail="false">
+            <p:autoUpdate />
+        </p:growl>
 
         <div style="float:left; width: 130px;">
             <strong>Drag and drop events</strong>
@@ -28,11 +30,11 @@
 
                 <p:draggable for="eventBox" revert="true" helper="clone" cursor="move"/>
             </p:dataList>
-        </div>    
+        </div>
         <p:timeline id="timeline" value="#{dndTimelineView.model}" var="event"
                     editable="true" eventMargin="10" eventMarginAxis="0" minHeight="250"
                     start="#{dndTimelineView.start}" end="#{dndTimelineView.end}"
-                    style="margin-left:135px;" 
+                    style="margin-left:135px;"
                     dropActiveStyleClass="ui-state-highlight" dropHoverStyleClass="ui-state-hover">
             <p:ajax event="drop" listener="#{dndTimelineView.onDrop}" global="false" update="eventsList"/>
 
@@ -53,7 +55,9 @@
         <p:tabView>
             <p:tab title="dragdrop.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;p:growl id="growl" showSummary="true" showDetail="false" autoUpdate="true"/&gt;
+&lt;p:growl id="growl" showSummary="true" showDetail="false"&gt;
+    &lt;p:autoUpdate /&gt;
+&lt;/p:growl&gt;
 
 &lt;div style="float:left; width: 130px;"&gt;
     &lt;strong&gt;Drag and drop events&lt;/strong&gt;
@@ -66,11 +70,11 @@
 
         &lt;p:draggable for="eventBox" revert="true" helper="clone" cursor="move"/&gt;
     &lt;/p:dataList&gt;
-&lt;/div&gt;    
+&lt;/div&gt;
 &lt;p:timeline id="timeline" value="\#{dndTimelineView.model}" var="event"
             editable="true" eventMargin="10" eventMarginAxis="0" minHeight="250"
             start="\#{dndTimelineView.start}" end="\#{dndTimelineView.end}"
-            style="margin-left:135px;" 
+            style="margin-left:135px;"
             dropActiveStyleClass="ui-state-highlight" dropHoverStyleClass="ui-state-hover"&gt;
     &lt;p:ajax event="drop" listener="\#{dndTimelineView.onDrop}" global="false" update="eventsList"/&gt;
 
@@ -115,7 +119,7 @@ public class DndTimelineView implements Serializable {
 
     private Date start;
     private Date end;
-    
+
     private List&lt;Event&gt; events = new ArrayList&lt;Event&gt;();
 
     @PostConstruct
