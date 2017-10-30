@@ -18,7 +18,8 @@ package org.primefaces.showcase.view.misc;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import org.primefaces.context.RequestContext;
+
+import org.primefaces.PrimeFaces;
 
 @ManagedBean
 public class ResetInputView {
@@ -48,7 +49,7 @@ public class ResetInputView {
     }
     
     public void reset() {
-        RequestContext.getCurrentInstance().reset("form:panel");
+        PrimeFaces.current().resetInputs("form:panel");
     }
     
     public void resetFail() {

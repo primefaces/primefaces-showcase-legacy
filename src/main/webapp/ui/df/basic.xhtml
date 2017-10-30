@@ -42,7 +42,7 @@ import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
 
 @ManagedBean(name = "dfView")
 public class DFView {
@@ -50,7 +50,7 @@ public class DFView {
     public void viewCars() {
         Map&lt;String,Object&gt; options = new HashMap&lt;String, Object&gt;();
         options.put("resizable", false);
-        RequestContext.getCurrentInstance().openDialog("viewCars", options, null);
+        PrimeFaces.current().dialog.openDynamic("viewCars", options, null);
     }
     
     public void viewCarsCustomized() {
@@ -62,7 +62,7 @@ public class DFView {
         options.put("contentHeight", "100%");
         options.put("headerElement", "customheader");
         
-        RequestContext.getCurrentInstance().openDialog("viewCars", options, null);
+        PrimeFaces.current().dialog.openDynamic("viewCars", options, null);
     }
 }
                 </pre>
@@ -120,7 +120,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 

@@ -21,7 +21,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
 import org.primefaces.event.SelectEvent;
 
 @ManagedBean
@@ -46,10 +46,8 @@ public class CalendarView {
     }
     
     public void click() {
-        RequestContext requestContext = RequestContext.getCurrentInstance();
-        
-        requestContext.update("form:display");
-        requestContext.execute("PF('dlg').show()");
+        PrimeFaces.current().ajax().update("form:display");
+        PrimeFaces.current().executeScript("PF('dlg').show()");
     }
 
     public Date getDate1() {
