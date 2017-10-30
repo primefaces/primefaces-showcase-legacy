@@ -19,7 +19,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import org.primefaces.context.RequestContext;
+
+import org.primefaces.PrimeFaces;
 import org.primefaces.showcase.domain.User;
 
 @ManagedBean
@@ -32,7 +33,7 @@ public class RequestContextView {
         user = new User();
         
         if(!FacesContext.getCurrentInstance().isPostback()) {
-            RequestContext.getCurrentInstance().execute("alert('This onload script is added from backing bean.')");
+            PrimeFaces.current().executeScript("alert('This onload script is added from backing bean.')");
         }
     }
 
@@ -45,18 +46,17 @@ public class RequestContextView {
     }
 
 	public void save() {
-		RequestContext context = RequestContext.getCurrentInstance();
-		context.addCallbackParam("saved", true);    //basic parameter
-		context.addCallbackParam("user", user);     //pojo as json
+	    PrimeFaces.current().ajax().addCallbackParam("saved", true);    //basic parameter
+	    PrimeFaces.current().ajax().addCallbackParam("user", user);     //pojo as json
         
         //execute javascript oncomplete
-        context.execute("PrimeFaces.info('Hello from the Backing Bean');");
+	    PrimeFaces.current().executeScript("PrimeFaces.info('Hello from the Backing Bean');");
         
         //update panel
-        context.update("form:panel");
+        PrimeFaces.current().ajax().update("form:panel");
         
         //scroll to panel
-        context.scrollTo("form:panel");
+        PrimeFaces.current().scrollTo("form:panel");
         
         //add facesmessage
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Success", "Success"));

@@ -21,7 +21,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import org.primefaces.context.RequestContext;
+
+import org.primefaces.PrimeFaces;
 import org.primefaces.event.diagram.ConnectEvent;
 import org.primefaces.event.diagram.ConnectionChangeEvent;
 import org.primefaces.event.diagram.DisconnectEvent;
@@ -99,7 +100,7 @@ public class EditableView implements Serializable {
         
             FacesContext.getCurrentInstance().addMessage(null, msg);
         
-            RequestContext.getCurrentInstance().update("form:msgs");
+            PrimeFaces.current().ajax().update("form:msgs");
         }
         else {
             suspendEvent = false;
@@ -112,7 +113,7 @@ public class EditableView implements Serializable {
         
         FacesContext.getCurrentInstance().addMessage(null, msg);
         
-        RequestContext.getCurrentInstance().update("form:msgs");
+        PrimeFaces.current().ajax().update("form:msgs");
     }
     
     public void onConnectionChange(ConnectionChangeEvent event) {
@@ -124,7 +125,7 @@ public class EditableView implements Serializable {
         
         FacesContext.getCurrentInstance().addMessage(null, msg);
         
-        RequestContext.getCurrentInstance().update("form:msgs");
+        PrimeFaces.current().ajax().update("form:msgs");
         suspendEvent = true;
     }
     
