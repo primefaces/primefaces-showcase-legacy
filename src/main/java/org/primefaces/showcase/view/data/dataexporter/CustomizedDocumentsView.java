@@ -35,6 +35,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.FillPatternType;
 import org.primefaces.component.export.ExcelOptions;
 import org.primefaces.component.export.PDFOptions;
 
@@ -114,7 +115,7 @@ public class CustomizedDocumentsView implements Serializable {
 		
 		HSSFCellStyle cellStyle = wb.createCellStyle();  
 		cellStyle.setFillForegroundColor(HSSFColor.GREEN.index);
-		cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+		cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 		
 		for(int i=0; i < header.getPhysicalNumberOfCells();i++) {
 			HSSFCell cell = header.getCell(i);
