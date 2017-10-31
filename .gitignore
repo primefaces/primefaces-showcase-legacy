@@ -2,3 +2,11 @@
 /nbactions-elite-dev.xml
 /nbactions.xml
 /nb-configuration.xml
+.settings/
+/nbactions.xml
+.DS_STORE
+.idea/
+*.iml
+*~
+/.classpath
+/.project
