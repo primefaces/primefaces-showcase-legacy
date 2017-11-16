@@ -48,7 +48,7 @@ import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.showcase.domain.Car;
 
@@ -60,7 +60,7 @@ public class DFView {
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
-        RequestContext.getCurrentInstance().openDialog("selectCar", options, null);
+        PrimeFaces.current().dialog.openDynamic("selectCar", options, null);
     }
     
     public void onCarChosen(SelectEvent event) {
@@ -129,7 +129,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 
@@ -156,7 +156,7 @@ public class DFCarsView implements Serializable {
     }
     
     public void selectCarFromDialog(Car car) {
-        RequestContext.getCurrentInstance().closeDialog(car);
+        PrimeFaces.current().dialog.closeDynamic(car);
     }
 }
 

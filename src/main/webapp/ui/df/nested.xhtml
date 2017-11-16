@@ -137,7 +137,7 @@ import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
 import org.primefaces.event.SelectEvent;
 
 @ManagedBean(name = "dfRootView")
@@ -146,7 +146,7 @@ public class DFRootView {
     public void openLevel1() {
         Map&lt;String,Object&gt; options = new HashMap&lt;String, Object&gt;();
         options.put("modal", true);
-        RequestContext.getCurrentInstance().openDialog("level1", options, null);
+        PrimeFaces.current().dialog.openDynamic("level1", options, null);
     }
     
     public void onReturnFromLevel1(SelectEvent event) {
@@ -162,7 +162,7 @@ package org.primefaces.showcase.view.df;
 import java.util.HashMap;
 import java.util.Map;
 import javax.faces.bean.ManagedBean;
-import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
 import org.primefaces.event.SelectEvent;
 
 @ManagedBean(name = "dfLevel1View")
@@ -171,12 +171,12 @@ public class DFLevel1View {
     public void openLevel2() {
         Map&lt;String,Object&gt; options = new HashMap&lt;String, Object&gt;();
         options.put("modal", true);
-        RequestContext.getCurrentInstance().openDialog("level2", options, null);
+        PrimeFaces.current().dialog.openDynamic("level2", options, null);
     }
     
     public void onReturnFromLevel2(SelectEvent event) {
         //pass back to root
-        RequestContext.getCurrentInstance().closeDialog(event.getObject());
+        PrimeFaces.current().dialog.closeDynamic(event.getObject());
     }
 }
                 </pre>
@@ -188,7 +188,7 @@ package org.primefaces.showcase.view.df;
 import java.util.HashMap;
 import java.util.Map;
 import javax.faces.bean.ManagedBean;
-import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
 import org.primefaces.event.SelectEvent;
 
 @ManagedBean(name = "dfLevel2View")
@@ -197,12 +197,12 @@ public class DFLevel2View {
     public void openLevel3() {
         Map&lt;String,Object&gt; options = new HashMap&lt;String, Object&gt;();
         options.put("modal", true);
-        RequestContext.getCurrentInstance().openDialog("level3", options, null);
+        PrimeFaces.current().dialog.openDynamic("level3", options, null);
     }
     
     public void onReturnFromLevel3(SelectEvent event) {
         //pass back to level 1
-        RequestContext.getCurrentInstance().closeDialog(event.getObject());
+        PrimeFaces.current().dialog.closeDynamic(event.getObject());
     }
 }
                 </pre>
@@ -212,7 +212,7 @@ public class DFLevel2View {
 package org.primefaces.showcase.view.df;
 
 import javax.faces.bean.ManagedBean;
-import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
 
 @ManagedBean(name = "dfLevel3View")
 public class DFLevel3View {
@@ -229,7 +229,7 @@ public class DFLevel3View {
 
     public void closeDialog() {
         //pass back to level 2
-        RequestContext.getCurrentInstance().closeDialog(val);
+        PrimeFaces.current().dialog.closeDynamic(val);
     }
 }
                 </pre>

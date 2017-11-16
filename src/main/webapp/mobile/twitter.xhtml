@@ -88,7 +88,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
 import twitter4j.Query;
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -124,7 +124,7 @@ public class TwitterView {
         } catch(TwitterException exception) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Please try again");
             FacesContext.getCurrentInstance().addMessage(null, msg);
-            RequestContext.getCurrentInstance().update("main:messages");
+            PrimeFaces.current().ajax().update("main:messages");
         }
     }
 }

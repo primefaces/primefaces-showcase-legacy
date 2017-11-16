@@ -49,15 +49,15 @@
         <param-value>true</param-value>
     </context-param>
     <context-param>
-        <param-name>primefaces.UPLOADER</param-name>
-        <param-value>commons</param-value>
-    </context-param>
-    <context-param>
         <param-name>primefaces.THEME</param-name>
         <param-value>#{guestPreferences.theme}</param-value>
     </context-param>
         <context-param>
         <param-name>primefaces.FONT_AWESOME</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>primefaces.COLLECT_SCRIPTS</param-name>
         <param-value>true</param-value>
     </context-param>
 
@@ -80,25 +80,12 @@
     </listener>
     -->
 
-    <listener>
-        <listener-class>org.apache.commons.fileupload.servlet.FileCleanerCleanup</listener-class>
-    </listener>
-
     <filter>
         <filter-name>Character Encoding Filter</filter-name>
         <filter-class>org.primefaces.showcase.filter.CharacterEncodingFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>Character Encoding Filter</filter-name>
-        <servlet-name>Faces Servlet</servlet-name>
-    </filter-mapping>
-
-    <filter>
-        <filter-name>PrimeFaces FileUpload Filter</filter-name>
-        <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>PrimeFaces FileUpload Filter</filter-name>
         <servlet-name>Faces Servlet</servlet-name>
     </filter-mapping>
 

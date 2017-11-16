@@ -20,7 +20,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
+
 
 @ManagedBean
 public class UserLoginView {
@@ -46,7 +47,6 @@ public class UserLoginView {
     }
   
     public void login(ActionEvent event) {
-        RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage message = null;
         boolean loggedIn = false;
         
@@ -59,6 +59,6 @@ public class UserLoginView {
         }
         
         FacesContext.getCurrentInstance().addMessage(null, message);
-        context.addCallbackParam("loggedIn", loggedIn);
+        PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
     }   
 }

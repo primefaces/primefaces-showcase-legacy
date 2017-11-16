@@ -16,7 +16,8 @@
 package org.primefaces.showcase.view.df;
 
 import javax.faces.bean.ManagedBean;
-import org.primefaces.context.RequestContext;
+
+import org.primefaces.PrimeFaces;
 
 @ManagedBean(name = "dfLevel3View")
 public class DFLevel3View {
@@ -33,6 +34,6 @@ public class DFLevel3View {
 
     public void closeDialog() {
         //pass back to level 2
-        RequestContext.getCurrentInstance().closeDialog(val);
+        PrimeFaces.current().dialog().closeDynamic(val);
     }
 }

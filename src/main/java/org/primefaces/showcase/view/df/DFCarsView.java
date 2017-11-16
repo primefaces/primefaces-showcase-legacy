@@ -21,7 +21,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import org.primefaces.context.RequestContext;
+
+import org.primefaces.PrimeFaces;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 
@@ -48,6 +49,6 @@ public class DFCarsView implements Serializable {
     }
     
     public void selectCarFromDialog(Car car) {
-        RequestContext.getCurrentInstance().closeDialog(car);
+        PrimeFaces.current().dialog().closeDynamic(car);
     }
 }
