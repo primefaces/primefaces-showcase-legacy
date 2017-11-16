@@ -2,3 +2,6 @@
 /nbactions-elite-dev.xml
 /nbactions.xml
 /nb-configuration.xml
+.project
+.classpath
+.settings
