@@ -41,10 +41,6 @@
     </context-param>
 
     <context-param>
-        <param-name>primefaces.PUSH_SERVER_URL</param-name>
-        <param-value>http://127.0.0.1:8080</param-value>
-    </context-param>
-    <context-param>
         <param-name>primefaces.CLIENT_SIDE_VALIDATION</param-name>
         <param-value>true</param-value>
     </context-param>
@@ -89,15 +85,6 @@
         <servlet-name>Faces Servlet</servlet-name>
     </filter-mapping>
 
-    <filter>
-        <filter-name>Browser Stats Filter</filter-name>
-        <filter-class>org.primefaces.showcase.filter.UserAgentListener</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>Browser Stats Filter</filter-name>
-        <url-pattern>/push/chart.xhtml</url-pattern>
-    </filter-mapping>
-
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -109,18 +96,6 @@
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>Push Servlet</servlet-name>
-        <servlet-class>org.primefaces.push.PushServlet</servlet-class>
-        <load-on-startup>0</load-on-startup>
-        <async-supported>true</async-supported>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>Push Servlet</servlet-name>
-        <url-pattern>/primepush/*</url-pattern>
     </servlet-mapping>
 
     <error-page>

@@ -224,11 +224,6 @@
                     <version>2.3.0-beta</version>
                 </dependency>
                 -->
-                <dependency>
-                    <groupId>org.atmosphere</groupId>
-                    <artifactId>atmosphere-runtime</artifactId>
-                    <version>2.4.6</version>
-                </dependency>
             </dependencies>
         </profile>
         <profile>
@@ -247,11 +242,6 @@
                     <groupId>org.glassfish</groupId>
                     <artifactId>javax.faces</artifactId>
                     <version>2.3.2</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.atmosphere</groupId>
-                    <artifactId>atmosphere-runtime</artifactId>
-                    <version>2.4.6</version>
                 </dependency>
             </dependencies>
         </profile>
@@ -272,11 +262,6 @@
                     <artifactId>javax.faces</artifactId>
                     <version>2.3.2</version>
                 </dependency>
-                <dependency>
-                    <groupId>org.atmosphere</groupId>
-                    <artifactId>atmosphere-runtime</artifactId>
-                    <version>2.4.6</version>
-                </dependency>
             </dependencies>
         </profile>
         <profile>
@@ -295,11 +280,6 @@
                     <groupId>org.glassfish</groupId>
                     <artifactId>javax.faces</artifactId>
                     <version>2.3.2</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.atmosphere</groupId>
-                    <artifactId>atmosphere-runtime</artifactId>
-                    <version>2.4.6</version>
                 </dependency>
             </dependencies>
         </profile>

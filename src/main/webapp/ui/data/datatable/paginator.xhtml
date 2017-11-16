@@ -35,6 +35,15 @@
                 <p:column headerText="Color">
                     <h:outputText value="#{car.color}" />
                 </p:column>
+
+                <f:facet name="paginatorLeft">
+                    <p:commandButton type="button" icon="fa fa-refresh" />
+                </f:facet>
+
+                <f:facet name="paginatorRight">
+                    <p:commandButton type="button" icon="fa fa-refresh" />
+                </f:facet>
+
             </p:dataTable>
         </h:form>
         
