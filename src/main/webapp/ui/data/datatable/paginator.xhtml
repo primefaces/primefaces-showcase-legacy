@@ -41,7 +41,7 @@
                 </f:facet>
 
                 <f:facet name="paginatorRight">
-                    <p:commandButton type="button" icon="fa fa-refresh" />
+                    <p:commandButton type="button" icon="fa fa-cloud-upload" />
                 </f:facet>
 
             </p:dataTable>
@@ -73,6 +73,14 @@
         &lt;p:column headerText="Color"&gt;
             &lt;h:outputText value="\#{car.color}" /&gt;
         &lt;/p:column&gt;
+        
+        &lt;f:facet name="paginatorLeft"&gt;
+            &lt;p:commandButton type="button" icon="fa fa-refresh" /&gt;
+        &lt;/f:facet&gt;
+
+        &lt;f:facet name="paginatorRight"&gt;
+            &lt;p:commandButton type="button" icon="fa fa-cloud-upload" /&gt;
+        &lt;/f:facet&gt;
     &lt;/p:dataTable&gt;
 &lt;/h:form&gt;
                 </pre>
