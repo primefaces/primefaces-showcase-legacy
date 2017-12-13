@@ -37,7 +37,8 @@ import org.primefaces.showcase.domain.FontAwesomeIcon;
 @ApplicationScoped
 public class FontAwesomeView {
 
-    public static final String BASE_URL = "https://use.fontawesome.com/releases/v5.0.1/";
+    public static final String VERSION = "v5.0.1";
+    public static final String BASE_URL = "https://use.fontawesome.com/releases/"+VERSION+"/";
     public static final String CSS = BASE_URL + "css/all.css";
     public static final String BRAND_SVG = BASE_URL + "/webfonts/fa-brands-400.svg";
     public static final Pattern KEY_VALUE_PAIRS = Pattern.compile("glyph-name=\"*((?<=\")[^\"]+(?=\")|([^\\s]+))\"*");
@@ -94,6 +95,10 @@ public class FontAwesomeView {
         this.icons = icons;
     }
     
+    public String getVersion() {
+        return VERSION;
+    }
+    
     private String readUrl(String resourceUrl) throws IOException {
         StringBuilder builder = new StringBuilder();
         URL url = new URL(resourceUrl);
@@ -107,5 +112,6 @@ public class FontAwesomeView {
         reader.close();
         return builder.toString();
     }
+
 
 }
