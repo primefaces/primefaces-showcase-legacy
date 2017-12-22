@@ -216,6 +216,33 @@ $(document).ready(function() {
    });
    
    window.Showcase = Showcase;
+   
+   if(location.pathname === '/showcase/') {
+        var notificationTopbar = $('.notification-topbar'),
+        notificationCloseIcon = notificationTopbar.find('.notification-topbar-close');
+
+        notificationCloseIcon.on('click', function(e) {
+            notificationTopbar.removeClass('nbar-active');
+
+            e.preventDefault();
+            e.stopPropagation();
+        });
+
+        setTimeout(function() {
+            notificationTopbar.addClass('fadeInDown nbar-active');
+        }, 800);
+
+        /* Scroll Animate */
+        notificationTopbar.children('a').click(function() {                        
+            var target = $(this.hash);
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 500);
+                return false;
+            }   
+        });
+    }
 });
 
 function restoreMenuState() {

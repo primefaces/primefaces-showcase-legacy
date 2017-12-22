@@ -327,6 +327,42 @@ input.searchInput {
     border-top: 1px solid #BCC7CF;
 }
 
+.notification-topbar {
+    width: 100%;
+    height: 150px;
+    cursor: pointer;
+    position: relative;
+    display: none;
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+    webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.notification-topbar.nbar-active {
+    display: block;
+}
+
+.notification-topbar .notification-topbar-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.notification-topbar .notification-topbar-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: white;
+}
+
+.notification-topbar .notification-topbar-image-mobile {
+    display: none;
+}                
+                
 /** Responsive **/
 @media (min-width: 961px) {
 	.PFTopLinks {
@@ -461,6 +497,18 @@ input.searchInput {
     .testimonials {
         margin-bottom: 30px;
     }
+    
+    .notification-topbar.nbar-active {
+        margin-top: 105px;
+    }
+
+    .notification-topbar.nbar-active + #CONTENTSIDEindent .content-container {
+        margin-top: 0px;
+    }
+
+    .notification-topbar .notification-topbar-image {
+        width: auto;
+    }
 }
 
 @media (max-width: 640px) {
@@ -476,7 +524,46 @@ input.searchInput {
     .PropertyBox .PropertyText {
         font-size: 18px;
     }
+    
+    .notification-topbar .notification-topbar-image {
+        display: none;
+    }
+
+    .notification-topbar .notification-topbar-image-mobile {
+        display: block;
+    }
 }
+
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+}
+
+@-webkit-keyframes fadeInDown {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -20px, 0);
+      transform: translate3d(0, -20px, 0);
+    }
+
+    to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -20px, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 
 /* Themes */
 .ui-theme {background: url("#{resource['demo/images/themes.png']}") no-repeat top left;display: block;}
