@@ -5,4 +5,5 @@
 .project
 .classpath
 .settings
+.tern-project
 .DS_STORE
