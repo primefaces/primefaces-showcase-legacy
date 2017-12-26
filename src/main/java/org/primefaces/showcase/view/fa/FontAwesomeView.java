@@ -37,49 +37,27 @@ import org.primefaces.showcase.domain.FontAwesomeIcon;
 @ApplicationScoped
 public class FontAwesomeView {
 
-    public static final String VERSION = "v5.0.1";
+    public static final String VERSION = "v5.0.2";
     public static final String BASE_URL = "https://use.fontawesome.com/releases/"+VERSION+"/";
     public static final String CSS = BASE_URL + "css/all.css";
-    public static final String BRAND_SVG = BASE_URL + "/webfonts/fa-brands-400.svg";
+    public static final String BRAND_SVG = BASE_URL + "webfonts/fa-brands-400.svg";
+    public static final String REGULAR_SVG = BASE_URL + "webfonts/fa-regular-400.svg";
+    public static final String SOLID_SVG = BASE_URL + "webfonts/fa-solid-900.svg";
+    
     public static final Pattern KEY_VALUE_PAIRS = Pattern.compile("glyph-name=\"*((?<=\")[^\"]+(?=\")|([^\\s]+))\"*");
 
-    private List<FontAwesomeIcon> icons = new ArrayList<FontAwesomeIcon>();
+    private List<FontAwesomeIcon> brandIcons = new ArrayList<FontAwesomeIcon>();
+    
+    private List<FontAwesomeIcon> solidIcons = new ArrayList<FontAwesomeIcon>();
+    
+    private List<FontAwesomeIcon> regularIcons = new ArrayList<FontAwesomeIcon>();
 
     @PostConstruct
     public void init() {
         try {
-            // gather all brands from the SVG
-            List<String> brands = new ArrayList<String>();
-            String svg = readUrl(BRAND_SVG);
-            Matcher m = KEY_VALUE_PAIRS.matcher(svg);
-            while (m.find()) {
-                brands.add("fa-" + StringUtils.strip(m.group(1), "\""));
-            }
-
-            // load the CSS and find all icons marking either FAS or FAB
-            String css = readUrl(CSS);
-            boolean foundStart = false;
-            String[] tokens = StringUtils.split(css, '{');
-            for (String token : tokens) {
-                String icon = StringUtils.trim(StringUtils.substringBetween(token, ".", ":"));
-                if (!foundStart && StringUtils.equalsIgnoreCase(icon, "fa-500px")) {
-                    foundStart = true;
-                }
-
-                if (!foundStart || !StringUtils.startsWithIgnoreCase(icon, "fa-")) {
-                    continue;
-                }
-
-                String prefix = "fas";
-                if (brands.contains(icon)) {
-                    prefix = "fab";
-                }
-
-                FontAwesomeIcon faIcon = new FontAwesomeIcon();
-                faIcon.setStylePrefix(prefix);
-                faIcon.setIcon(icon);
-                icons.add(faIcon);
-            }
+			brandIcons = extractIconsFromURL(BRAND_SVG, "fab");
+			solidIcons = extractIconsFromURL(SOLID_SVG, "fas");
+			regularIcons = extractIconsFromURL(REGULAR_SVG, "far");
         }
         catch (Exception e) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Please try again");
@@ -87,15 +65,48 @@ public class FontAwesomeView {
         }
     }
 
-    public List<FontAwesomeIcon> getIcons() {
-        return icons;
-    }
+	private List<FontAwesomeIcon> extractIconsFromURL(String webfonts , String prefix) throws IOException {
+		List<FontAwesomeIcon> icons = new ArrayList<FontAwesomeIcon>();
+		
+		// gather all brands from the SVG
+		String svg = readUrl(webfonts);
+		Matcher m = KEY_VALUE_PAIRS.matcher(svg);
+		while (m.find()) {
+		    String icon = "fa-" + StringUtils.strip(m.group(1), "\"");
+		    FontAwesomeIcon faIcon = new FontAwesomeIcon();
+			faIcon.setStylePrefix(prefix);
+			faIcon.setIcon(icon);
+			icons.add(faIcon);
+		}
+		
+		return icons;
+	}
 
-    public void setIcons(List<FontAwesomeIcon> icons) {
-        this.icons = icons;
-    }
-    
-    public String getVersion() {
+    public List<FontAwesomeIcon> getBrandIcons() {
+		return brandIcons;
+	}
+
+	public void setBrandIcons(List<FontAwesomeIcon> brandIcons) {
+		this.brandIcons = brandIcons;
+	}
+
+	public List<FontAwesomeIcon> getSolidIcons() {
+		return solidIcons;
+	}
+
+	public void setSolidIcons(List<FontAwesomeIcon> solidIcons) {
+		this.solidIcons = solidIcons;
+	}
+
+	public List<FontAwesomeIcon> getRegularIcons() {
+		return regularIcons;
+	}
+
+	public void setRegularIcons(List<FontAwesomeIcon> regularIcons) {
+		this.regularIcons = regularIcons;
+	}
+
+	public String getVersion() {
         return VERSION;
     }
     
