@@ -20,7 +20,7 @@ i {
     </ui:define>
 
 	<ui:define name="description">
-		<h:outputLink value="https://github.com/FortAwesome/Font-Awesome">Font Awesome</h:outputLink> is a highly customizable scalable vector iconset with #{fontAwesomeView.icons.size()} icons. In addition to the default ThemeRoller icons, Font Awesome icons are
+		<h:outputLink value="https://github.com/FortAwesome/Font-Awesome">Font Awesome</h:outputLink> is a highly customizable scalable vector iconset with #{fontAwesomeView.brandIcons.size()+fontAwesomeView.solidIcons.size()+fontAwesomeView.regularIcons.size()} icons. In addition to the default ThemeRoller icons, Font Awesome icons are
         provided out of the box within PrimeFaces. In order to enable Font Awesome support, enable primefaces.FONT_AWESOME setting as true via a context param.
     </ui:define>
 
@@ -43,8 +43,23 @@ i {
 		</p:menu>
 
 		<h3>FontAwesome #{fontAwesomeView.version} in Since v6.2</h3>
+		<h3>#{fontAwesomeView.brandIcons.size()} Brand Icons</h3>
 		<p:panelGrid columns="3" layout="grid">
-		    <c:forEach var="faIcon" items="#{fontAwesomeView.icons}">
+		    <c:forEach var="faIcon" items="#{fontAwesomeView.brandIcons}">
+				<div><i class="#{faIcon.stylePrefix} #{faIcon.icon}" />#{faIcon.stylePrefix} #{faIcon.icon}</div>
+			</c:forEach>
+		</p:panelGrid>
+		
+		<h3>#{fontAwesomeView.solidIcons.size()} Solid Icons</h3>
+		<p:panelGrid columns="3" layout="grid">
+		    <c:forEach var="faIcon" items="#{fontAwesomeView.solidIcons}">
+				<div><i class="#{faIcon.stylePrefix} #{faIcon.icon}" />#{faIcon.stylePrefix} #{faIcon.icon}</div>
+			</c:forEach>
+		</p:panelGrid>
+		
+		<h3>#{fontAwesomeView.regularIcons.size()} Regular Icons</h3>
+		<p:panelGrid columns="3" layout="grid">
+		    <c:forEach var="faIcon" items="#{fontAwesomeView.regularIcons}">
 				<div><i class="#{faIcon.stylePrefix} #{faIcon.icon}" />#{faIcon.stylePrefix} #{faIcon.icon}</div>
 			</c:forEach>
 		</p:panelGrid>
