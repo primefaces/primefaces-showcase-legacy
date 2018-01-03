@@ -26,7 +26,7 @@
 
                 <p:outputLabel for="advanced" value="Advanced:" /> 
                 <p:themeSwitcher id="advanced" style="width:165px" effect="fade" var="t">
-                    <f:selectItem itemLabel="Choose Theme" itemValue="" />
+                    <f:selectItem itemLabel="Choose Theme" itemValue="#{null}" />
                     <f:selectItems value="#{themeSwitcherView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" />
 
                     <p:column>
