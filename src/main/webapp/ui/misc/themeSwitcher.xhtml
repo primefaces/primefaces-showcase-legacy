@@ -4,7 +4,7 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
-    
+
     <ui:define name="title">
         ThemeSwitcher
     </ui:define>
@@ -14,17 +14,17 @@
     </ui:define>
 
     <ui:define name="implementation">
-        
+
         <h:form>
-        
+
             <h:panelGrid columns="2" cellpadding="10">
-                <p:outputLabel for="basic" value="Basic:" /> 
+                <p:outputLabel for="basic" value="Basic:" />
                 <p:themeSwitcher id="basic" style="width:165px">
                     <f:selectItem itemLabel="Choose Theme" itemValue="" />
                     <f:selectItems value="#{themeSwitcherView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme.name}"/>
                 </p:themeSwitcher>
 
-                <p:outputLabel for="advanced" value="Advanced:" /> 
+                <p:outputLabel for="advanced" value="Advanced:" />
                 <p:themeSwitcher id="advanced" style="width:165px" effect="fade" var="t">
                     <f:selectItem itemLabel="Choose Theme" itemValue="#{null}" />
                     <f:selectItems value="#{themeSwitcherView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" />
@@ -38,21 +38,21 @@
                     </p:column>
                 </p:themeSwitcher>
             </h:panelGrid>
-            
+
             <p:separator />
 
             <p:dialog header="Dialog" widgetVar="dlg" minHeight="40" modal="true">
                 <h:outputText value="Resistance to PrimeFaces is futile!" />
-            </p:dialog>	
+            </p:dialog>
 
             <p:commandButton value="Dialog" onclick="PF('dlg').show()" type="button" style="display:block;"/>
 
             <p:panel header="Panel" style="margin:20px 0px">
                 Panel Content
             </p:panel>
-            
+
             <p:spinner />
-            
+
             <p:toolbar style="margin:20px 0px">
                 <f:facet name="left">
                     <p:commandButton type="button" value="New" icon="ui-icon-document" />
@@ -70,15 +70,15 @@
                     </p:menuButton>
                 </f:facet>
             </p:toolbar>
-            
+
             <p:accordionPanel>
                 <p:tab title="Tab1">Tab1 Content</p:tab>
                 <p:tab title="Tab2">Tab2 Content</p:tab>
                 <p:tab title="Tab3">Tab3 Content</p:tab>
             </p:accordionPanel>
-        
+
         </h:form>
-        
+
     </ui:define>
 
     <ui:define name="source">
@@ -86,25 +86,25 @@
             <p:tab title="themeSwitcher.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
-        
+
     &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-        &lt;p:outputLabel for="basic" value="Basic:" /&gt; 
+        &lt;p:outputLabel for="basic" value="Basic:" /&gt;
         &lt;p:themeSwitcher id="basic" style="width:165px"&gt;
             &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
-            &lt;f:selectItems value="#{themeSwitcherView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme.name}"/&gt;
+            &lt;f:selectItems value="\#{themeSwitcherView.themes}" var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme.name}"/&gt;
         &lt;/p:themeSwitcher&gt;
 
-        &lt;p:outputLabel for="advanced" value="Advanced:" /&gt; 
+        &lt;p:outputLabel for="advanced" value="Advanced:" /&gt;
         &lt;p:themeSwitcher id="advanced" style="width:165px" effect="fade" var="t"&gt;
-            &lt;f:selectItem itemLabel="Choose Theme" itemValue="" /&gt;
-            &lt;f:selectItems value="#{themeSwitcherView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" /&gt;
+            &lt;f:selectItem itemLabel="Choose Theme" itemValue="\#{null}" /&gt;
+            &lt;f:selectItems value="\#{themeSwitcherView.themes}" var="theme" itemLabel="\#{theme.displayName}" itemValue="\#{theme}" /&gt;
 
             &lt;p:column&gt;
-                &lt;h:outputText styleClass="ui-theme ui-theme-#{t.name}" style="display-block" /&gt;
+                &lt;h:outputText styleClass="ui-theme ui-theme-\#{t.name}" style="display-block" /&gt;
             &lt;/p:column&gt;
 
             &lt;p:column&gt;
-                #{t.displayName}
+                \#{t.displayName}
             &lt;/p:column&gt;
         &lt;/p:themeSwitcher&gt;
     &lt;/h:panelGrid&gt;
@@ -113,7 +113,7 @@
 
     &lt;p:dialog header="Dialog" widgetVar="dlg" minHeight="40" modal="true"&gt;
         &lt;h:outputText value="Resistance to PrimeFaces is futile!" /&gt;
-    &lt;/p:dialog&gt;	
+    &lt;/p:dialog&gt;
 
     &lt;p:commandButton value="Dialog" onclick="PF('dlg').show()" type="button" style="display:block;"/&gt;
 
@@ -166,7 +166,7 @@ import org.primefaces.showcase.service.ThemeService;
 public class ThemeSwitcherView {
 
     private List&lt;Theme&gt; themes;
-    
+
     @ManagedProperty("\#{themeService}")
     private ThemeService service;
 
@@ -174,10 +174,10 @@ public class ThemeSwitcherView {
     public void init() {
         themes = service.getThemes();
     }
-    
+
     public List&lt;Theme&gt; getThemes() {
         return themes;
-    } 
+    }
 
     public void setService(ThemeService service) {
         this.service = service;
@@ -186,7 +186,7 @@ public class ThemeSwitcherView {
 
                 </pre>
             </p:tab>
-            
+
             <p:tab title="Theme.java">
                     <pre name="code" class="brush:java">
 package org.primefaces.showcase.domain;
@@ -194,11 +194,11 @@ package org.primefaces.showcase.domain;
 public class Theme {
 
     private int id;
-    
+
     private String displayName;
-    
+
     private String name;
-    
+
     public Theme() {}
 
     public Theme(int id, String displayName, String name) {
@@ -230,7 +230,7 @@ public class Theme {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     @Override
     public String toString() {
         return name;
@@ -254,9 +254,9 @@ import org.primefaces.showcase.domain.Theme;
 @ManagedBean(name="themeService", eager = true)
 @ApplicationScoped
 public class ThemeService {
-    
+
     private List&lt;Theme&gt; themes;
-    
+
     @PostConstruct
     public void init() {
         themes = new ArrayList&lt;Theme&gt;();
@@ -299,15 +299,15 @@ public class ThemeService {
         themes.add(new Theme(36, "UI-Lightness", "ui-lightness"));
         themes.add(new Theme(37, "Vader", "vader"));
     }
-    
+
     public List&lt;Theme&gt; getThemes() {
         return themes;
-    } 
+    }
 }
 
                 </pre>
             </p:tab>
-            
+
         </p:tabView>
 
     </ui:define>
