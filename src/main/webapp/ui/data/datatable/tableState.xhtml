@@ -14,11 +14,6 @@
             .ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-chkbox {
                 display: none;
             }
-            
-            .ui-filter-column .ui-column-customfilter {
-                width: 150px;
-                margin: auto;
-            }
         </style>
     </ui:define>
     
@@ -62,7 +57,7 @@
 
                 <p:column headerText="Brand" filterBy="#{car.brand}" sortBy="#{car.brand}" filterMatchMode="exact">
                     <f:facet name="filter">
-                        <p:selectOneMenu onchange="PF('carsTable').filter()" style="width:100px;" >
+                        <p:selectOneMenu onchange="PF('carsTable').filter()" style="width:100%; box-sizing: border-box;" >
                             <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
                             <f:selectItems value="#{dtTableStateView.brands}" />
                         </p:selectOneMenu>
@@ -72,7 +67,7 @@
 
                 <p:column headerText="Color" filterBy="#{car.color}" sortBy="#{car.color}" filterMatchMode="in">
                     <f:facet name="filter">
-                        <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable').filter()" style="width:80px;" panelStyle="width:125px" scrollHeight="150">
+                        <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable').filter()" style="width:100%; box-sizing: border-box;" scrollHeight="150">
                             <f:selectItems value="#{dtTableStateView.colors}" />
                         </p:selectCheckboxMenu>
                     </f:facet>

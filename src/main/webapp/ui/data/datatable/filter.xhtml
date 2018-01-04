@@ -11,16 +11,22 @@
                 text-align: right !important;
             }
             
-            .year-spinner input {
-                width: 100px
-            }
-            
             .ui-button-text-only .ui-button-text {
                 padding: 0.3em 0.4em;
             }
             
             .ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-chkbox {
                 display: none;
+            }
+            
+            .ui-filter-column .ui-column-customfilter .custom-filter {
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .year-spinner input {
+                width: 100%;
+                box-sizing: border-box;
             }
         </style>
     </ui:define>
@@ -52,7 +58,7 @@
 
                 <p:column filterBy="#{car.year}" headerText="Year" footerText="lte" filterMatchMode="lte">
                     <f:facet name="filter">
-                        <p:spinner onchange="PF('carsTable').filter()" styleClass="year-spinner">
+                        <p:spinner onchange="PF('carsTable').filter()" styleClass="year-spinner custom-filter">
                             <f:converter converterId="javax.faces.Integer" />
                         </p:spinner>
                     </f:facet>
@@ -61,7 +67,7 @@
 
                 <p:column filterBy="#{car.brand}" headerText="Brand" footerText="exact" filterMatchMode="exact">
                     <f:facet name="filter">
-                        <p:selectOneMenu onchange="PF('carsTable').filter()" >
+                        <p:selectOneMenu onchange="PF('carsTable').filter()" styleClass="custom-filter">
                             <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
                             <f:selectItems value="#{dtFilterView.brands}" />
                         </p:selectOneMenu>
@@ -71,7 +77,7 @@
 
                 <p:column filterBy="#{car.color}" headerText="Color" footerText="in" filterMatchMode="in">
                     <f:facet name="filter">
-                        <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable').filter()" panelStyle="width:125px" scrollHeight="150">
+                        <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable').filter()" scrollHeight="150" styleClass="custom-filter">
                             <f:selectItems value="#{dtFilterView.colors}" />
                         </p:selectCheckboxMenu>
                     </f:facet>
@@ -80,7 +86,7 @@
 
                 <p:column filterBy="#{car.sold}" headerText="Status" footerText="equals" filterMatchMode="equals">
                     <f:facet name="filter">
-                        <p:selectOneButton onchange="PF('carsTable').filter()">
+                        <p:selectOneButton onchange="PF('carsTable').filter()" styleClass="custom-filter">
                             <f:converter converterId="javax.faces.Boolean" />
                             <f:selectItem itemLabel="All" itemValue="" />
                             <f:selectItem itemLabel="Sold" itemValue="true" />
