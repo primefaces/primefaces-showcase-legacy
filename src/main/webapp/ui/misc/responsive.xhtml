@@ -285,44 +285,46 @@
                 </p:tab>
             </p:accordionPanel>
 
-            <p:panelGrid layout="grid" columns="2" style="margin-top:20px">
-                <p:menu toggleable="true">
-                    <p:submenu label="File">
-                        <p:menuitem value="Save" url="#" icon="ui-icon-disk" />
-                        <p:menuitem value="Update" url="#" icon="ui-icon-arrowrefresh-1-w"/>
-                    </p:submenu>
-                    <p:submenu label="Edit">
-                        <p:menuitem value="Delete" url="#" icon="ui-icon-close"/>
-                    </p:submenu>
-                    <p:submenu label="View">
-                        <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
-                        <p:menuitem value="Internal" outcome="/mobile/index" icon="ui-icon-star"/>
-                    </p:submenu>
-                </p:menu>
-
-                <p:panelMenu>
-                    <p:submenu label="Ajax Menuitems">
-                        <p:menuitem value="Save" url="#" icon="ui-icon-disk" />
-                        <p:menuitem value="Update" url="#" icon="ui-icon-arrowrefresh-1-w"/>
-                    </p:submenu>
-                    <p:submenu label="Non-Ajax Menuitem">
-                        <p:menuitem value="Delete" url="#" icon="ui-icon-close"/>
-                    </p:submenu>
-                    <p:separator />
-                    <p:submenu label="Navigations" >
-                        <p:submenu label="Links" icon="ui-icon-extlink">
-                            <p:submenu label="PrimeFaces" icon="ui-icon-heart">
-                                <p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" />
-                                <p:menuitem value="Docs" url="http://www.primefaces.org/documentation" icon="ui-icon-document" />
-                                <p:menuitem value="Download" url="http://www.primefaces.org/downloads" icon="ui-icon-arrowthick-1-s" />
-                                <p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
-                            </p:submenu>
+            <div class="ui-g" style="margin-top: 20px;">
+                <div class="ui-g-12 ui-md-6">
+                    <p:menu toggleable="true">
+                        <p:submenu label="File">
+                            <p:menuitem value="Save" url="#" icon="ui-icon-disk" />
+                            <p:menuitem value="Update" url="#" icon="ui-icon-arrowrefresh-1-w"/>
                         </p:submenu>
-                        <p:menuitem value="Mobile" outcome="/mobile/index" icon="ui-icon-signal" />
-                    </p:submenu>
-                </p:panelMenu>
-            </p:panelGrid>
-
+                        <p:submenu label="Edit">
+                            <p:menuitem value="Delete" url="#" icon="ui-icon-close"/>
+                        </p:submenu>
+                        <p:submenu label="View">
+                            <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
+                            <p:menuitem value="Internal" outcome="/mobile/index" icon="ui-icon-star"/>
+                        </p:submenu>
+                    </p:menu>
+                </div>
+                <div class="ui-g-12 ui-md-6">
+                    <p:panelMenu>
+                        <p:submenu label="Ajax Menuitems">
+                            <p:menuitem value="Save" url="#" icon="ui-icon-disk" />
+                            <p:menuitem value="Update" url="#" icon="ui-icon-arrowrefresh-1-w"/>
+                        </p:submenu>
+                        <p:submenu label="Non-Ajax Menuitem">
+                            <p:menuitem value="Delete" url="#" icon="ui-icon-close"/>
+                        </p:submenu>
+                        <p:separator />
+                        <p:submenu label="Navigations" >
+                            <p:submenu label="Links" icon="ui-icon-extlink">
+                                <p:submenu label="PrimeFaces" icon="ui-icon-heart">
+                                    <p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" />
+                                    <p:menuitem value="Docs" url="http://www.primefaces.org/documentation" icon="ui-icon-document" />
+                                    <p:menuitem value="Download" url="http://www.primefaces.org/downloads" icon="ui-icon-arrowthick-1-s" />
+                                    <p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
+                                </p:submenu>
+                            </p:submenu>
+                            <p:menuitem value="Mobile" outcome="/mobile/index" icon="ui-icon-signal" />
+                        </p:submenu>
+                    </p:panelMenu>
+                </div>
+            </div>
 
             <p:panel header="Panel" footer="Movie Details" style="margin-top:20px">
                 <p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
@@ -551,43 +553,46 @@
         &lt;/p:tab&gt;
     &lt;/p:accordionPanel&gt;
 
-    &lt;p:panelGrid layout="grid" columns="2" style="margin-top:20px"&gt;
-        &lt;p:menu toggleable="true"&gt;
-            &lt;p:submenu label="File"&gt;
-                &lt;p:menuitem value="Save" url="\#" icon="ui-icon-disk" /&gt;
-                &lt;p:menuitem value="Update" url="\#" icon="ui-icon-arrowrefresh-1-w"/&gt;
-            &lt;/p:submenu&gt;
-            &lt;p:submenu label="Edit"&gt;
-                &lt;p:menuitem value="Delete" url="\#" icon="ui-icon-close"/&gt;
-            &lt;/p:submenu&gt;
-            &lt;p:submenu label="View"&gt;
-                &lt;p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/&gt;
-                &lt;p:menuitem value="Internal" outcome="/mobile/index" icon="ui-icon-star"/&gt;
-            &lt;/p:submenu&gt;
-        &lt;/p:menu&gt;
-
-        &lt;p:panelMenu&gt;
-            &lt;p:submenu label="Ajax Menuitems"&gt;
-                &lt;p:menuitem value="Save" url="\#" icon="ui-icon-disk" /&gt;
-                &lt;p:menuitem value="Update" url="\#" icon="ui-icon-arrowrefresh-1-w"/&gt;
-            &lt;/p:submenu&gt;
-            &lt;p:submenu label="Non-Ajax Menuitem"&gt;
-                &lt;p:menuitem value="Delete" url="\#" icon="ui-icon-close"/&gt;
-            &lt;/p:submenu&gt;
-            &lt;p:separator /&gt;
-            &lt;p:submenu label="Navigations" &gt;
-                &lt;p:submenu label="Links" icon="ui-icon-extlink"&gt;
-                    &lt;p:submenu label="PrimeFaces" icon="ui-icon-heart"&gt;
-                        &lt;p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" /&gt;
-                        &lt;p:menuitem value="Docs" url="http://www.primefaces.org/documentation" icon="ui-icon-document" /&gt;
-                        &lt;p:menuitem value="Download" url="http://www.primefaces.org/downloads" icon="ui-icon-arrowthick-1-s" /&gt;
-                        &lt;p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" /&gt;
-                    &lt;/p:submenu&gt;
+    &lt;div class="ui-g" style="margin-top: 20px;"&gt;
+        &lt;div class="ui-g-12 ui-md-6"&gt;
+            &lt;p:menu toggleable="true"&gt;
+                &lt;p:submenu label="File"&gt;
+                    &lt;p:menuitem value="Save" url="\#" icon="ui-icon-disk" /&gt;
+                    &lt;p:menuitem value="Update" url="\#" icon="ui-icon-arrowrefresh-1-w"/&gt;
                 &lt;/p:submenu&gt;
-                &lt;p:menuitem value="Mobile" outcome="/mobile/index" icon="ui-icon-signal" /&gt;
-            &lt;/p:submenu&gt;
-        &lt;/p:panelMenu&gt;
-    &lt;/p:panelGrid&gt;
+                &lt;p:submenu label="Edit"&gt;
+                    &lt;p:menuitem value="Delete" url="\#" icon="ui-icon-close"/&gt;
+                &lt;/p:submenu&gt;
+                &lt;p:submenu label="View"&gt;
+                    &lt;p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/&gt;
+                    &lt;p:menuitem value="Internal" outcome="/mobile/index" icon="ui-icon-star"/&gt;
+                &lt;/p:submenu&gt;
+            &lt;/p:menu&gt;
+        &lt;/div&gt;
+        &lt;div class="ui-g-12 ui-md-6"&gt;
+            &lt;p:panelMenu&gt;
+                &lt;p:submenu label="Ajax Menuitems"&gt;
+                    &lt;p:menuitem value="Save" url="\#" icon="ui-icon-disk" /&gt;
+                    &lt;p:menuitem value="Update" url="\#" icon="ui-icon-arrowrefresh-1-w"/&gt;
+                &lt;/p:submenu&gt;
+                &lt;p:submenu label="Non-Ajax Menuitem"&gt;
+                    &lt;p:menuitem value="Delete" url="\#" icon="ui-icon-close"/&gt;
+                &lt;/p:submenu&gt;
+                &lt;p:separator /&gt;
+                &lt;p:submenu label="Navigations" &gt;
+                    &lt;p:submenu label="Links" icon="ui-icon-extlink"&gt;
+                        &lt;p:submenu label="PrimeFaces" icon="ui-icon-heart"&gt;
+                            &lt;p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" /&gt;
+                            &lt;p:menuitem value="Docs" url="http://www.primefaces.org/documentation" icon="ui-icon-document" /&gt;
+                            &lt;p:menuitem value="Download" url="http://www.primefaces.org/downloads" icon="ui-icon-arrowthick-1-s" /&gt;
+                            &lt;p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" /&gt;
+                        &lt;/p:submenu&gt;
+                    &lt;/p:submenu&gt;
+                    &lt;p:menuitem value="Mobile" outcome="/mobile/index" icon="ui-icon-signal" /&gt;
+                &lt;/p:submenu&gt;
+            &lt;/p:panelMenu&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
 
 
     &lt;p:panel header="Panel" footer="Movie Details" style="margin-top:20px"&gt;

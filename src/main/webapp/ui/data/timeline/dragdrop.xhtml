@@ -4,6 +4,14 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="./template.xhtml">
+    
+    <ui:define name="head">
+        <style type="text/css">            
+            .ui-datalist-item .ui-draggable:hover {
+                background: #eeeeee;
+            }
+        </style>
+    </ui:define>
 
     <ui:define name="title">
         Timeline - <span class="subitem">DragDrop</span>
