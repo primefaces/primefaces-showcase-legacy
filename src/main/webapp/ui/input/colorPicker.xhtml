@@ -31,10 +31,10 @@
             <p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors" resizable="false">
                 <h:panelGrid id="grid" columns="2" cellpadding="5">
                     <h:outputText value="Inline color: " />
-                    <h:outputText value="#{colorView.colorInline}" style="background-color: \##{colorView.colorInline}" />
+                    <h:outputText value="#{colorView.colorInline}" style="background-color: ##{colorView.colorInline}" />
                     
                     <h:outputText value="Popup color: " />
-                    <h:outputText value="#{colorView.colorPopup}" style="background-color: \##{colorView.colorPopup}" />
+                    <h:outputText value="#{colorView.colorPopup}" style="background-color: ##{colorView.colorPopup}" />
                 </h:panelGrid>
             </p:dialog>     
         </h:form>
@@ -61,10 +61,10 @@
     &lt;p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors" resizable="false"&gt;
         &lt;h:panelGrid id="grid" columns="2" cellpadding="5"&gt;
             &lt;h:outputText value="Inline color: " /&gt;
-            &lt;h:outputText value="\#{colorView.colorInline}" style="background-color: \\#\#{colorView.colorInline}" /&gt;
+            &lt;h:outputText value="#{colorView.colorInline}" style="background-color: \#{colorView.colorInline}" /&gt;
 
             &lt;h:outputText value="Popup color: " /&gt;
-            &lt;h:outputText value="\#{colorView.colorPopup}" style="background-color: \\#\#{colorView.colorPopup}" /&gt;
+            &lt;h:outputText value="\#{colorView.colorPopup}" style="background-color: \#{colorView.colorPopup}" /&gt;
         &lt;/h:panelGrid&gt;
     &lt;/p:dialog&gt; 
 &lt;/h:form&gt;
