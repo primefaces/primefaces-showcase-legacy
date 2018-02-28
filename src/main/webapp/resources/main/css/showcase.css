@@ -357,7 +357,11 @@ input.searchInput {
 
 .notification-topbar .notification-topbar-image-mobile {
     display: none;
-}                
+}             
+
+.ajax-loader {
+    font-size: 40px;
+}
                 
 /** Responsive **/
 @media (min-width: 961px) {
