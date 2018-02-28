@@ -54,7 +54,7 @@ public class DropdownView implements Serializable {
         data.put("Germany", map);
         
         map = new HashMap<String, String>();
-        map.put("Sao Paolo", "Sao Paolo");
+        map.put("Sao Paulo", "Sao Paulo");
         map.put("Rio de Janerio", "Rio de Janerio");
         map.put("Salvador", "Salvador");
         data.put("Brazil", map);
