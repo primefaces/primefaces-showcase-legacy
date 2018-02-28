@@ -199,13 +199,13 @@
             </activation>
             <properties>
                 <jsfVersion>Mojarra-2.3.2</jsfVersion>
-                <primefacesVersion>PrimeFaces-6.2-SNAPSHOT</primefacesVersion>
+                <primefacesVersion>PrimeFaces-6.3-SNAPSHOT</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>6.2-SNAPSHOT</version>
+                    <version>6.3-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -230,13 +230,13 @@
             <id>community-stable</id>
             <properties>
                 <jsfVersion>Mojarra-2.3.2</jsfVersion>
-                <primefacesVersion>PrimeFaces-6.1</primefacesVersion>
+                <primefacesVersion>PrimeFaces-6.2</primefacesVersion>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.primefaces</groupId>
                     <artifactId>primefaces</artifactId>
-                    <version>6.1</version>
+                    <version>6.2</version>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
