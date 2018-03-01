@@ -4,7 +4,7 @@
 
 ### Getting Started
 
-Deployable version of **PrimeFaces Showcase** war file can be downloaded manually or build it from sources.  
+Deployable version of **PrimeFaces Showcase** war file can be downloaded manually or build it from sources.
 
 ##### Prebuilt war
 
@@ -23,12 +23,10 @@ mvn jetty:run              -- run showcase project locally
 ##### Run from local sources
 
 ```
-mvn clean jetty:run  
+mvn clean jetty:run
 ```
 
 [http://localhost:8080/showcase/](http://localhost:8080/showcase)
-
-[http://localhost:8080/showcase/mobile/index.xhtml](http://localhost:8080/showcase/mobile/index.xhtml)
 
 ### Documentation
 
