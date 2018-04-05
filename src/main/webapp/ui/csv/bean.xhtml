@@ -133,6 +133,14 @@
             &lt;p:message for="futureDate" /&gt;
             &lt;h:outputText/&gt;
 
+            &lt;p:outputLabel for="@next" value="Radio Input"/&gt;
+            &lt;p:selectOneRadio value="#{beanValidationView.bool}"&gt;
+                &lt;f:selectItem itemValue="#{true}" itemLabel="True"/&gt;
+                &lt;f:selectItem itemValue="#{false}" itemLabel="False"/&gt;
+            &lt;/p:selectOneRadio&gt;
+            &lt;p:message for="@previous"/&gt;
+            &lt;h:outputText/&gt;
+
         &lt;/h:panelGrid&gt;
 
         &lt;p:commandButton value="Save" ajax="false" icon="ui-icon-check" validateClient="true"/&gt;
@@ -184,6 +192,9 @@ public class BeanValidationView {
     @Pattern(regexp="^[-+]?\\d+$")
     private String pattern;
 
+    @NotNull
+    private Boolean bool;
+    
     public String getName() {
         return name;
     }
@@ -238,6 +249,13 @@ public class BeanValidationView {
     }
     public void setPattern(String pattern) {
         this.pattern = pattern;
+    }
+
+    public Boolean getBool() {
+        return bool;
+    }
+    public void setBool(Boolean bool) {
+        this.bool = bool;
     }
 }
                 </pre>
