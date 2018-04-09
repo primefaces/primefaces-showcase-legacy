@@ -40,8 +40,8 @@ public class EditView implements Serializable {
     
     @PostConstruct
     public void init() {
-        cars1 = service.createCars(10);
-        cars2 = service.createCars(10);
+        cars1 = service.createCars(123);
+        cars2 = service.createCars(123);
     }
 
     public List<Car> getCars1() {
@@ -81,6 +81,18 @@ public class EditView implements Serializable {
         if(newValue != null && !newValue.equals(oldValue)) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
             FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+
+    public void onRowAdd(String tableName) {
+        // Generate a new entry
+        List<Car> cars2Add = service.createCars(1);
+        // Add to list on which add button was clicked:
+        if ("cars1".equalsIgnoreCase(tableName)) {
+            cars1.add(cars2Add.get(0));
+        }
+        if ("cars2".equalsIgnoreCase(tableName)) {
+            cars2.add(cars2Add.get(0));
         }
     }
 }
