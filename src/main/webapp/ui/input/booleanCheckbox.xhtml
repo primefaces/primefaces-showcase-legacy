@@ -19,10 +19,10 @@
             <p:growl id="msg" />
 
             <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                <h:outputText value="Basic: " />
+                <p:outputLabel for="@next" value="Basic: " />
                 <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" />
 
-                <h:outputText value="Ajax: " />
+                <p:outputLabel for="@next" value="Ajax: " />
                 <p:selectBooleanCheckbox value="#{selectBooleanView.value2}">
                     <p:ajax update="msg" listener="#{selectBooleanView.addMessage}" />
                 </p:selectBooleanCheckbox>
@@ -48,10 +48,10 @@
     &lt;p:growl id="msg" /&gt;
 
     &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
-        &lt;h:outputText value="Basic: " /&gt;
+        &lt;p:outputLabel for="@next" value="Basic: " /&gt;
         &lt;p:selectBooleanCheckbox value="\#{selectBooleanView.value1}" /&gt;
 
-        &lt;h:outputText value="Ajax: " /&gt;
+        &lt;p:outputLabel for="@next" value="Ajax: " /&gt;
         &lt;p:selectBooleanCheckbox value="\#{selectBooleanView.value2}"&gt;
             &lt;p:ajax update="msg" listener="\#{selectBooleanView.addMessage}" /&gt;
         &lt;/p:selectBooleanCheckbox&gt;
