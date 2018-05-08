@@ -3,10 +3,10 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
-                template="/WEB-INF/template.xhtml">
+                template="./template.xhtml">
 
     <ui:define name="title">
-        Terminal
+        Terminal - <span class="subitem">Basic</span>
     </ui:define>
 
     <ui:define name="description">
@@ -18,7 +18,7 @@
         <h:form>
             <p:focus for="terminal" />
 
-            <p:terminal id="terminal" widgetVar="term" commandHandler="#{terminalView.handleCommand}"
+            <p:terminal id="terminal" widgetVar="term" commandHandler="#{termnalBasicView.handleCommand}"
                         welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?" />
 
             <p:commandButton type="button" value="Clear" icon="ui-icon-trash" onclick="PF('term').clear()" style="margin-top:10px"/>
@@ -28,12 +28,13 @@
 
     <ui:define name="source">
         <p:tabView>
-            <p:tab title="terminal.xhtml">
+            <p:tab title="basic.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;h:form&gt;
     &lt;p:focus for="terminal" /&gt;
 
-    &lt;p:terminal id="terminal" widgetVar="term" commandHandler="\#{terminalView.handleCommand}"
+    &lt;p:terminal id="terminal" widgetVar="term"
+                commandHandler="\#{termnalBasicView.handleCommand}"
                 welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?" /&gt;
 
     &lt;p:commandButton type="button" value="Clear" icon="ui-icon-trash" onclick="PF('term').clear()" style="margin-top:10px"/&gt;
@@ -41,14 +42,16 @@
                 </pre>
             </p:tab>
 
-            <p:tab title="TerminalView.java">
+            <p:tab title="BasicView.java">
                 <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.misc;
+package org.primefaces.showcase.view.misc.terminal;
 
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
-@ManagedBean
+@ManagedBean(name="terminalBasicView")
+@ViewScoped
 public class TerminalView {
     
     public String handleCommand(String command, String[] params) {
