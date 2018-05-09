@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2014 PrimeTek.
+ * Copyright 2009-2018 PrimeTek.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,13 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.primefaces.showcase.view.misc;
+package org.primefaces.showcase.view.misc.terminal;
 
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
-@ManagedBean
-public class TerminalView {
+@ManagedBean(name="terminalBasicView")
+@ViewScoped
+public class BasicView {
     
     public String handleCommand(String command, String[] params) {
 		if(command.equals("greet")) {
@@ -28,9 +30,9 @@ public class TerminalView {
             else
                 return "Hello Stranger";
         }
-		else if(command.equals("date"))
-			return new Date().toString();
-		else
-			return command + " not found";
-	}
+        else if(command.equals("date"))
+            return new Date().toString();
+        else
+            return command + " not found";
+        }
 }

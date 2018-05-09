@@ -1,0 +1,119 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template.xhtml">
+
+    <ui:define name="title">
+        Terminal - <span class="subitem">Autocompletion</span>
+    </ui:define>
+
+    <ui:define name="description">
+        <p>An autocomplete model can be also provided for the terminal, which will enable the autocompletion feature on the component.<br/>
+        Autocompletion can be triggered using the TAB key. In case there are more alternatives for arguments, these can be clicked to override the current input.</p>
+        <p>Try any of the following inputs as an example:</p>
+        <ul>
+            <li>TAB</li>
+            <li><i>git</i> + TAB</li>
+            <li><i>svn co</i> + TAB</li>
+            <li><i>git pus</i> + TAB + TAB + TAB</li>
+        </ul>
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <p:focus for="terminal" />
+
+            <p:terminal id="terminal" widgetVar="term"
+                        commandHandler="#{terminalAutoCompleteView.handleCommand}"
+                        autoCompleteModel="#{terminalAutoCompleteView.autoCompleteModel}" 
+                        welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?" />
+
+            <p:commandButton type="button" value="Clear" icon="ui-icon-trash" onclick="PF('term').clear()" style="margin-top:10px"/>
+        </h:form>
+        
+    </ui:define>
+
+    <ui:define name="source">
+        <p:tabView>
+            <p:tab title="autocomplete.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;h:form&gt;
+    &lt;p:focus for="terminal" /&gt;
+
+    &lt;p:terminal id="terminal" widgetVar="term"
+                commandHandler="\#{terminalAutoCompleteView.handleCommand}"
+                autoCompleteModel="\#{terminalAutoCompleteView.autoCompleteModel}"
+                welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?" /&gt;
+
+    &lt;p:commandButton type="button" value="Clear" icon="ui-icon-trash" onclick="PF('term').clear()" style="margin-top:10px"/&gt;
+&lt;/h:form&gt;
+                </pre>
+            </p:tab>
+
+            <p:tab title="AutoCompleteView.java">
+                <pre name="code" class="brush:java">
+package org.primefaces.showcase.view.misc.terminal;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import org.primefaces.model.terminal.TerminalAutoCompleteModel;
+import org.primefaces.model.terminal.TerminalCommand;
+
+@ManagedBean(name="terminalAutoCompleteView")
+@ViewScoped
+public class AutoCompleteView {
+    
+    private TerminalAutoCompleteModel autoCompleteModel;
+
+    public AutoCompleteView() {
+        this.autoCompleteModel = buildAutoCompleteModel();
+    }
+    
+    private TerminalAutoCompleteModel buildAutoCompleteModel() {
+        TerminalAutoCompleteModel model = new TerminalAutoCompleteModel();
+
+        TerminalCommand git = model.addCommand("git");
+        
+        git.addArgument("checkout");
+        git.addArgument("commit");
+        git.addArgument("status");
+        git.addArgument("pull");
+        git.addArgument("push").addArgument("origin").addArgument("master");
+        
+        TerminalCommand svn = model.addCommand("svn");
+        
+        svn.addArgument("commit");
+        svn.addArgument("checkout");
+        svn.addArgument("status");
+        svn.addArgument("update");
+        
+        return model;
+    }
+
+    public TerminalAutoCompleteModel getAutoCompleteModel() {
+        return autoCompleteModel;
+    }
+
+    public String handleCommand(String command, String[] params) {
+        StringBuilder response = new StringBuilder("The command you entered was: '").append(command);
+        
+        for (String param : params) {
+            response.append(" ").append(param);
+        }
+        
+        return response.append("'").toString();
+    }
+    
+}
+                </pre>
+            </p:tab>
+            
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
