@@ -71,13 +71,8 @@
 
              <div class="ui-g">
                  <div class="ui-g-12">
-                     <p:commandButton value="Add new row"
-                                      styleClass="ui-priority-primary"
-                                      process="@this"
-                                      update=":form:msgs"
-                                      actionListener="#{dtAddRowView.onAddNew()}"
-                                      oncomplete="PF('cars1').addRow();"
-                     />
+                     <p:commandButton value="Add new row" styleClass="ui-priority-primary" process="@this" update=":form:msgs"
+                                      actionListener="#{dtAddRowView.onAddNew()}" oncomplete="PF('cars1').addRow();"/>
                  </div>
              </div>
 
@@ -143,13 +138,8 @@
 
     &lt;div class=&quot;ui-g&quot;&gt;
         &lt;div class=&quot;ui-g-12&quot;&gt;
-            &lt;p:commandButton value=&quot;Add new row&quot;
-                          styleClass=&quot;ui-priority-primary&quot;
-                          process=&quot;@this&quot;
-                          update=&quot;:form:msgs&quot;
-                          actionListener=&quot;#{dtAddRowView.onAddNew()}&quot;
-                          oncomplete=&quot;PF(&apos;cars1&apos;).addRow();&quot;
-            /&gt;
+            &lt;p:commandButton value=&quot;Add new row&quot; styleClass=&quot;ui-priority-primary&quot; process=&quot;@this&quot; update=&quot;:form:msgs&quot;
+                          actionListener=&quot;\#{dtAddRowView.onAddNew()}&quot; oncomplete=&quot;PF(&apos;cars1&apos;).addRow();&quot;/&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 
