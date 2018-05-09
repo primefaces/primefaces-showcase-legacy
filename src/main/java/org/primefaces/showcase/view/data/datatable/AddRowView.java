@@ -28,9 +28,9 @@ import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.List;
 
-@ManagedBean(name="dtAddView")
+@ManagedBean(name="dtAddRowView")
 @ViewScoped
-public class AddView implements Serializable {
+public class AddRowView implements Serializable {
     
     private List<Car> cars1;
 
