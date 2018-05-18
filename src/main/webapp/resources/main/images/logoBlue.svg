@@ -1,30 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="LOGO_1_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="83px" height="90px" viewBox="0 0 83 90" enable-background="new 0 0 83 90" xml:space="preserve">
-<g id="LOGO">
-	<polyline id="LOGObackground" fill="#252C30" points="0,7.75 13.625,10.333 23.021,0 59.751,0 69.5,10.333 83,7.75 73.834,33.844 
-		69.627,66.229 50,90 32.5,90 12.625,66.166 8.667,34.083 	"/>
-	<g id="grayArea">
-		<polygon fill="#25AAE1" points="35.751,40.833 13.167,32.417 9.751,18 27.667,21.583 		"/>
-		<polygon fill="#25AAE1" points="46.751,40.833 69.335,32.417 72.751,18 54.835,21.583 		"/>
-		<polygon fill="#25AAE1" points="28.334,20.25 16.917,18 24.667,7.75 34.417,7.75 		"/>
-		<polygon fill="#25AAE1" points="54,20.25 65.417,18 57.667,7.75 47.917,7.75 		"/>
-		<polygon fill="#25AAE1" points="52.698,22.906 44.625,43.958 47.042,59.938 35.042,59.938 37.761,43.938 29.667,22.906 
-			34.917,7.75 47.334,7.75 		"/>
-		<polygon fill="#25AAE1" points="18.709,42.958 26.626,47.209 26.626,64 13.625,52.875 13.625,34.083 18.709,36.167 		"/>
-		<polygon fill="#25AAE1" points="63.543,42.958 55.626,47.209 55.626,64 68.627,52.875 68.627,34.083 63.543,36.167 		"/>
-		<polygon fill="#25AAE1" points="49.708,41.125 46.751,42.667 46.751,45.562 48.604,60.969 44.637,65 41.183,65.031 37.729,65 
-			33.761,60.969 35.614,45.562 35.614,42.667 32.657,41.125 28.574,48 28.574,72.969 32.792,69.094 41.183,69 49.573,69.094 
-			53.791,72.969 53.791,48 		"/>
-		<polygon fill="#25AAE1" points="46.667,81.917 35.625,81.917 31.75,77.938 35.625,73.959 46.667,73.959 50.667,77.938 		"/>
-		<polygon opacity="0.5" fill="#25AAE1" enable-background="new    " points="26.626,73.959 19.417,65.959 19.417,60.5 
-			26.626,65.209 		"/>
-		<polygon opacity="0.5" fill="#25AAE1" enable-background="new    " points="55.417,73.959 62.626,65.959 62.626,60.5 
-			55.417,65.209 		"/>
-		<polygon opacity="0.5" fill="#25AAE1" enable-background="new    " points="48.667,72.969 33.698,72.969 30.729,77.031 
-			28.574,75.906 33.625,70.834 48.792,70.834 53.791,75.906 51.667,77.031 		"/>
-	</g>
-</g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="78px" height="85px" viewBox="0 0 78 85" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>logoBlue</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logoBlue">
+            <polygon id="bg" fill="#252C30" points="21.6326413 0 12.80451 9.75806063 0 7.32059376 7.12527926 32.190949 11.862897 62.4903007 30.5422976 85 46.987915 85 65.4319123 62.5517495 70.4039142 31.9646128 78 7.32059376 65.3126821 9.75806063 56.1502985 0"></polygon>
+            <g id="primefaces" transform="translate(8.000000, 6.000000)">
+                <polygon id="chick-right" fill="#25AAE1" fill-rule="nonzero" points="46.5652174 32.9770992 41.6347826 31.8778626 45.4695652 37.3740458 45.4695652 54.4122137 58.6173913 43.4198473 58.6173913 24.7328244 52.5913043 26.9312977"></polygon>
+                <polygon id="chick-left" fill="#25AAE1" fill-rule="nonzero" transform="translate(12.326087, 39.572519) scale(-1, 1) translate(-12.326087, -39.572519) " points="8.76521739 32.9770992 3.83478261 31.8778626 7.66956522 37.3740458 7.66956522 54.4122137 20.8173913 43.4198473 20.8173913 24.7328244 14.7913043 26.9312977"></polygon>
+                <polygon id="mask" fill="#25AAE1" points="18.626087 38.4732824 23.0086957 31.8778626 25.7478261 33.5267176 36.7043478 33.5267176 39.4434783 31.8778626 43.826087 38.4732824 43.826087 63.2061069 40.5391304 68.1526718 36.7043478 72 25.7478261 72 21.9130435 68.1526718 18.626087 63.2061069"></polygon>
+                <g id="mask-effect-right" transform="translate(35.060870, 48.916031)" fill="#252C30">
+                    <polygon id="Rectangle-3" transform="translate(4.930435, 4.396947) rotate(-38.000000) translate(-4.930435, -4.396947) " points="0.896758598 3.32761022 10.3132126 3.73386232 8.96411097 5.46628291 -0.452343069 5.06003081"></polygon>
+                    <polygon id="Rectangle-3" transform="translate(4.930435, 8.244275) rotate(-38.000000) translate(-4.930435, -8.244275) " points="0.896758598 7.17493847 10.3132126 7.58119056 8.96411097 9.31361115 -0.452343069 8.90735906"></polygon>
+                    <polygon id="Rectangle-3" transform="translate(4.930435, 12.091603) rotate(-38.000000) translate(-4.930435, -12.091603) " points="0.896758598 11.0222667 10.3132126 11.4285188 8.96411097 13.1609394 -0.452343069 12.7546873"></polygon>
+                </g>
+                <g id="mask-effect-left" transform="translate(17.530435, 48.366412)" fill="#252C30">
+                    <polygon id="Rectangle-3" transform="translate(4.930435, 4.396947) scale(-1, 1) rotate(-38.000000) translate(-4.930435, -4.396947) " points="0.896758598 3.32761022 10.3132126 3.73386232 8.96411097 5.46628291 -0.452343069 5.06003081"></polygon>
+                    <polygon id="Rectangle-3" transform="translate(4.930435, 8.244275) scale(-1, 1) rotate(-38.000000) translate(-4.930435, -8.244275) " points="0.896758598 7.17493847 10.3132126 7.58119056 8.96411097 9.31361115 -0.452343069 8.90735906"></polygon>
+                    <polygon id="Rectangle-3" transform="translate(4.930435, 12.091603) scale(-1, 1) rotate(-38.000000) translate(-4.930435, -12.091603) " points="0.896758598 11.0222667 10.3132126 11.4285188 8.96411097 13.1609394 -0.452343069 12.7546873"></polygon>
+                </g>
+                <polygon id="bottom-chick-right" fill="#256A88" fill-rule="nonzero" points="45.4695652 64.8549618 52.5913043 57.7099237 52.5913043 50.5648855 45.4695652 56.610687"></polygon>
+                <polygon id="bottom-chick-left" fill="#256A88" fill-rule="nonzero" transform="translate(13.421739, 57.709924) scale(-1, 1) translate(-13.421739, -57.709924) " points="9.86086957 64.8549618 16.9826087 57.7099237 16.9826087 50.5648855 9.86086957 56.610687"></polygon>
+                <path d="M27.9391304,0 L30.1304348,0 L30.1304348,31.3282443 L26.8434783,31.3282443 L19.7217391,10.4427481 L24.1043478,0 L25.7478261,0 L25.7478261,12.6412214 L27.9391304,13.740458 L27.9391304,0 Z M32.3217391,0 L34.5130435,0 L34.5130435,13.740458 L36.7043478,12.6412214 L36.7043478,1.91846539e-13 L38.3478261,0 L42.7304348,10.4427481 L36.1565217,31.3282443 L32.3217391,31.3282443 L32.3217391,0 Z" id="head" fill="#25AAE1"></path>
+                <polygon id="head-left" fill="#25AAE1" fill-rule="nonzero" points="26.8434783 31.3282443 3.28695652 22.5343511 0 8.79389313 21 10.5 28 31.3282443"></polygon>
+                <polygon id="head-right" fill="#25AAE1" fill-rule="nonzero" transform="translate(49.000000, 20.061069) scale(-1, 1) translate(-49.000000, -20.061069) " points="61.8434783 31.3282443 38.2869565 22.5343511 35 8.79389313 56 10.5 63 31.3282443"></polygon>
+                <polygon id="ear-right" fill="#25AAE1" fill-rule="nonzero" points="43.826087 8.79389313 55.3304348 7.69465649 47.6608696 0 39.9913043 0"></polygon>
+                <polygon id="ear-left" fill="#25AAE1" fill-rule="nonzero" transform="translate(14.791304, 4.396947) scale(-1, 1) translate(-14.791304, -4.396947) " points="10.9565217 8.79389313 22.4608696 7.69465649 14.7913043 0 7.12173913 0"></polygon>
+            </g>
+        </g>
+    </g>
 </svg>
