@@ -17,7 +17,7 @@
 
         <h:form>
             <p:growl id="growl" showDetail="true" />
-            
+
             <h3 style="margin-top: 0">Basic</h3>
             <h:panelGrid columns="1" style="margin-bottom: 10px">
                 <p:inputText id="txt1" value="#{sliderView.number1}" />
@@ -36,6 +36,14 @@
                     <p:ajax process="@this" update="growl" />
                 </p:inputNumber>
                 <p:slider for="nmb1" />
+            </h:panelGrid>
+
+            <h3>Spinner Slider</h3>
+            <h:panelGrid columns="1" style="margin-bottom: 10px">
+                <p:spinner id="spinner1" value="#{sliderView.number3}" min="0" max="1000" stepFactor="50" suffix=" €" valueChangeListener="#{sliderView.onInputChanged}">
+                    <p:ajax process="@this" update="growl" />
+                </p:spinner>
+                <p:slider for="spinner1" minValue="0" maxValue="1000" step="50" />
             </h:panelGrid>
 
             <h3>Hidden Input Slider with Display Value</h3>
@@ -88,9 +96,9 @@
                     <h:outputText value="Number 4: #{sliderView.number4}" />
 
                     <h:outputText value="Number 5: #{sliderView.number5}" />
-                    
+
                     <h:outputText value="Number 6: #{sliderView.number6}" />
-                    
+
                     <h:outputText value="Number 7: #{sliderView.number7}" />
 
                     <h:outputText value="Range: [#{sliderView.number8},#{sliderView.number9}]" />
@@ -106,7 +114,7 @@
                 <pre name="code" class="brush:xml">
  &lt;h:form&gt;
     &lt;p:growl id="growl" showDetail="true" /&gt;
-            
+
     &lt;h3 style="margin-top: 0"&gt;Basic&lt;/h3&gt;
     &lt;h:panelGrid columns="1" style="margin-bottom: 10px"&gt;
         &lt;p:inputText id="txt1" value="\#{sliderView.number1}" /&gt;
@@ -125,6 +133,14 @@
             &lt;p:ajax process="@this" update="growl" /&gt;
         &lt;/p:inputNumber&gt;
         &lt;p:slider for="nmb1" /&gt;
+    &lt;/h:panelGrid&gt;
+
+    &lt;h3&gt;Spinner Slider&lt;/h3&gt;
+    &lt;h:panelGrid columns="1" style="margin-bottom: 10px"&gt;
+        &lt;p:spinner id="spinner1" value="#{sliderView.number3}" min="0" max="1000" stepFactor="50" suffix=" €" valueChangeListener="\#{sliderView.onInputChanged}"&gt;
+            &lt;p:ajax process="@this" update="growl" /&gt;
+        &lt;/p:spinner&gt;
+        &lt;p:slider for="spinner1" minValue="0" maxValue="1000" step="50" /&gt;
     &lt;/h:panelGrid&gt;
 
     &lt;h3&gt;Hidden Input Slider with Display Value&lt;/h3&gt;
@@ -201,13 +217,13 @@ import org.primefaces.event.SlideEndEvent;
 
 @ManagedBean
 public class SliderView {
-   
+
     private int number1;
-    private float number2;  
-    private int number3;   
-    private int number4;   
+    private float number2;
+    private int number3;
+    private int number4;
     private int number5;
-    private int number6;  
+    private int number6;
     private int number7;
     private int number8 = 30;
     private int number9 = 80;
@@ -287,12 +303,12 @@ public class SliderView {
     public void onInputChanged(ValueChangeEvent event) {
         FacesMessage message = new FacesMessage("Input Changed", "Value: " + event.getNewValue());
         FacesContext.getCurrentInstance().addMessage(null, message);
-    } 
-    
+    }
+
     public void onSlideEnd(SlideEndEvent event) {
         FacesMessage message = new FacesMessage("Slide Ended", "Value: " + event.getValue());
         FacesContext.getCurrentInstance().addMessage(null, message);
-    } 
+    }
 }
                 </pre>
             </p:tab>
