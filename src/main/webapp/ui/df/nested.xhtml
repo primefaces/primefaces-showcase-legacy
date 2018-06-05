@@ -146,7 +146,7 @@ public class DFRootView {
     public void openLevel1() {
         Map&lt;String,Object&gt; options = new HashMap&lt;String, Object&gt;();
         options.put("modal", true);
-        PrimeFaces.current().dialog.openDynamic("level1", options, null);
+        PrimeFaces.current().dialog().openDynamic("level1", options, null);
     }
     
     public void onReturnFromLevel1(SelectEvent event) {
@@ -171,12 +171,12 @@ public class DFLevel1View {
     public void openLevel2() {
         Map&lt;String,Object&gt; options = new HashMap&lt;String, Object&gt;();
         options.put("modal", true);
-        PrimeFaces.current().dialog.openDynamic("level2", options, null);
+        PrimeFaces.current().dialog().openDynamic("level2", options, null);
     }
     
     public void onReturnFromLevel2(SelectEvent event) {
         //pass back to root
-        PrimeFaces.current().dialog.closeDynamic(event.getObject());
+        PrimeFaces.current().dialog().closeDynamic(event.getObject());
     }
 }
                 </pre>
@@ -197,12 +197,12 @@ public class DFLevel2View {
     public void openLevel3() {
         Map&lt;String,Object&gt; options = new HashMap&lt;String, Object&gt;();
         options.put("modal", true);
-        PrimeFaces.current().dialog.openDynamic("level3", options, null);
+        PrimeFaces.current().dialog().openDynamic("level3", options, null);
     }
     
     public void onReturnFromLevel3(SelectEvent event) {
         //pass back to level 1
-        PrimeFaces.current().dialog.closeDynamic(event.getObject());
+        PrimeFaces.current().dialog().closeDynamic(event.getObject());
     }
 }
                 </pre>
@@ -229,7 +229,7 @@ public class DFLevel3View {
 
     public void closeDialog() {
         //pass back to level 2
-        PrimeFaces.current().dialog.closeDynamic(val);
+        PrimeFaces.current().dialog().closeDynamic(val);
     }
 }
                 </pre>

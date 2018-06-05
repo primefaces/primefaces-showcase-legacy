@@ -50,7 +50,7 @@ public class DFView {
     public void viewCars() {
         Map&lt;String,Object&gt; options = new HashMap&lt;String, Object&gt;();
         options.put("resizable", false);
-        PrimeFaces.current().dialog.openDynamic("viewCars", options, null);
+        PrimeFaces.current().dialog().openDynamic("viewCars", options, null);
     }
     
     public void viewCarsCustomized() {
@@ -62,7 +62,7 @@ public class DFView {
         options.put("contentHeight", "100%");
         options.put("headerElement", "customheader");
         
-        PrimeFaces.current().dialog.openDynamic("viewCars", options, null);
+        PrimeFaces.current().dialog().openDynamic("viewCars", options, null);
     }
 }
                 </pre>
