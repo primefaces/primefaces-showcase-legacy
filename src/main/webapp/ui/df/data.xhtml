@@ -60,7 +60,7 @@ public class DFView {
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
-        PrimeFaces.current().dialog.openDynamic("selectCar", options, null);
+        PrimeFaces.current().dialog().openDynamic("selectCar", options, null);
     }
     
     public void onCarChosen(SelectEvent event) {
@@ -156,7 +156,7 @@ public class DFCarsView implements Serializable {
     }
     
     public void selectCarFromDialog(Car car) {
-        PrimeFaces.current().dialog.closeDynamic(car);
+        PrimeFaces.current().dialog().closeDynamic(car);
     }
 }
 
