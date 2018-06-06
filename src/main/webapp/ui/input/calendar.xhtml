@@ -63,7 +63,7 @@
                 <p:calendar id="popup" value="#{calendarView.date2}" />
                 
                 <p:outputLabel for="button" value="Button:" />
-                <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+                <p:calendar id="button" value="#{calendarView.date3}" showOn="button" showButtonPanel="true" navigator="true" />
                 
                 <p:outputLabel for="event" value="Select Event:" />
                 <p:calendar id="event" value="#{calendarView.date4}">
@@ -171,7 +171,7 @@
         &lt;p:calendar id="popup" value="\#{calendarView.date2}" /&gt;
 
         &lt;p:outputLabel for="button" value="Button:" /&gt;
-        &lt;p:calendar id="button" value="\#{calendarView.date3}" showOn="button" /&gt;
+        &lt;p:calendar id="button" value="\#{calendarView.date3}" showOn="button" showButtonPanel="true" navigator="true" /&gt;
 
         &lt;p:outputLabel for="event" value="Select Event:" /&gt;
         &lt;p:calendar id="event" value="\#{calendarView.date4}"&gt;
