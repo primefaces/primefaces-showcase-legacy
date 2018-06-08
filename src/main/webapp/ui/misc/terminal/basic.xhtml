@@ -18,7 +18,7 @@
         <h:form>
             <p:focus for="terminal" />
 
-            <p:terminal id="terminal" widgetVar="term" commandHandler="#{termnalBasicView.handleCommand}"
+            <p:terminal id="terminal" widgetVar="term" commandHandler="#{terminalBasicView.handleCommand}"
                         welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?" />
 
             <p:commandButton type="button" value="Clear" icon="ui-icon-trash" onclick="PF('term').clear()" style="margin-top:10px"/>
@@ -34,7 +34,7 @@
     &lt;p:focus for="terminal" /&gt;
 
     &lt;p:terminal id="terminal" widgetVar="term"
-                commandHandler="\#{termnalBasicView.handleCommand}"
+                commandHandler="\#{terminalBasicView.handleCommand}"
                 welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?" /&gt;
 
     &lt;p:commandButton type="button" value="Clear" icon="ui-icon-trash" onclick="PF('term').clear()" style="margin-top:10px"/&gt;
