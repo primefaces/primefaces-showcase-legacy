@@ -1,3 +1,6 @@
+# !!! The showcase is deprecated and replaced by: https://github.com/primefaces/showcase-facelift !!!
+
+
 # PrimeFaces Showcase
 
 ![PrimeFaces icon](https://www.primefaces.org/wp-content/uploads/2016/10/prime_logo_new.png)
