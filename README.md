@@ -1,4 +1,4 @@
-# !!! The showcase is deprecated and replaced by: https://github.com/primefaces/showcase-facelift !!!
+# !!! The showcase is deprecated and replaced by: https://github.com/primefaces/primefaces/tree/master/primefaces-showcase !!!
 
 
 # PrimeFaces Showcase
